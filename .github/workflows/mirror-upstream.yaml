@@ -69,7 +69,7 @@ jobs:
           cp mirror.yaml "$STAGE/mirror.yaml"
           git -C .upstream/registry rev-parse HEAD > "$STAGE/upstream.sha"
           python3 scripts/mirror.py --repo-root "$STAGE" --config "$GITHUB_WORKSPACE/mirror.yaml"
-          (cd "$STAGE" && argd gr)
+          (cd "$STAGE" && AQUA_CONFIG="$GITHUB_WORKSPACE/aqua.yaml" argd gr)
           python3 scripts/validate.py --repo-root "$STAGE" --schema .ai/aqua/json-schema/registry.json
           tar -czf "$RUNNER_TEMP/bridge.tar.gz" -C "$STAGE" pkgs registry.yaml upstream.sha
           (cd "$RUNNER_TEMP" && sha256sum bridge.tar.gz > bridge.tar.gz.sha256)
