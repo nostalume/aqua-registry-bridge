@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.0.4-prerelease.1")
-        url: https://gh-proxy.org/https://github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/cargo-dist-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-dist-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         rosetta2: true
@@ -24,6 +25,8 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/cargo-dist-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: cargo-dist
@@ -32,7 +35,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.0.6-prerelease.7")
-        url: https://gh-proxy.org/https://github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/cargo-dist-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-dist-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -46,9 +50,13 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/cargo-dist-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/cargo-dist-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: cargo-dist
@@ -57,7 +65,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.1.0-prerelease.2")
-        url: https://gh-proxy.org/https://github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/cargo-dist-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-dist-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -71,9 +80,13 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/cargo-dist-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/cargo-dist-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: cargo-dist
@@ -82,7 +95,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.4.0-prerelease.2")
-        url: https://gh-proxy.org/https://github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/cargo-dist-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-dist-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -95,14 +109,19 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/cargo-dist-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/cargo-dist-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: cargo-dist
@@ -111,7 +130,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.6.0-prerelease.2")
-        url: https://gh-proxy.org/https://github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/cargo-dist-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-dist-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -124,14 +144,19 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/cargo-dist-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/cargo-dist-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: cargo-dist
@@ -140,7 +165,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.16.0-prerelease.5")
-        url: https://gh-proxy.org/https://github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/cargo-dist-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-dist-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -154,16 +180,20 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/cargo-dist-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: cargo-dist
       - version_constraint: semver("<= 0.23.0")
-        url: https://gh-proxy.org/https://github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/cargo-dist-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-dist-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -177,18 +207,22 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/cargo-dist-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: cargo-dist
         github_artifact_attestations:
           signer_workflow: axodotdev/cargo-dist/.github/workflows/release.yml
       - version_constraint: Version == "v0.28.1-prerelease.1"
-        url: https://gh-proxy.org/https://github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/cargo-dist-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-dist-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -201,14 +235,19 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/cargo-dist-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/cargo-dist-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: dist
@@ -217,7 +256,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver(">= 1.0.0-rc.1")
-        url: https://gh-proxy.org/https://github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/dist-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: dist-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -231,18 +271,22 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/dist-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: dist
         github_artifact_attestations:
           signer_workflow: axodotdev/cargo-dist/.github/workflows/release.yml
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/cargo-dist-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-dist-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -256,11 +300,14 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/axodotdev/cargo-dist/releases/download/{{.Version}}/cargo-dist-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: dist

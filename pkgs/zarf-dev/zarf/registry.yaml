@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("< 0.51.0")
         error_message: Please use v0.51.0 or later
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/zarf-dev/zarf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zarf-dev/zarf/releases/download/{{.Version}}/zarf_{{.Version}}_{{.OS}}_{{.Arch}}
         asset: zarf_{{.Version}}_{{.OS}}_{{.Arch}}
         format: raw
         replacements:
@@ -17,6 +18,7 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/zarf-dev/zarf/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

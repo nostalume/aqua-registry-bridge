@@ -1,7 +1,8 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
   - name: junegunn/fzf/fzf-tmux
-    type: github_content
+    type: http
+    url: https://gh-proxy.org/raw.githubusercontent.com/junegunn/fzf/{{.Version}}/bin/fzf-tmux
     repo_owner: junegunn
     repo_name: fzf
     path: bin/fzf-tmux

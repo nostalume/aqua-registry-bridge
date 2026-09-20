@@ -9,13 +9,17 @@ packages:
       - version_constraint: Version == "v0.0.1"
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/azu/dockerfile-pin/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/azu/dockerfile-pin/releases/download/{{.Version}}/dockerfile-pin_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: dockerfile-pin_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/azu/dockerfile-pin/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/azu/dockerfile-pin/releases/download/{{.Version}}/dockerfile-pin_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

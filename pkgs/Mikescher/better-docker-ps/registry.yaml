@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/Mikescher/better-docker-ps/releases/download/{{.Version}}/dops_{{.OS}}-{{.Arch}}
     repo_owner: Mikescher
     repo_name: better-docker-ps
     description: Because `docker ps` is annoying and does not fit my monitor/terminal width
@@ -17,7 +18,8 @@ packages:
     version_constraint: semver(">= 1.5")
     version_overrides:
       - version_constraint: semver("< 1.5")
-        url: https://gh-proxy.org/https://github.com/Mikescher/better-docker-ps/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Mikescher/better-docker-ps/releases/download/{{.Version}}/dops
         asset: dops
         supported_envs:
           - linux/amd64

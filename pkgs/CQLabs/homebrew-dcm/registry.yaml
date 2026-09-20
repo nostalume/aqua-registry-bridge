@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "1.0.0"
-        url: https://gh-proxy.org/https://github.com/CQLabs/homebrew-dcm/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/CQLabs/homebrew-dcm/releases/download/{{.Version}}/dcm-{{.OS}}-{{.Arch}}-release.{{.Format}}
         asset: dcm-{{.OS}}-{{.Arch}}-release.{{.Format}}
         format: zip
         files:
@@ -19,16 +20,21 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/CQLabs/homebrew-dcm/releases/download/{{.Version}}/dcm-{{.OS}}-{{.Arch}}-release.{{.Format}}
             replacements:
               arm64: arm
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/CQLabs/homebrew-dcm/releases/download/{{.Version}}/dcm-{{.OS}}-release.exe.{{.Format}}
             asset: dcm-{{.OS}}-release.exe.{{.Format}}
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/CQLabs/homebrew-dcm/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/CQLabs/homebrew-dcm/releases/download/{{.Version}}/dcm-{{.OS}}-{{.Arch}}-release.{{.Format}}
         asset: dcm-{{.OS}}-{{.Arch}}-release.{{.Format}}
         format: zip
         files:
@@ -38,9 +44,13 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/CQLabs/homebrew-dcm/releases/download/{{.Version}}/dcm-{{.OS}}-{{.Arch}}-release.{{.Format}}
             replacements:
               arm64: arm
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/CQLabs/homebrew-dcm/releases/download/{{.Version}}/dcm-{{.OS}}-release.{{.Format}}
             asset: dcm-{{.OS}}-release.{{.Format}}
         supported_envs:
           - darwin

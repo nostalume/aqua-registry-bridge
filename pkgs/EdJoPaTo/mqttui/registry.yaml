@@ -7,13 +7,16 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.1.0")
-        url: https://gh-proxy.org/https://github.com/EdJoPaTo/mqttui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/EdJoPaTo/mqttui/releases/download/{{.Version}}/quick-mqtt-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: quick-mqtt-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         rosetta2: true
         windows_arm_emulation: true
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/EdJoPaTo/mqttui/releases/download/{{.Version}}/quick-mqtt-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
         replacements:
@@ -25,13 +28,16 @@ packages:
           - name: mqttui
             src: quick-mqtt
       - version_constraint: semver("<= 0.4.0")
-        url: https://gh-proxy.org/https://github.com/EdJoPaTo/mqttui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/EdJoPaTo/mqttui/releases/download/{{.Version}}/mqtt-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: mqtt-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         rosetta2: true
         windows_arm_emulation: true
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/EdJoPaTo/mqttui/releases/download/{{.Version}}/mqtt-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
         replacements:
@@ -43,13 +49,16 @@ packages:
           - name: mqttui
             src: mqtt
       - version_constraint: semver("<= 0.10.0")
-        url: https://gh-proxy.org/https://github.com/EdJoPaTo/mqttui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/EdJoPaTo/mqttui/releases/download/{{.Version}}/mqttui-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: mqttui-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         rosetta2: true
         windows_arm_emulation: true
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/EdJoPaTo/mqttui/releases/download/{{.Version}}/mqttui-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
         replacements:
@@ -58,16 +67,21 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
       - version_constraint: Version == "v0.11.0"
-        url: https://gh-proxy.org/https://github.com/EdJoPaTo/mqttui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/EdJoPaTo/mqttui/releases/download/{{.Version}}/mqttui-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: mqttui-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/EdJoPaTo/mqttui/releases/download/{{.Version}}/mqttui-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/EdJoPaTo/mqttui/releases/download/{{.Version}}/mqttui-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64
@@ -75,12 +89,15 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
       - version_constraint: semver("<= 0.12.0")
-        url: https://gh-proxy.org/https://github.com/EdJoPaTo/mqttui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/EdJoPaTo/mqttui/releases/download/{{.Version}}/mqttui-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: mqttui-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/EdJoPaTo/mqttui/releases/download/{{.Version}}/mqttui-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64
@@ -89,12 +106,15 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
       - version_constraint: semver("<= 0.16.2")
-        url: https://gh-proxy.org/https://github.com/EdJoPaTo/mqttui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/EdJoPaTo/mqttui/releases/download/{{.Version}}/mqttui-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: mqttui-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/EdJoPaTo/mqttui/releases/download/{{.Version}}/mqttui-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64
@@ -103,11 +123,14 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/EdJoPaTo/mqttui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/EdJoPaTo/mqttui/releases/download/{{.Version}}/mqttui-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: mqttui-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/EdJoPaTo/mqttui/releases/download/{{.Version}}/mqttui-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64

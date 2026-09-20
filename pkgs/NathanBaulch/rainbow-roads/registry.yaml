@@ -7,13 +7,16 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/NathanBaulch/rainbow-roads/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/NathanBaulch/rainbow-roads/releases/download/{{.Version}}/rainbow-roads-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: rainbow-roads-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/NathanBaulch/rainbow-roads/releases/download/{{.Version}}/rainbow-roads-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin

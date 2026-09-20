@@ -9,13 +9,15 @@ packages:
       - version_constraint: Version == "v0.1.5"
         no_asset: true
       - version_constraint: Version == "v0.2.0"
-        url: https://gh-proxy.org/https://github.com/evilmartians/lefthook/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/hookah_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: hookah_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/hookah_checksums.txt
           asset: hookah_checksums.txt
           algorithm: sha256
         supported_envs:
@@ -25,7 +27,8 @@ packages:
         files:
           - name: hookah
       - version_constraint: Version == "v0.5.3"
-        url: https://gh-proxy.org/https://github.com/evilmartians/lefthook/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -36,18 +39,22 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/lefthook_checksums.txt
           asset: lefthook_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "v0.6.3"
-        url: https://gh-proxy.org/https://github.com/evilmartians/lefthook/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: gz
         rosetta2: true
@@ -58,7 +65,8 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/lefthook_checksums.txt
           asset: lefthook_checksums.txt
           algorithm: sha256
         supported_envs:
@@ -67,6 +75,8 @@ packages:
           - amd64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
             files:
               - name: lefthook
@@ -74,7 +84,8 @@ packages:
           - name: lefthook
             src: lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}
       - version_constraint: Version == "v0.7.3"
-        url: https://gh-proxy.org/https://github.com/evilmartians/lefthook/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: gz
         windows_arm_emulation: true
@@ -84,11 +95,14 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/lefthook_checksums.txt
           asset: lefthook_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
             files:
               - name: lefthook
@@ -96,7 +110,8 @@ packages:
           - name: lefthook
             src: lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}
       - version_constraint: semver("<= 0.2.3")
-        url: https://gh-proxy.org/https://github.com/evilmartians/lefthook/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/hookah_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: hookah_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -107,11 +122,14 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/hookah_checksums.txt
           asset: hookah_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/hookah_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
@@ -120,7 +138,8 @@ packages:
         files:
           - name: hookah
       - version_constraint: semver("<= 0.5.2")
-        url: https://gh-proxy.org/https://github.com/evilmartians/lefthook/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -131,18 +150,22 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/lefthook_checksums.txt
           asset: lefthook_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.7.2")
-        url: https://gh-proxy.org/https://github.com/evilmartians/lefthook/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: gz
         rosetta2: true
@@ -153,11 +176,14 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/lefthook_checksums.txt
           asset: lefthook_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
             files:
               - name: lefthook
@@ -169,7 +195,8 @@ packages:
           - name: lefthook
             src: lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}
       - version_constraint: semver("<= 0.7.7")
-        url: https://gh-proxy.org/https://github.com/evilmartians/lefthook/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         asset: lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -179,11 +206,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/lefthook_checksums.txt
           asset: lefthook_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 1.5.1")
-        url: https://gh-proxy.org/https://github.com/evilmartians/lefthook/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: gz
         replacements:
@@ -192,14 +221,16 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/lefthook_checksums.txt
           asset: lefthook_checksums.txt
           algorithm: sha256
         files:
           - name: lefthook
             src: lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}
       - version_constraint: semver("<= 1.6.18")
-        url: https://gh-proxy.org/https://github.com/evilmartians/lefthook/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: gz
         replacements:
@@ -208,14 +239,16 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/lefthook_checksums.txt
           asset: lefthook_checksums.txt
           algorithm: sha256
         files:
           - name: lefthook
             src: lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}
       - version_constraint: semver("<= 1.10.1")
-        url: https://gh-proxy.org/https://github.com/evilmartians/lefthook/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: gz
         replacements:
@@ -224,14 +257,16 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/lefthook_checksums.txt
           asset: lefthook_checksums.txt
           algorithm: sha256
         files:
           - name: lefthook
             src: lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}
       - version_constraint: semver("<= 2.0.4")
-        url: https://gh-proxy.org/https://github.com/evilmartians/lefthook/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: gz
         replacements:
@@ -240,18 +275,22 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/lefthook_checksums.txt
           asset: lefthook_checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             replacements:
               arm64: aarch64
         files:
           - name: lefthook
             src: lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/evilmartians/lefthook/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: gz
         replacements:
@@ -260,11 +299,14 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/lefthook_checksums.txt
           asset: lefthook_checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/evilmartians/lefthook/releases/download/{{.Version}}/lefthook_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             replacements:
               arm64: aarch64
         files:

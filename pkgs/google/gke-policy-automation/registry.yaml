@@ -7,22 +7,26 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.3.2")
-        url: https://gh-proxy.org/https://github.com/google/gke-policy-automation/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/google/gke-policy-automation/releases/download/{{.Version}}/gke-policy-automation_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gke-policy-automation_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         files:
           - name: gke-policy
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/google/gke-policy-automation/releases/download/{{.Version}}/gke-policy-automation_{{trimV .Version}}_SHA256SUMS
           asset: gke-policy-automation_{{trimV .Version}}_SHA256SUMS
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/google/gke-policy-automation/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/google/gke-policy-automation/releases/download/{{.Version}}/gke-policy-automation_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gke-policy-automation_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         files:
           - name: gke-policy
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/google/gke-policy-automation/releases/download/{{.Version}}/gke-policy-automation_{{.Version}}_SHA256SUMS
           asset: gke-policy-automation_{{.Version}}_SHA256SUMS
           algorithm: sha256

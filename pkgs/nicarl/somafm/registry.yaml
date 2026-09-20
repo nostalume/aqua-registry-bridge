@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/nicarl/somafm/releases/download/{{.Version}}/somafm-{{.Version}}-{{.OS}}-{{.Arch}}
     repo_owner: nicarl
     repo_name: somafm
     asset: somafm-{{.Version}}-{{.OS}}-{{.Arch}}

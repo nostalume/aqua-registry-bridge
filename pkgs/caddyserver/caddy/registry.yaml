@@ -7,29 +7,37 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 2.5.2")
-        url: https://gh-proxy.org/https://github.com/caddyserver/caddy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/caddyserver/caddy/releases/download/{{.Version}}/caddy_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: caddy_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           darwin: mac
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/caddyserver/caddy/releases/download/{{.Version}}/caddy_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/caddyserver/caddy/releases/download/{{.Version}}/caddy_{{trimV .Version}}_checksums.txt
           asset: caddy_{{trimV .Version}}_checksums.txt
           algorithm: sha512
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/caddyserver/caddy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/caddyserver/caddy/releases/download/{{.Version}}/caddy_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: caddy_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           darwin: mac
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/caddyserver/caddy/releases/download/{{.Version}}/caddy_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/caddyserver/caddy/releases/download/{{.Version}}/caddy_{{trimV .Version}}_checksums.txt
           asset: caddy_{{trimV .Version}}_checksums.txt
           algorithm: sha512
           cosign:
@@ -39,6 +47,6 @@ packages:
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
               - --signature
-              - https://github.com/caddyserver/caddy/releases/download/v{{trimV .Version}}/caddy_{{trimV .Version}}_checksums.txt.sig
+              - https://gh-proxy.org/github.com/caddyserver/caddy/releases/download/v{{trimV .Version}}/caddy_{{trimV .Version}}_checksums.txt.sig
               - --certificate
-              - https://github.com/caddyserver/caddy/releases/download/v{{trimV .Version}}/caddy_{{trimV .Version}}_checksums.txt.pem
+              - https://gh-proxy.org/github.com/caddyserver/caddy/releases/download/v{{trimV .Version}}/caddy_{{trimV .Version}}_checksums.txt.pem

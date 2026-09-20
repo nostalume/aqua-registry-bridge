@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/robscott/kube-capacity/releases/download/{{.Version}}/kube-capacity_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: robscott
     repo_name: kube-capacity
     asset: kube-capacity_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -10,6 +11,8 @@ packages:
       amd64: x86_64
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/robscott/kube-capacity/releases/download/{{.Version}}/kube-capacity_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     files:
       - name: kube-capacity
@@ -19,6 +22,8 @@ packages:
     version_constraint: semver(">= 0.7.4")
     version_overrides:
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/robscott/kube-capacity/releases/download/{{.Version}}/kube-capacity_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides: []
         asset: kube-capacity_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         replacements:
@@ -27,6 +32,7 @@ packages:
           windows: Windows
           amd64: x86_64
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/robscott/kube-capacity/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256

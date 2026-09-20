@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/terrastruct/tala/releases/download/{{.Version}}/tala-{{.Version}}-{{.OS}}-{{.Arch}}.tar.gz
     repo_owner: terrastruct
     repo_name: tala
     asset: tala-{{.Version}}-{{.OS}}-{{.Arch}}.tar.gz

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/harness/drone-cli/releases/download/{{.Version}}/drone_{{.OS}}_{{.Arch}}.tar.gz
     repo_owner: harness
     repo_name: drone-cli
     asset: drone_{{.OS}}_{{.Arch}}.tar.gz
@@ -12,6 +13,7 @@ packages:
       - linux
       - amd64
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/harness/drone-cli/releases/download/{{.Version}}/drone_checksums.txt
       asset: drone_checksums.txt
       algorithm: sha256

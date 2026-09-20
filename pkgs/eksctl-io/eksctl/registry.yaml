@@ -11,7 +11,8 @@ packages:
       - version_constraint: Version == "0.80.0"
         no_asset: true
       - version_constraint: semver("<= 0.30.0-rc.0")
-        url: https://gh-proxy.org/https://github.com/eksctl-io/eksctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/eksctl-io/eksctl/releases/download/{{.Version}}/eksctl_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: eksctl_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -21,18 +22,22 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/eksctl-io/eksctl/releases/download/{{.Version}}/eksctl_checksums.txt
           asset: eksctl_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/eksctl-io/eksctl/releases/download/{{.Version}}/eksctl_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.40.0")
-        url: https://gh-proxy.org/https://github.com/eksctl-io/eksctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/eksctl-io/eksctl/releases/download/{{.Version}}/eksctl_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: eksctl_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -42,14 +47,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/eksctl-io/eksctl/releases/download/{{.Version}}/eksctl_checksums.txt
           asset: eksctl_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/eksctl-io/eksctl/releases/download/{{.Version}}/eksctl_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.64.0")
-        url: https://gh-proxy.org/https://github.com/eksctl-io/eksctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/eksctl-io/eksctl/releases/download/{{.Version}}/eksctl_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: eksctl_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -58,14 +67,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/eksctl-io/eksctl/releases/download/{{.Version}}/eksctl_checksums.txt
           asset: eksctl_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/eksctl-io/eksctl/releases/download/{{.Version}}/eksctl_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/eksctl-io/eksctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/eksctl-io/eksctl/releases/download/{{.Version}}/eksctl_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: eksctl_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -73,9 +86,12 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/eksctl-io/eksctl/releases/download/{{.Version}}/eksctl_checksums.txt
           asset: eksctl_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/eksctl-io/eksctl/releases/download/{{.Version}}/eksctl_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "0.0.12"
-        url: https://gh-proxy.org/https://github.com/carthage-software/mago/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/carthage-software/mago/releases/download/{{.Version}}/mago-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: mago-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -21,17 +22,24 @@ packages:
             src: mago-{{.Version}}-{{.Arch}}-{{.OS}}/mago
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/carthage-software/mago/releases/download/{{.Version}}/mago-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/carthage-software/mago/releases/download/{{.Version}}/mago-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/carthage-software/mago/releases/download/{{.Version}}/mago-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: Version == "0.13.0"
-        url: https://gh-proxy.org/https://github.com/carthage-software/mago/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/carthage-software/mago/releases/download/{{.Version}}/mago-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: mago-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -46,10 +54,13 @@ packages:
             src: mago-{{.Version}}-{{.Arch}}-{{.OS}}/mago
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/carthage-software/mago/releases/download/{{.Version}}/mago-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
       - version_constraint: Version == "1.2.0"
-        url: https://gh-proxy.org/https://github.com/carthage-software/mago/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/carthage-software/mago/releases/download/{{.Version}}/mago-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: mago-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -62,7 +73,8 @@ packages:
         supported_envs:
           - windows
       - version_constraint: Version == "1.2.1"
-        url: https://gh-proxy.org/https://github.com/carthage-software/mago/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/carthage-software/mago/releases/download/{{.Version}}/mago-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: mago-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -75,13 +87,16 @@ packages:
             src: mago-{{.Version}}-{{.Arch}}-{{.OS}}/mago
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/carthage-software/mago/releases/download/{{.Version}}/mago-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
         supported_envs:
           - linux
           - windows
       - version_constraint: semver("<= 0.0.11")
-        url: https://gh-proxy.org/https://github.com/carthage-software/mago/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/carthage-software/mago/releases/download/{{.Version}}/mago-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: mago-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -95,15 +110,22 @@ packages:
             src: mago-{{.Version}}-{{.Arch}}-{{.OS}}/mago
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/carthage-software/mago/releases/download/{{.Version}}/mago-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             asset: mago-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/carthage-software/mago/releases/download/{{.Version}}/mago-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             asset: mago-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/carthage-software/mago/releases/download/{{.Version}}/mago-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("< 1.5.0")
-        url: https://gh-proxy.org/https://github.com/carthage-software/mago/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/carthage-software/mago/releases/download/{{.Version}}/mago-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: mago-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -118,9 +140,12 @@ packages:
             src: mago-{{.Version}}-{{.Arch}}-{{.OS}}/mago
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/carthage-software/mago/releases/download/{{.Version}}/mago-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/carthage-software/mago/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/carthage-software/mago/releases/download/{{.Version}}/mago-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: mago-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -135,6 +160,8 @@ packages:
             src: mago-{{.Version}}-{{.Arch}}-{{.OS}}/mago
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/carthage-software/mago/releases/download/{{.Version}}/mago-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         github_artifact_attestations:
           signer_workflow: carthage-software/mago/.github/workflows/cd.yml

@@ -9,13 +9,15 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.5.0")
-        url: https://gh-proxy.org/https://github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/upctl-{{.Version}}-{{.OS}}-{{.Arch}}
         asset: upctl-{{.Version}}-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         supported_envs:
@@ -23,109 +25,138 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.3.0")
-        url: https://gh-proxy.org/https://github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/upcloud-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: upcloud-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/upcloud-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("< 3.16.0")
-        url: https://gh-proxy.org/https://github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/upcloud-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: upcloud-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/upcloud-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("< 3.24.0")
-        url: https://gh-proxy.org/https://github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/upcloud-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: upcloud-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/upcloud-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("< 3.31.0")
-        url: https://gh-proxy.org/https://github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/upcloud-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: upcloud-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         github_artifact_attestations:
           signer_workflow: UpCloudLtd/upcloud-cli/.github/workflows/publish.yml
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/upcloud-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: Version == "v3.32.0"
-        url: https://gh-proxy.org/https://github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/upcloud-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: upcloud-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/upcloud-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 3.34.0")
-        url: https://gh-proxy.org/https://github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/upcloud-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: upcloud-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         github_artifact_attestations:
           signer_workflow: UpCloudLtd/workflows/.github/workflows/build-provenance.yaml
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/upcloud-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/upcloud-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: upcloud-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         github_artifact_attestations:
           signer_workflow: UpCloudLtd/workflows/.github/workflows/build-provenance.yaml
         cosign:
           bundle:
-            type: github_release
+            type: http
+            url: https://gh-proxy.org/github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/upcloud-cli.sigstore.json
             asset: upcloud-cli.sigstore.json
           opts:
             - --certificate-identity
-            - https://github.com/UpCloudLtd/workflows/.github/workflows/build-provenance.yaml@refs/heads/main
+            - https://gh-proxy.org/github.com/UpCloudLtd/workflows/.github/workflows/build-provenance.yaml@refs/heads/main
             - --certificate-oidc-issuer
             - https://token.actions.githubusercontent.com
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/upcloud-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

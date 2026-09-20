@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/hashicorp/terraform-plugin-docs/releases/download/{{.Version}}/tfplugindocs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.zip
     repo_owner: hashicorp
     repo_name: terraform-plugin-docs
     description: Generate and validate Terraform plugin/provider documentation
@@ -8,6 +9,7 @@ packages:
     files:
       - name: tfplugindocs
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/hashicorp/terraform-plugin-docs/releases/download/{{.Version}}/tfplugindocs_{{trimV .Version}}_SHA256SUMS
       asset: tfplugindocs_{{trimV .Version}}_SHA256SUMS
       algorithm: sha256

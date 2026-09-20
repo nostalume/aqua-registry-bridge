@@ -7,13 +7,15 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/projectdiscovery/pdtm/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/projectdiscovery/pdtm/releases/download/{{.Version}}/pdtm_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: pdtm_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         replacements:
           darwin: macOS
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/projectdiscovery/pdtm/releases/download/{{.Version}}/pdtm_{{trimV .Version}}_checksums.txt
           asset: pdtm_{{trimV .Version}}_checksums.txt
           algorithm: sha256

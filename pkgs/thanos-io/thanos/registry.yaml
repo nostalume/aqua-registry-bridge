@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("<= 0.1.0-rc.1")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/thanos-io/thanos/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/thanos-io/thanos/releases/download/{{.Version}}/thanos-{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         asset: thanos-{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -18,6 +19,7 @@ packages:
           - name: thanos
             src: "{{.AssetWithoutExt}}/thanos"
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/thanos-io/thanos/releases/download/{{.Version}}/sha256sums.txt
           asset: sha256sums.txt
           algorithm: sha256

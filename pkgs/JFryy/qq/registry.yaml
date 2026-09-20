@@ -7,11 +7,13 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/JFryy/qq/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/JFryy/qq/releases/download/{{.Version}}/qq-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: qq-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.md5"
           asset: "{{.Asset}}.md5"
           algorithm: md5
         supported_envs:

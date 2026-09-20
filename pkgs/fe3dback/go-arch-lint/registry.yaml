@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.6.1")
-        url: https://gh-proxy.org/https://github.com/fe3dback/go-arch-lint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/fe3dback/go-arch-lint/releases/download/{{.Version}}/go-arch-lint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: go-arch-lint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -18,14 +19,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/fe3dback/go-arch-lint/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/fe3dback/go-arch-lint/releases/download/{{.Version}}/go-arch-lint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 1.7.3")
-        url: https://gh-proxy.org/https://github.com/fe3dback/go-arch-lint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/fe3dback/go-arch-lint/releases/download/{{.Version}}/go-arch-lint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: go-arch-lint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -34,22 +39,29 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/fe3dback/go-arch-lint/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/fe3dback/go-arch-lint/releases/download/{{.Version}}/go-arch-lint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 1.7.5")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/fe3dback/go-arch-lint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/fe3dback/go-arch-lint/releases/download/{{.Version}}/go-arch-lint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: go-arch-lint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/fe3dback/go-arch-lint/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/fe3dback/go-arch-lint/releases/download/{{.Version}}/go-arch-lint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

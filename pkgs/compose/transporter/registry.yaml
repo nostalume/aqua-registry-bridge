@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/compose/transporter/releases/download/{{.Version}}/transporter-{{trimV .Version}}-{{.OS}}-{{.Arch}}
     repo_owner: compose
     repo_name: transporter
     description: Sync data between persistence engines, like ETL only not stodgy

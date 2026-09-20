@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/x-motemen/gobump/releases/download/{{.Version}}/gobump_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: x-motemen
     repo_name: gobump
     asset: gobump_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -8,6 +9,8 @@ packages:
     description: Bumps up Go program version
     overrides:
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/x-motemen/gobump/releases/download/{{.Version}}/gobump_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
     supported_envs:
       - darwin

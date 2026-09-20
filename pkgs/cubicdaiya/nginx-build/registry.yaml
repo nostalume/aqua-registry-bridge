@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("<= 0.1.0")
         no_asset: true
       - version_constraint: semver("<= 0.11.13")
-        url: https://gh-proxy.org/https://github.com/cubicdaiya/nginx-build/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cubicdaiya/nginx-build/releases/download/{{.Version}}/nginx-build-{{.OS}}-{{.Arch}}-{{trimV .Version}}.{{.Format}}
         asset: nginx-build-{{.OS}}-{{.Arch}}-{{trimV .Version}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -19,11 +20,13 @@ packages:
       - version_constraint: semver("<= 0.12.1")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/cubicdaiya/nginx-build/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cubicdaiya/nginx-build/releases/download/{{.Version}}/nginx-build-{{.OS}}-{{.Arch}}-{{trimV .Version}}.{{.Format}}
         asset: nginx-build-{{.OS}}-{{.Arch}}-{{trimV .Version}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/cubicdaiya/nginx-build/releases/download/{{.Version}}/nginx-build_{{trimV .Version}}_checksums.txt
           asset: nginx-build_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:

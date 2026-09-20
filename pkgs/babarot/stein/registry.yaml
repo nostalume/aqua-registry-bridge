@@ -9,26 +9,30 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.3.0")
-        url: https://gh-proxy.org/https://github.com/babarot/stein/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/babarot/stein/releases/download/{{.Version}}/stein_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: stein_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/babarot/stein/releases/download/{{.Version}}/stein_{{trimV .Version}}_checksums.txt
           asset: stein_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/babarot/stein/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/babarot/stein/releases/download/{{.Version}}/stein_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: stein_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/babarot/stein/releases/download/{{.Version}}/stein_{{trimV .Version}}_checksums.txt
           asset: stein_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:

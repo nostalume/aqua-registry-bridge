@@ -9,27 +9,38 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.16.1")
+        type: http
+        url: https://gh-proxy.org/github.com/gopasspw/gopass/releases/download/{{.Version}}/gopass-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gopasspw/gopass/releases/download/{{.Version}}/gopass_{{trimV .Version}}_SHA256SUMS
           asset: gopass_{{trimV .Version}}_SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/gopasspw/gopass/releases/download/{{.Version}}/gopass-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/gopasspw/gopass/releases/download/{{.Version}}/gopass-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gopasspw/gopass/releases/download/{{.Version}}/gopass_{{trimV .Version}}_SHA256SUMS
           asset: gopass_{{trimV .Version}}_SHA256SUMS
           algorithm: sha256
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/gopasspw/gopass/releases/download/{{.Version}}/gopass_{{trimV .Version}}_SHA256SUMS.sigstore.json
               asset: "gopass_{{trimV .Version}}_SHA256SUMS.sigstore.json"
             opts:
               - --certificate-identity
-              - https://github.com/gopasspw/gopass/.github/workflows/autorelease.yml@refs/tags/{{.Version}}
+              - https://gh-proxy.org/github.com/gopasspw/gopass/.github/workflows/autorelease.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/gopasspw/gopass/releases/download/{{.Version}}/gopass-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip

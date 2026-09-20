@@ -11,7 +11,8 @@ packages:
       - version_constraint: Version == "v0.1.0-alpha.1"
         no_asset: true
       - version_constraint: semver("< 2.0.0")
-        url: https://gh-proxy.org/https://github.com/gittower/git-flow-next/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gittower/git-flow-next/releases/download/{{.Version}}/git-flow-next-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: git-flow-next-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -19,23 +20,30 @@ packages:
           - name: git-flow
             src: git-flow-{{.Version}}-{{.OS}}-{{.Arch}}
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gittower/git-flow-next/releases/download/{{.Version}}/git-flow-next-{{.Version}}-checksums.txt
           asset: git-flow-next-{{.Version}}-checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/gittower/git-flow-next/releases/download/{{.Version}}/git-flow-next-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/gittower/git-flow-next/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gittower/git-flow-next/releases/download/{{.Version}}/git-flow-next-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: git-flow-next-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         files:
           - name: git-flow
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gittower/git-flow-next/releases/download/{{.Version}}/git-flow-next-{{.Version}}-checksums.txt
           asset: git-flow-next-{{.Version}}-checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/gittower/git-flow-next/releases/download/{{.Version}}/git-flow-next-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip

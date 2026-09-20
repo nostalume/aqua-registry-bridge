@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/po3rin/github_link_creator/releases/download/{{.Version}}/github_link_creator_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
     repo_owner: po3rin
     repo_name: github_link_creator
     asset: github_link_creator_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
@@ -12,6 +13,7 @@ packages:
     files:
       - name: repoimg
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/po3rin/github_link_creator/releases/download/{{.Version}}/github_link_creator_{{trimV .Version}}_checksums.txt
       asset: github_link_creator_{{trimV .Version}}_checksums.txt
       algorithm: sha256

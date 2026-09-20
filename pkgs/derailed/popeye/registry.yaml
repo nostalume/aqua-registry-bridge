@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.6.2")
-        url: https://gh-proxy.org/https://github.com/derailed/popeye/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/derailed/popeye/releases/download/{{.Version}}/popeye_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: popeye_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -18,11 +19,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/derailed/popeye/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.9.0")
-        url: https://gh-proxy.org/https://github.com/derailed/popeye/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/derailed/popeye/releases/download/{{.Version}}/popeye_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: popeye_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -33,11 +36,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/derailed/popeye/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.9.7")
-        url: https://gh-proxy.org/https://github.com/derailed/popeye/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/derailed/popeye/releases/download/{{.Version}}/popeye_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: popeye_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -47,11 +52,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/derailed/popeye/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.11.1")
-        url: https://gh-proxy.org/https://github.com/derailed/popeye/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/derailed/popeye/releases/download/{{.Version}}/popeye_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: popeye_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -60,11 +67,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/derailed/popeye/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.20.5")
-        url: https://gh-proxy.org/https://github.com/derailed/popeye/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/derailed/popeye/releases/download/{{.Version}}/popeye_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: popeye_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -72,22 +81,27 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/derailed/popeye/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.21.3")
-        url: https://gh-proxy.org/https://github.com/derailed/popeye/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/derailed/popeye/releases/download/{{.Version}}/popeye_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: popeye_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/derailed/popeye/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/derailed/popeye/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/derailed/popeye/releases/download/{{.Version}}/popeye_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: popeye_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/derailed/popeye/releases/download/{{.Version}}/checksums.sha256
           asset: checksums.sha256
           algorithm: sha256

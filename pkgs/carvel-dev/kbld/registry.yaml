@@ -9,29 +9,35 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.31.0"
-        url: https://gh-proxy.org/https://github.com/carvel-dev/kbld/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/carvel-dev/kbld/releases/download/{{.Version}}/kbld-{{.OS}}-{{.Arch}}
         asset: kbld-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
       - version_constraint: Version == "v0.32.0"
-        url: https://gh-proxy.org/https://github.com/carvel-dev/kbld/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/carvel-dev/kbld/releases/download/{{.Version}}/kbld-{{.OS}}-{{.Arch}}
         asset: kbld-{{.OS}}-{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/carvel-dev/kbld/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: Version == "v0.32.2"
-        url: https://gh-proxy.org/https://github.com/carvel-dev/kbld/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/carvel-dev/kbld/releases/download/{{.Version}}/kbld-{{.OS}}-{{.Arch}}
         asset: kbld-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/carvel-dev/kbld/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.30.0")
-        url: https://gh-proxy.org/https://github.com/carvel-dev/kbld/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/carvel-dev/kbld/releases/download/{{.Version}}/kbld-{{.OS}}-{{.Arch}}
         asset: kbld-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -41,28 +47,32 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("< 0.39.0")
-        url: https://gh-proxy.org/https://github.com/carvel-dev/kbld/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/carvel-dev/kbld/releases/download/{{.Version}}/kbld-{{.OS}}-{{.Arch}}
         asset: kbld-{{.OS}}-{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/carvel-dev/kbld/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/carvel-dev/kbld/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/carvel-dev/kbld/releases/download/{{.Version}}/kbld-{{.OS}}-{{.Arch}}
         asset: kbld-{{.OS}}-{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/carvel-dev/kbld/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate-identity
-              - https://github.com/carvel-dev/kbld/.github/workflows/release.yml@refs/tags/{{.Version}}
+              - https://gh-proxy.org/github.com/carvel-dev/kbld/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/carvel-dev/kbld/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/carvel-dev/kbld/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
-              - https://github.com/carvel-dev/kbld/releases/download/{{.Version}}/checksums.txt.pem
+              - https://gh-proxy.org/github.com/carvel-dev/kbld/releases/download/{{.Version}}/checksums.txt.pem

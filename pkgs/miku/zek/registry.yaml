@@ -7,14 +7,16 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.1.9"
-        url: https://gh-proxy.org/https://github.com/miku/zek/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/miku/zek/releases/download/{{.Version}}/zek-{{trimV .Version}}.{{.OS}}.{{.Arch}}.bin
         asset: zek-{{trimV .Version}}.{{.OS}}.{{.Arch}}.bin
         format: raw
         rosetta2: true
         supported_envs:
           - darwin
       - version_constraint: Version == "0.1.19"
-        url: https://gh-proxy.org/https://github.com/miku/zek/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/miku/zek/releases/download/{{.Version}}/zek_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: zek_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -23,13 +25,15 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/miku/zek/releases/download/{{.Version}}/zek_checksums.txt
           asset: zek_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.1.12")
         no_asset: true
       - version_constraint: semver("<= 0.1.26")
-        url: https://gh-proxy.org/https://github.com/miku/zek/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/miku/zek/releases/download/{{.Version}}/zek_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: zek_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -38,11 +42,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/miku/zek/releases/download/{{.Version}}/zek_checksums.txt
           asset: zek_checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/miku/zek/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/miku/zek/releases/download/{{.Version}}/zek_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: zek_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -51,6 +57,7 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/miku/zek/releases/download/{{.Version}}/zek_checksums.txt
           asset: zek_checksums.txt
           algorithm: sha256

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/kubernetes-sigs/kustomize/releases/download/{{.Version}}/kustomize_{{.SemVer}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: kubernetes-sigs
     repo_name: kustomize
     description: Customization of kubernetes YAML configurations
@@ -8,18 +9,22 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/kustomize/releases/download/{{.Version}}/kustomize_{{.SemVer}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     version_prefix: kustomize/
     version_constraint: semver(">= 5.2.1")
     version_overrides:
       - version_constraint: semver(">= 5.2.0")
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/kustomize/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/kustomize/releases/download/{{.Version}}/kustomize_v5.2.0_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kustomize_v5.2.0_{{.OS}}_{{.Arch}}.{{.Format}}
         files:
           - name: kustomize
             src: output/kustomize
       - version_constraint: semver(">= 5.1.0")
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/kustomize/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/kustomize/releases/download/{{.Version}}/kustomize_{{.SemVer}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kustomize_{{.SemVer}}_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides: []
         supported_envs:
@@ -28,16 +33,19 @@ packages:
           - amd64
         rosetta2: true
         checksum: &kustomize_checksum
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubernetes-sigs/kustomize/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver(">= 4.5.4")
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/kustomize/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/kustomize/releases/download/{{.Version}}/kustomize_{{.SemVer}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kustomize_{{.SemVer}}_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides: []
         checksum: *kustomize_checksum
       - version_constraint: semver(">= 4.4.1")
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/kustomize/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/kustomize/releases/download/{{.Version}}/kustomize_{{.SemVer}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kustomize_{{.SemVer}}_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides: []
         supported_envs:
@@ -46,7 +54,8 @@ packages:
           - amd64
         checksum: *kustomize_checksum
       - version_constraint: semver(">= 4.2.0")
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/kustomize/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/kustomize/releases/download/{{.Version}}/kustomize_{{.SemVer}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kustomize_{{.SemVer}}_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides: []
         supported_envs:
@@ -54,7 +63,8 @@ packages:
           - darwin
         checksum: *kustomize_checksum
       - version_constraint: semver(">= 3.8.6")
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/kustomize/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/kustomize/releases/download/{{.Version}}/kustomize_{{.SemVer}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kustomize_{{.SemVer}}_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides: []
         supported_envs:
@@ -64,7 +74,8 @@ packages:
         rosetta2: true
         checksum: *kustomize_checksum
       - version_constraint: semver(">= 3.7.0")
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/kustomize/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/kustomize/releases/download/{{.Version}}/kustomize_{{.SemVer}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kustomize_{{.SemVer}}_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides: []
         supported_envs:
@@ -73,7 +84,8 @@ packages:
         rosetta2: true
         checksum: *kustomize_checksum
       - version_constraint: semver(">= 3.5.5")
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/kustomize/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/kustomize/releases/download/{{.Version}}/kustomize_{{.SemVer}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kustomize_{{.SemVer}}_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides: []
         supported_envs:
@@ -82,7 +94,8 @@ packages:
         rosetta2: true
         checksum: *kustomize_checksum
       - version_constraint: semver(">= 3.3.0")
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/kustomize/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/kustomize/releases/download/{{.Version}}/kustomize_{{.SemVer}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kustomize_{{.SemVer}}_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides: []
         supported_envs:
@@ -91,7 +104,8 @@ packages:
         rosetta2: true
         checksum: *kustomize_checksum
       - version_constraint: semver(">= 3.2.1")
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/kustomize/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/kustomize/releases/download/{{.Version}}/kustomize_kustomize.{{.SemVer}}_{{.OS}}_{{.Arch}}
         asset: kustomize_kustomize.{{.SemVer}}_{{.OS}}_{{.Arch}}
         format: raw
         overrides: []
@@ -102,7 +116,8 @@ packages:
         checksum:
           enabled: false
       - version_constraint: semver(">= 2.1.0")
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/kustomize/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/kustomize/releases/download/{{.Version}}/kustomize_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         asset: kustomize_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         format: raw
         overrides: []
@@ -113,7 +128,8 @@ packages:
         rosetta2: true
         checksum: *kustomize_checksum
       - version_constraint: semver(">= 1.0.1")
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/kustomize/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/kustomize/releases/download/{{.Version}}/kustomize_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         asset: kustomize_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         format: raw
         overrides: []

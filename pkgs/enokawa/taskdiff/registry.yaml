@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/enokawa/taskdiff/releases/download/{{.Version}}/taskdiff_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: enokawa
     repo_name: taskdiff
     description: Diff tool for ECS Task Definition
@@ -8,6 +9,8 @@ packages:
     format: zip
     overrides:
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/enokawa/taskdiff/releases/download/{{.Version}}/taskdiff_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
     supported_envs:
       - darwin

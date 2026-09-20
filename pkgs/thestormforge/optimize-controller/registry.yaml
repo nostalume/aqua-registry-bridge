@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/thestormforge/optimize-controller/releases/download/{{.Version}}/stormforge-{{.OS}}-{{.Arch}}.tar.gz
     repo_owner: thestormforge
     repo_name: optimize-controller
     asset: stormforge-{{.OS}}-{{.Arch}}.tar.gz
@@ -11,6 +12,7 @@ packages:
     files:
       - name: stormforge
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/thestormforge/optimize-controller/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256

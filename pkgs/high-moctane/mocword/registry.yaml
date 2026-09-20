@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.1.0"
-        url: https://gh-proxy.org/https://github.com/high-moctane/mocword/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/high-moctane/mocword/releases/download/{{.Version}}/mocword-{{.Arch}}-{{.OS}}
         asset: mocword-{{.Arch}}-{{.OS}}
         format: raw
         rosetta2: true
@@ -22,7 +23,8 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/high-moctane/mocword/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/high-moctane/mocword/releases/download/{{.Version}}/mocword-{{.Arch}}-{{.OS}}
         asset: mocword-{{.Arch}}-{{.OS}}
         format: raw
         windows_arm_emulation: true

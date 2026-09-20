@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version == "v0.0.10"
         no_asset: true
       - version_constraint: Version == "v0.0.1"
-        url: https://gh-proxy.org/https://github.com/terramate-io/terramate/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/terramate-io/terramate/releases/download/{{.Version}}/terrastack-{{.OS}}-{{.Arch}}
         asset: terrastack-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -19,20 +20,23 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "v0.0.2"
-        url: https://gh-proxy.org/https://github.com/terramate-io/terramate/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/terramate-io/terramate/releases/download/{{.Version}}/terrastack-{{.OS}}-{{.Arch}}
         asset: terrastack-{{.OS}}-{{.Arch}}
         format: raw
         supported_envs:
           - linux/amd64
       - version_constraint: Version == "v0.0.3"
-        url: https://gh-proxy.org/https://github.com/terramate-io/terramate/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/terramate-io/terramate/releases/download/{{.Version}}/terramate-{{.OS}}-{{.Arch}}
         asset: terramate-{{.OS}}-{{.Arch}}
         format: raw
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v0.0.11"
-        url: https://gh-proxy.org/https://github.com/terramate-io/terramate/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/terramate-io/terramate/releases/download/{{.Version}}/terramate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: terramate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -40,7 +44,8 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/terramate-io/terramate/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
@@ -49,7 +54,8 @@ packages:
       - version_constraint: semver("<= 0.0.7")
         no_asset: true
       - version_constraint: semver("<= 0.0.9")
-        url: https://gh-proxy.org/https://github.com/terramate-io/terramate/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/terramate-io/terramate/releases/download/{{.Version}}/terramate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: terramate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -57,54 +63,66 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/terramate-io/terramate/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 0.1.33")
-        url: https://gh-proxy.org/https://github.com/terramate-io/terramate/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/terramate-io/terramate/releases/download/{{.Version}}/terramate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: terramate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/terramate-io/terramate/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 0.2.7")
-        url: https://gh-proxy.org/https://github.com/terramate-io/terramate/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/terramate-io/terramate/releases/download/{{.Version}}/terramate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: terramate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
           windows: win
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/terramate-io/terramate/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/terramate-io/terramate/releases/download/{{.Version}}/terramate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.3.0")
-        url: https://gh-proxy.org/https://github.com/terramate-io/terramate/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/terramate-io/terramate/releases/download/{{.Version}}/terramate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: terramate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/terramate-io/terramate/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/terramate-io/terramate/releases/download/{{.Version}}/terramate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.9.0")
-        url: https://gh-proxy.org/https://github.com/terramate-io/terramate/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/terramate-io/terramate/releases/download/{{.Version}}/terramate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: terramate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -113,14 +131,18 @@ packages:
           - name: terramate
           - name: terramate-ls
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/terramate-io/terramate/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/terramate-io/terramate/releases/download/{{.Version}}/terramate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/terramate-io/terramate/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/terramate-io/terramate/releases/download/{{.Version}}/terramate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: terramate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -129,15 +151,18 @@ packages:
           - name: terramate
           - name: terramate-ls
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/terramate-io/terramate/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --key
-              - https://github.com/terramate-io/terramate/releases/download/{{.Version}}/cosign.pub
+              - https://gh-proxy.org/github.com/terramate-io/terramate/releases/download/{{.Version}}/cosign.pub
               - --signature
-              - https://github.com/terramate-io/terramate/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/terramate-io/terramate/releases/download/{{.Version}}/checksums.txt.sig
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/terramate-io/terramate/releases/download/{{.Version}}/terramate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

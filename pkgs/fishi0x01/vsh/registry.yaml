@@ -7,23 +7,27 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.9.0")
-        url: https://gh-proxy.org/https://github.com/fishi0x01/vsh/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/fishi0x01/vsh/releases/download/{{.Version}}/vsh_{{.OS}}_{{.Arch}}
         asset: vsh_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/fishi0x01/vsh/releases/download/{{.Version}}/SHA256SUM
           asset: SHA256SUM
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/fishi0x01/vsh/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/fishi0x01/vsh/releases/download/{{.Version}}/vsh_{{.OS}}_{{.Arch}}
         asset: vsh_{{.OS}}_{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/fishi0x01/vsh/releases/download/{{.Version}}/SHA256SUM
           asset: SHA256SUM
           algorithm: sha256
         supported_envs:

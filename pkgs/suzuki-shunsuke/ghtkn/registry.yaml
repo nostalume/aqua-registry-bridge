@@ -7,7 +7,8 @@ packages:
     asset: ghtkn_{{.OS}}_{{.Arch}}.{{.Format}}
     format: tar.gz
     slsa_provenance:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghtkn/releases/download/{{.Version}}/multiple.intoto.jsonl
       asset: multiple.intoto.jsonl
     github_artifact_attestations:
       signer_workflow: suzuki-shunsuke/go-release-workflow/.github/workflows/release.yaml
@@ -17,28 +18,35 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.2.2")
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghtkn/releases/download/{{.Version}}/ghtkn_{{.OS}}_{{.Arch}}.{{.Format}}
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghtkn/releases/download/{{.Version}}/ghtkn_checksums.txt
           asset: ghtkn_checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/suzuki-shunsuke/ghtkn/releases/download/{{.Version}}/ghtkn_checksums.txt.pem
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/ghtkn/releases/download/{{.Version}}/ghtkn_checksums.txt.pem
               - --certificate-identity-regexp
               - "^https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.+$"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/suzuki-shunsuke/ghtkn/releases/download/{{.Version}}/ghtkn_checksums.txt.sig
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/ghtkn/releases/download/{{.Version}}/ghtkn_checksums.txt.sig
       - version_constraint: semver("<= 0.2.5")
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghtkn/releases/download/{{.Version}}/ghtkn_{{.OS}}_{{.Arch}}.{{.Format}}
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghtkn/releases/download/{{.Version}}/ghtkn_checksums.txt
           asset: ghtkn_checksums.txt
           algorithm: sha256
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghtkn/releases/download/{{.Version}}/ghtkn_checksums.txt.bundle
               asset: ghtkn_checksums.txt.bundle
             opts:
               - --certificate-identity-regexp
@@ -46,13 +54,17 @@ packages:
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghtkn/releases/download/{{.Version}}/ghtkn_{{.OS}}_{{.Arch}}.{{.Format}}
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghtkn/releases/download/{{.Version}}/ghtkn_checksums.txt
           asset: ghtkn_checksums.txt
           algorithm: sha256
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghtkn/releases/download/{{.Version}}/ghtkn_checksums.txt.sigstore.json
               asset: ghtkn_checksums.txt.sigstore.json
             opts:
               - --certificate-identity-regexp

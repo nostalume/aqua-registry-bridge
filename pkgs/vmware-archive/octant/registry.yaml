@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.8.0")
-        url: https://gh-proxy.org/https://github.com/vmware-archive/octant/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vmware-archive/octant/releases/download/{{.Version}}/octant_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: octant_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -23,18 +24,22 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vmware-archive/octant/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vmware-archive/octant/releases/download/{{.Version}}/octant_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.17.0")
-        url: https://gh-proxy.org/https://github.com/vmware-archive/octant/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vmware-archive/octant/releases/download/{{.Version}}/octant_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: octant_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -48,14 +53,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vmware-archive/octant/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vmware-archive/octant/releases/download/{{.Version}}/octant_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.24.0")
-        url: https://gh-proxy.org/https://github.com/vmware-archive/octant/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vmware-archive/octant/releases/download/{{.Version}}/octant_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: octant_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -68,14 +77,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vmware-archive/octant/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vmware-archive/octant/releases/download/{{.Version}}/octant_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/vmware-archive/octant/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vmware-archive/octant/releases/download/{{.Version}}/octant_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: octant_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -87,9 +100,12 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vmware-archive/octant/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vmware-archive/octant/releases/download/{{.Version}}/octant_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip

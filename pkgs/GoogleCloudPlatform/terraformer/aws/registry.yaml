@@ -2,7 +2,8 @@
 packages:
   - name: GoogleCloudPlatform/terraformer/aws
     description: CLI tool to generate terraform files from existing infrastructure (reverse Terraform). Infrastructure to Code
-    type: github_release
+    type: http
+    url: https://gh-proxy.org/github.com/GoogleCloudPlatform/terraformer/releases/download/{{.Version}}/terraformer-aws-{{.OS}}-{{.Arch}}
     repo_owner: GoogleCloudPlatform
     repo_name: terraformer
     supported_envs:

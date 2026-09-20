@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/ipfs/kubo/releases/download/{{.Version}}/kubo_{{.Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
     repo_owner: ipfs
     repo_name: kubo
     aliases:
@@ -13,6 +14,8 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/ipfs/kubo/releases/download/{{.Version}}/kubo_{{.Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
     version_constraint: semver(">= 0.14.0")
     asset: kubo_{{.Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
@@ -21,12 +24,14 @@ packages:
         src: kubo/ipfs
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/ipfs/kubo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ipfs/kubo/releases/download/{{.Version}}/go-ipfs_{{.Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: go-ipfs_{{.Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         files:
           - name: ipfs
             src: go-ipfs/ipfs
     checksum:
-      type: github_release
+      type: http
+      url: "{{.AssetURL}}.sha512"
       asset: "{{.Asset}}.sha512"
       algorithm: sha512

@@ -7,57 +7,67 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.1.13"
-        url: https://gh-proxy.org/https://github.com/in-toto/witness/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/in-toto/witness/releases/download/{{.Version}}/witness_{{trimV .Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
         asset: witness_{{trimV .Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
       - version_constraint: semver("<= 0.1.11")
-        url: https://gh-proxy.org/https://github.com/in-toto/witness/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/in-toto/witness/releases/download/{{.Version}}/witness_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: witness_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/in-toto/witness/releases/download/{{.Version}}/witness_{{trimV .Version}}_checksums.txt
           asset: witness_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.6.0")
-        url: https://gh-proxy.org/https://github.com/in-toto/witness/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/in-toto/witness/releases/download/{{.Version}}/witness_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: witness_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/in-toto/witness/releases/download/{{.Version}}/witness_{{trimV .Version}}_checksums.txt
           asset: witness_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("< 0.10.2-rc1")
-        url: https://gh-proxy.org/https://github.com/in-toto/witness/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/in-toto/witness/releases/download/{{.Version}}/witness_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: witness_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/in-toto/witness/releases/download/{{.Version}}/witness_{{trimV .Version}}_checksums.txt
           asset: witness_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/in-toto/witness/releases/download/{{.Version}}/witness_{{trimV .Version}}_checksums.txt.pem
+              - https://gh-proxy.org/github.com/in-toto/witness/releases/download/{{.Version}}/witness_{{trimV .Version}}_checksums.txt.pem
               - --certificate-identity
-              - "https://github.com/in-toto/witness/.github/workflows/release.yml@refs/tags/{{.Version}}"
+              - "https://gh-proxy.org/github.com/in-toto/witness/.github/workflows/release.yml@refs/tags/{{.Version}}"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/in-toto/witness/releases/download/{{.Version}}/witness_{{trimV .Version}}_checksums.txt.sig
+              - https://gh-proxy.org/github.com/in-toto/witness/releases/download/{{.Version}}/witness_{{trimV .Version}}_checksums.txt.sig
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/in-toto/witness/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/in-toto/witness/releases/download/{{.Version}}/witness_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: witness_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/in-toto/witness/releases/download/{{.Version}}/witness_{{trimV .Version}}_checksums.txt
           asset: witness_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/in-toto/witness/releases/download/{{.Version}}/witness_{{trimV .Version}}_checksums.txt.sigstore.json
               asset: witness_{{trimV .Version}}_checksums.txt.sigstore.json
             opts:
               - --certificate-identity
-              - "https://github.com/in-toto/witness/.github/workflows/release.yml@refs/tags/{{.Version}}"
+              - "https://gh-proxy.org/github.com/in-toto/witness/.github/workflows/release.yml@refs/tags/{{.Version}}"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com

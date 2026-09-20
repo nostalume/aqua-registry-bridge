@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/rmitchellscott/reManager/releases/download/{{.Version}}/reManager-{{.OS}}-{{.Arch}}.{{.Format}}
     repo_owner: rmitchellscott
     repo_name: reManager
     description: Linux, MacOS, and Windows desktop app for managing mods on reMarkable tablets
@@ -10,8 +11,12 @@ packages:
       darwin: macos
     overrides:
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/rmitchellscott/reManager/releases/download/{{.Version}}/reManager-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
       - goos: darwin
+        type: http
+        url: https://gh-proxy.org/github.com/rmitchellscott/reManager/releases/download/{{.Version}}/reManager-macos-universal.zip
         asset: reManager-macos-universal.zip
         files:
           - name: reManager

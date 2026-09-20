@@ -11,7 +11,8 @@ packages:
       - version_constraint: Version in ["publish-testing", "0.26.0", "0.131.1"]
         error_message: This version isn't supported.
       - version_constraint: Version == "0.13.1"
-        url: https://gh-proxy.org/https://github.com/dathere/qsv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/xsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: xsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         files:
@@ -29,7 +30,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "0.14.0"
-        url: https://gh-proxy.org/https://github.com/dathere/qsv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -41,7 +43,8 @@ packages:
           - linux/amd64
           - windows/amd64
       - version_constraint: Version == "0.14.1"
-        url: https://gh-proxy.org/https://github.com/dathere/qsv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -51,12 +54,15 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.zip.{{.Format}}
             asset: qsv-{{.Version}}-{{.Arch}}-{{.OS}}.zip.{{.Format}}
         supported_envs:
           - linux/amd64
           - windows/amd64
       - version_constraint: Version == "0.16.0"
-        url: https://gh-proxy.org/https://github.com/dathere/qsv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.OS}}-{{.Arch}}
         asset: qsv-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -69,7 +75,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "0.16.1"
-        url: https://gh-proxy.org/https://github.com/dathere/qsv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: qsv-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         files:
@@ -81,6 +88,8 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.OS}}-{{.Arch}}.{{.Format}}
             files:
               - name: qsv
         supported_envs:
@@ -88,7 +97,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "0.16.2"
-        url: https://gh-proxy.org/https://github.com/dathere/qsv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.OS}}.{{.Format}}
         asset: qsv-{{.OS}}.{{.Format}}
         format: zip
         files:
@@ -101,7 +111,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version in ["0.22.0", "0.22.1", "0.22.2"]
-        url: https://gh-proxy.org/https://github.com/dathere/qsv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         files:
@@ -116,10 +127,13 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
       - version_constraint: Version in ["0.23.0", "0.24.1", "0.25.2-beta"]
-        url: https://gh-proxy.org/https://github.com/dathere/qsv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         files:
@@ -133,7 +147,8 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
       - version_constraint: Version == "0.30.0"
-        url: https://gh-proxy.org/https://github.com/dathere/qsv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -148,29 +163,37 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "0.90.0"
-        url: https://gh-proxy.org/https://github.com/dathere/qsv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         replacements:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               amd64: x86_64
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               arm64: aarch64
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-i686-{{.OS}}.{{.Format}}
             asset: qsv-{{.Version}}-i686-{{.OS}}.{{.Format}}
         supported_envs:
           - linux
           - windows/amd64
       - version_constraint: Version == "0.108.0"
-        url: https://gh-proxy.org/https://github.com/dathere/qsv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -181,15 +204,20 @@ packages:
           windows: pc-windows-gnu
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
       - version_constraint: Version == "0.109.0"
-        url: https://gh-proxy.org/https://github.com/dathere/qsv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         replacements:
@@ -199,17 +227,24 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-i686-{{.OS}}.{{.Format}}
             asset: qsv-{{.Version}}-i686-{{.OS}}.{{.Format}}
       - version_constraint: Version == "0.113.0"
-        url: https://gh-proxy.org/https://github.com/dathere/qsv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -220,14 +255,20 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               amd64: amd64
         supported_envs:
@@ -235,7 +276,8 @@ packages:
           - darwin/arm64
           - windows/amd64
       - version_constraint: Version == "7.1.0"
-        url: https://gh-proxy.org/https://github.com/dathere/qsv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         replacements:
@@ -245,15 +287,20 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
       - version_constraint: Version in ["8.0.0", "9.1.0"]
-        url: https://gh-proxy.org/https://github.com/dathere/qsv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         replacements:
@@ -263,14 +310,20 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               amd64: amd64
         supported_envs:
@@ -278,7 +331,8 @@ packages:
           - darwin/arm64
           - windows
       - version_constraint: Version == "10.0.0"
-        url: https://gh-proxy.org/https://github.com/dathere/qsv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -289,14 +343,20 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               amd64: amd64
         supported_envs:
@@ -304,7 +364,8 @@ packages:
           - darwin/arm64
           - windows/amd64
       - version_constraint: semver("<= 0.21.0")
-        url: https://gh-proxy.org/https://github.com/dathere/qsv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         files:
@@ -322,7 +383,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.40.3")
-        url: https://gh-proxy.org/https://github.com/dathere/qsv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -333,7 +395,8 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
       - version_constraint: Version in ["0.65.0", "0.66.0", "0.67.0", "0.70.0", "0.72.0"]
-        url: https://gh-proxy.org/https://github.com/dathere/qsv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -344,20 +407,27 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             files:
               - name: qsv
                 src: qsv-{{.Version}}-{{.Arch}}-{{.OS}}/qsv
       - version_constraint: semver("<= 0.75.0")
-        url: https://gh-proxy.org/https://github.com/dathere/qsv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -368,17 +438,22 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
       - version_constraint: semver("<= 0.76.2")
         no_asset: true
       - version_constraint: semver("<= 7.0.1")
-        url: https://gh-proxy.org/https://github.com/dathere/qsv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -389,15 +464,20 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
       - version_constraint: semver("<= 8.1.1")
-        url: https://gh-proxy.org/https://github.com/dathere/qsv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -408,14 +488,20 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               amd64: amd64
         supported_envs:
@@ -423,7 +509,8 @@ packages:
           - darwin/arm64
           - windows/amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/dathere/qsv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         replacements:
@@ -433,14 +520,20 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/dathere/qsv/releases/download/{{.Version}}/qsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               amd64: amd64
         supported_envs:

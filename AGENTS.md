@@ -5,11 +5,10 @@ So please checkout the repository and refer the document.
 
 ```sh
 mkdir -p .ai
-if [ ! -d .ai/aqua ]; Then
+if [ ! -d .ai/aqua ]; then
   git clone https://github.com/aquaproj/aqua .ai/aqua
 fi
-cd .ai/aqua
-git pull origin main
+git -C .ai/aqua pull --ff-only origin main
 ```
 
 Then please see .ai/aqua/website/docs.

@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.14.6")
-        url: https://gh-proxy.org/https://github.com/elixir-lsp/elixir-ls/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/elixir-lsp/elixir-ls/releases/download/{{.Version}}/elixir-ls.{{.Format}}
         asset: elixir-ls.{{.Format}}
         format: zip
         files:
@@ -17,13 +18,16 @@ packages:
             src: debugger.sh
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/elixir-lsp/elixir-ls/releases/download/{{.Version}}/elixir-ls.{{.Format}}
             files:
               - name: elixir-ls
                 src: language_server.bat
               - name: elixir-debug-adapter
                 src: debugger.bat
       - version_constraint: semver("<= 0.17.10")
-        url: https://gh-proxy.org/https://github.com/elixir-lsp/elixir-ls/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/elixir-lsp/elixir-ls/releases/download/{{.Version}}/elixir-ls-{{.Version}}.{{.Format}}
         asset: elixir-ls-{{.Version}}.{{.Format}}
         format: zip
         files:
@@ -33,13 +37,16 @@ packages:
             src: debugger.sh
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/elixir-lsp/elixir-ls/releases/download/{{.Version}}/elixir-ls-{{.Version}}.{{.Format}}
             files:
               - name: elixir-ls
                 src: language_server.bat
               - name: elixir-debug-adapter
                 src: debugger.bat
       - version_constraint: Version == "v0.29.0"
-        url: https://gh-proxy.org/https://github.com/elixir-lsp/elixir-ls/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/elixir-lsp/elixir-ls/releases/download/{{.Version}}/elixir-ls.{{.Format}}
         asset: elixir-ls.{{.Format}}
         format: zip
         files:
@@ -49,13 +56,16 @@ packages:
             src: debug_adapter.sh
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/elixir-lsp/elixir-ls/releases/download/{{.Version}}/elixir-ls.{{.Format}}
             files:
               - name: elixir-ls
                 src: language_server.bat
               - name: elixir-debug-adapter
                 src: debug_adapter.bat
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/elixir-lsp/elixir-ls/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/elixir-lsp/elixir-ls/releases/download/{{.Version}}/elixir-ls-{{.Version}}.{{.Format}}
         asset: elixir-ls-{{.Version}}.{{.Format}}
         format: zip
         files:
@@ -65,6 +75,8 @@ packages:
             src: debug_adapter.sh
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/elixir-lsp/elixir-ls/releases/download/{{.Version}}/elixir-ls-{{.Version}}.{{.Format}}
             files:
               - name: elixir-ls
                 src: language_server.bat

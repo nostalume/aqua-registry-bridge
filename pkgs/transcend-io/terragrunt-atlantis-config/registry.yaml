@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("<= 0.10.1") || Version in ["v0.12.0", "v1.0.0", "v1.4.0", "v1.7.1", "v1.17.1", "v1.17.2"]
         no_asset: true
       - version_constraint: semver("<= 1.7.0")
-        url: https://gh-proxy.org/https://github.com/transcend-io/terragrunt-atlantis-config/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/transcend-io/terragrunt-atlantis-config/releases/download/{{.Version}}/terragrunt-atlantis-config_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: terragrunt-atlantis-config_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -19,8 +20,12 @@ packages:
             src: "{{.AssetWithoutExt}}/{{.AssetWithoutExt}}"
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/transcend-io/terragrunt-atlantis-config/releases/download/{{.Version}}/terragrunt-atlantis-config_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/transcend-io/terragrunt-atlantis-config/releases/download/{{.Version}}/terragrunt-atlantis-config_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             files:
               - name: terragrunt-atlantis-config
                 src: "{{.AssetWithoutExt}}"
@@ -29,7 +34,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.17.4")
-        url: https://gh-proxy.org/https://github.com/transcend-io/terragrunt-atlantis-config/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/transcend-io/terragrunt-atlantis-config/releases/download/{{.Version}}/terragrunt-atlantis-config_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: terragrunt-atlantis-config_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -38,13 +44,18 @@ packages:
           - name: terragrunt-atlantis-config
             src: "{{.AssetWithoutExt}}/{{.AssetWithoutExt}}"
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/transcend-io/terragrunt-atlantis-config/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/transcend-io/terragrunt-atlantis-config/releases/download/{{.Version}}/terragrunt-atlantis-config_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/transcend-io/terragrunt-atlantis-config/releases/download/{{.Version}}/terragrunt-atlantis-config_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             files:
               - name: terragrunt-atlantis-config
                 src: "{{.AssetWithoutExt}}"
@@ -53,10 +64,12 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/transcend-io/terragrunt-atlantis-config/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/transcend-io/terragrunt-atlantis-config/releases/download/{{.Version}}/terragrunt-atlantis-config_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         asset: terragrunt-atlantis-config_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/transcend-io/terragrunt-atlantis-config/releases/download/{{.Version}}/SHA512SUMS
           asset: SHA512SUMS
           algorithm: sha512

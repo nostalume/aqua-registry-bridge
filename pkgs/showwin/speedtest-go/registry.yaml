@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/showwin/speedtest-go/releases/download/{{.Version}}/speedtest-go_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
     repo_owner: showwin
     repo_name: speedtest-go
     asset: speedtest-go_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
@@ -18,6 +19,7 @@ packages:
       - name: speedtest
         src: speedtest-go
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/showwin/speedtest-go/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256

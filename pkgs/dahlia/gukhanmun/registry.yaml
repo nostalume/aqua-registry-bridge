@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.1.1")
-        url: https://gh-proxy.org/https://github.com/dahlia/gukhanmun/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dahlia/gukhanmun/releases/download/{{.Version}}/gukhanmun-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: gukhanmun-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.bz2
         files:
@@ -23,9 +24,12 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dahlia/gukhanmun/releases/download/{{.Version}}/gukhanmun-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/dahlia/gukhanmun/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dahlia/gukhanmun/releases/download/{{.Version}}/gukhanmun-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: gukhanmun-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.bz2
         files:
@@ -39,4 +43,6 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dahlia/gukhanmun/releases/download/{{.Version}}/gukhanmun-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip

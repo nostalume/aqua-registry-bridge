@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/corneliusweig/ketall/releases/download/{{.Version}}/ketall-{{.Arch}}-{{.OS}}.tar.gz
     repo_owner: corneliusweig
     repo_name: ketall
     description: Like `kubectl get all`, but get really all resources
@@ -15,8 +16,11 @@ packages:
     asset: ketall-{{.Arch}}-{{.OS}}.tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/corneliusweig/ketall/releases/download/{{.Version}}/ketall-amd64-windows.zip
         asset: ketall-amd64-windows.zip
     checksum:
-      type: github_release
+      type: http
+      url: "{{.AssetURL}}.sha256"
       asset: "{{.Asset}}.sha256"
       algorithm: sha256

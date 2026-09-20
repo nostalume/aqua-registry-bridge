@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version == "v0.28.2"
         no_asset: true
       - version_constraint: Version == "v0.1.0"
-        url: https://gh-proxy.org/https://github.com/runatlantis/atlantis/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/runatlantis/atlantis/releases/download/{{.Version}}/atlantis_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: atlantis_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -17,7 +18,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.15.1")
-        url: https://gh-proxy.org/https://github.com/runatlantis/atlantis/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/runatlantis/atlantis/releases/download/{{.Version}}/atlantis_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: atlantis_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -25,7 +27,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.17.3")
-        url: https://gh-proxy.org/https://github.com/runatlantis/atlantis/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/runatlantis/atlantis/releases/download/{{.Version}}/atlantis_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: atlantis_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -33,11 +36,13 @@ packages:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/runatlantis/atlantis/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/runatlantis/atlantis/releases/download/{{.Version}}/atlantis_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: atlantis_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/runatlantis/atlantis/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

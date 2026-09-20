@@ -11,7 +11,8 @@ packages:
       - version_constraint: semver("<= 1.0.3")
         no_asset: true
       - version_constraint: semver("<= 2.40.2")
-        url: https://gh-proxy.org/https://github.com/rui314/mold/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rui314/mold/releases/download/{{.Version}}/mold-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: mold-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -27,7 +28,8 @@ packages:
         supported_envs:
           - linux
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/rui314/mold/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rui314/mold/releases/download/{{.Version}}/mold-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: mold-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -42,6 +44,8 @@ packages:
             src: bin/mold
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/rui314/mold/releases/download/{{.Version}}/mold-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: tar.gz
             replacements:
               arm64: aarch64

@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.1.0-alpha"
-        url: https://gh-proxy.org/https://github.com/zellij-org/zellij/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zellij-org/zellij/releases/download/{{.Version}}/mosaic-{{.Arch}}-{{.OS}}
         asset: mosaic-{{.Arch}}-{{.OS}}
         format: raw
         replacements:
@@ -16,7 +17,8 @@ packages:
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 0.5.1")
-        url: https://gh-proxy.org/https://github.com/zellij-org/zellij/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zellij-org/zellij/releases/download/{{.Version}}/zellij-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: zellij-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -25,12 +27,15 @@ packages:
           darwin: macos
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/zellij-org/zellij/releases/download/{{.Version}}/zellij-{{.OS}}-musl-{{.Arch}}.{{.Format}}
             asset: zellij-{{.OS}}-musl-{{.Arch}}.{{.Format}}
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.43.1")
-        url: https://gh-proxy.org/https://github.com/zellij-org/zellij/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zellij-org/zellij/releases/download/{{.Version}}/zellij-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: zellij-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -42,7 +47,8 @@ packages:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/zellij-org/zellij/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zellij-org/zellij/releases/download/{{.Version}}/zellij-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: zellij-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -54,4 +60,6 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/zellij-org/zellij/releases/download/{{.Version}}/zellij-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip

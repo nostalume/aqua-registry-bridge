@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/datanymizer/datanymizer/releases/download/{{.Version}}/pg_datanymizer-{{.OS}}-{{.Arch}}.{{.Format}}
     repo_owner: datanymizer
     repo_name: datanymizer
     asset: pg_datanymizer-{{.OS}}-{{.Arch}}.{{.Format}}
@@ -10,6 +11,8 @@ packages:
       amd64: x86_64
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/datanymizer/datanymizer/releases/download/{{.Version}}/pg_datanymizer-{{.OS}}-{{.Arch}}.{{.Format}}
         replacements:
           windows: win
           amd64: x64

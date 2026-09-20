@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version in ["v3.2.1", "3.1.14", "3.0.29"]
         no_asset: true
       - version_constraint: semver("<= 3.2.1")
-        url: https://gh-proxy.org/https://github.com/keilerkonzept/terraform-module-versions/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/keilerkonzept/terraform-module-versions/releases/download/{{.Version}}/terraform-module-versions_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: terraform-module-versions_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -19,9 +20,12 @@ packages:
           darwin: osx
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/keilerkonzept/terraform-module-versions/releases/download/{{.Version}}/terraform-module-versions_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/keilerkonzept/terraform-module-versions/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/keilerkonzept/terraform-module-versions/releases/download/{{.Version}}/terraform-module-versions_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: terraform-module-versions_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -30,9 +34,12 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/keilerkonzept/terraform-module-versions/releases/download/{{.Version}}/terraform-module-versions_{{trimV .Version}}_checksums.txt
           asset: terraform-module-versions_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/keilerkonzept/terraform-module-versions/releases/download/{{.Version}}/terraform-module-versions_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

@@ -7,34 +7,41 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.2.3")
-        url: https://gh-proxy.org/https://github.com/mr-karan/doggo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mr-karan/doggo/releases/download/{{.Version}}/doggo_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: doggo_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/mr-karan/doggo/releases/download/{{.Version}}/doggo_{{trimV .Version}}_checksums.txt
           asset: doggo_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.4.1")
-        url: https://gh-proxy.org/https://github.com/mr-karan/doggo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mr-karan/doggo/releases/download/{{.Version}}/doggo_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: doggo_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/mr-karan/doggo/releases/download/{{.Version}}/doggo_{{trimV .Version}}_checksums.txt
           asset: doggo_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.5.7")
-        url: https://gh-proxy.org/https://github.com/mr-karan/doggo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mr-karan/doggo/releases/download/{{.Version}}/doggo_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: doggo_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/mr-karan/doggo/releases/download/{{.Version}}/doggo_{{trimV .Version}}_checksums.txt
           asset: doggo_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 1.1.7")
-        url: https://gh-proxy.org/https://github.com/mr-karan/doggo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mr-karan/doggo/releases/download/{{.Version}}/doggo_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: doggo_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -47,25 +54,32 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/mr-karan/doggo/releases/download/{{.Version}}/doggo_{{trimV .Version}}_checksums.txt
           asset: doggo_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/mr-karan/doggo/releases/download/{{.Version}}/doggo_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/mr-karan/doggo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mr-karan/doggo/releases/download/{{.Version}}/doggo-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: doggo-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/mr-karan/doggo/releases/download/{{.Version}}/doggo-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             replacements: {}
         replacements:
           amd64: x86_64
           arm64: aarch64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/mr-karan/doggo/releases/download/{{.Version}}/doggo_{{trimV .Version}}_checksums.txt
           asset: doggo_{{trimV .Version}}_checksums.txt
           algorithm: sha256

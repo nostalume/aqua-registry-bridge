@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/getgauge/gauge/releases/download/{{.Version}}/gauge-{{trimV .Version}}-{{.OS}}.{{.Arch}}.zip
     repo_owner: getgauge
     repo_name: gauge
     asset: gauge-{{trimV .Version}}-{{.OS}}.{{.Arch}}.zip

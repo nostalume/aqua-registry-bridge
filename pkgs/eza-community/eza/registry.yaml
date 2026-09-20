@@ -10,7 +10,8 @@ packages:
         type: cargo
         crate: eza
       - version_constraint: Version == "v0.11.0"
-        url: https://gh-proxy.org/https://github.com/eza-community/eza/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/eza-community/eza/releases/download/{{.Version}}/{{.Arch}}-{{.OS}}-eza
         asset: "{{.Arch}}-{{.OS}}-eza"
         format: raw
         windows_arm_emulation: true
@@ -25,10 +26,13 @@ packages:
             type: cargo
             crate: eza
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/eza-community/eza/releases/download/{{.Version}}/{{.Arch}}-{{.OS}}-eza
             replacements:
               arm64: aarch64
       - version_constraint: Version == "v0.11.1"
-        url: https://gh-proxy.org/https://github.com/eza-community/eza/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/eza-community/eza/releases/download/{{.Version}}/eza_{{.Arch}}-{{.OS}}.{{.Format}}
         asset: eza_{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -43,11 +47,14 @@ packages:
             type: cargo
             crate: eza
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/eza-community/eza/releases/download/{{.Version}}/eza_{{.Arch}}-{{.OS}}.{{.Format}}
             format: tar.gz
             replacements:
               arm64: aarch64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/eza-community/eza/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/eza-community/eza/releases/download/{{.Version}}/eza_{{.Arch}}-{{.OS}}.{{.Format}}
         asset: eza_{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -63,13 +70,19 @@ packages:
             cargo:
               locked: true
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/eza-community/eza/releases/download/{{.Version}}/eza_{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/eza-community/eza/releases/download/{{.Version}}/eza_{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               arm64: aarch64
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/eza-community/eza/releases/download/{{.Version}}/eza.exe_{{.Arch}}-{{.OS}}.{{.Format}}
             asset: eza.exe_{{.Arch}}-{{.OS}}.{{.Format}}

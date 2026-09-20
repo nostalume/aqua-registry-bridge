@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("< 1.9.3")
-        url: https://gh-proxy.org/https://github.com/tldr-pages/tlrc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tldr-pages/tlrc/releases/download/{{.Version}}/tlrc-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: tlrc-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -21,13 +22,16 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/tldr-pages/tlrc/releases/download/{{.Version}}/tlrc-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("< 1.13.0")
-        url: https://gh-proxy.org/https://github.com/tldr-pages/tlrc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tldr-pages/tlrc/releases/download/{{.Version}}/tlrc-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: tlrc-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -39,6 +43,8 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/tldr-pages/tlrc/releases/download/{{.Version}}/tlrc-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
@@ -47,7 +53,8 @@ packages:
         github_artifact_attestations:
           signer_workflow: tldr-pages/tlrc/.github/workflows/build-release.yml
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/tldr-pages/tlrc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tldr-pages/tlrc/releases/download/{{.Version}}/tlrc-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: tlrc-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -59,6 +66,8 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/tldr-pages/tlrc/releases/download/{{.Version}}/tlrc-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin

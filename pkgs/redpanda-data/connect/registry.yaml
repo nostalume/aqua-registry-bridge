@@ -17,7 +17,8 @@ packages:
       - version_constraint: semver("<= 0.11.1") or Version == "v1.7.8"
         no_asset: true
       - version_constraint: semver("<= 0.11.1")
-        url: https://gh-proxy.org/https://github.com/redpanda-data/connect/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/redpanda-data/connect/releases/download/{{.Version}}/benthos_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: benthos_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -29,7 +30,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 3.7.0")
-        url: https://gh-proxy.org/https://github.com/redpanda-data/connect/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/redpanda-data/connect/releases/download/{{.Version}}/benthos_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: benthos_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -37,7 +39,8 @@ packages:
         files:
           - name: benthos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/redpanda-data/connect/releases/download/{{.Version}}/benthos_{{trimV .Version}}_checksums.txt
           asset: benthos_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
@@ -45,7 +48,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 3.43.0-rc1")
-        url: https://gh-proxy.org/https://github.com/redpanda-data/connect/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/redpanda-data/connect/releases/download/{{.Version}}/benthos_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: benthos_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -53,69 +57,82 @@ packages:
         files:
           - name: benthos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/redpanda-data/connect/releases/download/{{.Version}}/benthos_{{trimV .Version}}_checksums.txt
           asset: benthos_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 3.54.1")
-        url: https://gh-proxy.org/https://github.com/redpanda-data/connect/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/redpanda-data/connect/releases/download/{{.Version}}/benthos_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: benthos_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         files:
           - name: benthos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/redpanda-data/connect/releases/download/{{.Version}}/benthos_{{trimV .Version}}_checksums.txt
           asset: benthos_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 4.27.0")
-        url: https://gh-proxy.org/https://github.com/redpanda-data/connect/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/redpanda-data/connect/releases/download/{{.Version}}/benthos_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: benthos_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: benthos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/redpanda-data/connect/releases/download/{{.Version}}/benthos_{{trimV .Version}}_checksums.txt
           asset: benthos_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 4.66.1")
-        url: https://gh-proxy.org/https://github.com/redpanda-data/connect/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/redpanda-data/connect/releases/download/{{.Version}}/redpanda-connect_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: redpanda-connect_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: redpanda-connect
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/redpanda-data/connect/releases/download/{{.Version}}/redpanda-connect_{{trimV .Version}}_checksums.txt
           asset: redpanda-connect_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: Version == "v4.67.5"
-        url: https://gh-proxy.org/https://github.com/redpanda-data/connect/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/redpanda-data/connect/releases/download/{{.Version}}/redpanda-connect_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: redpanda-connect_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         files:
           - name: redpanda-connect
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/redpanda-data/connect/releases/download/{{.Version}}/redpanda-connect_{{trimV .Version}}_checksums.txt
           asset: redpanda-connect_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: Version == "v4.68.0"
-        url: https://gh-proxy.org/https://github.com/redpanda-data/connect/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/redpanda-data/connect/releases/download/{{.Version}}/redpanda-connect_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: redpanda-connect_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: redpanda-connect
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/redpanda-data/connect/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/redpanda-data/connect/releases/download/{{.Version}}/redpanda-connect_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: redpanda-connect_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         files:
           - name: redpanda-connect
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256

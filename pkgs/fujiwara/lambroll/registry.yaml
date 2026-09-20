@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.12.7")
-        url: https://gh-proxy.org/https://github.com/fujiwara/lambroll/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/fujiwara/lambroll/releases/download/{{.Version}}/lambroll_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: lambroll_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -16,12 +17,15 @@ packages:
             src: lambroll_{{.Version}}_{{.OS}}_{{.Arch}}/lambroll
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/fujiwara/lambroll/releases/download/{{.Version}}/lambroll_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.14.7")
-        url: https://gh-proxy.org/https://github.com/fujiwara/lambroll/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/fujiwara/lambroll/releases/download/{{.Version}}/lambroll_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: lambroll_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         files:
@@ -29,16 +33,20 @@ packages:
             src: lambroll_{{.Version}}_{{.OS}}_{{.Arch}}/lambroll
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/fujiwara/lambroll/releases/download/{{.Version}}/lambroll_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/fujiwara/lambroll/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/fujiwara/lambroll/releases/download/{{.Version}}/lambroll_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: lambroll_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/fujiwara/lambroll/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:

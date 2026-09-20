@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.1.0")
-        url: https://gh-proxy.org/https://github.com/editorconfig-checker/editorconfig-checker/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/editorconfig-checker/editorconfig-checker/releases/download/{{.Version}}/ec-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: ec-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -18,7 +19,8 @@ packages:
           - name: ec
             src: bin/ec-{{.OS}}-{{.Arch}}
       - version_constraint: semver("<= 2.3.5")
-        url: https://gh-proxy.org/https://github.com/editorconfig-checker/editorconfig-checker/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/editorconfig-checker/editorconfig-checker/releases/download/{{.Version}}/ec-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: ec-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -28,9 +30,12 @@ packages:
             src: bin/ec-{{.OS}}-{{.Arch}}
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/editorconfig-checker/editorconfig-checker/releases/download/{{.Version}}/ec-{{.OS}}-{{.Arch}}.exe.{{.Format}}
             asset: ec-{{.OS}}-{{.Arch}}.exe.{{.Format}}
       - version_constraint: semver("<= 2.5.0")
-        url: https://gh-proxy.org/https://github.com/editorconfig-checker/editorconfig-checker/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/editorconfig-checker/editorconfig-checker/releases/download/{{.Version}}/ec-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: ec-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -39,16 +44,20 @@ packages:
             src: bin/ec-{{.OS}}-{{.Arch}}
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/editorconfig-checker/editorconfig-checker/releases/download/{{.Version}}/ec-{{.OS}}-{{.Arch}}.exe.{{.Format}}
             asset: ec-{{.OS}}-{{.Arch}}.exe.{{.Format}}
       - version_constraint: Version == "2.6.0"
-        url: https://gh-proxy.org/https://github.com/editorconfig-checker/editorconfig-checker/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/editorconfig-checker/editorconfig-checker/releases/download/{{.Version}}/ec-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: ec-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: ec
             src: bin/ec-{{.OS}}-{{.Arch}}
       - version_constraint: semver("<= 3.0.3")
-        url: https://gh-proxy.org/https://github.com/editorconfig-checker/editorconfig-checker/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/editorconfig-checker/editorconfig-checker/releases/download/{{.Version}}/ec-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: ec-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -56,33 +65,45 @@ packages:
             src: bin/ec-{{.OS}}-{{.Arch}}
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/editorconfig-checker/editorconfig-checker/releases/download/{{.Version}}/ec-{{.OS}}-{{.Arch}}.exe.{{.Format}}
             asset: ec-{{.OS}}-{{.Arch}}.exe.{{.Format}}
       - version_constraint: semver("< 4.0.0")
-        url: https://gh-proxy.org/https://github.com/editorconfig-checker/editorconfig-checker/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/editorconfig-checker/editorconfig-checker/releases/download/{{.Version}}/ec-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: ec-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: ec
             src: bin/ec-{{.OS}}-{{.Arch}}
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/editorconfig-checker/editorconfig-checker/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/editorconfig-checker/editorconfig-checker/releases/download/{{.Version}}/ec-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/editorconfig-checker/editorconfig-checker/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/editorconfig-checker/editorconfig-checker/releases/download/{{.Version}}/editorconfig-checker-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: editorconfig-checker-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: editorconfig-checker
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/editorconfig-checker/editorconfig-checker/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/editorconfig-checker/editorconfig-checker/releases/download/{{.Version}}/editorconfig-checker-{{.OS}}-all.{{.Format}}
             asset: editorconfig-checker-{{.OS}}-all.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/editorconfig-checker/editorconfig-checker/releases/download/{{.Version}}/editorconfig-checker-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip

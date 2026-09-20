@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.3")
-        url: https://gh-proxy.org/https://github.com/jedisct1/minisign/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jedisct1/minisign/releases/download/{{.Version}}/minisign-{{.OS}}.{{.Format}}
         asset: minisign-{{.OS}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -16,13 +17,15 @@ packages:
         supported_envs:
           - darwin
         minisign:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/jedisct1/minisign/releases/download/{{.Version}}/{{.Asset}}.minisig
           asset: "{{.Asset}}.minisig"
           public_key: RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3
       - version_constraint: Version == "0.4"
         no_asset: true
       - version_constraint: semver("<= 0.8")
-        url: https://gh-proxy.org/https://github.com/jedisct1/minisign/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jedisct1/minisign/releases/download/{{.Version}}/minisign-{{.OS}}.{{.Format}}
         asset: minisign-{{.OS}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -31,11 +34,13 @@ packages:
         supported_envs:
           - darwin
         minisign:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/jedisct1/minisign/releases/download/{{.Version}}/{{.Asset}}.minisig
           asset: "{{.Asset}}.minisig"
           public_key: RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3
       - version_constraint: Version == "0.9"
-        url: https://gh-proxy.org/https://github.com/jedisct1/minisign/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jedisct1/minisign/releases/download/{{.Version}}/minisign-{{.OS}}.{{.Format}}
         asset: minisign-{{.OS}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -48,11 +53,13 @@ packages:
           - darwin
           - windows/amd64
         minisign:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/jedisct1/minisign/releases/download/{{.Version}}/{{.Asset}}.minisig
           asset: "{{.Asset}}.minisig"
           public_key: RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3
       - version_constraint: Version in ["0.10", "0.11"]
-        url: https://gh-proxy.org/https://github.com/jedisct1/minisign/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jedisct1/minisign/releases/download/{{.Version}}/minisign-{{.Version}}-{{.OS}}.{{.Format}}
         asset: minisign-{{.Version}}-{{.OS}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -64,11 +71,15 @@ packages:
           arm64: aarch64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/jedisct1/minisign/releases/download/{{.Version}}/minisign-{{.Version}}-{{.OS}}.{{.Format}}
             format: tar.gz
             files:
               - name: minisign
                 src: minisign-{{.OS}}/{{.Arch}}/minisign
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jedisct1/minisign/releases/download/{{.Version}}/minisign-{{.Version}}-{{.OS}}.{{.Format}}
             files:
               - name: minisign
                 src: minisign-win64/minisign
@@ -77,11 +88,13 @@ packages:
           - windows
           - amd64
         minisign:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/jedisct1/minisign/releases/download/{{.Version}}/{{.Asset}}.minisig
           asset: "{{.Asset}}.minisig"
           public_key: RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/jedisct1/minisign/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jedisct1/minisign/releases/download/{{.Version}}/minisign-{{.Version}}-{{.OS}}.{{.Format}}
         asset: minisign-{{.Version}}-{{.OS}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -95,8 +108,12 @@ packages:
           arm64: aarch64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/jedisct1/minisign/releases/download/{{.Version}}/minisign-{{.Version}}-{{.OS}}.{{.Format}}
             format: tar.gz
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/jedisct1/minisign/releases/download/{{.Version}}/minisign-{{.Version}}-{{.OS}}.{{.Format}}
             files:
               - name: minisign
         supported_envs:
@@ -104,6 +121,7 @@ packages:
           - windows
           - linux/amd64
         minisign:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/jedisct1/minisign/releases/download/{{.Version}}/{{.Asset}}.minisig
           asset: "{{.Asset}}.minisig"
           public_key: RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/gokcehan/lf/releases/download/{{.Version}}/lf-{{.OS}}-{{.Arch}}.{{.Format}}
     repo_owner: gokcehan
     repo_name: lf
     description: Terminal file manager
@@ -13,4 +14,6 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/gokcehan/lf/releases/download/{{.Version}}/lf-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip

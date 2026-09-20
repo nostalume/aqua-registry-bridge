@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.4.0")
-        url: https://gh-proxy.org/https://github.com/graelo/pumas/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/graelo/pumas/releases/download/{{.Version}}/pumas-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: pumas-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         files:
@@ -19,7 +20,8 @@ packages:
         supported_envs:
           - darwin/arm64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/graelo/pumas/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/graelo/pumas/releases/download/{{.Version}}/pumas-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: pumas-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         files:

@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.2.3")
-        url: https://gh-proxy.org/https://github.com/dduan/tre/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dduan/tre/releases/download/{{.Version}}/tre-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: tre-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -18,18 +19,25 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dduan/tre/releases/download/{{.Version}}/tre-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dduan/tre/releases/download/{{.Version}}/tre-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               arm64: aarch64
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dduan/tre/releases/download/{{.Version}}/tre-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: Version == "0.3.0"
-        url: https://gh-proxy.org/https://github.com/dduan/tre/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dduan/tre/releases/download/{{.Version}}/tre-v{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: tre-v{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -40,18 +48,25 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dduan/tre/releases/download/{{.Version}}/tre-v{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dduan/tre/releases/download/{{.Version}}/tre-v{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               arm64: aarch64
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dduan/tre/releases/download/{{.Version}}/tre-v{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.3.6")
-        url: https://gh-proxy.org/https://github.com/dduan/tre/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dduan/tre/releases/download/{{.Version}}/tre-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: tre-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -63,13 +78,16 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dduan/tre/releases/download/{{.Version}}/tre-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/dduan/tre/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dduan/tre/releases/download/{{.Version}}/tre-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: tre-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -80,9 +98,13 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/dduan/tre/releases/download/{{.Version}}/tre-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dduan/tre/releases/download/{{.Version}}/tre-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin

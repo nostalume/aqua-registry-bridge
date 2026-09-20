@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("< 7.21.0")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/OpenAPITools/openapi-generator/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/OpenAPITools/openapi-generator/releases/download/{{.Version}}/openapi-generator-cli-{{trimV .Version}}.jar
         asset: openapi-generator-cli-{{trimV .Version}}.jar
         format: raw
         complete_windows_ext: false

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/kubesphere/kubeeye/releases/download/{{.Version}}/kubeeye-{{.Version}}-{{.OS}}-{{.Arch}}.tar.gz
     repo_owner: kubesphere
     repo_name: kubeeye
     asset: kubeeye-{{.Version}}-{{.OS}}-{{.Arch}}.tar.gz
@@ -11,7 +12,8 @@ packages:
       - name: kubeeye
         src: ke
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/kubesphere/kubeeye/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256
     version_constraint: semver("< 1.0.0")

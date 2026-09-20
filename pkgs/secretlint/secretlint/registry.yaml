@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("<= 0.3.0") or Version == "v8.3.0"
         no_asset: true
       - version_constraint: semver("<= 0.7.2")
-        url: https://gh-proxy.org/https://github.com/secretlint/secretlint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/secretlint/secretlint/releases/download/{{.Version}}/secretlint_{{.OS}}_{{.Arch}}
         asset: secretlint_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
@@ -24,7 +25,8 @@ packages:
           - windows
           - linux/amd64
       - version_constraint: Version == "v0.7.3"
-        url: https://gh-proxy.org/https://github.com/secretlint/secretlint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/secretlint/secretlint/releases/download/{{.Version}}/secretlint_{{.OS}}_{{.Arch}}
         asset: secretlint_{{.OS}}_{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -38,7 +40,8 @@ packages:
       - version_constraint: semver("<= 0.10.1")
         no_asset: true
       - version_constraint: semver("<= 4.1.0")
-        url: https://gh-proxy.org/https://github.com/secretlint/secretlint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/secretlint/secretlint/releases/download/{{.Version}}/secretlint_{{.OS}}_{{.Arch}}
         asset: secretlint_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
@@ -50,6 +53,8 @@ packages:
           windows: Windows
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/secretlint/secretlint/releases/download/{{.Version}}/secretlint_{{.OS}}_NT_{{.Arch}}
             asset: secretlint_{{.OS}}_NT_{{.Arch}}
         supported_envs:
           - darwin
@@ -58,7 +63,8 @@ packages:
       - version_constraint: semver("<= 8.1.2")
         no_asset: true
       - version_constraint: Version == "v8.2.0"
-        url: https://gh-proxy.org/https://github.com/secretlint/secretlint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/secretlint/secretlint/releases/download/{{.Version}}/secretlint_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         asset: secretlint_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         format: raw
         replacements:
@@ -67,7 +73,8 @@ packages:
         supported_envs:
           - linux/amd64
       - version_constraint: Version == "v8.2.1"
-        url: https://gh-proxy.org/https://github.com/secretlint/secretlint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/secretlint/secretlint/releases/download/{{.Version}}/secretlint_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         asset: secretlint_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
@@ -75,7 +82,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v8.2.2"
-        url: https://gh-proxy.org/https://github.com/secretlint/secretlint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/secretlint/secretlint/releases/download/{{.Version}}/secretlint-{{trimV .Version}}-{{.Arch}}-{{.OS}}
         asset: secretlint-{{trimV .Version}}-{{.Arch}}-{{.OS}}
         format: raw
         windows_arm_emulation: true
@@ -86,6 +94,8 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/secretlint/secretlint/releases/download/{{.Version}}/secretlint-{{trimV .Version}}-{{.Arch}}-{{.OS}}
             replacements:
               arm64: aarch64
         supported_envs:
@@ -93,7 +103,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "v8.2.4"
-        url: https://gh-proxy.org/https://github.com/secretlint/secretlint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/secretlint/secretlint/releases/download/{{.Version}}/secretlint-{{trimV .Version}}-{{.Arch}}-{{.OS}}
         asset: secretlint-{{trimV .Version}}-{{.Arch}}-{{.OS}}
         format: raw
         windows_arm_emulation: true
@@ -103,11 +114,14 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/secretlint/secretlint/releases/download/{{.Version}}/secretlint-{{trimV .Version}}-sha256sum.txt
           asset: secretlint-{{trimV .Version}}-sha256sum.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/secretlint/secretlint/releases/download/{{.Version}}/secretlint-{{trimV .Version}}-{{.Arch}}-{{.OS}}
             replacements:
               arm64: aarch64
         supported_envs:
@@ -115,13 +129,15 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/secretlint/secretlint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/secretlint/secretlint/releases/download/{{.Version}}/secretlint-{{trimV .Version}}-{{.OS}}-{{.Arch}}
         asset: secretlint-{{trimV .Version}}-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         replacements:
           amd64: x64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/secretlint/secretlint/releases/download/{{.Version}}/secretlint-{{trimV .Version}}-sha256sum.txt
           asset: secretlint-{{trimV .Version}}-sha256sum.txt
           algorithm: sha256

@@ -10,7 +10,8 @@ packages:
         src: "{{.AssetWithoutExt}}/tone"
     version_overrides:
       - version_constraint: semver("<= 0.0.4")
-        url: https://gh-proxy.org/https://github.com/sandreas/tone/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sandreas/tone/releases/download/{{.Version}}/tone-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: tone-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -20,11 +21,14 @@ packages:
           windows: win
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/sandreas/tone/releases/download/{{.Version}}/tone-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             files:
               - name: tone
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/sandreas/tone/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sandreas/tone/releases/download/{{.Version}}/tone-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: tone-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -34,9 +38,13 @@ packages:
           windows: win
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/sandreas/tone/releases/download/{{.Version}}/tone-{{trimV .Version}}-{{.OS}}-musl-{{.Arch}}.{{.Format}}
             goarch: amd64
             asset: tone-{{trimV .Version}}-{{.OS}}-musl-{{.Arch}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/sandreas/tone/releases/download/{{.Version}}/tone-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             files:
               - name: tone

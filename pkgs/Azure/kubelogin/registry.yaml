@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version == "v0.1.8"
         no_asset: true
       - version_constraint: Version == "v0.0.10"
-        url: https://gh-proxy.org/https://github.com/Azure/kubelogin/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Azure/kubelogin/releases/download/{{.Version}}/kubelogin-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: kubelogin-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -18,29 +19,36 @@ packages:
             src: bin/{{.OS}}_{{.Arch}}/kubelogin
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Azure/kubelogin/releases/download/{{.Version}}/kubelogin-win-{{.Arch}}.{{.Format}}
             asset: kubelogin-win-{{.Arch}}.{{.Format}}
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "v0.1.9"
-        url: https://gh-proxy.org/https://github.com/Azure/kubelogin/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Azure/kubelogin/releases/download/{{.Version}}/kubelogin-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: kubelogin-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         files:
           - name: kubelogin
             src: bin/{{.OS}}_{{.Arch}}/kubelogin
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Azure/kubelogin/releases/download/{{.Version}}/kubelogin-win-{{.Arch}}.{{.Format}}
             asset: kubelogin-win-{{.Arch}}.{{.Format}}
       - version_constraint: semver("<= 0.0.4")
         no_asset: true
       - version_constraint: semver("<= 0.0.9")
-        url: https://gh-proxy.org/https://github.com/Azure/kubelogin/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Azure/kubelogin/releases/download/{{.Version}}/kubelogin-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: kubelogin-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -50,13 +58,16 @@ packages:
             src: bin/{{.OS}}_{{.Arch}}/kubelogin
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Azure/kubelogin/releases/download/{{.Version}}/kubelogin-win-{{.Arch}}.{{.Format}}
             asset: kubelogin-win-{{.Arch}}.{{.Format}}
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.0.26")
-        url: https://gh-proxy.org/https://github.com/Azure/kubelogin/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Azure/kubelogin/releases/download/{{.Version}}/kubelogin-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: kubelogin-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -64,39 +75,50 @@ packages:
           - name: kubelogin
             src: bin/{{.OS}}_{{.Arch}}/kubelogin
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Azure/kubelogin/releases/download/{{.Version}}/kubelogin-win-{{.Arch}}.{{.Format}}
             asset: kubelogin-win-{{.Arch}}.{{.Format}}
       - version_constraint: semver("<= 0.1.7")
-        url: https://gh-proxy.org/https://github.com/Azure/kubelogin/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Azure/kubelogin/releases/download/{{.Version}}/kubelogin-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: kubelogin-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         files:
           - name: kubelogin
             src: bin/{{.OS}}_{{.Arch}}/kubelogin
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Azure/kubelogin/releases/download/{{.Version}}/kubelogin-win-{{.Arch}}.{{.Format}}
             asset: kubelogin-win-{{.Arch}}.{{.Format}}
       - version_constraint: semver("<= 0.2.6")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Azure/kubelogin/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Azure/kubelogin/releases/download/{{.Version}}/kubelogin-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: kubelogin-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         files:
           - name: kubelogin
             src: bin/{{.OS}}_{{.Arch}}/kubelogin
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Azure/kubelogin/releases/download/{{.Version}}/kubelogin-win-{{.Arch}}.{{.Format}}
             asset: kubelogin-win-{{.Arch}}.{{.Format}}

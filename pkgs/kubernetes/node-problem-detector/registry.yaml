@@ -17,7 +17,8 @@ packages:
       - version_constraint: Version == "v0.8.11"
         no_asset: true
       - version_constraint: Version == "v0.8.8"
-        url: https://gh-proxy.org/https://github.com/kubernetes/node-problem-detector/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes/node-problem-detector/releases/download/{{.Version}}/node-problem-detector-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
         asset: node-problem-detector-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -26,18 +27,22 @@ packages:
           - windows
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kubernetes/node-problem-detector/releases/download/{{.Version}}/node-problem-detector-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
             files:
               - name: node-problem-detector.exe
                 src: bin/{{.FileName}}
               - name: health-checker.exe
                 src: bin/{{.FileName}}
       - version_constraint: Version == "v0.8.12"
-        url: https://gh-proxy.org/https://github.com/kubernetes/node-problem-detector/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes/node-problem-detector/releases/download/{{.Version}}/node-problem-detector-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
         asset: node-problem-detector-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha512"
           asset: "{{.Asset}}.sha512"
           algorithm: sha512
         supported_envs:
@@ -45,13 +50,16 @@ packages:
           - windows
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kubernetes/node-problem-detector/releases/download/{{.Version}}/node-problem-detector-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
             files:
               - name: node-problem-detector.exe
                 src: bin/{{.FileName}}
               - name: health-checker.exe
                 src: bin/{{.FileName}}
       - version_constraint: Version == "v0.8.13"
-        url: https://gh-proxy.org/https://github.com/kubernetes/node-problem-detector/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes/node-problem-detector/releases/download/{{.Version}}/node-problem-detector-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
         asset: node-problem-detector-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -60,19 +68,23 @@ packages:
           - windows
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kubernetes/node-problem-detector/releases/download/{{.Version}}/node-problem-detector-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
             files:
               - name: node-problem-detector.exe
                 src: bin/{{.FileName}}
               - name: health-checker.exe
                 src: bin/{{.FileName}}
       - version_constraint: semver("<= 0.8.7")
-        url: https://gh-proxy.org/https://github.com/kubernetes/node-problem-detector/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes/node-problem-detector/releases/download/{{.Version}}/node-problem-detector-{{.Version}}.{{.Format}}
         asset: node-problem-detector-{{.Version}}.{{.Format}}
         format: tar.gz
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 0.8.10")
-        url: https://gh-proxy.org/https://github.com/kubernetes/node-problem-detector/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes/node-problem-detector/releases/download/{{.Version}}/node-problem-detector-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
         asset: node-problem-detector-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -81,18 +93,22 @@ packages:
           - windows
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kubernetes/node-problem-detector/releases/download/{{.Version}}/node-problem-detector-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
             files:
               - name: node-problem-detector.exe
                 src: bin/{{.FileName}}
               - name: health-checker.exe
                 src: bin/{{.FileName}}
       - version_constraint: semver("<= 0.8.15")
-        url: https://gh-proxy.org/https://github.com/kubernetes/node-problem-detector/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes/node-problem-detector/releases/download/{{.Version}}/node-problem-detector-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
         asset: node-problem-detector-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha512"
           asset: "{{.Asset}}.sha512"
           algorithm: sha512
         supported_envs:
@@ -100,13 +116,16 @@ packages:
           - windows
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kubernetes/node-problem-detector/releases/download/{{.Version}}/node-problem-detector-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
             files:
               - name: node-problem-detector.exe
                 src: bin/{{.FileName}}
               - name: health-checker.exe
                 src: bin/{{.FileName}}
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/kubernetes/node-problem-detector/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes/node-problem-detector/releases/download/{{.Version}}/node-problem-detector-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
         asset: node-problem-detector-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -115,6 +134,8 @@ packages:
           - windows
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kubernetes/node-problem-detector/releases/download/{{.Version}}/node-problem-detector-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
             files:
               - name: node-problem-detector.exe
                 src: bin/{{.FileName}}

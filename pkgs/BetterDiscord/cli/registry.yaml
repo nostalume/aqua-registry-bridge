@@ -9,24 +9,32 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.1.0"
-        url: https://gh-proxy.org/https://github.com/BetterDiscord/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/BetterDiscord/cli/releases/download/{{.Version}}/bdcli_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: bdcli_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/BetterDiscord/cli/releases/download/{{.Version}}/bdcli_checksums.txt
           asset: bdcli_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/BetterDiscord/cli/releases/download/{{.Version}}/bdcli_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/BetterDiscord/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/BetterDiscord/cli/releases/download/{{.Version}}/bdcli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: bdcli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/BetterDiscord/cli/releases/download/{{.Version}}/bdcli_checksums.txt
           asset: bdcli_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/BetterDiscord/cli/releases/download/{{.Version}}/bdcli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

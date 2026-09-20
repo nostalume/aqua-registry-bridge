@@ -11,7 +11,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.1.0")
-        url: https://gh-proxy.org/https://github.com/grafana-cold-storage/grizzly/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/grafana-cold-storage/grizzly/releases/download/{{.Version}}/grr-{{.OS}}-{{.Arch}}
         asset: grr-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -19,7 +20,8 @@ packages:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/grafana-cold-storage/grizzly/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/grafana-cold-storage/grizzly/releases/download/{{.Version}}/grr-{{.OS}}-{{.Arch}}
         asset: grr-{{.OS}}-{{.Arch}}
         format: raw
         supported_envs:

@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/theseus-rs/postgresql-binaries/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/theseus-rs/postgresql-binaries/releases/download/{{.Version}}/postgresql-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: postgresql-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -24,6 +25,8 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/theseus-rs/postgresql-binaries/releases/download/{{.Version}}/postgresql-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             files:
               - name: psql
                 src: postgresql-{{.Version}}-{{.Arch}}-{{.OS}}/bin/psql.exe
@@ -31,6 +34,7 @@ packages:
               # Skip because the contents of the provided file cannot be handled
               enabled: false
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256

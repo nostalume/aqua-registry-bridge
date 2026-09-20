@@ -10,7 +10,8 @@ packages:
       - version_constraint: Version in ["install-cargo-binstall-1.0.0", "v1.4.0"]
         no_asset: true
       - version_constraint: semver("<= 0.2.0")
-        url: https://gh-proxy.org/https://github.com/cargo-bins/cargo-binstall/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cargo-bins/cargo-binstall/releases/download/{{.Version}}/cargo-binstall-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-binstall-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tgz
         rosetta2: true
@@ -25,7 +26,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "v0.3.0"
-        url: https://gh-proxy.org/https://github.com/cargo-bins/cargo-binstall/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cargo-bins/cargo-binstall/releases/download/{{.Version}}/cargo-binstall-{{.Arch}}-{{.OS}}-{{.Version}}.{{.Format}}
         asset: cargo-binstall-{{.Arch}}-{{.OS}}-{{.Version}}.{{.Format}}
         format: tgz
         rosetta2: true
@@ -37,13 +39,16 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/cargo-bins/cargo-binstall/releases/download/{{.Version}}/cargo-binstall-{{.Arch}}-{{.OS}}-{{.Version}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.7.0")
-        url: https://gh-proxy.org/https://github.com/cargo-bins/cargo-binstall/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cargo-bins/cargo-binstall/releases/download/{{.Version}}/cargo-binstall-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-binstall-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -55,13 +60,16 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/cargo-bins/cargo-binstall/releases/download/{{.Version}}/cargo-binstall-{{.Arch}}-{{.OS}}.{{.Format}}
             format: tgz
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.18.1")
-        url: https://gh-proxy.org/https://github.com/cargo-bins/cargo-binstall/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cargo-bins/cargo-binstall/releases/download/{{.Version}}/cargo-binstall-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-binstall-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -73,9 +81,12 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/cargo-bins/cargo-binstall/releases/download/{{.Version}}/cargo-binstall-{{.Arch}}-{{.OS}}.{{.Format}}
             format: tgz
       - version_constraint: semver("< 1.19.0")
-        url: https://gh-proxy.org/https://github.com/cargo-bins/cargo-binstall/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cargo-bins/cargo-binstall/releases/download/{{.Version}}/cargo-binstall-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-binstall-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         replacements:
@@ -86,9 +97,12 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/cargo-bins/cargo-binstall/releases/download/{{.Version}}/cargo-binstall-{{.Arch}}-{{.OS}}.{{.Format}}
             format: tgz
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/cargo-bins/cargo-binstall/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cargo-bins/cargo-binstall/releases/download/{{.Version}}/cargo-binstall-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-binstall-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         replacements:
@@ -99,6 +113,8 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/cargo-bins/cargo-binstall/releases/download/{{.Version}}/cargo-binstall-{{.Arch}}-{{.OS}}.{{.Format}}
             format: tgz
         github_artifact_attestations:
           signer_workflow: cargo-bins/cargo-binstall/.github/workflows/release-cli.yml

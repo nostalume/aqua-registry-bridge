@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/s0md3v/Smap/releases/download/{{.Version}}/smap_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: s0md3v
     repo_name: Smap
     description: a drop-in replacement for Nmap powered by shodan.io
@@ -12,6 +13,8 @@ packages:
     format: tar.xz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/s0md3v/Smap/releases/download/{{.Version}}/smap_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     replacements:
       darwin: macOS
@@ -19,6 +22,7 @@ packages:
       - name: smap
         src: smap_{{.Version}}_{{.OS}}_{{.Arch}}/smap
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/s0md3v/Smap/releases/download/{{.Version}}/smap_{{.Version}}--sha256_checksums.txt
       asset: smap_{{.Version}}--sha256_checksums.txt
       algorithm: sha256

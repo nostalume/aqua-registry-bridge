@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/deref/exo/releases/download/{{.Version}}/exo_standalone_{{.Version}}_{{.OS}}_{{.Arch}}.tar.gz
     repo_owner: deref
     repo_name: exo
     description: A process manager & log viewer for dev
@@ -9,6 +10,7 @@ packages:
       - darwin
       - linux
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/deref/exo/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/sanathp/statusok/releases/download/{{.Version}}/statusok_{{.OS}}.zip
     repo_owner: sanathp
     repo_name: statusok
     description: Monitor your Website and APIs from your Computer. Get Notified through Slack, E-mail when your server is down or response time is more than expected

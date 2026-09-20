@@ -11,55 +11,71 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.2.1"
-        url: https://gh-proxy.org/https://github.com/sunny0826/kubectl-pod-lens/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sunny0826/kubectl-pod-lens/releases/download/{{.Version}}/pod-lens_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: pod-lens_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/sunny0826/kubectl-pod-lens/releases/download/{{.Version}}/pod-lens_{{trimV .Version}}_checksums.txt
           asset: pod-lens_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/sunny0826/kubectl-pod-lens/releases/download/{{.Version}}/pod-lens_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: Version == "v0.2.2"
-        url: https://gh-proxy.org/https://github.com/sunny0826/kubectl-pod-lens/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sunny0826/kubectl-pod-lens/releases/download/{{.Version}}/pod-lens_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: pod-lens_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/sunny0826/kubectl-pod-lens/releases/download/{{.Version}}/pod-lens_{{trimV .Version}}_checksums.txt
           asset: pod-lens_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/sunny0826/kubectl-pod-lens/releases/download/{{.Version}}/pod-lens_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.2.0")
-        url: https://gh-proxy.org/https://github.com/sunny0826/kubectl-pod-lens/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sunny0826/kubectl-pod-lens/releases/download/{{.Version}}/pod-lens_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: pod-lens_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/sunny0826/kubectl-pod-lens/releases/download/{{.Version}}/pod-lens_{{trimV .Version}}_checksums.txt
           asset: pod-lens_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/sunny0826/kubectl-pod-lens/releases/download/{{.Version}}/pod-lens_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/sunny0826/kubectl-pod-lens/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sunny0826/kubectl-pod-lens/releases/download/{{.Version}}/pod-lens_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: pod-lens_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/sunny0826/kubectl-pod-lens/releases/download/{{.Version}}/pod-lens_{{trimV .Version}}_checksums.txt
           asset: pod-lens_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/sunny0826/kubectl-pod-lens/releases/download/{{.Version}}/pod-lens_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

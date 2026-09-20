@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.8.0")
-        url: https://gh-proxy.org/https://github.com/PaulJuliusMartinez/jless/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/PaulJuliusMartinez/jless/releases/download/{{.Version}}/jless-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: jless-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -19,7 +20,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/PaulJuliusMartinez/jless/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/PaulJuliusMartinez/jless/releases/download/{{.Version}}/jless-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: jless-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         replacements:
@@ -28,6 +30,8 @@ packages:
           linux: unknown-linux-gnu
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/PaulJuliusMartinez/jless/releases/download/{{.Version}}/jless-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
         supported_envs:

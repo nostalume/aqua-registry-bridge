@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version == "v0.7.0"
         no_asset: true
       - version_constraint: Version == "v0.1.0"
-        url: https://gh-proxy.org/https://github.com/lima-vm/lima/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/lima-vm/lima/releases/download/{{.Version}}/lima-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: lima-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -21,13 +22,15 @@ packages:
           amd64: x86_64
           darwin: Darwin
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/lima-vm/lima/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         supported_envs:
           - darwin
       - version_constraint: semver("<= 2.1.0")
-        url: https://gh-proxy.org/https://github.com/lima-vm/lima/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/lima-vm/lima/releases/download/{{.Version}}/lima-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: lima-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -40,18 +43,22 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/lima-vm/lima/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/lima-vm/lima/releases/download/{{.Version}}/lima-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: aarch64
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/lima-vm/lima/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/lima-vm/lima/releases/download/{{.Version}}/lima-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: lima-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -65,16 +72,21 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/lima-vm/lima/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         github_artifact_attestations:
           signer_workflow: lima-vm/lima/.github/workflows/release.yml
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/lima-vm/lima/releases/download/{{.Version}}/lima-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/lima-vm/lima/releases/download/{{.Version}}/lima-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             files:
               - name: limactl

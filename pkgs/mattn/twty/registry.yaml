@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/mattn/twty/releases/download/{{.Version}}/twty_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: mattn
     repo_name: twty
     asset: twty_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -8,6 +9,8 @@ packages:
     description: command-line twitter client written in golang
     overrides:
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/mattn/twty/releases/download/{{.Version}}/twty_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
     files:
       - name: twty
@@ -15,6 +18,8 @@ packages:
     version_constraint: semver(">= 0.0.13")
     version_overrides:
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/mattn/twty/releases/download/{{.Version}}/twty_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         rosetta2: true
         supported_envs:
           - darwin

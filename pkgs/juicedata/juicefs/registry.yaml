@@ -9,21 +9,25 @@ packages:
       - version_constraint: semver("<= 0.12.0")
         no_asset: true
       - version_constraint: semver("<= 1.0.0-beta2")
-        url: https://gh-proxy.org/https://github.com/juicedata/juicefs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/juicedata/juicefs/releases/download/{{.Version}}/juicefs-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: juicefs-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/juicedata/juicefs/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/juicedata/juicefs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/juicedata/juicefs/releases/download/{{.Version}}/juicefs-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: juicefs-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/juicedata/juicefs/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

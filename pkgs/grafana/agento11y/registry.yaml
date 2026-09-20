@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/grafana/agento11y/releases/download/{{.Version}}/agento11y_{{.SemVer}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: grafana
     repo_name: agento11y
     description: Actually Useful Agent Observability
@@ -8,9 +9,12 @@ packages:
     asset: agento11y_{{.SemVer}}_{{.OS}}_{{.Arch}}.{{.Format}}
     format: tar.gz
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/grafana/agento11y/releases/download/{{.Version}}/agento11y_{{.SemVer}}_checksums.txt
       asset: agento11y_{{.SemVer}}_checksums.txt
       algorithm: sha256
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/grafana/agento11y/releases/download/{{.Version}}/agento11y_{{.SemVer}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip

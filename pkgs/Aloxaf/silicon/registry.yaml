@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/Aloxaf/silicon/releases/download/{{.Version}}/silicon-{{.Version}}-{{.Arch}}-{{.OS}}.tar.gz
     repo_owner: Aloxaf
     repo_name: silicon
     description: Create beautiful image of your source code
@@ -17,10 +18,14 @@ packages:
       - amd64
     version_overrides:
       - version_constraint: semver("= 0.5.0")
+        type: http
+        url: https://gh-proxy.org/github.com/Aloxaf/silicon/releases/download/{{.Version}}/silicon-{{.Version}}-{{.Arch}}-{{.OS}}.tar.gz
         supported_envs:
           - darwin
           - linux/amd64
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/Aloxaf/silicon/releases/download/{{.Version}}/silicon-{{.Version}}-{{.Arch}}-{{.OS}}.tar.gz
         replacements:
           darwin: apple-darwin
           windows: pc-windows-gnu

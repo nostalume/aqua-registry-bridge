@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/clog-tool/clog-cli/releases/download/{{.Version}}/clog-{{.Version}}-{{.Arch}}-{{.OS}}.tar.gz
     repo_owner: clog-tool
     repo_name: clog-cli
     description: Generate beautiful changelogs from your Git commit history
@@ -13,6 +14,8 @@ packages:
       linux: unknown-linux-musl
     overrides:
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/clog-tool/clog-cli/releases/download/{{.Version}}/clog-{{.Version}}-{{.Arch}}-{{.OS}}.tar.gz
         goarch: arm64
         replacements:
           linux: unknown-linux-gnu

@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/breml/tfreveal/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/breml/tfreveal/releases/download/{{.Version}}/tfreveal_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tfreveal_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -16,6 +17,7 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/breml/tfreveal/releases/download/{{.Version}}/tfreveal_{{trimV .Version}}_checksums.txt
           asset: tfreveal_{{trimV .Version}}_checksums.txt
           algorithm: sha256

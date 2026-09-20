@@ -7,23 +7,27 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.0.16")
-        url: https://gh-proxy.org/https://github.com/fujiwara/knockrd/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/fujiwara/knockrd/releases/download/{{.Version}}/knockrd_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: knockrd_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/fujiwara/knockrd/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/fujiwara/knockrd/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/fujiwara/knockrd/releases/download/{{.Version}}/knockrd_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: knockrd_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/fujiwara/knockrd/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:

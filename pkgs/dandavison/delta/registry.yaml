@@ -14,7 +14,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "0.16.4"
-        url: https://gh-proxy.org/https://github.com/dandavison/delta/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dandavison/delta/releases/download/{{.Version}}/delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -25,16 +26,21 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/dandavison/delta/releases/download/{{.Version}}/delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dandavison/delta/releases/download/{{.Version}}/delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "0.19.0"
-        url: https://gh-proxy.org/https://github.com/dandavison/delta/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dandavison/delta/releases/download/{{.Version}}/delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -45,17 +51,22 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/dandavison/delta/releases/download/{{.Version}}/delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               amd64: amd64
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dandavison/delta/releases/download/{{.Version}}/delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - linux/amd64
           - darwin/arm64
           - windows/amd64
       - version_constraint: semver("<= 0.2.0")
-        url: https://gh-proxy.org/https://github.com/dandavison/delta/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dandavison/delta/releases/download/{{.Version}}/delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -67,13 +78,16 @@ packages:
           windows: pc-windows-gnu
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dandavison/delta/releases/download/{{.Version}}/delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.4.0")
-        url: https://gh-proxy.org/https://github.com/dandavison/delta/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dandavison/delta/releases/download/{{.Version}}/delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -85,13 +99,16 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dandavison/delta/releases/download/{{.Version}}/delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.14.0")
-        url: https://gh-proxy.org/https://github.com/dandavison/delta/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dandavison/delta/releases/download/{{.Version}}/delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -102,18 +119,25 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dandavison/delta/releases/download/{{.Version}}/delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dandavison/delta/releases/download/{{.Version}}/delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               arm64: aarch64
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dandavison/delta/releases/download/{{.Version}}/delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.18.2")
-        url: https://gh-proxy.org/https://github.com/dandavison/delta/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dandavison/delta/releases/download/{{.Version}}/delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -124,17 +148,24 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dandavison/delta/releases/download/{{.Version}}/delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dandavison/delta/releases/download/{{.Version}}/delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dandavison/delta/releases/download/{{.Version}}/delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/dandavison/delta/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dandavison/delta/releases/download/{{.Version}}/delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -145,17 +176,25 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dandavison/delta/releases/download/{{.Version}}/delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dandavison/delta/releases/download/{{.Version}}/delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/dandavison/delta/releases/download/{{.Version}}/delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               amd64: amd64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dandavison/delta/releases/download/{{.Version}}/delta-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - linux

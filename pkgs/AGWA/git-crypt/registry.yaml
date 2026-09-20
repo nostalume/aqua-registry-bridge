@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "0.8.0"
-        url: https://gh-proxy.org/https://github.com/AGWA/git-crypt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/AGWA/git-crypt/releases/download/{{.Version}}/git-crypt-{{.Version}}-{{.Arch}}
         asset: git-crypt-{{.Version}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -15,11 +16,14 @@ packages:
           amd64: x86_64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/AGWA/git-crypt/releases/download/{{.Version}}/git-crypt-{{.Version}}-{{.OS}}-{{.Arch}}
             asset: git-crypt-{{.Version}}-{{.OS}}-{{.Arch}}
         supported_envs:
           - linux/amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/AGWA/git-crypt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/AGWA/git-crypt/releases/download/{{.Version}}/git-crypt-{{.Version}}-{{.Arch}}
         asset: git-crypt-{{.Version}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -27,6 +31,8 @@ packages:
           amd64: x86_64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/AGWA/git-crypt/releases/download/{{.Version}}/git-crypt-{{.Version}}-{{.OS}}-{{.Arch}}
             asset: git-crypt-{{.Version}}-{{.OS}}-{{.Arch}}
         supported_envs:
           - linux/amd64

@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/bahdotsh/mdterm/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bahdotsh/mdterm/releases/download/{{.Version}}/mdterm-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: mdterm-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -20,4 +21,6 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bahdotsh/mdterm/releases/download/{{.Version}}/mdterm-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip

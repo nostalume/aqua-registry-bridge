@@ -9,14 +9,16 @@ packages:
       - version_constraint: Version in ["v1.6.0", "v2.10.0", "2.15.0"]
         no_asset: true
       - version_constraint: Version in ["v1.0.0", "v2.0.1"]
-        url: https://gh-proxy.org/https://github.com/o2sh/onefetch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/o2sh/onefetch/releases/download/{{.Version}}/onefetch_{{.OS}}_x86-64.{{.Format}}
         asset: onefetch_{{.OS}}_x86-64.{{.Format}}
         format: zip
         supported_envs:
           - linux/amd64
           - windows/amd64
       - version_constraint: Version in ["v1.0.5", "v1.5.4"]
-        url: https://gh-proxy.org/https://github.com/o2sh/onefetch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/o2sh/onefetch/releases/download/{{.Version}}/onefetch_{{.OS}}_x86-64.{{.Format}}
         asset: onefetch_{{.OS}}_x86-64.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -24,28 +26,35 @@ packages:
           amd64: x86_64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/o2sh/onefetch/releases/download/{{.Version}}/onefetch_{{.OS}}-{{.Arch}}.{{.Format}}
             asset: onefetch_{{.OS}}-{{.Arch}}.{{.Format}}
         supported_envs:
           - linux/amd64
           - windows/amd64
       - version_constraint: Version in ["v1.5.5", "v1.6.5"]
-        url: https://gh-proxy.org/https://github.com/o2sh/onefetch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/o2sh/onefetch/releases/download/{{.Version}}/onefetch_{{.OS}}_x86-64.{{.Format}}
         asset: onefetch_{{.OS}}_x86-64.{{.Format}}
         format: zip
         supported_envs:
           - linux/amd64
       - version_constraint: Version == "v2.1.0"
-        url: https://gh-proxy.org/https://github.com/o2sh/onefetch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/o2sh/onefetch/releases/download/{{.Version}}/onefetch_{{.OS}}_x86-64.{{.Format}}
         asset: onefetch_{{.OS}}_x86-64.{{.Format}}
         format: zip
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/o2sh/onefetch/releases/download/{{.Version}}/onefetch_{{.OS}}-x86-64.{{.Format}}
             asset: onefetch_{{.OS}}-x86-64.{{.Format}}
         supported_envs:
           - linux/amd64
           - windows/amd64
       - version_constraint: Version == "v2.2.0"
-        url: https://gh-proxy.org/https://github.com/o2sh/onefetch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/o2sh/onefetch/releases/download/{{.Version}}/onefetch_{{.OS}}-x86-64.{{.Format}}
         asset: onefetch_{{.OS}}-x86-64.{{.Format}}
         format: zip
         rosetta2: true
@@ -53,8 +62,12 @@ packages:
           darwin: macos
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/o2sh/onefetch/releases/download/{{.Version}}/onefetch_{{.OS}}_x86-64.{{.Format}}
             asset: onefetch_{{.OS}}_x86-64.{{.Format}}
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/o2sh/onefetch/releases/download/{{.Version}}/onefetch_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
             asset: onefetch_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             replacements:
@@ -64,7 +77,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "v2.3.0"
-        url: https://gh-proxy.org/https://github.com/o2sh/onefetch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/o2sh/onefetch/releases/download/{{.Version}}/onefetch_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: onefetch_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -74,13 +88,15 @@ packages:
         supported_envs:
           - darwin
       - version_constraint: semver("<= 1.5.3")
-        url: https://gh-proxy.org/https://github.com/o2sh/onefetch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/o2sh/onefetch/releases/download/{{.Version}}/onefetch_{{.OS}}_x86-64.{{.Format}}
         asset: onefetch_{{.OS}}_x86-64.{{.Format}}
         format: zip
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 2.0.0")
-        url: https://gh-proxy.org/https://github.com/o2sh/onefetch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/o2sh/onefetch/releases/download/{{.Version}}/onefetch_{{.OS}}_x86-64.{{.Format}}
         asset: onefetch_{{.OS}}_x86-64.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -88,12 +104,15 @@ packages:
           amd64: x86_64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/o2sh/onefetch/releases/download/{{.Version}}/onefetch_{{.OS}}-{{.Arch}}.{{.Format}}
             asset: onefetch_{{.OS}}-{{.Arch}}.{{.Format}}
         supported_envs:
           - linux/amd64
           - windows/amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/o2sh/onefetch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/o2sh/onefetch/releases/download/{{.Version}}/onefetch-{{.OS}}.{{.Format}}
         asset: onefetch-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:

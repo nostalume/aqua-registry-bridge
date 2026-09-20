@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.14.6")
-        url: https://gh-proxy.org/https://github.com/neilotoole/sq/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/neilotoole/sq/releases/download/{{.Version}}/sq-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: sq-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -15,18 +16,22 @@ packages:
         replacements:
           darwin: macOS
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/neilotoole/sq/releases/download/{{.Version}}/sq-{{trimV .Version}}-checksums.txt
           asset: sq-{{trimV .Version}}-checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/neilotoole/sq/releases/download/{{.Version}}/sq-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.15.4")
-        url: https://gh-proxy.org/https://github.com/neilotoole/sq/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/neilotoole/sq/releases/download/{{.Version}}/sq-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: sq-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -34,71 +39,92 @@ packages:
         replacements:
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/neilotoole/sq/releases/download/{{.Version}}/sq-checksums.txt
           asset: sq-checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/neilotoole/sq/releases/download/{{.Version}}/sq-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.15.11")
-        url: https://gh-proxy.org/https://github.com/neilotoole/sq/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/neilotoole/sq/releases/download/{{.Version}}/sq_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: sq_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         replacements:
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/neilotoole/sq/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/neilotoole/sq/releases/download/{{.Version}}/sq_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.40.0")
-        url: https://gh-proxy.org/https://github.com/neilotoole/sq/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/neilotoole/sq/releases/download/{{.Version}}/sq-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: sq-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         replacements:
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/neilotoole/sq/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/neilotoole/sq/releases/download/{{.Version}}/sq-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.48.4")
-        url: https://gh-proxy.org/https://github.com/neilotoole/sq/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/neilotoole/sq/releases/download/{{.Version}}/sq-{{trimV .Version}}-{{.Arch}}-{{.Arch}}.{{.Format}}
         asset: sq-{{trimV .Version}}-{{.Arch}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         replacements:
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/neilotoole/sq/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/neilotoole/sq/releases/download/{{.Version}}/sq-{{trimV .Version}}-{{.Arch}}-{{.Arch}}.{{.Format}}
             format: zip
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/neilotoole/sq/releases/download/{{.Version}}/sq-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             asset: sq-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/neilotoole/sq/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/neilotoole/sq/releases/download/{{.Version}}/sq-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: sq-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         replacements:
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/neilotoole/sq/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/neilotoole/sq/releases/download/{{.Version}}/sq-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip

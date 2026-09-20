@@ -7,12 +7,14 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.2.5")
-        url: https://gh-proxy.org/https://github.com/openvex/vexctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/openvex/vexctl/releases/download/{{.Version}}/vexctl-{{.OS}}-{{.Arch}}
         asset: vexctl-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/openvex/vexctl/releases/download/{{.Version}}/vex_checksums.txt
           asset: vex_checksums.txt
           algorithm: sha256
           cosign:
@@ -22,9 +24,9 @@ packages:
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
               - --signature
-              - https://github.com/openvex/vexctl/releases/download/{{.Version}}/vex_checksums.txt.sig
+              - https://gh-proxy.org/github.com/openvex/vexctl/releases/download/{{.Version}}/vex_checksums.txt.sig
               - --certificate
-              - https://github.com/openvex/vexctl/releases/download/{{.Version}}/vex_checksums.txt.pem
+              - https://gh-proxy.org/github.com/openvex/vexctl/releases/download/{{.Version}}/vex_checksums.txt.pem
         cosign:
           opts:
             - --certificate-identity-regexp
@@ -32,16 +34,18 @@ packages:
             - --certificate-oidc-issuer
             - "https://token.actions.githubusercontent.com"
             - --signature
-            - https://github.com/openvex/vexctl/releases/download/{{.Version}}/{{.Asset}}.sig
+            - https://gh-proxy.org/github.com/openvex/vexctl/releases/download/{{.Version}}/{{.Asset}}.sig
             - --certificate
-            - https://github.com/openvex/vexctl/releases/download/{{.Version}}/{{.Asset}}.pem
+            - https://gh-proxy.org/github.com/openvex/vexctl/releases/download/{{.Version}}/{{.Asset}}.pem
       - version_constraint: semver("<= 0.4.1")
-        url: https://gh-proxy.org/https://github.com/openvex/vexctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/openvex/vexctl/releases/download/{{.Version}}/vexctl-{{.OS}}-{{.Arch}}
         asset: vexctl-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/openvex/vexctl/releases/download/{{.Version}}/vexctl_checksums.txt
           asset: vexctl_checksums.txt
           algorithm: sha256
           cosign:
@@ -51,9 +55,9 @@ packages:
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
               - --signature
-              - https://github.com/openvex/vexctl/releases/download/{{.Version}}/vexctl_checksums.txt.sig
+              - https://gh-proxy.org/github.com/openvex/vexctl/releases/download/{{.Version}}/vexctl_checksums.txt.sig
               - --certificate
-              - https://github.com/openvex/vexctl/releases/download/{{.Version}}/vexctl_checksums.txt.pem
+              - https://gh-proxy.org/github.com/openvex/vexctl/releases/download/{{.Version}}/vexctl_checksums.txt.pem
         cosign:
           opts:
             - --certificate-identity-regexp
@@ -61,16 +65,18 @@ packages:
             - --certificate-oidc-issuer
             - "https://token.actions.githubusercontent.com"
             - --signature
-            - https://github.com/openvex/vexctl/releases/download/{{.Version}}/{{.Asset}}.sig
+            - https://gh-proxy.org/github.com/openvex/vexctl/releases/download/{{.Version}}/{{.Asset}}.sig
             - --certificate
-            - https://github.com/openvex/vexctl/releases/download/{{.Version}}/{{.Asset}}.pem
+            - https://gh-proxy.org/github.com/openvex/vexctl/releases/download/{{.Version}}/{{.Asset}}.pem
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/openvex/vexctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/openvex/vexctl/releases/download/{{.Version}}/vexctl-{{.OS}}-{{.Arch}}
         asset: vexctl-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/openvex/vexctl/releases/download/{{.Version}}/vexctl_checksums.txt
           asset: vexctl_checksums.txt
           algorithm: sha256
           cosign:
@@ -80,7 +86,8 @@ packages:
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/openvex/vexctl/releases/download/{{.Version}}/vexctl_checksums.txt.sigstore.json
               asset: vexctl_checksums.txt.sigstore.json
         cosign:
           opts:
@@ -89,5 +96,6 @@ packages:
             - --certificate-oidc-issuer
             - "https://token.actions.githubusercontent.com"
           bundle:
-            type: github_release
+            type: http
+            url: https://gh-proxy.org/github.com/openvex/vexctl/releases/download/{{.Version}}/{{.Asset}}.sigstore.json
             asset: "{{.Asset}}.sigstore.json"

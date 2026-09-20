@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/kubernetes/kops/releases/download/{{.Version}}/kops-{{.OS}}-{{.Arch}}
     repo_owner: kubernetes
     repo_name: kops
     description: Kubernetes Operations (kops) - Production Grade K8s Installation, Upgrades, and Management
@@ -11,6 +12,7 @@ packages:
       - amd64
     asset: kops-{{.OS}}-{{.Arch}}
     checksum:
-      type: github_release
+      type: http
+      url: "{{.AssetURL}}.sha256"
       asset: "{{.Asset}}.sha256"
       algorithm: sha256

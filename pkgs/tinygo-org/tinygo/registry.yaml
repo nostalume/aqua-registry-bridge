@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.1"
-        url: https://gh-proxy.org/https://github.com/tinygo-org/tinygo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tinygo-org/tinygo/releases/download/{{.Version}}/tinygo{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         asset: tinygo{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -16,7 +17,8 @@ packages:
         supported_envs:
           - linux/amd64
       - version_constraint: Version == "v0.7.1"
-        url: https://gh-proxy.org/https://github.com/tinygo-org/tinygo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tinygo-org/tinygo/releases/download/{{.Version}}/tinygo{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         asset: tinygo{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -27,7 +29,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v0.8.0"
-        url: https://gh-proxy.org/https://github.com/tinygo-org/tinygo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tinygo-org/tinygo/releases/download/{{.Version}}/tinygo{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         asset: tinygo{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -38,7 +41,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: Version in ["v0.13.0", "v0.22.0", "v0.25.0-beta1"]
-        url: https://gh-proxy.org/https://github.com/tinygo-org/tinygo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tinygo-org/tinygo/releases/download/{{.Version}}/tinygo{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         asset: tinygo{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -48,13 +52,16 @@ packages:
             src: tinygo/bin/tinygo
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/tinygo-org/tinygo/releases/download/{{.Version}}/tinygo{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.4.1")
-        url: https://gh-proxy.org/https://github.com/tinygo-org/tinygo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tinygo-org/tinygo/releases/download/{{.Version}}/tinygo{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         asset: tinygo{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -63,7 +70,8 @@ packages:
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 0.7.0")
-        url: https://gh-proxy.org/https://github.com/tinygo-org/tinygo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tinygo-org/tinygo/releases/download/{{.Version}}/tinygo{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         asset: tinygo{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -74,7 +82,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.30.0")
-        url: https://gh-proxy.org/https://github.com/tinygo-org/tinygo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tinygo-org/tinygo/releases/download/{{.Version}}/tinygo{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         asset: tinygo{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -84,9 +93,12 @@ packages:
             src: tinygo/bin/tinygo
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/tinygo-org/tinygo/releases/download/{{.Version}}/tinygo{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/tinygo-org/tinygo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tinygo-org/tinygo/releases/download/{{.Version}}/tinygo{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         asset: tinygo{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -95,4 +107,6 @@ packages:
             src: tinygo/bin/tinygo
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/tinygo-org/tinygo/releases/download/{{.Version}}/tinygo{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip

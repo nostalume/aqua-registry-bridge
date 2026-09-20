@@ -12,7 +12,8 @@ packages:
       - version_constraint: semver("<= 1.1.5")
         no_asset: true
       - version_constraint: semver("<= 1.5.8")
-        url: https://gh-proxy.org/https://github.com/kyverno/kyverno/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kyverno/kyverno/releases/download/{{.Version}}/kyverno-cli_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kyverno-cli_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -20,95 +21,115 @@ packages:
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kyverno/kyverno/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kyverno/kyverno/releases/download/{{.Version}}/kyverno-cli_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 1.10.0")
-        url: https://gh-proxy.org/https://github.com/kyverno/kyverno/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kyverno/kyverno/releases/download/{{.Version}}/kyverno-cli_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kyverno-cli_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kyverno/kyverno/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kyverno/kyverno/releases/download/{{.Version}}/kyverno-cli_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 1.10.7")
-        url: https://gh-proxy.org/https://github.com/kyverno/kyverno/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kyverno/kyverno/releases/download/{{.Version}}/kyverno-cli_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kyverno-cli_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kyverno/kyverno/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/kyverno/kyverno/releases/download/{{.Version}}/checksums.txt.pem
+              - https://gh-proxy.org/github.com/kyverno/kyverno/releases/download/{{.Version}}/checksums.txt.pem
               - --certificate-identity
-              - https://github.com/kyverno/kyverno/.github/workflows/release.yaml@refs/tags/{{.Version}}
+              - https://gh-proxy.org/github.com/kyverno/kyverno/.github/workflows/release.yaml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/kyverno/kyverno/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/kyverno/kyverno/releases/download/{{.Version}}/checksums.txt.sig
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kyverno/kyverno/releases/download/{{.Version}}/kyverno-cli_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("< 1.17.2")
-        url: https://gh-proxy.org/https://github.com/kyverno/kyverno/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kyverno/kyverno/releases/download/{{.Version}}/kyverno-cli_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kyverno-cli_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kyverno/kyverno/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/kyverno/kyverno/releases/download/{{.Version}}/checksums.txt.pem
+              - https://gh-proxy.org/github.com/kyverno/kyverno/releases/download/{{.Version}}/checksums.txt.pem
               - --certificate-identity
-              - https://github.com/kyverno/kyverno/.github/workflows/release.yaml@refs/tags/{{.Version}}
+              - https://gh-proxy.org/github.com/kyverno/kyverno/.github/workflows/release.yaml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/kyverno/kyverno/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/kyverno/kyverno/releases/download/{{.Version}}/checksums.txt.sig
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kyverno/kyverno/releases/download/{{.Version}}/kyverno-cli_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/kyverno/kyverno/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kyverno/kyverno/releases/download/{{.Version}}/kyverno-cli_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kyverno-cli_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kyverno/kyverno/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/kyverno/kyverno/releases/download/{{.Version}}/checksums.txt.sigstore.json
               asset: checksums.txt.sigstore.json
             opts:
               - --certificate-identity
-              - https://github.com/kyverno/kyverno/.github/workflows/release.yaml@refs/tags/{{.Version}}
+              - https://gh-proxy.org/github.com/kyverno/kyverno/.github/workflows/release.yaml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kyverno/kyverno/releases/download/{{.Version}}/kyverno-cli_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

@@ -9,15 +9,20 @@ packages:
       - version_constraint: Version in ["v2.9.6", "v2.9.9"]
         no_asset: true
       - version_constraint: semver("<= 0.1.0")
-        url: https://gh-proxy.org/https://github.com/ikawaha/kagome/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ikawaha/kagome/releases/download/{{.Version}}/kagome_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kagome_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
         windows_arm_emulation: true
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/ikawaha/kagome/releases/download/{{.Version}}/kagome_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ikawaha/kagome/releases/download/{{.Version}}/kagome_{{.OS}}_{{.Arch}}.{{.Format}}
             files:
               - name: kagome
         supported_envs:
@@ -30,40 +35,50 @@ packages:
       - version_constraint: semver("<= 2.2.0")
         no_asset: true
       - version_constraint: semver("<= 2.6.0")
-        url: https://gh-proxy.org/https://github.com/ikawaha/kagome/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ikawaha/kagome/releases/download/{{.Version}}/kagome_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kagome_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/ikawaha/kagome/releases/download/{{.Version}}/kagome_{{trimV .Version}}_checksums.txt
           asset: kagome_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 2.6.3")
-        url: https://gh-proxy.org/https://github.com/ikawaha/kagome/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ikawaha/kagome/releases/download/{{.Version}}/kagome_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kagome_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/ikawaha/kagome/releases/download/{{.Version}}/kagome_{{trimV .Version}}_checksums.txt
           asset: kagome_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 2.9.2")
-        url: https://gh-proxy.org/https://github.com/ikawaha/kagome/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ikawaha/kagome/releases/download/{{.Version}}/kagome_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kagome_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/ikawaha/kagome/releases/download/{{.Version}}/kagome_{{trimV .Version}}_checksums.txt
           asset: kagome_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/ikawaha/kagome/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ikawaha/kagome/releases/download/{{.Version}}/kagome_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kagome_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/ikawaha/kagome/releases/download/{{.Version}}/kagome_{{trimV .Version}}_checksums.txt
           asset: kagome_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/ikawaha/kagome/releases/download/{{.Version}}/kagome_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
             asset: kagome_{{trimV .Version}}_{{.OS}}_all.{{.Format}}

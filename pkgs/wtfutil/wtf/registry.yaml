@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.39.2"
-        url: https://gh-proxy.org/https://github.com/wtfutil/wtf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/wtfutil/wtf/releases/download/{{.Version}}/wtf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: wtf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -17,14 +18,16 @@ packages:
           - name: wtfutil
             src: "{{.AssetWithoutExt}}/wtfutil"
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/wtfutil/wtf/releases/download/{{.Version}}/wtf_{{trimV .Version}}_checksums.txt
           asset: wtf_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 0.0.7")
-        url: https://gh-proxy.org/https://github.com/wtfutil/wtf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/wtfutil/wtf/releases/download/{{.Version}}/wtf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: wtf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -32,14 +35,16 @@ packages:
           - name: wtfutil
             src: wtf
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/wtfutil/wtf/releases/download/{{.Version}}/wtf_{{trimV .Version}}_checksums.txt
           asset: wtf_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.0.10")
-        url: https://gh-proxy.org/https://github.com/wtfutil/wtf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/wtfutil/wtf/releases/download/{{.Version}}/wtf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: wtf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -47,14 +52,16 @@ packages:
           - name: wtfutil
             src: "{{.AssetWithoutExt}}/wtf"
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/wtfutil/wtf/releases/download/{{.Version}}/wtf_{{trimV .Version}}_checksums.txt
           asset: wtf_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.9.1")
-        url: https://gh-proxy.org/https://github.com/wtfutil/wtf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/wtfutil/wtf/releases/download/{{.Version}}/wtf_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: wtf_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -62,14 +69,16 @@ packages:
           - name: wtfutil
             src: "{{.AssetWithoutExt}}/wtf"
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/wtfutil/wtf/releases/download/{{.Version}}/wtf_{{.Version}}_checksums.txt
           asset: wtf_{{.Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.14.0")
-        url: https://gh-proxy.org/https://github.com/wtfutil/wtf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/wtfutil/wtf/releases/download/{{.Version}}/wtf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: wtf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -77,14 +86,16 @@ packages:
           - name: wtfutil
             src: "{{.AssetWithoutExt}}/wtf"
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/wtfutil/wtf/releases/download/{{.Version}}/wtf_{{trimV .Version}}_checksums.txt
           asset: wtf_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.19.0")
-        url: https://gh-proxy.org/https://github.com/wtfutil/wtf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/wtfutil/wtf/releases/download/{{.Version}}/wtf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: wtf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -92,14 +103,16 @@ packages:
           - name: wtfutil
             src: "{{.AssetWithoutExt}}/wtfutil"
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/wtfutil/wtf/releases/download/{{.Version}}/wtf_{{trimV .Version}}_checksums.txt
           asset: wtf_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.35.0")
-        url: https://gh-proxy.org/https://github.com/wtfutil/wtf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/wtfutil/wtf/releases/download/{{.Version}}/wtf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: wtf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -107,34 +120,39 @@ packages:
           - name: wtfutil
             src: "{{.AssetWithoutExt}}/wtfutil"
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/wtfutil/wtf/releases/download/{{.Version}}/wtf_{{trimV .Version}}_checksums.txt
           asset: wtf_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 0.46.1")
-        url: https://gh-proxy.org/https://github.com/wtfutil/wtf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/wtfutil/wtf/releases/download/{{.Version}}/wtf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: wtf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: wtfutil
             src: "{{.AssetWithoutExt}}/wtfutil"
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/wtfutil/wtf/releases/download/{{.Version}}/wtf_{{trimV .Version}}_checksums.txt
           asset: wtf_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/wtfutil/wtf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/wtfutil/wtf/releases/download/{{.Version}}/wtf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: wtf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: wtfutil
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/wtfutil/wtf/releases/download/{{.Version}}/wtf_{{trimV .Version}}_checksums.txt
           asset: wtf_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:

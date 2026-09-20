@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.5.0")
-        url: https://gh-proxy.org/https://github.com/int128/ghcp/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/int128/ghcp/releases/download/{{.Version}}/ghcp_{{.OS}}_{{.Arch}}
         asset: ghcp_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
@@ -17,13 +18,15 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.13.0")
-        url: https://gh-proxy.org/https://github.com/int128/ghcp/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/int128/ghcp/releases/download/{{.Version}}/ghcp_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ghcp_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
@@ -31,11 +34,13 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/int128/ghcp/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/int128/ghcp/releases/download/{{.Version}}/ghcp_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ghcp_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256

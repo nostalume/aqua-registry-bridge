@@ -7,11 +7,13 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/jscaltreto/eks-auth/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jscaltreto/eks-auth/releases/download/{{.Version}}/eks-auth-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: eks-auth-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.md5"
           asset: "{{.Asset}}.md5"
           algorithm: md5
         supported_envs:

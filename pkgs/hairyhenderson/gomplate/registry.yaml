@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/hairyhenderson/gomplate/releases/download/{{.Version}}/gomplate_{{.OS}}-{{.Arch}}
     repo_owner: hairyhenderson
     repo_name: gomplate
     description: A flexible commandline tool for template rendering. Supports lots of local and remote datasources
@@ -10,6 +11,7 @@ packages:
       - amd64
     asset: gomplate_{{.OS}}-{{.Arch}}
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/hairyhenderson/gomplate/releases/download/{{.Version}}/checksums-{{.Version}}_sha512.txt
       asset: checksums-{{.Version}}_sha512.txt
       algorithm: sha512

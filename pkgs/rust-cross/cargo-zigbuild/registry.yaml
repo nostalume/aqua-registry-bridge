@@ -7,26 +7,34 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.9.0")
-        url: https://gh-proxy.org/https://github.com/rust-cross/cargo-zigbuild/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rust-cross/cargo-zigbuild/releases/download/{{.Version}}/cargo-zigbuild-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-zigbuild-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
           darwin: apple-darwin
           linux: unknown-linux-musl
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/rust-cross/cargo-zigbuild/releases/download/{{.Version}}/cargo-zigbuild-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               amd64: x86_64
               arm64: aarch64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/rust-cross/cargo-zigbuild/releases/download/{{.Version}}/cargo-zigbuild-{{.Version}}.{{.OS}}.{{.Format}}
             asset: cargo-zigbuild-{{.Version}}.{{.OS}}.{{.Format}}
             checksum:
               enabled: false
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/rust-cross/cargo-zigbuild/releases/download/{{.Version}}/cargo-zigbuild-{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             asset: cargo-zigbuild-{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
@@ -34,25 +42,33 @@ packages:
             checksum:
               enabled: false
       - version_constraint: Version == "v0.10.0"
-        url: https://gh-proxy.org/https://github.com/rust-cross/cargo-zigbuild/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rust-cross/cargo-zigbuild/releases/download/{{.Version}}/cargo-zigbuild-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-zigbuild-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
           darwin: apple-darwin
           linux: unknown-linux-musl
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/rust-cross/cargo-zigbuild/releases/download/{{.Version}}/cargo-zigbuild-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/rust-cross/cargo-zigbuild/releases/download/{{.Version}}/cargo-zigbuild-{{.Version}}.{{.OS}}.{{.Format}}
             asset: cargo-zigbuild-{{.Version}}.{{.OS}}.{{.Format}}
             checksum:
               enabled: false
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/rust-cross/cargo-zigbuild/releases/download/{{.Version}}/cargo-zigbuild-{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             asset: cargo-zigbuild-{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
@@ -64,30 +80,39 @@ packages:
           - darwin
           - windows
       - version_constraint: semver("<= 0.21.4")
-        url: https://gh-proxy.org/https://github.com/rust-cross/cargo-zigbuild/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rust-cross/cargo-zigbuild/releases/download/{{.Version}}/cargo-zigbuild-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-zigbuild-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
           darwin: apple-darwin
           linux: unknown-linux-musl
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/rust-cross/cargo-zigbuild/releases/download/{{.Version}}/cargo-zigbuild-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               amd64: x86_64
               arm64: aarch64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/rust-cross/cargo-zigbuild/releases/download/{{.Version}}/cargo-zigbuild-{{.Version}}.{{.OS}}.{{.Format}}
             asset: cargo-zigbuild-{{.Version}}.{{.OS}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/rust-cross/cargo-zigbuild/releases/download/{{.Version}}/cargo-zigbuild-{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             asset: cargo-zigbuild-{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               amd64: x64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/rust-cross/cargo-zigbuild/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rust-cross/cargo-zigbuild/releases/download/{{.Version}}/cargo-zigbuild-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-zigbuild-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         replacements:
@@ -97,7 +122,8 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         files:
@@ -105,6 +131,8 @@ packages:
             src: "{{.AssetWithoutExt}}/{{.FileName}}"
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/rust-cross/cargo-zigbuild/releases/download/{{.Version}}/cargo-zigbuild-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: cargo-zigbuild

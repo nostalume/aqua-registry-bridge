@@ -11,15 +11,19 @@ packages:
       - version_constraint: Version == "v1.3.0"
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/anthropics/anthropic-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/anthropics/anthropic-cli/releases/download/{{.Version}}/ant_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ant_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         replacements:
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/anthropics/anthropic-cli/releases/download/{{.Version}}/ant_{{trimV .Version}}_checksums.txt
           asset: ant_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/anthropics/anthropic-cli/releases/download/{{.Version}}/ant_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz

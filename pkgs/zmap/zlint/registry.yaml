@@ -10,7 +10,8 @@ packages:
       - version_constraint: semver("<= 1.1.0")
         no_asset: true
       - version_constraint: semver("< 3.7.0")
-        url: https://gh-proxy.org/https://github.com/zmap/zlint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zmap/zlint/releases/download/{{.Version}}/zlint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: zlint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -24,7 +25,8 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/zmap/zlint/releases/download/{{.Version}}/zlint_{{trimV .Version}}_checksums.txt
           asset: zlint_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
@@ -32,7 +34,8 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/zmap/zlint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zmap/zlint/releases/download/{{.Version}}/zlint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: zlint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -44,7 +47,8 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/zmap/zlint/releases/download/{{.Version}}/zlint_{{trimV .Version}}_checksums.txt
           asset: zlint_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:

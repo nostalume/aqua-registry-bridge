@@ -7,26 +7,31 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/suzuki-shunsuke/migrate-urfave-cli-v3/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/migrate-urfave-cli-v3/releases/download/{{.Version}}/migrate-urfave-cli-v3_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: migrate-urfave-cli-v3_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/migrate-urfave-cli-v3/releases/download/{{.Version}}/migrate-urfave-cli-v3_{{trimV .Version}}_checksums.txt
           asset: migrate-urfave-cli-v3_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/suzuki-shunsuke/migrate-urfave-cli-v3/releases/download/{{.Version}}/migrate-urfave-cli-v3_{{trimV .Version}}_checksums.txt.pem
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/migrate-urfave-cli-v3/releases/download/{{.Version}}/migrate-urfave-cli-v3_{{trimV .Version}}_checksums.txt.pem
               - --certificate-identity-regexp
               - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/suzuki-shunsuke/migrate-urfave-cli-v3/releases/download/{{.Version}}/migrate-urfave-cli-v3_{{trimV .Version}}_checksums.txt.sig
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/migrate-urfave-cli-v3/releases/download/{{.Version}}/migrate-urfave-cli-v3_{{trimV .Version}}_checksums.txt.sig
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/migrate-urfave-cli-v3/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/migrate-urfave-cli-v3/releases/download/{{.Version}}/migrate-urfave-cli-v3_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

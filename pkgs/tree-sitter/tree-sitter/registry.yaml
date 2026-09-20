@@ -10,7 +10,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.20.8"
-        url: https://gh-proxy.org/https://github.com/tree-sitter/tree-sitter/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tree-sitter/tree-sitter/releases/download/{{.Version}}/tree-sitter-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: tree-sitter-{{.OS}}-{{.Arch}}.{{.Format}}
         format: gz
         windows_arm_emulation: true
@@ -18,7 +19,8 @@ packages:
           amd64: x64
           darwin: macos
       - version_constraint: semver("<= 0.18.0")
-        url: https://gh-proxy.org/https://github.com/tree-sitter/tree-sitter/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tree-sitter/tree-sitter/releases/download/{{.Version}}/tree-sitter-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: tree-sitter-{{.OS}}-{{.Arch}}.{{.Format}}
         format: gz
         rosetta2: true
@@ -31,7 +33,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.20.7")
-        url: https://gh-proxy.org/https://github.com/tree-sitter/tree-sitter/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tree-sitter/tree-sitter/releases/download/{{.Version}}/tree-sitter-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: tree-sitter-{{.OS}}-{{.Arch}}.{{.Format}}
         format: gz
         rosetta2: true
@@ -44,28 +47,32 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.24.4")
-        url: https://gh-proxy.org/https://github.com/tree-sitter/tree-sitter/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tree-sitter/tree-sitter/releases/download/{{.Version}}/tree-sitter-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: tree-sitter-{{.OS}}-{{.Arch}}.{{.Format}}
         format: gz
         replacements:
           amd64: x64
           darwin: macos
       - version_constraint: semver("<= 0.24.7")
-        url: https://gh-proxy.org/https://github.com/tree-sitter/tree-sitter/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tree-sitter/tree-sitter/releases/download/{{.Version}}/tree-sitter-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: tree-sitter-{{.OS}}-{{.Arch}}.{{.Format}}
         format: gz
         replacements:
           amd64: x64
           darwin: macos
       - version_constraint: semver("<= 0.25.10")
-        url: https://gh-proxy.org/https://github.com/tree-sitter/tree-sitter/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tree-sitter/tree-sitter/releases/download/{{.Version}}/tree-sitter-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: tree-sitter-{{.OS}}-{{.Arch}}.{{.Format}}
         format: gz
         replacements:
           amd64: x64
           darwin: macos
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/tree-sitter/tree-sitter/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tree-sitter/tree-sitter/releases/download/{{.Version}}/tree-sitter-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: tree-sitter-{{.OS}}-{{.Arch}}.{{.Format}}
         format: gz
         replacements:

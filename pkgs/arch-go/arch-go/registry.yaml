@@ -9,34 +9,38 @@ packages:
       - version_constraint: semver("<= 1.6.0")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/arch-go/arch-go/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/arch-go/arch-go/releases/download/{{.Version}}/arch-go_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: arch-go_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/arch-go/arch-go/releases/download/{{.Version}}/arch-go_{{.Version}}_checksums.txt
           asset: arch-go_{{.Version}}_checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate-identity
-              - "https://github.com/arch-go/arch-go/.github/workflows/ci.yml@refs/heads/main"
+              - "https://gh-proxy.org/github.com/arch-go/arch-go/.github/workflows/ci.yml@refs/heads/main"
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
               - --signature
-              - https://github.com/arch-go/arch-go/releases/download/{{.Version}}/arch-go_{{.Version}}_checksums.txt-keyless.sig
+              - https://gh-proxy.org/github.com/arch-go/arch-go/releases/download/{{.Version}}/arch-go_{{.Version}}_checksums.txt-keyless.sig
               - --certificate
-              - https://github.com/arch-go/arch-go/releases/download/{{.Version}}/arch-go_{{.Version}}_checksums.txt-keyless.pem
+              - https://gh-proxy.org/github.com/arch-go/arch-go/releases/download/{{.Version}}/arch-go_{{.Version}}_checksums.txt-keyless.pem
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/arch-go/arch-go/releases/download/{{.Version}}/arch-go_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         cosign:
           opts:
             - --certificate-identity
-            - "https://github.com/arch-go/arch-go/.github/workflows/ci.yml@refs/heads/main"
+            - "https://gh-proxy.org/github.com/arch-go/arch-go/.github/workflows/ci.yml@refs/heads/main"
             - --certificate-oidc-issuer
             - "https://token.actions.githubusercontent.com"
             - --signature
-            - https://github.com/arch-go/arch-go/releases/download/{{.Version}}/{{.Asset}}-keyless.sig
+            - https://gh-proxy.org/github.com/arch-go/arch-go/releases/download/{{.Version}}/{{.Asset}}-keyless.sig
             - --certificate
-            - https://github.com/arch-go/arch-go/releases/download/{{.Version}}/{{.Asset}}-keyless.pem
+            - https://gh-proxy.org/github.com/arch-go/arch-go/releases/download/{{.Version}}/{{.Asset}}-keyless.pem

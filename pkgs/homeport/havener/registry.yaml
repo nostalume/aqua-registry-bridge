@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.5.0-alpha")
-        url: https://gh-proxy.org/https://github.com/homeport/havener/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/homeport/havener/releases/download/{{.Version}}/havener-{{.OS}}-{{.Arch}}
         asset: havener-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -18,7 +19,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.7.0-alpha")
-        url: https://gh-proxy.org/https://github.com/homeport/havener/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/homeport/havener/releases/download/{{.Version}}/havener-kube-1.10-helm-2.10-{{.OS}}-{{.Arch}}
         asset: havener-kube-1.10-helm-2.10-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -28,7 +30,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.17.0")
-        url: https://gh-proxy.org/https://github.com/homeport/havener/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/homeport/havener/releases/download/{{.Version}}/havener-kube-1.10-helm-2.10-{{.OS}}-{{.Arch}}
         asset: havener-kube-1.10-helm-2.10-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -36,7 +39,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 1.5.2")
-        url: https://gh-proxy.org/https://github.com/homeport/havener/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/homeport/havener/releases/download/{{.Version}}/havener-{{.OS}}-{{.Arch}}
         asset: havener-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -44,23 +48,27 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 2.0.2")
-        url: https://gh-proxy.org/https://github.com/homeport/havener/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/homeport/havener/releases/download/{{.Version}}/havener_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: havener_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/homeport/havener/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/homeport/havener/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/homeport/havener/releases/download/{{.Version}}/havener_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: havener_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/homeport/havener/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:

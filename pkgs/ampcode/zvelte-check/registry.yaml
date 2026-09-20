@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/ampcode/zvelte-check/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ampcode/zvelte-check/releases/download/{{.Version}}/zvelte-check-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: zvelte-check-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -15,9 +16,12 @@ packages:
           amd64: x86_64
           arm64: aarch64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/ampcode/zvelte-check/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ampcode/zvelte-check/releases/download/{{.Version}}/zvelte-check-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip

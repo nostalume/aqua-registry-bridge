@@ -7,11 +7,14 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/mattn/longcat/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mattn/longcat/releases/download/{{.Version}}/longcat_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: longcat_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/mattn/longcat/releases/download/{{.Version}}/longcat_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         files:
           - name: longcat

@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("< 0.1.3")
         error_message: Please update to v0.1.3 or later
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/abemedia/stagelint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/abemedia/stagelint/releases/download/{{.Version}}/stagelint-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: stagelint-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -19,7 +20,8 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-gnu
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/abemedia/stagelint/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
@@ -29,13 +31,18 @@ packages:
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/abemedia/stagelint/releases/download/{{.Version}}/checksums.txt.sigstore.json
               asset: checksums.txt.sigstore.json
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/abemedia/stagelint/releases/download/{{.Version}}/stagelint-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             format: zip
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/abemedia/stagelint/releases/download/{{.Version}}/stagelint-{{trimV .Version}}-{{.Arch}}-{{.OS}}llvm.{{.Format}}
             goarch: arm64
             format: zip
             asset: stagelint-{{trimV .Version}}-{{.Arch}}-{{.OS}}llvm.{{.Format}}

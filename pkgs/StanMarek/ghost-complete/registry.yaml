@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.8.1")
-        url: https://gh-proxy.org/https://github.com/StanMarek/ghost-complete/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/StanMarek/ghost-complete/releases/download/{{.Version}}/ghost-complete-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: ghost-complete-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         replacements:
@@ -15,7 +16,8 @@ packages:
           arm64: aarch64
           darwin: apple-darwin
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         files:
@@ -24,7 +26,8 @@ packages:
         supported_envs:
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/StanMarek/ghost-complete/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/StanMarek/ghost-complete/releases/download/{{.Version}}/ghost-complete-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: ghost-complete-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         replacements:
@@ -32,7 +35,8 @@ packages:
           arm64: aarch64
           darwin: apple-darwin
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         files:

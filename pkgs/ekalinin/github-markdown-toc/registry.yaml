@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_content
+  - type: http
+    url: https://gh-proxy.org/raw.githubusercontent.com/ekalinin/github-markdown-toc/{{.Version}}/gh-md-toc
     repo_owner: ekalinin
     repo_name: github-markdown-toc
     description: Easy TOC creation for GitHub README.md

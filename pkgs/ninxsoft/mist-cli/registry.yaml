@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/ninxsoft/mist-cli/releases/download/{{.Version}}/mist-cli.{{trimV .Version}}.{{.Format}}
     repo_owner: ninxsoft
     repo_name: mist-cli
     description: A Mac command-line tool that automatically downloads macOS Firmwares / Installers

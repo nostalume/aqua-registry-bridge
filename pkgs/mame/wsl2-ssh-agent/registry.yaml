@@ -7,14 +7,18 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/mame/wsl2-ssh-agent/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mame/wsl2-ssh-agent/releases/download/{{.Version}}/wsl2-ssh-agent
         asset: wsl2-ssh-agent
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/mame/wsl2-ssh-agent/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/mame/wsl2-ssh-agent/releases/download/{{.Version}}/wsl2-ssh-agent-arm64
             goarch: arm64
             asset: wsl2-ssh-agent-arm64
         supported_envs:

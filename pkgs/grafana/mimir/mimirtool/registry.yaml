@@ -11,24 +11,28 @@ packages:
       - version_constraint: Version == "mimir-3.2.0-rc.0"
         no_asset: true
       - version_constraint: Version in ["mimir-2.2.0-rc.0", "mimir-3.1.0-rc.0"]
-        url: https://gh-proxy.org/https://github.com/grafana/mimir/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/grafana/mimir/releases/download/{{.Version}}/mimirtool-{{.OS}}-{{.Arch}}
         asset: mimirtool-{{.OS}}-{{.Arch}}
         format: raw
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 3.0.9") or Version == "mimir-3.1.0-rc.1"
-        url: https://gh-proxy.org/https://github.com/grafana/mimir/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/grafana/mimir/releases/download/{{.Version}}/mimirtool-{{.OS}}-{{.Arch}}
         asset: mimirtool-{{.OS}}-{{.Arch}}
         format: raw
       - version_constraint: semver("<= 3.1.2")
-        url: https://gh-proxy.org/https://github.com/grafana/mimir/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/grafana/mimir/releases/download/{{.Version}}/mimirtool-{{.OS}}-{{.Arch}}
         asset: mimirtool-{{.OS}}-{{.Arch}}
         format: raw
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/grafana/mimir/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/grafana/mimir/releases/download/{{.Version}}/mimirtool-{{.OS}}-{{.Arch}}
         asset: mimirtool-{{.OS}}-{{.Arch}}
         format: raw

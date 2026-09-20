@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.0.5")
-        url: https://gh-proxy.org/https://github.com/Code-Hex/Neo-cowsay/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Code-Hex/Neo-cowsay/releases/download/{{.Version}}/cowsay_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: cowsay_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -22,7 +23,8 @@ packages:
           - linux/amd64
           - windows/amd64
       - version_constraint: semver("<= 1.0.1")
-        url: https://gh-proxy.org/https://github.com/Code-Hex/Neo-cowsay/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Code-Hex/Neo-cowsay/releases/download/{{.Version}}/cowsay_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: cowsay_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -36,18 +38,22 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Code-Hex/Neo-cowsay/releases/download/{{.Version}}/cowsay_checksums.txt
           asset: cowsay_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Code-Hex/Neo-cowsay/releases/download/{{.Version}}/cowsay_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin/amd64
           - linux/amd64
           - windows/amd64
       - version_constraint: semver("<= 1.0.4")
-        url: https://gh-proxy.org/https://github.com/Code-Hex/Neo-cowsay/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Code-Hex/Neo-cowsay/releases/download/{{.Version}}/cowsay_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: cowsay_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -59,16 +65,20 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Code-Hex/Neo-cowsay/releases/download/{{.Version}}/cowsay_checksums.txt
           asset: cowsay_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Code-Hex/Neo-cowsay/releases/download/{{.Version}}/cowsay_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
             replacements:
               arm64: arm
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Code-Hex/Neo-cowsay/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Code-Hex/Neo-cowsay/releases/download/{{.Version}}/cowsay_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: cowsay_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -80,9 +90,12 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Code-Hex/Neo-cowsay/releases/download/{{.Version}}/cowsay_checksums.txt
           asset: cowsay_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Code-Hex/Neo-cowsay/releases/download/{{.Version}}/cowsay_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

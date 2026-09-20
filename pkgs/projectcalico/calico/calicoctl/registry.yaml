@@ -2,7 +2,8 @@
 ---
 packages:
   - name: projectcalico/calico/calicoctl
-    type: github_release
+    type: http
+    url: https://gh-proxy.org/github.com/projectcalico/calico/releases/download/{{.Version}}/calicoctl-{{.OS}}-{{.Arch}}
     repo_owner: projectcalico
     repo_name: calico
     asset: calicoctl-{{.OS}}-{{.Arch}}
@@ -16,12 +17,15 @@ packages:
     files:
       - name: calicoctl
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/projectcalico/calico/releases/download/{{.Version}}/SHA256SUMS
       asset: SHA256SUMS
       algorithm: sha256
     version_constraint: semver(">= 3.23.0")
     version_overrides:
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/projectcalico/calico/releases/download/{{.Version}}/calicoctl-{{.OS}}-{{.Arch}}
         rosetta2: true
         supported_envs:
           - darwin

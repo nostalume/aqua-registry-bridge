@@ -11,17 +11,21 @@ packages:
       - version_constraint: Version == "0.1.1"
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Mic92/nixfmt-rs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Mic92/nixfmt-rs/releases/download/{{.Version}}/nixfmt-{{.Arch}}-{{.OS}}
         asset: nixfmt-{{.Arch}}-{{.OS}}
         format: raw
         replacements:
           arm64: aarch64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Mic92/nixfmt-rs/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Mic92/nixfmt-rs/releases/download/{{.Version}}/nixfmt-{{.Arch}}-{{.OS}}
             replacements:
               amd64: x86_64
         github_artifact_attestations:

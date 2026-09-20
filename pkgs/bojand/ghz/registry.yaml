@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/bojand/ghz/releases/download/{{.Version}}/ghz-{{.OS}}-{{.Arch}}.{{.Format}}
     repo_owner: bojand
     repo_name: ghz
     asset: ghz-{{.OS}}-{{.Arch}}.{{.Format}}
@@ -10,12 +11,15 @@ packages:
       amd64: x86_64
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/bojand/ghz/releases/download/{{.Version}}/ghz-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
     supported_envs:
       - darwin
       - amd64
     rosetta2: true
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/bojand/ghz/releases/download/{{.Version}}/ghz-{{.OS}}-{{.Arch}}.{{.Format}}.sha256
       asset: ghz-{{.OS}}-{{.Arch}}.{{.Format}}.sha256
       algorithm: sha256

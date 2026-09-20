@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/jacobdeichert/mask/releases/download/{{.Version}}/mask-{{.SemVer}}-{{.Arch}}-{{.OS}}.{{.Format}}
     repo_owner: jacobdeichert
     repo_name: mask
     description: A CLI task runner defined by a simple markdown file
@@ -8,6 +9,8 @@ packages:
     format: zip
     overrides:
       - goos: darwin
+        type: http
+        url: https://gh-proxy.org/github.com/jacobdeichert/mask/releases/download/{{.Version}}/mask-{{.SemVer}}-{{.Arch}}-{{.OS}}.{{.Format}}
         replacements:
           arm64: aarch64
     replacements:
@@ -23,19 +26,22 @@ packages:
       - amd64
     version_prefix: mask/
     checksum:
-      type: github_release
+      type: http
+      url: "{{.AssetURL}}.sha256"
       asset: "{{.Asset}}.sha256"
       algorithm: sha256
     version_constraint: semver(">= 0.11.4")
     version_overrides:
       - version_constraint: semver(">= 0.11.3")
-        url: https://gh-proxy.org/https://github.com/jacobdeichert/mask/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jacobdeichert/mask/releases/download/{{.Version}}/mask-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: mask-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         version_prefix: ""
         checksum:
           enabled: false
       - version_constraint: semver(">= 0.11.2")
-        url: https://gh-proxy.org/https://github.com/jacobdeichert/mask/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jacobdeichert/mask/releases/download/{{.Version}}/mask-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: mask-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         replacements:
           amd64: x86_64
@@ -46,7 +52,8 @@ packages:
         checksum:
           enabled: false
       - version_constraint: semver(">= 0.11.1")
-        url: https://gh-proxy.org/https://github.com/jacobdeichert/mask/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jacobdeichert/mask/releases/download/{{.Version}}/mask-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: mask-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         replacements:
           amd64: x86_64
@@ -59,7 +66,8 @@ packages:
         checksum:
           enabled: false
       - version_constraint: semver("< 0.11.1")
-        url: https://gh-proxy.org/https://github.com/jacobdeichert/mask/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jacobdeichert/mask/releases/download/{{.Version}}/mask-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: mask-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         overrides: []
         replacements:

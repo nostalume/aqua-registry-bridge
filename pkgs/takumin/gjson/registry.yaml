@@ -7,26 +7,36 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.0.1"
-        url: https://gh-proxy.org/https://github.com/takumin/gjson/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/takumin/gjson/releases/download/{{.Version}}/gjson_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gjson_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/takumin/gjson/releases/download/{{.Version}}/gjson_sha256sums.txt
           asset: gjson_sha256sums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/takumin/gjson/releases/download/{{.Version}}/gjson_{{.OS}}_all.{{.Format}}
             asset: gjson_{{.OS}}_all.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/takumin/gjson/releases/download/{{.Version}}/gjson_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/takumin/gjson/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/takumin/gjson/releases/download/{{.Version}}/gjson_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gjson_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/takumin/gjson/releases/download/{{.Version}}/gjson_sha256sums.txt
           asset: gjson_sha256sums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/takumin/gjson/releases/download/{{.Version}}/gjson_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

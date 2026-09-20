@@ -7,49 +7,62 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.0.0")
-        url: https://gh-proxy.org/https://github.com/google/osv-scanner/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/google/osv-scanner/releases/download/{{.Version}}/osv-scanner_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         asset: osv-scanner_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/google/osv-scanner/releases/download/{{.Version}}/osv-scanner_{{trimV .Version}}_SHA256SUMS
           asset: osv-scanner_{{trimV .Version}}_SHA256SUMS
           algorithm: sha256
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/google/osv-scanner/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "v1.4.2"
+        type: http
+        url: https://gh-proxy.org/github.com/google/osv-scanner/releases/download/{{.Version}}/osv-scanner_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         # https://github.com/google/osv-scanner/issues/611
         asset: osv-scanner_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/google/osv-scanner/releases/download/{{.Version}}/osv-scanner_{{trimV .Version}}_SHA256SUMS
           asset: osv-scanner_{{trimV .Version}}_SHA256SUMS
           algorithm: sha256
       - version_constraint: semver("<= 1.6.2")
-        url: https://gh-proxy.org/https://github.com/google/osv-scanner/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/google/osv-scanner/releases/download/{{.Version}}/osv-scanner_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         asset: osv-scanner_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         format: raw
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/google/osv-scanner/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/google/osv-scanner/releases/download/{{.Version}}/osv-scanner_{{trimV .Version}}_SHA256SUMS
           asset: osv-scanner_{{trimV .Version}}_SHA256SUMS
           algorithm: sha256
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/google/osv-scanner/releases/download/{{.Version}}/osv-scanner_{{.OS}}_{{.Arch}}
         # v1.7.0 https://github.com/google/osv-scanner/pull/831
         asset: osv-scanner_{{.OS}}_{{.Arch}}
         format: raw
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/google/osv-scanner/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/google/osv-scanner/releases/download/{{.Version}}/osv-scanner_SHA256SUMS
           asset: osv-scanner_SHA256SUMS
           algorithm: sha256

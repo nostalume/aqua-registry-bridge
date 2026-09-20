@@ -14,31 +14,37 @@ packages:
       - version_constraint: semver("<= 0.6.13")
         no_asset: true
       - version_constraint: semver("<= 0.9.1")
-        url: https://gh-proxy.org/https://github.com/bufbuild/protoc-gen-validate/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bufbuild/protoc-gen-validate/releases/download/{{.Version}}/protoc-gen-validate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: protoc-gen-validate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/bufbuild/protoc-gen-validate/releases/download/{{.Version}}/protoc-gen-validate_{{trimV .Version}}_checksums.txt
           asset: protoc-gen-validate_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 1.0.2")
-        url: https://gh-proxy.org/https://github.com/bufbuild/protoc-gen-validate/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bufbuild/protoc-gen-validate/releases/download/{{.Version}}/protoc-gen-validate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: protoc-gen-validate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/bufbuild/protoc-gen-validate/releases/download/{{.Version}}/protoc-gen-validate_{{trimV .Version}}_checksums.txt
           asset: protoc-gen-validate_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 1.1.0")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/bufbuild/protoc-gen-validate/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bufbuild/protoc-gen-validate/releases/download/{{.Version}}/protoc-gen-validate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: protoc-gen-validate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/bufbuild/protoc-gen-validate/releases/download/{{.Version}}/protoc-gen-validate_{{trimV .Version}}_checksums.txt
           asset: protoc-gen-validate_{{trimV .Version}}_checksums.txt
           algorithm: sha256

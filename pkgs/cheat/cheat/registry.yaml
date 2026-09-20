@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/cheat/cheat/releases/download/{{.Version}}/cheat-{{.OS}}-{{.Arch}}.gz
     repo_owner: cheat
     repo_name: cheat
     description: cheat allows you to create and view interactive cheatsheets on the command-line. It was designed to help remind *nix system administrators of options for commands that they use frequently, but not frequently enough to remember
@@ -15,12 +16,18 @@ packages:
         src: cheat-{{.OS}}-{{.Arch}}
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/cheat/cheat/releases/download/{{.Version}}/cheat-windows-amd64.exe.zip
         asset: cheat-windows-amd64.exe.zip
     version_constraint: semver(">= 4.2.4")
     version_overrides:
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/cheat/cheat/releases/download/{{.Version}}/cheat-{{.OS}}-{{.Arch}}.gz
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/cheat/cheat/releases/download/{{.Version}}/cheat-windows-amd64.exe.zip
             asset: cheat-windows-amd64.exe.zip
             files:
               - name: cheat

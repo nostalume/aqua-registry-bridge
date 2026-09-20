@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 3.0.0-beta.2")
-        url: https://gh-proxy.org/https://github.com/go-gost/gost/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/go-gost/gost/releases/download/{{.Version}}/gost-{{.OS}}-{{.Arch}}-{{trimV .Version}}.{{.Format}}
         asset: gost-{{.OS}}-{{.Arch}}-{{trimV .Version}}.{{.Format}}
         format: gz
         windows_arm_emulation: true
@@ -16,6 +17,8 @@ packages:
             src: gost-{{.OS}}-{{.Arch}}-{{trimV .Version}}
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/go-gost/gost/releases/download/{{.Version}}/gost-{{.OS}}-{{.Arch}}-{{trimV .Version}}.{{.Format}}
             format: zip
             files:
               - name: gost
@@ -25,7 +28,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 3.0.0-beta.6")
-        url: https://gh-proxy.org/https://github.com/go-gost/gost/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/go-gost/gost/releases/download/{{.Version}}/gost-{{.OS}}-{{.Arch}}-{{trimV .Version}}.{{.Format}}
         asset: gost-{{.OS}}-{{.Arch}}-{{trimV .Version}}.{{.Format}}
         format: gz
         files:
@@ -33,6 +37,8 @@ packages:
             src: gost-{{.OS}}-{{.Arch}}-{{trimV .Version}}
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/go-gost/gost/releases/download/{{.Version}}/gost-{{.OS}}-{{.Arch}}-{{trimV .Version}}.{{.Format}}
             format: zip
             files:
               - name: gost
@@ -42,7 +48,8 @@ packages:
           - darwin
           - windows
       - version_constraint: semver("<= 3.0.0-rc.4")
-        url: https://gh-proxy.org/https://github.com/go-gost/gost/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/go-gost/gost/releases/download/{{.Version}}/gost-{{.OS}}-{{.Arch}}-{{trimV .Version}}.{{.Format}}
         asset: gost-{{.OS}}-{{.Arch}}-{{trimV .Version}}.{{.Format}}
         format: gz
         files:
@@ -50,6 +57,8 @@ packages:
             src: gost-{{.OS}}-{{.Arch}}-{{trimV .Version}}
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/go-gost/gost/releases/download/{{.Version}}/gost-{{.OS}}-{{.Arch}}-{{trimV .Version}}.{{.Format}}
             format: zip
             files:
               - name: gost
@@ -59,15 +68,19 @@ packages:
           - darwin
           - windows
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/go-gost/gost/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/go-gost/gost/releases/download/{{.Version}}/gost_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gost_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/go-gost/gost/releases/download/{{.Version}}/gost_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
             files:
               - name: gost
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/go-gost/gost/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/cycloidio/terracognita/releases/download/{{.Version}}/terracognita-{{.OS}}-{{.Arch}}.tar.gz
     repo_owner: cycloidio
     repo_name: terracognita
     asset: terracognita-{{.OS}}-{{.Arch}}.tar.gz

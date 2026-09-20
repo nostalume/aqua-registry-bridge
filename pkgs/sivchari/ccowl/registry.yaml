@@ -7,12 +7,14 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v1.0.0"
-        url: https://gh-proxy.org/https://github.com/sivchari/ccowl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sivchari/ccowl/releases/download/{{.Version}}/ccowl-{{.OS}}-{{.Arch}}
         asset: ccowl-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/sivchari/ccowl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sivchari/ccowl/releases/download/{{.Version}}/ccowl-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: ccowl-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -20,11 +22,14 @@ packages:
           - name: ccowl
             src: "{{.AssetWithoutExt}}"
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/sivchari/ccowl/releases/download/{{.Version}}/ccowl-{{.OS}}-{{.Arch}}.exe.{{.Format}}
             format: zip
             asset: ccowl-{{.OS}}-{{.Arch}}.exe.{{.Format}}
             checksum:

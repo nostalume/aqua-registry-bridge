@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.65.0")
-        url: https://gh-proxy.org/https://github.com/aws/aws-sam-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aws/aws-sam-cli/releases/download/{{.Version}}/aws-sam-cli-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: aws-sam-cli-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         files:
@@ -20,7 +21,8 @@ packages:
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 1.103.0")
-        url: https://gh-proxy.org/https://github.com/aws/aws-sam-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aws/aws-sam-cli/releases/download/{{.Version}}/aws-sam-cli-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: aws-sam-cli-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         files:
@@ -31,6 +33,8 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/aws/aws-sam-cli/releases/download/{{.Version}}/aws-sam-cli-{{.OS}}-{{.Arch}}.{{.Format}}
             format: pkg
             files:
               - name: sam
@@ -39,7 +43,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/aws/aws-sam-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aws/aws-sam-cli/releases/download/{{.Version}}/aws-sam-cli-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: aws-sam-cli-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         files:
@@ -50,6 +55,8 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/aws/aws-sam-cli/releases/download/{{.Version}}/aws-sam-cli-{{.OS}}-{{.Arch}}.{{.Format}}
             format: pkg
             files:
               - name: sam

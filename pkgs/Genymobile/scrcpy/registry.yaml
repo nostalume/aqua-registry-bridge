@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v1.5-fixversion"
-        url: https://gh-proxy.org/https://github.com/Genymobile/scrcpy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Genymobile/scrcpy/releases/download/{{.Version}}/scrcpy-{{.OS}}-v1.5.{{.Format}}
         asset: scrcpy-{{.OS}}-v1.5.{{.Format}}
         format: zip
         files:
@@ -16,13 +17,15 @@ packages:
         replacements:
           windows: win64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Genymobile/scrcpy/releases/download/{{.Version}}/SHA256SUMS.txt
           asset: SHA256SUMS.txt
           algorithm: sha256
         supported_envs:
           - windows/amd64
       - version_constraint: Version == "v3.0"
-        url: https://gh-proxy.org/https://github.com/Genymobile/scrcpy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Genymobile/scrcpy/releases/download/{{.Version}}/scrcpy-{{.OS}}-{{.Version}}.zip
         asset: scrcpy-{{.OS}}-{{.Version}}.zip
         format: zip
         files:
@@ -31,26 +34,30 @@ packages:
         replacements:
           windows: win64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Genymobile/scrcpy/releases/download/{{.Version}}/SHA256SUMS.txt
           asset: SHA256SUMS.txt
           algorithm: sha256
         supported_envs:
           - windows/amd64
       - version_constraint: semver("<= 1.1.0")
-        url: https://gh-proxy.org/https://github.com/Genymobile/scrcpy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Genymobile/scrcpy/releases/download/{{.Version}}/scrcpy-{{.OS}}-with-deps-{{.Version}}.{{.Format}}
         asset: scrcpy-{{.OS}}-with-deps-{{.Version}}.{{.Format}}
         format: zip
         files:
           - name: scrcpy
             src: scrcpy-windows-{{.Version}}/scrcpy
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Genymobile/scrcpy/releases/download/{{.Version}}/SHA256SUMS.txt
           asset: SHA256SUMS.txt
           algorithm: sha256
         supported_envs:
           - windows/amd64
       - version_constraint: semver("<= 2.7.0")
-        url: https://gh-proxy.org/https://github.com/Genymobile/scrcpy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Genymobile/scrcpy/releases/download/{{.Version}}/scrcpy-{{.OS}}-{{.Version}}.{{.Format}}
         asset: scrcpy-{{.OS}}-{{.Version}}.{{.Format}}
         format: zip
         files:
@@ -59,13 +66,15 @@ packages:
         replacements:
           windows: win64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Genymobile/scrcpy/releases/download/{{.Version}}/SHA256SUMS.txt
           asset: SHA256SUMS.txt
           algorithm: sha256
         supported_envs:
           - windows/amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Genymobile/scrcpy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Genymobile/scrcpy/releases/download/{{.Version}}/scrcpy-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         asset: scrcpy-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         format: tar.gz
         files:
@@ -76,14 +85,19 @@ packages:
           darwin: macos
           windows: win64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Genymobile/scrcpy/releases/download/{{.Version}}/SHA256SUMS.txt
           asset: SHA256SUMS.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/Genymobile/scrcpy/releases/download/{{.Version}}/scrcpy-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Genymobile/scrcpy/releases/download/{{.Version}}/scrcpy-{{.OS}}-{{.Version}}.{{.Format}}
             format: zip
             asset: scrcpy-{{.OS}}-{{.Version}}.{{.Format}}
             files:

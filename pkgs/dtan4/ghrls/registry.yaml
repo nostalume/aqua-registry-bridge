@@ -1,12 +1,15 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/dtan4/ghrls/releases/download/{{.Version}}/ghrls_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: dtan4
     repo_name: ghrls
     description: List & Describe GitHub Releases
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/dtan4/ghrls/releases/download/{{.Version}}/ghrls_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     version_constraint: semver("> 0.1.0")
     asset: ghrls_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -20,11 +23,14 @@ packages:
       - linux
       - amd64
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/dtan4/ghrls/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256
     version_overrides:
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/dtan4/ghrls/releases/download/{{.Version}}/ghrls-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         rosetta2: true
         asset: ghrls-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         replacements: {}

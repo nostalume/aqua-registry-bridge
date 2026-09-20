@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version == "v1.6.0-alpha.5"
         no_asset: true
       - version_constraint: semver("<= 0.4.0-alpha.1")
-        url: https://gh-proxy.org/https://github.com/wakatime/wakatime-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/wakatime/wakatime-cli/releases/download/{{.Version}}/wakatime-cli-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: wakatime-cli-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -17,14 +18,18 @@ packages:
           - name: wakatime-cli
             src: "{{.AssetWithoutExt}}"
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/wakatime/wakatime-cli/releases/download/{{.Version}}/checksums_sha256.txt
           asset: checksums_sha256.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/wakatime/wakatime-cli/releases/download/{{.Version}}/wakatime-cli-{{.OS}}-{{.Arch}}.{{.Format}}
             format: tar.gz
       - version_constraint: semver("<= 1.28.1-alpha.3")
-        url: https://gh-proxy.org/https://github.com/wakatime/wakatime-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/wakatime/wakatime-cli/releases/download/{{.Version}}/wakatime-cli-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: wakatime-cli-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -32,17 +37,20 @@ packages:
           - name: wakatime-cli
             src: "{{.AssetWithoutExt}}"
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/wakatime/wakatime-cli/releases/download/{{.Version}}/checksums_sha256.txt
           asset: checksums_sha256.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/wakatime/wakatime-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/wakatime/wakatime-cli/releases/download/{{.Version}}/wakatime-cli-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: wakatime-cli-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         files:
           - name: wakatime-cli
             src: "{{.AssetWithoutExt}}"
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/wakatime/wakatime-cli/releases/download/{{.Version}}/checksums_sha256.txt
           asset: checksums_sha256.txt
           algorithm: sha256

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/omegion/ssh-manager/releases/download/{{.Version}}/ssh-manager-{{.OS}}-{{.Arch}}
     repo_owner: omegion
     repo_name: ssh-manager
     description: SSH Key Manager for 1Password, Bitwarden and AWS S3
@@ -10,9 +11,13 @@ packages:
     version_constraint: semver(">= 0.13.0")
     version_overrides:
       - version_constraint: semver(">= 0.11.0")
+        type: http
+        url: https://gh-proxy.org/github.com/omegion/ssh-manager/releases/download/{{.Version}}/ssh-manager-{{.OS}}-{{.Arch}}
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("< 0.11.0")
+        type: http
+        url: https://gh-proxy.org/github.com/omegion/ssh-manager/releases/download/{{.Version}}/ssh-manager-{{.OS}}-{{.Arch}}
         supported_envs:
           - linux/arm64

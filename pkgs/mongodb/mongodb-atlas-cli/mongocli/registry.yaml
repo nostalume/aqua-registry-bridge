@@ -1,7 +1,8 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
   - name: mongodb/mongodb-atlas-cli/mongocli
-    type: github_release
+    type: http
+    url: https://gh-proxy.org/github.com/mongodb/mongodb-atlas-cli/releases/download/{{.Version}}/mongocli_{{trimPrefix "mongocli/v" .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: mongodb
     repo_name: mongodb-atlas-cli
     description: MongoDB Atlas CLI and MongoDB CLI enable you to manage your MongoDB in the Cloud
@@ -17,6 +18,8 @@ packages:
         src: bin/mongocli
     overrides:
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/mongodb/mongodb-atlas-cli/releases/download/{{.Version}}/mongocli_{{trimPrefix "mongocli/v" .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: mongocli
@@ -27,26 +30,31 @@ packages:
     version_filter: Version startsWith "mongocli/" or semver("< 1.23.0")
     version_constraint: semverWithVersion(">= 1.23.0", trimPrefix(Version, "mongocli/"))
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/mongodb/mongodb-atlas-cli/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256
     version_overrides:
       # asset style was changed
       - version_constraint: semver(">= 1.15.0")
-        url: https://gh-proxy.org/https://github.com/mongodb/mongodb-atlas-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mongodb/mongodb-atlas-cli/releases/download/{{.Version}}/mongocli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: mongocli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         supported_envs:
           - darwin
           - linux
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/mongodb/mongodb-atlas-cli/releases/download/{{.Version}}/mongocli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
             files:
               - name: mongocli
                 src: mongocli_{{trimV .Version}}_{{.OS}}_{{.Arch}}/bin/mongocli
       # arm64 wasn't supported
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/mongodb/mongodb-atlas-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mongodb/mongodb-atlas-cli/releases/download/{{.Version}}/mongocli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: mongocli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         supported_envs:
           - amd64
@@ -56,6 +64,8 @@ packages:
           - name: mongocli
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/mongodb/mongodb-atlas-cli/releases/download/{{.Version}}/mongocli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
             files:
               - name: mongocli

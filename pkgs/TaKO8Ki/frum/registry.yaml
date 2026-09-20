@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/TaKO8Ki/frum/releases/download/{{.Version}}/frum-{{.Version}}-{{.Arch}}-{{.OS}}.tar.gz
     repo_owner: TaKO8Ki
     repo_name: frum
     asset: frum-{{.Version}}-{{.Arch}}-{{.OS}}.tar.gz

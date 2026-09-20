@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.2.2")
-        url: https://gh-proxy.org/https://github.com/svenstaro/genact/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/svenstaro/genact/releases/download/{{.Version}}/genact-{{.OS}}
         asset: genact-{{.OS}}
         format: raw
         replacements:
@@ -16,7 +17,8 @@ packages:
           - linux/amd64
           - windows/amd64
       - version_constraint: semver("<= 0.7.0")
-        url: https://gh-proxy.org/https://github.com/svenstaro/genact/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/svenstaro/genact/releases/download/{{.Version}}/genact-{{.OS}}
         asset: genact-{{.OS}}
         format: raw
         replacements:
@@ -27,7 +29,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.12.0")
-        url: https://gh-proxy.org/https://github.com/svenstaro/genact/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/svenstaro/genact/releases/download/{{.Version}}/genact-{{.Version}}-{{.OS}}-{{.Arch}}
         asset: genact-{{.Version}}-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -37,10 +40,13 @@ packages:
           darwin: macos
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/svenstaro/genact/releases/download/{{.Version}}/genact-{{.Version}}-{{.OS}}-{{.Arch}}
             replacements:
               arm64: aarch64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/svenstaro/genact/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/svenstaro/genact/releases/download/{{.Version}}/genact-{{trimV .Version}}-{{.Arch}}-{{.OS}}
         asset: genact-{{trimV .Version}}-{{.Arch}}-{{.OS}}
         format: raw
         rosetta2: true
@@ -52,5 +58,7 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/svenstaro/genact/releases/download/{{.Version}}/genact-{{trimV .Version}}-{{.Arch}}-{{.OS}}
             replacements:
               arm64: aarch64

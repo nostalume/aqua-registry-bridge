@@ -9,14 +9,18 @@ packages:
       - version_constraint: semver("< 0.10.0")
         error_message: Please upgrade to version 0.10.0 or higher
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/openclaw/wacli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/openclaw/wacli/releases/download/{{.Version}}/wacli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: wacli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/openclaw/wacli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/openclaw/wacli/releases/download/{{.Version}}/wacli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.2.0"
-        url: https://gh-proxy.org/https://github.com/mgdm/htmlq/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mgdm/htmlq/releases/download/{{.Version}}/htmlq_{{.Arch}}_{{.OS}}.{{.Format}}
         asset: htmlq_{{.Arch}}_{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -17,7 +18,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/mgdm/htmlq/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mgdm/htmlq/releases/download/{{.Version}}/htmlq-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: htmlq-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -26,6 +28,8 @@ packages:
           amd64: x86_64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/mgdm/htmlq/releases/download/{{.Version}}/htmlq-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin

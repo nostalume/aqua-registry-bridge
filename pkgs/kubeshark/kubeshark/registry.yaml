@@ -10,32 +10,38 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.17.0")
-        url: https://gh-proxy.org/https://github.com/kubeshark/kubeshark/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubeshark/kubeshark/releases/download/{{.Version}}/mizu_{{.OS}}_{{.Arch}}
         asset: mizu_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
         files:
           - name: mizu
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.23.0")
-        url: https://gh-proxy.org/https://github.com/kubeshark/kubeshark/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubeshark/kubeshark/releases/download/{{.Version}}/mizu_{{.OS}}_{{.Arch}}
         asset: mizu_{{.OS}}_{{.Arch}}
         format: raw
         windows_arm_emulation: true
         files:
           - name: mizu
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kubeshark/kubeshark/releases/download/{{.Version}}/mizu.exe
             asset: mizu.exe
             checksum:
               enabled: false
@@ -44,62 +50,78 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 36.0")
-        url: https://gh-proxy.org/https://github.com/kubeshark/kubeshark/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubeshark/kubeshark/releases/download/{{.Version}}/mizu_{{.OS}}_{{.Arch}}
         asset: mizu_{{.OS}}_{{.Arch}}
         format: raw
         windows_arm_emulation: true
         files:
           - name: mizu
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kubeshark/kubeshark/releases/download/{{.Version}}/mizu.exe
             asset: mizu.exe
             checksum:
               enabled: false
       - version_constraint: semver("<= 37.0")
-        url: https://gh-proxy.org/https://github.com/kubeshark/kubeshark/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubeshark/kubeshark/releases/download/{{.Version}}/kubeshark_{{.OS}}_{{.Arch}}
         asset: kubeshark_{{.OS}}_{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kubeshark/kubeshark/releases/download/{{.Version}}/kubeshark.exe
             asset: kubeshark.exe
             checksum:
               enabled: false
       - version_constraint: semver("<= 50.4")
-        url: https://gh-proxy.org/https://github.com/kubeshark/kubeshark/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubeshark/kubeshark/releases/download/{{.Version}}/kubeshark_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kubeshark_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubeshark/kubeshark/releases/download/{{.Version}}/kubeshark_{{trimV .Version}}_checksums.txt
           asset: kubeshark_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 52.1.50")
-        url: https://gh-proxy.org/https://github.com/kubeshark/kubeshark/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubeshark/kubeshark/releases/download/{{.Version}}/kubeshark_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kubeshark_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubeshark/kubeshark/releases/download/{{.Version}}/kubeshark_{{trimV .Version}}_checksums.txt
           asset: kubeshark_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/kubeshark/kubeshark/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubeshark/kubeshark/releases/download/{{.Version}}/kubeshark_{{.OS}}_{{.Arch}}
         asset: kubeshark_{{.OS}}_{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kubeshark/kubeshark/releases/download/{{.Version}}/kubeshark
             asset: kubeshark
             checksum:
               enabled: false

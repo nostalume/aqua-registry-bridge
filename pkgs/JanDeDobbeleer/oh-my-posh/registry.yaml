@@ -7,52 +7,64 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v5.6.5"
-        url: https://gh-proxy.org/https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/JanDeDobbeleer/oh-my-posh/releases/download/{{.Version}}/posh-{{.OS}}-{{.Arch}}
         asset: posh-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/JanDeDobbeleer/oh-my-posh/releases/download/{{.Version}}/posh-{{.OS}}-{{.Arch}}
             checksum:
               enabled: false
       - version_constraint: Version == "v6.41.1"
-        url: https://gh-proxy.org/https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/JanDeDobbeleer/oh-my-posh/releases/download/{{.Version}}/posh-{{.OS}}-{{.Arch}}
         asset: posh-{{.OS}}-{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
           - windows
           - linux
       - version_constraint: semver("<= 7.52.1")
-        url: https://gh-proxy.org/https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/JanDeDobbeleer/oh-my-posh/releases/download/{{.Version}}/posh-{{.OS}}-{{.Arch}}
         asset: posh-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
       - version_constraint: semver("<= 24.10.1")
-        url: https://gh-proxy.org/https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/JanDeDobbeleer/oh-my-posh/releases/download/{{.Version}}/posh-{{.OS}}-{{.Arch}}
         asset: posh-{{.OS}}-{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/JanDeDobbeleer/oh-my-posh/releases/download/{{.Version}}/posh-{{.OS}}-{{.Arch}}
         asset: posh-{{.OS}}-{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/JanDeDobbeleer/oh-my-posh/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

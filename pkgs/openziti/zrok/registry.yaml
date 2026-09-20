@@ -7,22 +7,26 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.2.10")
-        url: https://gh-proxy.org/https://github.com/openziti/zrok/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/openziti/zrok/releases/download/{{.Version}}/zrok_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: zrok_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/openziti/zrok/releases/download/{{.Version}}/zrok_{{trimV .Version}}_checksums.txt
           asset: zrok_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 0.3.0")
-        url: https://gh-proxy.org/https://github.com/openziti/zrok/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/openziti/zrok/releases/download/{{.Version}}/zrok_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: zrok_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/openziti/zrok/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha1
         supported_envs:
@@ -30,34 +34,40 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.4.48") or (Version startsWith "v1.0.0-rc")
-        url: https://gh-proxy.org/https://github.com/openziti/zrok/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/openziti/zrok/releases/download/{{.Version}}/zrok_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: zrok_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/openziti/zrok/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha1
       - version_constraint: semver("< 2.0.0") and not (Version startsWith "v2.0.0-rc")
-        url: https://gh-proxy.org/https://github.com/openziti/zrok/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/openziti/zrok/releases/download/{{.Version}}/zrok_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: zrok_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/openziti/zrok/releases/download/{{.Version}}/checksums.sha256.txt
           asset: checksums.sha256.txt
           algorithm: sha256
         github_artifact_attestations:
           signer_workflow: openziti/zrok/.github/workflows/release.yml
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/openziti/zrok/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/openziti/zrok/releases/download/{{.Version}}/zrok_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: zrok_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         files:
           - name: zrok2
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/openziti/zrok/releases/download/{{.Version}}/checksums.sha256.txt
           asset: checksums.sha256.txt
           algorithm: sha256
         github_artifact_attestations:

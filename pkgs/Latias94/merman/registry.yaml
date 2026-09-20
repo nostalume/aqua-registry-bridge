@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version == "v0.7.0-alpha.1"
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Latias94/merman/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Latias94/merman/releases/download/{{.Version}}/merman-cli-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: merman-cli-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         files:
@@ -22,14 +23,19 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/Latias94/merman/releases/download/{{.Version}}/merman-cli-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Latias94/merman/releases/download/{{.Version}}/merman-cli-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: merman-cli

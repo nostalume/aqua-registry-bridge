@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/peak/s5cmd/releases/download/{{.Version}}/s5cmd_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
     repo_owner: peak
     repo_name: s5cmd
     description: Parallel S3 and local filesystem execution tool
@@ -13,9 +14,12 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/peak/s5cmd/releases/download/{{.Version}}/s5cmd_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
     asset: s5cmd_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/peak/s5cmd/releases/download/{{.Version}}/s5cmd_checksums.txt
       asset: s5cmd_checksums.txt
       algorithm: sha256

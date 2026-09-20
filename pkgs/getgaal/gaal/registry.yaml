@@ -7,14 +7,17 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.1.0"
-        url: https://gh-proxy.org/https://github.com/getgaal/gaal/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/getgaal/gaal/releases/download/{{.Version}}/gaal-{{.OS}}-{{.Arch}}
         asset: gaal-{{.OS}}-{{.Arch}}
         format: raw
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/getgaal/gaal/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/getgaal/gaal/releases/download/{{.Version}}/gaal-{{.OS}}-{{.Arch}}
         asset: gaal-{{.OS}}-{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/getgaal/gaal/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256

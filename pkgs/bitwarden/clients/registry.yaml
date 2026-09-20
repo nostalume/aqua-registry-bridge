@@ -10,13 +10,15 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 2025.1.3")
-        url: https://gh-proxy.org/https://github.com/bitwarden/clients/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bitwarden/clients/releases/download/{{.Version}}/bw-{{.OS}}-{{.SemVer}}.{{.Format}}
         asset: bw-{{.OS}}-{{.SemVer}}.{{.Format}}
         format: zip
         replacements:
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/bitwarden/clients/releases/download/{{.Version}}/bw-{{.OS}}-sha256-{{.SemVer}}.txt
           asset: bw-{{.OS}}-sha256-{{.SemVer}}.txt
           algorithm: sha256
         supported_envs:
@@ -24,21 +26,26 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 2025.5.0")
-        url: https://gh-proxy.org/https://github.com/bitwarden/clients/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bitwarden/clients/releases/download/{{.Version}}/bw-{{.OS}}-{{.SemVer}}.{{.Format}}
         asset: bw-{{.OS}}-{{.SemVer}}.{{.Format}}
         format: zip
         replacements:
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/bitwarden/clients/releases/download/{{.Version}}/bw-{{.OS}}-sha256-{{.SemVer}}.txt
           asset: bw-{{.OS}}-sha256-{{.SemVer}}.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/bitwarden/clients/releases/download/{{.Version}}/bw-{{.OS}}-{{.Arch}}-{{.SemVer}}.{{.Format}}
             goarch: arm64
             asset: bw-{{.OS}}-{{.Arch}}-{{.SemVer}}.{{.Format}}
             checksum:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/bitwarden/clients/releases/download/{{.Version}}/bw-{{.OS}}-{{.Arch}}-sha256-{{.SemVer}}.txt
               asset: bw-{{.OS}}-{{.Arch}}-sha256-{{.SemVer}}.txt
               algorithm: sha256
         supported_envs:
@@ -46,13 +53,16 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 2026.1.0")
-        url: https://gh-proxy.org/https://github.com/bitwarden/clients/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bitwarden/clients/releases/download/{{.Version}}/bw-{{.OS}}-{{.SemVer}}.{{.Format}}
         asset: bw-{{.OS}}-{{.SemVer}}.{{.Format}}
         format: zip
         replacements:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/bitwarden/clients/releases/download/{{.Version}}/bw-{{.OS}}-{{.Arch}}-{{.SemVer}}.{{.Format}}
             goarch: arm64
             asset: bw-{{.OS}}-{{.Arch}}-{{.SemVer}}.{{.Format}}
         supported_envs:
@@ -60,15 +70,20 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/bitwarden/clients/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bitwarden/clients/releases/download/{{.Version}}/bw-{{.OS}}-{{.SemVer}}.{{.Format}}
         asset: bw-{{.OS}}-{{.SemVer}}.{{.Format}}
         format: zip
         replacements:
           darwin: macos
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/bitwarden/clients/releases/download/{{.Version}}/bw-{{.OS}}-{{.Arch}}-{{.SemVer}}.{{.Format}}
             goarch: arm64
             asset: bw-{{.OS}}-{{.Arch}}-{{.SemVer}}.{{.Format}}
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/bitwarden/clients/releases/download/{{.Version}}/bw-{{.OS}}-{{.Arch}}-{{.SemVer}}.{{.Format}}
             goarch: arm64
             asset: bw-{{.OS}}-{{.Arch}}-{{.SemVer}}.{{.Format}}

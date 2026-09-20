@@ -13,7 +13,8 @@ packages:
       - version_constraint: Version in ["v0.1.144", "v0.2.73", "v0.3.0", "v0.3.11"]
         no_asset: true
       - version_constraint: Version == "v0.0.517"
-        url: https://gh-proxy.org/https://github.com/superfly/flyctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/superfly/flyctl/releases/download/{{.Version}}/flyctl_{{trimV .Version}}_{{.OS}}{{.Arch}}.{{.Format}}
         asset: flyctl_{{trimV .Version}}_{{.OS}}{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -21,23 +22,31 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/superfly/flyctl/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/superfly/flyctl/releases/download/{{.Version}}/flyctl_{{trimV .Version}}_mac{{.OS}}86_64.{{.Format}}
             goarch: amd64
             asset: flyctl_{{trimV .Version}}_mac{{.OS}}86_64.{{.Format}}
             replacements:
               darwin: OSx
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/superfly/flyctl/releases/download/{{.Version}}/flyctl_{{trimV .Version}}_{{.OS}}{{.Arch}}.{{.Format}}
             goarch: arm64
             replacements:
               darwin: macOS
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/superfly/flyctl/releases/download/{{.Version}}/flyctl_{{trimV .Version}}_{{.OS}}{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.0.158")
-        url: https://gh-proxy.org/https://github.com/superfly/flyctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/superfly/flyctl/releases/download/{{.Version}}/flyctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: flyctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -48,7 +57,8 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/superfly/flyctl/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
@@ -56,7 +66,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.0.175")
-        url: https://gh-proxy.org/https://github.com/superfly/flyctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/superfly/flyctl/releases/download/{{.Version}}/flyctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: flyctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -67,11 +78,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/superfly/flyctl/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.0.201")
-        url: https://gh-proxy.org/https://github.com/superfly/flyctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/superfly/flyctl/releases/download/{{.Version}}/flyctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: flyctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -81,11 +94,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/superfly/flyctl/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.0.243")
-        url: https://gh-proxy.org/https://github.com/superfly/flyctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/superfly/flyctl/releases/download/{{.Version}}/flyctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: flyctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -95,14 +110,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/superfly/flyctl/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/superfly/flyctl/releases/download/{{.Version}}/flyctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.2.72")
-        url: https://gh-proxy.org/https://github.com/superfly/flyctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/superfly/flyctl/releases/download/{{.Version}}/flyctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: flyctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -111,14 +130,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/superfly/flyctl/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/superfly/flyctl/releases/download/{{.Version}}/flyctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: Version == "v0.2.80"
-        url: https://gh-proxy.org/https://github.com/superfly/flyctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/superfly/flyctl/releases/download/{{.Version}}/flyctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: flyctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -126,14 +149,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/superfly/flyctl/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/superfly/flyctl/releases/download/{{.Version}}/flyctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: Version == "v0.2.84"
-        url: https://gh-proxy.org/https://github.com/superfly/flyctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/superfly/flyctl/releases/download/{{.Version}}/flyctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: flyctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -141,14 +168,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/superfly/flyctl/releases/download/{{.Version}}/flyctl_{{trimV .Version}}_checksums.txt
           asset: flyctl_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/superfly/flyctl/releases/download/{{.Version}}/flyctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/superfly/flyctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/superfly/flyctl/releases/download/{{.Version}}/flyctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: flyctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -157,9 +188,12 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/superfly/flyctl/releases/download/{{.Version}}/flyctl_{{trimV .Version}}_checksums.txt
           asset: flyctl_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/superfly/flyctl/releases/download/{{.Version}}/flyctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

@@ -9,27 +9,32 @@ packages:
       - version_constraint: Version == "v3.0.0-rc.1"
         no_asset: true
       - version_constraint: Version in ["v2.11.0", "v2.15.1", "v2.15.5", "v2.16.1"]
-        url: https://gh-proxy.org/https://github.com/pulumi/pulumi/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/pulumi/pulumi/releases/download/{{.Version}}/pulumi-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: pulumi-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         replacements:
           amd64: x64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/pulumi/pulumi/releases/download/{{.Version}}/pulumi-{{trimV .Version}}-checksums.txt
           asset: pulumi-{{trimV .Version}}-checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v3.39.4"
-        url: https://gh-proxy.org/https://github.com/pulumi/pulumi/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/pulumi/pulumi/releases/download/{{.Version}}/pulumi-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: pulumi-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/pulumi/pulumi/releases/download/{{.Version}}/pulumi-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             files:
               - name: pulumi
@@ -40,14 +45,16 @@ packages:
       - version_constraint: semver("<= 2.20.0")
         no_asset: true
       - version_constraint: semver("<= 2.22.0")
-        url: https://gh-proxy.org/https://github.com/pulumi/pulumi/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/pulumi/pulumi/releases/download/{{.Version}}/pulumi-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: pulumi-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         replacements:
           amd64: x64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/pulumi/pulumi/releases/download/{{.Version}}/pulumi-{{trimV .Version}}-checksums.txt
           asset: pulumi-{{trimV .Version}}-checksums.txt
           algorithm: sha256
         supported_envs:
@@ -57,13 +64,15 @@ packages:
           - name: pulumi
             src: pulumi/pulumi
       - version_constraint: semver("<= 3.2.1")
-        url: https://gh-proxy.org/https://github.com/pulumi/pulumi/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/pulumi/pulumi/releases/download/{{.Version}}/pulumi-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: pulumi-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/pulumi/pulumi/releases/download/{{.Version}}/pulumi-{{trimV .Version}}-checksums.txt
           asset: pulumi-{{trimV .Version}}-checksums.txt
           algorithm: sha256
         supported_envs:
@@ -73,18 +82,22 @@ packages:
           - name: pulumi
             src: pulumi/pulumi
       - version_constraint: semver("<= 3.39.3")
-        url: https://gh-proxy.org/https://github.com/pulumi/pulumi/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/pulumi/pulumi/releases/download/{{.Version}}/pulumi-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: pulumi-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         replacements:
           amd64: x64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/pulumi/pulumi/releases/download/{{.Version}}/pulumi-{{trimV .Version}}-checksums.txt
           asset: pulumi-{{trimV .Version}}-checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/pulumi/pulumi/releases/download/{{.Version}}/pulumi-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             files:
               - name: pulumi
@@ -93,18 +106,21 @@ packages:
           - name: pulumi
             src: pulumi/pulumi
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/pulumi/pulumi/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/pulumi/pulumi/releases/download/{{.Version}}/pulumi-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: pulumi-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/pulumi/pulumi/releases/download/{{.Version}}/SHA512SUMS
           asset: SHA512SUMS
           algorithm: sha512
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/pulumi/pulumi/releases/download/{{.Version}}/SHA512SUMS.sig
               asset: SHA512SUMS.sig
             opts:
               - --certificate-identity-regexp
@@ -113,6 +129,8 @@ packages:
               - https://token.actions.githubusercontent.com
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/pulumi/pulumi/releases/download/{{.Version}}/pulumi-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             files:
               - name: pulumi

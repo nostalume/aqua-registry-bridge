@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/ipld/go-car/releases/download/{{.Version}}/go-car_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: ipld
     repo_name: go-car
     description: A content addressable archive utility
@@ -10,13 +11,18 @@ packages:
       - name: car
     overrides:
       - goos: darwin
+        type: http
+        url: https://gh-proxy.org/github.com/ipld/go-car/releases/download/{{.Version}}/go-car_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
         asset: go-car_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
         files:
           - name: car
             src: go-car
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/ipld/go-car/releases/download/{{.Version}}/go-car_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/ipld/go-car/releases/download/{{.Version}}/go-car_{{trimV .Version}}_checksums.txt
       asset: go-car_{{trimV .Version}}_checksums.txt
       algorithm: sha256

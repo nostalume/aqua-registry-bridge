@@ -11,54 +11,63 @@ packages:
       - version_constraint: semver("< 0.3.0")
         no_asset: true
       - version_constraint: Version == "v0.3.0"
-        url: https://gh-proxy.org/https://github.com/sigstore/rekor/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sigstore/rekor/releases/download/{{.Version}}/rekor-cli-{{.OS}}-{{.Arch}}
         asset: rekor-cli-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/sigstore/rekor/releases/download/{{.Version}}/rekor-cli_checksums.txt
           asset: rekor-cli_checksums.txt
           algorithm: sha256
       - version_constraint: Version == "v0.4.0"
-        url: https://gh-proxy.org/https://github.com/sigstore/rekor/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sigstore/rekor/releases/download/{{.Version}}/rekor-cli-{{.OS}}-{{.Arch}}
         asset: rekor-cli-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/sigstore/rekor/releases/download/{{.Version}}/rekor_checksums.txt
           asset: rekor_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 1.4.2")
-        url: https://gh-proxy.org/https://github.com/sigstore/rekor/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sigstore/rekor/releases/download/{{.Version}}/rekor-cli-{{.OS}}-{{.Arch}}
         asset: rekor-cli-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/sigstore/rekor/releases/download/{{.Version}}/rekor_checksums.txt
           asset: rekor_checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/sigstore/rekor/releases/download/{{.Version}}/rekor_checksums.txt-keyless.pem
+              - https://gh-proxy.org/github.com/sigstore/rekor/releases/download/{{.Version}}/rekor_checksums.txt-keyless.pem
               - --certificate-identity
               - keyless@projectsigstore.iam.gserviceaccount.com
               - --certificate-oidc-issuer
               - https://accounts.google.com
               - --signature
-              - https://github.com/sigstore/rekor/releases/download/{{.Version}}/rekor_checksums.txt-keyless.sig
+              - https://gh-proxy.org/github.com/sigstore/rekor/releases/download/{{.Version}}/rekor_checksums.txt-keyless.sig
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/sigstore/rekor/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sigstore/rekor/releases/download/{{.Version}}/rekor-cli-{{.OS}}-{{.Arch}}
         asset: rekor-cli-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/sigstore/rekor/releases/download/{{.Version}}/rekor_checksums.txt
           asset: rekor_checksums.txt
           algorithm: sha256
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/sigstore/rekor/releases/download/{{.Version}}/rekor_checksums.txt-keyless.sigstore.json
               asset: "rekor_checksums.txt-keyless.sigstore.json"
             opts:
               - --certificate-identity

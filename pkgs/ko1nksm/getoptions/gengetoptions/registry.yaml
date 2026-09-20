@@ -3,7 +3,8 @@ packages:
   - name: ko1nksm/getoptions/gengetoptions
     repo_owner: ko1nksm
     repo_name: getoptions
-    type: github_release
+    type: http
+    url: https://gh-proxy.org/github.com/ko1nksm/getoptions/releases/download/{{.Version}}/gengetoptions
     description: An elegant option/argument parser for shell scripts (full support for bash and all POSIX shells)
     asset: gengetoptions
     supported_envs:

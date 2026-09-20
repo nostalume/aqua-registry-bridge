@@ -9,6 +9,7 @@ packages:
       - version_constraint: Version == "v0.1.0"
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/robgonnella/minienv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/robgonnella/minienv/releases/download/{{.Version}}/minienv-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: minienv-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tgz

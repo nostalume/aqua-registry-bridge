@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.4.0")
-        url: https://gh-proxy.org/https://github.com/chainguard-dev/apko/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         files:
           - name: apko
@@ -22,11 +23,12 @@ packages:
             - --certificate-oidc-issuer
             - "https://token.actions.githubusercontent.com"
             - --signature
-            - https://github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.sig
+            - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.sig
             - --certificate
-            - https://github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.crt
+            - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.crt
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
@@ -36,11 +38,12 @@ packages:
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
               - --signature
-              - https://github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
-              - https://github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.crt
+              - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.crt
       - version_constraint: semver("<= 0.6.1")
-        url: https://gh-proxy.org/https://github.com/chainguard-dev/apko/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -55,11 +58,12 @@ packages:
             - --certificate-oidc-issuer
             - "https://token.actions.githubusercontent.com"
             - --signature
-            - https://github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.sig
+            - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.sig
             - --certificate
-            - https://github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.crt
+            - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.crt
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
@@ -69,11 +73,12 @@ packages:
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
               - --signature
-              - https://github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
-              - https://github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.crt
+              - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.crt
       - version_constraint: semver("<= 0.11.0")
-        url: https://gh-proxy.org/https://github.com/chainguard-dev/apko/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -89,11 +94,12 @@ packages:
             - --certificate-oidc-issuer
             - "https://token.actions.githubusercontent.com"
             - --signature
-            - https://github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.sig
+            - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.sig
             - --certificate
-            - https://github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.crt
+            - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.crt
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
@@ -103,11 +109,12 @@ packages:
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
               - --signature
-              - https://github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
-              - https://github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.crt
+              - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.crt
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/chainguard-dev/apko/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         files:
           - name: apko
@@ -123,11 +130,12 @@ packages:
             - --certificate-oidc-issuer
             - "https://token.actions.githubusercontent.com"
             - --signature
-            - https://github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.sig
+            - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.sig
             - --certificate
-            - https://github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.crt
+            - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.crt
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
@@ -137,6 +145,6 @@ packages:
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
               - --signature
-              - https://github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
-              - https://github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.crt
+              - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.crt

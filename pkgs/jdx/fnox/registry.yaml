@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version == "v1.27.0"
         no_asset: true
       - version_constraint: semver("<= 1.23.0")
-        url: https://gh-proxy.org/https://github.com/jdx/fnox/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jdx/fnox/releases/download/{{.Version}}/fnox-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: fnox-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -20,9 +21,12 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jdx/fnox/releases/download/{{.Version}}/fnox-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/jdx/fnox/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jdx/fnox/releases/download/{{.Version}}/fnox-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: fnox-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -33,4 +37,6 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jdx/fnox/releases/download/{{.Version}}/fnox-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip

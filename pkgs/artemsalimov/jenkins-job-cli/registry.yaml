@@ -11,35 +11,41 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v1.1.0"
-        url: https://gh-proxy.org/https://github.com/artemsalimov/jenkins-job-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/artemsalimov/jenkins-job-cli/releases/download/{{.Version}}/jenkins-job-ctl-{{trimV .Version}}-{{.OS}}-{{.Arch}}
         asset: jenkins-job-ctl-{{trimV .Version}}-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
         complete_windows_ext: false
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/artemsalimov/jenkins-job-cli/releases/download/{{.Version}}/sha256sums.txt
           asset: sha256sums.txt
           algorithm: sha256
       - version_constraint: semver("<= 1.0.1")
-        url: https://gh-proxy.org/https://github.com/artemsalimov/jenkins-job-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/artemsalimov/jenkins-job-cli/releases/download/{{.Version}}/jbuilder-{{trimV .Version}}-{{.OS}}-{{.Arch}}
         asset: jbuilder-{{trimV .Version}}-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
         complete_windows_ext: false
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/artemsalimov/jenkins-job-cli/releases/download/{{.Version}}/sha256sums.txt
           asset: sha256sums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/artemsalimov/jenkins-job-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/artemsalimov/jenkins-job-cli/releases/download/{{.Version}}/jenkins-job-cli-{{trimV .Version}}-{{.OS}}-{{.Arch}}
         asset: jenkins-job-cli-{{trimV .Version}}-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
         complete_windows_ext: false
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/artemsalimov/jenkins-job-cli/releases/download/{{.Version}}/sha256sums.txt
           asset: sha256sums.txt
           algorithm: sha256

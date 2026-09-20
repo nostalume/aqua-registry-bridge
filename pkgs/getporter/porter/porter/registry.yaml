@@ -13,7 +13,10 @@ packages:
       - version_constraint: semver("<= 1.0.0")
         no_asset: true
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/getporter/porter/releases/download/{{.Version}}/porter-{{.OS}}-{{.Arch}}
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256sum"
           asset: "{{.Asset}}.sha256sum"
           algorithm: sha256

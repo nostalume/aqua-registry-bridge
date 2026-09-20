@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/jtyr/gbt/releases/download/{{.Version}}/gbt-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
     repo_owner: jtyr
     repo_name: gbt
     description: Highly configurable prompt builder for Bash, ZSH and PowerShell written in Go
@@ -9,6 +10,8 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/jtyr/gbt/releases/download/{{.Version}}/gbt-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
     supported_envs:
       - darwin
@@ -18,6 +21,7 @@ packages:
       - name: gbt
         src: gbt-{{trimV .Version}}/gbt
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/jtyr/gbt/releases/download/{{.Version}}/gbt-{{trimV .Version}}-checksums-sha256.txt
       asset: gbt-{{trimV .Version}}-checksums-sha256.txt
       algorithm: sha256

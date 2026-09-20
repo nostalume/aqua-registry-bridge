@@ -7,103 +7,136 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.0.12")
-        url: https://gh-proxy.org/https://github.com/ollama/ollama/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ollama/ollama/releases/download/{{.Version}}/ollama-{{.OS}}-{{.Arch}}
         asset: ollama-{{.OS}}-{{.Arch}}
         format: raw
         supported_envs:
           - darwin/arm64
       - version_constraint: semver("<= 0.0.21")
-        url: https://gh-proxy.org/https://github.com/ollama/ollama/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ollama/ollama/releases/download/{{.Version}}/ollama-{{.OS}}
         asset: ollama-{{.OS}}
         format: raw
         supported_envs:
           - darwin
       - version_constraint: semver("<= 0.1.29")
-        url: https://gh-proxy.org/https://github.com/ollama/ollama/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ollama/ollama/releases/download/{{.Version}}/ollama-{{.OS}}-{{.Arch}}
         asset: ollama-{{.OS}}-{{.Arch}}
         format: raw
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/ollama/ollama/releases/download/{{.Version}}/ollama-{{.OS}}
             asset: ollama-{{.OS}}
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 0.1.32")
-        url: https://gh-proxy.org/https://github.com/ollama/ollama/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ollama/ollama/releases/download/{{.Version}}/ollama-{{.OS}}-{{.Arch}}
         asset: ollama-{{.OS}}-{{.Arch}}
         windows_arm_emulation: true
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/ollama/ollama/releases/download/{{.Version}}/sha256sum.txt
           asset: sha256sum.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/ollama/ollama/releases/download/{{.Version}}/ollama-{{.OS}}
             asset: ollama-{{.OS}}
       - version_constraint: semver("<= 0.3.6")
-        url: https://gh-proxy.org/https://github.com/ollama/ollama/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ollama/ollama/releases/download/{{.Version}}/ollama-{{.OS}}-{{.Arch}}
         asset: ollama-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/ollama/ollama/releases/download/{{.Version}}/sha256sum.txt
           asset: sha256sum.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/ollama/ollama/releases/download/{{.Version}}/ollama-{{.OS}}
             asset: ollama-{{.OS}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ollama/ollama/releases/download/{{.Version}}/ollama-{{.OS}}-{{.Arch}}.{{.Format}}
             asset: ollama-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.5.7")
-        url: https://gh-proxy.org/https://github.com/ollama/ollama/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ollama/ollama/releases/download/{{.Version}}/ollama-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: ollama-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/ollama/ollama/releases/download/{{.Version}}/sha256sum.txt
           asset: sha256sum.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/ollama/ollama/releases/download/{{.Version}}/ollama-{{.OS}}-{{.Arch}}.{{.Format}}
             format: tgz
             files:
               - name: ollama
                 src: bin/ollama
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/ollama/ollama/releases/download/{{.Version}}/ollama-{{.OS}}
             asset: ollama-{{.OS}}
             format: raw
       - version_constraint: semver("<= 0.13.5")
-        url: https://gh-proxy.org/https://github.com/ollama/ollama/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ollama/ollama/releases/download/{{.Version}}/ollama-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: ollama-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/ollama/ollama/releases/download/{{.Version}}/sha256sum.txt
           asset: sha256sum.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/ollama/ollama/releases/download/{{.Version}}/ollama-{{.OS}}-{{.Arch}}.{{.Format}}
             format: tgz
             files:
               - name: ollama
                 src: bin/ollama
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/ollama/ollama/releases/download/{{.Version}}/ollama-{{.OS}}.{{.Format}}
             asset: ollama-{{.OS}}.{{.Format}}
             format: tgz
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/ollama/ollama/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ollama/ollama/releases/download/{{.Version}}/ollama-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: ollama-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/ollama/ollama/releases/download/{{.Version}}/sha256sum.txt
           asset: sha256sum.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/ollama/ollama/releases/download/{{.Version}}/ollama-{{.OS}}.{{.Format}}
             asset: ollama-{{.OS}}.{{.Format}}
             format: tgz
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/ollama/ollama/releases/download/{{.Version}}/ollama-{{.OS}}-{{.Arch}}.{{.Format}}
             format: tar.zst
             files:
               - name: ollama

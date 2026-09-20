@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/Lallassu/gorss/releases/download/{{.Version}}/gorss_{{.OS}}.tar.gz
     repo_owner: Lallassu
     repo_name: gorss
     description: Go Terminal Feed Reader

@@ -9,13 +9,15 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v1.12.2"
-        url: https://gh-proxy.org/https://github.com/air-verse/air/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/air-verse/air/releases/download/{{.Version}}/air_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: air_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/air-verse/air/releases/download/{{.Version}}/air_{{trimV .Version}}_checksums.txt
           asset: air_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
@@ -23,13 +25,15 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "v1.12.3"
-        url: https://gh-proxy.org/https://github.com/air-verse/air/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/air-verse/air/releases/download/{{.Version}}/air_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         asset: air_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/air-verse/air/releases/download/{{.Version}}/air_{{trimV .Version}}_checksums.txt
           asset: air_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
@@ -39,13 +43,15 @@ packages:
       - version_constraint: semver("<= 1.12.1")
         no_asset: true
       - version_constraint: semver("<= 1.15.1")
-        url: https://gh-proxy.org/https://github.com/air-verse/air/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/air-verse/air/releases/download/{{.Version}}/air_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: air_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/air-verse/air/releases/download/{{.Version}}/air_{{trimV .Version}}_checksums.txt
           asset: air_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
@@ -53,19 +59,23 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.27.3")
-        url: https://gh-proxy.org/https://github.com/air-verse/air/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/air-verse/air/releases/download/{{.Version}}/air_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: air_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/air-verse/air/releases/download/{{.Version}}/air_{{trimV .Version}}_checksums.txt
           asset: air_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/air-verse/air/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/air-verse/air/releases/download/{{.Version}}/air_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: air_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/air-verse/air/releases/download/{{.Version}}/air_{{trimV .Version}}_checksums.txt
           asset: air_{{trimV .Version}}_checksums.txt
           algorithm: sha256

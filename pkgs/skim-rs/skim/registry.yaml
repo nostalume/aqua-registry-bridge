@@ -13,7 +13,8 @@ packages:
       - version_constraint: Version == "v0.1-alpha"
         no_asset: true
       - version_constraint: Version == "v0.9.4"
-        url: https://gh-proxy.org/https://github.com/skim-rs/skim/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/skim-rs/skim/releases/download/{{.Version}}/skim-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: skim-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -25,7 +26,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.5.0")
-        url: https://gh-proxy.org/https://github.com/skim-rs/skim/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/skim-rs/skim/releases/download/{{.Version}}/skim-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: skim-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -37,7 +39,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.6.9")
-        url: https://gh-proxy.org/https://github.com/skim-rs/skim/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/skim-rs/skim/releases/download/{{.Version}}/skim-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: skim-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -49,7 +52,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.9.3")
-        url: https://gh-proxy.org/https://github.com/skim-rs/skim/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/skim-rs/skim/releases/download/{{.Version}}/skim-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: skim-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -58,6 +62,8 @@ packages:
           darwin: apple-darwin
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/skim-rs/skim/releases/download/{{.Version}}/skim-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
@@ -67,7 +73,8 @@ packages:
       - version_constraint: semver("<= 0.10.4")
         no_asset: true
       - version_constraint: semver("<= 0.14.3")
-        url: https://gh-proxy.org/https://github.com/skim-rs/skim/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/skim-rs/skim/releases/download/{{.Version}}/skim-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: skim-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tgz
         replacements:
@@ -81,7 +88,8 @@ packages:
       - version_constraint: semver("<= 0.15.3")
         no_asset: true
       - version_constraint: semver("<= 0.20.5")
-        url: https://gh-proxy.org/https://github.com/skim-rs/skim/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/skim-rs/skim/releases/download/{{.Version}}/skim-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: skim-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tgz
         replacements:
@@ -93,7 +101,8 @@ packages:
           - linux
           - darwin
       - version_constraint: semver("<= 4.0.1")
-        url: https://gh-proxy.org/https://github.com/skim-rs/skim/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/skim-rs/skim/releases/download/{{.Version}}/skim-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: skim-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         files:
@@ -104,15 +113,20 @@ packages:
           arm64: aarch64
           darwin: apple-darwin
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/skim-rs/skim/releases/download/{{.Version}}/skim-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/skim-rs/skim/releases/download/{{.Version}}/skim-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
@@ -120,7 +134,8 @@ packages:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/skim-rs/skim/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/skim-rs/skim/releases/download/{{.Version}}/skim-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: skim-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -134,11 +149,14 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/skim-rs/skim/releases/download/{{.Version}}/skim-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: sk

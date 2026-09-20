@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v1.1.1"
-        url: https://gh-proxy.org/https://github.com/so-dang-cool/findup/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/so-dang-cool/findup/releases/download/{{.Version}}/{{.Arch}}-{{.OS}}.{{.Format}}
         asset: "{{.Arch}}-{{.OS}}.{{.Format}}"
         format: tgz
         files:
@@ -22,7 +23,8 @@ packages:
       - version_constraint: semver("<= 1.1.0")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/so-dang-cool/findup/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/so-dang-cool/findup/releases/download/{{.Version}}/findup-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: findup-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tgz
         replacements:
@@ -32,6 +34,8 @@ packages:
           linux: linux-gnu
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/so-dang-cool/findup/releases/download/{{.Version}}/findup-{{.Arch}}-{{.OS}}-none.{{.Format}}
             asset: findup-{{.Arch}}-{{.OS}}-none.{{.Format}}
         supported_envs:
           - linux

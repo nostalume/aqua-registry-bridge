@@ -9,25 +9,29 @@ packages:
       - version_constraint: Version in ["v0.1.0", "v0.5.4", "v0.5.27", "v0.6.20"]
         no_asset: true
       - version_constraint: Version == "v0.3.0"
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/{{.Version}}/heptio-authenticator-aws_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         asset: heptio-authenticator-aws_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/{{.Version}}/authenticator_{{trimV .Version}}_checksums.txt
           asset: authenticator_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.4.0-alpha.3")
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/{{.Version}}/aws-iam-authenticator_{{.Version}}_{{.OS}}_{{.Arch}}
         asset: aws-iam-authenticator_{{.Version}}_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/{{.Version}}/authenticator_{{.Version}}_checksums.txt
           asset: authenticator_{{.Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
@@ -35,13 +39,15 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.5.3")
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/{{.Version}}/aws-iam-authenticator_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         asset: aws-iam-authenticator_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/{{.Version}}/authenticator_{{trimV .Version}}_checksums.txt
           asset: authenticator_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
@@ -49,11 +55,13 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/{{.Version}}/aws-iam-authenticator_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         asset: aws-iam-authenticator_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/{{.Version}}/authenticator_{{trimV .Version}}_checksums.txt
           asset: authenticator_{{trimV .Version}}_checksums.txt
           algorithm: sha256

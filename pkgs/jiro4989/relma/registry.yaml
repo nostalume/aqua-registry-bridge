@@ -7,13 +7,16 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/jiro4989/relma/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jiro4989/relma/releases/download/{{.Version}}/relma-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: relma-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jiro4989/relma/releases/download/{{.Version}}/relma-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin

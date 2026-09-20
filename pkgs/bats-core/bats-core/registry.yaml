@@ -1,6 +1,8 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_archive
+  - type: http
+    url: https://gh-proxy.org/github.com/bats-core/bats-core/archive/{{.Version}}.tar.gz
+    format: tar.gz
     repo_owner: bats-core
     repo_name: bats-core
     description: Bash Automated Testing System

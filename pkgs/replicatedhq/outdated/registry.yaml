@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/replicatedhq/outdated/releases/download/{{.Version}}/outdated_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: replicatedhq
     repo_name: outdated
     description: Kubectl plugin to find and report outdated images running in a Kubernetes cluster
@@ -15,8 +16,11 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/replicatedhq/outdated/releases/download/{{.Version}}/outdated_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/replicatedhq/outdated/releases/download/{{.Version}}/outdated_{{trimV .Version}}_checksums.txt
       asset: outdated_{{trimV .Version}}_checksums.txt
       algorithm: sha256

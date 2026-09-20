@@ -7,23 +7,27 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.2.12")
-        url: https://gh-proxy.org/https://github.com/minamijoyo/tfmigrate/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/minamijoyo/tfmigrate/releases/download/{{.Version}}/tfmigrate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tfmigrate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/minamijoyo/tfmigrate/releases/download/{{.Version}}/tfmigrate_{{trimV .Version}}_checksums.txt
           asset: tfmigrate_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/minamijoyo/tfmigrate/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/minamijoyo/tfmigrate/releases/download/{{.Version}}/tfmigrate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tfmigrate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/minamijoyo/tfmigrate/releases/download/{{.Version}}/tfmigrate_{{trimV .Version}}_checksums.txt
           asset: tfmigrate_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:

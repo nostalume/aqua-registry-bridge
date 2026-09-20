@@ -10,7 +10,8 @@ packages:
       - version_constraint: Version in ["v0.7.0", "v0.7.1"]
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/bytecodealliance/wasm-pkg-tools/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bytecodealliance/wasm-pkg-tools/releases/download/{{.Version}}/wkg-{{.Arch}}-{{.OS}}
         asset: wkg-{{.Arch}}-{{.OS}}
         format: raw
         windows_arm_emulation: true

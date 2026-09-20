@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.10.1"
-        url: https://gh-proxy.org/https://github.com/PSU3D0/agent-spreadsheet/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/PSU3D0/agent-spreadsheet/releases/download/{{.Version}}/spreadsheet-cli-{{.OS}}-{{.Arch}}
         asset: spreadsheet-cli-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -16,6 +17,8 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/PSU3D0/agent-spreadsheet/releases/download/{{.Version}}/spreadsheet-cli-{{.OS}}-{{.Arch}}
             replacements:
               arm64: aarch64
         supported_envs:
@@ -23,7 +26,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "v0.11.1"
-        url: https://gh-proxy.org/https://github.com/PSU3D0/agent-spreadsheet/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/PSU3D0/agent-spreadsheet/releases/download/{{.Version}}/spreadsheet-mcp-{{.OS}}-{{.Arch}}
         asset: spreadsheet-mcp-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -32,6 +36,8 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/PSU3D0/agent-spreadsheet/releases/download/{{.Version}}/spreadsheet-mcp-{{.OS}}-{{.Arch}}
             replacements:
               arm64: aarch64
         supported_envs:
@@ -39,7 +45,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "v0.12.0"
-        url: https://gh-proxy.org/https://github.com/PSU3D0/agent-spreadsheet/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/PSU3D0/agent-spreadsheet/releases/download/{{.Version}}/agent-spreadsheet-{{.OS}}-{{.Arch}}
         asset: agent-spreadsheet-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -48,6 +55,8 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/PSU3D0/agent-spreadsheet/releases/download/{{.Version}}/agent-spreadsheet-{{.OS}}-{{.Arch}}
             replacements:
               arm64: aarch64
         supported_envs:
@@ -55,7 +64,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.4.0")
-        url: https://gh-proxy.org/https://github.com/PSU3D0/agent-spreadsheet/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/PSU3D0/agent-spreadsheet/releases/download/{{.Version}}/spreadsheet-read-mcp-{{.OS}}-{{.Arch}}
         asset: spreadsheet-read-mcp-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -64,6 +74,8 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/PSU3D0/agent-spreadsheet/releases/download/{{.Version}}/spreadsheet-read-mcp-{{.OS}}-{{.Arch}}
             replacements:
               arm64: aarch64
         supported_envs:
@@ -71,7 +83,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.10.0")
-        url: https://gh-proxy.org/https://github.com/PSU3D0/agent-spreadsheet/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/PSU3D0/agent-spreadsheet/releases/download/{{.Version}}/spreadsheet-mcp-{{.OS}}-{{.Arch}}
         asset: spreadsheet-mcp-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -80,6 +93,8 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/PSU3D0/agent-spreadsheet/releases/download/{{.Version}}/spreadsheet-mcp-{{.OS}}-{{.Arch}}
             replacements:
               arm64: aarch64
         supported_envs:
@@ -87,7 +102,8 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/PSU3D0/agent-spreadsheet/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/PSU3D0/agent-spreadsheet/releases/download/{{.Version}}/agent-spreadsheet-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: agent-spreadsheet-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -99,10 +115,13 @@ packages:
           arm64: aarch64
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/PSU3D0/agent-spreadsheet/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/PSU3D0/agent-spreadsheet/releases/download/{{.Version}}/agent-spreadsheet-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             replacements: {}

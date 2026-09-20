@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.18.8")
-        url: https://gh-proxy.org/https://github.com/kellyjonbrazil/jc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kellyjonbrazil/jc/releases/download/{{.Version}}/jc-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: jc-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -17,7 +18,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 1.25.0")
-        url: https://gh-proxy.org/https://github.com/kellyjonbrazil/jc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kellyjonbrazil/jc/releases/download/{{.Version}}/jc-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: jc-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -25,6 +27,8 @@ packages:
           amd64: x86_64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kellyjonbrazil/jc/releases/download/{{.Version}}/jc-{{trimV .Version}}-{{.OS}}.{{.Format}}
             format: zip
             asset: jc-{{trimV .Version}}-{{.OS}}.{{.Format}}
             files:
@@ -35,7 +39,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.25.6")
-        url: https://gh-proxy.org/https://github.com/kellyjonbrazil/jc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kellyjonbrazil/jc/releases/download/{{.Version}}/jc-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: jc-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -43,22 +48,29 @@ packages:
           arm64: aarch64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kellyjonbrazil/jc/releases/download/{{.Version}}/jc-{{trimV .Version}}-{{.OS}}.{{.Format}}
             format: zip
             asset: jc-{{trimV .Version}}-{{.OS}}.{{.Format}}
             files:
               - name: jc
                 src: jc-{{trimV .Version}}-windows/jc
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/kellyjonbrazil/jc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kellyjonbrazil/jc/releases/download/{{.Version}}/jc-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: jc-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           arm64: aarch64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/kellyjonbrazil/jc/releases/download/{{.Version}}/jc-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               amd64: x86_64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kellyjonbrazil/jc/releases/download/{{.Version}}/jc-{{trimV .Version}}-{{.OS}}.{{.Format}}
             format: zip
             asset: jc-{{trimV .Version}}-{{.OS}}.{{.Format}}
             files:

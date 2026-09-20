@@ -9,13 +9,15 @@ packages:
       - version_constraint: Version == "v0.2"
         no_asset: true
       - version_constraint: Version == "v0.1"
-        url: https://gh-proxy.org/https://github.com/gotestyourself/gotestsum/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gotestyourself/gotestsum/releases/download/{{.Version}}/gotestsum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gotestsum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gotestyourself/gotestsum/releases/download/{{.Version}}/gotestsum-{{trimV .Version}}-checksums.txt
           asset: gotestsum-{{trimV .Version}}-checksums.txt
           algorithm: sha256
         supported_envs:
@@ -23,22 +25,26 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "v1.10.0"
-        url: https://gh-proxy.org/https://github.com/gotestyourself/gotestsum/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gotestyourself/gotestsum/releases/download/{{.Version}}/gotestsum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gotestsum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gotestyourself/gotestsum/releases/download/{{.Version}}/gotestsum-{{trimV .Version}}-checksums.txt
           asset: gotestsum-{{trimV .Version}}-checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.5.1")
-        url: https://gh-proxy.org/https://github.com/gotestyourself/gotestsum/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gotestyourself/gotestsum/releases/download/{{.Version}}/gotestsum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gotestsum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gotestyourself/gotestsum/releases/download/{{.Version}}/gotestsum-{{trimV .Version}}-checksums.txt
           asset: gotestsum-{{trimV .Version}}-checksums.txt
           algorithm: sha256
         supported_envs:
@@ -46,29 +52,35 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.6.2")
-        url: https://gh-proxy.org/https://github.com/gotestyourself/gotestsum/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gotestyourself/gotestsum/releases/download/{{.Version}}/gotestsum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gotestsum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gotestyourself/gotestsum/releases/download/{{.Version}}/gotestsum-{{trimV .Version}}-checksums.txt
           asset: gotestsum-{{trimV .Version}}-checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 1.7.0")
-        url: https://gh-proxy.org/https://github.com/gotestyourself/gotestsum/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gotestyourself/gotestsum/releases/download/{{.Version}}/gotestsum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gotestsum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gotestyourself/gotestsum/releases/download/{{.Version}}/gotestsum-{{trimV .Version}}-checksums.txt
           asset: gotestsum-{{trimV .Version}}-checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/gotestyourself/gotestsum/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gotestyourself/gotestsum/releases/download/{{.Version}}/gotestsum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gotestsum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gotestyourself/gotestsum/releases/download/{{.Version}}/gotestsum-{{trimV .Version}}-checksums.txt
           asset: gotestsum-{{trimV .Version}}-checksums.txt
           algorithm: sha256

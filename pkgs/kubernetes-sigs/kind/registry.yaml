@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "0.0.1"
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/kind/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/kind/releases/download/{{.Version}}/kind-{{.OS}}-{{.Arch}}
         asset: kind-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -15,7 +16,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: Version == "0.1.0"
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/kind/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/kind/releases/download/{{.Version}}/kind-{{.OS}}-{{.Arch}}
         asset: kind-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -26,7 +28,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "v0.5.0"
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/kind/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/kind/releases/download/{{.Version}}/kind-{{.OS}}-{{.Arch}}
         asset: kind-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -34,25 +37,29 @@ packages:
           - linux
           - darwin
       - version_constraint: semver("<= 0.10.0")
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/kind/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/kind/releases/download/{{.Version}}/kind-{{.OS}}-{{.Arch}}
         asset: kind-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
         complete_windows_ext: false
       - version_constraint: semver("<= 0.11.1")
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/kind/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/kind/releases/download/{{.Version}}/kind-{{.OS}}-{{.Arch}}
         asset: kind-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         complete_windows_ext: false
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/kind/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/kind/releases/download/{{.Version}}/kind-{{.OS}}-{{.Arch}}
         asset: kind-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         complete_windows_ext: false
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubernetes-sigs/kind/releases/download/{{.Version}}/kind-{{.OS}}-{{.Arch}}.sha256sum
           asset: kind-{{.OS}}-{{.Arch}}.sha256sum
           algorithm: sha256

@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version in ["0.1.6", "0.2.1"]
         no_asset: true
       - version_constraint: Version in ["0.2.0", "0.3.0"]
-        url: https://gh-proxy.org/https://github.com/blacknon/hwatch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/blacknon/hwatch/releases/download/{{.Version}}/hwatch_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: hwatch_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -19,7 +20,8 @@ packages:
         supported_envs:
           - darwin
       - version_constraint: semver("= 0.1.0")
-        url: https://gh-proxy.org/https://github.com/blacknon/hwatch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/blacknon/hwatch/releases/download/{{.Version}}/hwatch_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: hwatch_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -30,7 +32,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.1.2")
-        url: https://gh-proxy.org/https://github.com/blacknon/hwatch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/blacknon/hwatch/releases/download/{{.Version}}/hwatch_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: hwatch_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -38,7 +41,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.1.4")
-        url: https://gh-proxy.org/https://github.com/blacknon/hwatch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/blacknon/hwatch/releases/download/{{.Version}}/hwatch_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: hwatch_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -49,7 +53,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.3.13")
-        url: https://gh-proxy.org/https://github.com/blacknon/hwatch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/blacknon/hwatch/releases/download/{{.Version}}/hwatch-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         asset: hwatch-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -61,13 +66,16 @@ packages:
           linux: unknown-linux-musl
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/blacknon/hwatch/releases/download/{{.Version}}/hwatch-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.3.18")
-        url: https://gh-proxy.org/https://github.com/blacknon/hwatch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/blacknon/hwatch/releases/download/{{.Version}}/hwatch-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         asset: hwatch-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -81,9 +89,13 @@ packages:
           windows: pc-windows-gnu
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/blacknon/hwatch/releases/download/{{.Version}}/hwatch-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/blacknon/hwatch/releases/download/{{.Version}}/hwatch-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: hwatch
@@ -93,7 +105,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.4.1")
-        url: https://gh-proxy.org/https://github.com/blacknon/hwatch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/blacknon/hwatch/releases/download/{{.Version}}/hwatch-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         asset: hwatch-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -108,12 +121,15 @@ packages:
           windows: pc-windows-gnu
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/blacknon/hwatch/releases/download/{{.Version}}/hwatch-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: hwatch
                 src: target/{{.Arch}}-{{.OS}}/release/hwatch
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/blacknon/hwatch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/blacknon/hwatch/releases/download/{{.Version}}/hwatch-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         asset: hwatch-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -128,6 +144,8 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/blacknon/hwatch/releases/download/{{.Version}}/hwatch-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: hwatch

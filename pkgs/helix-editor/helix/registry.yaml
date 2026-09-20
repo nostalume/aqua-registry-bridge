@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.6.0")
-        url: https://gh-proxy.org/https://github.com/helix-editor/helix/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/helix-editor/helix/releases/download/{{.Version}}/helix-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: helix-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         rosetta2: true
@@ -22,12 +23,17 @@ packages:
           darwin: macos
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/helix-editor/helix/releases/download/{{.Version}}/helix-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/helix-editor/helix/releases/download/{{.Version}}/helix-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 22.5.0")
-        url: https://gh-proxy.org/https://github.com/helix-editor/helix/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/helix-editor/helix/releases/download/{{.Version}}/helix-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: helix-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         rosetta2: true
@@ -40,13 +46,16 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/helix-editor/helix/releases/download/{{.Version}}/helix-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 22.8.1")
-        url: https://gh-proxy.org/https://github.com/helix-editor/helix/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/helix-editor/helix/releases/download/{{.Version}}/helix-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: helix-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -58,16 +67,21 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/helix-editor/helix/releases/download/{{.Version}}/helix-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/helix-editor/helix/releases/download/{{.Version}}/helix-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/helix-editor/helix/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/helix-editor/helix/releases/download/{{.Version}}/helix-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: helix-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -80,5 +94,7 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/helix-editor/helix/releases/download/{{.Version}}/helix-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             replacements: {}

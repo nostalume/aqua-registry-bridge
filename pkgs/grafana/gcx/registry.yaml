@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.2.0"
-        url: https://gh-proxy.org/https://github.com/grafana/gcx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/grafana/gcx/releases/download/{{.Version}}/gcx_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gcx_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -16,20 +17,27 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/grafana/gcx/releases/download/{{.Version}}/gcx_checksums.txt
           asset: gcx_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/grafana/gcx/releases/download/{{.Version}}/gcx_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/grafana/gcx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/grafana/gcx/releases/download/{{.Version}}/gcx_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gcx_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/grafana/gcx/releases/download/{{.Version}}/gcx_{{trimV .Version}}_checksums.txt
           asset: gcx_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/grafana/gcx/releases/download/{{.Version}}/gcx_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

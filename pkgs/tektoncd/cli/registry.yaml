@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.1.0")
-        url: https://gh-proxy.org/https://github.com/tektoncd/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tektoncd/cli/releases/download/{{.Version}}/tkn_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tkn_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -20,7 +21,8 @@ packages:
           linux: Linux
           windows: Windows
       - version_constraint: semver("<= 0.3.1")
-        url: https://gh-proxy.org/https://github.com/tektoncd/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tektoncd/cli/releases/download/{{.Version}}/tkn_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tkn_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -33,11 +35,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/tektoncd/cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: Version == "v0.4.0"
-        url: https://gh-proxy.org/https://github.com/tektoncd/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tektoncd/cli/releases/download/{{.Version}}/tkn_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tkn_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -46,6 +50,8 @@ packages:
           - name: tkn
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/tektoncd/cli/releases/download/{{.Version}}/tkn_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
             checksum:
               enabled: false
@@ -58,11 +64,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/tektoncd/cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.21.0")
-        url: https://gh-proxy.org/https://github.com/tektoncd/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tektoncd/cli/releases/download/{{.Version}}/tkn_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tkn_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -71,6 +79,8 @@ packages:
           - name: tkn
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/tektoncd/cli/releases/download/{{.Version}}/tkn_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64
@@ -78,17 +88,21 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/tektoncd/cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.23.1")
-        url: https://gh-proxy.org/https://github.com/tektoncd/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tektoncd/cli/releases/download/{{.Version}}/tkn_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tkn_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: tkn
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/tektoncd/cli/releases/download/{{.Version}}/tkn_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64
@@ -96,11 +110,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/tektoncd/cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.27.0")
-        url: https://gh-proxy.org/https://github.com/tektoncd/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tektoncd/cli/releases/download/{{.Version}}/tkn_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tkn_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -108,8 +124,12 @@ packages:
           - name: tkn
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/tektoncd/cli/releases/download/{{.Version}}/tkn_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
             asset: tkn_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/tektoncd/cli/releases/download/{{.Version}}/tkn_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64
@@ -117,10 +137,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/tektoncd/cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: Version == "v0.34.0"
+        type: http
+        url: https://gh-proxy.org/github.com/tektoncd/cli/releases/download/{{.Version}}/tkn_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         # https://github.com/tektoncd/cli/issues/2211
         asset: tkn_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
@@ -129,8 +152,12 @@ packages:
           - name: tkn
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/tektoncd/cli/releases/download/{{.Version}}/tkn_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
             asset: tkn_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/tektoncd/cli/releases/download/{{.Version}}/tkn_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64
@@ -139,7 +166,8 @@ packages:
           linux: Linux
           windows: Windows
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/tektoncd/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tektoncd/cli/releases/download/{{.Version}}/tkn_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tkn_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -147,8 +175,12 @@ packages:
           - name: tkn
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/tektoncd/cli/releases/download/{{.Version}}/tkn_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
             asset: tkn_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/tektoncd/cli/releases/download/{{.Version}}/tkn_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64
@@ -157,6 +189,7 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/tektoncd/cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

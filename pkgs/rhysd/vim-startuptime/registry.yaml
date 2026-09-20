@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/rhysd/vim-startuptime/releases/download/{{.Version}}/vim-startuptime_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: rhysd
     repo_name: vim-startuptime
     asset: vim-startuptime_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -8,8 +9,11 @@ packages:
     description: A small Go program for better `vim --startuptime` alternative
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/rhysd/vim-startuptime/releases/download/{{.Version}}/vim-startuptime_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/rhysd/vim-startuptime/releases/download/{{.Version}}/vim-startuptime_{{trimV .Version}}_checksums.txt
       asset: vim-startuptime_{{trimV .Version}}_checksums.txt
       algorithm: sha256

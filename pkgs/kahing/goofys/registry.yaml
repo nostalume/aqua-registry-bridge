@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/kahing/goofys/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kahing/goofys/releases/download/{{.Version}}/goofys
         asset: goofys
         supported_envs:
           - linux/amd64

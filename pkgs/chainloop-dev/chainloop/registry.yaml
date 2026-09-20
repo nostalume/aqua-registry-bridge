@@ -7,36 +7,40 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.0.0-rc.3")
-        url: https://gh-proxy.org/https://github.com/chainloop-dev/chainloop/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/chainloop-dev/chainloop/releases/download/{{.Version}}/chainloop-cli-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: chainloop-cli-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/chainloop-dev/chainloop/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --key
-              - https://github.com/chainloop-dev/chainloop/releases/download/{{.Version}}/cosign.pub
+              - https://gh-proxy.org/github.com/chainloop-dev/chainloop/releases/download/{{.Version}}/cosign.pub
               - --signature
-              - https://github.com/chainloop-dev/chainloop/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/chainloop-dev/chainloop/releases/download/{{.Version}}/checksums.txt.sig
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/chainloop-dev/chainloop/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/chainloop-dev/chainloop/releases/download/{{.Version}}/chainloop-{{.OS}}-{{.Arch}}
         asset: chainloop-{{.OS}}-{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/chainloop-dev/chainloop/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --key
-              - https://github.com/chainloop-dev/chainloop/releases/download/{{.Version}}/cosign.pub
+              - https://gh-proxy.org/github.com/chainloop-dev/chainloop/releases/download/{{.Version}}/cosign.pub
               - --signature
-              - https://github.com/chainloop-dev/chainloop/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/chainloop-dev/chainloop/releases/download/{{.Version}}/checksums.txt.sig
         supported_envs:
           - linux
           - darwin

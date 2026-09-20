@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v1.0.0"
-        url: https://gh-proxy.org/https://github.com/yorukot/superfile/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/yorukot/superfile/releases/download/{{.Version}}/spf
         asset: spf
         format: raw
         files:
@@ -18,7 +19,8 @@ packages:
           - linux/amd64
       # Windows assets are missing only in this release. v1.1.7.1 has them.
       - version_constraint: Version == "v1.1.7"
-        url: https://gh-proxy.org/https://github.com/yorukot/superfile/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/yorukot/superfile/releases/download/{{.Version}}/superfile-{{.OS}}-{{.Version}}-{{.Arch}}.{{.Format}}
         asset: superfile-{{.OS}}-{{.Version}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -28,7 +30,8 @@ packages:
           - linux
           - darwin
       - version_constraint: semver("<= 1.1.1")
-        url: https://gh-proxy.org/https://github.com/yorukot/superfile/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/yorukot/superfile/releases/download/{{.Version}}/superfile-{{.OS}}-{{.Version}}-{{.Arch}}.{{.Format}}
         asset: superfile-{{.OS}}-{{.Version}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -38,7 +41,8 @@ packages:
           - linux
           - darwin
       - version_constraint: semver("<= 1.6.0-rc1")
-        url: https://gh-proxy.org/https://github.com/yorukot/superfile/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/yorukot/superfile/releases/download/{{.Version}}/superfile-{{.OS}}-{{.Version}}-{{.Arch}}.{{.Format}}
         asset: superfile-{{.OS}}-{{.Version}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -46,18 +50,24 @@ packages:
             src: dist/{{.AssetWithoutExt}}/spf
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/yorukot/superfile/releases/download/{{.Version}}/superfile-{{.OS}}-{{.Version}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/yorukot/superfile/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/yorukot/superfile/releases/download/{{.Version}}/superfile-{{.OS}}-{{.Version}}-{{.Arch}}.{{.Format}}
         asset: superfile-{{.OS}}-{{.Version}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: spf
             src: dist/{{.AssetWithoutExt}}/spf
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/yorukot/superfile/releases/download/{{.Version}}/superfile-{{.Version}}-checksums.txt
           asset: superfile-{{.Version}}-checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/yorukot/superfile/releases/download/{{.Version}}/superfile-{{.OS}}-{{.Version}}-{{.Arch}}.{{.Format}}
             format: zip

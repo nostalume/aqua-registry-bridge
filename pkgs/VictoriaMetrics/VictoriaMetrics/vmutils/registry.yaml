@@ -12,27 +12,33 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v1.103.0"
-        url: https://gh-proxy.org/https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/VictoriaMetrics/VictoriaMetrics/releases/download/{{.Version}}/vmutils-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         asset: vmutils-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/VictoriaMetrics/VictoriaMetrics/releases/download/{{.Version}}/vmutils-{{.OS}}-{{.Arch}}-{{.Version}}_checksums.txt
           asset: vmutils-{{.OS}}-{{.Arch}}-{{.Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/VictoriaMetrics/VictoriaMetrics/releases/download/{{.Version}}/vmutils-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         asset: vmutils-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/VictoriaMetrics/VictoriaMetrics/releases/download/{{.Version}}/vmutils-{{.OS}}-{{.Arch}}-{{.Version}}_checksums.txt
           asset: vmutils-{{.OS}}-{{.Arch}}-{{.Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/VictoriaMetrics/VictoriaMetrics/releases/download/{{.Version}}/vmutils-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
             format: zip
             files:
               - name: vmalert-tool

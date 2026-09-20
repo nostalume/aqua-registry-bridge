@@ -1,5 +1,6 @@
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/grafana/mcp-grafana/releases/download/{{.Version}}/mcp-grafana_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: grafana
     repo_name: mcp-grafana
     description: MCP server for Grafana
@@ -11,9 +12,12 @@ packages:
       linux: Linux
       windows: Windows
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/grafana/mcp-grafana/releases/download/{{.Version}}/mcp-grafana_{{trimV .Version}}_checksums.txt
       asset: mcp-grafana_{{trimV .Version}}_checksums.txt
       algorithm: sha256
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/grafana/mcp-grafana/releases/download/{{.Version}}/mcp-grafana_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip

@@ -9,15 +9,19 @@ packages:
       - version_constraint: semver("<= 0.0.1")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Songmu/r2sync/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Songmu/r2sync/releases/download/{{.Version}}/r2sync_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: r2sync_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Songmu/r2sync/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Songmu/r2sync/releases/download/{{.Version}}/r2sync_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux

@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/databricks/click/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/databricks/click/releases/download/{{.Version}}/click-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: click-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -21,6 +22,8 @@ packages:
           windows: pc-windows-gnu
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/databricks/click/releases/download/{{.Version}}/click-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin

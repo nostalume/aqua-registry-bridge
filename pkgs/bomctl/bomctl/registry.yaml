@@ -7,46 +7,54 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.1.8")
-        url: https://gh-proxy.org/https://github.com/bomctl/bomctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bomctl/bomctl/releases/download/{{.Version}}/bomctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: bomctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/bomctl/bomctl/releases/download/{{.Version}}/bomctl_{{trimV .Version}}_checksums.txt
           asset: bomctl_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate-identity
-              - "https://github.com/bomctl/bomctl/.github/workflows/goreleaser.yml@refs/tags/{{.Version}}"
+              - "https://gh-proxy.org/github.com/bomctl/bomctl/.github/workflows/goreleaser.yml@refs/tags/{{.Version}}"
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
               - --signature
-              - https://github.com/bomctl/bomctl/releases/download/{{.Version}}/bomctl_{{trimV .Version}}_checksums.txt-keyless.sig
+              - https://gh-proxy.org/github.com/bomctl/bomctl/releases/download/{{.Version}}/bomctl_{{trimV .Version}}_checksums.txt-keyless.sig
               - --certificate
-              - https://github.com/bomctl/bomctl/releases/download/{{.Version}}/bomctl_{{trimV .Version}}_checksums.txt-keyless.pem
+              - https://gh-proxy.org/github.com/bomctl/bomctl/releases/download/{{.Version}}/bomctl_{{trimV .Version}}_checksums.txt-keyless.pem
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bomctl/bomctl/releases/download/{{.Version}}/bomctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/bomctl/bomctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bomctl/bomctl/releases/download/{{.Version}}/bomctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: bomctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/bomctl/bomctl/releases/download/{{.Version}}/bomctl_{{trimV .Version}}_checksums.txt
           asset: bomctl_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate-identity
-              - "https://github.com/bomctl/bomctl/.github/workflows/goreleaser.yml@refs/tags/{{.Version}}"
+              - "https://gh-proxy.org/github.com/bomctl/bomctl/.github/workflows/goreleaser.yml@refs/tags/{{.Version}}"
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
               - --signature
-              - https://github.com/bomctl/bomctl/releases/download/{{.Version}}/bomctl_{{trimV .Version}}_checksums.txt-keyless.sig
+              - https://gh-proxy.org/github.com/bomctl/bomctl/releases/download/{{.Version}}/bomctl_{{trimV .Version}}_checksums.txt-keyless.sig
               - --certificate
-              - https://github.com/bomctl/bomctl/releases/download/{{.Version}}/bomctl_{{trimV .Version}}_checksums.txt-keyless.pem
+              - https://gh-proxy.org/github.com/bomctl/bomctl/releases/download/{{.Version}}/bomctl_{{trimV .Version}}_checksums.txt-keyless.pem
         github_artifact_attestations:
           signer_workflow: bomctl/bomctl/.github/workflows/goreleaser.yml
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bomctl/bomctl/releases/download/{{.Version}}/bomctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

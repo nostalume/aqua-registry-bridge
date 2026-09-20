@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/mmarkdown/mmark/releases/download/{{.Version}}/mmark_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tgz
     repo_owner: mmarkdown
     repo_name: mmark
     asset: mmark_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tgz

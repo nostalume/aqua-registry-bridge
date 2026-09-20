@@ -17,7 +17,8 @@ packages:
         # Rename jobctl to dagu
         error_message: The version is too old. Please upgrade to a newer version.
       - version_constraint: semver("<= 1.10.5")
-        url: https://gh-proxy.org/https://github.com/dagucloud/dagu/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dagucloud/dagu/releases/download/{{.Version}}/dagu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: dagu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -25,28 +26,33 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/dagucloud/dagu/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 1.17.3")
-        url: https://gh-proxy.org/https://github.com/dagucloud/dagu/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dagucloud/dagu/releases/download/{{.Version}}/dagu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: dagu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/dagucloud/dagu/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/dagucloud/dagu/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dagucloud/dagu/releases/download/{{.Version}}/dagu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: dagu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/dagucloud/dagu/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

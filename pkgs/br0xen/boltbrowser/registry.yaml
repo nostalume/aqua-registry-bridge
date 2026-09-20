@@ -7,12 +7,15 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/br0xen/boltbrowser/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/br0xen/boltbrowser/releases/download/{{.Version}}/boltbrowser.{{.OS}}64
         asset: boltbrowser.{{.OS}}64
         format: raw
         replacements:
           windows: win
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/br0xen/boltbrowser/releases/download/{{.Version}}/boltbrowser.linuxarm
             goarch: arm64
             asset: boltbrowser.linuxarm

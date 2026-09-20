@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "1.1"
-        url: https://gh-proxy.org/https://github.com/msoap/shell2http/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/msoap/shell2http/releases/download/{{.Version}}/shell2http_{{.Version}}.{{.Arch}}.{{.OS}}.{{.Format}}
         asset: shell2http_{{.Version}}.{{.Arch}}.{{.OS}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -15,7 +16,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: Version == "1.2"
-        url: https://gh-proxy.org/https://github.com/msoap/shell2http/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/msoap/shell2http/releases/download/{{.Version}}/shell2http-{{.Version}}.{{.Arch}}.{{.OS}}.{{.Format}}
         asset: shell2http-{{.Version}}.{{.Arch}}.{{.OS}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -23,13 +25,15 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: Version == "1.7"
-        url: https://gh-proxy.org/https://github.com/msoap/shell2http/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/msoap/shell2http/releases/download/{{.Version}}/shell2http-{{.Version}}.{{.OS}}.{{.Arch}}.{{.Format}}
         asset: shell2http-{{.Version}}.{{.OS}}.{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
         windows_arm_emulation: true
       - version_constraint: semver("<= 1.4.0")
-        url: https://gh-proxy.org/https://github.com/msoap/shell2http/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/msoap/shell2http/releases/download/{{.Version}}/shell2http-{{.Version}}.{{.Arch}}.{{.OS}}.{{.Format}}
         asset: shell2http-{{.Version}}.{{.Arch}}.{{.OS}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -39,28 +43,36 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.6.0")
-        url: https://gh-proxy.org/https://github.com/msoap/shell2http/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/msoap/shell2http/releases/download/{{.Version}}/shell2http-{{.Version}}.{{.Arch}}.{{.OS}}.{{.Format}}
         asset: shell2http-{{.Version}}.{{.Arch}}.{{.OS}}.{{.Format}}
         format: zip
         rosetta2: true
         windows_arm_emulation: true
       - version_constraint: semver("<= 1.13.0")
-        url: https://gh-proxy.org/https://github.com/msoap/shell2http/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/msoap/shell2http/releases/download/{{.Version}}/shell2http-{{.Version}}.{{.OS}}.{{.Arch}}.{{.Format}}
         asset: shell2http-{{.Version}}.{{.OS}}.{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/msoap/shell2http/releases/download/{{.Version}}/shell2http-{{.Version}}.{{.OS}}.{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/msoap/shell2http/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/msoap/shell2http/releases/download/{{.Version}}/shell2http_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: shell2http_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/msoap/shell2http/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/msoap/shell2http/releases/download/{{.Version}}/shell2http_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.4.0")
-        url: https://gh-proxy.org/https://github.com/ankitpokhrel/jira-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ankitpokhrel/jira-cli/releases/download/{{.Version}}/jira_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: jira_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         files:
           - name: jira
@@ -16,6 +17,8 @@ packages:
         windows_arm_emulation: true
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ankitpokhrel/jira-cli/releases/download/{{.Version}}/jira_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
             files:
               - name: jira
@@ -26,11 +29,13 @@ packages:
           amd64: x86_64
           darwin: macOS
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/ankitpokhrel/jira-cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/ankitpokhrel/jira-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ankitpokhrel/jira-cli/releases/download/{{.Version}}/jira_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: jira_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         files:
           - name: jira
@@ -39,6 +44,8 @@ packages:
         windows_arm_emulation: true
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ankitpokhrel/jira-cli/releases/download/{{.Version}}/jira_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
             files:
               - name: jira
@@ -47,6 +54,7 @@ packages:
           amd64: x86_64
           darwin: macOS
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/ankitpokhrel/jira-cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

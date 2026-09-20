@@ -9,14 +9,18 @@ packages:
       - version_constraint: semver("<= 0.2.1")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/cloudspannerecosystem/spool/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cloudspannerecosystem/spool/releases/download/{{.Version}}/spool-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: spool-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/cloudspannerecosystem/spool/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/cloudspannerecosystem/spool/releases/download/{{.Version}}/spool-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip

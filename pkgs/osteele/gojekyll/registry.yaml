@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/osteele/gojekyll/releases/download/{{.Version}}/gojekyll_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: osteele
     repo_name: gojekyll
     description: A fast Go implementation of the Jekyll blogging engine
@@ -8,6 +9,8 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/osteele/gojekyll/releases/download/{{.Version}}/gojekyll_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     replacements:
       amd64: x86_64v1
@@ -15,22 +18,28 @@ packages:
       linux: Linux
       windows: Windows
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/osteele/gojekyll/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256
     version_constraint: semver(">= 0.2.8")
     version_overrides:
       - version_constraint: semver(">= 0.2.7")
+        type: http
+        url: https://gh-proxy.org/github.com/osteele/gojekyll/releases/download/{{.Version}}/gojekyll_{{.OS}}_{{.Arch}}.{{.Format}}
         replacements:
           amd64: x86_64
           darwin: Darwin
           linux: Linux
           windows: Windows
       - version_constraint: semver(">= 0.2.3")
-        url: https://gh-proxy.org/https://github.com/osteele/gojekyll/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/osteele/gojekyll/releases/download/{{.Version}}/gojekyll_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gojekyll_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/osteele/gojekyll/releases/download/{{.Version}}/gojekyll_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             asset: gojekyll_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         replacements:
           amd64: x86_64
@@ -43,10 +52,13 @@ packages:
         checksum:
           enabled: false
       - version_constraint: semver("< 0.2.3")
-        url: https://gh-proxy.org/https://github.com/osteele/gojekyll/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/osteele/gojekyll/releases/download/{{.Version}}/gojekyll_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gojekyll_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/osteele/gojekyll/releases/download/{{.Version}}/gojekyll_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             asset: gojekyll_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         replacements:
           amd64: x86_64

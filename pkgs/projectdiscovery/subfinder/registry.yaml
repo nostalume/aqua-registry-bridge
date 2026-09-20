@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/projectdiscovery/subfinder/releases/download/{{.Version}}/subfinder_{{trimV .Version}}_{{.OS}}_{{.Arch}}.zip
     repo_owner: projectdiscovery
     repo_name: subfinder
     asset: subfinder_{{trimV .Version}}_{{.OS}}_{{.Arch}}.zip
@@ -8,6 +9,7 @@ packages:
     replacements:
       darwin: macOS
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/projectdiscovery/subfinder/releases/download/{{.Version}}/subfinder_{{trimV .Version}}_checksums.txt
       asset: subfinder_{{trimV .Version}}_checksums.txt
       algorithm: sha256

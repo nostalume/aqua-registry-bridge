@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version == "v0.10.1"
         no_asset: true
       - version_constraint: semver("<= 0.1.3")
-        url: https://gh-proxy.org/https://github.com/svenstaro/miniserve/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/svenstaro/miniserve/releases/download/{{.Version}}/miniserve-{{.OS}}
         asset: miniserve-{{.OS}}
         format: raw
         replacements:
@@ -18,7 +19,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.3.1")
-        url: https://gh-proxy.org/https://github.com/svenstaro/miniserve/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/svenstaro/miniserve/releases/download/{{.Version}}/miniserve-{{.OS}}
         asset: miniserve-{{.OS}}
         format: raw
         replacements:
@@ -29,7 +31,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.7.0")
-        url: https://gh-proxy.org/https://github.com/svenstaro/miniserve/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/svenstaro/miniserve/releases/download/{{.Version}}/miniserve-{{.OS}}-{{.Arch}}
         asset: miniserve-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -43,7 +46,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.10.4")
-        url: https://gh-proxy.org/https://github.com/svenstaro/miniserve/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/svenstaro/miniserve/releases/download/{{.Version}}/miniserve-{{.Version}}-{{.OS}}-{{.Arch}}
         asset: miniserve-{{.Version}}-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -53,10 +57,13 @@ packages:
           darwin: macos
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/svenstaro/miniserve/releases/download/{{.Version}}/miniserve-{{.Version}}-{{.OS}}-{{.Arch}}
             replacements:
               arm64: aarch64
       - version_constraint: semver("<= 0.20.0")
-        url: https://gh-proxy.org/https://github.com/svenstaro/miniserve/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/svenstaro/miniserve/releases/download/{{.Version}}/miniserve-{{.Version}}-{{.Arch}}-{{.OS}}
         asset: miniserve-{{.Version}}-{{.Arch}}-{{.OS}}
         format: raw
         rosetta2: true
@@ -68,10 +75,13 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/svenstaro/miniserve/releases/download/{{.Version}}/miniserve-{{.Version}}-{{.Arch}}-{{.OS}}
             replacements:
               arm64: aarch64
       - version_constraint: semver("<= 0.23.1")
-        url: https://gh-proxy.org/https://github.com/svenstaro/miniserve/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/svenstaro/miniserve/releases/download/{{.Version}}/miniserve-{{trimV .Version}}-{{.Arch}}-{{.OS}}
         asset: miniserve-{{trimV .Version}}-{{.Arch}}-{{.OS}}
         format: raw
         rosetta2: true
@@ -83,10 +93,13 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/svenstaro/miniserve/releases/download/{{.Version}}/miniserve-{{trimV .Version}}-{{.Arch}}-{{.OS}}
             replacements:
               arm64: aarch64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/svenstaro/miniserve/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/svenstaro/miniserve/releases/download/{{.Version}}/miniserve-{{trimV .Version}}-{{.Arch}}-{{.OS}}
         asset: miniserve-{{trimV .Version}}-{{.Arch}}-{{.OS}}
         format: raw
         windows_arm_emulation: true

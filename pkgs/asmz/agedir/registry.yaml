@@ -7,21 +7,27 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.0.0")
-        url: https://gh-proxy.org/https://github.com/asmz/agedir/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/asmz/agedir/releases/download/{{.Version}}/agedir-{{.OS}}-{{.Arch}}
         asset: agedir-{{.OS}}-{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/asmz/agedir/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/asmz/agedir/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/asmz/agedir/releases/download/{{.Version}}/agedir_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: agedir_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/asmz/agedir/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/asmz/agedir/releases/download/{{.Version}}/agedir_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

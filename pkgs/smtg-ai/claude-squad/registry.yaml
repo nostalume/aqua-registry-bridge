@@ -10,7 +10,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/smtg-ai/claude-squad/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/smtg-ai/claude-squad/releases/download/{{.Version}}/claude-squad_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: claude-squad_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -18,9 +19,12 @@ packages:
           - name: cs
             src: claude-squad
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/smtg-ai/claude-squad/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/smtg-ai/claude-squad/releases/download/{{.Version}}/claude-squad_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

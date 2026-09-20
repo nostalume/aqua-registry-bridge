@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/kayac/go-katsubushi/releases/download/{{.Version}}/go-katsubushi_{{.Version}}_{{.OS}}_{{.Arch}}.tar.gz
     repo_owner: kayac
     repo_name: go-katsubushi
     description: ID generator server
@@ -9,17 +10,21 @@ packages:
     files:
       - name: katsubushi
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/kayac/go-katsubushi/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256
     version_overrides:
       # checksum file not provided & tag style was changed
       - version_constraint: semver(">= 1.6.1")
-        url: https://gh-proxy.org/https://github.com/kayac/go-katsubushi/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kayac/go-katsubushi/releases/download/{{.Version}}/go-katsubushi_v{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: go-katsubushi_v{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/kayac/go-katsubushi/releases/download/{{.Version}}/go-katsubushi_v{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         rosetta2: true
         files:
@@ -32,7 +37,8 @@ packages:
           enabled: false
       # asset name was changed
       - version_constraint: semver(">= 0.1.0")
-        url: https://gh-proxy.org/https://github.com/kayac/go-katsubushi/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kayac/go-katsubushi/releases/download/{{.Version}}/katsubushi-{{.Version}}-{{.OS}}-{{.Arch}}.zip
         asset: katsubushi-{{.Version}}-{{.OS}}-{{.Arch}}.zip
         rosetta2: true
         supported_envs:
@@ -42,7 +48,8 @@ packages:
           enabled: false
       # linux only support
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/kayac/go-katsubushi/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kayac/go-katsubushi/releases/download/{{.Version}}/katsubushi-{{.Version}}-{{.OS}}-{{.Arch}}.zip
         asset: katsubushi-{{.Version}}-{{.OS}}-{{.Arch}}.zip
         files:
           - name: katsubushi

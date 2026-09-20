@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/dutchcoders/cloudman/releases/download/{{.Version}}/cloudman-{{.Version}}-{{.Arch}}-{{.OS}}.tar.gz
     repo_owner: dutchcoders
     repo_name: cloudman
     description: Textual user interface to manage ec2 instances

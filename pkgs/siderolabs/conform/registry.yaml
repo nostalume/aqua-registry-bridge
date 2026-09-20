@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/siderolabs/conform/releases/download/{{.Version}}/conform-{{.OS}}-{{.Arch}}
     repo_owner: siderolabs
     repo_name: conform
     aliases:
@@ -12,6 +13,7 @@ packages:
     format: raw
     asset: conform-{{.OS}}-{{.Arch}}
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/siderolabs/conform/releases/download/{{.Version}}/sha512sum.txt
       asset: sha512sum.txt
       algorithm: sha512

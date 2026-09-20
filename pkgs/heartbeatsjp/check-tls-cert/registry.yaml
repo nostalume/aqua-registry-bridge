@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/heartbeatsjp/check-tls-cert/releases/download/{{.Version}}/check-tls-cert-{{trimV .Version}}-{{.OS}}-{{.Arch}}.tar.xz
     repo_owner: heartbeatsjp
     repo_name: check-tls-cert
     description: Check-tls-cert is a TLS certificate checker

@@ -1,7 +1,8 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
   - name: mongodb/mongodb-atlas-cli/atlascli
-    type: github_release
+    type: http
+    url: https://gh-proxy.org/github.com/mongodb/mongodb-atlas-cli/releases/download/{{.Version}}/mongodb-atlas-cli_{{trimPrefix "atlascli/v" .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: mongodb
     repo_name: mongodb-atlas-cli
     description: MongoDB Atlas CLI and MongoDB CLI enable you to manage your MongoDB in the Cloud
@@ -15,6 +16,8 @@ packages:
         src: bin/atlas
     overrides:
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/mongodb/mongodb-atlas-cli/releases/download/{{.Version}}/mongodb-atlas-cli_{{trimPrefix "atlascli/v" .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: atlas
@@ -25,6 +28,7 @@ packages:
       - amd64
     version_filter: Version startsWith "atlascli/"
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/mongodb/mongodb-atlas-cli/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256

@@ -12,7 +12,8 @@ packages:
         error_message: |
           Please use a version later than v1.0.
       - version_constraint: semver("<= 1.29.1")
-        url: https://gh-proxy.org/https://github.com/aaif-goose/goose/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aaif-goose/goose/releases/download/{{.Version}}/goose-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: goose-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.bz2
         replacements:
@@ -24,7 +25,8 @@ packages:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/aaif-goose/goose/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aaif-goose/goose/releases/download/{{.Version}}/goose-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: goose-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.bz2
         replacements:

@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version in ["v0.16.0", "v0.27.0", "v0.30.0"]
         no_asset: true
       - version_constraint: semver("<= 1.0.0-beta.1")
-        url: https://gh-proxy.org/https://github.com/sacloud/usacloud/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sacloud/usacloud/releases/download/{{.Version}}/usacloud_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: usacloud_{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -19,29 +20,35 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.1.4")
-        url: https://gh-proxy.org/https://github.com/sacloud/usacloud/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sacloud/usacloud/releases/download/{{.Version}}/usacloud_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: usacloud_{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/sacloud/usacloud/releases/download/{{.Version}}/usacloud_SHA256SUMS
           asset: usacloud_SHA256SUMS
           algorithm: sha256
       - version_constraint: semver("<= 1.6.1")
-        url: https://gh-proxy.org/https://github.com/sacloud/usacloud/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sacloud/usacloud/releases/download/{{.Version}}/usacloud_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: usacloud_{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/sacloud/usacloud/releases/download/{{.Version}}/usacloud_SHA256SUMS
           asset: usacloud_SHA256SUMS
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/sacloud/usacloud/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sacloud/usacloud/releases/download/{{.Version}}/usacloud_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: usacloud_{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/sacloud/usacloud/releases/download/{{.Version}}/usacloud_SHA256SUMS
           asset: usacloud_SHA256SUMS
           algorithm: sha256

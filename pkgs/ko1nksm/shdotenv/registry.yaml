@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/ko1nksm/shdotenv/releases/download/{{.Version}}/shdotenv
     repo_owner: ko1nksm
     repo_name: shdotenv
     description: dotenv for shells with support for POSIX-compliant and multiple .env file syntax

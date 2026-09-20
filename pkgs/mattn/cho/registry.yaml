@@ -1,12 +1,15 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/mattn/cho/releases/download/{{.Version}}/cho_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: mattn
     repo_name: cho
     asset: cho_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     format: zip
     overrides:
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/mattn/cho/releases/download/{{.Version}}/cho_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
     supported_envs:
       - darwin

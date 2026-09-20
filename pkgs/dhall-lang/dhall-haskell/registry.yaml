@@ -13,7 +13,8 @@ packages:
       - version_constraint: Version == "1.40.0"
         error_message: "tar.bz2.zip is not supported"
       - version_constraint: semver("<= 1.9.0-rc1")
-        url: https://gh-proxy.org/https://github.com/dhall-lang/dhall-haskell/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dhall-lang/dhall-haskell/releases/download/{{.Version}}/{{.OS}}.{{.Format}}
         asset: "{{.OS}}.{{.Format}}"
         format: tar.gz
         replacements:
@@ -24,7 +25,8 @@ packages:
       - version_constraint: semver("<= 1.16.0")
         no_asset: true
       - version_constraint: semver("<= 1.17.0")
-        url: https://gh-proxy.org/https://github.com/dhall-lang/dhall-haskell/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dhall-lang/dhall-haskell/releases/download/{{.Version}}/dhall-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: dhall-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.bz2
         files:
@@ -35,7 +37,8 @@ packages:
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 1.24.0")
-        url: https://gh-proxy.org/https://github.com/dhall-lang/dhall-haskell/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dhall-lang/dhall-haskell/releases/download/{{.Version}}/dhall-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: dhall-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.bz2
         windows_arm_emulation: true
@@ -46,6 +49,8 @@ packages:
           amd64: x86_64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dhall-lang/dhall-haskell/releases/download/{{.Version}}/dhall-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: dhall
@@ -53,7 +58,8 @@ packages:
           - linux/amd64
           - windows
       - version_constraint: semver("<= 1.39.0")
-        url: https://gh-proxy.org/https://github.com/dhall-lang/dhall-haskell/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dhall-lang/dhall-haskell/releases/download/{{.Version}}/dhall-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: dhall-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.bz2
         rosetta2: true
@@ -66,6 +72,8 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dhall-lang/dhall-haskell/releases/download/{{.Version}}/dhall-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: dhall
@@ -74,7 +82,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "1.40.1"
-        url: https://gh-proxy.org/https://github.com/dhall-lang/dhall-haskell/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dhall-lang/dhall-haskell/releases/download/{{.Version}}/dhall-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: dhall-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.bz2
         rosetta2: true
@@ -90,7 +99,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.41.1")
-        url: https://gh-proxy.org/https://github.com/dhall-lang/dhall-haskell/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dhall-lang/dhall-haskell/releases/download/{{.Version}}/dhall-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: dhall-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.bz2
         rosetta2: true
@@ -103,13 +113,16 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dhall-lang/dhall-haskell/releases/download/{{.Version}}/dhall-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "1.41.2"
-        url: https://gh-proxy.org/https://github.com/dhall-lang/dhall-haskell/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dhall-lang/dhall-haskell/releases/download/{{.Version}}/dhall-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: dhall-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.bz2
         rosetta2: true
@@ -124,13 +137,16 @@ packages:
           windows: Windows
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dhall-lang/dhall-haskell/releases/download/{{.Version}}/dhall-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "1.42.0"
-        url: https://gh-proxy.org/https://github.com/dhall-lang/dhall-haskell/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dhall-lang/dhall-haskell/releases/download/{{.Version}}/dhall-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: dhall-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.bz2
         rosetta2: true
@@ -144,13 +160,16 @@ packages:
           windows: Windows
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dhall-lang/dhall-haskell/releases/download/{{.Version}}/dhall-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/dhall-lang/dhall-haskell/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dhall-lang/dhall-haskell/releases/download/{{.Version}}/dhall-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: dhall-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.bz2
         windows_arm_emulation: true
@@ -161,9 +180,13 @@ packages:
           amd64: x86_64
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/dhall-lang/dhall-haskell/releases/download/{{.Version}}/dhall-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dhall-lang/dhall-haskell/releases/download/{{.Version}}/dhall-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin

@@ -10,7 +10,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.1.0"
-        url: https://gh-proxy.org/https://github.com/callumalpass/tasknotes-tui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/callumalpass/tasknotes-tui/releases/download/{{.Version}}/tasknotes-tui-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: tasknotes-tui-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -19,17 +20,22 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/callumalpass/tasknotes-tui/releases/download/{{.Version}}/tasknotes-tui-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               amd64: amd64
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/callumalpass/tasknotes-tui/releases/download/{{.Version}}/tasknotes-tui-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - linux/amd64
           - darwin/arm64
           - windows/amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/callumalpass/tasknotes-tui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/callumalpass/tasknotes-tui/releases/download/{{.Version}}/tasknotes-tui-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: tasknotes-tui-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -38,9 +44,13 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/callumalpass/tasknotes-tui/releases/download/{{.Version}}/tasknotes-tui-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/callumalpass/tasknotes-tui/releases/download/{{.Version}}/tasknotes-tui-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin

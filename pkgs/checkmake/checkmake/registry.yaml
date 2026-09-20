@@ -11,22 +11,26 @@ packages:
       - version_constraint: Version == "0.2.0"
         no_asset: true
       - version_constraint: semver("<= 0.2.2")
-        url: https://gh-proxy.org/https://github.com/checkmake/checkmake/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/checkmake/checkmake/releases/download/{{.Version}}/checkmake-{{.Version}}.{{.OS}}.{{.Arch}}
         asset: checkmake-{{.Version}}.{{.OS}}.{{.Arch}}
         format: raw
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/checkmake/checkmake/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/checkmake/checkmake/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/checkmake/checkmake/releases/download/{{.Version}}/checkmake-{{.Version}}.{{.OS}}.{{.Arch}}
         asset: checkmake-{{.Version}}.{{.OS}}.{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/checkmake/checkmake/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

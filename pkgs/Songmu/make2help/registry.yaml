@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.0.1")
-        url: https://gh-proxy.org/https://github.com/Songmu/make2help/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Songmu/make2help/releases/download/{{.Version}}/make2help_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: make2help_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -16,12 +17,15 @@ packages:
             src: make2help_{{.Version}}_{{.OS}}_{{.Arch}}/make2help
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Songmu/make2help/releases/download/{{.Version}}/make2help_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.2.0")
-        url: https://gh-proxy.org/https://github.com/Songmu/make2help/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Songmu/make2help/releases/download/{{.Version}}/make2help_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: make2help_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -31,13 +35,16 @@ packages:
             src: make2help_{{.Version}}_{{.OS}}_{{.Arch}}/make2help
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Songmu/make2help/releases/download/{{.Version}}/make2help_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Songmu/make2help/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Songmu/make2help/releases/download/{{.Version}}/make2help_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: make2help_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         files:
@@ -45,4 +52,6 @@ packages:
             src: make2help_{{.Version}}_{{.OS}}_{{.Arch}}/make2help
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Songmu/make2help/releases/download/{{.Version}}/make2help_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz

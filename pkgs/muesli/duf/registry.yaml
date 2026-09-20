@@ -7,32 +7,39 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.9.0"
-        url: https://gh-proxy.org/https://github.com/muesli/duf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/muesli/duf/releases/download/{{.Version}}/duf_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: duf_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/muesli/duf/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/muesli/duf/releases/download/{{.Version}}/duf_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.2.0")
-        url: https://gh-proxy.org/https://github.com/muesli/duf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/muesli/duf/releases/download/{{.Version}}/duf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: duf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/muesli/duf/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
       - version_constraint: semver("<= 0.3.1")
-        url: https://gh-proxy.org/https://github.com/muesli/duf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/muesli/duf/releases/download/{{.Version}}/duf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: duf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -40,14 +47,16 @@ packages:
           amd64: x86_64
           darwin: Darwin
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/muesli/duf/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 0.6.0")
-        url: https://gh-proxy.org/https://github.com/muesli/duf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/muesli/duf/releases/download/{{.Version}}/duf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: duf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -57,14 +66,18 @@ packages:
           darwin: Darwin
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/muesli/duf/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/muesli/duf/releases/download/{{.Version}}/duf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.6.2")
-        url: https://gh-proxy.org/https://github.com/muesli/duf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/muesli/duf/releases/download/{{.Version}}/duf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: duf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -73,14 +86,18 @@ packages:
           darwin: Darwin
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/muesli/duf/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/muesli/duf/releases/download/{{.Version}}/duf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.8.1")
-        url: https://gh-proxy.org/https://github.com/muesli/duf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/muesli/duf/releases/download/{{.Version}}/duf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: duf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -88,22 +105,29 @@ packages:
           darwin: Darwin
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/muesli/duf/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/muesli/duf/releases/download/{{.Version}}/duf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/muesli/duf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/muesli/duf/releases/download/{{.Version}}/duf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: duf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/muesli/duf/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/muesli/duf/releases/download/{{.Version}}/duf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

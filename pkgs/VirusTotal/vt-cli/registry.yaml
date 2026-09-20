@@ -11,7 +11,8 @@ packages:
       - version_constraint: Version == "1.1.0"
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/VirusTotal/vt-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/VirusTotal/vt-cli/releases/download/{{.Version}}/{{.OS}}{{.Arch}}.{{.Format}}
         asset: "{{.OS}}{{.Arch}}.{{.Format}}"
         format: zip
         files:
@@ -25,6 +26,8 @@ packages:
           amd64: "64"
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/VirusTotal/vt-cli/releases/download/{{.Version}}/{{.OS}}.{{.Format}}
             asset: "{{.OS}}.{{.Format}}"
         supported_envs:
           - linux/amd64

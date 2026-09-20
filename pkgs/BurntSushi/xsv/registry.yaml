@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/BurntSushi/xsv/releases/download/{{.Version}}/xsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
     repo_owner: BurntSushi
     repo_name: xsv
     description: A fast CSV command line toolkit written in Rust
@@ -8,6 +9,8 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/BurntSushi/xsv/releases/download/{{.Version}}/xsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
     replacements:
       amd64: x86_64
@@ -21,6 +24,8 @@ packages:
     version_constraint: semver(">= 0.10.3")
     version_overrides:
       - version_constraint: semver(">= 0.10.0")
+        type: http
+        url: https://gh-proxy.org/github.com/BurntSushi/xsv/releases/download/{{.Version}}/xsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         overrides: []
         replacements:
           amd64: x86_64
@@ -30,6 +35,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("< 0.10.0")
+        type: http
+        url: https://gh-proxy.org/github.com/BurntSushi/xsv/releases/download/{{.Version}}/xsv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         overrides: []
         replacements:
           amd64: x86_64

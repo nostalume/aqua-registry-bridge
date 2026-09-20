@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v1.3.0"
-        url: https://gh-proxy.org/https://github.com/variadico/noti/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/variadico/noti/releases/download/{{.Version}}/noti1.3.{{.OS}}-{{.Arch}}.{{.Format}}
         asset: noti1.3.{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -15,7 +16,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: Version in ["v2.0.0", "v2.6.0"]
-        url: https://gh-proxy.org/https://github.com/variadico/noti/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/variadico/noti/releases/download/{{.Version}}/noti{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         asset: noti{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -23,14 +25,16 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v2.1.0"
-        url: https://gh-proxy.org/https://github.com/variadico/noti/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/variadico/noti/releases/download/{{.Version}}/noti{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         asset: noti{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         supported_envs:
           - darwin
       - version_constraint: Version == "v2.7.0"
-        url: https://gh-proxy.org/https://github.com/variadico/noti/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/variadico/noti/releases/download/{{.Version}}/noti{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         asset: noti{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -40,13 +44,15 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.2.0")
-        url: https://gh-proxy.org/https://github.com/variadico/noti/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/variadico/noti/releases/download/{{.Version}}/noti
         asset: noti
         format: raw
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 2.2.1")
-        url: https://gh-proxy.org/https://github.com/variadico/noti/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/variadico/noti/releases/download/{{.Version}}/noti{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         asset: noti{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -54,7 +60,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 2.5.0")
-        url: https://gh-proxy.org/https://github.com/variadico/noti/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/variadico/noti/releases/download/{{.Version}}/noti{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         asset: noti{{trimV .Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -64,7 +71,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 3.2.0")
-        url: https://gh-proxy.org/https://github.com/variadico/noti/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/variadico/noti/releases/download/{{.Version}}/noti{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         asset: noti{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -74,7 +82,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 3.4.0")
-        url: https://gh-proxy.org/https://github.com/variadico/noti/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/variadico/noti/releases/download/{{.Version}}/noti{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         asset: noti{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -82,7 +91,8 @@ packages:
           - linux/amd64
           - windows/amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/variadico/noti/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/variadico/noti/releases/download/{{.Version}}/noti{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         asset: noti{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true

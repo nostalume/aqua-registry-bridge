@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.20.0"
-        url: https://gh-proxy.org/https://github.com/ctxrs/ctx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ctxrs/ctx/releases/download/{{.Version}}/ctx-{{.OS}}-{{.Arch}}
         asset: ctx-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -15,7 +16,8 @@ packages:
           amd64: x64
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/ctxrs/ctx/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         supported_envs:
@@ -25,7 +27,8 @@ packages:
       - version_constraint: semver("<= 0.19.0")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/ctxrs/ctx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ctxrs/ctx/releases/download/{{.Version}}/ctx-{{.OS}}-{{.Arch}}
         asset: ctx-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -33,10 +36,13 @@ packages:
           amd64: x64
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/ctxrs/ctx/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/ctxrs/ctx/releases/download/{{.Version}}/ctx-{{.OS}}-{{.Arch}}
             replacements:
               arm64: aarch64

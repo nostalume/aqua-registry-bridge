@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/LukeChannings/deno-arm64/releases/download/{{.Version}}/deno-linux-arm64.zip
     repo_owner: LukeChannings
     repo_name: deno-arm64
     asset: deno-linux-arm64.zip

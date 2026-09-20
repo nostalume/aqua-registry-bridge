@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.19.3"
-        url: https://gh-proxy.org/https://github.com/rcoh/angle-grinder/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rcoh/angle-grinder/releases/download/{{.Version}}/agrind-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: agrind-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -21,7 +22,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v0.15-alpha1"
-        url: https://gh-proxy.org/https://github.com/rcoh/angle-grinder/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rcoh/angle-grinder/releases/download/{{.Version}}/agrind-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: agrind-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -33,7 +35,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.3.0")
-        url: https://gh-proxy.org/https://github.com/rcoh/angle-grinder/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rcoh/angle-grinder/releases/download/{{.Version}}/angle_grinder-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: angle_grinder-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -47,7 +50,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.15.0")
-        url: https://gh-proxy.org/https://github.com/rcoh/angle-grinder/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rcoh/angle-grinder/releases/download/{{.Version}}/angle_grinder-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: angle_grinder-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -59,7 +63,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/rcoh/angle-grinder/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rcoh/angle-grinder/releases/download/{{.Version}}/agrind-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: agrind-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true

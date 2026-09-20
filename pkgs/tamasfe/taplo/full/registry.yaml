@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/tamasfe/taplo/releases/download/{{.Version}}/taplo-full-{{.OS}}-{{.Arch}}.{{.Format}}
     repo_owner: tamasfe
     repo_name: taplo
     name: tamasfe/taplo/full
@@ -20,13 +21,16 @@ packages:
         src: taplo-full-{{.OS}}-{{.Arch}}
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/tamasfe/taplo/releases/download/{{.Version}}/taplo-full-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         files:
           - name: taplo
             src: taplo.exe
     version_overrides:
       - version_constraint: Version startsWith "release-taplo-cli-"
-        url: https://gh-proxy.org/https://github.com/tamasfe/taplo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tamasfe/taplo/releases/download/{{.Version}}/taplo-full-{{.Arch}}-{{.OS}}-gnu.{{.Format}}
         asset: taplo-full-{{.Arch}}-{{.OS}}-gnu.{{.Format}}
         rosetta2: true
         format: tar.gz
@@ -41,7 +45,8 @@ packages:
         files:
           - name: taplo
       - version_constraint: Version startsWith "release-cli-" and semverWithVersion(">= 0.6.0", trimPrefix(Version, "release-cli-"))
-        url: https://gh-proxy.org/https://github.com/tamasfe/taplo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tamasfe/taplo/releases/download/{{.Version}}/taplo-full-{{trimPrefix "release-cli-" .Version}}-{{.Arch}}-{{.OS}}-gnu.{{.Format}}
         asset: taplo-full-{{trimPrefix "release-cli-" .Version}}-{{.Arch}}-{{.OS}}-gnu.{{.Format}}
         rosetta2: true
         format: tar.gz

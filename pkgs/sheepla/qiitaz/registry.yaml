@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/sheepla/qiitaz/releases/download/{{.Version}}/qiitaz_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: sheepla
     repo_name: qiitaz
     description: A command line Qiita searcher & viewer with fuzzyfinder UI
@@ -14,22 +15,31 @@ packages:
       amd64: x86_64
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/sheepla/qiitaz/releases/download/{{.Version}}/qiitaz_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     version_constraint: semver("!= 0.0.5")
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/sheepla/qiitaz/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256
     version_overrides:
       - version_constraint: semver("= 0.0.5")
+        type: http
+        url: https://gh-proxy.org/github.com/sheepla/qiitaz/releases/download/{{.Version}}/qiitaz_{{.OS}}_{{.Arch}}.{{.Format}}
         # It seems that only v0.0.5 wasn't released with goreleaser.
         format: tar.gz
         replacements: {}
         asset: qiitaz_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/sheepla/qiitaz/releases/download/{{.Version}}/qiitaz_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/sheepla/qiitaz/releases/download/{{.Version}}/qiitaz_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         files:
           - name: qiitaz

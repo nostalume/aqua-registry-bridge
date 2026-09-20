@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/dnnrly/abbreviate/releases/download/{{.Version}}/abbreviate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
     repo_owner: dnnrly
     repo_name: abbreviate
     description: Supporting your devops by shortening your strings using common abbreviations and clever guesswork
@@ -11,6 +12,7 @@ packages:
       - linux
       - amd64
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/dnnrly/abbreviate/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256

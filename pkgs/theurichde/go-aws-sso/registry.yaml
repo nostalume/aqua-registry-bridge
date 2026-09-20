@@ -1,32 +1,41 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/theurichde/go-aws-sso/releases/download/{{.Version}}/go-aws-sso_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: theurichde
     repo_name: go-aws-sso
     description: Makes dealing with AWS SSO Logins an ease
     asset: go-aws-sso_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     format: tar.gz
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/theurichde/go-aws-sso/releases/download/{{.Version}}/go-aws-sso_{{trimV .Version}}_checksums.txt
       asset: go-aws-sso_{{trimV .Version}}_checksums.txt
       algorithm: sha256
     version_constraint: semver(">= 1.2.0-dev.1")
     version_overrides:
       - version_constraint: semver(">= 0.6.1")
+        type: http
+        url: https://gh-proxy.org/github.com/theurichde/go-aws-sso/releases/download/{{.Version}}/go-aws-sso_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver(">= 0.3.0")
+        type: http
+        url: https://gh-proxy.org/github.com/theurichde/go-aws-sso/releases/download/{{.Version}}/go-aws-sso_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         supported_envs:
           - darwin
           - linux
           - amd64
       - version_constraint: semver(">= 0.1.0")
+        type: http
+        url: https://gh-proxy.org/github.com/theurichde/go-aws-sso/releases/download/{{.Version}}/go-aws-sso_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("< 0.1.0")
-        url: https://gh-proxy.org/https://github.com/theurichde/go-aws-sso/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/theurichde/go-aws-sso/releases/download/{{.Version}}/go-aws-sso-util_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: go-aws-sso-util_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         supported_envs:
           - linux
@@ -34,6 +43,7 @@ packages:
         files:
           - name: go-aws-sso-util
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/theurichde/go-aws-sso/releases/download/{{.Version}}/go-aws-sso-util_{{trimV .Version}}_checksums.txt
           asset: go-aws-sso-util_{{trimV .Version}}_checksums.txt
           algorithm: sha256

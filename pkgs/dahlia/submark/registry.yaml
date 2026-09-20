@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "0.1.0"
-        url: https://gh-proxy.org/https://github.com/dahlia/submark/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dahlia/submark/releases/download/{{.Version}}/submark-{{.OS}}-{{.Arch}}
         asset: submark-{{.OS}}-{{.Arch}}
         format: raw
         replacements:
@@ -15,22 +16,28 @@ packages:
         supported_envs:
           - linux/amd64
       - version_constraint: Version == "0.2.0"
-        url: https://gh-proxy.org/https://github.com/dahlia/submark/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dahlia/submark/releases/download/{{.Version}}/submark-{{.OS}}-{{.Arch}}
         asset: submark-{{.OS}}-{{.Arch}}
         format: raw
         replacements:
           windows: win64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dahlia/submark/releases/download/{{.Version}}/submark-{{.OS}}-{{.Arch}}
             replacements:
               amd64: x86_64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dahlia/submark/releases/download/{{.Version}}/submark-{{.OS}}
             asset: submark-{{.OS}}
         supported_envs:
           - linux/amd64
           - windows/amd64
       - version_constraint: semver("<= 0.3.1")
-        url: https://gh-proxy.org/https://github.com/dahlia/submark/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dahlia/submark/releases/download/{{.Version}}/submark-{{.OS}}-{{.Arch}}
         asset: submark-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -39,13 +46,16 @@ packages:
           windows: win64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dahlia/submark/releases/download/{{.Version}}/submark-{{.OS}}
             asset: submark-{{.OS}}
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/dahlia/submark/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dahlia/submark/releases/download/{{.Version}}/submark-{{.OS}}-{{.Arch}}
         asset: submark-{{.OS}}-{{.Arch}}
         format: raw
         replacements:
@@ -54,4 +64,6 @@ packages:
           windows: win64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dahlia/submark/releases/download/{{.Version}}/submark-{{.OS}}
             asset: submark-{{.OS}}

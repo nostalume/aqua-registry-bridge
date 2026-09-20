@@ -9,59 +9,66 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.1.0-beta1"
-        url: https://gh-proxy.org/https://github.com/openfga/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/openfga/cli/releases/download/{{.Version}}/openfga-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: openfga-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/openfga/cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/openfga/cli/releases/download/{{.Version}}/checksums.txt.pem
+              - https://gh-proxy.org/github.com/openfga/cli/releases/download/{{.Version}}/checksums.txt.pem
               - --certificate-identity
-              - "https://github.com/openfga/cli/.github/workflows/main.yaml@refs/tags/{{.Version}}"
+              - "https://gh-proxy.org/github.com/openfga/cli/.github/workflows/main.yaml@refs/tags/{{.Version}}"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/openfga/cli/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/openfga/cli/releases/download/{{.Version}}/checksums.txt.sig
       - version_constraint: semver("<= 0.4.0")
-        url: https://gh-proxy.org/https://github.com/openfga/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/openfga/cli/releases/download/{{.Version}}/fga_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: fga_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/openfga/cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/openfga/cli/releases/download/{{.Version}}/checksums.txt.pem
+              - https://gh-proxy.org/github.com/openfga/cli/releases/download/{{.Version}}/checksums.txt.pem
               - --certificate-identity
-              - "https://github.com/openfga/cli/.github/workflows/main.yaml@refs/tags/{{.Version}}"
+              - "https://gh-proxy.org/github.com/openfga/cli/.github/workflows/main.yaml@refs/tags/{{.Version}}"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/openfga/cli/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/openfga/cli/releases/download/{{.Version}}/checksums.txt.sig
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/openfga/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/openfga/cli/releases/download/{{.Version}}/fga_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: fga_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/openfga/cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/openfga/cli/releases/download/{{.Version}}/checksums.txt.pem
+              - https://gh-proxy.org/github.com/openfga/cli/releases/download/{{.Version}}/checksums.txt.pem
               - --certificate-identity
-              - "https://github.com/openfga/cli/.github/workflows/main.yaml@refs/tags/{{.Version}}"
+              - "https://gh-proxy.org/github.com/openfga/cli/.github/workflows/main.yaml@refs/tags/{{.Version}}"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/openfga/cli/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/openfga/cli/releases/download/{{.Version}}/checksums.txt.sig
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/openfga/cli/releases/download/{{.Version}}/fga.intoto.jsonl
           asset: fga.intoto.jsonl

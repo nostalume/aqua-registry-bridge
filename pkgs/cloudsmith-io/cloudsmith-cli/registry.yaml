@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("<= 1.19.0")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/cloudsmith-io/cloudsmith-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cloudsmith-io/cloudsmith-cli/releases/download/{{.Version}}/cloudsmith-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: cloudsmith-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -20,13 +21,18 @@ packages:
           amd64: x86_64
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/cloudsmith-io/cloudsmith-cli/releases/download/{{.Version}}/cloudsmith-{{trimV .Version}}-{{.OS}}-{{.Arch}}-gnu.{{.Format}}
             asset: cloudsmith-{{trimV .Version}}-{{.OS}}-{{.Arch}}-gnu.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/cloudsmith-io/cloudsmith-cli/releases/download/{{.Version}}/cloudsmith-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip

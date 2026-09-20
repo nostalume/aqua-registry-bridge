@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.0.3")
-        url: https://gh-proxy.org/https://github.com/reproio/terraform-j2md/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/reproio/terraform-j2md/releases/download/{{.Version}}/terraform-j2md_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: terraform-j2md_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -15,14 +16,16 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/reproio/terraform-j2md/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/reproio/terraform-j2md/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/reproio/terraform-j2md/releases/download/{{.Version}}/terraform-j2md_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: terraform-j2md_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -31,6 +34,7 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/reproio/terraform-j2md/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

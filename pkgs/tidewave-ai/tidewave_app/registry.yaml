@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/tidewave-ai/tidewave_app/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tidewave-ai/tidewave_app/releases/download/{{.Version}}/tidewave-cli-{{.Arch}}-{{.OS}}
         asset: tidewave-cli-{{.Arch}}-{{.OS}}
         format: raw
         windows_arm_emulation: true

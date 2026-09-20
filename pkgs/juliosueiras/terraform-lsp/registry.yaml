@@ -7,13 +7,15 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/juliosueiras/terraform-lsp/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/juliosueiras/terraform-lsp/releases/download/{{.Version}}/terraform-lsp_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: terraform-lsp_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/juliosueiras/terraform-lsp/releases/download/{{.Version}}/terraform-lsp_{{trimV .Version}}_checksums.txt
           asset: terraform-lsp_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:

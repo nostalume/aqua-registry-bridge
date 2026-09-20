@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/filebrowser/filebrowser/releases/download/{{.Version}}/{{.OS}}-{{.Arch}}-filebrowser.{{.Format}}
     repo_owner: filebrowser
     repo_name: filebrowser
     asset: "{{.OS}}-{{.Arch}}-filebrowser.{{.Format}}"
@@ -8,8 +9,11 @@ packages:
     description: Web File Browser
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/filebrowser/filebrowser/releases/download/{{.Version}}/{{.OS}}-{{.Arch}}-filebrowser.{{.Format}}
         format: zip
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/filebrowser/filebrowser/releases/download/{{.Version}}/filebrowser_{{trimV .Version}}_checksums.txt
       asset: filebrowser_{{trimV .Version}}_checksums.txt
       algorithm: sha256

@@ -1,148 +1,83 @@
-# aqua-registry
+# aqua-registry-bridge
 
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/aquaproj/aqua-registry)
+`aquaproj/aqua-registry` 的镜像桥接仓库，用于在 GitHub 或部分上游下载源访问受限时，为 [aqua](https://aquaproj.github.io/) 提供可复现的自定义 Registry。
 
-[aqua](https://aquaproj.github.io/)'s Standard Registry — mirror fork for restricted networks.
+- 上游 Registry：[aquaproj/aqua-registry](https://github.com/aquaproj/aqua-registry)
+- 镜像策略：[mirror.yaml](mirror.yaml)
+- 维护与架构决策：[docs/maintenance.md](docs/maintenance.md)
 
-- [Upstream](https://github.com/aquaproj/aqua-registry)
-- [Change Log](https://github.com/aquaproj/aqua-registry/releases)
+## 工作方式
 
-## Mirror support
-
-A pre-configured fork of [aquaproj/aqua-registry](https://github.com/aquaproj/aqua-registry) that routes
-downloads through mirrors for users behind the Great Firewall of China
-or other restricted networks.
-
-| Package type | Mirror strategy |
+| 输入类型 | 桥接方式 |
 |---|---|
-| `type: github_release` | `url:` injected via `github_release_url_prefix` in `mirror.yaml` |
-| `type: http` (Node.js, Haskell…) | `url:` fields rewritten to USTC mirrors |
-| GitHub raw / checksum URLs | Routed through `https://gh-proxy.org` |
+| `github_release`、`github_archive`、`github_content` | 投影为 `type: http`，下载 URL 使用 GitHub 代理，同时保留仓库元数据 |
+| checksum、签名、provenance 等下载材料 | 与主资产一起投影或改写到代理 URL |
+| Node.js、Haskell 等显式 HTTP URL | 按 `mirror.yaml` 的前缀映射改写 |
 
-See [`mirror.yaml`](mirror.yaml) to change the proxy or add your own mirrors.
+脚本只修改 `pkgs/**/registry.yaml`；根目录的 `registry.yaml` 由官方 `argd gr` 重新生成。转换必须可重复执行且字节级幂等，写入前会先解析并验证所有包文件。
 
-### How it works
+## 使用
 
-| File | Purpose |
-|---|---|
-| [`mirror.yaml`](mirror.yaml) | URL prefix mappings and `github_release_url_prefix` |
-| [`scripts/mirror.py`](scripts/mirror.py) | Rewrites `url:` fields; injects proxy URLs for `github_release` |
-| [`tests/test_mirror.py`](tests/test_mirror.py) | 49 unit + integration tests |
-| [`.github/workflows/mirror-test.yaml`](.github/workflows/mirror-test.yaml) | CI: tests on every relevant change |
-| [`.github/workflows/mirror-upstream.yaml`](.github/workflows/mirror-upstream.yaml) | Scheduled daily: rebase onto upstream, re-apply mirrors, push `mirror-YYYYMMDD` tag, create GitHub Release |
-
-### Quick start
-
-In your `aqua.yaml`, add the mirror registry.
-
-You can pin to a specific mirror tag (recommended for reproducibility):
+aqua 把自定义 Registry 的 `ref` 当作不可变引用，因此请使用本仓库发布的 `mirror-YYYYMMDD` tag 或完整 commit SHA，不要使用 `main`。下面使用一个已发布 tag 作为示例：
 
 ```yaml
 registries:
-  - type: standard
-    ref: v4.486.0 # renovate: depName=aquaproj/aqua-registry
   - name: mirror
     type: github_content
     repo_owner: nostalume
-    repo_name: aqua-registry-mirror
-    ref: mirror-20260322
+    repo_name: aqua-registry-bridge
+    ref: mirror-20260703
     path: registry.yaml
+
+packages:
+  - name: BurntSushi/ripgrep@14.1.1
+    registry: mirror
 ```
 
-Then `aqua install` as normal. All downloads are routed through the configured mirrors.
-
-### Policy as Code (required for aqua v2+)
-
-From aqua v2, only the Standard Registry is allowed by default. Because this mirror is a `github_content` or `github_release` registry, you must create a Policy file to allow it.
-
-**Step 1 — Create `aqua-policy.yaml`**
-
-The registry entry in the policy file **must match the `type` you declared in `aqua.yaml`**.
+自定义 Registry 还需要由 aqua Policy 明确放行：
 
 ```yaml
 ---
-# aqua Policy
-# https://aquaproj.github.io/
 registries:
-  - type: standard
-    ref: semver(">= 3.0.0")
   - name: mirror
-    type: github_content  # must match the type in aqua.yaml
+    type: github_content
     repo_owner: nostalume
-    repo_name: aqua-registry-mirror
-    # ref is optional; omitting it allows any ref
+    repo_name: aqua-registry-bridge
     path: registry.yaml
 packages:
-  - registry: standard
   - registry: mirror
 ```
 
-**Step 2 — Register the policy file**
-
-Choose one of the two approaches below depending on your setup.
-
----
-
-#### Option A: User-space / global (recommended, no `.git` required)
-
-Set the `AQUA_POLICY_CONFIG` environment variable to the absolute path of your policy file.
-aqua trusts files listed here **without requiring `aqua policy allow`**.
-
-**Linux / macOS** (add to your shell profile for persistence):
+若 Policy 位于 Git 仓库根目录，检查内容后执行：
 
 ```sh
-export AQUA_POLICY_CONFIG="/path/to/aqua-policy.yaml:$AQUA_POLICY_CONFIG"
+aqua policy allow /absolute/path/to/aqua-policy.yaml
 ```
 
-**Windows PowerShell** (add to your `$PROFILE` for persistence):
+也可以通过 `AQUA_POLICY_CONFIG` 指向可信的 Policy 文件。详见 aqua 的 [自定义 Registry](https://aquaproj.github.io/docs/develop-registry/)、[Registry 配置](https://aquaproj.github.io/docs/reference/config/#registries)和 [Policy as Code](https://aquaproj.github.io/docs/guides/policy-as-code/) 文档。
 
-```powershell
-$env:AQUA_POLICY_CONFIG = "C:\path\to\aqua-policy.yaml"
-```
+## 本地维护
 
-That is all. `aqua install` will work immediately — no `aqua policy allow` step needed.
-
----
-
-#### Option B: Inside a Git repository
-
-If your `aqua.yaml` lives inside a git repository, place `aqua-policy.yaml` at the repository root alongside `.git`, then run:
+需要 Python 3；`argd` 和 `actionlint` 固定在 `aqua.yaml` 中：
 
 ```sh
-aqua policy allow "/absolute/path/to/aqua-policy.yaml"
+python3 -m pip install --requirement requirements-dev.txt
+aqua install --only-link
+python3 -m unittest discover -s tests -v
+actionlint
+python3 scripts/mirror.py --dry-run
+python3 scripts/validate.py --schema .ai/aqua/json-schema/registry.json
 ```
 
-If you modify `aqua-policy.yaml` later (even adding a blank line), run `aqua policy allow` again.
-
----
-
-> **CI usage:** If you use `aquaproj/aqua-installer` in GitHub Actions, add `policy_allow: "true"` to avoid the manual allow step:
->
-> ```yaml
-> - uses: aquaproj/aqua-installer@11dd79b4e498d471a9385aa9fb7f62bb5f52a73c # v4.0.4
->   with:
->     aqua_version: v2.48.3
->     policy_allow: "true"
-> ```
-
-### Local mirror commands
+应用策略并重新生成聚合 Registry：
 
 ```sh
-python3 scripts/mirror.py              # apply
-python3 scripts/mirror.py --dry-run    # preview
-python3 scripts/mirror.py --restore    # restore via git
+python3 scripts/mirror.py
+argd gr
+python3 scripts/validate.py --schema .ai/aqua/json-schema/registry.json
 ```
 
-### Tests
-
-```sh
-pip install pytest
-python3 -m pytest tests/test_mirror.py -v
-```
-
-## Contributors
-
-[![contributors](https://contrib.rocks/image?repo=aquaproj/aqua-registry)](https://github.com/aquaproj/aqua-registry/graphs/contributors)
+每日同步工作流从上游构建隔离快照，通过单元测试、幂等性、JSON Schema 和聚合一致性校验后，才以普通 fast-forward/原子 push 发布提交与新的不可变 tag。GitHub Release 不是 aqua 使用自定义 Registry 的必要条件。
 
 ## License
 

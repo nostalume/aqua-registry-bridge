@@ -6,14 +6,16 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.0.1"
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/kubectl-validate/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/kubectl-validate/releases/download/{{.Version}}/kubectl-validate_{{.OS}}-{{.Arch}}
         asset: kubectl-validate_{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
         supported_envs:
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/kubectl-validate/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/kubectl-validate/releases/download/{{.Version}}/kubectl-validate_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kubectl-validate_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         supported_envs:
@@ -21,6 +23,7 @@ packages:
           - darwin
           - windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubernetes-sigs/kubectl-validate/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/sharkdp/diskus/releases/download/{{.Version}}/diskus-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
     repo_owner: sharkdp
     repo_name: diskus
     asset: diskus-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
@@ -19,10 +20,14 @@ packages:
       amd64: x86_64
     overrides:
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/sharkdp/diskus/releases/download/{{.Version}}/diskus-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         goarch: arm64
         replacements:
           linux: unknown-linux-gnu
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/sharkdp/diskus/releases/download/{{.Version}}/diskus-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
     files:
       - name: diskus

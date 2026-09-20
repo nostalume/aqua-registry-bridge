@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.2.1-osx"
-        url: https://gh-proxy.org/https://github.com/out-of-cheese-error/the-way/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/out-of-cheese-error/the-way/releases/download/{{.Version}}/the-way-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: the-way-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -17,7 +18,8 @@ packages:
         supported_envs:
           - darwin
       - version_constraint: semver("<= 0.14.0")
-        url: https://gh-proxy.org/https://github.com/out-of-cheese-error/the-way/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/out-of-cheese-error/the-way/releases/download/{{.Version}}/the-way-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: the-way-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -29,13 +31,15 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/out-of-cheese-error/the-way/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/out-of-cheese-error/the-way/releases/download/{{.Version}}/the-way-{{.OS}}.{{.Format}}
         asset: the-way-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/out-of-cheese-error/the-way/releases/download/{{.Version}}/the-way-{{.OS}}.sha256
           asset: the-way-{{.OS}}.sha256
           algorithm: sha256
         supported_envs:

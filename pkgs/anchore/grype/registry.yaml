@@ -7,30 +7,38 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.2.0")
-        url: https://gh-proxy.org/https://github.com/anchore/grype/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/anchore/grype/releases/download/{{.Version}}/grype_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: grype_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/anchore/grype/releases/download/{{.Version}}/grype_{{trimV .Version}}_checksums.txt
           asset: grype_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.23.0")
-        url: https://gh-proxy.org/https://github.com/anchore/grype/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/anchore/grype/releases/download/{{.Version}}/grype_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: grype_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/anchore/grype/releases/download/{{.Version}}/grype_{{trimV .Version}}_checksums.txt
           asset: grype_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/anchore/grype/releases/download/{{.Version}}/grype_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/anchore/grype/releases/download/{{.Version}}/grype_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             checksum:
               # checksum not included in checksums.txt
               enabled: false
@@ -38,56 +46,72 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.31.1")
-        url: https://gh-proxy.org/https://github.com/anchore/grype/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/anchore/grype/releases/download/{{.Version}}/grype_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: grype_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/anchore/grype/releases/download/{{.Version}}/grype_{{trimV .Version}}_checksums.txt
           asset: grype_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/anchore/grype/releases/download/{{.Version}}/grype_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/anchore/grype/releases/download/{{.Version}}/grype_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             checksum:
               # checksum not included in checksums.txt
               enabled: false
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/anchore/grype/releases/download/{{.Version}}/grype_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             checksum:
               # checksum not included in checksums.txt
               enabled: false
       - version_constraint: semver("<= 0.71.0")
-        url: https://gh-proxy.org/https://github.com/anchore/grype/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/anchore/grype/releases/download/{{.Version}}/grype_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: grype_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/anchore/grype/releases/download/{{.Version}}/grype_{{trimV .Version}}_checksums.txt
           asset: grype_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/anchore/grype/releases/download/{{.Version}}/grype_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/anchore/grype/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/anchore/grype/releases/download/{{.Version}}/grype_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: grype_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/anchore/grype/releases/download/{{.Version}}/grype_{{trimV .Version}}_checksums.txt
           asset: grype_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/anchore/grype/releases/download/{{.Version}}/grype_{{trimV .Version}}_checksums.txt.pem
+              - https://gh-proxy.org/github.com/anchore/grype/releases/download/{{.Version}}/grype_{{trimV .Version}}_checksums.txt.pem
               - --certificate-identity
-              - https://github.com/anchore/grype/.github/workflows/release.yaml@refs/heads/main
+              - https://gh-proxy.org/github.com/anchore/grype/.github/workflows/release.yaml@refs/heads/main
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/anchore/grype/releases/download/{{.Version}}/grype_{{trimV .Version}}_checksums.txt.sig
+              - https://gh-proxy.org/github.com/anchore/grype/releases/download/{{.Version}}/grype_{{trimV .Version}}_checksums.txt.sig
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/anchore/grype/releases/download/{{.Version}}/grype_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

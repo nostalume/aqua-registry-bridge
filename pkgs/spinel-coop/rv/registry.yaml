@@ -10,7 +10,8 @@ packages:
         src: rv-{{.Arch}}-{{.OS}}/rv
     version_overrides:
       - version_constraint: semver("<= 0.1.1")
-        url: https://gh-proxy.org/https://github.com/spinel-coop/rv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/spinel-coop/rv/releases/download/{{.Version}}/rv-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: rv-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         replacements:
@@ -18,18 +19,22 @@ packages:
           darwin: apple-darwin
           linux: unknown-linux-gnu
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/spinel-coop/rv/releases/download/{{.Version}}/rv-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               amd64: x86_64
         supported_envs:
           - linux
           - darwin/arm64
       - version_constraint: semver("<= 0.5.2")
-        url: https://gh-proxy.org/https://github.com/spinel-coop/rv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/spinel-coop/rv/releases/download/{{.Version}}/rv-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: rv-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         replacements:
@@ -38,14 +43,16 @@ packages:
           darwin: apple-darwin
           linux: unknown-linux-gnu
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/spinel-coop/rv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/spinel-coop/rv/releases/download/{{.Version}}/rv-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: rv-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         replacements:
@@ -54,7 +61,8 @@ packages:
           darwin: apple-darwin
           linux: unknown-linux-gnu
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:

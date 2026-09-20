@@ -9,63 +9,83 @@ packages:
       - version_constraint: Version == "0.0.4"
         no_asset: true
       - version_constraint: Version == "edge"
-        url: https://gh-proxy.org/https://github.com/mvisonneau/tfcw/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mvisonneau/tfcw/releases/download/{{.Version}}/tfcw_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tfcw_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/mvisonneau/tfcw/releases/download/{{.Version}}/tfcw_{{.Version}}_sha512sums.txt
           asset: tfcw_{{.Version}}_sha512sums.txt
           algorithm: sha512
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/mvisonneau/tfcw/releases/download/{{.Version}}/tfcw_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: Version == "v0.0.10"
-        url: https://gh-proxy.org/https://github.com/mvisonneau/tfcw/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mvisonneau/tfcw/releases/download/{{.Version}}/tfcw_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tfcw_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/mvisonneau/tfcw/releases/download/{{.Version}}/tfcw_{{trimV .Version}}_SHA256SUMS
           asset: tfcw_{{trimV .Version}}_SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/mvisonneau/tfcw/releases/download/{{.Version}}/tfcw_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: Version == "v0.0.11"
-        url: https://gh-proxy.org/https://github.com/mvisonneau/tfcw/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mvisonneau/tfcw/releases/download/{{.Version}}/tfcw_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tfcw_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/mvisonneau/tfcw/releases/download/{{.Version}}/tfcw_{{.Version}}_sha512sums.txt
           asset: tfcw_{{.Version}}_sha512sums.txt
           algorithm: sha512
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/mvisonneau/tfcw/releases/download/{{.Version}}/tfcw_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.0.9")
-        url: https://gh-proxy.org/https://github.com/mvisonneau/tfcw/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mvisonneau/tfcw/releases/download/{{.Version}}/tfcw_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tfcw_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/mvisonneau/tfcw/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/mvisonneau/tfcw/releases/download/{{.Version}}/tfcw_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/mvisonneau/tfcw/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mvisonneau/tfcw/releases/download/{{.Version}}/tfcw_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tfcw_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/mvisonneau/tfcw/releases/download/{{.Version}}/tfcw_{{.Version}}_sha512sums.txt
           asset: tfcw_{{.Version}}_sha512sums.txt
           algorithm: sha512
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/mvisonneau/tfcw/releases/download/{{.Version}}/tfcw_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

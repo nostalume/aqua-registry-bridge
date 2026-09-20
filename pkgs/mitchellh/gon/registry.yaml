@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/mitchellh/gon/releases/download/{{.Version}}/gon_{{.OS}}.zip
     repo_owner: mitchellh
     repo_name: gon
     asset: gon_{{.OS}}.zip

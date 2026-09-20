@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/tsl0922/ttyd/releases/download/{{.Version}}/ttyd.{{.Arch}}
     repo_owner: tsl0922
     repo_name: ttyd
     description: Share your terminal over the web
@@ -12,6 +13,8 @@ packages:
       windows: win32
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/tsl0922/ttyd/releases/download/{{.Version}}/ttyd.{{.OS}}.exe
         goarch: amd64
         asset: ttyd.{{.OS}}.exe
     supported_envs:
@@ -20,15 +23,23 @@ packages:
     version_constraint: semver(">= 1.7.3")
     version_overrides:
       - version_constraint: semver(">= 1.7.0")
+        type: http
+        url: https://gh-proxy.org/github.com/tsl0922/ttyd/releases/download/{{.Version}}/ttyd.{{.Arch}}
         replacements:
           amd64: x86_64
           arm64: aarch64
           windows: win10
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/tsl0922/ttyd/releases/download/{{.Version}}/ttyd.{{.OS}}.exe
             goarch: amd64
             asset: ttyd.{{.OS}}.exe
       - version_constraint: semver("< 1.7.0")
+        type: http
+        url: https://gh-proxy.org/github.com/tsl0922/ttyd/releases/download/{{.Version}}/ttyd.{{.Arch}}
         supported_envs:
           - linux
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/tsl0922/ttyd/releases/download/{{.Version}}/ttyd.{{.Arch}}

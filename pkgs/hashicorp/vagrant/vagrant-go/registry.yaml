@@ -15,11 +15,13 @@ packages:
 
           https://github.com/hashicorp/vagrant/issues/12819#issuecomment-2738619021
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/hashicorp/vagrant/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/hashicorp/vagrant/releases/download/{{.Version}}/vagrant-go_{{.OS}}_{{.Arch}}
         asset: vagrant-go_{{.OS}}_{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/hashicorp/vagrant/releases/download/{{.Version}}/vagrant_{{trimV .Version}}_SHA256SUMS
           asset: vagrant_{{trimV .Version}}_SHA256SUMS
           algorithm: sha256
         supported_envs:

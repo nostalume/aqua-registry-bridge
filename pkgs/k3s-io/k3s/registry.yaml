@@ -8,15 +8,19 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/k3s-io/k3s/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/k3s-io/k3s/releases/download/{{.Version}}/k3s-{{.Arch}}
         asset: k3s-{{.Arch}}
         format: raw
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/k3s-io/k3s/releases/download/{{.Version}}/k3s
             goarch: amd64
             asset: k3s
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/k3s-io/k3s/releases/download/{{.Version}}/sha256sum-{{.Arch}}.txt
           asset: sha256sum-{{.Arch}}.txt
           algorithm: sha256
         supported_envs:

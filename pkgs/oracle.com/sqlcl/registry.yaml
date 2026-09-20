@@ -12,7 +12,8 @@ packages:
       - name: sql
         src: sqlcl/bin/sql
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/jasonlyle88/sqlcl-releases/releases/download/{{.Version}}/sqlcl-{{.Version}}.zip.sha256
       asset: sqlcl-{{.Version}}.zip.sha256
       algorithm: sha256
       file_format: regexp

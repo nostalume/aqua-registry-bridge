@@ -14,7 +14,8 @@ packages:
       - version_constraint: Version == "v0.1.0"
         no_asset: true
       - version_constraint: Version == "v0.1.1"
-        url: https://gh-proxy.org/https://github.com/str4d/rage/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/str4d/rage/releases/download/{{.Version}}/rage-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: rage-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -23,8 +24,12 @@ packages:
           amd64: x86_64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/str4d/rage/releases/download/{{.Version}}/rage-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/str4d/rage/releases/download/{{.Version}}/rage-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             files:
               - name: rage
@@ -38,7 +43,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.10.1")
-        url: https://gh-proxy.org/https://github.com/str4d/rage/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/str4d/rage/releases/download/{{.Version}}/rage-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: rage-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -47,8 +53,12 @@ packages:
           amd64: x86_64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/str4d/rage/releases/download/{{.Version}}/rage-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/str4d/rage/releases/download/{{.Version}}/rage-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             files:
               - name: rage
@@ -58,7 +68,8 @@ packages:
               - name: rage-mount
                 src: rage/{{.FileName}}
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/str4d/rage/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/str4d/rage/releases/download/{{.Version}}/rage-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: rage-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -66,8 +77,12 @@ packages:
           amd64: x86_64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/str4d/rage/releases/download/{{.Version}}/rage-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/str4d/rage/releases/download/{{.Version}}/rage-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             files:
               - name: rage

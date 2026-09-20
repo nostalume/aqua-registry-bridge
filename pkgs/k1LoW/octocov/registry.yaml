@@ -7,80 +7,102 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.47.0"
-        url: https://gh-proxy.org/https://github.com/k1LoW/octocov/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/k1LoW/octocov/releases/download/{{.Version}}/octocov_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: octocov_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/k1LoW/octocov/releases/download/{{.Version}}/checksums-{{.OS}}.txt
           asset: checksums-{{.OS}}.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 0.28.2")
-        url: https://gh-proxy.org/https://github.com/k1LoW/octocov/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/k1LoW/octocov/releases/download/{{.Version}}/octocov_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: octocov_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/k1LoW/octocov/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/k1LoW/octocov/releases/download/{{.Version}}/octocov_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.40.1")
-        url: https://gh-proxy.org/https://github.com/k1LoW/octocov/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/k1LoW/octocov/releases/download/{{.Version}}/octocov_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: octocov_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/k1LoW/octocov/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/k1LoW/octocov/releases/download/{{.Version}}/octocov_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.51.0")
-        url: https://gh-proxy.org/https://github.com/k1LoW/octocov/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/k1LoW/octocov/releases/download/{{.Version}}/octocov_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: octocov_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/k1LoW/octocov/releases/download/{{.Version}}/checksums-{{.OS}}.txt
           asset: checksums-{{.OS}}.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/k1LoW/octocov/releases/download/{{.Version}}/octocov_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.56.1")
-        url: https://gh-proxy.org/https://github.com/k1LoW/octocov/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/k1LoW/octocov/releases/download/{{.Version}}/octocov_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: octocov_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/k1LoW/octocov/releases/download/{{.Version}}/checksums-{{.OS}}.txt
           asset: checksums-{{.OS}}.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/k1LoW/octocov/releases/download/{{.Version}}/octocov_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/k1LoW/octocov/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/k1LoW/octocov/releases/download/{{.Version}}/octocov_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: octocov_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/k1LoW/octocov/releases/download/{{.Version}}/checksums-{{.OS}}.txt
           asset: checksums-{{.OS}}.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/k1LoW/octocov/releases/download/{{.Version}}/octocov_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz

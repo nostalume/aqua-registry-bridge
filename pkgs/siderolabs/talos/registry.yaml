@@ -14,76 +14,99 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v1.2.9"
+        type: http
+        url: https://gh-proxy.org/github.com/siderolabs/talos/releases/download/{{.Version}}/talosctl-{{.OS}}-{{.Arch}}
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/siderolabs/talos/releases/download/{{.Version}}/sha512sum.txt
           asset: sha512sum.txt
           algorithm: sha512
       - version_constraint: semver("<= 0.2.0")
-        url: https://gh-proxy.org/https://github.com/siderolabs/talos/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/siderolabs/talos/releases/download/{{.Version}}/osctl-{{.OS}}-{{.Arch}}
         asset: osctl-{{.OS}}-{{.Arch}}
         files:
           - name: osctl
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/siderolabs/talos/releases/download/{{.Version}}/sha256sum.txt
           asset: sha256sum.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin/amd64
       - version_constraint: semver("<= 0.3.3")
-        url: https://gh-proxy.org/https://github.com/siderolabs/talos/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/siderolabs/talos/releases/download/{{.Version}}/osctl-{{.OS}}-{{.Arch}}
         asset: osctl-{{.OS}}-{{.Arch}}
         files:
           - name: osctl
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/siderolabs/talos/releases/download/{{.Version}}/sha512sum.txt
           asset: sha512sum.txt
           algorithm: sha512
         supported_envs:
           - linux/amd64
           - darwin/amd64
       - version_constraint: semver("<= 0.10.4")
+        type: http
+        url: https://gh-proxy.org/github.com/siderolabs/talos/releases/download/{{.Version}}/talosctl-{{.OS}}-{{.Arch}}
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/siderolabs/talos/releases/download/{{.Version}}/sha256sum.txt
           asset: sha256sum.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin/amd64
       - version_constraint: semver("<= 0.12.3")
+        type: http
+        url: https://gh-proxy.org/github.com/siderolabs/talos/releases/download/{{.Version}}/talosctl-{{.OS}}-{{.Arch}}
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/siderolabs/talos/releases/download/{{.Version}}/sha256sum.txt
           asset: sha256sum.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 1.8.4")
+        type: http
+        url: https://gh-proxy.org/github.com/siderolabs/talos/releases/download/{{.Version}}/talosctl-{{.OS}}-{{.Arch}}
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/siderolabs/talos/releases/download/{{.Version}}/sha256sum.txt
           asset: sha256sum.txt
           algorithm: sha256
       - version_constraint: semver("<= 1.11.3")
+        type: http
+        url: https://gh-proxy.org/github.com/siderolabs/talos/releases/download/{{.Version}}/talosctl-{{.OS}}-{{.Arch}}
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/siderolabs/talos/releases/download/{{.Version}}/sha256sum.txt
           asset: sha256sum.txt
           algorithm: sha256
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/siderolabs/talos/releases/download/{{.Version}}/talosctl-{{.OS}}-{{.Arch}}
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/siderolabs/talos/releases/download/{{.Version}}/sha256sum.txt
           asset: sha256sum.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate-identity
-              - https://github.com/siderolabs/talos/.github/workflows/ci.yaml@refs/tags/{{.Version}}
+              - https://gh-proxy.org/github.com/siderolabs/talos/.github/workflows/ci.yaml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/siderolabs/talos/releases/download/{{.Version}}/sha256sum.txt.bundle
               asset: sha256sum.txt.bundle

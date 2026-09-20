@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/quarkslab/kdigger/releases/download/{{.Version}}/kdigger-{{.OS}}-{{.Arch}}
     repo_owner: quarkslab
     repo_name: kdigger
     description: Kubernetes focused container assessment tool for penetration testing
@@ -10,6 +11,7 @@ packages:
     rosetta2: true
     asset: kdigger-{{.OS}}-{{.Arch}}
     checksum:
-      type: github_release
+      type: http
+      url: "{{.AssetURL}}.sha256"
       asset: "{{.Asset}}.sha256"
       algorithm: sha256

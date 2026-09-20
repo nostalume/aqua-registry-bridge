@@ -11,13 +11,15 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.33.0")
-        url: https://gh-proxy.org/https://github.com/kptdev/kpt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/kpt_{{.OS}}_{{.Arch}}_{{trimV .Version}}.{{.Format}}
         asset: kpt_{{.OS}}_{{.Arch}}_{{trimV .Version}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
@@ -25,13 +27,15 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.37.1")
-        url: https://gh-proxy.org/https://github.com/kptdev/kpt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/kpt_{{.OS}}_{{.Arch}}-{{trimV .Version}}.{{.Format}}
         asset: kpt_{{.OS}}_{{.Arch}}-{{trimV .Version}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
@@ -39,53 +43,63 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.38.1")
-        url: https://gh-proxy.org/https://github.com/kptdev/kpt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/kpt_{{.OS}}_{{.Arch}}-{{trimV .Version}}.{{.Format}}
         asset: kpt_{{.OS}}_{{.Arch}}-{{trimV .Version}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.39.3")
-        url: https://gh-proxy.org/https://github.com/kptdev/kpt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/kpt_{{.OS}}_{{.Arch}}-{{trimV .Version}}.{{.Format}}
         asset: kpt_{{.OS}}_{{.Arch}}-{{trimV .Version}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 1.0.0-alpha.5")
-        url: https://gh-proxy.org/https://github.com/kptdev/kpt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/kpt_{{.OS}}_{{.Arch}}-{{trimV .Version}}.{{.Format}}
         asset: kpt_{{.OS}}_{{.Arch}}-{{trimV .Version}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 1.0.0-beta.19")
-        url: https://gh-proxy.org/https://github.com/kptdev/kpt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/kpt_{{.OS}}_{{.Arch}}-{{trimV .Version}}.{{.Format}}
         asset: kpt_{{.OS}}_{{.Arch}}-{{trimV .Version}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 1.0.0-beta.21")
-        url: https://gh-proxy.org/https://github.com/kptdev/kpt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/kpt_{{.OS}}_{{.Arch}}-{{trimV .Version}}.{{.Format}}
         asset: kpt_{{.OS}}_{{.Arch}}-{{trimV .Version}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         # slsa_provenance:
@@ -96,22 +110,26 @@ packages:
           - linux
           - darwin
       - version_constraint: Version == "v1.0.0-beta.22"
-        url: https://gh-proxy.org/https://github.com/kptdev/kpt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/kpt_{{.OS}}_{{.Arch}}-{{trimV .Version}}.{{.Format}}
         asset: kpt_{{.OS}}_{{.Arch}}-{{trimV .Version}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 1.0.0-beta.35")
-        url: https://gh-proxy.org/https://github.com/kptdev/kpt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/kpt_{{.OS}}_{{.Arch}}-{{trimV .Version}}.{{.Format}}
         asset: kpt_{{.OS}}_{{.Arch}}-{{trimV .Version}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         # slsa_provenance:
@@ -122,65 +140,79 @@ packages:
           - linux
           - darwin
       - version_constraint: Version == "v1.0.0-beta.36"
-        url: https://gh-proxy.org/https://github.com/kptdev/kpt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/kpt_{{.OS}}_{{.Arch}}-{{trimV .Version}}.{{.Format}}
         asset: kpt_{{.OS}}_{{.Arch}}-{{trimV .Version}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/kpt_darwin_{{.Arch}}
             asset: kpt_darwin_{{.Arch}}
             format: raw
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 1.0.0-beta.49")
-        url: https://gh-proxy.org/https://github.com/kptdev/kpt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/kpt_{{.OS}}_{{.Arch}}-{{trimV .Version}}.{{.Format}}
         asset: kpt_{{.OS}}_{{.Arch}}-{{trimV .Version}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 1.0.0-beta.51")
-        url: https://gh-proxy.org/https://github.com/kptdev/kpt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/kpt_{{.OS}}_{{.Arch}}-{{trimV .Version}}.{{.Format}}
         asset: kpt_{{.OS}}_{{.Arch}}-{{trimV .Version}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 1.0.0-beta.55")
-        url: https://gh-proxy.org/https://github.com/kptdev/kpt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/kpt_{{.OS}}_{{.Arch}}-{{trimV .Version}}.{{.Format}}
         asset: kpt_{{.OS}}_{{.Arch}}-{{trimV .Version}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/kptdev/kpt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/kpt_{{.OS}}_{{.Arch}}-{{trimV .Version}}.{{.Format}}
         asset: kpt_{{.OS}}_{{.Arch}}-{{trimV .Version}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kptdev/kpt/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:

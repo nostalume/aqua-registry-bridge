@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/kreuzwerker/m1-terraform-provider-helper/releases/download/{{.Version}}/m1-terraform-provider-helper_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
     repo_owner: kreuzwerker
     repo_name: m1-terraform-provider-helper
     description: CLI to support with downloading and compiling terraform providers for Mac with M1 chip
@@ -11,6 +12,7 @@ packages:
     replacements:
       darwin: Darwin
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/kreuzwerker/m1-terraform-provider-helper/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256

@@ -7,12 +7,15 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.8.0")
-        url: https://gh-proxy.org/https://github.com/sigoden/aichat/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sigoden/aichat/releases/download/{{.Version}}/aichat-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: aichat-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/sigoden/aichat/releases/download/{{.Version}}/aichat-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64
@@ -21,11 +24,14 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/sigoden/aichat/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sigoden/aichat/releases/download/{{.Version}}/aichat-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: aichat-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/sigoden/aichat/releases/download/{{.Version}}/aichat-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64

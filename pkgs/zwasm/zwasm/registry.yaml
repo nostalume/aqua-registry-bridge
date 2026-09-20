@@ -9,25 +9,30 @@ packages:
       - version_constraint: Version == "v1.11.1"
         no_asset: true
       - version_constraint: semver("<= 1.5.0")
-        url: https://gh-proxy.org/https://github.com/zwasm/zwasm/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zwasm/zwasm/releases/download/{{.Version}}/zwasm-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: zwasm-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           arm64: aarch64
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/zwasm/zwasm/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/zwasm/zwasm/releases/download/{{.Version}}/zwasm-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               amd64: x86_64
         supported_envs:
           - linux
           - darwin/arm64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/zwasm/zwasm/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zwasm/zwasm/releases/download/{{.Version}}/zwasm-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: zwasm-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -36,14 +41,19 @@ packages:
           arm64: aarch64
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/zwasm/zwasm/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/zwasm/zwasm/releases/download/{{.Version}}/zwasm-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               amd64: amd64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/zwasm/zwasm/releases/download/{{.Version}}/zwasm-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             replacements: {}
         supported_envs:

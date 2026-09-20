@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/elsesiy/kubectl-view-secret/releases/download/{{.Version}}/kubectl-view-secret_{{.Version}}_{{.OS}}_{{.Arch}}.tar.gz
     repo_owner: elsesiy
     repo_name: kubectl-view-secret
     description: Kubernetes CLI plugin to decode Kubernetes secrets
@@ -14,14 +15,18 @@ packages:
       - linux
       - amd64
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/elsesiy/kubectl-view-secret/releases/download/{{.Version}}/kubectl-view-secret_{{trimV .Version}}_checksums.txt
       asset: kubectl-view-secret_{{trimV .Version}}_checksums.txt
       algorithm: sha256
     version_overrides:
       - version_constraint: semver("= 0.7.0")
+        type: http
+        url: https://gh-proxy.org/github.com/elsesiy/kubectl-view-secret/releases/download/{{.Version}}/kubectl-view-secret_{{.Version}}_{{.OS}}_{{.Arch}}.tar.gz
         rosetta2: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/elsesiy/kubectl-view-secret/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/elsesiy/kubectl-view-secret/releases/download/{{.Version}}/kubectl-view-secret_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
         asset: kubectl-view-secret_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
         rosetta2: true
         supported_envs:
@@ -33,6 +38,7 @@ packages:
           linux: Linux
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/elsesiy/kubectl-view-secret/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

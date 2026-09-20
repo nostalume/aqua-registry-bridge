@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/cea-hpc/sshproxy/releases/download/{{.Version}}/sshproxy_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
     repo_owner: cea-hpc
     repo_name: sshproxy
     asset: sshproxy_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz

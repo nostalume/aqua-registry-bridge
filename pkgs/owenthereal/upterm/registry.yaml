@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/owenthereal/upterm/releases/download/{{.Version}}/upterm_{{.OS}}_{{.Arch}}.tar.gz
     repo_owner: owenthereal
     repo_name: upterm
     asset: upterm_{{.OS}}_{{.Arch}}.tar.gz
@@ -9,6 +10,7 @@ packages:
       - linux
       - darwin
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/owenthereal/upterm/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256

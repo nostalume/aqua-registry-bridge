@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.9.2")
-        url: https://gh-proxy.org/https://github.com/gojuno/minimock/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gojuno/minimock/releases/download/{{.Version}}/minimock_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: minimock_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -16,14 +17,16 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gojuno/minimock/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 2.1.4")
-        url: https://gh-proxy.org/https://github.com/gojuno/minimock/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gojuno/minimock/releases/download/{{.Version}}/minimock_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: minimock_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -34,7 +37,8 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gojuno/minimock/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
@@ -42,7 +46,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 3.0.8")
-        url: https://gh-proxy.org/https://github.com/gojuno/minimock/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gojuno/minimock/releases/download/{{.Version}}/minimock_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: minimock_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -53,7 +58,8 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gojuno/minimock/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
@@ -61,37 +67,45 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 3.0.10")
-        url: https://gh-proxy.org/https://github.com/gojuno/minimock/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gojuno/minimock/releases/download/{{.Version}}/minimock_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: minimock_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gojuno/minimock/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 3.1.3")
-        url: https://gh-proxy.org/https://github.com/gojuno/minimock/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gojuno/minimock/releases/download/{{.Version}}/minimock_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: minimock_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gojuno/minimock/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 3.3.1")
-        url: https://gh-proxy.org/https://github.com/gojuno/minimock/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gojuno/minimock/releases/download/{{.Version}}/minimock_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: minimock_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gojuno/minimock/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/gojuno/minimock/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gojuno/minimock/releases/download/{{.Version}}/minimock_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: minimock_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gojuno/minimock/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

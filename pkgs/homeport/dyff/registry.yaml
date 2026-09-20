@@ -9,19 +9,22 @@ packages:
       - version_constraint: Version == "v0.5-beta.20"
         no_asset: true
       - version_constraint: Version in ["v1.2.1", "v1.4.1"]
-        url: https://gh-proxy.org/https://github.com/homeport/dyff/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/homeport/dyff/releases/download/{{.Version}}/dyff_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: dyff_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/homeport/dyff/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 0.4.0-alpha")
-        url: https://gh-proxy.org/https://github.com/homeport/dyff/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/homeport/dyff/releases/download/{{.Version}}/dyff-{{.OS}}-{{.Arch}}
         asset: dyff-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -31,13 +34,15 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.5.0-beta.2")
-        url: https://gh-proxy.org/https://github.com/homeport/dyff/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/homeport/dyff/releases/download/{{.Version}}/dyff-{{.OS}}-{{.Arch}}
         asset: dyff-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
       - version_constraint: semver("<= 0.9.0")
-        url: https://gh-proxy.org/https://github.com/homeport/dyff/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/homeport/dyff/releases/download/{{.Version}}/dyff-{{.OS}}-{{.Arch}}
         asset: dyff-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -47,7 +52,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.2.0")
-        url: https://gh-proxy.org/https://github.com/homeport/dyff/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/homeport/dyff/releases/download/{{.Version}}/dyff-{{.OS}}-{{.Arch}}
         asset: dyff-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -55,33 +61,39 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 1.4.0")
-        url: https://gh-proxy.org/https://github.com/homeport/dyff/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/homeport/dyff/releases/download/{{.Version}}/dyff_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: dyff_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/homeport/dyff/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 1.5.6")
-        url: https://gh-proxy.org/https://github.com/homeport/dyff/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/homeport/dyff/releases/download/{{.Version}}/dyff_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: dyff_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/homeport/dyff/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/homeport/dyff/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/homeport/dyff/releases/download/{{.Version}}/dyff_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: dyff_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/homeport/dyff/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

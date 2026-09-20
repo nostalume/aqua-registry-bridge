@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/ck-zhang/reddix/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ck-zhang/reddix/releases/download/{{.Version}}/reddix-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: reddix-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -21,11 +22,14 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ck-zhang/reddix/releases/download/{{.Version}}/reddix-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: reddix

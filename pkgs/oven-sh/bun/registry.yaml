@@ -13,7 +13,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.1.4")
-        url: https://gh-proxy.org/https://github.com/oven-sh/bun/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/oven-sh/bun/releases/download/{{.Version}}/bun-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: bun-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         replacements:
@@ -29,7 +30,8 @@ packages:
             src: "{{.AssetWithoutExt}}/bun"
             link: bunx
       - version_constraint: semver("<= 1.0.36")
-        url: https://gh-proxy.org/https://github.com/oven-sh/bun/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/oven-sh/bun/releases/download/{{.Version}}/bun-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: bun-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         replacements:
@@ -45,7 +47,8 @@ packages:
             src: "{{.AssetWithoutExt}}/bun"
             link: bunx
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/oven-sh/bun/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/oven-sh/bun/releases/download/{{.Version}}/bun-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: bun-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -57,13 +60,18 @@ packages:
             link: bunx
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/oven-sh/bun/releases/download/{{.Version}}/bun-{{.OS}}-{{.Arch}}.{{.Format}}
             asset: bun-{{.OS}}-{{.Arch}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/oven-sh/bun/releases/download/{{.Version}}/bun-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements: {}
         replacements:
           amd64: x64
           arm64: aarch64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/oven-sh/bun/releases/download/{{.Version}}/SHASUMS256.txt
           asset: SHASUMS256.txt
           algorithm: sha256

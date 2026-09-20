@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/create-go-app/cli/releases/download/{{.Version}}/cgapp_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: create-go-app
     repo_name: cli
     description: Create a new production-ready project with backend, frontend and deploy automation by running one CLI command
@@ -10,19 +11,25 @@ packages:
       - name: cgapp
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/create-go-app/cli/releases/download/{{.Version}}/cgapp_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/create-go-app/cli/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256
     version_constraint: semver(">= 4.0.0")
     version_overrides:
       - version_constraint: semver(">= 1.7.0")
-        url: https://gh-proxy.org/https://github.com/create-go-app/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/create-go-app/cli/releases/download/{{.Version}}/cgapp_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: cgapp_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/create-go-app/cli/releases/download/{{.Version}}/cgapp_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64
@@ -33,11 +40,14 @@ packages:
           - darwin
           - amd64
       - version_constraint: semver(">= 1.6.3")
-        url: https://gh-proxy.org/https://github.com/create-go-app/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/create-go-app/cli/releases/download/{{.Version}}/cgapp_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: cgapp_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/create-go-app/cli/releases/download/{{.Version}}/cgapp_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64
@@ -49,11 +59,14 @@ packages:
           - amd64
         rosetta2: true
       - version_constraint: semver(">= 1.0.0")
-        url: https://gh-proxy.org/https://github.com/create-go-app/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/create-go-app/cli/releases/download/{{.Version}}/cgapp_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: cgapp_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/create-go-app/cli/releases/download/{{.Version}}/cgapp_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64
@@ -65,7 +78,8 @@ packages:
           - amd64
         rosetta2: true
       - version_constraint: semver("< 1.0.0")
-        url: https://gh-proxy.org/https://github.com/create-go-app/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/create-go-app/cli/releases/download/{{.Version}}/cli_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: cli_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -77,6 +91,7 @@ packages:
           - darwin
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/create-go-app/cli/releases/download/{{.Version}}/cli_{{.Version}}_checksums.txt
           asset: cli_{{.Version}}_checksums.txt
           algorithm: sha256

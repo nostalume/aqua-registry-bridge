@@ -11,11 +11,13 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/container2wasm/container2wasm/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/container2wasm/container2wasm/releases/download/{{.Version}}/container2wasm-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: container2wasm-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/container2wasm/container2wasm/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         supported_envs:

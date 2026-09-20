@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/berbicanes/apiark/releases/download/{{.Version}}/apiark-cli-{{.OS}}-{{.Arch}}
     repo_owner: berbicanes
     repo_name: apiark
     description: Privacy-first API platform built with Tauri v2. No login, no cloud, ~60 MB RAM. A lightweight Postman alternative

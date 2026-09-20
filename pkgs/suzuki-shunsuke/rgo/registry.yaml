@@ -7,17 +7,20 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.0.3")
-        type: github_content
+        type: http
+        url: https://gh-proxy.org/raw.githubusercontent.com/suzuki-shunsuke/rgo/{{.Version}}/rgo
         path: rgo
         supported_envs:
           - darwin
           - linux
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/suzuki-shunsuke/rgo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/rgo/releases/download/{{.Version}}/rgo_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: rgo_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/rgo/releases/download/{{.Version}}/rgo_{{trimV .Version}}_checksums.txt
           asset: rgo_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
@@ -27,13 +30,17 @@ packages:
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/suzuki-shunsuke/rgo/releases/download/{{.Version}}/rgo_{{trimV .Version}}_checksums.txt.bundle
               asset: rgo_{{trimV .Version}}_checksums.txt.bundle
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/rgo/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
         github_artifact_attestations:
           signer_workflow: suzuki-shunsuke/go-release-workflow/.github/workflows/release.yaml
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/rgo/releases/download/{{.Version}}/rgo_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

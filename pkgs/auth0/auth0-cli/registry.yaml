@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.3.3")
-        url: https://gh-proxy.org/https://github.com/auth0/auth0-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/auth0/auth0-cli/releases/download/{{.Version}}/auth0-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: auth0-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -20,7 +21,8 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/auth0/auth0-cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
@@ -28,7 +30,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.5.1")
-        url: https://gh-proxy.org/https://github.com/auth0/auth0-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/auth0/auth0-cli/releases/download/{{.Version}}/auth0-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: auth0-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -39,18 +42,22 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/auth0/auth0-cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/auth0/auth0-cli/releases/download/{{.Version}}/auth0-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.11.8")
-        url: https://gh-proxy.org/https://github.com/auth0/auth0-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/auth0/auth0-cli/releases/download/{{.Version}}/auth0-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: auth0-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -60,14 +67,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/auth0/auth0-cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/auth0/auth0-cli/releases/download/{{.Version}}/auth0-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/auth0/auth0-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/auth0/auth0-cli/releases/download/{{.Version}}/auth0-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: auth0-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -76,9 +87,12 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/auth0/auth0-cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/auth0/auth0-cli/releases/download/{{.Version}}/auth0-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

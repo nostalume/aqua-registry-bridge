@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.1.8")
-        url: https://gh-proxy.org/https://github.com/Qovery/Replibyte/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Qovery/Replibyte/releases/download/{{.Version}}/replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.{{.Format}}
         asset: replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -16,6 +17,8 @@ packages:
           - name: replibyte
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Qovery/Replibyte/releases/download/{{.Version}}/replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.{{.Format}}
             format: tar.gz
         replacements:
           amd64: x86_64
@@ -27,13 +30,15 @@ packages:
           - windows
           - amd64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Qovery/Replibyte/releases/download/{{.Version}}/replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.{{.Format}}.sha256sum
           asset: replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.{{.Format}}.sha256sum
           algorithm: sha256
       - version_constraint: Version == "v0.2.0"
         no_asset: true
       - version_constraint: semver("<= 0.4.1")
-        url: https://gh-proxy.org/https://github.com/Qovery/Replibyte/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Qovery/Replibyte/releases/download/{{.Version}}/replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.{{.Format}}
         asset: replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -41,6 +46,8 @@ packages:
           - name: replibyte
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Qovery/Replibyte/releases/download/{{.Version}}/replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.{{.Format}}
             format: tar.gz
         replacements:
           amd64: x86_64
@@ -50,11 +57,13 @@ packages:
           - linux/amd64
           - windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Qovery/Replibyte/releases/download/{{.Version}}/replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.{{.Format}}.sha256sum
           asset: replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.{{.Format}}.sha256sum
           algorithm: sha256
       - version_constraint: Version == "v0.4.2"
-        url: https://gh-proxy.org/https://github.com/Qovery/Replibyte/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Qovery/Replibyte/releases/download/{{.Version}}/replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.{{.Format}}
         asset: replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -64,11 +73,16 @@ packages:
             src: replibyte_{{.Version}}_{{.Arch}}-{{.OS}}
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Qovery/Replibyte/releases/download/{{.Version}}/replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.{{.Format}}
             format: tar.gz
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Qovery/Replibyte/releases/download/{{.Version}}/replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.exe.{{.Format}}
             asset: replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.exe.{{.Format}}
             checksum:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/Qovery/Replibyte/releases/download/{{.Version}}/replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.exe.sha256sum
               asset: replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.exe.sha256sum
               algorithm: sha256
         replacements:
@@ -81,11 +95,13 @@ packages:
           - windows
           - amd64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Qovery/Replibyte/releases/download/{{.Version}}/replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.sha256sum
           asset: replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.sha256sum
           algorithm: sha256
       - version_constraint: Version == "v0.4.3"
-        url: https://gh-proxy.org/https://github.com/Qovery/Replibyte/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Qovery/Replibyte/releases/download/{{.Version}}/replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.exe.{{.Format}}
         asset: replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.exe.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -98,11 +114,13 @@ packages:
         supported_envs:
           - windows/amd64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Qovery/Replibyte/releases/download/{{.Version}}/replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.exe.{{.Format}}.sha256sum
           asset: replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.exe.{{.Format}}.sha256sum
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Qovery/Replibyte/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Qovery/Replibyte/releases/download/{{.Version}}/replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.{{.Format}}
         asset: replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -111,11 +129,16 @@ packages:
           - name: replibyte
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Qovery/Replibyte/releases/download/{{.Version}}/replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.{{.Format}}
             format: tar.gz
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Qovery/Replibyte/releases/download/{{.Version}}/replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.exe.{{.Format}}
             asset: replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.exe.{{.Format}}
             checksum:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/Qovery/Replibyte/releases/download/{{.Version}}/replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.exe.{{.Format}}.sha256sum
               asset: replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.exe.{{.Format}}.sha256sum
               algorithm: sha256
         replacements:
@@ -128,6 +151,7 @@ packages:
           - windows
           - amd64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Qovery/Replibyte/releases/download/{{.Version}}/replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.{{.Format}}.sha256sum
           asset: replibyte_{{.Version}}_{{.Arch}}-{{.OS}}.{{.Format}}.sha256sum
           algorithm: sha256

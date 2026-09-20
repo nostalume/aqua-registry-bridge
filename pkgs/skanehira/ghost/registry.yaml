@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.1.0")
-        url: https://gh-proxy.org/https://github.com/skanehira/ghost/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/skanehira/ghost/releases/download/{{.Version}}/ghost_{{.Arch}}-{{.OS}}.{{.Format}}
         asset: ghost_{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -19,7 +20,8 @@ packages:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/skanehira/ghost/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/skanehira/ghost/releases/download/{{.Version}}/ghost_{{.Arch}}-{{.OS}}.{{.Format}}
         asset: ghost_{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:

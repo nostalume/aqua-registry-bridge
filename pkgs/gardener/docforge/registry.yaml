@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/gardener/docforge/releases/download/{{.Version}}/docforge-{{.OS}}-{{.Arch}}
     repo_owner: gardener
     repo_name: docforge
     asset: docforge-{{.OS}}-{{.Arch}}

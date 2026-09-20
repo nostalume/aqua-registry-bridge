@@ -11,7 +11,8 @@ packages:
       - version_constraint: semver("<= 0.4.6")
         no_asset: true
       - version_constraint: semver("<= 0.4.8")
-        url: https://gh-proxy.org/https://github.com/Builditluc/wiki-tui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Builditluc/wiki-tui/releases/download/{{.Version}}/wiki-tui-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: wiki-tui-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -26,13 +27,15 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.8.2")
-        url: https://gh-proxy.org/https://github.com/Builditluc/wiki-tui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Builditluc/wiki-tui/releases/download/{{.Version}}/wiki-tui-{{.OS}}.{{.Format}}
         asset: wiki-tui-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Builditluc/wiki-tui/releases/download/{{.Version}}/wiki-tui-{{.OS}}.sha256
           asset: wiki-tui-{{.OS}}.sha256
           algorithm: sha256
         supported_envs:
@@ -40,11 +43,13 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Builditluc/wiki-tui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Builditluc/wiki-tui/releases/download/{{.Version}}/wiki-tui-{{.OS}}.{{.Format}}
         asset: wiki-tui-{{.OS}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Builditluc/wiki-tui/releases/download/{{.Version}}/wiki-tui-{{.OS}}.sha256
           asset: wiki-tui-{{.OS}}.sha256
           algorithm: sha256
         supported_envs:

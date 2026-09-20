@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/Songmu/maltmill/releases/download/{{.Version}}/maltmill_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: Songmu
     repo_name: maltmill
     asset: maltmill_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -8,11 +9,14 @@ packages:
     description: create and update Homebrew third party Formulae
     overrides:
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/Songmu/maltmill/releases/download/{{.Version}}/maltmill_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
     files:
       - name: maltmill
         src: maltmill_{{.Version}}_{{.OS}}_{{.Arch}}/maltmill
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/Songmu/maltmill/releases/download/{{.Version}}/SHA256SUMS
       asset: SHA256SUMS
       algorithm: sha256

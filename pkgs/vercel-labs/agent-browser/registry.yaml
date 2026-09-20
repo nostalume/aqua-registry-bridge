@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.7.0")
-        url: https://gh-proxy.org/https://github.com/vercel-labs/agent-browser/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vercel-labs/agent-browser/releases/download/{{.Version}}/agent-browser-{{.OS}}-{{.Arch}}
         asset: agent-browser-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -17,7 +18,8 @@ packages:
       - version_constraint: semver("<= 0.7.4")
         no_asset: true
       - version_constraint: semver("<= 0.20.1")
-        url: https://gh-proxy.org/https://github.com/vercel-labs/agent-browser/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vercel-labs/agent-browser/releases/download/{{.Version}}/agent-browser-{{.OS}}-{{.Arch}}
         asset: agent-browser-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -25,7 +27,8 @@ packages:
           amd64: x64
           windows: win32
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/vercel-labs/agent-browser/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vercel-labs/agent-browser/releases/download/{{.Version}}/agent-browser-{{.OS}}-{{.Arch}}
         asset: agent-browser-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -34,5 +37,7 @@ packages:
           windows: win32
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/vercel-labs/agent-browser/releases/download/{{.Version}}/agent-browser-{{.OS}}-musl-{{.Arch}}
             goarch: amd64
             asset: agent-browser-{{.OS}}-musl-{{.Arch}}

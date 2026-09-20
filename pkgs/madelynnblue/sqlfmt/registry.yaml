@@ -10,13 +10,15 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.4.0")
-        url: https://gh-proxy.org/https://github.com/madelynnblue/sqlfmt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/madelynnblue/sqlfmt/releases/download/{{.Version}}/sqlfmt_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: sqlfmt_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/madelynnblue/sqlfmt/releases/download/{{.Version}}/sqlfmt_{{trimV .Version}}_checksums.txt
           asset: sqlfmt_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
@@ -24,7 +26,8 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/madelynnblue/sqlfmt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/madelynnblue/sqlfmt/releases/download/{{.Version}}/sqlfmt_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: sqlfmt_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -35,11 +38,14 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/madelynnblue/sqlfmt/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/madelynnblue/sqlfmt/releases/download/{{.Version}}/sqlfmt_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin

@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version in ["v2.14.0", "v2.22.0", "v2.22.1"]
         no_asset: true
       - version_constraint: semver("<= 2.2.0")
-        url: https://gh-proxy.org/https://github.com/go-semantic-release/semantic-release/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/go-semantic-release/semantic-release/releases/download/{{.Version}}/semantic-release_{{.Version}}_{{.OS}}_{{.Arch}}
         asset: semantic-release_{{.Version}}_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
@@ -19,13 +20,15 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 2.13.0")
-        url: https://gh-proxy.org/https://github.com/go-semantic-release/semantic-release/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/go-semantic-release/semantic-release/releases/download/{{.Version}}/semantic-release_{{.Version}}_{{.OS}}_{{.Arch}}
         asset: semantic-release_{{.Version}}_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/go-semantic-release/semantic-release/releases/download/{{.Version}}/semantic-release_{{.Version}}_checksums.txt
           asset: semantic-release_{{.Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
@@ -33,12 +36,14 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 2.14.3")
-        url: https://gh-proxy.org/https://github.com/go-semantic-release/semantic-release/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/go-semantic-release/semantic-release/releases/download/{{.Version}}/semantic-release_{{.Version}}_{{.OS}}_{{.Arch}}
         asset: semantic-release_{{.Version}}_{{.OS}}_{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/go-semantic-release/semantic-release/releases/download/{{.Version}}/semantic-release_{{.Version}}_checksums.txt
           asset: semantic-release_{{.Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
@@ -46,11 +51,13 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/go-semantic-release/semantic-release/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/go-semantic-release/semantic-release/releases/download/{{.Version}}/semantic-release_{{.Version}}_{{.OS}}_{{.Arch}}
         asset: semantic-release_{{.Version}}_{{.OS}}_{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/go-semantic-release/semantic-release/releases/download/{{.Version}}/semantic-release_{{.Version}}_checksums.txt
           asset: semantic-release_{{.Version}}_checksums.txt
           algorithm: sha256

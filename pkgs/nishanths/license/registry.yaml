@@ -9,10 +9,12 @@ packages:
       - version_constraint: semver("<= 3.0.0")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/nishanths/license/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/nishanths/license/releases/download/{{.Version}}/license-{{.Version}}-{{.OS}}-{{.Arch}}
         asset: license-{{.Version}}-{{.OS}}-{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/nishanths/license/releases/download/{{.Version}}/SHA256SUMS.txt
           asset: SHA256SUMS.txt
           algorithm: sha256

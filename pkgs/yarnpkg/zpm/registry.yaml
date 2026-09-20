@@ -1,5 +1,6 @@
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/yarnpkg/zpm/releases/download/{{.Version}}/yarn-{{.Arch}}-{{.OS}}.{{.Format}}
     repo_owner: yarnpkg
     repo_name: zpm
     description: Safe, stable, reproducible projects
@@ -9,6 +10,8 @@ packages:
     format: zip
     overrides:
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/yarnpkg/zpm/releases/download/{{.Version}}/yarn-{{.Arch}}-{{.OS}}.{{.Format}}
         replacements:
           amd64: x86_64
     replacements:

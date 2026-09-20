@@ -9,35 +9,47 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.1.0"
-        url: https://gh-proxy.org/https://github.com/SurgeDM/Surge/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/SurgeDM/Surge/releases/download/{{.Version}}/surge_{{trimV .Version}}-SNAPSHOT-b332004_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: surge_{{trimV .Version}}-SNAPSHOT-b332004_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/SurgeDM/Surge/releases/download/{{.Version}}/surge_{{trimV .Version}}-SNAPSHOT-b332004_checksums.txt
           asset: surge_{{trimV .Version}}-SNAPSHOT-b332004_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/SurgeDM/Surge/releases/download/{{.Version}}/surge_{{trimV .Version}}-SNAPSHOT-b332004_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.6.7")
-        url: https://gh-proxy.org/https://github.com/SurgeDM/Surge/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/SurgeDM/Surge/releases/download/{{.Version}}/surge_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: surge_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/SurgeDM/Surge/releases/download/{{.Version}}/surge_{{trimV .Version}}_checksums.txt
           asset: surge_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/SurgeDM/Surge/releases/download/{{.Version}}/surge_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/SurgeDM/Surge/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/SurgeDM/Surge/releases/download/{{.Version}}/Surge_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: Surge_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/SurgeDM/Surge/releases/download/{{.Version}}/Surge_{{trimV .Version}}_checksums.txt
           asset: Surge_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/SurgeDM/Surge/releases/download/{{.Version}}/Surge_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

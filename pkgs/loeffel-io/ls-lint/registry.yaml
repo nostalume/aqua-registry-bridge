@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/loeffel-io/ls-lint/releases/download/{{.Version}}/ls-lint-{{.OS}}-{{.Arch}}
     repo_owner: loeffel-io
     repo_name: ls-lint
     description: An extremely fast directory and filename linter - Bring some structure to your project filesystem
@@ -12,26 +13,33 @@ packages:
       - linux
       - amd64
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/loeffel-io/ls-lint/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256
     version_constraint: semver(">= 2.0.0")
     version_overrides:
       - version_constraint: semver(">= 1.10.0-beta.1")
-        url: https://gh-proxy.org/https://github.com/loeffel-io/ls-lint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/loeffel-io/ls-lint/releases/download/{{.Version}}/ls-lint-{{.OS}}
         asset: ls-lint-{{.OS}}
         format: raw
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/loeffel-io/ls-lint/releases/download/{{.Version}}/ls-lint-{{.OS}}-{{.Arch}}
             goarch: arm64
             asset: ls-lint-{{.OS}}-{{.Arch}}
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/loeffel-io/ls-lint/releases/download/{{.Version}}/ls-lint-{{.OS}}-{{.Arch}}
             goarch: arm64
             asset: ls-lint-{{.OS}}-{{.Arch}}
         checksum:
           enabled: false
       - version_constraint: semver(">= 1.1.0")
-        url: https://gh-proxy.org/https://github.com/loeffel-io/ls-lint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/loeffel-io/ls-lint/releases/download/{{.Version}}/ls-lint-{{.OS}}
         asset: ls-lint-{{.OS}}
         format: raw
         supported_envs:
@@ -41,7 +49,8 @@ packages:
         checksum:
           enabled: false
       - version_constraint: semver("< 1.1.0")
-        url: https://gh-proxy.org/https://github.com/loeffel-io/ls-lint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/loeffel-io/ls-lint/releases/download/{{.Version}}/ls-lint-{{.OS}}
         asset: ls-lint-{{.OS}}
         format: raw
         supported_envs:

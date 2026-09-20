@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/inlets/inlets-pro/releases/download/{{.Version}}/inlets-pro
     repo_owner: inlets
     repo_name: inlets-pro
     description: Secure HTTP and TCP tunnels that just work
@@ -11,13 +12,20 @@ packages:
     asset: inlets-pro
     overrides:
       - goos: darwin
+        type: http
+        url: https://gh-proxy.org/github.com/inlets/inlets-pro/releases/download/{{.Version}}/inlets-pro-darwin-arm64
         goarch: arm64
         asset: inlets-pro-darwin-arm64
       - goos: darwin
+        type: http
+        url: https://gh-proxy.org/github.com/inlets/inlets-pro/releases/download/{{.Version}}/inlets-pro-darwin
         asset: inlets-pro-darwin
       - goarch: arm64
+        type: http
+        url: https://gh-proxy.org/github.com/inlets/inlets-pro/releases/download/{{.Version}}/inlets-pro-arm64
         asset: inlets-pro-arm64
     checksum:
-      type: github_release
+      type: http
+      url: "{{.AssetURL}}.sha256"
       asset: "{{.Asset}}.sha256"
       algorithm: sha256

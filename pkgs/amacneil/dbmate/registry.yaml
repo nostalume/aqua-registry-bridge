@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v1.13.0"
-        url: https://gh-proxy.org/https://github.com/amacneil/dbmate/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/amacneil/dbmate/releases/download/{{.Version}}/dbmate-{{.OS}}-{{.Arch}}
         asset: dbmate-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -15,13 +16,15 @@ packages:
         replacements:
           darwin: macos
       - version_constraint: semver("<= 1.6.0")
-        url: https://gh-proxy.org/https://github.com/amacneil/dbmate/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/amacneil/dbmate/releases/download/{{.Version}}/dbmate-{{.OS}}-{{.Arch}}
         asset: dbmate-{{.OS}}-{{.Arch}}
         format: raw
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 1.9.1")
-        url: https://gh-proxy.org/https://github.com/amacneil/dbmate/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/amacneil/dbmate/releases/download/{{.Version}}/dbmate-{{.OS}}-{{.Arch}}
         asset: dbmate-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -33,7 +36,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.11.0")
-        url: https://gh-proxy.org/https://github.com/amacneil/dbmate/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/amacneil/dbmate/releases/download/{{.Version}}/dbmate-{{.OS}}-{{.Arch}}
         asset: dbmate-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -41,7 +45,8 @@ packages:
         replacements:
           darwin: macos
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/amacneil/dbmate/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/amacneil/dbmate/releases/download/{{.Version}}/dbmate-{{.OS}}-{{.Arch}}
         asset: dbmate-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true

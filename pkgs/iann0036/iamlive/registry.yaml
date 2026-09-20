@@ -7,17 +7,21 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.1.27")
-        url: https://gh-proxy.org/https://github.com/iann0036/iamlive/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/iann0036/iamlive/releases/download/{{.Version}}/iamlive-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: iamlive-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/iann0036/iamlive/releases/download/{{.Version}}/iamlive-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - darwin
           - linux
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/iann0036/iamlive/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/iann0036/iamlive/releases/download/{{.Version}}/iamlive_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: iamlive_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz

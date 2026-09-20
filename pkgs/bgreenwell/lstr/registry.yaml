@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.2.1"
-        url: https://gh-proxy.org/https://github.com/bgreenwell/lstr/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bgreenwell/lstr/releases/download/{{.Version}}/lstr-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: lstr-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -16,13 +17,16 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bgreenwell/lstr/releases/download/{{.Version}}/lstr-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/bgreenwell/lstr/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bgreenwell/lstr/releases/download/{{.Version}}/lstr-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: lstr-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -35,19 +39,26 @@ packages:
           darwin: apple-darwin
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/bgreenwell/lstr/releases/download/{{.Version}}/lstr-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/bgreenwell/lstr/releases/download/{{.Version}}/lstr-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bgreenwell/lstr/releases/download/{{.Version}}/lstr-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: lstr

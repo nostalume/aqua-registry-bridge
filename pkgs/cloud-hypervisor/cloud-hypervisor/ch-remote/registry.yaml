@@ -1,7 +1,8 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
   - name: cloud-hypervisor/cloud-hypervisor/ch-remote
-    type: github_release
+    type: http
+    url: https://gh-proxy.org/github.com/cloud-hypervisor/cloud-hypervisor/releases/download/{{.Version}}/ch-remote-static
     repo_owner: cloud-hypervisor
     repo_name: cloud-hypervisor
     description: Remotely control a cloud-hypervisor VMM
@@ -13,4 +14,6 @@ packages:
     asset: ch-remote-static
     overrides:
       - goarch: arm64
+        type: http
+        url: https://gh-proxy.org/github.com/cloud-hypervisor/cloud-hypervisor/releases/download/{{.Version}}/ch-remote-static-aarch64
         asset: ch-remote-static-aarch64

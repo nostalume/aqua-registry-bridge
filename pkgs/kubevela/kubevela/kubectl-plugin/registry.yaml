@@ -1,7 +1,8 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
   - name: kubevela/kubevela/kubectl-plugin
-    type: github_release
+    type: http
+    url: https://gh-proxy.org/github.com/kubevela/kubevela/releases/download/{{.Version}}/kubectl-vela-{{.Version}}-{{.OS}}-{{.Arch}}.tar.gz
     repo_owner: kubevela
     repo_name: kubevela
     aliases:
@@ -18,37 +19,46 @@ packages:
         src: "{{.OS}}-{{.Arch}}/kubectl-vela"
     version_constraint: semver(">= 1.10.3")
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/kubevela/kubevela/releases/download/{{.Version}}/sha256sums.txt
       asset: sha256sums.txt
       algorithm: sha256
       cosign:
         opts:
           - --certificate-identity
-          - https://github.com/kubevela/kubevela/.github/workflows/release.yml@refs/tags/{{.Version}}
+          - https://gh-proxy.org/github.com/kubevela/kubevela/.github/workflows/release.yml@refs/tags/{{.Version}}
           - --certificate-oidc-issuer
           - https://token.actions.githubusercontent.com
           - --signature
-          - https://github.com/kubevela/kubevela/releases/download/{{.Version}}/sha256sums.txt-keyless.sig
+          - https://gh-proxy.org/github.com/kubevela/kubevela/releases/download/{{.Version}}/sha256sums.txt-keyless.sig
           - --certificate
-          - https://github.com/kubevela/kubevela/releases/download/{{.Version}}/sha256sums.txt-keyless.pem
+          - https://gh-proxy.org/github.com/kubevela/kubevela/releases/download/{{.Version}}/sha256sums.txt-keyless.pem
     slsa_provenance:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/kubevela/kubevela/releases/download/{{.Version}}/multiple.intoto.jsonl
       asset: multiple.intoto.jsonl
     version_overrides:
       - version_constraint: semver(">= 1.10.2")
+        type: http
+        url: https://gh-proxy.org/github.com/kubevela/kubevela/releases/download/{{.Version}}/kubectl-vela-{{.Version}}-{{.OS}}-{{.Arch}}.tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubevela/kubevela/releases/download/{{.Version}}/sha256sums.txt
           asset: sha256sums.txt
           algorithm: sha256
         slsa_provenance:
           enabled: false
       - version_constraint: semver(">= 1.2.0")
+        type: http
+        url: https://gh-proxy.org/github.com/kubevela/kubevela/releases/download/{{.Version}}/kubectl-vela-{{.Version}}-{{.OS}}-{{.Arch}}.tar.gz
         checksum:
           # https://github.com/kubevela/kubevela/issues/4822
           enabled: false
         slsa_provenance:
           enabled: false
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/kubevela/kubevela/releases/download/{{.Version}}/kubectl-vela-{{.Version}}-{{.OS}}-{{.Arch}}.tar.gz
         checksum:
           # https://github.com/kubevela/kubevela/issues/4822
           enabled: false

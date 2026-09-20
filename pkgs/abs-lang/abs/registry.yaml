@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/abs-lang/abs/releases/download/{{.Version}}/abs-{{.OS}}-{{.Arch}}
     repo_owner: abs-lang
     repo_name: abs
     description: "Home of the ABS programming language: the joy of shell scripting"

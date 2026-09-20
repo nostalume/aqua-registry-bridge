@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version == "v1.9-alpha.30"
         no_asset: true
       - version_constraint: Version == "release-0.1.6"
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/kubebuilder/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/kubebuilder/releases/download/{{.Version}}/kubebuilder_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kubebuilder_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -17,14 +18,16 @@ packages:
             src: "{{.AssetWithoutExt}}/bin/kubebuilder"
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubernetes-sigs/kubebuilder/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v1beta1.2"
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/kubebuilder/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/kubebuilder/releases/download/{{.Version}}/kubebuilder-release-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: kubebuilder-release-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -35,7 +38,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.1.12")
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/kubebuilder/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/kubebuilder/releases/download/{{.Version}}/kubebuilder_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kubebuilder_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -43,7 +47,8 @@ packages:
             src: "{{.AssetWithoutExt}}/bin/kubebuilder"
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubernetes-sigs/kubebuilder/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
@@ -52,7 +57,8 @@ packages:
       - version_constraint: semver("<= 1.0.0-beta1.1")
         no_asset: true
       - version_constraint: semver("<= 2.0.0")
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/kubebuilder/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/kubebuilder/releases/download/{{.Version}}/kubebuilder_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kubebuilder_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -60,14 +66,16 @@ packages:
             src: "{{.AssetWithoutExt}}/bin/kubebuilder"
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubernetes-sigs/kubebuilder/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 2.3.2")
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/kubebuilder/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/kubebuilder/releases/download/{{.Version}}/kubebuilder_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kubebuilder_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -75,30 +83,35 @@ packages:
             src: "{{.AssetWithoutExt}}/bin/kubebuilder"
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubernetes-sigs/kubebuilder/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 3.3.0")
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/kubebuilder/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/kubebuilder/releases/download/{{.Version}}/kubebuilder_{{.OS}}_{{.Arch}}
         asset: kubebuilder_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubernetes-sigs/kubebuilder/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/kubebuilder/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/kubebuilder/releases/download/{{.Version}}/kubebuilder_{{.OS}}_{{.Arch}}
         asset: kubebuilder_{{.OS}}_{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubernetes-sigs/kubebuilder/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:

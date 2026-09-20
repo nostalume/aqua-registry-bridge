@@ -7,14 +7,16 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 4.0.0")
-        url: https://gh-proxy.org/https://github.com/vjeantet/alerter/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vjeantet/alerter/releases/download/{{.Version}}/alerter_v{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: alerter_v{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
         supported_envs:
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/vjeantet/alerter/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vjeantet/alerter/releases/download/{{.Version}}/alerter-{{trimV .Version}}.{{.Format}}
         asset: alerter-{{trimV .Version}}.{{.Format}}
         format: zip
         supported_envs:

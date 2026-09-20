@@ -7,12 +7,14 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.0.38")
-        url: https://gh-proxy.org/https://github.com/kubescape/kubescape/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubescape/kubescape/releases/download/{{.Version}}/kubescape
         asset: kubescape
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 1.0.97")
-        url: https://gh-proxy.org/https://github.com/kubescape/kubescape/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubescape/kubescape/releases/download/{{.Version}}/kubescape-{{.OS}}-latest
         asset: kubescape-{{.OS}}-latest
         format: raw
         rosetta2: true
@@ -28,7 +30,8 @@ packages:
       - version_constraint: Version == "v1.0.98"
         no_asset: true
       - version_constraint: semver("<= 1.0.107")
-        url: https://gh-proxy.org/https://github.com/kubescape/kubescape/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubescape/kubescape/releases/download/{{.Version}}/kubescape-{{.OS}}-latest
         asset: kubescape-{{.OS}}-latest
         format: raw
         rosetta2: true
@@ -42,7 +45,8 @@ packages:
           - darwin
           - windows
       - version_constraint: Version == "v1.0.108"
-        url: https://gh-proxy.org/https://github.com/kubescape/kubescape/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubescape/kubescape/releases/download/{{.Version}}/kubescape-{{.OS}}-latest
         asset: kubescape-{{.OS}}-latest
         format: raw
         rosetta2: true
@@ -53,7 +57,8 @@ packages:
           - darwin
           - linux/amd64
       - version_constraint: semver("<= 2.0.147")
-        url: https://gh-proxy.org/https://github.com/kubescape/kubescape/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubescape/kubescape/releases/download/{{.Version}}/kubescape-{{.OS}}-latest
         asset: kubescape-{{.OS}}-latest
         format: raw
         rosetta2: true
@@ -67,7 +72,8 @@ packages:
           - darwin
           - windows
       - version_constraint: semver("<= 2.0.168")
-        url: https://gh-proxy.org/https://github.com/kubescape/kubescape/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubescape/kubescape/releases/download/{{.Version}}/kubescape-{{.OS}}-latest
         asset: kubescape-{{.OS}}-latest
         format: raw
         rosetta2: true
@@ -77,7 +83,8 @@ packages:
           darwin: macos
           linux: ubuntu
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubescape/kubescape/releases/download/{{.Version}}/kubescape-{{.OS}}-latest-sha256
           asset: kubescape-{{.OS}}-latest-sha256
           algorithm: sha256
         supported_envs:
@@ -85,7 +92,8 @@ packages:
           - darwin
           - windows
       - version_constraint: Version == "v2.0.169"
-        url: https://gh-proxy.org/https://github.com/kubescape/kubescape/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubescape/kubescape/releases/download/{{.Version}}/kubescape-{{.OS}}-latest
         asset: kubescape-{{.OS}}-latest
         format: raw
         rosetta2: true
@@ -93,14 +101,16 @@ packages:
           darwin: macos
           linux: ubuntu
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubescape/kubescape/releases/download/{{.Version}}/kubescape-{{.OS}}-latest-sha256
           asset: kubescape-{{.OS}}-latest-sha256
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 2.0.183")
-        url: https://gh-proxy.org/https://github.com/kubescape/kubescape/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubescape/kubescape/releases/download/{{.Version}}/kubescape-{{.OS}}-latest
         asset: kubescape-{{.OS}}-latest
         format: raw
         rosetta2: true
@@ -110,7 +120,8 @@ packages:
           darwin: macos
           linux: ubuntu
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}-sha256"
           asset: "{{.Asset}}-sha256"
           algorithm: sha256
         supported_envs:
@@ -118,7 +129,8 @@ packages:
           - darwin
           - windows
       - version_constraint: semver("<= 2.1.1")
-        url: https://gh-proxy.org/https://github.com/kubescape/kubescape/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubescape/kubescape/releases/download/{{.Version}}/kubescape-{{.OS}}-latest.{{.Format}}
         asset: kubescape-{{.OS}}-latest.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -132,7 +144,8 @@ packages:
           - darwin
           - windows
       - version_constraint: semver("<= 2.2.6")
-        url: https://gh-proxy.org/https://github.com/kubescape/kubescape/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubescape/kubescape/releases/download/{{.Version}}/kubescape-{{.OS}}-latest
         asset: kubescape-{{.OS}}-latest
         format: raw
         rosetta2: true
@@ -142,7 +155,8 @@ packages:
           darwin: macos
           linux: ubuntu
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
@@ -150,7 +164,8 @@ packages:
           - darwin
           - windows
       - version_constraint: semver("<= 3.0.3")
-        url: https://gh-proxy.org/https://github.com/kubescape/kubescape/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubescape/kubescape/releases/download/{{.Version}}/kubescape-{{.OS}}-latest
         asset: kubescape-{{.OS}}-latest
         format: raw
         windows_arm_emulation: true
@@ -159,11 +174,14 @@ packages:
           darwin: macos
           linux: ubuntu
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/kubescape/kubescape/releases/download/{{.Version}}/kubescape-{{.Arch}}-{{.OS}}-latest
             goarch: arm64
             asset: kubescape-{{.Arch}}-{{.OS}}-latest
         supported_envs:
@@ -171,7 +189,8 @@ packages:
           - darwin
           - windows
       - version_constraint: semver("<= 3.0.46")
-        url: https://gh-proxy.org/https://github.com/kubescape/kubescape/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubescape/kubescape/releases/download/{{.Version}}/kubescape-{{.OS}}-latest.{{.Format}}
         asset: kubescape-{{.OS}}-latest.{{.Format}}
         format: tar.gz
         complete_windows_ext: false
@@ -183,25 +202,31 @@ packages:
           linux: ubuntu
         overrides:
           - goarch: arm64
+            type: http
+            url: https://gh-proxy.org/github.com/kubescape/kubescape/releases/download/{{.Version}}/kubescape-{{.Arch}}-{{.OS}}-latest.{{.Format}}
             asset: kubescape-{{.Arch}}-{{.OS}}-latest.{{.Format}}
         supported_envs:
           - linux/amd64
           - darwin
           - windows
       - version_constraint: semver("< 4.0.10")
-        url: https://gh-proxy.org/https://github.com/kubescape/kubescape/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubescape/kubescape/releases/download/{{.Version}}/kubescape_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kubescape_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubescape/kubescape/releases/download/{{.Version}}/checksums.sha256
           asset: checksums.sha256
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/kubescape/kubescape/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubescape/kubescape/releases/download/{{.Version}}/kubescape_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kubescape_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubescape/kubescape/releases/download/{{.Version}}/checksums.sha256
           asset: checksums.sha256
           algorithm: sha256
         github_artifact_attestations:

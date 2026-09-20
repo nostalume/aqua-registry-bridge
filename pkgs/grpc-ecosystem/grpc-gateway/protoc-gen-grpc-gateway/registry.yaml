@@ -9,7 +9,8 @@ packages:
     version_overrides:
       # v2.14.0 SLSA provenance https://github.com/aquaproj/aqua-registry/pull/31943#issuecomment-2649535381
       - version_constraint: semver("<= 2.13.0")
-        url: https://gh-proxy.org/https://github.com/grpc-ecosystem/grpc-gateway/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/grpc-ecosystem/grpc-gateway/releases/download/{{.Version}}/protoc-gen-grpc-gateway-{{.Version}}-{{.OS}}-{{.Arch}}
         asset: protoc-gen-grpc-gateway-{{.Version}}-{{.OS}}-{{.Arch}}
         supported_envs:
           - windows
@@ -22,11 +23,13 @@ packages:
         files:
           - name: protoc-gen-grpc-gateway
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/grpc-ecosystem/grpc-gateway/releases/download/{{.Version}}/grpc-gateway_{{trimV .Version}}_checksums.txt
           asset: grpc-gateway_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/grpc-ecosystem/grpc-gateway/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/grpc-ecosystem/grpc-gateway/releases/download/{{.Version}}/protoc-gen-grpc-gateway-{{.Version}}-{{.OS}}-{{.Arch}}
         asset: protoc-gen-grpc-gateway-{{.Version}}-{{.OS}}-{{.Arch}}
         supported_envs:
           - windows
@@ -39,9 +42,11 @@ packages:
         files:
           - name: protoc-gen-grpc-gateway
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/grpc-ecosystem/grpc-gateway/releases/download/{{.Version}}/grpc-gateway_{{trimV .Version}}_checksums.txt
           asset: grpc-gateway_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/grpc-ecosystem/grpc-gateway/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/datastax-archive/astra-cli/releases/download/{{.Version}}/astra-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
     repo_owner: datastax-archive
     repo_name: astra-cli
     aliases:
@@ -10,6 +11,7 @@ packages:
     files:
       - name: astra
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/datastax-archive/astra-cli/releases/download/{{.Version}}/astra-cli_{{trimV .Version}}_checksums.txt
       asset: astra-cli_{{trimV .Version}}_checksums.txt
       algorithm: sha256

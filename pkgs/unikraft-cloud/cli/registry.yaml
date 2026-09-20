@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/unikraft-cloud/cli/releases/download/{{.Version}}/unikraft-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: unikraft-cloud
     repo_name: cli
     description: Command-line interface for Unikraft Cloud
@@ -10,7 +11,8 @@ packages:
     files:
       - name: unikraft
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/unikraft-cloud/cli/releases/download/{{.Version}}/cli_{{trimV .Version}}_checksums.txt
       asset: cli_{{trimV .Version}}_checksums.txt
       algorithm: sha256
     supported_envs:

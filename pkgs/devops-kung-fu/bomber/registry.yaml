@@ -7,13 +7,18 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.1.1")
-        url: https://gh-proxy.org/https://github.com/devops-kung-fu/bomber/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/devops-kung-fu/bomber/releases/download/{{.Version}}/bomber_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: bomber_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/devops-kung-fu/bomber/releases/download/{{.Version}}/bomber_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
             asset: bomber_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/devops-kung-fu/bomber/releases/download/{{.Version}}/bomber_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             files:
               # https://github.com/devops-kung-fu/bomber/pull/27
               - name: bomber
@@ -23,57 +28,74 @@ packages:
           - darwin
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/devops-kung-fu/bomber/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.3.2")
-        url: https://gh-proxy.org/https://github.com/devops-kung-fu/bomber/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/devops-kung-fu/bomber/releases/download/{{.Version}}/bomber_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: bomber_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/devops-kung-fu/bomber/releases/download/{{.Version}}/bomber_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
             asset: bomber_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
         supported_envs:
           - linux
           - darwin
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/devops-kung-fu/bomber/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.3.5")
-        url: https://gh-proxy.org/https://github.com/devops-kung-fu/bomber/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/devops-kung-fu/bomber/releases/download/{{.Version}}/bomber_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: bomber_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/devops-kung-fu/bomber/releases/download/{{.Version}}/bomber_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
             asset: bomber_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/devops-kung-fu/bomber/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.4.1")
-        url: https://gh-proxy.org/https://github.com/devops-kung-fu/bomber/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/devops-kung-fu/bomber/releases/download/{{.Version}}/bomber_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: bomber_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/devops-kung-fu/bomber/releases/download/{{.Version}}/bomber_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
             asset: bomber_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/devops-kung-fu/bomber/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/devops-kung-fu/bomber/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/devops-kung-fu/bomber/releases/download/{{.Version}}/bomber_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: bomber_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/devops-kung-fu/bomber/releases/download/{{.Version}}/bomber_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
             asset: bomber_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/devops-kung-fu/bomber/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

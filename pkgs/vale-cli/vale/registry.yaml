@@ -11,7 +11,8 @@ packages:
       - version_constraint: Version == "v1.0.0"
         no_asset: true
       - version_constraint: Version == "v1.1.6-alpha"
-        url: https://gh-proxy.org/https://github.com/vale-cli/vale/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: vale_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -26,13 +27,16 @@ packages:
           windows: Windows
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "v2.23.1"
-        url: https://gh-proxy.org/https://github.com/vale-cli/vale/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: vale_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -41,14 +45,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{trimV .Version}}_checksums.txt
           asset: vale_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: Version == "v2.23.2"
-        url: https://gh-proxy.org/https://github.com/vale-cli/vale/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_.{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: vale_.{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -58,9 +66,12 @@ packages:
           windows: Windows
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_.{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.2.0")
-        url: https://gh-proxy.org/https://github.com/vale-cli/vale/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/{{.OS}}-{{.Arch}}.{{.Format}}
         asset: "{{.OS}}-{{.Arch}}.{{.Format}}"
         format: tar.gz
         rosetta2: true
@@ -72,13 +83,16 @@ packages:
           windows: Windows
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.4.1")
-        url: https://gh-proxy.org/https://github.com/vale-cli/vale/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/{{.OS}}-{{.Arch}}.{{.Format}}
         asset: "{{.OS}}-{{.Arch}}.{{.Format}}"
         format: tar.gz
         rosetta2: true
@@ -90,13 +104,16 @@ packages:
           windows: Windows
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.6.2")
-        url: https://gh-proxy.org/https://github.com/vale-cli/vale/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: vale_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -107,18 +124,22 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_checksums.txt
           asset: vale_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "0.7.0"
-        url: https://gh-proxy.org/https://github.com/vale-cli/vale/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: vale_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -129,18 +150,22 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_checksums.txt
           asset: vale_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "v0.7.1"
-        url: https://gh-proxy.org/https://github.com/vale-cli/vale/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: vale_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -151,18 +176,22 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_checksums.txt
           asset: vale_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.9.0")
-        url: https://gh-proxy.org/https://github.com/vale-cli/vale/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: vale_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -173,18 +202,22 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_checksums.txt
           asset: vale_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.10.1")
-        url: https://gh-proxy.org/https://github.com/vale-cli/vale/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: vale_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -195,18 +228,22 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{.Version}}_checksums.txt
           asset: vale_{{.Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 2.15.2")
-        url: https://gh-proxy.org/https://github.com/vale-cli/vale/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: vale_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -217,18 +254,22 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{trimV .Version}}_checksums.txt
           asset: vale_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 2.18.0")
-        url: https://gh-proxy.org/https://github.com/vale-cli/vale/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: vale_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -238,18 +279,22 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{trimV .Version}}_checksums.txt
           asset: vale_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 2.23.0")
-        url: https://gh-proxy.org/https://github.com/vale-cli/vale/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: vale_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -259,14 +304,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{trimV .Version}}_checksums.txt
           asset: vale_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 3.4.2")
-        url: https://gh-proxy.org/https://github.com/vale-cli/vale/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: vale_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -275,14 +324,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{trimV .Version}}_checksums.txt
           asset: vale_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/vale-cli/vale/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: vale_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -292,9 +345,12 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{trimV .Version}}_checksums.txt
           asset: vale_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vale-cli/vale/releases/download/{{.Version}}/vale_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

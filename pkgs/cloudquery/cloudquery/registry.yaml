@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/cloudquery/cloudquery/releases/download/{{.Version}}/cloudquery_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: cloudquery
     repo_name: cloudquery
     description: The open source high performance data integration platform built for developers
@@ -12,12 +13,15 @@ packages:
       - amd64
     version_prefix: cli-
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/cloudquery/cloudquery/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256
     version_constraint: semver(">= 1.0.0")
     version_overrides:
       - version_constraint: semver(">= 0.32.7")
+        type: http
+        url: https://gh-proxy.org/github.com/cloudquery/cloudquery/releases/download/{{.Version}}/cloudquery_{{.OS}}_{{.Arch}}.{{.Format}}
         version_prefix: cli/
         replacements:
           darwin: Darwin
@@ -25,6 +29,8 @@ packages:
           amd64: x86_64
           windows: Windows
       - version_constraint: semver(">= 0.32.5")
+        type: http
+        url: https://gh-proxy.org/github.com/cloudquery/cloudquery/releases/download/{{.Version}}/cli_{{.OS}}_{{.Arch}}.zip
         version_prefix: cli/
         asset: cli_{{.OS}}_{{.Arch}}.zip
         files:
@@ -36,6 +42,8 @@ packages:
           amd64: x86_64
           windows: Windows
       - version_constraint: semver("< 0.32.5")
+        type: http
+        url: https://gh-proxy.org/github.com/cloudquery/cloudquery/releases/download/{{.Version}}/cloudquery_{{.OS}}_{{.Arch}}.{{.Format}}
         replacements:
           darwin: Darwin
           linux: Linux

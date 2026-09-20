@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.1.0")
-        url: https://gh-proxy.org/https://github.com/denoland/deno/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/denoland/deno/releases/download/{{.Version}}/deno_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: deno_{{.OS}}_{{.Arch}}.{{.Format}}
         format: gz
         rosetta2: true
@@ -21,6 +22,8 @@ packages:
           windows: win
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/denoland/deno/releases/download/{{.Version}}/deno_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
             files:
               - name: deno
@@ -29,7 +32,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.35.0")
-        url: https://gh-proxy.org/https://github.com/denoland/deno/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/denoland/deno/releases/download/{{.Version}}/deno_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: deno_{{.OS}}_{{.Arch}}.{{.Format}}
         format: gz
         rosetta2: true
@@ -43,6 +47,8 @@ packages:
           windows: win
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/denoland/deno/releases/download/{{.Version}}/deno_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
             files:
               - name: deno
@@ -51,7 +57,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.38.0")
-        url: https://gh-proxy.org/https://github.com/denoland/deno/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/denoland/deno/releases/download/{{.Version}}/deno-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: deno-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -62,6 +69,8 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/denoland/deno/releases/download/{{.Version}}/deno_{{.OS}}_{{.Arch}}.{{.Format}}
             format: gz
             asset: deno_{{.OS}}_{{.Arch}}.{{.Format}}
             replacements:
@@ -74,7 +83,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.5.4")
-        url: https://gh-proxy.org/https://github.com/denoland/deno/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/denoland/deno/releases/download/{{.Version}}/deno-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: deno-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -89,7 +99,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.40.2")
-        url: https://gh-proxy.org/https://github.com/denoland/deno/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/denoland/deno/releases/download/{{.Version}}/deno-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: deno-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -100,6 +111,8 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/denoland/deno/releases/download/{{.Version}}/deno-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
         supported_envs:
@@ -107,7 +120,8 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/denoland/deno/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/denoland/deno/releases/download/{{.Version}}/deno-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: deno-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         windows_arm_emulation: true

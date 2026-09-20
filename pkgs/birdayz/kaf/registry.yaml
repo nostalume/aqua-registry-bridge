@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/birdayz/kaf/releases/download/{{.Version}}/kaf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: birdayz
     repo_name: kaf
     description: Modern CLI for Apache Kafka, written in Go
@@ -12,32 +13,43 @@ packages:
       linux: Linux
       windows: Windows
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/birdayz/kaf/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256
     version_constraint: semver(">= 0.2.6")
     version_overrides:
       - version_constraint: semver(">= 0.2.5")
-        url: https://gh-proxy.org/https://github.com/birdayz/kaf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/birdayz/kaf/releases/download/{{.Version}}/kaf_.{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kaf_.{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         checksum:
           enabled: false
       - version_constraint: semver(">= 0.2.4")
-        url: https://gh-proxy.org/https://github.com/birdayz/kaf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/birdayz/kaf/releases/download/{{.Version}}/kaf_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kaf_{{.OS}}_{{.Arch}}.{{.Format}}
       - version_constraint: semver(">= 0.1.44")
+        type: http
+        url: https://gh-proxy.org/github.com/birdayz/kaf/releases/download/{{.Version}}/kaf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
       - version_constraint: semver(">= 0.1.43")
+        type: http
+        url: https://gh-proxy.org/github.com/birdayz/kaf/releases/download/{{.Version}}/kaf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         supported_envs:
           - darwin
           - linux
           - amd64
         rosetta2: true
       - version_constraint: semver(">= 0.1.6")
+        type: http
+        url: https://gh-proxy.org/github.com/birdayz/kaf/releases/download/{{.Version}}/kaf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         supported_envs:
           - darwin
           - amd64
         rosetta2: true
       - version_constraint: semver("< 0.1.6")
+        type: http
+        url: https://gh-proxy.org/github.com/birdayz/kaf/releases/download/{{.Version}}/kaf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         replacements:
           amd64: x86_64
           darwin: Darwin

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/firecracker-microvm/firecracker/releases/download/{{.Version}}/firecracker-{{.Version}}-{{.Arch}}.tgz
     repo_owner: firecracker-microvm
     repo_name: firecracker
     asset: firecracker-{{.Version}}-{{.Arch}}.tgz
@@ -20,6 +21,7 @@ packages:
     supported_envs:
       - linux
     checksum:
-      type: github_release
+      type: http
+      url: "{{.AssetURL}}.sha256.txt"
       asset: "{{.Asset}}.sha256.txt"
       algorithm: sha256

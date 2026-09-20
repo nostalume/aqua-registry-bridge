@@ -10,7 +10,8 @@ packages:
       - version_constraint: semver("<= 1.0.0")
         no_asset: true
       - version_constraint: semver("<= 1.2.0")
-        url: https://gh-proxy.org/https://github.com/jreleaser/jreleaser/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jreleaser/jreleaser/releases/download/{{.Version}}/jreleaser-native-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: jreleaser-native-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -24,7 +25,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 1.5.1")
-        url: https://gh-proxy.org/https://github.com/jreleaser/jreleaser/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jreleaser/jreleaser/releases/download/{{.Version}}/jreleaser-native-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: jreleaser-native-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -40,7 +42,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.10.0")
-        url: https://gh-proxy.org/https://github.com/jreleaser/jreleaser/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jreleaser/jreleaser/releases/download/{{.Version}}/jreleaser-native-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: jreleaser-native-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -54,7 +57,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 1.16.0")
-        url: https://gh-proxy.org/https://github.com/jreleaser/jreleaser/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jreleaser/jreleaser/releases/download/{{.Version}}/jreleaser-native-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: jreleaser-native-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -66,6 +70,8 @@ packages:
           darwin: osx
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/jreleaser/jreleaser/releases/download/{{.Version}}/jreleaser-native-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: aarch64
         supported_envs:
@@ -73,7 +79,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.24.0")
-        url: https://gh-proxy.org/https://github.com/jreleaser/jreleaser/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jreleaser/jreleaser/releases/download/{{.Version}}/jreleaser-native-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: jreleaser-native-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -86,13 +93,17 @@ packages:
           darwin: osx
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jreleaser/jreleaser/releases/download/{{.Version}}/jreleaser-native-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements: {}
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/jreleaser/jreleaser/releases/download/{{.Version}}/jreleaser-all-{{trimV .Version}}.intoto.jsonl
           asset: jreleaser-all-{{trimV .Version}}.intoto.jsonl
           source_tag: "-"
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/jreleaser/jreleaser/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jreleaser/jreleaser/releases/download/{{.Version}}/jreleaser-native-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: jreleaser-native-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -105,8 +116,11 @@ packages:
           darwin: osx
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jreleaser/jreleaser/releases/download/{{.Version}}/jreleaser-native-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements: {}
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/jreleaser/jreleaser/releases/download/{{.Version}}/jreleaser-all-{{trimV .Version}}.intoto.jsonl
           asset: jreleaser-all-{{trimV .Version}}.intoto.jsonl
           source_tag: "-"

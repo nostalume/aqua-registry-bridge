@@ -11,7 +11,8 @@ packages:
       - version_constraint: Version == "0.0.1"
         no_asset: true
       - version_constraint: semver("<= 0.10.0")
-        url: https://gh-proxy.org/https://github.com/cloudfoundry/uaa-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cloudfoundry/uaa-cli/releases/download/{{.Version}}/uaa-{{.OS}}-{{.Arch}}-{{.Version}}
         asset: uaa-{{.OS}}-{{.Arch}}-{{.Version}}
         format: raw
         rosetta2: true
@@ -23,7 +24,8 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/cloudfoundry/uaa-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cloudfoundry/uaa-cli/releases/download/{{.Version}}/uaa-{{.OS}}-{{.Arch}}-{{trimV .Version}}
         asset: uaa-{{.OS}}-{{.Arch}}-{{trimV .Version}}
         format: raw
         windows_arm_emulation: true

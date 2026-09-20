@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.2.0")
-        url: https://gh-proxy.org/https://github.com/orf/gping/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/orf/gping/releases/download/{{.Version}}/gping-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: gping-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -21,13 +22,16 @@ packages:
           windows: Windows
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/orf/gping/releases/download/{{.Version}}/gping-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "v1.2.1"
-        url: https://gh-proxy.org/https://github.com/orf/gping/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/orf/gping/releases/download/{{.Version}}/gping-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: gping-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -38,18 +42,26 @@ packages:
           windows: Windows
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/orf/gping/releases/download/{{.Version}}/gping-{{.OS}}-{{.Arch}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: Linux
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/orf/gping/releases/download/{{.Version}}/gping-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             asset: gping-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
               linux: unknown-linux-musl
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/orf/gping/releases/download/{{.Version}}/gping-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 1.18.0")
+        type: http
+        url: https://gh-proxy.org/github.com/orf/gping/releases/download/{{.Version}}/gping-{{.OS}}-{{.Arch}}.{{.Format}}
         version_prefix: gping-
         asset: gping-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
@@ -61,18 +73,26 @@ packages:
           windows: Windows
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/orf/gping/releases/download/{{.Version}}/gping-{{.OS}}-{{.Arch}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: Linux
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/orf/gping/releases/download/{{.Version}}/gping-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             asset: gping-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
               linux: unknown-linux-musl
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/orf/gping/releases/download/{{.Version}}/gping-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/orf/gping/releases/download/{{.Version}}/gping-{{.OS}}-gnu-{{.Arch}}.{{.Format}}
         version_prefix: gping-
         asset: gping-{{.OS}}-gnu-{{.Arch}}.{{.Format}}
         format: tar.gz
@@ -84,7 +104,11 @@ packages:
           windows: Windows
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/orf/gping/releases/download/{{.Version}}/gping-{{.OS}}-{{.Arch}}.{{.Format}}
             asset: gping-{{.OS}}-{{.Arch}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/orf/gping/releases/download/{{.Version}}/gping-{{.OS}}-msvc-{{.Arch}}.{{.Format}}
             format: zip
             asset: gping-{{.OS}}-msvc-{{.Arch}}.{{.Format}}

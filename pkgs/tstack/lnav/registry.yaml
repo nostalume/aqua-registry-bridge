@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.8.1")
-        url: https://gh-proxy.org/https://github.com/tstack/lnav/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tstack/lnav/releases/download/{{.Version}}/lnav-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: lnav-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         files:
@@ -18,7 +19,8 @@ packages:
         supported_envs:
           - linux/amd64
       - version_constraint: Version == "v0.8.2-alpha"
-        url: https://gh-proxy.org/https://github.com/tstack/lnav/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tstack/lnav/releases/download/{{.Version}}/lnav-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: lnav-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         files:
@@ -29,7 +31,8 @@ packages:
         supported_envs:
           - linux/amd64
       - version_constraint: Version == "v0.8.2"
-        url: https://gh-proxy.org/https://github.com/tstack/lnav/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tstack/lnav/releases/download/{{.Version}}/lnav-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: lnav-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         files:
@@ -40,7 +43,8 @@ packages:
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 0.8.3b")
-        url: https://gh-proxy.org/https://github.com/tstack/lnav/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tstack/lnav/releases/download/{{.Version}}/lnav-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: lnav-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         replacements:
@@ -48,7 +52,8 @@ packages:
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 0.8.5")
-        url: https://gh-proxy.org/https://github.com/tstack/lnav/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tstack/lnav/releases/download/{{.Version}}/lnav-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: lnav-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         files:
@@ -59,7 +64,8 @@ packages:
         supported_envs:
           - linux/amd64
       - version_constraint: Version == "v0.9.0"
-        url: https://gh-proxy.org/https://github.com/tstack/lnav/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tstack/lnav/releases/download/{{.Version}}/lnav-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: lnav-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         files:
@@ -70,7 +76,8 @@ packages:
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 0.11.0")
-        url: https://gh-proxy.org/https://github.com/tstack/lnav/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tstack/lnav/releases/download/{{.Version}}/lnav-{{trimV .Version}}-musl-64bit.{{.Format}}
         asset: lnav-{{trimV .Version}}-musl-64bit.{{.Format}}
         format: zip
         rosetta2: true
@@ -79,12 +86,15 @@ packages:
             src: lnav-{{trimV .Version}}/lnav
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/tstack/lnav/releases/download/{{.Version}}/lnav-{{trimV .Version}}-os-x.{{.Format}}
             asset: lnav-{{trimV .Version}}-os-x.{{.Format}}
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.11.1-test1")
-        url: https://gh-proxy.org/https://github.com/tstack/lnav/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tstack/lnav/releases/download/{{.Version}}/lnav-0.11.1-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: lnav-0.11.1-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -96,12 +106,15 @@ packages:
           darwin: macos
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/tstack/lnav/releases/download/{{.Version}}/lnav-0.11.1-{{.Arch}}-{{.OS}}-musl.{{.Format}}
             asset: lnav-0.11.1-{{.Arch}}-{{.OS}}-musl.{{.Format}}
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.11.2")
-        url: https://gh-proxy.org/https://github.com/tstack/lnav/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tstack/lnav/releases/download/{{.Version}}/lnav-{{trimV .Version}}-{{.Arch}}-{{.OS}}-musl.{{.Format}}
         asset: lnav-{{trimV .Version}}-{{.Arch}}-{{.OS}}-musl.{{.Format}}
         format: zip
         rosetta2: true
@@ -113,12 +126,15 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/tstack/lnav/releases/download/{{.Version}}/lnav-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             asset: lnav-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.12.0")
-        url: https://gh-proxy.org/https://github.com/tstack/lnav/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tstack/lnav/releases/download/{{.Version}}/lnav-{{trimV .Version}}-{{.OS}}-musl-{{.Arch}}.{{.Format}}
         asset: lnav-{{trimV .Version}}-{{.OS}}-musl-{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -130,15 +146,20 @@ packages:
           darwin: macos
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/tstack/lnav/releases/download/{{.Version}}/lnav-{{trimV .Version}}-{{.OS}}-musl-{{.Arch}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/tstack/lnav/releases/download/{{.Version}}/lnav-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             asset: lnav-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 0.12.3")
-        url: https://gh-proxy.org/https://github.com/tstack/lnav/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tstack/lnav/releases/download/{{.Version}}/lnav-{{trimV .Version}}-{{.OS}}-musl-{{.Arch}}.{{.Format}}
         asset: lnav-{{trimV .Version}}-{{.OS}}-musl-{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -150,12 +171,15 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/tstack/lnav/releases/download/{{.Version}}/lnav-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             asset: lnav-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v0.12.4"
-        url: https://gh-proxy.org/https://github.com/tstack/lnav/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tstack/lnav/releases/download/{{.Version}}/lnav-{{trimV .Version}}-{{.OS}}-musl-{{.Arch}}.{{.Format}}
         asset: lnav-{{trimV .Version}}-{{.OS}}-musl-{{.Arch}}.{{.Format}}
         format: zip
         files:
@@ -166,6 +190,8 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/tstack/lnav/releases/download/{{.Version}}/lnav-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             asset: lnav-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
@@ -173,7 +199,8 @@ packages:
           - linux
           - darwin
       - version_constraint: semver("< 0.14.0")
-        url: https://gh-proxy.org/https://github.com/tstack/lnav/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tstack/lnav/releases/download/{{.Version}}/lnav-{{trimV .Version}}-{{.OS}}-musl-{{.Arch}}.{{.Format}}
         asset: lnav-{{trimV .Version}}-{{.OS}}-musl-{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -186,14 +213,19 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/tstack/lnav/releases/download/{{.Version}}/lnav-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             asset: lnav-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/tstack/lnav/releases/download/{{.Version}}/lnav-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             asset: lnav-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             files:
               - name: lnav
                 src: lnav-{{trimV .Version}}/bin/lnav
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/tstack/lnav/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tstack/lnav/releases/download/{{.Version}}/lnav-{{trimV .Version}}-{{.OS}}-musl-{{.Arch}}.{{.Format}}
         asset: lnav-{{trimV .Version}}-{{.OS}}-musl-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -205,10 +237,14 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/tstack/lnav/releases/download/{{.Version}}/lnav-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             asset: lnav-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/tstack/lnav/releases/download/{{.Version}}/lnav-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             asset: lnav-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             files:
               - name: lnav

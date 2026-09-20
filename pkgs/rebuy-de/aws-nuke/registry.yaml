@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/rebuy-de/aws-nuke/releases/download/{{.Version}}/aws-nuke-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
     repo_owner: rebuy-de
     repo_name: aws-nuke
     description: Nuke a whole AWS account and delete all its resources
@@ -12,6 +13,8 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/rebuy-de/aws-nuke/releases/download/{{.Version}}/aws-nuke-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         files:
           - name: aws-nuke

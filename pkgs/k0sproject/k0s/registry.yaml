@@ -8,13 +8,15 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.8.1")
-        url: https://gh-proxy.org/https://github.com/k0sproject/k0s/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/k0sproject/k0s/releases/download/{{.Version}}/k0s-{{.Version}}-{{.Arch}}
         asset: k0s-{{.Version}}-{{.Arch}}
         format: raw
         supported_envs:
           - linux
       - version_constraint: semver("<= 1.27.16+k0s.0")
-        url: https://gh-proxy.org/https://github.com/k0sproject/k0s/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/k0sproject/k0s/releases/download/{{.Version}}/k0s-{{.Version}}-{{.Arch}}
         asset: k0s-{{.Version}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -22,12 +24,14 @@ packages:
           - linux
           - windows
       - version_constraint: semver("<= 1.28.15+k0s.0")
-        url: https://gh-proxy.org/https://github.com/k0sproject/k0s/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/k0sproject/k0s/releases/download/{{.Version}}/k0s-{{.Version}}-{{.Arch}}
         asset: k0s-{{.Version}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/k0sproject/k0s/releases/download/{{.Version}}/sha256sums.txt
           asset: sha256sums.txt
           algorithm: sha256
         supported_envs:
@@ -39,18 +43,23 @@ packages:
           (semver("<= 1.30.11+k0s.0") && semver(">= 1.30.0+k0s.0")) ||
           semver("<= 1.29.15+k0s.0")
         asset: k0s-{{.Version}}-{{.Arch}}
+        type: http
+        url: https://gh-proxy.org/github.com/k0sproject/k0s/releases/download/{{.Version}}/k0s-{{.Version}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/k0sproject/k0s/releases/download/{{.Version}}/sha256sums.txt
           asset: sha256sums.txt
           algorithm: sha256
         cosign:
           signature:
-            type: github_release
+            type: http
+            url: https://gh-proxy.org/github.com/k0sproject/k0s/releases/download/{{.Version}}/{{.Asset}}.sig
             asset: "{{.Asset}}.sig"
           key:
-            type: github_release
+            type: http
+            url: https://gh-proxy.org/github.com/k0sproject/k0s/releases/download/{{.Version}}/cosign.pub
             asset: "cosign.pub"
           opts:
             # `--insecure-ignore-tlog` is required because it is signed with `--tlog-upload=false` option
@@ -62,20 +71,24 @@ packages:
           - linux
           - windows
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/k0sproject/k0s/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/k0sproject/k0s/releases/download/{{.Version}}/k0s-{{.Version}}-{{.Arch}}
         asset: k0s-{{.Version}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/k0sproject/k0s/releases/download/{{.Version}}/sha256sums.txt
           asset: sha256sums.txt
           algorithm: sha256
         cosign:
           signature:
-            type: github_release
+            type: http
+            url: https://gh-proxy.org/github.com/k0sproject/k0s/releases/download/{{.Version}}/{{.Asset}}.sig
             asset: "{{.Asset}}.sig"
           key:
-            type: github_release
+            type: http
+            url: https://gh-proxy.org/github.com/k0sproject/k0s/releases/download/{{.Version}}/cosign.pub
             asset: "cosign.pub"
         supported_envs:
           - linux

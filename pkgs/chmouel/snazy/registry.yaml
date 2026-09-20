@@ -7,12 +7,15 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.51.2")
-        url: https://gh-proxy.org/https://github.com/chmouel/snazy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/chmouel/snazy/releases/download/{{.Version}}/snazy_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: snazy_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/chmouel/snazy/releases/download/{{.Version}}/snazy_{{.Version}}_{{.OS}}_all.{{.Format}}
             asset: snazy_{{.Version}}_{{.OS}}_all.{{.Format}}
         replacements:
           darwin: macOS
@@ -20,31 +23,39 @@ packages:
           - linux/amd64
           - darwin
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/chmouel/snazy/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.52.0")
-        url: https://gh-proxy.org/https://github.com/chmouel/snazy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/chmouel/snazy/releases/download/{{.Version}}/snazy_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: snazy_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/chmouel/snazy/releases/download/{{.Version}}/snazy_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             replacements:
               amd64: x86_64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/chmouel/snazy/releases/download/{{.Version}}/snazy_{{.Version}}_{{.OS}}_all.{{.Format}}
             asset: snazy_{{.Version}}_{{.OS}}_all.{{.Format}}
         supported_envs:
           - linux/amd64
           - darwin
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/chmouel/snazy/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.52.16")
         error_message: There is no GitHub Releases
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/chmouel/snazy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/chmouel/snazy/releases/download/{{.Version}}/snazy-v{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: snazy-v{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -53,7 +64,11 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/chmouel/snazy/releases/download/{{.Version}}/snazy-v{{.Version}}-{{.OS}}.{{.Format}}
             asset: snazy-v{{.Version}}-{{.OS}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/chmouel/snazy/releases/download/{{.Version}}/snazy-v{{.Version}}-{{.OS}}.{{.Format}}
             format: zip
             asset: snazy-v{{.Version}}-{{.OS}}.{{.Format}}

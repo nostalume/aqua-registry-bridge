@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/nuclio/nuclio/releases/download/{{.Version}}/nuctl-{{.Version}}-{{.OS}}-{{.Arch}}
     repo_owner: nuclio
     repo_name: nuclio
     description: High-Performance Serverless event and data processing platform

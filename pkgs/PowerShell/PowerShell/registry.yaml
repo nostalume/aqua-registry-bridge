@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 6.1.6")
-        url: https://gh-proxy.org/https://github.com/PowerShell/PowerShell/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/PowerShell/PowerShell/releases/download/{{.Version}}/powershell-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: powershell-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -19,6 +20,8 @@ packages:
           windows: win
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/PowerShell/PowerShell/releases/download/{{.Version}}/PowerShell-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             asset: PowerShell-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         supported_envs:
@@ -26,7 +29,8 @@ packages:
           - darwin
           - windows
       - version_constraint: semver("<= 7.0.13")
-        url: https://gh-proxy.org/https://github.com/PowerShell/PowerShell/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/PowerShell/PowerShell/releases/download/{{.Version}}/powershell-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: powershell-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -36,6 +40,8 @@ packages:
           windows: win
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/PowerShell/PowerShell/releases/download/{{.Version}}/PowerShell-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             asset: PowerShell-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
       - version_constraint: >-
@@ -43,21 +49,27 @@ packages:
           (semver(">= 7.5.0-preview.1, <= 7.5.1")) ||
           (semver(">= 7.6.0-preview.1, <= 7.6.0-preview.4"))
         asset: powershell-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+        type: http
+        url: https://gh-proxy.org/github.com/PowerShell/PowerShell/releases/download/{{.Version}}/powershell-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x64
           darwin: osx
           windows: win
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/PowerShell/PowerShell/releases/download/{{.Version}}/hashes.sha256
           asset: hashes.sha256
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/PowerShell/PowerShell/releases/download/{{.Version}}/PowerShell-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             asset: PowerShell-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/PowerShell/PowerShell/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/PowerShell/PowerShell/releases/download/{{.Version}}/powershell-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: powershell-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -66,5 +78,7 @@ packages:
           windows: win
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/PowerShell/PowerShell/releases/download/{{.Version}}/PowerShell-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             asset: PowerShell-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}

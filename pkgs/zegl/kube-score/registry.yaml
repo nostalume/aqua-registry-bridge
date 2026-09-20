@@ -7,38 +7,45 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v1.7.1"
-        url: https://gh-proxy.org/https://github.com/zegl/kube-score/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zegl/kube-score/releases/download/{{.Version}}/kube-score_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kube-score_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/zegl/kube-score/releases/download/{{.Version}}/kube-score_{{trimV .Version}}_checksums.txt
           asset: kube-score_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v1.11.0"
-        url: https://gh-proxy.org/https://github.com/zegl/kube-score/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zegl/kube-score/releases/download/{{.Version}}/kube-score_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kube-score_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/zegl/kube-score/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: Version == "v1.12.0"
-        url: https://gh-proxy.org/https://github.com/zegl/kube-score/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zegl/kube-score/releases/download/{{.Version}}/kube-score_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kube-score_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/zegl/kube-score/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.4.0")
-        url: https://gh-proxy.org/https://github.com/zegl/kube-score/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zegl/kube-score/releases/download/{{.Version}}/kube-score_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kube-score_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -47,14 +54,16 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/zegl/kube-score/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.6.0")
-        url: https://gh-proxy.org/https://github.com/zegl/kube-score/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zegl/kube-score/releases/download/{{.Version}}/kube-score_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kube-score_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -65,7 +74,8 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/zegl/kube-score/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
@@ -73,13 +83,15 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.7.3")
-        url: https://gh-proxy.org/https://github.com/zegl/kube-score/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zegl/kube-score/releases/download/{{.Version}}/kube-score_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kube-score_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/zegl/kube-score/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
@@ -87,20 +99,24 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.10.1")
-        url: https://gh-proxy.org/https://github.com/zegl/kube-score/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zegl/kube-score/releases/download/{{.Version}}/kube-score_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kube-score_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/zegl/kube-score/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/zegl/kube-score/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zegl/kube-score/releases/download/{{.Version}}/kube-score_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kube-score_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/zegl/kube-score/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

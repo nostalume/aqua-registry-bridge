@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("<= 1.26.0")
         no_asset: true
       - version_constraint: semver("<= 1.28.0")
-        url: https://gh-proxy.org/https://github.com/GitGuardian/ggshield/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/GitGuardian/ggshield/releases/download/{{.Version}}/ggshield-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: ggshield-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: pkg
         replacements:
@@ -18,11 +19,15 @@ packages:
           linux: unknown-linux-gnu
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/GitGuardian/ggshield/releases/download/{{.Version}}/ggshield-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: tar.gz
             files:
               - name: ggshield
                 src: ggshield-{{trimV .Version}}-{{.Arch}}-{{.OS}}/ggshield
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/GitGuardian/ggshield/releases/download/{{.Version}}/ggshield-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: pkg
             files:
               - name: ggshield
@@ -31,7 +36,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 1.30.2")
-        url: https://gh-proxy.org/https://github.com/GitGuardian/ggshield/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/GitGuardian/ggshield/releases/download/{{.Version}}/ggshield-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: ggshield-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         replacements:
@@ -41,16 +47,22 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/GitGuardian/ggshield/releases/download/{{.Version}}/ggshield-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: tar.gz
             files:
               - name: ggshield
                 src: ggshield-{{trimV .Version}}-{{.Arch}}-{{.OS}}/ggshield
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/GitGuardian/ggshield/releases/download/{{.Version}}/ggshield-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: pkg
             files:
               - name: ggshield
                 src: Payload/opt/gitguardian/ggshield-{{trimV .Version}}/ggshield
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/GitGuardian/ggshield/releases/download/{{.Version}}/ggshield-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: ggshield
@@ -60,7 +72,8 @@ packages:
           - windows/amd64
           - linux/amd64
       - version_constraint: semver("<= 1.50.4")
-        url: https://gh-proxy.org/https://github.com/GitGuardian/ggshield/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/GitGuardian/ggshield/releases/download/{{.Version}}/ggshield-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: ggshield-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -74,11 +87,15 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/GitGuardian/ggshield/releases/download/{{.Version}}/ggshield-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: ggshield
                 src: ggshield-{{trimV .Version}}-{{.Arch}}-{{.OS}}/ggshield
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/GitGuardian/ggshield/releases/download/{{.Version}}/ggshield-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             files:
               - name: ggshield
                 src: ggshield-{{trimV .Version}}-{{.Arch}}-{{.OS}}/ggshield
@@ -87,7 +104,8 @@ packages:
           - windows/amd64
           - linux/amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/GitGuardian/ggshield/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/GitGuardian/ggshield/releases/download/{{.Version}}/ggshield-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: ggshield-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -101,11 +119,15 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/GitGuardian/ggshield/releases/download/{{.Version}}/ggshield-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: ggshield
                 src: ggshield-{{trimV .Version}}-{{.Arch}}-{{.OS}}/ggshield
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/GitGuardian/ggshield/releases/download/{{.Version}}/ggshield-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             files:
               - name: ggshield
                 src: ggshield-{{trimV .Version}}-{{.Arch}}-{{.OS}}/ggshield

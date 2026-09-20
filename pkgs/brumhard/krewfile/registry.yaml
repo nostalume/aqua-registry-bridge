@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("<= 0.6.1")
         type: go_install
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/brumhard/krewfile/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/brumhard/krewfile/releases/download/{{.Version}}/krewfile_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: krewfile_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -18,11 +19,16 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/brumhard/krewfile/releases/download/{{.Version}}/krewfile_checksums.txt
           asset: krewfile_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/brumhard/krewfile/releases/download/{{.Version}}/krewfile_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/brumhard/krewfile/releases/download/{{.Version}}/krewfile_{{.OS}}_all.{{.Format}}
             asset: krewfile_{{.OS}}_all.{{.Format}}

@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.8"
-        url: https://gh-proxy.org/https://github.com/linuxkit/linuxkit/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/linuxkit/linuxkit/releases/download/{{.Version}}/linuxkit-linux-{{.Arch}}
         asset: linuxkit-linux-{{.Arch}}
         format: raw
         rosetta2: true
@@ -15,17 +16,20 @@ packages:
           - linux
           - darwin
       - version_constraint: semver("<= 0.7.0")
-        url: https://gh-proxy.org/https://github.com/linuxkit/linuxkit/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/linuxkit/linuxkit/releases/download/{{.Version}}/linuxkit-{{.OS}}-{{.Arch}}
         asset: linuxkit-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/linuxkit/linuxkit/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/linuxkit/linuxkit/releases/download/{{.Version}}/linuxkit-{{.OS}}-{{.Arch}}
         asset: linuxkit-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/linuxkit/linuxkit/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

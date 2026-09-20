@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("<= 0.1.4")
         no_asset: true
       - version_constraint: semver("<= 0.5.4")
-        url: https://gh-proxy.org/https://github.com/Epistates/treemd/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Epistates/treemd/releases/download/{{.Version}}/treemd-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: treemd-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -23,15 +24,19 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Epistates/treemd/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Epistates/treemd/releases/download/{{.Version}}/treemd-{{.Arch}}-{{.OS}}.exe.{{.Format}}
             format: zip
             asset: treemd-{{.Arch}}-{{.OS}}.exe.{{.Format}}
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Epistates/treemd/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Epistates/treemd/releases/download/{{.Version}}/treemd-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: treemd-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -46,5 +51,7 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Epistates/treemd/releases/download/{{.Version}}/treemd-{{.Arch}}-{{.OS}}.exe.{{.Format}}
             format: zip
             asset: treemd-{{.Arch}}-{{.OS}}.exe.{{.Format}}

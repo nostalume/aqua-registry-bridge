@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/CyberAgent/reminder-lint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/CyberAgent/reminder-lint/releases/download/{{.Version}}/reminder-lint-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: reminder-lint-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -20,14 +21,19 @@ packages:
           - name: reminder-lint
             src: "{{.AssetWithoutExt}}/reminder-lint"
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/CyberAgent/reminder-lint/releases/download/{{.Version}}/reminder-lint-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/CyberAgent/reminder-lint/releases/download/{{.Version}}/reminder-lint-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: reminder-lint

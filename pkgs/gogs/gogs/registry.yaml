@@ -12,7 +12,8 @@ packages:
       - version_constraint: Version in ["v0.12.4-rc.1", "v0.12.5-rc.1", "v0.12.6-rc.1", "v0.12.7-rc.1", "v0.12.8-rc.1", "v0.12.9-rc.1", "v0.12.10-rc.1", "v0.12.11-rc.1", "v0.13.0-rc.1", "v0.13.3-rc.1", "v0.14.0", "latest-commit-build", "release-archive-testing"]
         no_asset: true
       - version_constraint: Version == "v0.3.1"
-        url: https://gh-proxy.org/https://github.com/gogs/gogs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gogs/gogs/releases/download/{{.Version}}/{{.OS}}_{{.Arch}}.{{.Format}}
         asset: "{{.OS}}_{{.Arch}}.{{.Format}}"
         format: zip
         rosetta2: true
@@ -22,7 +23,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "v0.5.11"
-        url: https://gh-proxy.org/https://github.com/gogs/gogs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gogs/gogs/releases/download/{{.Version}}/{{.OS}}_{{.Arch}}.{{.Format}}
         asset: "{{.OS}}_{{.Arch}}.{{.Format}}"
         format: zip
         rosetta2: true
@@ -47,7 +49,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "v0.12.3"
-        url: https://gh-proxy.org/https://github.com/gogs/gogs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gogs/gogs/releases/download/{{.Version}}/gogs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gogs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -58,11 +61,14 @@ packages:
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/gogs/gogs/releases/download/{{.Version}}/gogs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
             replacements:
               arm64: armv8
       - version_constraint: Version in ["v0.12.4", "v0.12.5", "v0.12.6"]
-        url: https://gh-proxy.org/https://github.com/gogs/gogs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gogs/gogs/releases/download/{{.Version}}/gogs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gogs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -72,34 +78,44 @@ packages:
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/gogs/gogs/releases/download/{{.Version}}/gogs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
             replacements:
               arm64: armv8
       - version_constraint: Version in ["v0.12.7", "v0.12.8", "v0.12.9", "v0.12.10", "v0.12.11", "v0.13.0", "v0.13.2", "v0.13.3", "v0.13.4"]
-        url: https://gh-proxy.org/https://github.com/gogs/gogs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gogs/gogs/releases/download/{{.Version}}/gogs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gogs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gogs/gogs/releases/download/{{.Version}}/checksum_sha256.txt
           asset: checksum_sha256.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/gogs/gogs/releases/download/{{.Version}}/gogs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
             replacements:
               arm64: armv8
       - version_constraint: Version in ["v0.14.0-rc.1", "v0.14.1-rc.1"]
-        url: https://gh-proxy.org/https://github.com/gogs/gogs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gogs/gogs/releases/download/{{.Version}}/gogs_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gogs_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/gogs/gogs/releases/download/{{.Version}}/gogs_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
       - version_constraint: semver("<= 0.4.1")
         no_asset: true
       - version_constraint: semver("<= 0.6.15")
-        url: https://gh-proxy.org/https://github.com/gogs/gogs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gogs/gogs/releases/download/{{.Version}}/{{.OS}}_{{.Arch}}.{{.Format}}
         asset: "{{.OS}}_{{.Arch}}.{{.Format}}"
         format: zip
         rosetta2: true
@@ -109,13 +125,16 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.9.97")
-        url: https://gh-proxy.org/https://github.com/gogs/gogs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gogs/gogs/releases/download/{{.Version}}/{{.OS}}_{{.Arch}}.{{.Format}}
         asset: "{{.OS}}_{{.Arch}}.{{.Format}}"
         format: zip
         rosetta2: true
         windows_arm_emulation: true
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/gogs/gogs/releases/download/{{.Version}}/{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - darwin
@@ -141,7 +160,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.12.2")
-        url: https://gh-proxy.org/https://github.com/gogs/gogs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gogs/gogs/releases/download/{{.Version}}/gogs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gogs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -152,6 +172,8 @@ packages:
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/gogs/gogs/releases/download/{{.Version}}/gogs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - darwin
@@ -160,7 +182,8 @@ packages:
       - version_constraint: semver("<= 0.13.4-rc.3")
         no_asset: true
       - version_constraint: semver("<= 0.14.1")
-        url: https://gh-proxy.org/https://github.com/gogs/gogs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gogs/gogs/releases/download/{{.Version}}/gogs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gogs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         checksum:
@@ -169,9 +192,12 @@ packages:
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/gogs/gogs/releases/download/{{.Version}}/gogs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/gogs/gogs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gogs/gogs/releases/download/{{.Version}}/gogs_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gogs_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         checksum:
@@ -180,4 +206,6 @@ packages:
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/gogs/gogs/releases/download/{{.Version}}/gogs_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz

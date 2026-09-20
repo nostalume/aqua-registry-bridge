@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.1"
-        url: https://gh-proxy.org/https://github.com/nikochiko/autosaved/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/nikochiko/autosaved/releases/download/{{.Version}}/asdi_{{.OS}}_{{.Arch}}
         asset: asdi_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
@@ -19,7 +20,8 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/nikochiko/autosaved/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/nikochiko/autosaved/releases/download/{{.Version}}/autosaved_{{.OS}}_{{.Arch}}
         asset: autosaved_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true

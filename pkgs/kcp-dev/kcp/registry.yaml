@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/kcp-dev/kcp/releases/download/{{.Version}}/kcp_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: kcp-dev
     repo_name: kcp
     asset: kcp_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -13,6 +14,7 @@ packages:
       - darwin
       - linux
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/kcp-dev/kcp/releases/download/{{.Version}}/kcp_{{trimV .Version}}_checksums.txt
       asset: kcp_{{trimV .Version}}_checksums.txt
       algorithm: sha256

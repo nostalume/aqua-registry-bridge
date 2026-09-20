@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.18.0")
-        url: https://gh-proxy.org/https://github.com/gruntwork-io/terragrunt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gruntwork-io/terragrunt/releases/download/{{.Version}}/terragrunt_{{.OS}}_{{.Arch}}
         asset: terragrunt_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
@@ -17,13 +18,15 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.28.11")
-        url: https://gh-proxy.org/https://github.com/gruntwork-io/terragrunt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gruntwork-io/terragrunt/releases/download/{{.Version}}/terragrunt_{{.OS}}_{{.Arch}}
         asset: terragrunt_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gruntwork-io/terragrunt/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         supported_envs:
@@ -31,16 +34,19 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.93.5")
-        url: https://gh-proxy.org/https://github.com/gruntwork-io/terragrunt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gruntwork-io/terragrunt/releases/download/{{.Version}}/terragrunt_{{.OS}}_{{.Arch}}
         asset: terragrunt_{{.OS}}_{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gruntwork-io/terragrunt/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
       - version_constraint: semver("<= 0.97.2")
-        url: https://gh-proxy.org/https://github.com/gruntwork-io/terragrunt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gruntwork-io/terragrunt/releases/download/{{.Version}}/terragrunt_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: terragrunt_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -48,14 +54,18 @@ packages:
           - name: terragrunt
             src: "{{.AssetWithoutExt}}"
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gruntwork-io/terragrunt/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/gruntwork-io/terragrunt/releases/download/{{.Version}}/terragrunt_{{.OS}}_{{.Arch}}.exe.{{.Format}}
             asset: terragrunt_{{.OS}}_{{.Arch}}.exe.{{.Format}}
       - version_constraint: semver("<= 1.0.3")
-        url: https://gh-proxy.org/https://github.com/gruntwork-io/terragrunt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gruntwork-io/terragrunt/releases/download/{{.Version}}/terragrunt_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: terragrunt_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -63,24 +73,28 @@ packages:
           - name: terragrunt
             src: "{{.AssetWithoutExt}}"
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gruntwork-io/terragrunt/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/gruntwork-io/terragrunt/releases/download/{{.Version}}/SHA256SUMS.pem
+              - https://gh-proxy.org/github.com/gruntwork-io/terragrunt/releases/download/{{.Version}}/SHA256SUMS.pem
               - --certificate-identity-regexp
               - "^https://github\\.com/gruntwork-io/terragrunt/\\.github/workflows/.+\\.ya?ml@refs/tags/\\Q{{.Version}}\\E$"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/gruntwork-io/terragrunt/releases/download/{{.Version}}/SHA256SUMS.sig
+              - https://gh-proxy.org/github.com/gruntwork-io/terragrunt/releases/download/{{.Version}}/SHA256SUMS.sig
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/gruntwork-io/terragrunt/releases/download/{{.Version}}/terragrunt_{{.OS}}_{{.Arch}}.exe.{{.Format}}
             asset: terragrunt_{{.OS}}_{{.Arch}}.exe.{{.Format}}
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/gruntwork-io/terragrunt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gruntwork-io/terragrunt/releases/download/{{.Version}}/terragrunt_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: terragrunt_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -88,19 +102,22 @@ packages:
           - name: terragrunt
             src: "{{.AssetWithoutExt}}"
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gruntwork-io/terragrunt/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/gruntwork-io/terragrunt/releases/download/{{.Version}}/SHA256SUMS.pem
+              - https://gh-proxy.org/github.com/gruntwork-io/terragrunt/releases/download/{{.Version}}/SHA256SUMS.pem
               - --certificate-identity
-              - https://github.com/gruntwork-io/terragrunt/.github/workflows/release.yml@refs/heads/main
+              - https://gh-proxy.org/github.com/gruntwork-io/terragrunt/.github/workflows/release.yml@refs/heads/main
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/gruntwork-io/terragrunt/releases/download/{{.Version}}/SHA256SUMS.sig
+              - https://gh-proxy.org/github.com/gruntwork-io/terragrunt/releases/download/{{.Version}}/SHA256SUMS.sig
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/gruntwork-io/terragrunt/releases/download/{{.Version}}/terragrunt_{{.OS}}_{{.Arch}}.exe.{{.Format}}
             asset: terragrunt_{{.OS}}_{{.Arch}}.exe.{{.Format}}

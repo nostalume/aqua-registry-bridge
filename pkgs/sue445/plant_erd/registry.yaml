@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version == "v0.4.1.rc1"
         no_asset: true
       - version_constraint: Version in ["v0.0.1", "v0.2.0.rc1", "v0.2.0.rc1", "v0.2.0.rc1", "v0.2.0.rc1", "v0.2.0.rc1", "v0.2.0.rc1", "v0.2.0.rc1", "v0.2.0.rc1", "v0.2.0.rc1"]
-        url: https://gh-proxy.org/https://github.com/sue445/plant_erd/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sue445/plant_erd/releases/download/{{.Version}}/plant_erd_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: plant_erd_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -19,13 +20,16 @@ packages:
             src: "{{.AssetWithoutExt}}"
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/sue445/plant_erd/releases/download/{{.Version}}/plant_erd_{{.OS}}_{{.Arch}}.exe.{{.Format}}
             asset: plant_erd_{{.OS}}_{{.Arch}}.exe.{{.Format}}
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/sue445/plant_erd/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sue445/plant_erd/releases/download/{{.Version}}/plant_erd_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: plant_erd_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -34,6 +38,8 @@ packages:
             src: "{{.AssetWithoutExt}}"
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/sue445/plant_erd/releases/download/{{.Version}}/plant_erd_{{.OS}}_{{.Arch}}.exe.{{.Format}}
             asset: plant_erd_{{.OS}}_{{.Arch}}.exe.{{.Format}}
         supported_envs:
           - darwin

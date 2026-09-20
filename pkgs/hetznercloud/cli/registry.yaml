@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/hetznercloud/cli/releases/download/{{.Version}}/hcloud-{{.OS}}-{{.Arch}}.{{.Format}}
     repo_owner: hetznercloud
     repo_name: cli
     asset: hcloud-{{.OS}}-{{.Arch}}.{{.Format}}
@@ -8,10 +9,13 @@ packages:
     description: A command-line interface for Hetzner Cloud
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/hetznercloud/cli/releases/download/{{.Version}}/hcloud-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
     files:
       - name: hcloud
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/hetznercloud/cli/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256

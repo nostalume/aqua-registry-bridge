@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/shyiko/kubesec/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/shyiko/kubesec/releases/download/{{.Version}}/kubesec-{{.Version}}-{{.OS}}-{{.Arch}}
         asset: kubesec-{{.Version}}-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/replicatedhq/kots/releases/download/{{.Version}}/kots_{{.OS}}_{{.Arch}}.tar.gz
     repo_owner: replicatedhq
     repo_name: kots
     description: KOTS provides the framework, tools and integrations that enable the delivery and management of 3rd-party Kubernetes applications, a.k.a. Kubernetes Off-The-Shelf (KOTS) Software
@@ -14,15 +15,20 @@ packages:
     version_constraint: semver(">= 1.59.2")
     overrides:
       - goos: darwin
+        type: http
+        url: https://gh-proxy.org/github.com/replicatedhq/kots/releases/download/{{.Version}}/kots_{{.OS}}_all.tar.gz
         asset: kots_{{.OS}}_all.tar.gz
     version_overrides:
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/replicatedhq/kots/releases/download/{{.Version}}/kots_{{.OS}}_{{.Arch}}.tar.gz
         rosetta2: true
         supported_envs:
           - darwin
           - linux/amd64
         overrides: []
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/replicatedhq/kots/releases/download/{{.Version}}/kots_{{trimV .Version}}_checksums.txt
       asset: kots_{{trimV .Version}}_checksums.txt
       algorithm: sha256

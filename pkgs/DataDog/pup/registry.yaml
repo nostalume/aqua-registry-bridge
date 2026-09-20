@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.21.0")
-        url: https://gh-proxy.org/https://github.com/DataDog/pup/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/DataDog/pup/releases/download/{{.Version}}/pup_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: pup_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -19,11 +20,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/DataDog/pup/releases/download/{{.Version}}/pup_{{trimV .Version}}_checksums.txt
           asset: pup_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.58.0")
-        url: https://gh-proxy.org/https://github.com/DataDog/pup/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/DataDog/pup/releases/download/{{.Version}}/pup_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: pup_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -31,7 +34,8 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/DataDog/pup/releases/download/{{.Version}}/pup_{{trimV .Version}}_checksums.txt
           asset: pup_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
@@ -41,13 +45,15 @@ packages:
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/DataDog/pup/releases/download/{{.Version}}/pup_{{trimV .Version}}_checksums.txt.sigstore.json
               asset: pup_{{trimV .Version}}_checksums.txt.sigstore.json
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/DataDog/pup/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/DataDog/pup/releases/download/{{.Version}}/pup_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: pup_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -55,7 +61,8 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/DataDog/pup/releases/download/{{.Version}}/pup_{{trimV .Version}}_checksums.txt
           asset: pup_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
@@ -65,7 +72,8 @@ packages:
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/DataDog/pup/releases/download/{{.Version}}/pup_{{trimV .Version}}_checksums.txt.sigstore.json
               asset: pup_{{trimV .Version}}_checksums.txt.sigstore.json
         supported_envs:
           - linux

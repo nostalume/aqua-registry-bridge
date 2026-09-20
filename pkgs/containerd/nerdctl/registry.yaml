@@ -7,44 +7,52 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.0.1"
-        url: https://gh-proxy.org/https://github.com/containerd/nerdctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/containerd/nerdctl/releases/download/{{.Version}}/nerdctl-{{.Version}}-{{.OS}}-{{.Arch}}
         asset: nerdctl-{{.Version}}-{{.OS}}-{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/containerd/nerdctl/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         supported_envs:
           - linux
       - version_constraint: semver("<= 0.8.1")
-        url: https://gh-proxy.org/https://github.com/containerd/nerdctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/containerd/nerdctl/releases/download/{{.Version}}/nerdctl-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: nerdctl-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/containerd/nerdctl/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         supported_envs:
           - linux
       - version_constraint: semver("<= 2.0.4")
-        url: https://gh-proxy.org/https://github.com/containerd/nerdctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/containerd/nerdctl/releases/download/{{.Version}}/nerdctl-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: nerdctl-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/containerd/nerdctl/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         supported_envs:
           - linux
           - windows/amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/containerd/nerdctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/containerd/nerdctl/releases/download/{{.Version}}/nerdctl-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: nerdctl-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/containerd/nerdctl/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         github_artifact_attestations:

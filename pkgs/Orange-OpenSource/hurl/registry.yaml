@@ -10,7 +10,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.1.0")
-        url: https://gh-proxy.org/https://github.com/Orange-OpenSource/hurl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Orange-OpenSource/hurl/releases/download/{{.Version}}/hurl-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: hurl-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -26,7 +27,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 1.6.0")
-        url: https://gh-proxy.org/https://github.com/Orange-OpenSource/hurl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Orange-OpenSource/hurl/releases/download/{{.Version}}/hurl-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: hurl-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -42,6 +44,8 @@ packages:
           windows: win64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Orange-OpenSource/hurl/releases/download/{{.Version}}/hurl-{{.Version}}-{{.OS}}.{{.Format}}
             format: zip
             asset: hurl-{{.Version}}-{{.OS}}.{{.Format}}
             files:
@@ -52,7 +56,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "1.6.1"
-        url: https://gh-proxy.org/https://github.com/Orange-OpenSource/hurl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Orange-OpenSource/hurl/releases/download/{{.Version}}/hurl-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: hurl-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -67,6 +72,8 @@ packages:
           windows: win64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Orange-OpenSource/hurl/releases/download/{{.Version}}/hurl-{{.Version}}-{{.OS}}.{{.Format}}
             format: zip
             asset: hurl-{{.Version}}-{{.OS}}.{{.Format}}
             files:
@@ -77,7 +84,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 4.0.0")
-        url: https://gh-proxy.org/https://github.com/Orange-OpenSource/hurl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Orange-OpenSource/hurl/releases/download/{{.Version}}/hurl-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: hurl-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -92,6 +100,8 @@ packages:
           windows: win64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Orange-OpenSource/hurl/releases/download/{{.Version}}/hurl-{{.Version}}-{{.OS}}.{{.Format}}
             format: zip
             asset: hurl-{{.Version}}-{{.OS}}.{{.Format}}
             files:
@@ -102,7 +112,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 4.2.0")
-        url: https://gh-proxy.org/https://github.com/Orange-OpenSource/hurl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Orange-OpenSource/hurl/releases/download/{{.Version}}/hurl-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: hurl-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -119,12 +130,15 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Orange-OpenSource/hurl/releases/download/{{.Version}}/hurl-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: hurl
               - name: hurlfmt
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Orange-OpenSource/hurl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Orange-OpenSource/hurl/releases/download/{{.Version}}/hurl-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: hurl-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -140,11 +154,14 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Orange-OpenSource/hurl/releases/download/{{.Version}}/hurl-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: hurl

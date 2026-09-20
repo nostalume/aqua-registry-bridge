@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("<= 1.1.0")
         no_asset: true
       - version_constraint: semver("<= 1.1.10")
-        url: https://gh-proxy.org/https://github.com/hexdigest/gowrap/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/hexdigest/gowrap/releases/download/{{.Version}}/gowrap_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gowrap_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -20,7 +21,8 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/hexdigest/gowrap/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
@@ -28,29 +30,35 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.2.1")
-        url: https://gh-proxy.org/https://github.com/hexdigest/gowrap/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/hexdigest/gowrap/releases/download/{{.Version}}/gowrap_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gowrap_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/hexdigest/gowrap/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 1.3.2")
-        url: https://gh-proxy.org/https://github.com/hexdigest/gowrap/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/hexdigest/gowrap/releases/download/{{.Version}}/gowrap_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gowrap_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/hexdigest/gowrap/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/hexdigest/gowrap/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/hexdigest/gowrap/releases/download/{{.Version}}/gowrap_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gowrap_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/hexdigest/gowrap/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

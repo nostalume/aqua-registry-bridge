@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/kurehajime/kuzusi/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kurehajime/kuzusi/releases/download/{{.Version}}/{{.OS}}_{{.Arch}}.{{.Format}}
         asset: "{{.OS}}_{{.Arch}}.{{.Format}}"
         format: zip
         rosetta2: true

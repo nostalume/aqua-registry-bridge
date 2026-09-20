@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/tsenart/vegeta/releases/download/{{.Version}}/vegeta_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
     repo_owner: tsenart
     repo_name: vegeta
     description: HTTP load testing tool and library. It's over 9000
@@ -10,6 +11,7 @@ packages:
       - linux/amd64
     asset: vegeta_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/tsenart/vegeta/releases/download/{{.Version}}/vegeta_{{trimV .Version}}_checksums.txt
       asset: vegeta_{{trimV .Version}}_checksums.txt
       algorithm: sha256

@@ -11,25 +11,33 @@ packages:
       - version_constraint: semver("< 11.5.0")
         error_message: The version is too old. Please use a version 11.5.0 or higher.
       - version_constraint: semver("<= 11.9.0")
-        url: https://gh-proxy.org/https://github.com/cdxgen/cdxgen/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cdxgen/cdxgen/releases/download/{{.Version}}/cdxgen-{{.OS}}-{{.Arch}}
         asset: cdxgen-{{.OS}}-{{.Arch}}
         format: raw
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/cdxgen/cdxgen/releases/download/{{.Version}}/cdxgen-{{.OS}}-{{.Arch}}-musl
             asset: cdxgen-{{.OS}}-{{.Arch}}-musl
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
       - version_constraint: semver("<= 12.0.0")
-        url: https://gh-proxy.org/https://github.com/cdxgen/cdxgen/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cdxgen/cdxgen/releases/download/{{.Version}}/cdxgen-{{.OS}}-{{.Arch}}
         asset: cdxgen-{{.OS}}-{{.Arch}}
         format: raw
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/cdxgen/cdxgen/releases/download/{{.Version}}/cdxgen-{{.OS}}-{{.Arch}}-musl
             asset: cdxgen-{{.OS}}-{{.Arch}}-musl
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
@@ -37,13 +45,17 @@ packages:
           - darwin/arm64
           - windows
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/cdxgen/cdxgen/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cdxgen/cdxgen/releases/download/{{.Version}}/cdxgen-{{.OS}}-{{.Arch}}
         asset: cdxgen-{{.OS}}-{{.Arch}}
         format: raw
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/cdxgen/cdxgen/releases/download/{{.Version}}/cdxgen-{{.OS}}-{{.Arch}}-musl
             asset: cdxgen-{{.OS}}-{{.Arch}}-musl
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256

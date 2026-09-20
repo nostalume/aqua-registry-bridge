@@ -12,11 +12,13 @@ packages:
       - version_constraint: semver("<= 2.7.1")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/distribution/distribution/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/distribution/distribution/releases/download/{{.Version}}/registry_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: registry_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:

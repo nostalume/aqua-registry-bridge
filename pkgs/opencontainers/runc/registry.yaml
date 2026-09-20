@@ -7,12 +7,14 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/opencontainers/runc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/opencontainers/runc/releases/download/{{.Version}}/runc.{{.Arch}}
         asset: runc.{{.Arch}}
         format: raw
         supported_envs:
           - linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/opencontainers/runc/releases/download/{{.Version}}/runc.sha256sum
           asset: runc.sha256sum
           algorithm: sha256

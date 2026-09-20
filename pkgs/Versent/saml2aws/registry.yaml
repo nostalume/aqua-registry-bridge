@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/Versent/saml2aws/releases/download/{{.Version}}/saml2aws_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: Versent
     repo_name: saml2aws
     description: CLI tool which enables you to login and retrieve AWS temporary credentials using a SAML IDP
@@ -8,33 +9,51 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/Versent/saml2aws/releases/download/{{.Version}}/saml2aws_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
       - goos: darwin
+        type: http
+        url: https://gh-proxy.org/github.com/Versent/saml2aws/releases/download/{{.Version}}/saml2aws_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Versent/saml2aws/releases/download/{{.Version}}/saml2aws_{{trimV .Version}}_darwin_checksums.txt
           asset: saml2aws_{{trimV .Version}}_darwin_checksums.txt
           algorithm: sha256
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/Versent/saml2aws/releases/download/{{.Version}}/saml2aws_{{trimV .Version}}_checksums.txt
       asset: saml2aws_{{trimV .Version}}_checksums.txt
       algorithm: sha256
     version_constraint: semver(">= 2.36.5")
     version_overrides:
       - version_constraint: semver(">= 2.34.0")
+        type: http
+        url: https://gh-proxy.org/github.com/Versent/saml2aws/releases/download/{{.Version}}/saml2aws_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Versent/saml2aws/releases/download/{{.Version}}/saml2aws_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver(">= 2.28.3")
+        type: http
+        url: https://gh-proxy.org/github.com/Versent/saml2aws/releases/download/{{.Version}}/saml2aws_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Versent/saml2aws/releases/download/{{.Version}}/saml2aws_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - linux
           - amd64
       - version_constraint: semver(">= 2.28.1")
+        type: http
+        url: https://gh-proxy.org/github.com/Versent/saml2aws/releases/download/{{.Version}}/saml2aws_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Versent/saml2aws/releases/download/{{.Version}}/saml2aws_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
@@ -42,36 +61,47 @@ packages:
           - amd64
         rosetta2: true
       - version_constraint: semver(">= 2.1.0")
+        type: http
+        url: https://gh-proxy.org/github.com/Versent/saml2aws/releases/download/{{.Version}}/saml2aws_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides: []
         supported_envs:
           - darwin
           - amd64
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Versent/saml2aws/releases/download/{{.Version}}/saml2aws_{{trimV .Version}}_{{.OS}}_{{.Arch}}.sha512
           asset: saml2aws_{{trimV .Version}}_{{.OS}}_{{.Arch}}.sha512
           algorithm: sha512
       - version_constraint: semver(">= 2.0.2")
+        type: http
+        url: https://gh-proxy.org/github.com/Versent/saml2aws/releases/download/{{.Version}}/saml2aws_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides: []
         supported_envs:
           - linux/amd64
           - darwin
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Versent/saml2aws/releases/download/{{.Version}}/saml2aws_{{trimV .Version}}_{{.OS}}_{{.Arch}}.sha512
           asset: saml2aws_{{trimV .Version}}_{{.OS}}_{{.Arch}}.sha512
           algorithm: sha512
       - version_constraint: semver(">= 1.3.1")
+        type: http
+        url: https://gh-proxy.org/github.com/Versent/saml2aws/releases/download/{{.Version}}/saml2aws_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides: []
         supported_envs:
           - darwin
           - amd64
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Versent/saml2aws/releases/download/{{.Version}}/saml2aws_{{trimV .Version}}_{{.OS}}_{{.Arch}}.sha512
           asset: saml2aws_{{trimV .Version}}_{{.OS}}_{{.Arch}}.sha512
           algorithm: sha512
       - version_constraint: semver("< 1.3.1")
+        type: http
+        url: https://gh-proxy.org/github.com/Versent/saml2aws/releases/download/{{.Version}}/saml2aws_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tgz
         overrides: []
         replacements:

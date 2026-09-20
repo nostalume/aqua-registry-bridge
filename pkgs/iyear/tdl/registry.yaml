@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/iyear/tdl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/iyear/tdl/releases/download/{{.Version}}/tdl_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tdl_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -16,9 +17,12 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/iyear/tdl/releases/download/{{.Version}}/tdl_checksums.txt
           asset: tdl_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/iyear/tdl/releases/download/{{.Version}}/tdl_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

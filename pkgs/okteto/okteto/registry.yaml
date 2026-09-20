@@ -7,14 +7,16 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.4.6")
-        url: https://gh-proxy.org/https://github.com/okteto/okteto/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/okteto/okteto/releases/download/{{.Version}}/cnd-{{.OS}}-{{.Arch}}
         asset: cnd-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
         complete_windows_ext: false
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
@@ -22,7 +24,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.4.7")
-        url: https://gh-proxy.org/https://github.com/okteto/okteto/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/okteto/okteto/releases/download/{{.Version}}/okteto-{{.OS}}-{{.Arch}}
         asset: okteto-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -34,7 +37,8 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
@@ -42,7 +46,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.6.4")
-        url: https://gh-proxy.org/https://github.com/okteto/okteto/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/okteto/okteto/releases/download/{{.Version}}/okteto-{{.OS}}-{{.Arch}}
         asset: okteto-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -54,11 +59,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
       - version_constraint: semver("<= 1.10.5")
-        url: https://gh-proxy.org/https://github.com/okteto/okteto/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/okteto/okteto/releases/download/{{.Version}}/okteto-{{.OS}}-{{.Arch}}
         asset: okteto-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -67,14 +74,18 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/okteto/okteto/releases/download/{{.Version}}/okteto
             asset: okteto
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/okteto/okteto/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/okteto/okteto/releases/download/{{.Version}}/okteto-{{.OS}}-{{.Arch}}
         asset: okteto-{{.OS}}-{{.Arch}}
         format: raw
         replacements:
@@ -82,9 +93,12 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/okteto/okteto/releases/download/{{.Version}}/okteto
             asset: okteto

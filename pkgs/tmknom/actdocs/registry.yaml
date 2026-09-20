@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.4.0")
-        url: https://gh-proxy.org/https://github.com/tmknom/actdocs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tmknom/actdocs/releases/download/{{.Version}}/actdocs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: actdocs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -16,11 +17,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/tmknom/actdocs/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.5.1")
-        url: https://gh-proxy.org/https://github.com/tmknom/actdocs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tmknom/actdocs/releases/download/{{.Version}}/actdocs_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: actdocs_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -29,26 +32,29 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/tmknom/actdocs/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/tmknom/actdocs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tmknom/actdocs/releases/download/{{.Version}}/actdocs_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         asset: actdocs_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         format: raw
         github_artifact_attestations:
           signer_workflow: tmknom/release-workflows/.github/workflows/go.yml
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/tmknom/actdocs/releases/download/{{.Version}}/actdocs_{{trimV .Version}}_checksums.txt
           asset: actdocs_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/tmknom/actdocs/releases/download/{{.Version}}/actdocs_{{trimV .Version}}_checksums.txt.pem
+              - https://gh-proxy.org/github.com/tmknom/actdocs/releases/download/{{.Version}}/actdocs_{{trimV .Version}}_checksums.txt.pem
               - --certificate-identity-regexp
               - "^https://github\\.com/tmknom/release-workflows/\\.github/workflows/go\\.yml@"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/tmknom/actdocs/releases/download/{{.Version}}/actdocs_{{trimV .Version}}_checksums.txt.sig
+              - https://gh-proxy.org/github.com/tmknom/actdocs/releases/download/{{.Version}}/actdocs_{{trimV .Version}}_checksums.txt.sig

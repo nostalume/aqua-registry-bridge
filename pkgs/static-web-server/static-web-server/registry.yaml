@@ -9,33 +9,38 @@ packages:
       - version_constraint: Version == "1.0.0-beta.4"
         no_asset: true
       - version_constraint: Version == "1.0.0-beta.2"
-        url: https://gh-proxy.org/https://github.com/static-web-server/static-web-server/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/static-web-server/static-web-server/releases/download/{{.Version}}/static-web-server-v{{.Version}}-{{.Arch}}-x86_64-{{.OS}}.{{.Format}}
         asset: static-web-server-v{{.Version}}-{{.Arch}}-x86_64-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
           linux: unknown-linux-musl
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/static-web-server/static-web-server/releases/download/{{.Version}}/static-web-server-v{{.Version}}-{{.Arch}}-x86_64-{{.OS}}-sha1sum.txt
           asset: static-web-server-v{{.Version}}-{{.Arch}}-x86_64-{{.OS}}-sha1sum.txt
           algorithm: sha1
         supported_envs:
           - linux/amd64
       - version_constraint: Version == "1.0.0-beta.3"
-        url: https://gh-proxy.org/https://github.com/static-web-server/static-web-server/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/static-web-server/static-web-server/releases/download/{{.Version}}/static-web-server-v{{.Version}}-{{.Arch}}-x86_64-{{.OS}}.{{.Format}}
         asset: static-web-server-v{{.Version}}-{{.Arch}}-x86_64-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
           linux: unknown-linux-musl
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/static-web-server/static-web-server/releases/download/{{.Version}}/md5sum.txt
           asset: md5sum.txt
           algorithm: md5
         supported_envs:
           - linux/amd64
       - version_constraint: Version == "v2.0.0-beta.5"
-        url: https://gh-proxy.org/https://github.com/static-web-server/static-web-server/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/static-web-server/static-web-server/releases/download/{{.Version}}/static-web-server-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: static-web-server-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -47,27 +52,31 @@ packages:
           darwin: apple-darwin
           linux: unknown-linux-musl
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/static-web-server/static-web-server/releases/download/{{.Version}}/static-web-server-{{.Version}}-SHA256SUM
           asset: static-web-server-{{.Version}}-SHA256SUM
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 1.2.0")
-        url: https://gh-proxy.org/https://github.com/static-web-server/static-web-server/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/static-web-server/static-web-server/releases/download/{{.Version}}/static-web-server-{{.Version}}-{{.Arch}}-x86_64-{{.OS}}.{{.Format}}
         asset: static-web-server-{{.Version}}-{{.Arch}}-x86_64-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
           linux: unknown-linux-musl
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/static-web-server/static-web-server/releases/download/{{.Version}}/md5sum.txt
           asset: md5sum.txt
           algorithm: md5
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 1.6.0")
-        url: https://gh-proxy.org/https://github.com/static-web-server/static-web-server/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/static-web-server/static-web-server/releases/download/{{.Version}}/static-web-server-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: static-web-server-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -76,14 +85,16 @@ packages:
           darwin: apple-darwin
           linux: unknown-linux-musl
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/static-web-server/static-web-server/releases/download/{{.Version}}/static-web-server-{{.Version}}-{{.Arch}}-{{.OS}}-SHA256SUM
           asset: static-web-server-{{.Version}}-{{.Arch}}-{{.OS}}-SHA256SUM
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 1.13.0")
-        url: https://gh-proxy.org/https://github.com/static-web-server/static-web-server/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/static-web-server/static-web-server/releases/download/{{.Version}}/static-web-server-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: static-web-server-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -92,14 +103,16 @@ packages:
           darwin: apple-darwin
           linux: unknown-linux-musl
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/static-web-server/static-web-server/releases/download/{{.Version}}/static-web-server-{{.Version}}-SHA256SUM
           asset: static-web-server-{{.Version}}-SHA256SUM
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 1.16.0")
-        url: https://gh-proxy.org/https://github.com/static-web-server/static-web-server/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/static-web-server/static-web-server/releases/download/{{.Version}}/static-web-server-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: static-web-server-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -110,18 +123,22 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/static-web-server/static-web-server/releases/download/{{.Version}}/static-web-server-{{.Version}}-SHA256SUM
           asset: static-web-server-{{.Version}}-SHA256SUM
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/static-web-server/static-web-server/releases/download/{{.Version}}/static-web-server-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 1.19.4")
-        url: https://gh-proxy.org/https://github.com/static-web-server/static-web-server/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/static-web-server/static-web-server/releases/download/{{.Version}}/static-web-server-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: static-web-server-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -134,14 +151,18 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/static-web-server/static-web-server/releases/download/{{.Version}}/static-web-server-{{.Version}}-SHA256SUM
           asset: static-web-server-{{.Version}}-SHA256SUM
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/static-web-server/static-web-server/releases/download/{{.Version}}/static-web-server-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 2.0.0-beta.4")
-        url: https://gh-proxy.org/https://github.com/static-web-server/static-web-server/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/static-web-server/static-web-server/releases/download/{{.Version}}/static-web-server-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: static-web-server-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -150,14 +171,16 @@ packages:
           darwin: apple-darwin
           linux: unknown-linux-musl
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/static-web-server/static-web-server/releases/download/{{.Version}}/static-web-server-{{.Version}}-SHA256SUM
           asset: static-web-server-{{.Version}}-SHA256SUM
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 2.23.0")
-        url: https://gh-proxy.org/https://github.com/static-web-server/static-web-server/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/static-web-server/static-web-server/releases/download/{{.Version}}/static-web-server-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: static-web-server-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -171,14 +194,18 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/static-web-server/static-web-server/releases/download/{{.Version}}/static-web-server-{{.Version}}-SHA256SUM
           asset: static-web-server-{{.Version}}-SHA256SUM
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/static-web-server/static-web-server/releases/download/{{.Version}}/static-web-server-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/static-web-server/static-web-server/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/static-web-server/static-web-server/releases/download/{{.Version}}/static-web-server-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: static-web-server-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -191,9 +218,12 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/static-web-server/static-web-server/releases/download/{{.Version}}/static-web-server-{{.Version}}-SHA256SUM
           asset: static-web-server-{{.Version}}-SHA256SUM
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/static-web-server/static-web-server/releases/download/{{.Version}}/static-web-server-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip

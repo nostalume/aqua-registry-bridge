@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version in ["v3.2.1", "v3.3.2", "v3.4.0", "v3.4.2", "v3.3.3", "v3.4.1", "v3.5.0", "v3.6.1"]
         no_asset: true
       - version_constraint: Version == "v3.1.0"
-        url: https://gh-proxy.org/https://github.com/spotDL/spotify-downloader/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/spotDL/spotify-downloader/releases/download/{{.Version}}/spotDL.{{.OS}}
         asset: spotDL.{{.OS}}
         format: raw
         replacements:
@@ -17,40 +18,48 @@ packages:
         supported_envs:
           - windows/amd64
       - version_constraint: Version == "v4.0.0rc1"
-        url: https://gh-proxy.org/https://github.com/spotDL/spotify-downloader/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/spotDL/spotify-downloader/releases/download/{{.Version}}/spotdl-4.0.0-{{.OS}}
         asset: spotdl-4.0.0-{{.OS}}
         format: raw
         replacements:
           arm64: aarch64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/spotDL/spotify-downloader/releases/download/{{.Version}}/spotdl-4.0.0-{{.OS}}-{{.Arch}}
             goarch: arm64
             asset: spotdl-4.0.0-{{.OS}}-{{.Arch}}
         supported_envs:
           - linux
           - darwin
       - version_constraint: Version == "v4.0.0"
-        url: https://gh-proxy.org/https://github.com/spotDL/spotify-downloader/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/spotDL/spotify-downloader/releases/download/{{.Version}}/spotdl-{{trimV .Version}}-{{.OS}}
         asset: spotdl-{{trimV .Version}}-{{.OS}}
         format: raw
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v4.0.3"
-        url: https://gh-proxy.org/https://github.com/spotDL/spotify-downloader/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/spotDL/spotify-downloader/releases/download/{{.Version}}/spotdl-4.0.2-{{.OS}}
         asset: spotdl-4.0.2-{{.OS}}
         format: raw
         replacements:
           arm64: aarch64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/spotDL/spotify-downloader/releases/download/{{.Version}}/spotdl-4.0.2-{{.OS}}-{{.Arch}}
             goarch: arm64
             asset: spotdl-4.0.2-{{.OS}}-{{.Arch}}
         supported_envs:
           - linux
           - darwin
       - version_constraint: Version == "v4.2.3"
-        url: https://gh-proxy.org/https://github.com/spotDL/spotify-downloader/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/spotDL/spotify-downloader/releases/download/{{.Version}}/spotdl-4.2.2-{{.OS}}
         asset: spotdl-4.2.2-{{.OS}}
         format: raw
         supported_envs:
@@ -59,40 +68,48 @@ packages:
       - version_constraint: semver("<= 3.9.6")
         no_asset: true
       - version_constraint: semver("<= 4.0.5")
-        url: https://gh-proxy.org/https://github.com/spotDL/spotify-downloader/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/spotDL/spotify-downloader/releases/download/{{.Version}}/spotdl-{{trimV .Version}}-{{.OS}}
         asset: spotdl-{{trimV .Version}}-{{.OS}}
         format: raw
         replacements:
           arm64: aarch64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/spotDL/spotify-downloader/releases/download/{{.Version}}/spotdl-{{trimV .Version}}-{{.OS}}-{{.Arch}}
             goarch: arm64
             asset: spotdl-{{trimV .Version}}-{{.OS}}-{{.Arch}}
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 4.2.2")
-        url: https://gh-proxy.org/https://github.com/spotDL/spotify-downloader/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/spotDL/spotify-downloader/releases/download/{{.Version}}/spotdl-{{trimV .Version}}-{{.OS}}
         asset: spotdl-{{trimV .Version}}-{{.OS}}
         format: raw
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 4.2.5")
-        url: https://gh-proxy.org/https://github.com/spotDL/spotify-downloader/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/spotDL/spotify-downloader/releases/download/{{.Version}}/spotdl-{{trimV .Version}}-{{.OS}}
         asset: spotdl-{{trimV .Version}}-{{.OS}}
         format: raw
         replacements:
           arm64: aarch64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/spotDL/spotify-downloader/releases/download/{{.Version}}/spotdl-{{trimV .Version}}-{{.OS}}-{{.Arch}}
             goarch: arm64
             asset: spotdl-{{trimV .Version}}-{{.OS}}-{{.Arch}}
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/spotDL/spotify-downloader/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/spotDL/spotify-downloader/releases/download/{{.Version}}/spotdl-{{trimV .Version}}-{{.OS}}
         asset: spotdl-{{trimV .Version}}-{{.OS}}
         format: raw
         supported_envs:

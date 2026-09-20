@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/ddddddO/gtree/releases/download/{{.Version}}/gtree_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: ddddddO
     repo_name: gtree
     description: Generate directory trees and the directories itself using Markdown or Programmatically. Provide CLI, Golang library and Web (using WebAssembly)
@@ -8,6 +9,8 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/ddddddO/gtree/releases/download/{{.Version}}/gtree_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     replacements:
       amd64: x86_64
@@ -15,7 +18,8 @@ packages:
       linux: Linux
       windows: Windows
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/ddddddO/gtree/releases/download/{{.Version}}/gtree_{{trimV .Version}}_checksums.txt
       asset: gtree_{{trimV .Version}}_checksums.txt
       algorithm: sha256
     version_constraint: semver(">= 1.8.4")
@@ -23,10 +27,13 @@ packages:
       - version_constraint: Version == "v1.8.3"
         no_asset: true
       - version_constraint: semver(">= 1.2.0")
+        type: http
+        url: https://gh-proxy.org/github.com/ddddddO/gtree/releases/download/{{.Version}}/gtree_{{.OS}}_{{.Arch}}.{{.Format}}
         replacements:
           amd64: x86_64
       - version_constraint: semver("< 1.2.0")
-        url: https://gh-proxy.org/https://github.com/ddddddO/gtree/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ddddddO/gtree/releases/download/{{.Version}}/gentree_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gentree_{{.OS}}_{{.Arch}}.{{.Format}}
         files:
           - name: gentree
@@ -37,6 +44,7 @@ packages:
           - linux
           - darwin
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/ddddddO/gtree/releases/download/{{.Version}}/gentree_{{trimV .Version}}_checksums.txt
           asset: gentree_{{trimV .Version}}_checksums.txt
           algorithm: sha256

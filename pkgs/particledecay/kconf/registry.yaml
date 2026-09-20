@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("<= 1.0.0")
         no_asset: true
       - version_constraint: semver("<= 1.2.0")
-        url: https://gh-proxy.org/https://github.com/particledecay/kconf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/particledecay/kconf/releases/download/{{.Version}}/kconf-{{.OS}}-{{.Arch}}
         asset: kconf-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -17,7 +18,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v1.3.4"
-        url: https://gh-proxy.org/https://github.com/particledecay/kconf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/particledecay/kconf/releases/download/{{.Version}}/kconf-{{.OS}}-{{.Arch}}-{{trimV .Version}}.{{.Format}}
         asset: kconf-{{.OS}}-{{.Arch}}-{{trimV .Version}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -33,12 +35,14 @@ packages:
           - linux/amd64
           - darwin
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/particledecay/kconf/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       # v1.4.0 chore(build): build release binaries with lowercase OS
       - version_constraint: Version == "v1.4.0"
-        url: https://gh-proxy.org/https://github.com/particledecay/kconf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/particledecay/kconf/releases/download/{{.Version}}/kconf-{{.OS}}-{{.Arch}}-{{trimV .Version}}.{{.Format}}
         asset: kconf-{{.OS}}-{{.Arch}}-{{trimV .Version}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -52,11 +56,13 @@ packages:
           - linux/amd64
           - darwin
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/particledecay/kconf/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 1.9.0")
-        url: https://gh-proxy.org/https://github.com/particledecay/kconf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/particledecay/kconf/releases/download/{{.Version}}/kconf-{{.OS}}-{{.Arch}}-{{trimV .Version}}.{{.Format}}
         asset: kconf-{{.OS}}-{{.Arch}}-{{trimV .Version}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -66,11 +72,13 @@ packages:
           - linux/amd64
           - darwin
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/particledecay/kconf/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 1.12.0")
-        url: https://gh-proxy.org/https://github.com/particledecay/kconf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/particledecay/kconf/releases/download/{{.Version}}/kconf-{{.OS}}-{{.Arch}}-{{trimV .Version}}.{{.Format}}
         asset: kconf-{{.OS}}-{{.Arch}}-{{trimV .Version}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -79,16 +87,19 @@ packages:
           - linux
           - darwin
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/particledecay/kconf/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/particledecay/kconf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/particledecay/kconf/releases/download/{{.Version}}/kconf-{{.OS}}-{{.Arch}}-{{trimV .Version}}.{{.Format}}
         asset: kconf-{{.OS}}-{{.Arch}}-{{trimV .Version}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/particledecay/kconf/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

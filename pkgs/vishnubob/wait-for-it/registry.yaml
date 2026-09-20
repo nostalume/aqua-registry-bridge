@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_content
+  - type: http
+    url: https://gh-proxy.org/raw.githubusercontent.com/vishnubob/wait-for-it/{{.Version}}/wait-for-it.sh
     repo_owner: vishnubob
     repo_name: wait-for-it
     description: Pure bash script to test and wait on the availability of a TCP host and port

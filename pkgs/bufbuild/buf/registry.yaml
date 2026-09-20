@@ -11,7 +11,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.41.0")
-        url: https://gh-proxy.org/https://github.com/bufbuild/buf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bufbuild/buf/releases/download/{{.Version}}/buf-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: buf-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -27,14 +28,16 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/bufbuild/buf/releases/download/{{.Version}}/sha256.txt
           asset: sha256.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v0.42.0"
-        url: https://gh-proxy.org/https://github.com/bufbuild/buf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bufbuild/buf/releases/download/{{.Version}}/buf-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: buf-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -49,14 +52,16 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/bufbuild/buf/releases/download/{{.Version}}/sha256.txt
           asset: sha256.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 0.45.0")
-        url: https://gh-proxy.org/https://github.com/bufbuild/buf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bufbuild/buf/releases/download/{{.Version}}/buf-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: buf-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -71,18 +76,22 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/bufbuild/buf/releases/download/{{.Version}}/sha256.txt
           asset: sha256.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/bufbuild/buf/releases/download/{{.Version}}/buf-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: aarch64
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 0.53.0")
-        url: https://gh-proxy.org/https://github.com/bufbuild/buf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bufbuild/buf/releases/download/{{.Version}}/buf-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: buf-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -97,22 +106,27 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/bufbuild/buf/releases/download/{{.Version}}/sha256.txt
           asset: sha256.txt
           algorithm: sha256
           minisign:
-            type: github_release
+            type: http
+            url: https://gh-proxy.org/github.com/bufbuild/buf/releases/download/{{.Version}}/sha256.txt.minisig
             asset: sha256.txt.minisig
             public_key: RWQ/i9xseZwBVE7pEniCNjlNOeeyp4BQgdZDLQcAohxEAH5Uj5DEKjv6
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/bufbuild/buf/releases/download/{{.Version}}/buf-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: aarch64
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("< 1.36.0")
-        url: https://gh-proxy.org/https://github.com/bufbuild/buf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bufbuild/buf/releases/download/{{.Version}}/buf-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: buf-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -128,22 +142,29 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/bufbuild/buf/releases/download/{{.Version}}/sha256.txt
           asset: sha256.txt
           algorithm: sha256
           minisign:
-            type: github_release
+            type: http
+            url: https://gh-proxy.org/github.com/bufbuild/buf/releases/download/{{.Version}}/sha256.txt.minisig
             asset: sha256.txt.minisig
             public_key: RWQ/i9xseZwBVE7pEniCNjlNOeeyp4BQgdZDLQcAohxEAH5Uj5DEKjv6
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/bufbuild/buf/releases/download/{{.Version}}/buf-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bufbuild/buf/releases/download/{{.Version}}/buf-{{.OS}}-{{.Arch}}
             format: raw
             asset: buf-{{.OS}}-{{.Arch}}
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/bufbuild/buf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bufbuild/buf/releases/download/{{.Version}}/buf-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: buf-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -159,16 +180,22 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/bufbuild/buf/releases/download/{{.Version}}/sha256.txt
           asset: sha256.txt
           algorithm: sha256
           minisign:
-            type: github_release
+            type: http
+            url: https://gh-proxy.org/github.com/bufbuild/buf/releases/download/{{.Version}}/sha256.txt.minisig
             asset: sha256.txt.minisig
             public_key: RWQ/i9xseZwBVE7pEniCNjlNOeeyp4BQgdZDLQcAohxEAH5Uj5DEKjv6
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/bufbuild/buf/releases/download/{{.Version}}/buf-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bufbuild/buf/releases/download/{{.Version}}/buf-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip

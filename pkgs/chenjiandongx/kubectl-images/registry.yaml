@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.3.3"
-        url: https://gh-proxy.org/https://github.com/chenjiandongx/kubectl-images/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/chenjiandongx/kubectl-images/releases/download/{{.Version}}/kubectl-images_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kubectl-images_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -16,12 +17,14 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "v0.3.4"
-        url: https://gh-proxy.org/https://github.com/chenjiandongx/kubectl-images/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/chenjiandongx/kubectl-images/releases/download/{{.Version}}/kubectl-images_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kubectl-images_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
       - version_constraint: semver("<= 0.3.2")
-        url: https://gh-proxy.org/https://github.com/chenjiandongx/kubectl-images/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/chenjiandongx/kubectl-images/releases/download/{{.Version}}/kubectl-images_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kubectl-images_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -31,11 +34,13 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/chenjiandongx/kubectl-images/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/chenjiandongx/kubectl-images/releases/download/{{.Version}}/kubectl-images_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kubectl-images_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/chenjiandongx/kubectl-images/releases/download/{{.Version}}/kubectl-images_{{trimV .Version}}_checksums.txt
           asset: kubectl-images_{{trimV .Version}}_checksums.txt
           algorithm: sha256

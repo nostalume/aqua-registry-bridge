@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/binwiederhier/ntfy/releases/download/{{.Version}}/ntfy_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: binwiederhier
     repo_name: ntfy
     description: Send push notifications to your phone or desktop using PUT/POST
@@ -11,11 +12,15 @@ packages:
         src: ntfy_{{trimV .Version}}_{{.OS}}_{{.Arch}}/ntfy
     overrides:
       - goos: darwin
+        type: http
+        url: https://gh-proxy.org/github.com/binwiederhier/ntfy/releases/download/{{.Version}}/ntfy_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
         asset: ntfy_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
         files:
           - name: ntfy
             src: ntfy_{{trimV .Version}}_{{.OS}}_all/ntfy
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/binwiederhier/ntfy/releases/download/{{.Version}}/ntfy_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     supported_envs:
       - darwin
@@ -23,16 +28,21 @@ packages:
       - amd64
     rosetta2: true
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/binwiederhier/ntfy/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256
     version_constraint: semver(">= 2.6.2")
     version_overrides:
       - version_constraint: semver(">= 1.23.0")
+        type: http
+        url: https://gh-proxy.org/github.com/binwiederhier/ntfy/releases/download/{{.Version}}/ntfy_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         replacements:
           amd64: x86_64
           darwin: macOS
       - version_constraint: semver(">= 1.4.4")
+        type: http
+        url: https://gh-proxy.org/github.com/binwiederhier/ntfy/releases/download/{{.Version}}/ntfy_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides: []
         replacements:
           amd64: x86_64
@@ -40,6 +50,8 @@ packages:
           - linux
         rosetta2: false
       - version_constraint: semver(">= 1.2.1")
+        type: http
+        url: https://gh-proxy.org/github.com/binwiederhier/ntfy/releases/download/{{.Version}}/ntfy_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides: []
         replacements:
           amd64: x86_64
@@ -47,6 +59,8 @@ packages:
           - linux/amd64
         rosetta2: false
       - version_constraint: semver("< 1.2.1")
+        type: http
+        url: https://gh-proxy.org/github.com/binwiederhier/ntfy/releases/download/{{.Version}}/ntfy_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides: []
         replacements:
           amd64: x86_64

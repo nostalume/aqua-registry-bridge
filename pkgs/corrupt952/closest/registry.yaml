@@ -7,11 +7,13 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/corrupt952/closest/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/corrupt952/closest/releases/download/{{.Version}}/closest_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: closest_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/corrupt952/closest/releases/download/{{.Version}}/closest_{{trimV .Version}}_checksums.txt
           asset: closest_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:

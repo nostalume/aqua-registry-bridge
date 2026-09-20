@@ -8,7 +8,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.1.0")
-        url: https://gh-proxy.org/https://github.com/SUPERCILEX/fuc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/SUPERCILEX/fuc/releases/download/{{.Version}}/rmz-{{.Arch}}-{{.OS}}
         asset: rmz-{{.Arch}}-{{.OS}}
         format: raw
         replacements:
@@ -22,7 +23,8 @@ packages:
           - darwin
           - windows
       - version_constraint: semver("<= 2.2.0")
-        url: https://gh-proxy.org/https://github.com/SUPERCILEX/fuc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/SUPERCILEX/fuc/releases/download/{{.Version}}/rmz-{{.Arch}}-{{.OS}}
         asset: rmz-{{.Arch}}-{{.OS}}
         format: raw
         replacements:
@@ -32,15 +34,20 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/SUPERCILEX/fuc/releases/download/{{.Version}}/rmz-{{.Arch}}-{{.OS}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/SUPERCILEX/fuc/releases/download/{{.Version}}/rmz-{{.Arch}}-{{.OS}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/SUPERCILEX/fuc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/SUPERCILEX/fuc/releases/download/{{.Version}}/{{.Arch}}-{{.OS}}-rmz
         asset: "{{.Arch}}-{{.OS}}-rmz"
         format: raw
         replacements:
@@ -50,10 +57,14 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/SUPERCILEX/fuc/releases/download/{{.Version}}/{{.Arch}}-{{.OS}}-rmz
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/SUPERCILEX/fuc/releases/download/{{.Version}}/{{.Arch}}-{{.OS}}-rmz
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_content
+  - type: http
+    url: https://gh-proxy.org/raw.githubusercontent.com/aquaproj/aqua-installer/{{.Version}}/aqua-installer
     repo_owner: aquaproj
     repo_name: aqua-installer
     path: aqua-installer

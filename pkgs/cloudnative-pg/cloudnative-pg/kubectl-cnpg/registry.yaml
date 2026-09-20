@@ -8,38 +8,46 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v1.27.4"
-        url: https://gh-proxy.org/https://github.com/cloudnative-pg/cloudnative-pg/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cloudnative-pg/cloudnative-pg/releases/download/{{.Version}}/kubectl-cnpg_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kubectl-cnpg_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/cloudnative-pg/cloudnative-pg/releases/download/{{.Version}}/cnpg-{{trimV .Version}}-checksums.txt
           asset: cnpg-{{trimV .Version}}-checksums.txt
           algorithm: sha256
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/cloudnative-pg/cloudnative-pg/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
       - version_constraint: semver("<= 1.28.1")
-        url: https://gh-proxy.org/https://github.com/cloudnative-pg/cloudnative-pg/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cloudnative-pg/cloudnative-pg/releases/download/{{.Version}}/kubectl-cnpg_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kubectl-cnpg_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/cloudnative-pg/cloudnative-pg/releases/download/{{.Version}}/cnpg-{{trimV .Version}}-checksums.txt
           asset: cnpg-{{trimV .Version}}-checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/cloudnative-pg/cloudnative-pg/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cloudnative-pg/cloudnative-pg/releases/download/{{.Version}}/kubectl-cnpg_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kubectl-cnpg_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/cloudnative-pg/cloudnative-pg/releases/download/{{.Version}}/cnpg-{{trimV .Version}}-checksums.txt
           asset: cnpg-{{trimV .Version}}-checksums.txt
           algorithm: sha256
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/cloudnative-pg/cloudnative-pg/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl

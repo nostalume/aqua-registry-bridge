@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("<= 0.3.5")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Piturnah/gex/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Piturnah/gex/releases/download/{{.Version}}/gex-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: gex-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -21,6 +22,8 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Piturnah/gex/releases/download/{{.Version}}/gex-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin

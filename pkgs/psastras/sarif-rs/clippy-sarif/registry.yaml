@@ -10,7 +10,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "clippy-sarif-v0.2.23"
-        url: https://gh-proxy.org/https://github.com/psastras/sarif-rs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/psastras/sarif-rs/releases/download/{{.Version}}/clippy-sarif-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: clippy-sarif-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tgz
         replacements:
@@ -22,7 +23,8 @@ packages:
           - name: clippy-sarif
             src: target/release/{{.FileName}}-{{.Arch}}-{{.OS}}
       - version_constraint: Version == "clippy-sarif-v0.6.2"
-        url: https://gh-proxy.org/https://github.com/psastras/sarif-rs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/psastras/sarif-rs/releases/download/{{.Version}}/clippy-sarif-{{.Arch}}-{{.OS}}
         asset: clippy-sarif-{{.Arch}}-{{.OS}}
         format: raw
         replacements:
@@ -31,7 +33,8 @@ packages:
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 0.4.2")
-        url: https://gh-proxy.org/https://github.com/psastras/sarif-rs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/psastras/sarif-rs/releases/download/{{.Version}}/clippy-sarif-{{.Arch}}-{{.OS}}
         asset: clippy-sarif-{{.Arch}}-{{.OS}}
         format: raw
         rosetta2: true
@@ -43,7 +46,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/psastras/sarif-rs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/psastras/sarif-rs/releases/download/{{.Version}}/clippy-sarif-{{.Arch}}-{{.OS}}
         asset: clippy-sarif-{{.Arch}}-{{.OS}}
         format: raw
         replacements:
@@ -51,9 +55,13 @@ packages:
           linux: unknown-linux-gnu
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/psastras/sarif-rs/releases/download/{{.Version}}/clippy-sarif-{{.Arch}}-{{.OS}}
             replacements:
               amd64: x86_64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/psastras/sarif-rs/releases/download/{{.Version}}/clippy-sarif-{{.Arch}}-{{.OS}}
             replacements:
               arm64: aarch64
         supported_envs:

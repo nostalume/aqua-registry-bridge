@@ -14,7 +14,8 @@ packages:
       - version_constraint: semver("<= 1.15.0")
         error_message: This version is too old. Please upgrade to a newer version.
       - version_constraint: semver("<= 1.15.3")
-        url: https://gh-proxy.org/https://github.com/watchexec/watchexec/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/watchexec-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: watchexec-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         rosetta2: true
@@ -25,17 +26,25 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/watchexec-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/watchexec-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               arm64: aarch64
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/watchexec-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 1.16.2")
+        type: http
+        url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/watchexec-{{trimV .SemVer}}-{{.Arch}}-{{.OS}}.{{.Format}}
         version_prefix: cli-
         asset: watchexec-{{trimV .SemVer}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
@@ -47,16 +56,24 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/watchexec-{{trimV .SemVer}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/watchexec-{{trimV .SemVer}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/watchexec-{{trimV .SemVer}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 1.17.1")
+        type: http
+        url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/watchexec-{{trimV .SemVer}}-{{.Arch}}-{{.OS}}.{{.Format}}
         version_prefix: cli-
         asset: watchexec-{{trimV .SemVer}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
@@ -67,21 +84,30 @@ packages:
           darwin: apple-darwin
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/SHA512SUMS
           asset: SHA512SUMS
           algorithm: sha512
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/watchexec-{{trimV .SemVer}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/watchexec-{{trimV .SemVer}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/watchexec-{{trimV .SemVer}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 1.19.0")
+        type: http
+        url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/watchexec-{{trimV .SemVer}}-{{.Arch}}-{{.OS}}.{{.Format}}
         version_prefix: cli-
         asset: watchexec-{{trimV .SemVer}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
@@ -93,13 +119,18 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/SHA512SUMS
           asset: SHA512SUMS
           algorithm: sha512
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/watchexec-{{trimV .SemVer}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 1.20.1")
+        type: http
+        url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/watchexec-{{trimV .SemVer}}-{{.Arch}}-{{.OS}}.{{.Format}}
         version_prefix: cli-
         asset: watchexec-{{trimV .SemVer}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
@@ -109,13 +140,16 @@ packages:
           darwin: apple-darwin
           linux: unknown-linux-musl
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/SHA512SUMS
           asset: SHA512SUMS
           algorithm: sha512
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 1.20.5")
+        type: http
+        url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/watchexec-{{trimV .SemVer}}-{{.Arch}}-{{.OS}}.{{.Format}}
         version_prefix: cli-
         asset: watchexec-{{trimV .SemVer}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
@@ -127,14 +161,18 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/SHA512SUMS
           asset: SHA512SUMS
           algorithm: sha512
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/watchexec-{{trimV .SemVer}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: Version == "v1.20.6"
-        url: https://gh-proxy.org/https://github.com/watchexec/watchexec/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/watchexec-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: watchexec-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         rosetta2: true
@@ -145,17 +183,23 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/SHA512SUMS
           asset: SHA512SUMS
           algorithm: sha512
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/watchexec-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/watchexec-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: Version == "v1.21.0"
-        url: https://gh-proxy.org/https://github.com/watchexec/watchexec/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/watchexec-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: watchexec-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -167,9 +211,12 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/watchexec-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 1.25.1")
-        url: https://gh-proxy.org/https://github.com/watchexec/watchexec/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/watchexec-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: watchexec-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -180,16 +227,20 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha512"
           asset: "{{.Asset}}.sha512"
           algorithm: sha512
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/watchexec-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 2.0.0-pre.14")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/watchexec/watchexec/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/watchexec-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: watchexec-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -200,9 +251,12 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha512"
           asset: "{{.Asset}}.sha512"
           algorithm: sha512
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/watchexec/releases/download/{{.Version}}/watchexec-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip

@@ -13,7 +13,8 @@ packages:
       - version_constraint: semver("<= 0.16.0")
         no_asset: true
       - version_constraint: Version == "v0.17.0"
-        url: https://gh-proxy.org/https://github.com/google/go-jsonnet/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/google/go-jsonnet/releases/download/{{.Version}}/go-jsonnet_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: go-jsonnet_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -25,14 +26,16 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/google/go-jsonnet/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - windows/amd64
       - version_constraint: Version == "v0.18.0"
-        url: https://gh-proxy.org/https://github.com/google/go-jsonnet/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/google/go-jsonnet/releases/download/{{.Version}}/go-jsonnet_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: go-jsonnet_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -46,11 +49,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/google/go-jsonnet/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("< 0.20.0")
-        url: https://gh-proxy.org/https://github.com/google/go-jsonnet/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/google/go-jsonnet/releases/download/{{.Version}}/go-jsonnet_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: go-jsonnet_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -62,11 +67,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/google/go-jsonnet/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: Version == "v0.20.0"
-        url: https://gh-proxy.org/https://github.com/google/go-jsonnet/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/google/go-jsonnet/releases/download/{{.Version}}/go-jsonnet_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: go-jsonnet_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -75,11 +82,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/google/go-jsonnet/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: Version == "v0.21.0"
-        url: https://gh-proxy.org/https://github.com/google/go-jsonnet/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/google/go-jsonnet/releases/download/{{.Version}}/go-jsonnet_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: go-jsonnet_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -88,14 +97,17 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/google/go-jsonnet/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/google/go-jsonnet/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/google/go-jsonnet/releases/download/{{.Version}}/go-jsonnet_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: go-jsonnet_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/google/go-jsonnet/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

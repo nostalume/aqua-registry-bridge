@@ -11,7 +11,8 @@ packages:
       - version_constraint: Version in ["v0.3.1", "v0.5.0"]
         no_asset: true
       - version_constraint: semver("<= 0.3.0")
-        url: https://gh-proxy.org/https://github.com/jj-vcs/jj/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jj-vcs/jj/releases/download/{{.Version}}/jj_{{.Version}}_{{.Arch}}-{{.OS}}.{{.Format}}
         asset: jj_{{.Version}}_{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -20,17 +21,21 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-gnu
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/jj-vcs/jj/releases/download/{{.Version}}/jj_{{.Version}}_{{.Arch}}-{{.OS}}.{{.Format}}.sha256sum
           asset: jj_{{.Version}}_{{.Arch}}-{{.OS}}.{{.Format}}.sha256sum
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/jj-vcs/jj/releases/download/{{.Version}}/jj_{{.Version}}_{{.Arch}}-{{.OS}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux/amd64
           - windows/amd64
       - version_constraint: semver("<= 0.13.0")
-        url: https://gh-proxy.org/https://github.com/jj-vcs/jj/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jj-vcs/jj/releases/download/{{.Version}}/jj-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: jj-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -42,13 +47,16 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jj-vcs/jj/releases/download/{{.Version}}/jj-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.17.1")
-        url: https://gh-proxy.org/https://github.com/jj-vcs/jj/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jj-vcs/jj/releases/download/{{.Version}}/jj-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: jj-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -60,13 +68,16 @@ packages:
           arm64: aarch64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jj-vcs/jj/releases/download/{{.Version}}/jj-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "v0.18.0"
-        url: https://gh-proxy.org/https://github.com/jj-vcs/jj/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jj-vcs/jj/releases/download/{{.Version}}/jj-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: jj-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -78,9 +89,12 @@ packages:
           arm64: aarch64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jj-vcs/jj/releases/download/{{.Version}}/jj-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.20.0")
-        url: https://gh-proxy.org/https://github.com/jj-vcs/jj/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jj-vcs/jj/releases/download/{{.Version}}/jj-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: jj-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -92,6 +106,8 @@ packages:
           arm64: aarch64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jj-vcs/jj/releases/download/{{.Version}}/jj-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           # darwin/amd64 was dropped. https://github.com/martinvonz/jj/pull/3999#issuecomment-2198984242
@@ -99,7 +115,8 @@ packages:
           - windows
           - linux
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/jj-vcs/jj/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jj-vcs/jj/releases/download/{{.Version}}/jj-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: jj-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -111,4 +128,6 @@ packages:
           arm64: aarch64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jj-vcs/jj/releases/download/{{.Version}}/jj-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip

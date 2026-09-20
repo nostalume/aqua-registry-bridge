@@ -9,23 +9,27 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.1.2")
-        url: https://gh-proxy.org/https://github.com/context-labs/mactop/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/context-labs/mactop/releases/download/{{.Version}}/goasitop_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: goasitop_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: goasitop
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/context-labs/mactop/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - darwin/arm64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/context-labs/mactop/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/context-labs/mactop/releases/download/{{.Version}}/mactop_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: mactop_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/context-labs/mactop/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:

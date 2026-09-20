@@ -9,55 +9,69 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.5.0-rc1")
-        url: https://gh-proxy.org/https://github.com/docker/buildx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/docker/buildx/releases/download/{{.Version}}/buildx-{{.Version}}.{{.OS}}-{{.Arch}}
         asset: buildx-{{.Version}}.{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
       - version_constraint: semver("<= 0.5.1")
-        url: https://gh-proxy.org/https://github.com/docker/buildx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/docker/buildx/releases/download/{{.Version}}/buildx-{{.Version}}.{{.OS}}-{{.Arch}}
         asset: buildx-{{.Version}}.{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
       - version_constraint: semver("<= 0.6.3")
-        url: https://gh-proxy.org/https://github.com/docker/buildx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/docker/buildx/releases/download/{{.Version}}/buildx-{{.Version}}.{{.OS}}-{{.Arch}}
         asset: buildx-{{.Version}}.{{.OS}}-{{.Arch}}
         format: raw
       - version_constraint: semver("<= 0.10.0-rc1")
-        url: https://gh-proxy.org/https://github.com/docker/buildx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/docker/buildx/releases/download/{{.Version}}/buildx-{{.Version}}.{{.OS}}-{{.Arch}}
         asset: buildx-{{.Version}}.{{.OS}}-{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/docker/buildx/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/docker/buildx/releases/download/{{.Version}}/buildx-{{.Version}}.{{.OS}}-{{.Arch}}
             checksum:
               enabled: false # https://github.com/docker/buildx/issues/945
       - version_constraint: semver("< 0.31.0")
-        url: https://gh-proxy.org/https://github.com/docker/buildx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/docker/buildx/releases/download/{{.Version}}/buildx-{{.Version}}.{{.OS}}-{{.Arch}}
         asset: buildx-{{.Version}}.{{.OS}}-{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/docker/buildx/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/docker/buildx/releases/download/{{.Version}}/buildx-{{.Version}}.{{.OS}}-{{.Arch}}
             checksum:
               enabled: false # https://github.com/docker/buildx/issues/945
       - version_constraint: semver("< 0.36.0-rc2")
-        url: https://gh-proxy.org/https://github.com/docker/buildx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/docker/buildx/releases/download/{{.Version}}/buildx-{{.Version}}.{{.OS}}-{{.Arch}}
         asset: buildx-{{.Version}}.{{.OS}}-{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/docker/buildx/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         cosign:
           bundle:
-            type: github_release
+            type: http
+            url: https://gh-proxy.org/github.com/docker/buildx/releases/download/{{.Version}}/buildx-{{.Version}}.{{.OS}}-{{.Arch}}.sigstore.json
             asset: "buildx-{{.Version}}.{{.OS}}-{{.Arch}}.sigstore.json"
           opts:
             - --certificate-identity-regexp
@@ -66,21 +80,26 @@ packages:
             - https://token.actions.githubusercontent.com
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/docker/buildx/releases/download/{{.Version}}/buildx-{{.Version}}.{{.OS}}-{{.Arch}}
             checksum:
               enabled: false # https://github.com/docker/buildx/issues/945
             cosign:
               enabled: false
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/docker/buildx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/docker/buildx/releases/download/{{.Version}}/buildx-{{.Version}}.{{.OS}}-{{.Arch}}
         asset: buildx-{{.Version}}.{{.OS}}-{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/docker/buildx/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         cosign:
           bundle:
-            type: github_release
+            type: http
+            url: https://gh-proxy.org/github.com/docker/buildx/releases/download/{{.Version}}/buildx-{{.Version}}.{{.OS}}-{{.Arch}}.sigstore.json
             asset: "buildx-{{.Version}}.{{.OS}}-{{.Arch}}.sigstore.json"
           opts:
             - --certificate-identity-regexp
@@ -89,10 +108,14 @@ packages:
             - https://token.actions.githubusercontent.com
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/docker/buildx/releases/download/{{.Version}}/buildx-{{.Version}}.{{.OS}}-{{.Arch}}
             checksum:
               enabled: false # https://github.com/docker/buildx/issues/945
             cosign:
               enabled: false
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/docker/buildx/releases/download/{{.Version}}/buildx-{{.Version}}.{{.OS}}-{{.Arch}}
             cosign:
               enabled: false # binaries are code-signed instead from v0.36.0

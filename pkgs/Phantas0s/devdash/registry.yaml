@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.4.1")
-        url: https://gh-proxy.org/https://github.com/Phantas0s/devdash/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Phantas0s/devdash/releases/download/{{.Version}}/devdash_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: devdash_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -18,18 +19,22 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Phantas0s/devdash/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Phantas0s/devdash/releases/download/{{.Version}}/devdash_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Phantas0s/devdash/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Phantas0s/devdash/releases/download/{{.Version}}/devdash_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: devdash_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -40,9 +45,12 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Phantas0s/devdash/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Phantas0s/devdash/releases/download/{{.Version}}/devdash_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

@@ -7,13 +7,15 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.6.2")
-        url: https://gh-proxy.org/https://github.com/minamijoyo/tfupdate/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/minamijoyo/tfupdate/releases/download/{{.Version}}/tfupdate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tfupdate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/minamijoyo/tfupdate/releases/download/{{.Version}}/tfupdate_{{trimV .Version}}_checksums.txt
           asset: tfupdate_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
@@ -21,10 +23,12 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/minamijoyo/tfupdate/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/minamijoyo/tfupdate/releases/download/{{.Version}}/tfupdate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tfupdate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/minamijoyo/tfupdate/releases/download/{{.Version}}/tfupdate_{{trimV .Version}}_checksums.txt
           asset: tfupdate_{{trimV .Version}}_checksums.txt
           algorithm: sha256

@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.3.1")
-        url: https://gh-proxy.org/https://github.com/Azure/bicep/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Azure/bicep/releases/download/{{.Version}}/bicep-{{.OS}}-{{.Arch}}
         asset: bicep-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -21,7 +22,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.4.1008")
-        url: https://gh-proxy.org/https://github.com/Azure/bicep/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Azure/bicep/releases/download/{{.Version}}/bicep-{{.OS}}-{{.Arch}}
         asset: bicep-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -32,13 +34,16 @@ packages:
           windows: win
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Azure/bicep/releases/download/{{.Version}}/bicep-{{.OS}}-musl-{{.Arch}}
             asset: bicep-{{.OS}}-musl-{{.Arch}}
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Azure/bicep/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Azure/bicep/releases/download/{{.Version}}/bicep-{{.OS}}-{{.Arch}}
         asset: bicep-{{.OS}}-{{.Arch}}
         format: raw
         replacements:
@@ -47,5 +52,7 @@ packages:
           windows: win
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Azure/bicep/releases/download/{{.Version}}/bicep-{{.OS}}-musl-{{.Arch}}
             goarch: amd64
             asset: bicep-{{.OS}}-musl-{{.Arch}}

@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 2.8.0")
-        url: https://gh-proxy.org/https://github.com/specstoryai/getspecstory/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/specstoryai/getspecstory/releases/download/{{.Version}}/SpecStoryCLI_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: SpecStoryCLI_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -17,14 +18,16 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/specstoryai/getspecstory/releases/download/{{.Version}}/SpecStoryCLI_{{trimV .Version}}_checksums.txt
           asset: SpecStoryCLI_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/specstoryai/getspecstory/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/specstoryai/getspecstory/releases/download/{{.Version}}/SpecStoryCLI_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: SpecStoryCLI_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -33,9 +36,12 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/specstoryai/getspecstory/releases/download/{{.Version}}/SpecStoryCLI_{{trimV .Version}}_checksums.txt
           asset: SpecStoryCLI_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/specstoryai/getspecstory/releases/download/{{.Version}}/SpecStoryCLI_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

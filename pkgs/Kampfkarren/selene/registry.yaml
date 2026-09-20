@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/Kampfkarren/selene/releases/download/{{.Version}}/selene-{{.Version}}-{{.OS}}.zip
     repo_owner: Kampfkarren
     repo_name: selene
     description: A blazing-fast modern Lua linter written in Rust
@@ -14,19 +15,25 @@ packages:
     asset: selene-{{.Version}}-{{.OS}}.zip
     version_overrides:
       - version_constraint: semver(">= 0.4.3")
-        url: https://gh-proxy.org/https://github.com/Kampfkarren/selene/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Kampfkarren/selene/releases/download/{{.Version}}/selene-{{.OS}}
         asset: selene-{{.OS}}
         replacements:
           darwin: osx
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Kampfkarren/selene/releases/download/{{.Version}}/selene.exe
             asset: selene.exe
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Kampfkarren/selene/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Kampfkarren/selene/releases/download/{{.Version}}/selene
         asset: selene
         supported_envs:
           - linux/amd64
           - windows/amd64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Kampfkarren/selene/releases/download/{{.Version}}/selene.exe
             asset: selene.exe

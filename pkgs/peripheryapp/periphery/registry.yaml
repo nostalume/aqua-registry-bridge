@@ -7,12 +7,14 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 2.13.0")
-        url: https://gh-proxy.org/https://github.com/peripheryapp/periphery/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/peripheryapp/periphery/releases/download/{{.Version}}/periphery-v{{.Version}}.zip
         asset: periphery-v{{.Version}}.zip
         supported_envs:
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/peripheryapp/periphery/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/peripheryapp/periphery/releases/download/{{.Version}}/periphery-{{.Version}}.zip
         asset: periphery-{{.Version}}.zip
         supported_envs:
           - darwin

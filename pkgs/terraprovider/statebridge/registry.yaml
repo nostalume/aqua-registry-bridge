@@ -9,11 +9,13 @@ packages:
       - version_constraint: semver("< 0.15.0")
         error_message: Please use v0.15.0 or later
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/terraprovider/statebridge/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/terraprovider/statebridge/releases/download/{{.Version}}/statebridge_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: statebridge_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/terraprovider/statebridge/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
@@ -23,13 +25,17 @@ packages:
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/terraprovider/statebridge/releases/download/{{.Version}}/checksums.txt.sigstore.json
               asset: checksums.txt.sigstore.json
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/terraprovider/statebridge/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
         github_artifact_attestations:
           signer_workflow: terraprovider/statebridge/.github/workflows/release.yml
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/terraprovider/statebridge/releases/download/{{.Version}}/statebridge_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

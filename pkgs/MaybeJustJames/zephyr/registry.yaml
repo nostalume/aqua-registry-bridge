@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.2.1")
-        url: https://gh-proxy.org/https://github.com/MaybeJustJames/zephyr/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/MaybeJustJames/zephyr/releases/download/{{.Version}}/{{.OS}}.{{.Format}}
         asset: "{{.OS}}.{{.Format}}"
         format: tar.gz
         replacements:
@@ -15,13 +16,17 @@ packages:
           darwin: macos
           windows: win64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/MaybeJustJames/zephyr/releases/download/{{.Version}}/{{.OS}}.sha
           asset: "{{.OS}}.sha"
           algorithm: sha1
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/MaybeJustJames/zephyr/releases/download/{{.Version}}/{{.OS}}.{{.Format}}
             checksum:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/MaybeJustJames/zephyr/releases/download/{{.Version}}/{{.OS}}.sha
               asset: "{{.OS}}.sha"
               file_format: regexp
               algorithm: sha1
@@ -35,7 +40,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "v0.2.2"
-        url: https://gh-proxy.org/https://github.com/MaybeJustJames/zephyr/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/MaybeJustJames/zephyr/releases/download/{{.Version}}/{{.Arch}}-{{.OS}}.{{.Format}}
         asset: "{{.Arch}}-{{.OS}}.{{.Format}}"
         format: tar.gz
         rosetta2: true
@@ -47,13 +53,17 @@ packages:
           - name: zephyr
             src: zephyr/zephyr
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/MaybeJustJames/zephyr/releases/download/{{.Version}}/{{.Arch}}-{{.OS}}.sha
           asset: "{{.Arch}}-{{.OS}}.sha"
           algorithm: sha1
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/MaybeJustJames/zephyr/releases/download/{{.Version}}/{{.Arch}}-{{.OS}}.{{.Format}}
             checksum:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/MaybeJustJames/zephyr/releases/download/{{.Version}}/{{.Arch}}-{{.OS}}.sha
               asset: "{{.Arch}}-{{.OS}}.sha"
               file_format: regexp
               algorithm: sha1
@@ -64,7 +74,8 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/MaybeJustJames/zephyr/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/MaybeJustJames/zephyr/releases/download/{{.Version}}/{{.OS}}.{{.Format}}
         asset: "{{.OS}}.{{.Format}}"
         format: tar.gz
         replacements:
@@ -75,13 +86,17 @@ packages:
           - name: zephyr
             src: zephyr/zephyr
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/MaybeJustJames/zephyr/releases/download/{{.Version}}/{{.OS}}.sha
           asset: "{{.OS}}.sha"
           algorithm: sha1
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/MaybeJustJames/zephyr/releases/download/{{.Version}}/{{.OS}}.{{.Format}}
             checksum:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/MaybeJustJames/zephyr/releases/download/{{.Version}}/{{.OS}}.sha
               asset: "{{.OS}}.sha"
               file_format: regexp
               algorithm: sha1

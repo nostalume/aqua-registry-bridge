@@ -11,7 +11,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "21.07"
-        url: https://gh-proxy.org/https://github.com/ip7z/7zip/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ip7z/7zip/releases/download/{{.Version}}/7z{{replace "." "" .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: 7z{{replace "." "" .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -20,20 +21,27 @@ packages:
           amd64: x64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/ip7z/7zip/releases/download/{{.Version}}/7z{{replace "." "" .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             files:
               - name: 7zzs
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/ip7z/7zip/releases/download/{{.Version}}/7z{{replace "." "" .Version}}-{{.OS}}.{{.Format}}
             asset: 7z{{replace "." "" .Version}}-{{.OS}}.{{.Format}}
             files:
               - name: 7zz
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ip7z/7zip/releases/download/{{.Version}}/7z{{replace "." "" .Version}}-extra.{{.Format}}
             format: 7z
             asset: 7z{{replace "." "" .Version}}-extra.{{.Format}}
             files:
               - name: 7za
                 src: "{{.Arch}}/7za.exe"
       - version_constraint: Version in ["22.00", "22.01"]
-        url: https://gh-proxy.org/https://github.com/ip7z/7zip/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ip7z/7zip/releases/download/{{.Version}}/7z{{replace "." "" .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: 7z{{replace "." "" .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -41,9 +49,13 @@ packages:
           amd64: x64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/ip7z/7zip/releases/download/{{.Version}}/7z{{replace "." "" .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             files:
               - name: 7zzs
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ip7z/7zip/releases/download/{{.Version}}/7z{{replace "." "" .Version}}-extra.{{.Format}}
             format: 7z
             asset: 7z{{replace "." "" .Version}}-extra.{{.Format}}
             files:
@@ -53,7 +65,8 @@ packages:
           - linux
           - windows
       - version_constraint: Version == "23.01"
-        url: https://gh-proxy.org/https://github.com/ip7z/7zip/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ip7z/7zip/releases/download/{{.Version}}/7z{{replace "." "" .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: 7z{{replace "." "" .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -62,20 +75,27 @@ packages:
           amd64: x64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/ip7z/7zip/releases/download/{{.Version}}/7z{{replace "." "" .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             files:
               - name: 7zzs
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/ip7z/7zip/releases/download/{{.Version}}/7z{{replace "." "" .Version}}-{{.OS}}.{{.Format}}
             asset: 7z{{replace "." "" .Version}}-{{.OS}}.{{.Format}}
             files:
               - name: 7zz
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ip7z/7zip/releases/download/{{.Version}}/7z{{replace "." "" .Version}}-extra.{{.Format}}
             format: 7z
             asset: 7z{{replace "." "" .Version}}-extra.{{.Format}}
             files:
               - name: 7za
                 src: "{{.Arch}}/7za.exe"
       - version_constraint: Version in ["24.05", "24.06"]
-        url: https://gh-proxy.org/https://github.com/ip7z/7zip/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ip7z/7zip/releases/download/{{.Version}}/7z{{replace "." "" .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: 7z{{replace "." "" .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -84,20 +104,27 @@ packages:
           amd64: x64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/ip7z/7zip/releases/download/{{.Version}}/7z{{replace "." "" .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             files:
               - name: 7zzs
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/ip7z/7zip/releases/download/{{.Version}}/7z{{replace "." "" .Version}}-{{.OS}}.{{.Format}}
             asset: 7z{{replace "." "" .Version}}-{{.OS}}.{{.Format}}
             files:
               - name: 7zz
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ip7z/7zip/releases/download/{{.Version}}/7z{{replace "." "" .Version}}-extra.{{.Format}}
             format: 7z
             asset: 7z{{replace "." "" .Version}}-extra.{{.Format}}
             files:
               - name: 7za
                 src: "{{.Arch}}/7za.exe"
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/ip7z/7zip/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ip7z/7zip/releases/download/{{.Version}}/7z{{replace "." "" .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: 7z{{replace "." "" .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.xz
         replacements:
@@ -105,14 +132,20 @@ packages:
           darwin: mac
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/ip7z/7zip/releases/download/{{.Version}}/7z{{replace "." "" .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             files:
               - name: 7zzs
               - name: 7zz
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/ip7z/7zip/releases/download/{{.Version}}/7z{{replace "." "" .Version}}-{{.OS}}.{{.Format}}
             asset: 7z{{replace "." "" .Version}}-{{.OS}}.{{.Format}}
             files:
               - name: 7zz
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ip7z/7zip/releases/download/{{.Version}}/7z{{replace "." "" .Version}}-extra.{{.Format}}
             format: 7z
             asset: 7z{{replace "." "" .Version}}-extra.{{.Format}}
             files:

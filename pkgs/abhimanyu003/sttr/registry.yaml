@@ -7,13 +7,15 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.2.11")
-        url: https://gh-proxy.org/https://github.com/abhimanyu003/sttr/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/abhimanyu003/sttr/releases/download/{{.Version}}/sttr_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: sttr_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/abhimanyu003/sttr/releases/download/{{.Version}}/sttr_{{trimV .Version}}_checksums.txt
           asset: sttr_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
@@ -21,41 +23,52 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.2.23")
-        url: https://gh-proxy.org/https://github.com/abhimanyu003/sttr/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/abhimanyu003/sttr/releases/download/{{.Version}}/sttr_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: sttr_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/abhimanyu003/sttr/releases/download/{{.Version}}/sttr_{{trimV .Version}}_checksums.txt
           asset: sttr_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/abhimanyu003/sttr/releases/download/{{.Version}}/sttr_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
             asset: sttr_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
       - version_constraint: Version == "v0.2.24"
-        url: https://gh-proxy.org/https://github.com/abhimanyu003/sttr/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/abhimanyu003/sttr/releases/download/{{.Version}}/sttr_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: sttr_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/abhimanyu003/sttr/releases/download/{{.Version}}/sttr_{{trimV .Version}}_checksums.txt
           asset: sttr_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate-identity
-              - https://github.com/abhimanyu003/sttr/.github/workflows/goreleaser.yml@refs/tags/{{.Version}}
+              - https://gh-proxy.org/github.com/abhimanyu003/sttr/.github/workflows/goreleaser.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/abhimanyu003/sttr/releases/download/{{.Version}}/sttr_{{trimV .Version}}_checksums.txt.sig
+              - https://gh-proxy.org/github.com/abhimanyu003/sttr/releases/download/{{.Version}}/sttr_{{trimV .Version}}_checksums.txt.sig
               - --certificate
-              - https://github.com/abhimanyu003/sttr/releases/download/{{.Version}}/sttr_{{trimV .Version}}_checksums.txt.pem
+              - https://gh-proxy.org/github.com/abhimanyu003/sttr/releases/download/{{.Version}}/sttr_{{trimV .Version}}_checksums.txt.pem
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/abhimanyu003/sttr/releases/download/{{.Version}}/sttr_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
             asset: sttr_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/abhimanyu003/sttr/releases/download/{{.Version}}/sttr_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.2.28")
-        url: https://gh-proxy.org/https://github.com/abhimanyu003/sttr/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/abhimanyu003/sttr/releases/download/{{.Version}}/sttr_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: sttr_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -64,26 +77,32 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/abhimanyu003/sttr/releases/download/{{.Version}}/sttr_{{trimV .Version}}_checksums.txt
           asset: sttr_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/abhimanyu003/sttr/releases/download/{{.Version}}/sttr_{{trimV .Version}}_checksums.txt.pem
+              - https://gh-proxy.org/github.com/abhimanyu003/sttr/releases/download/{{.Version}}/sttr_{{trimV .Version}}_checksums.txt.pem
               - --certificate-identity-regexp
               - "^https://github\\.com/abhimanyu003/sttr/\\.github/workflows/.+\\.ya?ml@refs/tags/\\Q{{.Version}}\\E$"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/abhimanyu003/sttr/releases/download/{{.Version}}/sttr_{{trimV .Version}}_checksums.txt.sig
+              - https://gh-proxy.org/github.com/abhimanyu003/sttr/releases/download/{{.Version}}/sttr_{{trimV .Version}}_checksums.txt.sig
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/abhimanyu003/sttr/releases/download/{{.Version}}/sttr_{{.OS}}_all.{{.Format}}
             asset: sttr_{{.OS}}_all.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/abhimanyu003/sttr/releases/download/{{.Version}}/sttr_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/abhimanyu003/sttr/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/abhimanyu003/sttr/releases/download/{{.Version}}/sttr_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: sttr_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -92,12 +111,14 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/abhimanyu003/sttr/releases/download/{{.Version}}/sttr_{{trimV .Version}}_checksums.txt
           asset: sttr_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/abhimanyu003/sttr/releases/download/{{.Version}}/sttr_{{trimV .Version}}_checksums.txt.sigstore.json
               asset: sttr_{{trimV .Version}}_checksums.txt.sigstore.json
             opts:
               - --certificate-oidc-issuer
@@ -106,6 +127,10 @@ packages:
               - "^https://github\\.com/abhimanyu003/sttr/\\.github/workflows/.+\\.ya?ml@refs/tags/\\Q{{.Version}}\\E$"
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/abhimanyu003/sttr/releases/download/{{.Version}}/sttr_{{.OS}}_all.{{.Format}}
             asset: sttr_{{.OS}}_all.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/abhimanyu003/sttr/releases/download/{{.Version}}/sttr_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

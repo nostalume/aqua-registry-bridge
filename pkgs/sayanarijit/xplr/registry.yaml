@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/sayanarijit/xplr/releases/download/{{.Version}}/xplr-{{.OS}}.{{.Format}}
     repo_owner: sayanarijit
     repo_name: xplr
     description: A hackable, minimal, fast TUI file explorer
@@ -13,6 +14,7 @@ packages:
       - darwin
     rosetta2: true
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/sayanarijit/xplr/releases/download/{{.Version}}/xplr-{{.OS}}.sha256
       asset: xplr-{{.OS}}.sha256
       algorithm: sha256

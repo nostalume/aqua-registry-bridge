@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.4.2"
-        url: https://gh-proxy.org/https://github.com/guptarohit/asciigraph/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/guptarohit/asciigraph/releases/download/{{.Version}}/asciigraph_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: asciigraph_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -19,9 +20,12 @@ packages:
           windows: Windows
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/guptarohit/asciigraph/releases/download/{{.Version}}/asciigraph_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.5.2")
-        url: https://gh-proxy.org/https://github.com/guptarohit/asciigraph/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/guptarohit/asciigraph/releases/download/{{.Version}}/asciigraph_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: asciigraph_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -32,14 +36,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/guptarohit/asciigraph/releases/download/{{.Version}}/asciigraph_{{trimV .Version}}_sha512-checksums.txt
           asset: asciigraph_{{trimV .Version}}_sha512-checksums.txt
           algorithm: sha512
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/guptarohit/asciigraph/releases/download/{{.Version}}/asciigraph_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/guptarohit/asciigraph/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/guptarohit/asciigraph/releases/download/{{.Version}}/asciigraph_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: asciigraph_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -48,9 +56,12 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/guptarohit/asciigraph/releases/download/{{.Version}}/asciigraph_{{trimV .Version}}_sha512-checksums.txt
           asset: asciigraph_{{trimV .Version}}_sha512-checksums.txt
           algorithm: sha512
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/guptarohit/asciigraph/releases/download/{{.Version}}/asciigraph_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

@@ -10,7 +10,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.2.0"
-        url: https://gh-proxy.org/https://github.com/containers/podlet/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/containers/podlet/releases/download/{{.Version}}/podlet-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: podlet-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -21,9 +22,13 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/containers/podlet/releases/download/{{.Version}}/podlet-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/containers/podlet/releases/download/{{.Version}}/podlet-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: podlet
@@ -32,7 +37,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.1.1")
-        url: https://gh-proxy.org/https://github.com/containers/podlet/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/containers/podlet/releases/download/{{.Version}}/podlet-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: podlet-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -43,9 +49,13 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/containers/podlet/releases/download/{{.Version}}/podlet-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/containers/podlet/releases/download/{{.Version}}/podlet-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: podlet
@@ -54,7 +64,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.3.0")
-        url: https://gh-proxy.org/https://github.com/containers/podlet/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/containers/podlet/releases/download/{{.Version}}/podlet-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: podlet-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -64,14 +75,19 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/containers/podlet/releases/download/{{.Version}}/podlet-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/containers/podlet/releases/download/{{.Version}}/podlet-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: podlet
@@ -80,7 +96,8 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/containers/podlet/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/containers/podlet/releases/download/{{.Version}}/podlet-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: podlet-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         replacements:
@@ -89,19 +106,26 @@ packages:
           darwin: apple-darwin
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/containers/podlet/releases/download/{{.Version}}/podlet-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/containers/podlet/releases/download/{{.Version}}/podlet-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/containers/podlet/releases/download/{{.Version}}/podlet-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: podlet

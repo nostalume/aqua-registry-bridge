@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "0.0.1"
-        url: https://gh-proxy.org/https://github.com/apache/maven-mvnd/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/apache/maven-mvnd/releases/download/{{.Version}}/mvnd-{{.OS}}-{{.Arch}}
         asset: mvnd-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -19,7 +20,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "0.0.2"
-        url: https://gh-proxy.org/https://github.com/apache/maven-mvnd/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/apache/maven-mvnd/releases/download/{{.Version}}/mvnd-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: mvnd-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -29,6 +31,8 @@ packages:
             src: "{{.AssetWithoutExt}}/bin/mvnd"
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/apache/maven-mvnd/releases/download/{{.Version}}/mvnd-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               amd64: x86_64
         supported_envs:
@@ -36,7 +40,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version in ["1.0-m6", "1.0-m8"]
-        url: https://gh-proxy.org/https://github.com/apache/maven-mvnd/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/apache/maven-mvnd/releases/download/{{.Version}}/maven-mvnd-{{.Version}}-m39-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: maven-mvnd-{{.Version}}-m39-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -50,6 +55,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "1.0-m7"
+        type: http
+        url: https://gh-proxy.org/github.com/apache/maven-mvnd/releases/download/{{.Version}}/maven-mvnd-{{.Version}}-m39-{{.OS}}-{{.Arch}}.{{.Format}}
         # Maven Daemon comes into two different flavours: m39 which embeds Maven 3.9.x, and m40 which embeds Maven 4.0.0-alpha-x.
         asset: maven-mvnd-{{.Version}}-m39-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
@@ -60,7 +67,8 @@ packages:
         replacements:
           arm64: aarch64
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
@@ -68,7 +76,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "1.0.2"
-        url: https://gh-proxy.org/https://github.com/apache/maven-mvnd/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/apache/maven-mvnd/releases/download/{{.Version}}/maven-mvnd-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: maven-mvnd-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -78,7 +87,8 @@ packages:
         replacements:
           arm64: aarch64
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
@@ -86,7 +96,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.0.8")
-        url: https://gh-proxy.org/https://github.com/apache/maven-mvnd/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/apache/maven-mvnd/releases/download/{{.Version}}/mvnd-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: mvnd-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -99,7 +110,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.7.1")
-        url: https://gh-proxy.org/https://github.com/apache/maven-mvnd/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/apache/maven-mvnd/releases/download/{{.Version}}/mvnd-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: mvnd-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -108,7 +120,8 @@ packages:
           - name: mvnd
             src: "{{.AssetWithoutExt}}/bin/mvnd"
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
@@ -116,7 +129,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.8.1")
-        url: https://gh-proxy.org/https://github.com/apache/maven-mvnd/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/apache/maven-mvnd/releases/download/{{.Version}}/maven-mvnd-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: maven-mvnd-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -129,7 +143,8 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/apache/maven-mvnd/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/apache/maven-mvnd/releases/download/{{.Version}}/maven-mvnd-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: maven-mvnd-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true

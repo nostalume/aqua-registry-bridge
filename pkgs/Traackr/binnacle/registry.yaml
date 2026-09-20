@@ -7,25 +7,29 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.0.3")
-        url: https://gh-proxy.org/https://github.com/Traackr/binnacle/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Traackr/binnacle/releases/download/{{.Version}}/binnacle-{{.OS}}_{{.Arch}}.{{.Format}}
         asset: binnacle-{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Traackr/binnacle/releases/download/{{.Version}}/SHA256SUM.txt
           asset: SHA256SUM.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - windows
       - version_constraint: semver("<= 0.6.0")
-        url: https://gh-proxy.org/https://github.com/Traackr/binnacle/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Traackr/binnacle/releases/download/{{.Version}}/binnacle-{{.OS}}_{{.Arch}}.{{.Format}}
         asset: binnacle-{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Traackr/binnacle/releases/download/{{.Version}}/SHA256SUM.txt
           asset: SHA256SUM.txt
           algorithm: sha256
         supported_envs:
@@ -33,12 +37,14 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Traackr/binnacle/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Traackr/binnacle/releases/download/{{.Version}}/binnacle-{{.OS}}_{{.Arch}}.{{.Format}}
         asset: binnacle-{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Traackr/binnacle/releases/download/{{.Version}}/SHA256SUM.txt
           asset: SHA256SUM.txt
           algorithm: sha256
         supported_envs:

@@ -11,7 +11,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.34.1"
-        url: https://gh-proxy.org/https://github.com/bytecodealliance/wasmtime/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bytecodealliance/wasmtime/releases/download/{{.Version}}/wasmtime-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: wasmtime-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         rosetta2: true
@@ -20,13 +21,16 @@ packages:
           darwin: macos
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/bytecodealliance/wasmtime/releases/download/{{.Version}}/wasmtime-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
         supported_envs:
           - linux
           - darwin
       - version_constraint: Version == "cranelift-v0.60.0"
-        url: https://gh-proxy.org/https://github.com/bytecodealliance/wasmtime/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bytecodealliance/wasmtime/releases/download/{{.Version}}/wasmtime-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: wasmtime-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         rosetta2: true
@@ -36,13 +40,16 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bytecodealliance/wasmtime/releases/download/{{.Version}}/wasmtime-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.15.0")
-        url: https://gh-proxy.org/https://github.com/bytecodealliance/wasmtime/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bytecodealliance/wasmtime/releases/download/{{.Version}}/wasmtime-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: wasmtime-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         rosetta2: true
@@ -52,13 +59,16 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bytecodealliance/wasmtime/releases/download/{{.Version}}/wasmtime-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.36.0")
-        url: https://gh-proxy.org/https://github.com/bytecodealliance/wasmtime/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bytecodealliance/wasmtime/releases/download/{{.Version}}/wasmtime-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: wasmtime-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         rosetta2: true
@@ -68,12 +78,17 @@ packages:
           darwin: macos
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/bytecodealliance/wasmtime/releases/download/{{.Version}}/wasmtime-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bytecodealliance/wasmtime/releases/download/{{.Version}}/wasmtime-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 21.0.2")
-        url: https://gh-proxy.org/https://github.com/bytecodealliance/wasmtime/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bytecodealliance/wasmtime/releases/download/{{.Version}}/wasmtime-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: wasmtime-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -83,10 +98,13 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bytecodealliance/wasmtime/releases/download/{{.Version}}/wasmtime-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             replacements: {}
       - version_constraint: semver("<= 25.0.3")
-        url: https://gh-proxy.org/https://github.com/bytecodealliance/wasmtime/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bytecodealliance/wasmtime/releases/download/{{.Version}}/wasmtime-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: wasmtime-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -96,9 +114,12 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bytecodealliance/wasmtime/releases/download/{{.Version}}/wasmtime-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("< 28.0.0")
-        url: https://gh-proxy.org/https://github.com/bytecodealliance/wasmtime/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bytecodealliance/wasmtime/releases/download/{{.Version}}/wasmtime-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: wasmtime-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         replacements:
@@ -107,9 +128,12 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bytecodealliance/wasmtime/releases/download/{{.Version}}/wasmtime-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/bytecodealliance/wasmtime/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bytecodealliance/wasmtime/releases/download/{{.Version}}/wasmtime-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: wasmtime-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         github_artifact_attestations:
@@ -120,4 +144,6 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bytecodealliance/wasmtime/releases/download/{{.Version}}/wasmtime-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip

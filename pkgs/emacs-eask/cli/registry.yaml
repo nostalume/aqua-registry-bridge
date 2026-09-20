@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("<= 0.6.0")
         no_asset: true
       - version_constraint: semver("<= 0.9.3")
-        url: https://gh-proxy.org/https://github.com/emacs-eask/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/emacs-eask/cli/releases/download/{{.Version}}/eask_{{.Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: eask_{{.Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         files:
@@ -19,7 +20,8 @@ packages:
           darwin: macos
           windows: win
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/emacs-eask/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/emacs-eask/cli/releases/download/{{.Version}}/eask_{{.Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: eask_{{.Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -30,4 +32,6 @@ packages:
           windows: win
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/emacs-eask/cli/releases/download/{{.Version}}/eask_{{.Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip

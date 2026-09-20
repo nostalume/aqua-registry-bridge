@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/kurehajime/pong-command/releases/download/{{.Version}}/pong-command_{{trimV .Version}}_{{.OS}}_{{.Arch}}.zip
     repo_owner: kurehajime
     repo_name: pong-command
     description: pong is not ping. pong is CLI game
@@ -11,13 +12,18 @@ packages:
     replacements:
       amd64: x86_64
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/kurehajime/pong-command/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256
     version_overrides:
       - version_constraint: semver(">= 2.0.5")
+        type: http
+        url: https://gh-proxy.org/github.com/kurehajime/pong-command/releases/download/{{.Version}}/pong-command_{{trimV .Version}}_{{.OS}}_{{.Arch}}.zip
         supported_envs: []
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/kurehajime/pong-command/releases/download/{{.Version}}/{{.OS}}_{{.Arch}}.zip
         rosetta2: true
         asset: "{{.OS}}_{{.Arch}}.zip"
         supported_envs:

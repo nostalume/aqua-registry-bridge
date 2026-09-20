@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.0.1"
-        url: https://gh-proxy.org/https://github.com/buildpacks/pack/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/buildpacks/pack/releases/download/{{.Version}}/pack-{{.OS}}
         asset: pack-{{.OS}}
         format: raw
         replacements:
@@ -15,7 +16,8 @@ packages:
         supported_envs:
           - darwin
       - version_constraint: Version == "v0.0.3"
-        url: https://gh-proxy.org/https://github.com/buildpacks/pack/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/buildpacks/pack/releases/download/{{.Version}}/pack-{{.OS}}
         asset: pack-{{.OS}}
         format: raw
         replacements:
@@ -24,7 +26,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v0.0.4"
-        url: https://gh-proxy.org/https://github.com/buildpacks/pack/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/buildpacks/pack/releases/download/{{.Version}}/pack-{{.OS}}.{{.Format}}
         asset: pack-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -33,7 +36,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v0.0.5"
-        url: https://gh-proxy.org/https://github.com/buildpacks/pack/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/buildpacks/pack/releases/download/{{.Version}}/pack-{{trimV .Version}}-{{.OS}}.{{.Format}}
         asset: pack-{{trimV .Version}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -42,84 +46,108 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.0.9")
-        url: https://gh-proxy.org/https://github.com/buildpacks/pack/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/buildpacks/pack/releases/download/{{.Version}}/pack-{{trimV .Version}}-{{.OS}}.{{.Format}}
         asset: pack-{{trimV .Version}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/buildpacks/pack/releases/download/{{.Version}}/pack-{{trimV .Version}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.13.1")
-        url: https://gh-proxy.org/https://github.com/buildpacks/pack/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/buildpacks/pack/releases/download/{{.Version}}/pack-{{.Version}}-{{.OS}}.{{.Format}}
         asset: pack-{{.Version}}-{{.OS}}.{{.Format}}
         format: tgz
         replacements:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/buildpacks/pack/releases/download/{{.Version}}/pack-{{.Version}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.16.0")
-        url: https://gh-proxy.org/https://github.com/buildpacks/pack/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/buildpacks/pack/releases/download/{{.Version}}/pack-{{.Version}}-{{.OS}}.{{.Format}}
         asset: pack-{{.Version}}-{{.OS}}.{{.Format}}
         format: tgz
         replacements:
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/buildpacks/pack/releases/download/{{.Version}}/pack-{{.Version}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.24.1")
-        url: https://gh-proxy.org/https://github.com/buildpacks/pack/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/buildpacks/pack/releases/download/{{.Version}}/pack-{{.Version}}-{{.OS}}.{{.Format}}
         asset: pack-{{.Version}}-{{.OS}}.{{.Format}}
         format: tgz
         replacements:
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/buildpacks/pack/releases/download/{{.Version}}/pack-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             goarch: arm64
             asset: pack-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/buildpacks/pack/releases/download/{{.Version}}/pack-{{.Version}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/buildpacks/pack/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/buildpacks/pack/releases/download/{{.Version}}/pack-{{.Version}}-{{.OS}}.{{.Format}}
         asset: pack-{{.Version}}-{{.OS}}.{{.Format}}
         format: tgz
         replacements:
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/buildpacks/pack/releases/download/{{.Version}}/pack-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             goarch: arm64
             asset: pack-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/buildpacks/pack/releases/download/{{.Version}}/pack-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             goarch: arm64
             asset: pack-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/buildpacks/pack/releases/download/{{.Version}}/pack-{{.Version}}-{{.OS}}.{{.Format}}
             format: zip

@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version in ["v1.3.2", "v1.5.1"]
         no_asset: true
       - version_constraint: Version == "v1.8.5"
-        url: https://gh-proxy.org/https://github.com/fullstorydev/grpcurl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/fullstorydev/grpcurl/releases/download/{{.Version}}/grpcurl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: grpcurl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -18,14 +19,18 @@ packages:
           amd64: x86_64
           darwin: osx
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/fullstorydev/grpcurl/releases/download/{{.Version}}/grpcurl_{{trimV .Version}}_checksums.txt
           asset: grpcurl_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/fullstorydev/grpcurl/releases/download/{{.Version}}/grpcurl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 1.8.0")
-        url: https://gh-proxy.org/https://github.com/fullstorydev/grpcurl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/fullstorydev/grpcurl/releases/download/{{.Version}}/grpcurl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: grpcurl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -34,18 +39,22 @@ packages:
           amd64: x86_64
           darwin: osx
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/fullstorydev/grpcurl/releases/download/{{.Version}}/grpcurl_{{trimV .Version}}_checksums.txt
           asset: grpcurl_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/fullstorydev/grpcurl/releases/download/{{.Version}}/grpcurl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 1.8.2")
-        url: https://gh-proxy.org/https://github.com/fullstorydev/grpcurl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/fullstorydev/grpcurl/releases/download/{{.Version}}/grpcurl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: grpcurl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -54,16 +63,20 @@ packages:
           amd64: x86_64
           darwin: osx
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/fullstorydev/grpcurl/releases/download/{{.Version}}/grpcurl_{{trimV .Version}}_checksums.txt
           asset: grpcurl_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/fullstorydev/grpcurl/releases/download/{{.Version}}/grpcurl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 1.8.4")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/fullstorydev/grpcurl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/fullstorydev/grpcurl/releases/download/{{.Version}}/grpcurl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: grpcurl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -71,9 +84,12 @@ packages:
           amd64: x86_64
           darwin: osx
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/fullstorydev/grpcurl/releases/download/{{.Version}}/grpcurl_{{trimV .Version}}_checksums.txt
           asset: grpcurl_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/fullstorydev/grpcurl/releases/download/{{.Version}}/grpcurl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

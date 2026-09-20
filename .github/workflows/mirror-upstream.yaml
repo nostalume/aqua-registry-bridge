@@ -3,88 +3,135 @@ name: Mirror upstream aquaproj/aqua-registry
 
 on:
   schedule:
-    # Sync from upstream daily at 02:00 UTC
     - cron: "0 2 * * *"
   push:
-    branches:
-      - main
+    branches: [main]
     paths:
+      - .github/workflows/mirror-upstream.yaml
+      - aqua.yaml
       - mirror.yaml
+      - requirements-dev.txt
       - scripts/mirror.py
+      - scripts/validate.py
   workflow_dispatch:
     inputs:
       upstream_ref:
         type: string
-        description: "Upstream ref to sync from (default: main)"
+        description: Upstream tag, commit, or branch to import
         default: main
         required: false
 
-permissions: {}
+permissions:
+  contents: read
+
+concurrency:
+  group: mirror-upstream
+  cancel-in-progress: false
 
 jobs:
-  mirror-upstream:
-    name: Sync upstream and re-apply mirror URLs
+  prepare:
+    name: Build and validate snapshot
     runs-on: ubuntu-24.04
     timeout-minutes: 30
+    steps:
+      - name: Check out bridge source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Check out upstream registry
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: aquaproj/aqua-registry
+          ref: ${{ inputs.upstream_ref || 'main' }}
+          path: .upstream/registry
+          persist-credentials: false
+      - name: Check out aqua schema
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: aquaproj/aqua
+          ref: c76aafc5ccc7eee49a6f1a3a1249df69de45a4da
+          path: .ai/aqua
+          persist-credentials: false
+      - name: Install Python dependencies
+        run: python3 -m pip install --requirement requirements-dev.txt
+      - name: Set up aqua tools
+        uses: aquaproj/aqua-installer@96a9bc20066c5bf5e275b41019cfc165b25f4e2e # v4.0.5
+        with:
+          aqua_version: v2.63.0
+          aqua_opts: -l
+          policy_allow: "true"
+      - name: Build snapshot
+        env:
+          STAGE: ${{ runner.temp }}/bridge
+        run: |
+          mkdir -p "$STAGE"
+          cp -R .upstream/registry/pkgs "$STAGE/pkgs"
+          cp mirror.yaml "$STAGE/mirror.yaml"
+          git -C .upstream/registry rev-parse HEAD > "$STAGE/upstream.sha"
+          python3 scripts/mirror.py --repo-root "$STAGE" --config "$GITHUB_WORKSPACE/mirror.yaml"
+          (cd "$STAGE" && argd gr)
+          python3 scripts/validate.py --repo-root "$STAGE" --schema .ai/aqua/json-schema/registry.json
+          tar -czf "$RUNNER_TEMP/bridge.tar.gz" -C "$STAGE" pkgs registry.yaml upstream.sha
+          (cd "$RUNNER_TEMP" && sha256sum bridge.tar.gz > bridge.tar.gz.sha256)
+      - name: Upload validated snapshot
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: validated-registry
+          path: |
+            ${{ runner.temp }}/bridge.tar.gz
+            ${{ runner.temp }}/bridge.tar.gz.sha256
+          retention-days: 3
+
+  publish:
+    name: Publish immutable registry tag
+    needs: prepare
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          persist-credentials: true
           fetch-depth: 0
-
-      - name: Configure git
-        run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Install dependencies
-        run: pip install pyyaml --break-system-packages -q
-
-      - name: Clone upstream repository
+          persist-credentials: true
+      - name: Download validated snapshot
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: validated-registry
+          path: ${{ runner.temp }}/artifact
+      - name: Apply snapshot
         env:
-          UPSTREAM_REF: ${{ inputs.upstream_ref || 'main' }}
+          ARTIFACT: ${{ runner.temp }}/artifact
+          STAGE: ${{ runner.temp }}/publish
         run: |
-          git clone --depth 1 --branch "${UPSTREAM_REF}" https://github.com/aquaproj/aqua-registry.git /tmp/upstream
-
-      - name: Copy upstream files
+          (cd "$ARTIFACT" && sha256sum --check bridge.tar.gz.sha256)
+          mkdir -p "$STAGE"
+          tar -xzf "$ARTIFACT/bridge.tar.gz" -C "$STAGE"
+          rsync --archive --delete "$STAGE/pkgs/" pkgs/
+          cp "$STAGE/registry.yaml" registry.yaml
+          echo "UPSTREAM_SHA=$(cat "$STAGE/upstream.sha")" >> "$GITHUB_ENV"
+      - name: Commit and publish
         run: |
-          cp /tmp/upstream/registry.yaml ./registry.yaml
-          rm -rf ./pkgs
-          cp -r /tmp/upstream/pkgs ./pkgs
-          rm -rf /tmp/upstream
-
-      - name: Re-apply mirror URL replacements
-        run: python3 scripts/mirror.py
-
-      - name: Commit mirror re-application
-        run: |
-          if git diff --quiet; then
-            echo "No mirror changes needed."
-          else
-            git add pkgs/ registry.yaml
-            git commit -m "chore: sync from upstream"
+          if [ -z "$(git status --porcelain -- pkgs registry.yaml)" ]; then
+            echo "Upstream snapshot is unchanged."
+            exit 0
           fi
 
-      - name: Push changes
-        run: git push --force-with-lease
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- pkgs registry.yaml
+          git commit -m "chore: sync upstream ${UPSTREAM_SHA}"
 
-      - name: Create and push mirror tag
-        run: |
-          TAG="mirror-$(date -u +%Y%m%d)"
-          # Delete the tag if it already exists (idempotent daily re-run)
-          git tag -d "${TAG}" 2>/dev/null || true
-          git push origin ":refs/tags/${TAG}" 2>/dev/null || true
-          git tag "${TAG}"
-          git push origin "${TAG}"
-          echo "TAG=${TAG}" >> "$GITHUB_ENV"
-          echo "Pushed tag ${TAG}"
+          tag="mirror-$(date -u +%Y%m%d)"
+          existing="$(git ls-remote --tags origin "refs/tags/$tag" | cut -f1)"
+          if [ -n "$existing" ] && [ "$existing" != "$(git rev-parse HEAD)" ]; then
+            echo "Refusing to move immutable tag $tag from $existing." >&2
+            exit 1
+          fi
 
-      - name: Create GitHub Release for mirror tag
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ env.TAG }}
-          name: "Mirror ${{ env.TAG }}"
-          body: "Automated mirror of aquaproj/aqua-registry synced on ${{ env.TAG }}."
-          make_latest: true
+          if [ -z "$existing" ]; then
+            git tag "$tag"
+            git push --atomic origin HEAD:main "refs/tags/$tag"
+          else
+            git push origin HEAD:main
+          fi

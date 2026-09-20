@@ -11,9 +11,11 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Shopify/kubeaudit/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Shopify/kubeaudit/releases/download/{{.Version}}/kubeaudit_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
         asset: kubeaudit_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Shopify/kubeaudit/releases/download/{{.Version}}/kubeaudit_{{trimV .Version}}_checksums.txt
           asset: kubeaudit_{{trimV .Version}}_checksums.txt
           algorithm: sha256

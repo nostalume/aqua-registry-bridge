@@ -1,12 +1,15 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/ajeetdsouza/zoxide/releases/download/{{.Version}}/zoxide-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
     repo_owner: ajeetdsouza
     repo_name: zoxide
     description: A smarter cd command. Supports all major shells
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/ajeetdsouza/zoxide/releases/download/{{.Version}}/zoxide-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
     replacements:
       windows: pc-windows-msvc
@@ -18,5 +21,6 @@ packages:
     asset: zoxide-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/ajeetdsouza/zoxide/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ajeetdsouza/zoxide/releases/download/{{.Version}}/zoxide-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: zoxide-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}

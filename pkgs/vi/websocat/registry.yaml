@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/vi/websocat/releases/download/{{.Version}}/websocat.{{.Arch}}-{{.OS}}
     repo_owner: vi
     repo_name: websocat
     description: "Command-line client for WebSockets, like netcat (or curl) for ws:// with advanced socat-like functions"
@@ -20,6 +21,8 @@ packages:
       arm64: aarch64
     version_overrides:
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/vi/websocat/releases/download/{{.Version}}/websocat_{{.OS}}
         supported_envs:
           - darwin
           - amd64

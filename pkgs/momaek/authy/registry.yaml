@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/momaek/authy/releases/download/{{.Version}}/authy.tar.gz
     repo_owner: momaek
     repo_name: authy
     description: TOTP Alfred Workflow, Authy Aflred Workflow, Authy command line tool

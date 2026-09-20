@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.1.4")
-        url: https://gh-proxy.org/https://github.com/microsoft/tgrep/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/microsoft/tgrep/releases/download/{{.Version}}/tgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: tgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -18,14 +19,18 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/microsoft/tgrep/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/microsoft/tgrep/releases/download/{{.Version}}/tgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.1.9")
-        url: https://gh-proxy.org/https://github.com/microsoft/tgrep/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/microsoft/tgrep/releases/download/{{.Version}}/tgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: tgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -35,14 +40,18 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/microsoft/tgrep/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/microsoft/tgrep/releases/download/{{.Version}}/tgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/microsoft/tgrep/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/microsoft/tgrep/releases/download/{{.Version}}/tgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: tgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -52,9 +61,12 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/microsoft/tgrep/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/microsoft/tgrep/releases/download/{{.Version}}/tgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip

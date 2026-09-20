@@ -7,26 +7,30 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.0.2")
-        url: https://gh-proxy.org/https://github.com/cloudposse/atmos/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cloudposse/atmos/releases/download/{{.Version}}/atmos
         asset: atmos
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 0.10.0")
         no_asset: true
       - version_constraint: semver("<= 0.13.0")
-        url: https://gh-proxy.org/https://github.com/cloudposse/atmos/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cloudposse/atmos/releases/download/{{.Version}}/atmos
         asset: atmos
         supported_envs:
           - linux/amd64
       - version_constraint: Version == "0.14.0"
         no_asset: true
       - version_constraint: semver("<= 0.17.0")
-        url: https://gh-proxy.org/https://github.com/cloudposse/atmos/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cloudposse/atmos/releases/download/{{.Version}}/atmos
         asset: atmos
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 0.21.0")
-        url: https://gh-proxy.org/https://github.com/cloudposse/atmos/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cloudposse/atmos/releases/download/{{.Version}}/atmos_{{.Version}}_{{.OS}}_{{.Arch}}
         asset: atmos_{{.Version}}_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
@@ -34,72 +38,87 @@ packages:
           - linux
           - darwin
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/cloudposse/atmos/releases/download/{{.Version}}/atmos_{{.Version}}_SHA256SUMS
           asset: atmos_{{.Version}}_SHA256SUMS
           algorithm: sha256
       - version_constraint: semver("<= 0.22.0")
-        url: https://gh-proxy.org/https://github.com/cloudposse/atmos/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cloudposse/atmos/releases/download/{{.Version}}/atmos_{{.Version}}_{{.OS}}_{{.Arch}}
         asset: atmos_{{.Version}}_{{.OS}}_{{.Arch}}
         format: raw
         supported_envs:
           - linux
           - darwin
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/cloudposse/atmos/releases/download/{{.Version}}/atmos_{{.Version}}_SHA256SUMS
           asset: atmos_{{.Version}}_SHA256SUMS
           algorithm: sha256
       - version_constraint: semver("<= 1.3.6")
-        url: https://gh-proxy.org/https://github.com/cloudposse/atmos/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cloudposse/atmos/releases/download/{{.Version}}/atmos_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         asset: atmos_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/cloudposse/atmos/releases/download/{{.Version}}/atmos_{{trimV .Version}}_SHA256SUMS
           asset: atmos_{{trimV .Version}}_SHA256SUMS
           algorithm: sha256
       - version_constraint: semver("<= 1.3.27")
-        url: https://gh-proxy.org/https://github.com/cloudposse/atmos/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cloudposse/atmos/releases/download/{{.Version}}/atmos_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         asset: atmos_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/cloudposse/atmos/releases/download/{{.Version}}/atmos_{{trimV .Version}}_SHA256SUMS
           asset: atmos_{{trimV .Version}}_SHA256SUMS
           algorithm: sha256
       - version_constraint: Version == "1.3.28"
-        url: https://gh-proxy.org/https://github.com/cloudposse/atmos/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cloudposse/atmos/releases/download/{{.Version}}/atmos_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         asset: atmos_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/cloudposse/atmos/releases/download/{{.Version}}/atmos_{{.Version}}_SHA256SUMS
           asset: atmos_{{.Version}}_SHA256SUMS
           algorithm: sha256
       - version_constraint: Version == "v1.3.28"
         no_asset: true
       - version_constraint: semver("<= 1.4.20")
-        url: https://gh-proxy.org/https://github.com/cloudposse/atmos/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cloudposse/atmos/releases/download/{{.Version}}/atmos_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         asset: atmos_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/cloudposse/atmos/releases/download/{{.Version}}/atmos_{{trimV .Version}}_SHA256SUMS
           asset: atmos_{{trimV .Version}}_SHA256SUMS
           algorithm: sha256
       - version_constraint: semver("<= 1.18.0")
-        url: https://gh-proxy.org/https://github.com/cloudposse/atmos/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cloudposse/atmos/releases/download/{{.Version}}/atmos_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         asset: atmos_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/cloudposse/atmos/releases/download/{{.Version}}/atmos_{{trimV .Version}}_SHA256SUMS
           asset: atmos_{{trimV .Version}}_SHA256SUMS
           algorithm: sha256
       - version_constraint: Version == "v1.19.0"
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/cloudposse/atmos/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cloudposse/atmos/releases/download/{{.Version}}/atmos_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         asset: atmos_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/cloudposse/atmos/releases/download/{{.Version}}/atmos_{{trimV .Version}}_SHA256SUMS
           asset: atmos_{{trimV .Version}}_SHA256SUMS
           algorithm: sha256

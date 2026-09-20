@@ -14,7 +14,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.1.8"
-        url: https://gh-proxy.org/https://github.com/trzsz/trzsz-go/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/trzsz/trzsz-go/releases/download/{{.Version}}/trzsz_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: trzsz_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -23,9 +24,12 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/trzsz/trzsz-go/releases/download/{{.Version}}/trzsz_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.1.7")
-        url: https://gh-proxy.org/https://github.com/trzsz/trzsz-go/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/trzsz/trzsz-go/releases/download/{{.Version}}/trzsz_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: trzsz_{{.OS}}_{{.Arch}}.{{.Format}}
         files:
           - name: trzsz
@@ -44,7 +48,8 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/trzsz/trzsz-go/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/trzsz/trzsz-go/releases/download/{{.Version}}/trzsz_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: trzsz_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -52,9 +57,12 @@ packages:
           arm64: aarch64
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/trzsz/trzsz-go/releases/download/{{.Version}}/trzsz_{{trimV .Version}}_checksums.txt
           asset: trzsz_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/trzsz/trzsz-go/releases/download/{{.Version}}/trzsz_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v1.20.1"
-        url: https://gh-proxy.org/https://github.com/stern/stern/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stern/stern/releases/download/{{.Version}}/stern_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: stern_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -16,11 +17,13 @@ packages:
           - name: stern
             src: "{{.AssetWithoutExt}}/stern"
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/stern/stern/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 1.14.0")
-        url: https://gh-proxy.org/https://github.com/stern/stern/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stern/stern/releases/download/{{.Version}}/stern_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: stern_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -29,11 +32,13 @@ packages:
           - name: stern
             src: "{{.AssetWithoutExt}}/stern"
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/stern/stern/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 1.20.0")
-        url: https://gh-proxy.org/https://github.com/stern/stern/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stern/stern/releases/download/{{.Version}}/stern_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: stern_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -41,14 +46,17 @@ packages:
           - name: stern
             src: "{{.AssetWithoutExt}}/stern"
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/stern/stern/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/stern/stern/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stern/stern/releases/download/{{.Version}}/stern_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: stern_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/stern/stern/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

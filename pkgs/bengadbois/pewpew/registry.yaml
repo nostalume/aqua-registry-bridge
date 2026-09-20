@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version == "v0.3"
         no_asset: true
       - version_constraint: semver("< 1.1.0")
-        url: https://gh-proxy.org/https://github.com/bengadbois/pewpew/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bengadbois/pewpew/releases/download/{{.Version}}/{{.OS}}_{{.Arch}}.{{.Format}}
         asset: "{{.OS}}_{{.Arch}}.{{.Format}}"
         format: tar.gz
         rosetta2: true
@@ -22,12 +23,14 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/bengadbois/pewpew/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bengadbois/pewpew/releases/download/{{.Version}}/pewpew_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: pewpew_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: pewpew
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/bengadbois/pewpew/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 2.0.14")
-        url: https://gh-proxy.org/https://github.com/phrase/phrase-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/phrase/phrase-cli/releases/download/{{.Version}}/phrase_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: phrase_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -21,9 +22,13 @@ packages:
             src: phrase_{{.OS}}_{{.Arch}}
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/phrase/phrase-cli/releases/download/{{.Version}}/phrase_{{.OS}}_{{.Arch}}.{{.Format}}
             files:
               - name: phrase
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/phrase/phrase-cli/releases/download/{{.Version}}/phrase_{{.OS}}_{{.Arch}}.exe.{{.Format}}
             format: zip
             asset: phrase_{{.OS}}_{{.Arch}}.exe.{{.Format}}
         supported_envs:
@@ -33,7 +38,8 @@ packages:
       - version_constraint: Version == "2.0.15-alpine-alpha9"
         no_asset: true
       - version_constraint: semver("<= 2.0.28")
-        url: https://gh-proxy.org/https://github.com/phrase/phrase-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/phrase/phrase-cli/releases/download/{{.Version}}/phrase_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: phrase_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -45,9 +51,13 @@ packages:
             src: phrase_{{.OS}}_{{.Arch}}
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/phrase/phrase-cli/releases/download/{{.Version}}/phrase_{{.OS}}_{{.Arch}}.{{.Format}}
             files:
               - name: phrase
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/phrase/phrase-cli/releases/download/{{.Version}}/phrase_{{.OS}}_{{.Arch}}.exe.{{.Format}}
             format: zip
             asset: phrase_{{.OS}}_{{.Arch}}.exe.{{.Format}}
         supported_envs:
@@ -55,7 +65,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "2.1.1"
-        url: https://gh-proxy.org/https://github.com/phrase/phrase-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/phrase/phrase-cli/releases/download/{{.Version}}/phrase_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: phrase_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -66,13 +77,19 @@ packages:
             src: phrase_{{.OS}}_{{.Arch}}
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/phrase/phrase-cli/releases/download/{{.Version}}/phrase_{{.OS}}_{{.Arch}}
             goarch: arm64
             format: raw
             asset: phrase_{{.OS}}_{{.Arch}}
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/phrase/phrase-cli/releases/download/{{.Version}}/phrase_{{.OS}}_{{.Arch}}.{{.Format}}
             files:
               - name: phrase
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/phrase/phrase-cli/releases/download/{{.Version}}/phrase_{{.OS}}_{{.Arch}}.exe.{{.Format}}
             format: zip
             asset: phrase_{{.OS}}_{{.Arch}}.exe.{{.Format}}
         supported_envs:
@@ -80,7 +97,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 2.4.1")
-        url: https://gh-proxy.org/https://github.com/phrase/phrase-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/phrase/phrase-cli/releases/download/{{.Version}}/phrase_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: phrase_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -91,9 +109,13 @@ packages:
             src: phrase_{{.OS}}_{{.Arch}}
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/phrase/phrase-cli/releases/download/{{.Version}}/phrase_{{.OS}}_{{.Arch}}.{{.Format}}
             files:
               - name: phrase
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/phrase/phrase-cli/releases/download/{{.Version}}/phrase_{{.OS}}_{{.Arch}}.exe.{{.Format}}
             format: zip
             asset: phrase_{{.OS}}_{{.Arch}}.exe.{{.Format}}
         supported_envs:
@@ -101,7 +123,8 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/phrase/phrase-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/phrase/phrase-cli/releases/download/{{.Version}}/phrase_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: phrase_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -112,12 +135,18 @@ packages:
             src: phrase_{{.OS}}_{{.Arch}}
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/phrase/phrase-cli/releases/download/{{.Version}}/phrase_{{.OS}}_{{.Arch}}
             goarch: arm64
             format: raw
             asset: phrase_{{.OS}}_{{.Arch}}
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/phrase/phrase-cli/releases/download/{{.Version}}/phrase_{{.OS}}_{{.Arch}}.{{.Format}}
             files:
               - name: phrase
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/phrase/phrase-cli/releases/download/{{.Version}}/phrase_{{.OS}}_{{.Arch}}.exe.{{.Format}}
             format: zip
             asset: phrase_{{.OS}}_{{.Arch}}.exe.{{.Format}}

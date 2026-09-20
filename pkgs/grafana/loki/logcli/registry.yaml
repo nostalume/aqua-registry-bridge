@@ -1,7 +1,8 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
   - name: grafana/loki/logcli
-    type: github_release
+    type: http
+    url: https://gh-proxy.org/github.com/grafana/loki/releases/download/{{.Version}}/logcli-{{.OS}}-{{.Arch}}.zip
     repo_owner: grafana
     repo_name: loki
     description: LogCLI is the command-line interface to Grafana Loki
@@ -12,11 +13,14 @@ packages:
     asset: logcli-{{.OS}}-{{.Arch}}.zip
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/grafana/loki/releases/download/{{.Version}}/logcli-{{.OS}}-{{.Arch}}.exe.zip
         asset: logcli-{{.OS}}-{{.Arch}}.exe.zip
     files:
       - name: logcli
         src: logcli-{{.OS}}-{{.Arch}}
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/grafana/loki/releases/download/{{.Version}}/SHA256SUMS
       asset: SHA256SUMS
       algorithm: sha256

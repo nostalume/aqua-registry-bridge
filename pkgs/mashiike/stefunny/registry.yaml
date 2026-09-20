@@ -6,18 +6,22 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.8.4")
-        url: https://gh-proxy.org/https://github.com/mashiike/stefunny/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mashiike/stefunny/releases/download/{{.Version}}/stefunny_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: stefunny_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/mashiike/stefunny/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/mashiike/stefunny/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mashiike/stefunny/releases/download/{{.Version}}/stefunny_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: stefunny_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/mashiike/stefunny/releases/download/{{.Version}}/stefunny_{{trimV .Version}}_checksums.txt
           asset: stefunny_{{trimV .Version}}_checksums.txt
           algorithm: sha256

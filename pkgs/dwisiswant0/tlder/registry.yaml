@@ -7,25 +7,31 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.0.1")
-        url: https://gh-proxy.org/https://github.com/dwisiswant0/tlder/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dwisiswant0/tlder/releases/download/{{.Version}}/tlder_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tlder_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           darwin: macOS
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/dwisiswant0/tlder/releases/download/{{.Version}}/tlder_{{trimV .Version}}_checksums.txt
           asset: tlder_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dwisiswant0/tlder/releases/download/{{.Version}}/tlder_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/dwisiswant0/tlder/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dwisiswant0/tlder/releases/download/{{.Version}}/tlder_{{.Version}}-{{.OS}}_{{.Arch}}
         asset: tlder_{{.Version}}-{{.OS}}_{{.Arch}}
         format: raw
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/dwisiswant0/tlder/releases/download/{{.Version}}/tlder_{{trimV .Version}}_checksums.txt
           asset: tlder_{{trimV .Version}}_checksums.txt
           algorithm: sha256

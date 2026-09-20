@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/xitonix/trubka/releases/download/{{.Version}}/trubka_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
     repo_owner: xitonix
     repo_name: trubka
     description: A CLI tool for Kafka

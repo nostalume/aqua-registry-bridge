@@ -11,7 +11,8 @@ packages:
       - version_constraint: semver("<= 0.4.15")
         no_asset: true
       - version_constraint: semver("<= 0.10.9")
-        url: https://gh-proxy.org/https://github.com/alexpasmantier/television/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/alexpasmantier/television/releases/download/{{.Version}}/tv-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: tv-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -19,11 +20,13 @@ packages:
           amd64: x86_64
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/alexpasmantier/television/releases/download/{{.Version}}/tv-{{.Version}}-{{.OS}}-{{.Arch}}.sha256
           asset: "tv-{{.Version}}-{{.OS}}-{{.Arch}}.sha256"
           algorithm: sha256
       - version_constraint: semver("<= 0.11.3")
-        url: https://gh-proxy.org/https://github.com/alexpasmantier/television/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/alexpasmantier/television/releases/download/{{.Version}}/tv-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: tv-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -34,11 +37,13 @@ packages:
           amd64: x86_64
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/alexpasmantier/television/releases/download/{{.Version}}/tv-{{.Version}}-{{.OS}}-{{.Arch}}.sha256
           asset: "tv-{{.Version}}-{{.OS}}-{{.Arch}}.sha256"
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/alexpasmantier/television/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/alexpasmantier/television/releases/download/{{.Version}}/tv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: tv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -51,15 +56,20 @@ packages:
           darwin: apple-darwin
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/alexpasmantier/television/releases/download/{{.Version}}/tv-{{.Version}}-{{.Arch}}-{{.OS}}.sha256
           asset: tv-{{.Version}}-{{.Arch}}-{{.OS}}.sha256
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/alexpasmantier/television/releases/download/{{.Version}}/tv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/alexpasmantier/television/releases/download/{{.Version}}/tv-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu

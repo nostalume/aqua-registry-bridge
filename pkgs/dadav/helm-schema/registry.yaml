@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.4.2")
-        url: https://gh-proxy.org/https://github.com/dadav/helm-schema/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dadav/helm-schema/releases/download/{{.Version}}/helm-schema_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: helm-schema_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -16,14 +17,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/dadav/helm-schema/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dadav/helm-schema/releases/download/{{.Version}}/helm-schema_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: Version == "0.4.3"
-        url: https://gh-proxy.org/https://github.com/dadav/helm-schema/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dadav/helm-schema/releases/download/{{.Version}}/helm-schema_.{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: helm-schema_.{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         # Checksum file is broken
@@ -34,9 +39,12 @@ packages:
           windows: Windows
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dadav/helm-schema/releases/download/{{.Version}}/helm-schema_.{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/dadav/helm-schema/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dadav/helm-schema/releases/download/{{.Version}}/helm-schema_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: helm-schema_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -45,9 +53,12 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/dadav/helm-schema/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dadav/helm-schema/releases/download/{{.Version}}/helm-schema_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

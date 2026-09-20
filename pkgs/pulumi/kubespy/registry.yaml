@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/pulumi/kubespy/releases/download/{{.Version}}/kubespy-{{.Version}}-{{.OS}}-{{.Arch}}.tar.gz
     repo_owner: pulumi
     repo_name: kubespy
     description: Tools for observing Kubernetes resources in real time, powered by Pulumi
@@ -10,12 +11,17 @@ packages:
       - amd64
     asset: kubespy-{{.Version}}-{{.OS}}-{{.Arch}}.tar.gz
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/pulumi/kubespy/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256
     version_constraint: semver(">= 0.6.1")
     version_overrides:
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/pulumi/kubespy/releases/download/{{.Version}}/kubespy-{{.Version}}-{{.OS}}-{{.Arch}}.tar.gz
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/pulumi/kubespy/releases/download/{{.Version}}/kubespy.exe-{{.Version}}-{{.OS}}-{{.Arch}}.tar.gz
             asset: kubespy.exe-{{.Version}}-{{.OS}}-{{.Arch}}.tar.gz

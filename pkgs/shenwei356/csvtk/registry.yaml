@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/shenwei356/csvtk/releases/download/{{.Version}}/csvtk_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: shenwei356
     repo_name: csvtk
     asset: csvtk_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -8,6 +9,8 @@ packages:
     description: A cross-platform, efficient and practical CSV/TSV toolkit in Golang
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/shenwei356/csvtk/releases/download/{{.Version}}/csvtk_{{.OS}}_{{.Arch}}.exe.{{.Format}}
         asset: csvtk_{{.OS}}_{{.Arch}}.exe.{{.Format}}
     supported_envs:
       - darwin

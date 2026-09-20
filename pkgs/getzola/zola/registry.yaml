@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.0.2"
-        url: https://gh-proxy.org/https://github.com/getzola/zola/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/getzola/zola/releases/download/{{.Version}}/gutenberg-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: gutenberg-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -21,7 +22,8 @@ packages:
         files:
           - name: gutenberg
       - version_constraint: semver("<= 0.0.7")
-        url: https://gh-proxy.org/https://github.com/getzola/zola/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/getzola/zola/releases/download/{{.Version}}/gutenberg-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: gutenberg-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -33,6 +35,8 @@ packages:
           windows: pc-windows-gnu
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/getzola/zola/releases/download/{{.Version}}/gutenberg-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
@@ -41,7 +45,8 @@ packages:
         files:
           - name: gutenberg
       - version_constraint: semver("<= 0.4.2")
-        url: https://gh-proxy.org/https://github.com/getzola/zola/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/getzola/zola/releases/download/{{.Version}}/gutenberg-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: gutenberg-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -53,6 +58,8 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/getzola/zola/releases/download/{{.Version}}/gutenberg-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
@@ -61,7 +68,8 @@ packages:
         files:
           - name: gutenberg
       - version_constraint: Version == "v0.9.0"
-        url: https://gh-proxy.org/https://github.com/getzola/zola/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/getzola/zola/releases/download/{{.Version}}/zola-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: zola-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -76,7 +84,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.17.2")
-        url: https://gh-proxy.org/https://github.com/getzola/zola/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/getzola/zola/releases/download/{{.Version}}/zola-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: zola-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -88,13 +97,16 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/getzola/zola/releases/download/{{.Version}}/zola-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("< 0.20.0")
-        url: https://gh-proxy.org/https://github.com/getzola/zola/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/getzola/zola/releases/download/{{.Version}}/zola-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: zola-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -105,16 +117,21 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/getzola/zola/releases/download/{{.Version}}/zola-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/getzola/zola/releases/download/{{.Version}}/zola-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/getzola/zola/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/getzola/zola/releases/download/{{.Version}}/zola-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: zola-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -126,6 +143,8 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/getzola/zola/releases/download/{{.Version}}/zola-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         github_artifact_attestations:
           signer_workflow: getzola/zola/.github/workflows/release.yml

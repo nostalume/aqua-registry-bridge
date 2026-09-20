@@ -10,7 +10,8 @@ packages:
       - version_constraint: Version == "v0.12.0"
         no_asset: true
       - version_constraint: semver("<= 0.8.0")
-        url: https://gh-proxy.org/https://github.com/domoritz/arrow-tools/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/domoritz/arrow-tools/releases/download/{{.Version}}/json2parquet-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: json2parquet-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         rosetta2: true
@@ -25,6 +26,8 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/domoritz/arrow-tools/releases/download/{{.Version}}/json2parquet-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: json2parquet
@@ -33,7 +36,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "v0.8.1"
-        url: https://gh-proxy.org/https://github.com/domoritz/arrow-tools/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/domoritz/arrow-tools/releases/download/{{.Version}}/json2parquet-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: json2parquet-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         rosetta2: true
@@ -48,6 +52,8 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/domoritz/arrow-tools/releases/download/{{.Version}}/json2parquet-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: json2parquet
@@ -56,7 +62,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.11.0")
-        url: https://gh-proxy.org/https://github.com/domoritz/arrow-tools/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/domoritz/arrow-tools/releases/download/{{.Version}}/json2parquet-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: json2parquet-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -70,9 +77,13 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/domoritz/arrow-tools/releases/download/{{.Version}}/json2parquet-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/domoritz/arrow-tools/releases/download/{{.Version}}/json2parquet-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: json2parquet
@@ -81,7 +92,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.13.0")
-        url: https://gh-proxy.org/https://github.com/domoritz/arrow-tools/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/domoritz/arrow-tools/releases/download/{{.Version}}/json2parquet-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: json2parquet-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -95,9 +107,13 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/domoritz/arrow-tools/releases/download/{{.Version}}/json2parquet-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/domoritz/arrow-tools/releases/download/{{.Version}}/json2parquet-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: json2parquet
@@ -106,7 +122,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "v0.14.1"
-        url: https://gh-proxy.org/https://github.com/domoritz/arrow-tools/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/domoritz/arrow-tools/releases/download/{{.Version}}/json2parquet-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: json2parquet-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -119,14 +136,19 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/domoritz/arrow-tools/releases/download/{{.Version}}/json2parquet-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/domoritz/arrow-tools/releases/download/{{.Version}}/json2parquet-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: json2parquet
@@ -135,7 +157,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.22.3")
-        url: https://gh-proxy.org/https://github.com/domoritz/arrow-tools/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/domoritz/arrow-tools/releases/download/{{.Version}}/json2parquet-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: json2parquet-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -148,14 +171,19 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/domoritz/arrow-tools/releases/download/{{.Version}}/json2parquet-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/domoritz/arrow-tools/releases/download/{{.Version}}/json2parquet-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: json2parquet
@@ -164,7 +192,8 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/domoritz/arrow-tools/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/domoritz/arrow-tools/releases/download/{{.Version}}/json2parquet-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: json2parquet-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         files:
@@ -172,6 +201,8 @@ packages:
             src: "{{.AssetWithoutExt}}/json2parquet"
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/domoritz/arrow-tools/releases/download/{{.Version}}/json2parquet-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               amd64: x86_64
         replacements:
@@ -182,6 +213,7 @@ packages:
           - linux
           - darwin/arm64
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256

@@ -14,7 +14,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.0.5")
-        url: https://gh-proxy.org/https://github.com/tofuutils/tenv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tofuutils/tenv/releases/download/{{.Version}}/tenv_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tenv_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         files:
@@ -22,11 +23,13 @@ packages:
           - name: terraform
           - name: tofu
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/tofuutils/tenv/releases/download/{{.Version}}/tenv_{{trimV .Version}}_checksums.txt
           asset: tenv_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: Version == "v1.0.6"
-        url: https://gh-proxy.org/https://github.com/tofuutils/tenv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tofuutils/tenv/releases/download/{{.Version}}/tenv_.{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tenv_.{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -35,6 +38,8 @@ packages:
           - name: tofu
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/tofuutils/tenv/releases/download/{{.Version}}/tenv_.{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64
@@ -44,7 +49,8 @@ packages:
         checksum:
           enabled: false
       - version_constraint: Version == "v1.0.7"
-        url: https://gh-proxy.org/https://github.com/tofuutils/tenv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tofuutils/tenv/releases/download/{{.Version}}/tenv_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tenv_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -53,6 +59,8 @@ packages:
           - name: tofu
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/tofuutils/tenv/releases/download/{{.Version}}/tenv_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64
@@ -60,10 +68,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/tofuutils/tenv/releases/download/{{.Version}}/tenv_{{.Version}}_checksums.txt
           asset: tenv_{{.Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 1.1.1")
+        type: http
+        url: https://gh-proxy.org/github.com/tofuutils/tenv/releases/download/{{.Version}}/tenv_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         # 1.0.8 terragrunt
         asset: tenv_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
@@ -74,6 +85,8 @@ packages:
           - name: terragrunt
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/tofuutils/tenv/releases/download/{{.Version}}/tenv_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64
@@ -81,10 +94,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/tofuutils/tenv/releases/download/{{.Version}}/tenv_{{.Version}}_checksums.txt
           asset: tenv_{{.Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 1.10.2")
+        type: http
+        url: https://gh-proxy.org/github.com/tofuutils/tenv/releases/download/{{.Version}}/tenv_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         # 1.2.0 tf
         asset: tenv_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
@@ -96,6 +112,8 @@ packages:
           - name: tf
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/tofuutils/tenv/releases/download/{{.Version}}/tenv_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64
@@ -103,10 +121,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/tofuutils/tenv/releases/download/{{.Version}}/tenv_{{.Version}}_checksums.txt
           asset: tenv_{{.Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 1.11.19")
+        type: http
+        url: https://gh-proxy.org/github.com/tofuutils/tenv/releases/download/{{.Version}}/tenv_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         # 1.11.0 atmos
         asset: tenv_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
@@ -119,6 +140,8 @@ packages:
           - name: atmos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/tofuutils/tenv/releases/download/{{.Version}}/tenv_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64
@@ -126,11 +149,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/tofuutils/tenv/releases/download/{{.Version}}/tenv_{{.Version}}_checksums.txt
           asset: tenv_{{.Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/tofuutils/tenv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tofuutils/tenv/releases/download/{{.Version}}/tenv_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tenv_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -142,6 +167,8 @@ packages:
           - name: atmos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/tofuutils/tenv/releases/download/{{.Version}}/tenv_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64
@@ -149,16 +176,17 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/tofuutils/tenv/releases/download/{{.Version}}/tenv_{{.Version}}_checksums.txt
           asset: tenv_{{.Version}}_checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate-identity
-              - https://github.com/tofuutils/tenv/.github/workflows/release.yml@refs/tags/{{.Version}}
+              - https://gh-proxy.org/github.com/tofuutils/tenv/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/tofuutils/tenv/releases/download/{{.Version}}/tenv_{{.Version}}_checksums.txt.sig
+              - https://gh-proxy.org/github.com/tofuutils/tenv/releases/download/{{.Version}}/tenv_{{.Version}}_checksums.txt.sig
               - --certificate
-              - https://github.com/tofuutils/tenv/releases/download/{{.Version}}/tenv_{{.Version}}_checksums.txt.pem
+              - https://gh-proxy.org/github.com/tofuutils/tenv/releases/download/{{.Version}}/tenv_{{.Version}}_checksums.txt.pem

@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.0.0")
-        url: https://gh-proxy.org/https://github.com/LucasPickering/slumber/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/LucasPickering/slumber/releases/download/{{.Version}}/slumber-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: slumber-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         files:
@@ -18,18 +19,22 @@ packages:
           darwin: apple-darwin
           linux: unknown-linux-gnu
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/LucasPickering/slumber/releases/download/{{.Version}}/slumber-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/LucasPickering/slumber/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/LucasPickering/slumber/releases/download/{{.Version}}/slumber-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: slumber-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -42,14 +47,19 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/LucasPickering/slumber/releases/download/{{.Version}}/slumber-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/LucasPickering/slumber/releases/download/{{.Version}}/slumber-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: slumber

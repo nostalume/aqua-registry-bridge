@@ -9,18 +9,22 @@ packages:
       - version_constraint: Version == "v0.0.40"
         no_asset: true
       - version_constraint: Version == "v0.0.63"
-        url: https://gh-proxy.org/https://github.com/mattn/bsky/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mattn/bsky/releases/download/{{.Version}}/bsky-{{.OS}}-{{trimV .Version}}.{{.Format}}
         asset: bsky-{{.OS}}-{{trimV .Version}}.{{.Format}}
         format: zip
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/mattn/bsky/releases/download/{{.Version}}/bsky-{{.OS}}-.{{.Format}}
             asset: bsky-{{.OS}}-.{{.Format}}
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/mattn/bsky/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mattn/bsky/releases/download/{{.Version}}/bsky-{{.OS}}-{{trimV .Version}}.{{.Format}}
         asset: bsky-{{.OS}}-{{trimV .Version}}.{{.Format}}
         format: zip
         supported_envs:

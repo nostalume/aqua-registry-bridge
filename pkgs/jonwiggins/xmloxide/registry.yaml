@@ -11,7 +11,8 @@ packages:
       - version_constraint: semver("<= 0.4.1")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/jonwiggins/xmloxide/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jonwiggins/xmloxide/releases/download/{{.Version}}/xmllint_{{.OS}}-{{.Arch}}
         asset: xmllint_{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -19,6 +20,7 @@ packages:
           arm64: aarch64
           amd64: x86-64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/jonwiggins/xmloxide/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256

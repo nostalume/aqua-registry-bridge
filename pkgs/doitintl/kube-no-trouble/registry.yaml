@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/doitintl/kube-no-trouble/releases/download/{{.Version}}/kubent-{{.Version}}-{{.OS}}-{{.Arch}}.tar.gz
     repo_owner: doitintl
     repo_name: kube-no-trouble
     description: Easily check your clusters for use of deprecated APIs

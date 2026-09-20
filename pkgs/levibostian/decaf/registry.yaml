@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version == "0.1.0" or semver(">= 1.0.0-alpha.1, <= 1.0.0-alpha.8")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/levibostian/decaf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/levibostian/decaf/releases/download/{{.Version}}/bin-{{.Arch}}-{{.OS}}
         asset: bin-{{.Arch}}-{{.OS}}
         format: raw
         replacements:

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/git-lfs/git-lfs/releases/download/{{.Version}}/git-lfs-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
     repo_owner: git-lfs
     repo_name: git-lfs
     asset: git-lfs-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
@@ -8,6 +9,8 @@ packages:
     format: zip
     overrides:
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/git-lfs/git-lfs/releases/download/{{.Version}}/git-lfs-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         format: tar.gz
     version_constraint: semver(">= 3.2.0")
     files:
@@ -15,6 +18,8 @@ packages:
         src: git-lfs-{{trimV .Version}}/git-lfs
     version_overrides:
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/git-lfs/git-lfs/releases/download/{{.Version}}/git-lfs-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         files:
           - name: git-lfs
             src: git-lfs

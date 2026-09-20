@@ -9,46 +9,58 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v2.3.2.post0"
-        url: https://gh-proxy.org/https://github.com/localstack/localstack-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/localstack/localstack-cli/releases/download/{{.Version}}/localstack-cli-2.3.2-{{.OS}}-{{.Arch}}-onefile.{{.Format}}
         asset: localstack-cli-2.3.2-{{.OS}}-{{.Arch}}-onefile.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         files:
           - name: localstack
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/localstack/localstack-cli/releases/download/{{.Version}}/localstack-cli-2.3.2-checksums.txt
           asset: localstack-cli-2.3.2-checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/localstack/localstack-cli/releases/download/{{.Version}}/localstack-cli-2.3.2-{{.OS}}-{{.Arch}}-onefile.{{.Format}}
             format: zip
       - version_constraint: Version == "v3.0.2.post0"
-        url: https://gh-proxy.org/https://github.com/localstack/localstack-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/localstack/localstack-cli/releases/download/{{.Version}}/localstack-cli-3.0.2-{{.OS}}-{{.Arch}}-onefile.{{.Format}}
         asset: localstack-cli-3.0.2-{{.OS}}-{{.Arch}}-onefile.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         files:
           - name: localstack
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/localstack/localstack-cli/releases/download/{{.Version}}/localstack-cli-3.0.2-checksums.txt
           asset: localstack-cli-3.0.2-checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/localstack/localstack-cli/releases/download/{{.Version}}/localstack-cli-3.0.2-{{.OS}}-{{.Arch}}-onefile.{{.Format}}
             format: zip
       - version_constraint: semver("<= 2.0.1")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/localstack/localstack-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/localstack/localstack-cli/releases/download/{{.Version}}/localstack-cli-{{trimV .Version}}-{{.OS}}-{{.Arch}}-onefile.{{.Format}}
         asset: localstack-cli-{{trimV .Version}}-{{.OS}}-{{.Arch}}-onefile.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         files:
           - name: localstack
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/localstack/localstack-cli/releases/download/{{.Version}}/localstack-cli-{{trimV .Version}}-checksums.txt
           asset: localstack-cli-{{trimV .Version}}-checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/localstack/localstack-cli/releases/download/{{.Version}}/localstack-cli-{{trimV .Version}}-{{.OS}}-{{.Arch}}-onefile.{{.Format}}
             format: zip

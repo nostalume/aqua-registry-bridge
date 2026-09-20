@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/sharkdp/hyperfine/releases/download/{{.Version}}/hyperfine-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
     repo_owner: sharkdp
     repo_name: hyperfine
     description: A command-line benchmarking tool
@@ -12,8 +13,12 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/sharkdp/hyperfine/releases/download/{{.Version}}/hyperfine-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/sharkdp/hyperfine/releases/download/{{.Version}}/hyperfine-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         goarch: arm64
         replacements:
           linux: unknown-linux-gnu

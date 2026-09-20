@@ -7,10 +7,12 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/yashikota/exiftool-go/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/yashikota/exiftool-go/releases/download/{{.Version}}/exiftool-go_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: exiftool-go_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/yashikota/exiftool-go/releases/download/{{.Version}}/exiftool-go_{{trimV .Version}}_checksums.txt
           asset: exiftool-go_{{trimV .Version}}_checksums.txt
           algorithm: sha256

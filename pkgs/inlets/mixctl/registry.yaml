@@ -9,20 +9,29 @@ packages:
       - version_constraint: Version == "0.0.3-rc1"
         no_asset: true
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/inlets/mixctl/releases/download/{{.Version}}/mixctl
         format: raw
         asset: mixctl
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/inlets/mixctl/releases/download/{{.Version}}/mixctl-arm64
             goarch: arm64
             asset: mixctl-arm64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/inlets/mixctl/releases/download/{{.Version}}/mixctl-darwin
             goarch: amd64
             asset: mixctl-darwin
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/inlets/mixctl/releases/download/{{.Version}}/mixctl-darwin-arm64
             goarch: arm64
             asset: mixctl-darwin-arm64
         supported_envs:

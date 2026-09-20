@@ -7,31 +7,39 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v1.35.1"
-        url: https://gh-proxy.org/https://github.com/wasilibs/go-yamllint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/wasilibs/go-yamllint/releases/download/{{.Version}}/go-yamllint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: go-yamllint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: yamllint
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/wasilibs/go-yamllint/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/wasilibs/go-yamllint/releases/download/{{.Version}}/go-yamllint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/wasilibs/go-yamllint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/wasilibs/go-yamllint/releases/download/{{.Version}}/go-yamllint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: go-yamllint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: yamllint
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/wasilibs/go-yamllint/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/wasilibs/go-yamllint/releases/download/{{.Version}}/go-yamllint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         github_artifact_attestations:
           signer-workflow: wasilibs/actions/.github/workflows/release.yaml

@@ -1,12 +1,14 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/prometheus/alertmanager/releases/download/{{.Version}}/alertmanager-{{trimV .Version}}.{{.OS}}-{{.Arch}}.tar.gz
     repo_owner: prometheus
     repo_name: alertmanager
     asset: alertmanager-{{trimV .Version}}.{{.OS}}-{{.Arch}}.tar.gz
     description: Prometheus Alertmanager
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/prometheus/alertmanager/releases/download/{{.Version}}/sha256sums.txt
       asset: sha256sums.txt
       algorithm: sha256
     files:

@@ -7,125 +7,160 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("< 0.182.0")
-        url: https://gh-proxy.org/https://github.com/goreleaser/goreleaser/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/goreleaser/goreleaser/releases/download/{{.Version}}/goreleaser_{{title .OS}}_{{.Arch}}.{{.Format}}
         asset: goreleaser_{{title .OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/goreleaser/goreleaser/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/goreleaser/goreleaser/releases/download/{{.Version}}/goreleaser_{{title .OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 1.2.1")
-        url: https://gh-proxy.org/https://github.com/goreleaser/goreleaser/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/goreleaser/goreleaser/releases/download/{{.Version}}/goreleaser_{{title .OS}}_{{.Arch}}.{{.Format}}
         asset: goreleaser_{{title .OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/goreleaser/goreleaser/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/goreleaser/goreleaser/releases/download/{{.Version}}/goreleaser_{{title .OS}}_all.{{.Format}}
             asset: goreleaser_{{title .OS}}_all.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/goreleaser/goreleaser/releases/download/{{.Version}}/goreleaser_{{title .OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("< 2.7.0")
-        url: https://gh-proxy.org/https://github.com/goreleaser/goreleaser/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/goreleaser/goreleaser/releases/download/{{.Version}}/goreleaser_{{title .OS}}_{{.Arch}}.{{.Format}}
         asset: goreleaser_{{title .OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/goreleaser/goreleaser/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate-identity
-              - https://github.com/goreleaser/goreleaser/.github/workflows/release.yml@refs/tags/{{.Version}}
+              - https://gh-proxy.org/github.com/goreleaser/goreleaser/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/goreleaser/goreleaser/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/goreleaser/goreleaser/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
-              - https://github.com/goreleaser/goreleaser/releases/download/{{.Version}}/checksums.txt.pem
+              - https://gh-proxy.org/github.com/goreleaser/goreleaser/releases/download/{{.Version}}/checksums.txt.pem
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/goreleaser/goreleaser/releases/download/{{.Version}}/goreleaser_{{title .OS}}_all.{{.Format}}
             asset: goreleaser_{{title .OS}}_all.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/goreleaser/goreleaser/releases/download/{{.Version}}/goreleaser_{{title .OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 2.12.7")
-        url: https://gh-proxy.org/https://github.com/goreleaser/goreleaser/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/goreleaser/goreleaser/releases/download/{{.Version}}/goreleaser_{{title .OS}}_{{.Arch}}.{{.Format}}
         asset: goreleaser_{{title .OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/goreleaser/goreleaser/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate-identity
-              - https://github.com/goreleaser/goreleaser/.github/workflows/release.yml@refs/tags/{{.Version}}
+              - https://gh-proxy.org/github.com/goreleaser/goreleaser/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/goreleaser/goreleaser/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/goreleaser/goreleaser/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
-              - https://github.com/goreleaser/goreleaser/releases/download/{{.Version}}/checksums.txt.pem
+              - https://gh-proxy.org/github.com/goreleaser/goreleaser/releases/download/{{.Version}}/checksums.txt.pem
         github_artifact_attestations:
           signer_workflow: goreleaser/goreleaser/.github/workflows/release.yml
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/goreleaser/goreleaser/releases/download/{{.Version}}/goreleaser_{{title .OS}}_all.{{.Format}}
             asset: goreleaser_{{title .OS}}_all.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/goreleaser/goreleaser/releases/download/{{.Version}}/goreleaser_{{title .OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: Version in ["v2.15.0", "v2.15.1"]
-        url: https://gh-proxy.org/https://github.com/goreleaser/goreleaser/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/goreleaser/goreleaser/releases/download/{{.Version}}/goreleaser_{{title .OS}}_{{.Arch}}.{{.Format}}
         asset: goreleaser_{{title .OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/goreleaser/goreleaser/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         github_artifact_attestations:
           signer_workflow: goreleaser/goreleaser/.github/workflows/release.yml
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/goreleaser/goreleaser/releases/download/{{.Version}}/goreleaser_{{title .OS}}_all.{{.Format}}
             asset: goreleaser_{{title .OS}}_all.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/goreleaser/goreleaser/releases/download/{{.Version}}/goreleaser_{{title .OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/goreleaser/goreleaser/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/goreleaser/goreleaser/releases/download/{{.Version}}/goreleaser_{{title .OS}}_{{.Arch}}.{{.Format}}
         asset: goreleaser_{{title .OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/goreleaser/goreleaser/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/goreleaser/goreleaser/releases/download/{{.Version}}/checksums.txt.sigstore.json
               asset: checksums.txt.sigstore.json
             opts:
               - --certificate-identity
-              - https://github.com/goreleaser/goreleaser/.github/workflows/release.yml@refs/tags/{{.Version}}
+              - https://gh-proxy.org/github.com/goreleaser/goreleaser/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
         github_artifact_attestations:
           signer_workflow: goreleaser/goreleaser/.github/workflows/release.yml
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/goreleaser/goreleaser/releases/download/{{.Version}}/goreleaser_{{title .OS}}_all.{{.Format}}
             asset: goreleaser_{{title .OS}}_all.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/goreleaser/goreleaser/releases/download/{{.Version}}/goreleaser_{{title .OS}}_{{.Arch}}.{{.Format}}
             format: zip

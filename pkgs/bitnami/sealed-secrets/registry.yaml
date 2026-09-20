@@ -15,7 +15,8 @@ packages:
       - version_constraint: Version in ["v0.0.1", "v0.1.0"]
         no_asset: true
       - version_constraint: semver("<= 0.2.1")
-        url: https://gh-proxy.org/https://github.com/bitnami/sealed-secrets/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bitnami/sealed-secrets/releases/download/{{.Version}}/ksonnet-seal-{{.OS}}-{{.Arch}}
         asset: ksonnet-seal-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -23,7 +24,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.7.0")
-        url: https://gh-proxy.org/https://github.com/bitnami/sealed-secrets/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bitnami/sealed-secrets/releases/download/{{.Version}}/kubeseal-{{.OS}}-{{.Arch}}
         asset: kubeseal-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -31,47 +33,58 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.8.2")
-        url: https://gh-proxy.org/https://github.com/bitnami/sealed-secrets/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bitnami/sealed-secrets/releases/download/{{.Version}}/kubeseal-{{.OS}}-{{.Arch}}
         asset: kubeseal-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bitnami/sealed-secrets/releases/download/{{.Version}}/kubeseal
             asset: kubeseal
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "v0.8.3"
-        url: https://gh-proxy.org/https://github.com/bitnami/sealed-secrets/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bitnami/sealed-secrets/releases/download/{{.Version}}/kubeseal-{{.OS}}-{{.Arch}}
         asset: kubeseal-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/bitnami/sealed-secrets/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bitnami/sealed-secrets/releases/download/{{.Version}}/kubeseal
             asset: kubeseal
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.16.0")
-        url: https://gh-proxy.org/https://github.com/bitnami/sealed-secrets/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bitnami/sealed-secrets/releases/download/{{.Version}}/kubeseal-{{.OS}}-{{.Arch}}
         asset: kubeseal-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bitnami/sealed-secrets/releases/download/{{.Version}}/kubeseal
             asset: kubeseal
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "v0.17.0"
-        url: https://gh-proxy.org/https://github.com/bitnami/sealed-secrets/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bitnami/sealed-secrets/releases/download/{{.Version}}/sealed-secrets_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: sealed-secrets_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -81,40 +94,47 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/bitnami/sealed-secrets/releases/download/{{.Version}}/sealed-secrets_{{trimV .Version}}_checksums.txt
           asset: sealed-secrets_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.17.3")
-        url: https://gh-proxy.org/https://github.com/bitnami/sealed-secrets/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bitnami/sealed-secrets/releases/download/{{.Version}}/kubeseal-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: kubeseal-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/bitnami/sealed-secrets/releases/download/{{.Version}}/sealed-secrets_{{trimV .Version}}_checksums.txt
           asset: sealed-secrets_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.17.5")
-        url: https://gh-proxy.org/https://github.com/bitnami/sealed-secrets/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bitnami/sealed-secrets/releases/download/{{.Version}}/kubeseal-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: kubeseal-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/bitnami/sealed-secrets/releases/download/{{.Version}}/sealed-secrets_{{trimV .Version}}_checksums.txt
           asset: sealed-secrets_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/bitnami/sealed-secrets/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bitnami/sealed-secrets/releases/download/{{.Version}}/kubeseal-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: kubeseal-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/bitnami/sealed-secrets/releases/download/{{.Version}}/sealed-secrets_{{trimV .Version}}_checksums.txt
           asset: sealed-secrets_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --key
-              - https://github.com/bitnami-labs/sealed-secrets/releases/download/{{.Version}}/cosign.pub
+              - https://gh-proxy.org/github.com/bitnami-labs/sealed-secrets/releases/download/{{.Version}}/cosign.pub
               - --signature
-              - https://github.com/bitnami-labs/sealed-secrets/releases/download/{{.Version}}/sealed-secrets_{{trimV .Version}}_checksums.txt.sig
+              - https://gh-proxy.org/github.com/bitnami-labs/sealed-secrets/releases/download/{{.Version}}/sealed-secrets_{{trimV .Version}}_checksums.txt.sig

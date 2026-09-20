@@ -6,7 +6,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/callumalpass/mdbase-lsp/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/callumalpass/mdbase-lsp/releases/download/{{.Version}}/mdbase-lsp-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: mdbase-lsp-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -15,6 +16,8 @@ packages:
           windows: win32
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/callumalpass/mdbase-lsp/releases/download/{{.Version}}/mdbase-lsp-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin

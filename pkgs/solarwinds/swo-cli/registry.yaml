@@ -9,30 +9,38 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.3.0")
-        url: https://gh-proxy.org/https://github.com/solarwinds/swo-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/solarwinds/swo-cli/releases/download/{{.Version}}/swo-cli_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: swo-cli_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         files:
           - name: swo
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/solarwinds/swo-cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/solarwinds/swo-cli/releases/download/{{.Version}}/swo-cli_{{.OS}}_all.{{.Format}}
             asset: swo-cli_{{.OS}}_all.{{.Format}}
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/solarwinds/swo-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/solarwinds/swo-cli/releases/download/{{.Version}}/swo-cli_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: swo-cli_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         files:
           - name: swo
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/solarwinds/swo-cli/releases/download/{{.Version}}/swo-cli_checksums.txt
           asset: swo-cli_checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/solarwinds/swo-cli/releases/download/{{.Version}}/swo-cli_{{.OS}}_all.{{.Format}}
             asset: swo-cli_{{.OS}}_all.{{.Format}}

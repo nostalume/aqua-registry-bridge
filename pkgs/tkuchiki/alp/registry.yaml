@@ -7,23 +7,28 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.0.8")
-        url: https://gh-proxy.org/https://github.com/tkuchiki/alp/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tkuchiki/alp/releases/download/{{.Version}}/alp_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: alp_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
         windows_arm_emulation: true
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/tkuchiki/alp/releases/download/{{.Version}}/alp_{{.OS}}_{{.Arch}}.exe.{{.Format}}
             asset: alp_{{.OS}}_{{.Arch}}.exe.{{.Format}}
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/tkuchiki/alp/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tkuchiki/alp/releases/download/{{.Version}}/alp_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: alp_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/tkuchiki/alp/releases/download/{{.Version}}/alp_{{trimV .Version}}_checksums.txt
           asset: alp_{{trimV .Version}}_checksums.txt
           algorithm: sha256

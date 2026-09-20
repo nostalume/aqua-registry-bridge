@@ -14,7 +14,8 @@ packages:
       - darwin
     rosetta2: true
     checksum:
-      type: github_release
+      type: http
+      url: "{{.AssetURL}}.sha256"
       asset: "{{.Asset}}.sha256"
       algorithm: sha256
     files:
@@ -45,7 +46,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver(">= 1.0.39")
-        url: https://gh-proxy.org/https://github.com/WebAssembly/wabt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/WebAssembly/wabt/releases/download/{{.Version}}/wabt-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: wabt-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: false
@@ -58,17 +60,21 @@ packages:
           - darwin/arm64
           - windows/amd64
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
       - version_constraint: semver(">= 1.0.35")
-        url: https://gh-proxy.org/https://github.com/WebAssembly/wabt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/WebAssembly/wabt/releases/download/{{.Version}}/wabt-{{.Version}}-{{.OS}}.{{.Format}}
         asset: wabt-{{.Version}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/WebAssembly/wabt/releases/download/{{.Version}}/wabt-{{.Version}}-{{.OS}}.{{.Format}}
             asset: wabt-{{.Version}}-{{.OS}}.{{.Format}}
         replacements:
           darwin: macos-14
@@ -77,11 +83,16 @@ packages:
           - darwin
           - amd64
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
       - version_constraint: Version == "1.0.34"
+        type: http
+        url: https://gh-proxy.org/github.com/WebAssembly/wabt/releases/download/{{.Version}}/wabt-{{.Version}}-{{.OS}}.{{.Format}}
       - version_constraint: Version == "1.0.33"
+        type: http
+        url: https://gh-proxy.org/github.com/WebAssembly/wabt/releases/download/{{.Version}}/wabt-{{.Version}}-{{.OS}}.{{.Format}}
         files:
           - name: spectest-interp
             src: wabt-{{.Version}}/bin/spectest-interp
@@ -104,6 +115,8 @@ packages:
           - name: wat2wasm
             src: wabt-{{.Version}}/bin/wat2wasm
       - version_constraint: semver(">= 1.0.17")
+        type: http
+        url: https://gh-proxy.org/github.com/WebAssembly/wabt/releases/download/{{.Version}}/wabt-{{.Version}}-{{.OS}}.{{.Format}}
         files:
           - name: spectest-interp
             src: wabt-{{.Version}}/bin/spectest-interp
@@ -129,8 +142,12 @@ packages:
           darwin: macos
           linux: ubuntu
       - version_constraint: semver(">= 1.0.15")
+        type: http
+        url: https://gh-proxy.org/github.com/WebAssembly/wabt/releases/download/{{.Version}}/wabt-{{.Version}}-{{.OS}}.{{.Format}}
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/WebAssembly/wabt/releases/download/{{.Version}}/wabt-{{.Version}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: wasm-decompile
@@ -155,6 +172,8 @@ packages:
           - name: wasm-objdump
             src: wabt-{{.Version}}/wasm-objdump
       - version_constraint: semver(">= 1.0.14")
+        type: http
+        url: https://gh-proxy.org/github.com/WebAssembly/wabt/releases/download/{{.Version}}/wabt-{{.Version}}-{{.OS}}.{{.Format}}
         format: zip
         replacements:
           windows: win64
@@ -174,8 +193,12 @@ packages:
           - name: wat-desugar
           - name: wat2wasm
       - version_constraint: semver(">= 1.0.13")
+        type: http
+        url: https://gh-proxy.org/github.com/WebAssembly/wabt/releases/download/{{.Version}}/wabt-{{.Version}}-{{.OS}}.{{.Format}}
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/WebAssembly/wabt/releases/download/{{.Version}}/wabt-{{.Version}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: wasm-decompile
@@ -203,8 +226,12 @@ packages:
           - name: wasm-objdump
             src: wabt-{{.Version}}/wasm-objdump
       - version_constraint: semver(">= 1.0.5")
+        type: http
+        url: https://gh-proxy.org/github.com/WebAssembly/wabt/releases/download/{{.Version}}/wabt-{{.Version}}-{{.OS}}.{{.Format}}
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/WebAssembly/wabt/releases/download/{{.Version}}/wabt-{{.Version}}-{{.OS}}.{{.Format}}
             format: zip
             checksum:
               enabled: false
@@ -245,6 +272,8 @@ packages:
           - name: wat2wasm
             src: wabt-{{.Version}}/wat2wasm
       - version_constraint: semver(">= 1.0.3")
+        type: http
+        url: https://gh-proxy.org/github.com/WebAssembly/wabt/releases/download/{{.Version}}/wabt-{{.Version}}-{{.OS}}.{{.Format}}
         replacements:
           darwin: osx
         supported_envs:
@@ -272,6 +301,8 @@ packages:
           - name: wat2wasm
             src: wabt-{{.Version}}/wat2wasm
       - version_constraint: semver("< 1.0.3")
+        type: http
+        url: https://gh-proxy.org/github.com/WebAssembly/wabt/releases/download/{{.Version}}/wabt-{{.Version}}-{{.OS}}.{{.Format}}
         replacements: {}
         supported_envs:
           - linux/amd64

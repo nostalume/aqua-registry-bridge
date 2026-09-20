@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/rust-lang/mdBook/releases/download/{{.Version}}/mdbook-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
     repo_owner: rust-lang
     repo_name: mdBook
     rosetta2: true
@@ -17,6 +18,8 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/rust-lang/mdBook/releases/download/{{.Version}}/mdbook-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
     files:
       - name: mdbook

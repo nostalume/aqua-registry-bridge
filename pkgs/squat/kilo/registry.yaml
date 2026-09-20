@@ -9,20 +9,23 @@ packages:
       - version_constraint: Version == "0.1.0"
         no_asset: true
       - version_constraint: Version == "0.2.0"
-        url: https://gh-proxy.org/https://github.com/squat/kilo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/squat/kilo/releases/download/{{.Version}}/kgctl-{{.OS}}-{{.Arch}}
         asset: kgctl-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
         complete_windows_ext: false
       - version_constraint: semver("< 0.7.0")
-        url: https://gh-proxy.org/https://github.com/squat/kilo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/squat/kilo/releases/download/{{.Version}}/kgctl-{{.OS}}-{{.Arch}}
         asset: kgctl-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         complete_windows_ext: false
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/squat/kilo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/squat/kilo/releases/download/{{.Version}}/kgctl-{{.OS}}-{{.Arch}}
         asset: kgctl-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true

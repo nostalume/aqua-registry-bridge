@@ -7,12 +7,14 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/firecracker-microvm/firectl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/firecracker-microvm/firectl/releases/download/{{.Version}}/firectl-{{ .Version }}
         asset: firectl-{{ .Version }}
         format: raw
         supported_envs:
           - linux/amd64
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256

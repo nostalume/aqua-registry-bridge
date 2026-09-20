@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version in ["v0.1.0", "v0.1.15"]
         no_asset: true
       - version_constraint: Version == "v0.1.22"
-        url: https://gh-proxy.org/https://github.com/tassiovirginio/try-rs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tassiovirginio/try-rs/releases/download/{{.Version}}/try-rs-{{.OS}}-{{.Arch}}
         asset: try-rs-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -18,7 +19,8 @@ packages:
         supported_envs:
           - windows/amd64
       - version_constraint: semver("<= 0.1.6")
-        url: https://gh-proxy.org/https://github.com/tassiovirginio/try-rs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tassiovirginio/try-rs/releases/download/{{.Version}}/try-rs-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: try-rs-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -27,19 +29,22 @@ packages:
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 0.1.21")
-        url: https://gh-proxy.org/https://github.com/tassiovirginio/try-rs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tassiovirginio/try-rs/releases/download/{{.Version}}/try-rs-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: try-rs-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 0.1.27")
-        url: https://gh-proxy.org/https://github.com/tassiovirginio/try-rs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tassiovirginio/try-rs/releases/download/{{.Version}}/try-rs-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: try-rs-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -47,18 +52,24 @@ packages:
           amd64: x86_64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/tassiovirginio/try-rs/releases/download/{{.Version}}/try-rs-{{.OS}}-{{.Arch}}
             format: raw
             asset: try-rs-{{.OS}}-{{.Arch}}
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/tassiovirginio/try-rs/releases/download/{{.Version}}/try-rs-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             checksum:
-              type: github_release
+              type: http
+              url: "{{.AssetURL}}.sha256"
               asset: "{{.Asset}}.sha256"
               algorithm: sha256
         supported_envs:
           - linux/amd64
           - windows/amd64
       - version_constraint: semver("<= 0.1.29")
-        url: https://gh-proxy.org/https://github.com/tassiovirginio/try-rs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tassiovirginio/try-rs/releases/download/{{.Version}}/try-rs-{{.OS}}-{{.Arch}}
         asset: try-rs-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -67,7 +78,8 @@ packages:
         supported_envs:
           - windows/amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/tassiovirginio/try-rs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tassiovirginio/try-rs/releases/download/{{.Version}}/try-rs-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: try-rs-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -75,11 +87,16 @@ packages:
           amd64: x86_64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/tassiovirginio/try-rs/releases/download/{{.Version}}/try-rs-{{.OS}}-{{.Arch}}
             format: raw
             asset: try-rs-{{.OS}}-{{.Arch}}
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/tassiovirginio/try-rs/releases/download/{{.Version}}/try-rs-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             checksum:
-              type: github_release
+              type: http
+              url: "{{.AssetURL}}.sha256"
               asset: "{{.Asset}}.sha256"
               algorithm: sha256
         supported_envs:

@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version in ["v0.0.18", "v0.0.32"]
         no_asset: true
       - version_constraint: Version == "v0.0.23"
-        url: https://gh-proxy.org/https://github.com/updatecli/updatecli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/updatecli/updatecli/releases/download/{{.Version}}/updatecli.amd64.exe
         asset: updatecli.amd64.exe
         format: raw
         supported_envs:
@@ -17,26 +18,31 @@ packages:
       - version_constraint: semver("<= 0.0.5")
         no_asset: true
       - version_constraint: semver("<= 0.0.10")
-        url: https://gh-proxy.org/https://github.com/updatecli/updatecli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/updatecli/updatecli/releases/download/{{.Version}}/updatecli
         asset: updatecli
         format: raw
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 0.3.0")
-        url: https://gh-proxy.org/https://github.com/updatecli/updatecli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/updatecli/updatecli/releases/download/{{.Version}}/updatecli.{{.OS}}.{{.Arch}}
         asset: updatecli.{{.OS}}.{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/updatecli/updatecli/releases/download/{{.Version}}/updatecli.{{.Arch}}
             asset: updatecli.{{.Arch}}
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.7.1")
-        url: https://gh-proxy.org/https://github.com/updatecli/updatecli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/updatecli/updatecli/releases/download/{{.Version}}/updatecli_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: updatecli_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -46,14 +52,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/updatecli/updatecli/releases/download/{{.Version}}/updatecli_{{trimV .Version}}_checksums.txt
           asset: updatecli_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/updatecli/updatecli/releases/download/{{.Version}}/updatecli_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.40.1")
-        url: https://gh-proxy.org/https://github.com/updatecli/updatecli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/updatecli/updatecli/releases/download/{{.Version}}/updatecli_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: updatecli_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -62,14 +72,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/updatecli/updatecli/releases/download/{{.Version}}/updatecli_{{trimV .Version}}_checksums.txt
           asset: updatecli_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/updatecli/updatecli/releases/download/{{.Version}}/updatecli_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.110.3")
-        url: https://gh-proxy.org/https://github.com/updatecli/updatecli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/updatecli/updatecli/releases/download/{{.Version}}/updatecli_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: updatecli_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -78,24 +92,28 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/updatecli/updatecli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/updatecli/updatecli/releases/download/{{.Version}}/checksums.txt.pem
+              - https://gh-proxy.org/github.com/updatecli/updatecli/releases/download/{{.Version}}/checksums.txt.pem
               - --certificate-identity
-              - "https://github.com/updatecli/updatecli/.github/workflows/release.yaml@refs/tags/{{.Version}}"
+              - "https://gh-proxy.org/github.com/updatecli/updatecli/.github/workflows/release.yaml@refs/tags/{{.Version}}"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/updatecli/updatecli/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/updatecli/updatecli/releases/download/{{.Version}}/checksums.txt.sig
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/updatecli/updatecli/releases/download/{{.Version}}/updatecli_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.114.0")
-        url: https://gh-proxy.org/https://github.com/updatecli/updatecli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/updatecli/updatecli/releases/download/{{.Version}}/updatecli_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: updatecli_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -104,23 +122,28 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/updatecli/updatecli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/updatecli/updatecli/releases/download/{{.Version}}/checksums.txt.sig
               asset: checksums.txt.sig
             opts:
               - --certificate-identity
-              - "https://github.com/updatecli/updatecli/.github/workflows/release.yaml@refs/tags/{{.Version}}"
+              - "https://gh-proxy.org/github.com/updatecli/updatecli/.github/workflows/release.yaml@refs/tags/{{.Version}}"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/updatecli/updatecli/releases/download/{{.Version}}/updatecli_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/updatecli/updatecli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/updatecli/updatecli/releases/download/{{.Version}}/updatecli_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: updatecli_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -129,20 +152,24 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/updatecli/updatecli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/updatecli/updatecli/releases/download/{{.Version}}/checksums.txt.sig
               asset: checksums.txt.sig
             opts:
               - --certificate-identity
-              - "https://github.com/updatecli/updatecli/.github/workflows/release.yaml@refs/tags/{{.Version}}"
+              - "https://gh-proxy.org/github.com/updatecli/updatecli/.github/workflows/release.yaml@refs/tags/{{.Version}}"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/updatecli/updatecli/releases/download/{{.Version}}/updatecli_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         github_artifact_attestations:
           signer_workflow: updatecli/updatecli/.github/workflows/release.yaml

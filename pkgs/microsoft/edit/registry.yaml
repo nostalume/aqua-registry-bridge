@@ -7,11 +7,14 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v1.2.1"
-        url: https://gh-proxy.org/https://github.com/microsoft/edit/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/microsoft/edit/releases/download/{{.Version}}/edit-1.2.0-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: edit-1.2.0-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.zst
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/microsoft/edit/releases/download/{{.Version}}/edit-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             asset: edit-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
@@ -25,7 +28,8 @@ packages:
           - linux
           - windows
       - version_constraint: Version == "v1.0.0"
-        url: https://gh-proxy.org/https://github.com/microsoft/edit/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/microsoft/edit/releases/download/{{.Version}}/edit-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: edit-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: xz
         files:
@@ -37,6 +41,8 @@ packages:
           linux: linux-gnu
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/microsoft/edit/releases/download/{{.Version}}/edit-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: edit
@@ -45,11 +51,14 @@ packages:
           - linux
           - windows
       - version_constraint: semver("< 2.0.0")
-        url: https://gh-proxy.org/https://github.com/microsoft/edit/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/microsoft/edit/releases/download/{{.Version}}/edit-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: edit-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.zst
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/microsoft/edit/releases/download/{{.Version}}/edit-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: edit
@@ -62,11 +71,14 @@ packages:
           - linux
           - windows
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/microsoft/edit/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/microsoft/edit/releases/download/{{.Version}}/edit-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: edit-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/microsoft/edit/releases/download/{{.Version}}/edit-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: edit

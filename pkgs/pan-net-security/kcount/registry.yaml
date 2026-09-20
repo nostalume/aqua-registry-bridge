@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/pan-net-security/kcount/releases/download/{{.Version}}/kcount_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
     repo_owner: pan-net-security
     repo_name: kcount
     asset: kcount_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
@@ -15,6 +16,7 @@ packages:
       - amd64
     rosetta2: true
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/pan-net-security/kcount/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256

@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 2022-03-26")
-        url: https://gh-proxy.org/https://github.com/artempyanykh/marksman/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/artempyanykh/marksman/releases/download/{{.Version}}/zeta-note-{{.OS}}
         asset: zeta-note-{{.OS}}
         format: raw
         replacements:
@@ -17,29 +18,39 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 2023-04-12")
-        url: https://gh-proxy.org/https://github.com/artempyanykh/marksman/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/artempyanykh/marksman/releases/download/{{.Version}}/marksman-{{.OS}}
         asset: marksman-{{.OS}}
         format: raw
         replacements:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/artempyanykh/marksman/releases/download/{{.Version}}/marksman
             asset: marksman
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/artempyanykh/marksman/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/artempyanykh/marksman/releases/download/{{.Version}}/marksman-{{.OS}}-{{.Arch}}
         asset: marksman-{{.OS}}-{{.Arch}}
         format: raw
         replacements:
           darwin: macos
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/artempyanykh/marksman/releases/download/{{.Version}}/marksman-{{.OS}}-{{.Arch}}
             replacements:
               amd64: x64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/artempyanykh/marksman/releases/download/{{.Version}}/marksman-{{.OS}}
             asset: marksman-{{.OS}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/artempyanykh/marksman/releases/download/{{.Version}}/marksman
             asset: marksman

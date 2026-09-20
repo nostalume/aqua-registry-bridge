@@ -8,39 +8,45 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.6.4")
-        url: https://gh-proxy.org/https://github.com/unikraft/kraftkit/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/unikraft/kraftkit/releases/download/{{.Version}}/kraftkit_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kraftkit_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: kraft
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/unikraft/kraftkit/releases/download/{{.Version}}/kraftkit_{{trimV .Version}}_checksums.txt
           asset: kraftkit_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 0.7.0")
-        url: https://gh-proxy.org/https://github.com/unikraft/kraftkit/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/unikraft/kraftkit/releases/download/{{.Version}}/kraftkit_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kraftkit_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: kraft
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/unikraft/kraftkit/releases/download/{{.Version}}/kraftkit_{{trimV .Version}}_checksums.txt
           asset: kraftkit_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/unikraft/kraftkit/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/unikraft/kraftkit/releases/download/{{.Version}}/kraft_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kraft_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: kraft
           - name: kraftld
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/unikraft/kraftkit/releases/download/{{.Version}}/kraftkit_{{trimV .Version}}_checksums.txt
           asset: kraftkit_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:

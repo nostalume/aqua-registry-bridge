@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/mergestat/mergestat-lite/releases/download/{{.Version}}/mergestat-{{.OS}}-{{.Arch}}.tar.gz
     repo_owner: mergestat
     repo_name: mergestat-lite
     description: Query git repositories with SQL. Generate reports, perform status checks, analyze codebases

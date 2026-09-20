@@ -7,20 +7,25 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v1.0.19"
-        url: https://gh-proxy.org/https://github.com/sonatype-nexus-community/nancy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sonatype-nexus-community/nancy/releases/download/{{.Version}}/nancy-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: nancy-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/sonatype-nexus-community/nancy/releases/download/{{.Version}}/nancychecksums.txt
           asset: nancychecksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/sonatype-nexus-community/nancy/releases/download/{{.Version}}/nancy-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.0.44")
-        url: https://gh-proxy.org/https://github.com/sonatype-nexus-community/nancy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sonatype-nexus-community/nancy/releases/download/{{.Version}}/nancy-{{.OS}}.{{.Arch}}-{{.Version}}
         asset: nancy-{{.OS}}.{{.Arch}}-{{.Version}}
         format: raw
         rosetta2: true
@@ -30,13 +35,15 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.1.3")
-        url: https://gh-proxy.org/https://github.com/sonatype-nexus-community/nancy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sonatype-nexus-community/nancy/releases/download/{{.Version}}/nancy-{{.OS}}.{{.Arch}}-{{.Version}}
         asset: nancy-{{.OS}}.{{.Arch}}-{{.Version}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/sonatype-nexus-community/nancy/releases/download/{{.Version}}/nancychecksums.txt
           asset: nancychecksums.txt
           algorithm: sha256
         supported_envs:
@@ -44,48 +51,60 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.0.5")
-        url: https://gh-proxy.org/https://github.com/sonatype-nexus-community/nancy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sonatype-nexus-community/nancy/releases/download/{{.Version}}/nancy-{{.OS}}.{{.Arch}}-{{.Version}}.{{.Format}}
         asset: nancy-{{.OS}}.{{.Arch}}-{{.Version}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/sonatype-nexus-community/nancy/releases/download/{{.Version}}/nancychecksums.txt
           asset: nancychecksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/sonatype-nexus-community/nancy/releases/download/{{.Version}}/nancy-{{.OS}}.{{.Arch}}-{{.Version}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 1.0.17")
-        url: https://gh-proxy.org/https://github.com/sonatype-nexus-community/nancy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sonatype-nexus-community/nancy/releases/download/{{.Version}}/nancy-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: nancy-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/sonatype-nexus-community/nancy/releases/download/{{.Version}}/nancychecksums.txt
           asset: nancychecksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/sonatype-nexus-community/nancy/releases/download/{{.Version}}/nancy-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/sonatype-nexus-community/nancy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sonatype-nexus-community/nancy/releases/download/{{.Version}}/nancy-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: nancy-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/sonatype-nexus-community/nancy/releases/download/{{.Version}}/nancychecksums.txt
           asset: nancychecksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/sonatype-nexus-community/nancy/releases/download/{{.Version}}/nancy-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip

@@ -7,10 +7,12 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/everstake/bip39/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/everstake/bip39/releases/download/{{.Version}}/bip39_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: bip39_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/everstake/bip39/releases/download/{{.Version}}/bip39_{{trimV .Version}}_checksums.txt
           asset: bip39_{{trimV .Version}}_checksums.txt
           algorithm: sha256

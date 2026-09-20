@@ -9,32 +9,40 @@ packages:
       - version_constraint: Version == "v0.0.3"
         no_asset: true
       - version_constraint: semver("<= 0.1.3")
-        url: https://gh-proxy.org/https://github.com/jamesWoolfenden/pike/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jamesWoolfenden/pike/releases/download/{{.Version}}/pike_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: pike_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/jamesWoolfenden/pike/releases/download/{{.Version}}/pike_{{trimV .Version}}_checksums.txt
           asset: pike_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 0.1.35")
-        url: https://gh-proxy.org/https://github.com/jamesWoolfenden/pike/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jamesWoolfenden/pike/releases/download/{{.Version}}/pike_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: pike_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/jamesWoolfenden/pike/releases/download/{{.Version}}/pike_{{trimV .Version}}_checksums.txt
           asset: pike_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/jamesWoolfenden/pike/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jamesWoolfenden/pike/releases/download/{{.Version}}/pike_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: pike_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/jamesWoolfenden/pike/releases/download/{{.Version}}/pike_{{trimV .Version}}_checksums.txt
           asset: pike_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jamesWoolfenden/pike/releases/download/{{.Version}}/pike_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

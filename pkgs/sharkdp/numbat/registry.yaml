@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.6.1")
-        url: https://gh-proxy.org/https://github.com/sharkdp/numbat/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sharkdp/numbat/releases/download/{{.Version}}/numbat-{{trimV .Version}}
         asset: numbat-{{trimV .Version}}
         format: tar.gz
         files:
@@ -16,7 +17,8 @@ packages:
         supported_envs:
           - linux/amd64
       - version_constraint: Version == "v1.9.0"
-        url: https://gh-proxy.org/https://github.com/sharkdp/numbat/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sharkdp/numbat/releases/download/{{.Version}}/numbat-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: numbat-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         files:
           - name: numbat
@@ -30,15 +32,20 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/sharkdp/numbat/releases/download/{{.Version}}/numbat-{{.Version}}-{{.Arch}}-{{.OS}}eabihf.{{.Format}}
             goarch: arm64
             asset: numbat-{{.Version}}-{{.Arch}}-{{.OS}}eabihf.{{.Format}}
             replacements:
               arm64: arm
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/sharkdp/numbat/releases/download/{{.Version}}/numbat-{{.Version}}-i686-{{.OS}}.{{.Format}}
             format: zip
             asset: numbat-{{.Version}}-i686-{{.OS}}.{{.Format}}
       - version_constraint: semver("<= 1.14.0")
-        url: https://gh-proxy.org/https://github.com/sharkdp/numbat/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sharkdp/numbat/releases/download/{{.Version}}/numbat-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: numbat-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         files:
           - name: numbat
@@ -53,14 +60,19 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/sharkdp/numbat/releases/download/{{.Version}}/numbat-{{.Version}}-{{.Arch}}-{{.OS}}eabihf.{{.Format}}
             goarch: arm64
             asset: numbat-{{.Version}}-{{.Arch}}-{{.OS}}eabihf.{{.Format}}
             replacements:
               arm64: arm
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/sharkdp/numbat/releases/download/{{.Version}}/numbat-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/sharkdp/numbat/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sharkdp/numbat/releases/download/{{.Version}}/numbat-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: numbat-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -74,12 +86,18 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/sharkdp/numbat/releases/download/{{.Version}}/numbat-{{.Version}}-{{.Arch}}-{{.OS}}eabihf.{{.Format}}
             goarch: arm64
             asset: numbat-{{.Version}}-{{.Arch}}-{{.OS}}eabihf.{{.Format}}
             replacements:
               arm64: arm
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/sharkdp/numbat/releases/download/{{.Version}}/numbat-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/sharkdp/numbat/releases/download/{{.Version}}/numbat-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip

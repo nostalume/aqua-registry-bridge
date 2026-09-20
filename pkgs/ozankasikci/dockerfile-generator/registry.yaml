@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/ozankasikci/dockerfile-generator/releases/download/{{.Version}}/dfg_{{.Version}}_{{.OS}}_{{.Arch}}
     repo_owner: ozankasikci
     repo_name: dockerfile-generator
     description: dfg - Generates dockerfiles based on various input channels

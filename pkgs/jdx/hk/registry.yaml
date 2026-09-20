@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("<= 0.1.3")
         no_asset: true
       - version_constraint: semver("<= 0.1.9")
-        url: https://gh-proxy.org/https://github.com/jdx/hk/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jdx/hk/releases/download/{{.Version}}/hk-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: hk-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -18,13 +19,16 @@ packages:
           linux: unknown-linux-gnu
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/jdx/hk/releases/download/{{.Version}}/hk-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               amd64: x86_64
         supported_envs:
           - linux
           - darwin/arm64
       - version_constraint: semver("< 1.11.0")
-        url: https://gh-proxy.org/https://github.com/jdx/hk/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jdx/hk/releases/download/{{.Version}}/hk-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: hk-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -35,16 +39,21 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/jdx/hk/releases/download/{{.Version}}/hk-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               amd64: amd64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jdx/hk/releases/download/{{.Version}}/hk-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - linux
           - darwin/arm64
           - windows
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/jdx/hk/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jdx/hk/releases/download/{{.Version}}/hk-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: hk-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -55,9 +64,13 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/jdx/hk/releases/download/{{.Version}}/hk-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               amd64: amd64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jdx/hk/releases/download/{{.Version}}/hk-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - linux

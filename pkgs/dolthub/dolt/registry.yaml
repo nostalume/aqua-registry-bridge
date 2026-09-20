@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/dolthub/dolt/releases/download/{{.Version}}/dolt-{{.OS}}-{{.Arch}}.{{.Format}}
     repo_owner: dolthub
     repo_name: dolt
     asset: dolt-{{.OS}}-{{.Arch}}.{{.Format}}
@@ -8,6 +9,8 @@ packages:
     description: Dolt – It's Git for Data
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/dolthub/dolt/releases/download/{{.Version}}/dolt-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
     supported_envs:
       - darwin
@@ -19,6 +22,8 @@ packages:
         src: dolt-{{.OS}}-{{.Arch}}/bin/dolt
     version_overrides:
       - version_constraint: semver(">= 0.40.15")
+        type: http
+        url: https://gh-proxy.org/github.com/dolthub/dolt/releases/download/{{.Version}}/dolt-{{.OS}}-{{.Arch}}.{{.Format}}
         files:
           - name: dolt
             src: dolt-{{.OS}}-{{.Arch}}/bin/dolt
@@ -27,6 +32,8 @@ packages:
           - name: git-dolt-smudge
             src: dolt-{{.OS}}-{{.Arch}}/bin/git-dolt-smudge
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/dolthub/dolt/releases/download/{{.Version}}/dolt-{{.OS}}-{{.Arch}}.{{.Format}}
         supported_envs:
           - darwin
           - amd64

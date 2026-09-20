@@ -11,11 +11,14 @@ packages:
       - version_constraint: Version == "stable-2.9.0"
         no_asset: true
       - version_constraint: semver("<= 2.8.1")
+        type: http
+        url: https://gh-proxy.org/github.com/linkerd/linkerd2/releases/download/{{.Version}}/linkerd2-cli-{{.Version}}-{{.OS}}
         version_prefix: stable-
         asset: linkerd2-cli-{{.Version}}-{{.OS}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
@@ -23,36 +26,50 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 2.10.0")
+        type: http
+        url: https://gh-proxy.org/github.com/linkerd/linkerd2/releases/download/{{.Version}}/linkerd2-cli-{{.Version}}-{{.OS}}
         version_prefix: stable-
         asset: linkerd2-cli-{{.Version}}-{{.OS}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/linkerd/linkerd2/releases/download/{{.Version}}/linkerd2-cli-{{.Version}}-{{.OS}}-{{.Arch}}
             asset: linkerd2-cli-{{.Version}}-{{.OS}}-{{.Arch}}
       - version_constraint: Version startsWith "stable-"
-        url: https://gh-proxy.org/https://github.com/linkerd/linkerd2/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/linkerd/linkerd2/releases/download/{{.Version}}/linkerd2-cli-{{.Version}}-{{.OS}}-{{.Arch}}
         asset: linkerd2-cli-{{.Version}}-{{.OS}}-{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/linkerd/linkerd2/releases/download/{{.Version}}/linkerd2-cli-{{.Version}}-{{.OS}}
             goarch: amd64
             asset: linkerd2-cli-{{.Version}}-{{.OS}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/linkerd/linkerd2/releases/download/{{.Version}}/linkerd2-cli-{{.Version}}-{{.OS}}
             asset: linkerd2-cli-{{.Version}}-{{.OS}}
       - version_constraint: semver("<= 20.7.5")
+        type: http
+        url: https://gh-proxy.org/github.com/linkerd/linkerd2/releases/download/{{.Version}}/linkerd2-cli-{{.Version}}-{{.OS}}
         version_prefix: edge-
         asset: linkerd2-cli-{{.Version}}-{{.OS}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
@@ -60,37 +77,54 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 21.3.2")
+        type: http
+        url: https://gh-proxy.org/github.com/linkerd/linkerd2/releases/download/{{.Version}}/linkerd2-cli-{{.Version}}-{{.OS}}
         version_prefix: edge-
         asset: linkerd2-cli-{{.Version}}-{{.OS}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/linkerd/linkerd2/releases/download/{{.Version}}/linkerd2-cli-{{.Version}}-{{.OS}}-{{.Arch}}
             asset: linkerd2-cli-{{.Version}}-{{.OS}}-{{.Arch}}
       - version_constraint: semver("<= 25.9.3")
+        type: http
+        url: https://gh-proxy.org/github.com/linkerd/linkerd2/releases/download/{{.Version}}/linkerd2-cli-{{.Version}}-{{.OS}}-{{.Arch}}
         version_prefix: edge-
         asset: linkerd2-cli-{{.Version}}-{{.OS}}-{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/linkerd/linkerd2/releases/download/{{.Version}}/linkerd2-cli-{{.Version}}-{{.OS}}
             goarch: amd64
             asset: linkerd2-cli-{{.Version}}-{{.OS}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/linkerd/linkerd2/releases/download/{{.Version}}/linkerd2-cli-{{.Version}}-{{.OS}}
             asset: linkerd2-cli-{{.Version}}-{{.OS}}
       - version_constraint: Version startsWith "edge-"
-        url: https://gh-proxy.org/https://github.com/linkerd/linkerd2/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/linkerd/linkerd2/releases/download/{{.Version}}/linkerd2-cli-{{.Version}}-{{.OS}}-{{.Arch}}
         asset: linkerd2-cli-{{.Version}}-{{.OS}}-{{.Arch}}
         format: raw
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/linkerd/linkerd2/releases/download/{{.Version}}/linkerd2-cli-{{.Version}}-{{.OS}}
             goarch: amd64
             asset: linkerd2-cli-{{.Version}}-{{.OS}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/linkerd/linkerd2/releases/download/{{.Version}}/linkerd2-cli-{{.Version}}-{{.OS}}
             asset: linkerd2-cli-{{.Version}}-{{.OS}}

@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.2.0")
-        url: https://gh-proxy.org/https://github.com/koyeb/koyeb-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/koyeb/koyeb-cli/releases/download/{{.Version}}/koyeb-cli-{{.OS}}-{{.Arch}}
         asset: koyeb-cli-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -21,38 +22,50 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "v2.0.0-rc1"
-        url: https://gh-proxy.org/https://github.com/koyeb/koyeb-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/koyeb/koyeb-cli/releases/download/{{.Version}}/koyeb-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: koyeb-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/koyeb/koyeb-cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/koyeb/koyeb-cli/releases/download/{{.Version}}/koyeb-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 2.0.1")
-        url: https://gh-proxy.org/https://github.com/koyeb/koyeb-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/koyeb/koyeb-cli/releases/download/{{.Version}}/koyeb-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: koyeb-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/koyeb/koyeb-cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/koyeb/koyeb-cli/releases/download/{{.Version}}/koyeb-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/koyeb/koyeb-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/koyeb/koyeb-cli/releases/download/{{.Version}}/koyeb-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: koyeb-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/koyeb/koyeb-cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/koyeb/koyeb-cli/releases/download/{{.Version}}/koyeb-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

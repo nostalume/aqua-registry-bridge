@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/jenkins-zh/jenkins-cli/releases/download/{{.Version}}/jcli-{{.OS}}-{{.Arch}}.{{.Format}}
     repo_owner: jenkins-zh
     repo_name: jenkins-cli
     description: Jenkins CLI allows you to manage your Jenkins in an easy way
@@ -15,10 +16,13 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/jenkins-zh/jenkins-cli/releases/download/{{.Version}}/jcli-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
     files:
       - name: jcli
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/jenkins-zh/jenkins-cli/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256

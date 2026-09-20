@@ -10,7 +10,8 @@ packages:
       - version_constraint: semver("<= 0.3.1") || Version == "v0.6.0-alpha"
         no_asset: true
       - version_constraint: Version == "v0.8.0"
-        url: https://gh-proxy.org/https://github.com/lycheeverse/lychee/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/lycheeverse/lychee/releases/download/{{.Version}}/lychee-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: lychee-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -19,9 +20,13 @@ packages:
           linux: unknown-linux-musl
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/lycheeverse/lychee/releases/download/{{.Version}}/lychee-{{.Version}}-macos-x86_64.dmg
             asset: lychee-{{.Version}}-macos-x86_64.dmg
             format: dmg
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/lycheeverse/lychee/releases/download/{{.Version}}/lychee-{{.Version}}-{{.OS}}-{{.Arch}}
             format: raw
             asset: lychee-{{.Version}}-{{.OS}}-{{.Arch}}
         supported_envs:
@@ -29,7 +34,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.5.1-alpha")
-        url: https://gh-proxy.org/https://github.com/lycheeverse/lychee/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/lycheeverse/lychee/releases/download/{{.Version}}/lychee-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: lychee-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -37,22 +43,31 @@ packages:
           amd64: x86_64
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/lycheeverse/lychee/releases/download/{{.Version}}/lychee-{{.Version}}-macos-x86_64.dmg
             asset: lychee-{{.Version}}-macos-x86_64.dmg
             format: dmg
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/lycheeverse/lychee/releases/download/{{.Version}}/lychee-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/lycheeverse/lychee/releases/download/{{.Version}}/lychee-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               arm64: aarch64
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/lycheeverse/lychee/releases/download/{{.Version}}/lychee-{{.Version}}-{{.OS}}-{{.Arch}}
             format: raw
             asset: lychee-{{.Version}}-{{.OS}}-{{.Arch}}
       - version_constraint: semver("<= 0.15.1")
-        url: https://gh-proxy.org/https://github.com/lycheeverse/lychee/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/lycheeverse/lychee/releases/download/{{.Version}}/lychee-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: lychee-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -60,21 +75,31 @@ packages:
           amd64: x86_64
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/lycheeverse/lychee/releases/download/{{.Version}}/lychee-{{.Version}}-macos-x86_64.dmg
             asset: lychee-{{.Version}}-macos-x86_64.dmg
             format: dmg
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/lycheeverse/lychee/releases/download/{{.Version}}/lychee-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/lycheeverse/lychee/releases/download/{{.Version}}/lychee-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               arm64: aarch64
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/lycheeverse/lychee/releases/download/{{.Version}}/lychee-{{.Version}}-{{.OS}}-{{.Arch}}
             format: raw
             asset: lychee-{{.Version}}-{{.OS}}-{{.Arch}}
       - version_constraint: semver("< 0.19.0")
+        type: http
+        url: https://gh-proxy.org/github.com/lycheeverse/lychee/releases/download/{{.Version}}/lychee-{{.Arch}}-{{.OS}}.{{.Format}}
         version_prefix: lychee-v
         asset: lychee-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
@@ -84,17 +109,25 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/lycheeverse/lychee/releases/download/{{.Version}}/lychee-{{.Arch}}-{{.OS}}.{{.Format}}
             format: dmg
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/lycheeverse/lychee/releases/download/{{.Version}}/lychee-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/lycheeverse/lychee/releases/download/{{.Version}}/lychee-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               arm64: aarch64
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/lycheeverse/lychee/releases/download/{{.Version}}/lychee-{{.Arch}}-{{.OS}}
             format: raw
             asset: lychee-{{.Arch}}-{{.OS}}
         supported_envs:
@@ -102,6 +135,8 @@ packages:
           - windows/amd64
           - darwin/arm64
       - version_constraint: semver("< 0.24.0")
+        type: http
+        url: https://gh-proxy.org/github.com/lycheeverse/lychee/releases/download/{{.Version}}/lychee-{{.Arch}}-{{.OS}}.{{.Format}}
         version_prefix: lychee-v
         asset: lychee-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
@@ -111,15 +146,21 @@ packages:
           darwin: macos
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/lycheeverse/lychee/releases/download/{{.Version}}/lychee-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/lycheeverse/lychee/releases/download/{{.Version}}/lychee-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               arm64: aarch64
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/lycheeverse/lychee/releases/download/{{.Version}}/lychee-{{.Arch}}-{{.OS}}
             format: raw
             asset: lychee-{{.Arch}}-{{.OS}}
         supported_envs:
@@ -127,6 +168,8 @@ packages:
           - windows
           - darwin/arm64
       - version_constraint: Version == "lychee-v0.24.0"
+        type: http
+        url: https://gh-proxy.org/github.com/lycheeverse/lychee/releases/download/{{.Version}}/lychee-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         version_prefix: lychee-v
         asset: lychee-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
@@ -139,11 +182,15 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/lycheeverse/lychee/releases/download/{{.Version}}/lychee-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         files:
           - name: lychee
             src: "{{.AssetWithoutExt}}/lychee"
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/lycheeverse/lychee/releases/download/{{.Version}}/lychee-{{.Arch}}-{{.OS}}.{{.Format}}
         version_prefix: lychee-v
         asset: lychee-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
@@ -156,6 +203,8 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/lycheeverse/lychee/releases/download/{{.Version}}/lychee-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         files:
           - name: lychee

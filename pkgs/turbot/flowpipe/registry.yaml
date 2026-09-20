@@ -7,13 +7,15 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/turbot/flowpipe/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/turbot/flowpipe/releases/download/{{.Version}}/flowpipe.{{.OS}}.{{.Arch}}.{{.Format}}
         asset: flowpipe.{{.OS}}.{{.Arch}}.{{.Format}}
         format: tar.gz
         supported_envs:
           - linux
           - darwin
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/turbot/flowpipe/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/elkowar/pipr/releases/download/{{.Version}}/pipr
     repo_owner: elkowar
     repo_name: pipr
     description: A tool to interactively write shell pipelines

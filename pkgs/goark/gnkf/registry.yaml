@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/goark/gnkf/releases/download/{{.Version}}/gnkf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: goark
     repo_name: gnkf
     description: Network Kanji Filter by Golang
@@ -8,6 +9,8 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/goark/gnkf/releases/download/{{.Version}}/gnkf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     replacements:
       amd64: 64bit
@@ -16,17 +19,21 @@ packages:
       linux: Linux
       windows: Windows
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/goark/gnkf/releases/download/{{.Version}}/gnkf_{{trimV .Version}}_checksums.txt
       asset: gnkf_{{trimV .Version}}_checksums.txt
       algorithm: sha256
     version_constraint: semver(">= 0.7.5")
     version_overrides:
       - version_constraint: Version == "v0.7.4"
-        url: https://gh-proxy.org/https://github.com/goark/gnkf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/goark/gnkf/releases/download/{{.Version}}/gnkf_.{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gnkf_.{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         checksum:
           enabled: false # checksum file was broken. https://github.com/aquaproj/aqua-registry/pull/10446#issuecomment-1455275091
       - version_constraint: semver(">= 0.6.0")
+        type: http
+        url: https://gh-proxy.org/github.com/goark/gnkf/releases/download/{{.Version}}/gnkf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         replacements:
           amd64: 64bit
           arm64: ARM64
@@ -34,8 +41,12 @@ packages:
           linux: Linux
           windows: Windows
       - version_constraint: semver(">= 0.4.0")
+        type: http
+        url: https://gh-proxy.org/github.com/goark/gnkf/releases/download/{{.Version}}/gnkf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/goark/gnkf/releases/download/{{.Version}}/gnkf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
             replacements:
               arm64: arm64
@@ -50,11 +61,17 @@ packages:
           - linux
           - amd64
       - version_constraint: semver("< 0.4.0")
+        type: http
+        url: https://gh-proxy.org/github.com/goark/gnkf/releases/download/{{.Version}}/gnkf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/goark/gnkf/releases/download/{{.Version}}/gnkf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             replacements:
               arm64: ARM64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/goark/gnkf/releases/download/{{.Version}}/gnkf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         replacements:
           amd64: 64bit

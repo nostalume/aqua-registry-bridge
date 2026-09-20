@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.4.0"
-        url: https://gh-proxy.org/https://github.com/herdrdev/herdr/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/herdrdev/herdr/releases/download/{{.Version}}/herdr-{{.OS}}-{{.Arch}}
         asset: herdr-{{.OS}}-{{.Arch}}
         format: raw
         replacements:
@@ -20,7 +21,8 @@ packages:
           - darwin
       # Windows assets of preview releases are irregular, so they are excluded.
       - version_constraint: Version startsWith "preview-"
-        url: https://gh-proxy.org/https://github.com/herdrdev/herdr/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/herdrdev/herdr/releases/download/{{.Version}}/herdr-{{.OS}}-{{.Arch}}
         asset: herdr-{{.OS}}-{{.Arch}}
         format: raw
         replacements:
@@ -31,7 +33,8 @@ packages:
           - linux
           - darwin
       - version_constraint: semver("<= 0.8.0")
-        url: https://gh-proxy.org/https://github.com/herdrdev/herdr/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/herdrdev/herdr/releases/download/{{.Version}}/herdr-{{.OS}}-{{.Arch}}
         asset: herdr-{{.OS}}-{{.Arch}}
         format: raw
         replacements:
@@ -42,7 +45,8 @@ packages:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/herdrdev/herdr/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/herdrdev/herdr/releases/download/{{.Version}}/herdr-{{.OS}}-{{.Arch}}
         asset: herdr-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -52,5 +56,7 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/herdrdev/herdr/releases/download/{{.Version}}/herdr-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             asset: herdr-{{.OS}}-{{.Arch}}.{{.Format}}

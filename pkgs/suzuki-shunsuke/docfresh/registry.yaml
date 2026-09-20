@@ -7,16 +7,19 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.2.0")
-        url: https://gh-proxy.org/https://github.com/suzuki-shunsuke/docfresh/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/docfresh/releases/download/{{.Version}}/docfresh_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: docfresh_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/docfresh/releases/download/{{.Version}}/docfresh_checksums.txt
           asset: docfresh_checksums.txt
           algorithm: sha256
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/suzuki-shunsuke/docfresh/releases/download/{{.Version}}/docfresh_checksums.txt.bundle
               asset: docfresh_checksums.txt.bundle
             opts:
               - --certificate-identity-regexp
@@ -26,22 +29,28 @@ packages:
         github_artifact_attestations:
           signer_workflow: suzuki-shunsuke/go-release-workflow/.github/workflows/release.yaml
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/docfresh/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/docfresh/releases/download/{{.Version}}/docfresh_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/suzuki-shunsuke/docfresh/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/docfresh/releases/download/{{.Version}}/docfresh_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: docfresh_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/docfresh/releases/download/{{.Version}}/docfresh_checksums.txt
           asset: docfresh_checksums.txt
           algorithm: sha256
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/suzuki-shunsuke/docfresh/releases/download/{{.Version}}/docfresh_checksums.txt.sigstore.json
               asset: docfresh_checksums.txt.sigstore.json
             opts:
               - --certificate-identity-regexp
@@ -51,8 +60,11 @@ packages:
         github_artifact_attestations:
           signer_workflow: suzuki-shunsuke/go-release-workflow/.github/workflows/release.yaml
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/docfresh/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/docfresh/releases/download/{{.Version}}/docfresh_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

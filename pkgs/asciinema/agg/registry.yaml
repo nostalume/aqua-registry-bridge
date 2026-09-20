@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/asciinema/agg/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/asciinema/agg/releases/download/{{.Version}}/agg-{{.Arch}}-{{.OS}}
         asset: agg-{{.Arch}}-{{.OS}}
         format: raw
         windows_arm_emulation: true
@@ -18,10 +19,14 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/asciinema/agg/releases/download/{{.Version}}/agg-{{.Arch}}-{{.OS}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/asciinema/agg/releases/download/{{.Version}}/agg-{{.Arch}}-{{.OS}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu

@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.1.2"
-        url: https://gh-proxy.org/https://github.com/airbytehq/abctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/airbytehq/abctl/releases/download/{{.Version}}/abctl-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: abctl-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -19,8 +20,11 @@ packages:
               - linux
               - darwin/amd64
             format: tar.gz
+            type: http
+            url: https://gh-proxy.org/github.com/airbytehq/abctl/releases/download/{{.Version}}/abctl-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
       - version_constraint: semver("<= 0.13.1")
-        url: https://gh-proxy.org/https://github.com/airbytehq/abctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/airbytehq/abctl/releases/download/{{.Version}}/abctl-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: abctl-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -29,18 +33,24 @@ packages:
             src: "{{.AssetWithoutExt}}/abctl"
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/airbytehq/abctl/releases/download/{{.Version}}/abctl-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/airbytehq/abctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/airbytehq/abctl/releases/download/{{.Version}}/abctl-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: abctl-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: abctl
             src: "{{.AssetWithoutExt}}/abctl"
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/airbytehq/abctl/releases/download/{{.Version}}/abctl_{{trimV .Version}}_checksums.txt
           asset: abctl_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/airbytehq/abctl/releases/download/{{.Version}}/abctl-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip

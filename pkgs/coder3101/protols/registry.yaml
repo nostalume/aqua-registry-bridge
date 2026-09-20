@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("<= 0.2.1")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/coder3101/protols/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/coder3101/protols/releases/download/{{.Version}}/protols-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: protols-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -21,4 +22,6 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/coder3101/protols/releases/download/{{.Version}}/protols-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip

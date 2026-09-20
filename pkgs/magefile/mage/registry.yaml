@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v1.15.0"
-        url: https://gh-proxy.org/https://github.com/magefile/mage/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -17,21 +18,27 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_checksums.txt
           asset: mage_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: ARM64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             replacements:
               arm64: ARM
       - version_constraint: semver("<= 1.0.1")
         no_asset: true
       - version_constraint: semver("<= 1.11.0")
-        url: https://gh-proxy.org/https://github.com/magefile/mage/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -42,17 +49,23 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_checksums.txt
           asset: mage_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: ARM64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 1.14.0")
-        url: https://gh-proxy.org/https://github.com/magefile/mage/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -62,40 +75,56 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_checksums.txt
           asset: mage_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: Version == "v1.17.0"
-        url: https://gh-proxy.org/https://github.com/magefile/mage/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}_{{.Arch}}Linux-64bit.{{.Format}}
         asset: mage_{{trimV .Version}}_{{.OS}}_{{.Arch}}Linux-64bit.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_checksums.txt
           asset: mage_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}_{{.Arch}}Linux-ARM64.{{.Format}}
             goarch: arm64
             asset: mage_{{trimV .Version}}_{{.OS}}_{{.Arch}}Linux-ARM64.{{.Format}}
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}_{{.Arch}}macOS-64bit.{{.Format}}
             goarch: amd64
             asset: mage_{{trimV .Version}}_{{.OS}}_{{.Arch}}macOS-64bit.{{.Format}}
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}_{{.Arch}}macOS-ARM64.{{.Format}}
             goarch: arm64
             asset: mage_{{trimV .Version}}_{{.OS}}_{{.Arch}}macOS-ARM64.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}_{{.Arch}}Windows-64bit.{{.Format}}
             goarch: amd64
             format: zip
             asset: mage_{{trimV .Version}}_{{.OS}}_{{.Arch}}Windows-64bit.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}_{{.Arch}}Windows-ARM64.{{.Format}}
             goarch: arm64
             format: zip
             asset: mage_{{trimV .Version}}_{{.OS}}_{{.Arch}}Windows-ARM64.{{.Format}}
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/magefile/mage/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -106,12 +135,17 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_checksums.txt
           asset: mage_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: ARM64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip

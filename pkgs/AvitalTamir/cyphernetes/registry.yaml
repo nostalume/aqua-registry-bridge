@@ -7,51 +7,60 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.1")
-        url: https://gh-proxy.org/https://github.com/AvitalTamir/cyphernetes/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/AvitalTamir/cyphernetes/releases/download/{{.Version}}/cyphernetes-{{.OS}}-{{.Arch}}
         asset: cyphernetes-{{.OS}}-{{.Arch}}
         format: raw
         replacements:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/AvitalTamir/cyphernetes/releases/download/{{.Version}}/cyphernetes-{{.OS}}
             asset: cyphernetes-{{.OS}}
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v0.2"
-        url: https://gh-proxy.org/https://github.com/AvitalTamir/cyphernetes/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/AvitalTamir/cyphernetes/releases/download/{{.Version}}/cyphernetes-{{.OS}}-{{.Arch}}
         asset: cyphernetes-{{.OS}}-{{.Arch}}
         format: raw
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 0.6.4-fix.0")
-        url: https://gh-proxy.org/https://github.com/AvitalTamir/cyphernetes/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/AvitalTamir/cyphernetes/releases/download/{{.Version}}/cyphernetes-{{.OS}}-{{.Arch}}
         asset: cyphernetes-{{.OS}}-{{.Arch}}
         format: raw
         supported_envs:
           - linux/amd64
           - darwin/arm64
       - version_constraint: semver("<= 0.8.1")
-        url: https://gh-proxy.org/https://github.com/AvitalTamir/cyphernetes/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/AvitalTamir/cyphernetes/releases/download/{{.Version}}/cyphernetes-{{.OS}}-{{.Arch}}
         asset: cyphernetes-{{.OS}}-{{.Arch}}
         format: raw
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 0.10.0")
-        url: https://gh-proxy.org/https://github.com/AvitalTamir/cyphernetes/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/AvitalTamir/cyphernetes/releases/download/{{.Version}}/cyphernetes-{{.OS}}-{{.Arch}}
         asset: cyphernetes-{{.OS}}-{{.Arch}}
         format: raw
         supported_envs:
           - darwin/arm64
       - version_constraint: semver("<= 0.12.1")
-        url: https://gh-proxy.org/https://github.com/AvitalTamir/cyphernetes/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/AvitalTamir/cyphernetes/releases/download/{{.Version}}/cyphernetes-{{.OS}}-{{.Arch}}
         asset: cyphernetes-{{.OS}}-{{.Arch}}
         format: raw
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/AvitalTamir/cyphernetes/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/AvitalTamir/cyphernetes/releases/download/{{.Version}}/cyphernetes-{{.OS}}-{{.Arch}}
         asset: cyphernetes-{{.OS}}-{{.Arch}}
         format: raw

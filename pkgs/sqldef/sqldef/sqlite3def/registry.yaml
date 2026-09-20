@@ -3,7 +3,8 @@ packages:
   - name: sqldef/sqldef/sqlite3def
     aliases:
       - name: k0kubun/sqldef/sqlite3def
-    type: github_release
+    type: http
+    url: https://gh-proxy.org/github.com/sqldef/sqldef/releases/download/{{.Version}}/sqlite3def_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: sqldef
     repo_name: sqldef
     description: Idempotent schema management for SQLite3
@@ -13,6 +14,8 @@ packages:
     format: zip
     overrides:
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/sqldef/sqldef/releases/download/{{.Version}}/sqlite3def_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
     supported_envs:
       - darwin

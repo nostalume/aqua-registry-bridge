@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.1.0")
-        url: https://gh-proxy.org/https://github.com/neilpa/yajsv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/neilpa/yajsv/releases/download/{{.Version}}/yajsv.{{.OS}}.{{.Arch}}
         asset: yajsv.{{.OS}}.{{.Arch}}
         format: raw
         rosetta2: true
@@ -15,7 +16,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 1.4.0")
-        url: https://gh-proxy.org/https://github.com/neilpa/yajsv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/neilpa/yajsv/releases/download/{{.Version}}/yajsv.{{.OS}}.{{.Arch}}
         asset: yajsv.{{.OS}}.{{.Arch}}
         format: raw
         rosetta2: true
@@ -25,7 +27,8 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/neilpa/yajsv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/neilpa/yajsv/releases/download/{{.Version}}/yajsv.{{.OS}}.{{.Arch}}
         asset: yajsv.{{.OS}}.{{.Arch}}
         format: raw
         windows_arm_emulation: true

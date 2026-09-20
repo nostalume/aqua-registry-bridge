@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/mumoshu/config-registry/releases/download/{{.Version}}/config-registry_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: mumoshu
     repo_name: config-registry
     description: Switch between kubeconfigs and avoid unintentional operation on your production clusters
@@ -8,8 +9,11 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/mumoshu/config-registry/releases/download/{{.Version}}/config-registry_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/mumoshu/config-registry/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256

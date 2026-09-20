@@ -8,7 +8,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.4.1")
-        url: https://gh-proxy.org/https://github.com/aakso/ssh-inscribe/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aakso/ssh-inscribe/releases/download/{{.Version}}/sshi-{{.OS}}-{{.Arch}}
         asset: sshi-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -18,7 +19,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.9.1")
-        url: https://gh-proxy.org/https://github.com/aakso/ssh-inscribe/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aakso/ssh-inscribe/releases/download/{{.Version}}/sshi-{{.OS}}-{{.Arch}}
         asset: sshi-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -30,7 +32,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "0.10.0"
-        url: https://gh-proxy.org/https://github.com/aakso/ssh-inscribe/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aakso/ssh-inscribe/releases/download/{{.Version}}/sshi-{{.OS}}-{{.Arch}}
         asset: sshi-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -41,14 +44,16 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/aakso/ssh-inscribe/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aakso/ssh-inscribe/releases/download/{{.Version}}/sshi-{{.OS}}-{{.Arch}}
         asset: sshi-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/aakso/ssh-inscribe/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:

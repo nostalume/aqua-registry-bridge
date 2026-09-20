@@ -7,35 +7,43 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.4.1")
-        url: https://gh-proxy.org/https://github.com/golangci/misspell/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/golangci/misspell/releases/download/{{.Version}}/misspell_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: misspell_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: 64bit
           darwin: mac
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/golangci/misspell/releases/download/{{.Version}}/misspell_{{trimV .Version}}_checksums.txt
           asset: misspell_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.5.1")
-        url: https://gh-proxy.org/https://github.com/golangci/misspell/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/golangci/misspell/releases/download/{{.Version}}/misspell_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: misspell_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/golangci/misspell/releases/download/{{.Version}}/misspell_{{trimV .Version}}_checksums.txt
           asset: misspell_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/golangci/misspell/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/golangci/misspell/releases/download/{{.Version}}/misspell_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: misspell_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: misspell
             src: "{{.AssetWithoutExt}}/misspell"
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/golangci/misspell/releases/download/{{.Version}}/misspell_{{trimV .Version}}_checksums.txt
           asset: misspell_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/golangci/misspell/releases/download/{{.Version}}/misspell_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

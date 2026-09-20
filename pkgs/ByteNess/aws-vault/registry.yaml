@@ -7,39 +7,49 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v7.3.5"
-        url: https://gh-proxy.org/https://github.com/ByteNess/aws-vault/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ByteNess/aws-vault/releases/download/{{.Version}}/aws-vault-{{.OS}}-{{.Arch}}
         asset: aws-vault-{{.OS}}-{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/ByteNess/aws-vault/releases/download/{{.Version}}/aws-vault_sha256_checksums.txt
           asset: aws-vault_sha256_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 7.3.4")
-        url: https://gh-proxy.org/https://github.com/ByteNess/aws-vault/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ByteNess/aws-vault/releases/download/{{.Version}}/aws-vault_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: aws-vault_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/ByteNess/aws-vault/releases/download/{{.Version}}/aws-vault_{{trimV .Version}}_sha256_checksums.txt
           asset: aws-vault_{{trimV .Version}}_sha256_checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/ByteNess/aws-vault/releases/download/{{.Version}}/aws-vault_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
             asset: aws-vault_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ByteNess/aws-vault/releases/download/{{.Version}}/aws-vault_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/ByteNess/aws-vault/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ByteNess/aws-vault/releases/download/{{.Version}}/aws-vault-{{.OS}}-{{.Arch}}
         asset: aws-vault-{{.OS}}-{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/ByteNess/aws-vault/releases/download/{{.Version}}/aws-vault_sha256_checksums.txt
           asset: aws-vault_sha256_checksums.txt
           algorithm: sha256

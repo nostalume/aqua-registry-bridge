@@ -14,16 +14,21 @@ packages:
 
           https://github.com/apple/pkl-go/releases
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/apple/pkl-go/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/apple/pkl-go/releases/download/{{.Version}}/pkl-gen-go-{{.OS}}-{{.Arch}}.bin
         asset: pkl-gen-go-{{.OS}}-{{.Arch}}.bin
         format: raw
         replacements:
           darwin: macos
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/apple/pkl-go/releases/download/{{.Version}}/pkl-gen-go-{{.OS}}-{{.Arch}}.bin
             replacements:
               arm64: aarch64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/apple/pkl-go/releases/download/{{.Version}}/pkl-gen-go-{{.OS}}.bin
             asset: pkl-gen-go-{{.OS}}.bin
         supported_envs:
           - linux

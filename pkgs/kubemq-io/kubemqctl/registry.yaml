@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/kubemq-io/kubemqctl/releases/download/{{.Version}}/kubemqctl_{{.OS}}_{{.Arch}}
     repo_owner: kubemq-io
     repo_name: kubemqctl
     rosetta2: true
@@ -11,4 +12,6 @@ packages:
     asset: kubemqctl_{{.OS}}_{{.Arch}}
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/kubemq-io/kubemqctl/releases/download/{{.Version}}/kubemqctl.exe
         asset: kubemqctl.exe

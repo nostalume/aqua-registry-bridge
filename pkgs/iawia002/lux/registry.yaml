@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/iawia002/lux/releases/download/{{.Version}}/lux_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: iawia002
     repo_name: lux
     aliases:
@@ -10,6 +11,8 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/iawia002/lux/releases/download/{{.Version}}/lux_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     replacements:
       amd64: x86_64
@@ -17,12 +20,15 @@ packages:
       linux: Linux
       windows: Windows
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/iawia002/lux/releases/download/{{.Version}}/lux_{{trimV .Version}}_checksums.txt
       asset: lux_{{trimV .Version}}_checksums.txt
       algorithm: sha256
     version_constraint: semver(">= 0.17.2")
     version_overrides:
       - version_constraint: semver(">= 0.14.0")
+        type: http
+        url: https://gh-proxy.org/github.com/iawia002/lux/releases/download/{{.Version}}/lux_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         replacements:
           amd64: 64-bit
           arm64: ARM64
@@ -30,8 +36,12 @@ packages:
           linux: Linux
           windows: Windows
       - version_constraint: semver(">= 0.12.0")
+        type: http
+        url: https://gh-proxy.org/github.com/iawia002/lux/releases/download/{{.Version}}/lux_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/iawia002/lux/releases/download/{{.Version}}/lux_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
             replacements:
               arm64: arm64
@@ -46,12 +56,15 @@ packages:
           - linux
           - amd64
       - version_constraint: semver(">= 0.11.0")
-        url: https://gh-proxy.org/https://github.com/iawia002/lux/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/iawia002/lux/releases/download/{{.Version}}/annie_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: annie_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         files:
           - name: annie
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/iawia002/lux/releases/download/{{.Version}}/annie_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
             replacements:
               arm64: arm64
@@ -66,19 +79,25 @@ packages:
           - linux
           - amd64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/iawia002/lux/releases/download/{{.Version}}/annie_{{trimV .Version}}_checksums.txt
           asset: annie_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver(">= 0.6.6")
-        url: https://gh-proxy.org/https://github.com/iawia002/lux/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/iawia002/lux/releases/download/{{.Version}}/annie_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: annie_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         files:
           - name: annie
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/iawia002/lux/releases/download/{{.Version}}/annie_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             replacements:
               arm64: ARM64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/iawia002/lux/releases/download/{{.Version}}/annie_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         replacements:
           amd64: 64-bit
@@ -91,11 +110,13 @@ packages:
           - amd64
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/iawia002/lux/releases/download/{{.Version}}/annie_{{.Version}}_checksums.txt
           asset: annie_{{.Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver(">= 0.6.3")
-        url: https://gh-proxy.org/https://github.com/iawia002/lux/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/iawia002/lux/releases/download/{{.Version}}/annie_{{.OS}}_{{.Arch}}
         asset: annie_{{.OS}}_{{.Arch}}
         files:
           - name: annie
@@ -110,7 +131,8 @@ packages:
         checksum:
           enabled: false
       - version_constraint: semver("< 0.6.3")
-        url: https://gh-proxy.org/https://github.com/iawia002/lux/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/iawia002/lux/releases/download/{{.Version}}/annie_{{.OS}}_{{.Arch}}
         asset: annie_{{.OS}}_{{.Arch}}
         files:
           - name: annie

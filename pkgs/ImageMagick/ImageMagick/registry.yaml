@@ -11,11 +11,15 @@ packages:
           - windows
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/ImageMagick/ImageMagick/releases/download/{{.Version}}/ImageMagick-{{.Version}}-gcc-x86_64.AppImage
             format: raw
             asset: ImageMagick-{{.Version}}-gcc-x86_64.AppImage
             files:
               - name: magick
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ImageMagick/ImageMagick/releases/download/{{.Version}}/ImageMagick-{{.Version}}-portable-Q16-HDRI-{{.Arch}}.{{.Format}}
             asset: ImageMagick-{{.Version}}-portable-Q16-HDRI-{{.Arch}}.{{.Format}}
             format: 7z
             replacements:
@@ -36,6 +40,8 @@ packages:
           - windows
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ImageMagick/ImageMagick/releases/download/{{.Version}}/ImageMagick-{{.Version}}-portable-Q16-HDRI-{{.Arch}}.{{.Format}}
             asset: ImageMagick-{{.Version}}-portable-Q16-HDRI-{{.Arch}}.{{.Format}}
             format: 7z
             replacements:
@@ -57,11 +63,15 @@ packages:
           - linux/amd64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/ImageMagick/ImageMagick/releases/download/{{.Version}}/ImageMagick-{{.Version}}-gcc-x86_64.AppImage
             format: raw
             asset: ImageMagick-{{.Version}}-gcc-x86_64.AppImage
             files:
               - name: magick
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ImageMagick/ImageMagick/releases/download/{{.Version}}/ImageMagick-{{.Version}}-portable-Q16-HDRI-{{.Arch}}.{{.Format}}
             asset: ImageMagick-{{.Version}}-portable-Q16-HDRI-{{.Arch}}.{{.Format}}
             format: 7z
             replacements:

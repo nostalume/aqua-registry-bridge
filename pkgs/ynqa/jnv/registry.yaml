@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.1.0"
-        url: https://gh-proxy.org/https://github.com/ynqa/jnv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ynqa/jnv/releases/download/{{.Version}}/jnv-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: jnv-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         rosetta2: true
@@ -18,13 +19,15 @@ packages:
           amd64: x86_64
           darwin: apple-darwin
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
           - darwin
       - version_constraint: Version == "v0.3.0"
-        url: https://gh-proxy.org/https://github.com/ynqa/jnv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ynqa/jnv/releases/download/{{.Version}}/jnv-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: jnv-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -37,14 +40,19 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/ynqa/jnv/releases/download/{{.Version}}/jnv-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ynqa/jnv/releases/download/{{.Version}}/jnv-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: jnv
@@ -53,7 +61,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.2.3")
-        url: https://gh-proxy.org/https://github.com/ynqa/jnv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ynqa/jnv/releases/download/{{.Version}}/jnv-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: jnv-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         rosetta2: true
@@ -65,14 +74,16 @@ packages:
           darwin: apple-darwin
           linux: unknown-linux-gnu
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.5.0")
-        url: https://gh-proxy.org/https://github.com/ynqa/jnv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ynqa/jnv/releases/download/{{.Version}}/jnv-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: jnv-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -85,14 +96,19 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/ynqa/jnv/releases/download/{{.Version}}/jnv-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ynqa/jnv/releases/download/{{.Version}}/jnv-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: jnv
@@ -101,7 +117,8 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/ynqa/jnv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ynqa/jnv/releases/download/{{.Version}}/jnv-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: jnv-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -114,19 +131,26 @@ packages:
           darwin: apple-darwin
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/ynqa/jnv/releases/download/{{.Version}}/jnv-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/ynqa/jnv/releases/download/{{.Version}}/jnv-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ynqa/jnv/releases/download/{{.Version}}/jnv-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: jnv

@@ -8,30 +8,34 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.15.2")
-        url: https://gh-proxy.org/https://github.com/loft-sh/vcluster/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/loft-sh/vcluster/releases/download/{{.Version}}/vcluster-{{.OS}}-{{.Arch}}
         asset: vcluster-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/loft-sh/vcluster/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/loft-sh/vcluster/releases/download/{{.Version}}/vcluster-{{.OS}}-{{.Arch}}
         asset: vcluster-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/loft-sh/vcluster/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/loft-sh/vcluster/releases/download/{{.Version}}/checksums.txt.pem
+              - https://gh-proxy.org/github.com/loft-sh/vcluster/releases/download/{{.Version}}/checksums.txt.pem
               - --certificate-identity
-              - https://github.com/loft-sh/vcluster/.github/workflows/release.yaml@refs/tags/{{.Version}}
+              - https://gh-proxy.org/github.com/loft-sh/vcluster/.github/workflows/release.yaml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/loft-sh/vcluster/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/loft-sh/vcluster/releases/download/{{.Version}}/checksums.txt.sig

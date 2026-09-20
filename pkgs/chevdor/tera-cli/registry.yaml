@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.4.0"
-        url: https://gh-proxy.org/https://github.com/chevdor/tera-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/chevdor/tera-cli/releases/download/{{.Version}}/tera-{{.OS}}-{{.Version}}.{{.Format}}
         asset: tera-{{.OS}}-{{.Version}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -21,7 +22,8 @@ packages:
       - version_constraint: semver("<= 0.1.2")
         no_asset: true
       - version_constraint: semver("<= 0.2.4")
-        url: https://gh-proxy.org/https://github.com/chevdor/tera-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/chevdor/tera-cli/releases/download/{{.Version}}/tera-{{.OS}}-{{.Version}}.{{.Format}}
         asset: tera-{{.OS}}-{{.Version}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -33,7 +35,8 @@ packages:
       - version_constraint: semver("<= 0.3.0")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/chevdor/tera-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/chevdor/tera-cli/releases/download/{{.Version}}/tera-cli-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: tera-cli-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -46,9 +49,12 @@ packages:
         files:
           - name: tera
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/chevdor/tera-cli/releases/download/{{.Version}}/tera-cli-{{.Arch}}-{{.OS}}.sha512
           asset: tera-cli-{{.Arch}}-{{.OS}}.sha512
           algorithm: sha512
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/chevdor/tera-cli/releases/download/{{.Version}}/tera-cli-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip

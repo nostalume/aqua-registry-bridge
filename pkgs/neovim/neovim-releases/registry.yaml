@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.10.3")
-        url: https://gh-proxy.org/https://github.com/neovim/neovim-releases/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/neovim/neovim-releases/releases/download/{{.Version}}/nvim-linux64.{{.Format}}
         asset: nvim-linux64.{{.Format}}
         format: tar.gz
         files:
@@ -18,7 +19,8 @@ packages:
         supported_envs:
           - linux/amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/neovim/neovim-releases/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/neovim/neovim-releases/releases/download/{{.Version}}/nvim-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: nvim-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:

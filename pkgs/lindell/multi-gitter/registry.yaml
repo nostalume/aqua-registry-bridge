@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/lindell/multi-gitter/releases/download/{{.Version}}/multi-gitter_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
     repo_owner: lindell
     repo_name: multi-gitter
     asset: multi-gitter_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
@@ -12,6 +13,7 @@ packages:
       linux: Linux
       windows: Windows
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/lindell/multi-gitter/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256

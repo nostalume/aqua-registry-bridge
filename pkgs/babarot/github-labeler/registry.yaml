@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/babarot/github-labeler/releases/download/{{.Version}}/github-labeler_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: babarot
     repo_name: github-labeler
     aliases:
@@ -14,11 +15,14 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/babarot/github-labeler/releases/download/{{.Version}}/github-labeler_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     replacements:
       386: i386
       amd64: x86_64
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/babarot/github-labeler/releases/download/{{.Version}}/github-labeler_{{trimV .Version}}_checksums.txt
       asset: github-labeler_{{trimV .Version}}_checksums.txt
       algorithm: sha256

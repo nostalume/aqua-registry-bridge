@@ -7,11 +7,13 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/suzuki-shunsuke/langcheck/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/langcheck/releases/download/{{.Version}}/langcheck_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: langcheck_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/langcheck/releases/download/{{.Version}}/langcheck_checksums.txt
           asset: langcheck_checksums.txt
           algorithm: sha256
           cosign:
@@ -21,13 +23,17 @@ packages:
               - --certificate-identity-regexp
               - "^https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.+$"
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/suzuki-shunsuke/langcheck/releases/download/{{.Version}}/langcheck_checksums.txt.sigstore.json
               asset: langcheck_checksums.txt.sigstore.json
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/langcheck/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
         github_artifact_attestations:
           signer_workflow: suzuki-shunsuke/go-release-workflow/.github/workflows/release.yaml
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/langcheck/releases/download/{{.Version}}/langcheck_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

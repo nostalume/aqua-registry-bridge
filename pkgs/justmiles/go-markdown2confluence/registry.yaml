@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/justmiles/go-markdown2confluence/releases/download/{{.Version}}/go-markdown2confluence_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: justmiles
     repo_name: go-markdown2confluence
     description: Push markdown files to Confluence Cloud
@@ -9,7 +10,8 @@ packages:
     replacements:
       amd64: x86_64
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/justmiles/go-markdown2confluence/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256
     files:
@@ -17,33 +19,43 @@ packages:
     version_constraint: semver(">= 3.3.2")
     version_overrides:
       - version_constraint: semver(">= 3.3.1")
+        type: http
+        url: https://gh-proxy.org/github.com/justmiles/go-markdown2confluence/releases/download/{{.Version}}/go-markdown2confluence_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         supported_envs:
           - darwin
           - linux
           - amd64
       - version_constraint: semver(">= 3.3.0")
+        type: http
+        url: https://gh-proxy.org/github.com/justmiles/go-markdown2confluence/releases/download/{{.Version}}/go-markdown2confluence_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         supported_envs:
           - darwin
           - linux
           - amd64
         rosetta2: true
       - version_constraint: semver(">= 3.1.1")
+        type: http
+        url: https://gh-proxy.org/github.com/justmiles/go-markdown2confluence/releases/download/{{.Version}}/go-markdown2confluence_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         supported_envs:
           - darwin
           - amd64
         rosetta2: true
       - version_constraint: semver(">= 3.0.0")
-        url: https://gh-proxy.org/https://github.com/justmiles/go-markdown2confluence/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/justmiles/go-markdown2confluence/releases/download/{{.Version}}/markdown2confluence_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: markdown2confluence_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/justmiles/go-markdown2confluence/releases/download/{{.Version}}/markdown2confluence_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - amd64
         rosetta2: true
       - version_constraint: semver(">= 2.0.0")
-        url: https://gh-proxy.org/https://github.com/justmiles/go-markdown2confluence/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/justmiles/go-markdown2confluence/releases/download/{{.Version}}/markdown2confluence-{{trimV .Version}}-{{.OS}}-{{.Arch}}
         asset: markdown2confluence-{{trimV .Version}}-{{.OS}}-{{.Arch}}
         format: raw
         replacements: {}
@@ -54,7 +66,8 @@ packages:
         checksum:
           enabled: false
       - version_constraint: semver("< 2.0.0")
-        url: https://gh-proxy.org/https://github.com/justmiles/go-markdown2confluence/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/justmiles/go-markdown2confluence/releases/download/{{.Version}}/markdown2confluence.{{.OS}}-{{.Arch}}
         asset: markdown2confluence.{{.OS}}-{{.Arch}}
         format: raw
         replacements: {}

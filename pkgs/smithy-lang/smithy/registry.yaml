@@ -8,7 +8,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.47.0")
-        url: https://gh-proxy.org/https://github.com/smithy-lang/smithy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/smithy-lang/smithy/releases/download/{{.Version}}/smithy-cli-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: smithy-cli-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -19,15 +20,19 @@ packages:
           amd64: x86_64
           arm64: aarch64
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/smithy-lang/smithy/releases/download/{{.Version}}/smithy-cli-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               amd64: x64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/smithy-lang/smithy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/smithy-lang/smithy/releases/download/{{.Version}}/smithy-cli-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: smithy-cli-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         files:
@@ -38,10 +43,13 @@ packages:
           amd64: x86_64
           arm64: aarch64
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/smithy-lang/smithy/releases/download/{{.Version}}/smithy-cli-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               amd64: x64

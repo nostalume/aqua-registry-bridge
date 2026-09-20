@@ -7,46 +7,58 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.0.2")
-        url: https://gh-proxy.org/https://github.com/projectdiscovery/katana/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/projectdiscovery/katana/releases/download/{{.Version}}/katana_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: katana_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         replacements:
           darwin: macOS
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/projectdiscovery/katana/releases/download/{{.Version}}/katana_{{trimV .Version}}_checksums.txt
           asset: katana_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 1.1.0")
-        url: https://gh-proxy.org/https://github.com/projectdiscovery/katana/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/projectdiscovery/katana/releases/download/{{.Version}}/katana_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: katana_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         replacements:
           darwin: macOS
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/projectdiscovery/katana/releases/download/{{.Version}}/katana-{{.OS}}-checksums.txt
           asset: katana-{{.OS}}-checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/projectdiscovery/katana/releases/download/{{.Version}}/katana_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             checksum:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/projectdiscovery/katana/releases/download/{{.Version}}/katana-mac-checksums.txt
               asset: katana-mac-checksums.txt
               algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/projectdiscovery/katana/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/projectdiscovery/katana/releases/download/{{.Version}}/katana_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: katana_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         replacements:
           darwin: macOS
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/projectdiscovery/katana/releases/download/{{.Version}}/katana-{{.OS}}-checksums.txt
           asset: katana-{{.OS}}-checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/projectdiscovery/katana/releases/download/{{.Version}}/katana_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             checksum:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/projectdiscovery/katana/releases/download/{{.Version}}/katana-mac-checksums.txt
               asset: katana-mac-checksums.txt
               algorithm: sha256

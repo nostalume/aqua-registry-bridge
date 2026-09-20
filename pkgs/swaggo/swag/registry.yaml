@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("<= 1.4.0")
         no_asset: true
       - version_constraint: semver("<= 1.6.9")
-        url: https://gh-proxy.org/https://github.com/swaggo/swag/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/swaggo/swag/releases/download/{{.Version}}/swag_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: swag_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -18,14 +19,16 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/swaggo/swag/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v1.7.0"
-        url: https://gh-proxy.org/https://github.com/swaggo/swag/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/swaggo/swag/releases/download/{{.Version}}/swag_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: swag_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -34,18 +37,22 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/swaggo/swag/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/swaggo/swag/releases/download/{{.Version}}/swag_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             replacements:
               arm64: aarch64
         supported_envs:
           - linux
           - darwin
       - version_constraint: Version == "v1.7.1"
-        url: https://gh-proxy.org/https://github.com/swaggo/swag/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/swaggo/swag/releases/download/{{.Version}}/swag_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: swag_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -56,7 +63,8 @@ packages:
           - linux
           - darwin
       - version_constraint: semver("<= 1.8.1")
-        url: https://gh-proxy.org/https://github.com/swaggo/swag/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/swaggo/swag/releases/download/{{.Version}}/swag_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: swag_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -65,29 +73,35 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/swaggo/swag/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/swaggo/swag/releases/download/{{.Version}}/swag_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             replacements:
               arm64: aarch64
         supported_envs:
           - linux
           - darwin
       - version_constraint: Version == "v1.8.2"
-        url: https://gh-proxy.org/https://github.com/swaggo/swag/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/swaggo/swag/releases/download/{{.Version}}/swag_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: swag_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/swaggo/swag/releases/download/{{.Version}}/swag_{{trimV .Version}}_checksums.txt
           asset: swag_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 1.8.9")
-        url: https://gh-proxy.org/https://github.com/swaggo/swag/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/swaggo/swag/releases/download/{{.Version}}/swag_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: swag_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -96,18 +110,22 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/swaggo/swag/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/swaggo/swag/releases/download/{{.Version}}/swag_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             replacements:
               arm64: aarch64
         supported_envs:
           - linux
           - darwin
       - version_constraint: Version == "v1.8.10"
-        url: https://gh-proxy.org/https://github.com/swaggo/swag/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/swaggo/swag/releases/download/{{.Version}}/swag_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: swag_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -116,14 +134,16 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/swaggo/swag/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 1.16.2")
-        url: https://gh-proxy.org/https://github.com/swaggo/swag/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/swaggo/swag/releases/download/{{.Version}}/swag_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: swag_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -131,32 +151,38 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/swaggo/swag/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: Version == "v1.16.3"
-        url: https://gh-proxy.org/https://github.com/swaggo/swag/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/swaggo/swag/releases/download/{{.Version}}/swag_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: swag_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/swaggo/swag/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/swaggo/swag/releases/download/{{.Version}}/swag_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             replacements:
               amd64: x86_64
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/swaggo/swag/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/swaggo/swag/releases/download/{{.Version}}/swag_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: swag_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -164,7 +190,8 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/swaggo/swag/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:

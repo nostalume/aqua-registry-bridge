@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/Rigellute/spotify-tui/releases/download/{{.Version}}/spotify-tui-{{.OS}}.tar.gz
     repo_owner: Rigellute
     repo_name: spotify-tui
     asset: spotify-tui-{{.OS}}.tar.gz
@@ -14,12 +15,16 @@ packages:
     files:
       - name: spt
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/Rigellute/spotify-tui/releases/download/{{.Version}}/spotify-tui-{{.OS}}.sha256
       asset: spotify-tui-{{.OS}}.sha256
       algorithm: sha256
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/Rigellute/spotify-tui/releases/download/{{.Version}}/spotify-tui-{{.OS}}.tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Rigellute/spotify-tui/releases/download/{{.Version}}/spotify-tui-{{.OS}}.sha256
           asset: spotify-tui-{{.OS}}.sha256
           algorithm: sha256

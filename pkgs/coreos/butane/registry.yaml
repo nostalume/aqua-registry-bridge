@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version == "v0.3.0"
         no_asset: true
       - version_constraint: semver("<= 0.10.0")
-        url: https://gh-proxy.org/https://github.com/coreos/butane/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/coreos/butane/releases/download/{{.Version}}/fcct-{{.Arch}}-{{.OS}}
         asset: fcct-{{.Arch}}-{{.OS}}
         format: raw
         rosetta2: true
@@ -23,10 +24,13 @@ packages:
           windows: pc-windows-gnu
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/coreos/butane/releases/download/{{.Version}}/fcct-{{.Arch}}-{{.OS}}
             replacements:
               arm64: aarch64
       - version_constraint: semver("<= 0.15.0")
-        url: https://gh-proxy.org/https://github.com/coreos/butane/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/coreos/butane/releases/download/{{.Version}}/butane-{{.Arch}}-{{.OS}}
         asset: butane-{{.Arch}}-{{.OS}}
         format: raw
         rosetta2: true
@@ -38,10 +42,13 @@ packages:
           windows: pc-windows-gnu
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/coreos/butane/releases/download/{{.Version}}/butane-{{.Arch}}-{{.OS}}
             replacements:
               arm64: aarch64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/coreos/butane/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/coreos/butane/releases/download/{{.Version}}/butane-{{.Arch}}-{{.OS}}
         asset: butane-{{.Arch}}-{{.OS}}
         format: raw
         windows_arm_emulation: true

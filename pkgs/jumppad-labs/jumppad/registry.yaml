@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/jumppad-labs/jumppad/releases/download/{{.Version}}/jumppad_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: jumppad-labs
     repo_name: jumppad
     aliases:
@@ -10,6 +11,8 @@ packages:
     format: zip
     overrides:
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/jumppad-labs/jumppad/releases/download/{{.Version}}/jumppad_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
     replacements:
       amd64: x86_64
@@ -18,19 +21,23 @@ packages:
       - linux
       - amd64
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/jumppad-labs/jumppad/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256
     version_constraint: semver(">= 0.5.8")
     version_overrides:
       - version_constraint: semver(">= 0.3.20")
-        url: https://gh-proxy.org/https://github.com/jumppad-labs/jumppad/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jumppad-labs/jumppad/releases/download/{{.Version}}/shipyard_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: shipyard_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         checksum:
           enabled: false
         files:
           - name: shipyard
       - version_constraint: semver(">= 0.3.13")
+        type: http
+        url: https://gh-proxy.org/github.com/jumppad-labs/jumppad/releases/download/{{.Version}}/shipyard_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         files:
           - name: shipyard
         asset: shipyard_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -40,12 +47,16 @@ packages:
           linux: Linux
           windows: Windows
       - version_constraint: semver(">= 0.3.6")
+        type: http
+        url: https://gh-proxy.org/github.com/jumppad-labs/jumppad/releases/download/{{.Version}}/shipyard_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         files:
           - name: shipyard
         asset: shipyard_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jumppad-labs/jumppad/releases/download/{{.Version}}/shipyard_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64
@@ -53,12 +64,16 @@ packages:
           linux: Linux
           windows: Windows
       - version_constraint: semver(">= 0.0.3")
+        type: http
+        url: https://gh-proxy.org/github.com/jumppad-labs/jumppad/releases/download/{{.Version}}/shipyard_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         files:
           - name: shipyard
         asset: shipyard_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jumppad-labs/jumppad/releases/download/{{.Version}}/shipyard_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64
@@ -67,7 +82,8 @@ packages:
           windows: Windows
         rosetta2: true
       - version_constraint: semver(">= 0.0.2")
-        url: https://gh-proxy.org/https://github.com/jumppad-labs/jumppad/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jumppad-labs/jumppad/releases/download/{{.Version}}/shipyard_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: shipyard_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         files:
           - name: shipyard

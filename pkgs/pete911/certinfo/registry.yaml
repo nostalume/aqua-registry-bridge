@@ -7,40 +7,52 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.0.4")
-        url: https://gh-proxy.org/https://github.com/pete911/certinfo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/pete911/certinfo/releases/download/{{.Version}}/certinfo_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: certinfo_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/pete911/certinfo/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 1.0.17")
-        url: https://gh-proxy.org/https://github.com/pete911/certinfo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/pete911/certinfo/releases/download/{{.Version}}/certinfo_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: certinfo_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/pete911/certinfo/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/pete911/certinfo/releases/download/{{.Version}}/certinfo_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 1.0.20")
-        url: https://gh-proxy.org/https://github.com/pete911/certinfo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/pete911/certinfo/releases/download/{{.Version}}/certinfo_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: certinfo_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/pete911/certinfo/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/pete911/certinfo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/pete911/certinfo/releases/download/{{.Version}}/certinfo_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: certinfo_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/pete911/certinfo/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/pete911/certinfo/releases/download/{{.Version}}/certinfo_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/gesquive/git-user/releases/download/{{.Version}}/git-user_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: gesquive
     repo_name: git-user
     asset: git-user_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -8,16 +9,21 @@ packages:
     description: Git plugin that allows you to save multiple user profiles and set them as project defaults
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/gesquive/git-user/releases/download/{{.Version}}/git-user_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     version_constraint: semver(">= 2.0.6")
     replacements:
       amd64: x86_64
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/gesquive/git-user/releases/download/{{.Version}}/git-user_{{trimV .Version}}_checksums.txt
       asset: git-user_{{trimV .Version}}_checksums.txt
       algorithm: sha256
     version_overrides:
       - version_constraint: semver(">= 2.0.3")
+        type: http
+        url: https://gh-proxy.org/github.com/gesquive/git-user/releases/download/{{.Version}}/git-user-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         rosetta2: true
         supported_envs:
           - darwin
@@ -32,6 +38,8 @@ packages:
         checksum:
           enabled: false
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/gesquive/git-user/releases/download/{{.Version}}/git-user-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         rosetta2: true
         supported_envs:
           - darwin

@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version == "v0.1.0"
         no_asset: true
       - version_constraint: semver("<= 0.2.2")
-        url: https://gh-proxy.org/https://github.com/redhat-et/ripwire/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/redhat-et/ripwire/releases/download/{{.Version}}/ripwire-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: ripwire-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -19,14 +20,16 @@ packages:
           amd64: x64
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 0.3.5")
-        url: https://gh-proxy.org/https://github.com/redhat-et/ripwire/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/redhat-et/ripwire/releases/download/{{.Version}}/ripwire-0.2.2-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: ripwire-0.2.2-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -36,14 +39,16 @@ packages:
           amd64: x64
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/redhat-et/ripwire/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/redhat-et/ripwire/releases/download/{{.Version}}/ripwire-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: ripwire-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -53,7 +58,8 @@ packages:
           amd64: x64
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:

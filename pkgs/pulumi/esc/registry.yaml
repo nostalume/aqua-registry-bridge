@@ -7,15 +7,18 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.5.0")
-        url: https://gh-proxy.org/https://github.com/pulumi/esc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/pulumi/esc/releases/download/{{.Version}}/esc-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: esc-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/pulumi/esc/releases/download/{{.Version}}/esc-{{trimV .Version}}-checksums.txt
           asset: esc-{{trimV .Version}}-checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/pulumi/esc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/pulumi/esc/releases/download/{{.Version}}/esc-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: esc-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -24,11 +27,14 @@ packages:
           - name: esc
             src: esc/esc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/pulumi/esc/releases/download/{{.Version}}/esc-{{trimV .Version}}-checksums.txt
           asset: esc-{{trimV .Version}}-checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/pulumi/esc/releases/download/{{.Version}}/esc-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             files:
               - name: esc

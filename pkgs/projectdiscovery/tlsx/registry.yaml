@@ -9,13 +9,15 @@ packages:
       - version_constraint: Version == "v1.0.1"
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/projectdiscovery/tlsx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/projectdiscovery/tlsx/releases/download/{{.Version}}/tlsx_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tlsx_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         replacements:
           darwin: macOS
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/projectdiscovery/tlsx/releases/download/{{.Version}}/tlsx_{{trimV .Version}}_checksums.txt
           asset: tlsx_{{trimV .Version}}_checksums.txt
           algorithm: sha256

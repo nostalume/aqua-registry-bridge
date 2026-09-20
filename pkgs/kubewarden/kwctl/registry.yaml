@@ -10,7 +10,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v1.4.1"
-        url: https://gh-proxy.org/https://github.com/kubewarden/kwctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubewarden/kwctl/releases/download/{{.Version}}/kwctl-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: kwctl-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -19,9 +20,12 @@ packages:
           arm64: aarch64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kubewarden/kwctl/releases/download/{{.Version}}/kwctl-{{.OS}}-{{.Arch}}.exe.{{.Format}}
             asset: kwctl-{{.OS}}-{{.Arch}}.exe.{{.Format}}
       - version_constraint: Version == "v1.7.0-rc2"
-        url: https://gh-proxy.org/https://github.com/kubewarden/kwctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubewarden/kwctl/releases/download/{{.Version}}/default.kwctl-{{.OS}}-{{.Arch}}.kwctl-darwin-x86_64.{{.Format}}
         asset: default.kwctl-{{.OS}}-{{.Arch}}.kwctl-darwin-x86_64.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -30,19 +34,28 @@ packages:
           arm64: aarch64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/kubewarden/kwctl/releases/download/{{.Version}}/default.kwctl-{{.OS}}-{{.Arch}}.kwctl-linux-x86_64.{{.Format}}
             goarch: amd64
             asset: default.kwctl-{{.OS}}-{{.Arch}}.kwctl-linux-x86_64.{{.Format}}
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/kubewarden/kwctl/releases/download/{{.Version}}/default.kwctl-{{.OS}}-{{.Arch}}.kwctl-linux-aarch64.{{.Format}}
             goarch: arm64
             asset: default.kwctl-{{.OS}}-{{.Arch}}.kwctl-linux-aarch64.{{.Format}}
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/kubewarden/kwctl/releases/download/{{.Version}}/default.kwctl-{{.OS}}-{{.Arch}}.kwctl-darwin-aarch64.{{.Format}}
             goarch: arm64
             asset: default.kwctl-{{.OS}}-{{.Arch}}.kwctl-darwin-aarch64.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kubewarden/kwctl/releases/download/{{.Version}}/default.kwctl-{{.OS}}-{{.Arch}}.kwctl-windows-x86_64.exe.{{.Format}}
             asset: default.kwctl-{{.OS}}-{{.Arch}}.kwctl-windows-x86_64.exe.{{.Format}}
             replacements: {}
       - version_constraint: semver("<= 0.1.1")
-        url: https://gh-proxy.org/https://github.com/kubewarden/kwctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubewarden/kwctl/releases/download/{{.Version}}/kwctl.{{.Format}}
         asset: kwctl.{{.Format}}
         format: zip
         files:
@@ -50,7 +63,8 @@ packages:
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 0.2.4")
-        url: https://gh-proxy.org/https://github.com/kubewarden/kwctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubewarden/kwctl/releases/download/{{.Version}}/kwctl-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: kwctl-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         files:
@@ -58,7 +72,8 @@ packages:
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 0.2.5-rc2")
-        url: https://gh-proxy.org/https://github.com/kubewarden/kwctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubewarden/kwctl/releases/download/{{.Version}}/kwctl-{{.OS}}-{{.Arch}}
         asset: kwctl-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -67,10 +82,13 @@ packages:
           amd64: x86_64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/kubewarden/kwctl/releases/download/{{.Version}}/kwctl-{{.OS}}-{{.Arch}}
             replacements:
               arm64: aarch64
       - version_constraint: semver("<= 1.1.1")
-        url: https://gh-proxy.org/https://github.com/kubewarden/kwctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubewarden/kwctl/releases/download/{{.Version}}/kwctl-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: kwctl-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -79,12 +97,17 @@ packages:
           amd64: x86_64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/kubewarden/kwctl/releases/download/{{.Version}}/kwctl-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kubewarden/kwctl/releases/download/{{.Version}}/kwctl-{{.OS}}-{{.Arch}}.exe.{{.Format}}
             asset: kwctl-{{.OS}}-{{.Arch}}.exe.{{.Format}}
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/kubewarden/kwctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubewarden/kwctl/releases/download/{{.Version}}/kwctl-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: kwctl-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -93,5 +116,7 @@ packages:
           arm64: aarch64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kubewarden/kwctl/releases/download/{{.Version}}/kwctl-{{.OS}}-{{.Arch}}.exe.{{.Format}}
             asset: kwctl-{{.OS}}-{{.Arch}}.exe.{{.Format}}
             replacements: {}

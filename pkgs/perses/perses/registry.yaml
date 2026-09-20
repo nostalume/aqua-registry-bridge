@@ -12,13 +12,15 @@ packages:
       - version_constraint: Version in ["v0.2.0", "v0.6.0", "v0.9.0", "v0.21.0", "v0.42.0"]
         no_asset: true
       - version_constraint: semver("<= 0.3.1")
-        url: https://gh-proxy.org/https://github.com/perses/perses/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/perses/perses/releases/download/{{.Version}}/perses_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: perses_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/perses/perses/releases/download/{{.Version}}/perses_{{trimV .Version}}_checksums.txt
           asset: perses_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
@@ -28,13 +30,15 @@ packages:
       - version_constraint: semver("<= 0.4.1")
         no_asset: true
       - version_constraint: semver("<= 0.29.1")
-        url: https://gh-proxy.org/https://github.com/perses/perses/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/perses/perses/releases/download/{{.Version}}/perses_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: perses_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/perses/perses/releases/download/{{.Version}}/perses_{{trimV .Version}}_checksums.txt
           asset: perses_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
@@ -42,10 +46,12 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/perses/perses/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/perses/perses/releases/download/{{.Version}}/perses_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: perses_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/perses/perses/releases/download/{{.Version}}/perses_{{trimV .Version}}_checksums.txt
           asset: perses_{{trimV .Version}}_checksums.txt
           algorithm: sha256

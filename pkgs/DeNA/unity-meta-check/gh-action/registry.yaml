@@ -8,18 +8,21 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 3.3.0")
-        url: https://gh-proxy.org/https://github.com/DeNA/unity-meta-check/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/DeNA/unity-meta-check/releases/download/{{.Version}}/gh-action-{{.OS}}-{{.Arch}}
         asset: gh-action-{{.OS}}-{{.Arch}}
         format: raw
         supported_envs:
           - linux/amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/DeNA/unity-meta-check/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/DeNA/unity-meta-check/releases/download/{{.Version}}/gh-action-{{.OS}}-{{.Arch}}
         asset: gh-action-{{.OS}}-{{.Arch}}
         format: raw
         supported_envs:
           - linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/DeNA/unity-meta-check/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

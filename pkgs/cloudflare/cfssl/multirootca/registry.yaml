@@ -10,7 +10,8 @@ packages:
       - version_constraint: Version == "1.1.0"
         no_asset: true
       - version_constraint: Version == "1.2.0"
-        url: https://gh-proxy.org/https://github.com/cloudflare/cfssl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cloudflare/cfssl/releases/download/{{.Version}}/multirootca_{{.OS}}-{{.Arch}}
         asset: multirootca_{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -18,19 +19,22 @@ packages:
         replacements:
           arm64: arm
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/cloudflare/cfssl/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
       - version_constraint: semver("<= 1.3.4")
         no_asset: true
       - version_constraint: semver("<= 1.6.3")
-        url: https://gh-proxy.org/https://github.com/cloudflare/cfssl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cloudflare/cfssl/releases/download/{{.Version}}/multirootca_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         asset: multirootca_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/cloudflare/cfssl/releases/download/{{.Version}}/cfssl_{{trimV .Version}}_checksums.txt
           asset: cfssl_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
@@ -38,12 +42,14 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/cloudflare/cfssl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cloudflare/cfssl/releases/download/{{.Version}}/multirootca_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         asset: multirootca_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/cloudflare/cfssl/releases/download/{{.Version}}/cfssl_{{trimV .Version}}_checksums.txt
           asset: cfssl_{{trimV .Version}}_checksums.txt
           algorithm: sha256

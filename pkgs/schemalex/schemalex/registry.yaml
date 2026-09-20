@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/schemalex/schemalex/releases/download/{{.Version}}/schemalex_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: schemalex
     repo_name: schemalex
     asset: schemalex_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -8,6 +9,8 @@ packages:
     description: Generate difference sql of two mysql schema
     overrides:
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/schemalex/schemalex/releases/download/{{.Version}}/schemalex_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
     supported_envs:
       - darwin

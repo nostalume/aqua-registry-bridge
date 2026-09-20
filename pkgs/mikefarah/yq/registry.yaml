@@ -12,11 +12,18 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("< 4.9.6")
+        type: http
+        url: https://gh-proxy.org/github.com/mikefarah/yq/releases/download/{{.Version}}/yq_{{.OS}}_{{.Arch}}
         rosetta2: true
       - version_constraint: semver("< 4.35.1")
+        type: http
+        url: https://gh-proxy.org/github.com/mikefarah/yq/releases/download/{{.Version}}/yq_{{.OS}}_{{.Arch}}
       - version_constraint: semver("< 4.53.0")
+        type: http
+        url: https://gh-proxy.org/github.com/mikefarah/yq/releases/download/{{.Version}}/yq_{{.OS}}_{{.Arch}}
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/mikefarah/yq/releases/download/{{.Version}}/checksums-bsd
           asset: checksums-bsd
           file_format: regexp
           algorithm: sha512
@@ -25,8 +32,11 @@ packages:
             checksum: ^SHA512\s+\([^)]+\)\s+=\s+([A-Fa-f0-9]{128})$
             file: ^SHA512\s+\(([^)]+)\)\s+=\s+[A-Fa-f0-9]{128}$
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/mikefarah/yq/releases/download/{{.Version}}/yq_{{.OS}}_{{.Arch}}
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/mikefarah/yq/releases/download/{{.Version}}/checksums-bsd
           asset: checksums-bsd
           file_format: regexp
           algorithm: sha512
@@ -36,10 +46,11 @@ packages:
             file: ^SHA512\s+\(([^)]+)\)\s+=\s+[A-Fa-f0-9]{128}$
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/mikefarah/yq/releases/download/{{.Version}}/checksums-bsd.bundle
               asset: checksums-bsd.bundle
             opts:
               - --certificate-identity
-              - https://github.com/mikefarah/yq/.github/workflows/release.yml@refs/tags/{{.Version}}
+              - https://gh-proxy.org/github.com/mikefarah/yq/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com

@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.2.0")
-        url: https://gh-proxy.org/https://github.com/cococonscious/koji/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cococonscious/koji/releases/download/{{.Version}}/koji-{{.OS}}-{{.Arch}}
         asset: koji-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -22,7 +23,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.4.0")
-        url: https://gh-proxy.org/https://github.com/cococonscious/koji/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cococonscious/koji/releases/download/{{.Version}}/koji-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: koji-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -34,7 +36,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 2.2.0")
-        url: https://gh-proxy.org/https://github.com/cococonscious/koji/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cococonscious/koji/releases/download/{{.Version}}/koji-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: koji-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -48,9 +51,12 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/cococonscious/koji/releases/download/{{.Version}}/koji-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/cococonscious/koji/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cococonscious/koji/releases/download/{{.Version}}/koji-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: koji-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -61,6 +67,8 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/cococonscious/koji/releases/download/{{.Version}}/koji-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               amd64: amd64
         supported_envs:

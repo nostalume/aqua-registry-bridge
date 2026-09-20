@@ -7,53 +7,71 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.9.4")
-        url: https://gh-proxy.org/https://github.com/xeol-io/xeol/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/xeol-io/xeol/releases/download/{{.Version}}/xeol_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: xeol_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/xeol-io/xeol/releases/download/{{.Version}}/xeol_{{trimV .Version}}_checksums.txt
           asset: xeol_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/xeol-io/xeol/releases/download/{{.Version}}/xeol_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.9.13")
-        url: https://gh-proxy.org/https://github.com/xeol-io/xeol/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/xeol-io/xeol/releases/download/{{.Version}}/xeol_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: xeol_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/xeol-io/xeol/releases/download/{{.Version}}/xeol_{{trimV .Version}}_checksums.txt
           asset: xeol_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/xeol-io/xeol/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/xeol-io/xeol/releases/download/{{.Version}}/xeol_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.10.0")
-        url: https://gh-proxy.org/https://github.com/xeol-io/xeol/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/xeol-io/xeol/releases/download/{{.Version}}/xeol_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: xeol_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/xeol-io/xeol/releases/download/{{.Version}}/xeol_{{trimV .Version}}_checksums.txt
           asset: xeol_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/xeol-io/xeol/releases/download/{{.Version}}/xeol_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/xeol-io/xeol/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/xeol-io/xeol/releases/download/{{.Version}}/xeol_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: xeol_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/xeol-io/xeol/releases/download/{{.Version}}/xeol_{{trimV .Version}}_checksums.txt
           asset: xeol_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/xeol-io/xeol/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/xeol-io/xeol/releases/download/{{.Version}}/xeol_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

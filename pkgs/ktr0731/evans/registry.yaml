@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.6.3")
-        url: https://gh-proxy.org/https://github.com/ktr0731/evans/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ktr0731/evans/releases/download/{{.Version}}/evans_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: evans_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -15,35 +16,43 @@ packages:
           - linux
           - darwin
       - version_constraint: semver("<= 0.6.9")
-        url: https://gh-proxy.org/https://github.com/ktr0731/evans/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ktr0731/evans/releases/download/{{.Version}}/evans_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: evans_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ktr0731/evans/releases/download/{{.Version}}/evans_{{.OS}}_{{.Arch}}.exe.{{.Format}}
             asset: evans_{{.OS}}_{{.Arch}}.exe.{{.Format}}
       - version_constraint: semver("<= 0.7.3")
-        url: https://gh-proxy.org/https://github.com/ktr0731/evans/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ktr0731/evans/releases/download/{{.Version}}/evans_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: evans_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ktr0731/evans/releases/download/{{.Version}}/evans_{{.OS}}_{{.Arch}}.exe.{{.Format}}
             asset: evans_{{.OS}}_{{.Arch}}.exe.{{.Format}}
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.10.1")
-        url: https://gh-proxy.org/https://github.com/ktr0731/evans/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ktr0731/evans/releases/download/{{.Version}}/evans_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: evans_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/ktr0731/evans/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
@@ -51,10 +60,12 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/ktr0731/evans/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ktr0731/evans/releases/download/{{.Version}}/evans_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: evans_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/ktr0731/evans/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

@@ -7,31 +7,38 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "0.1.4"
-        url: https://gh-proxy.org/https://github.com/ouch-org/ouch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ouch-org/ouch/releases/download/{{.Version}}/ouch
         asset: ouch
         format: raw
         replacements:
           darwin: macOS
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/ouch-org/ouch/releases/download/{{.Version}}/ouch-{{.OS}}
             asset: ouch-{{.OS}}
         supported_envs:
           - darwin
           - windows/amd64
       - version_constraint: Version == "0.1.5"
-        url: https://gh-proxy.org/https://github.com/ouch-org/ouch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ouch-org/ouch/releases/download/{{.Version}}/ouch-{{.OS}}-x86-64-musl
         asset: ouch-{{.OS}}-x86-64-musl
         format: raw
         replacements:
           darwin: macOS
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/ouch-org/ouch/releases/download/{{.Version}}/ouch-{{.OS}}
             asset: ouch-{{.OS}}
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: Version == "0.1.6"
-        url: https://gh-proxy.org/https://github.com/ouch-org/ouch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ouch-org/ouch/releases/download/{{.Version}}/ouch-{{.Arch}}-{{.OS}}
         asset: ouch-{{.Arch}}-{{.OS}}
         format: raw
         rosetta2: true
@@ -42,13 +49,16 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/ouch-org/ouch/releases/download/{{.Version}}/ouch-{{.Arch}}-{{.OS}}-musl
             asset: ouch-{{.Arch}}-{{.OS}}-musl
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "0.2.0"
-        url: https://gh-proxy.org/https://github.com/ouch-org/ouch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ouch-org/ouch/releases/download/{{.Version}}/ouch-{{.Arch}}-{{.OS}}
         asset: ouch-{{.Arch}}-{{.OS}}
         format: raw
         rosetta2: true
@@ -60,13 +70,16 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/ouch-org/ouch/releases/download/{{.Version}}/ouch-{{.Arch}}-{{.OS}}-musl
             asset: ouch-{{.Arch}}-{{.OS}}-musl
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.3.1")
-        url: https://gh-proxy.org/https://github.com/ouch-org/ouch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ouch-org/ouch/releases/download/{{.Version}}/ouch-{{.Arch}}-{{.OS}}
         asset: ouch-{{.Arch}}-{{.OS}}
         format: raw
         rosetta2: true
@@ -77,13 +90,16 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/ouch-org/ouch/releases/download/{{.Version}}/ouch-{{.Arch}}-{{.OS}}-musl
             asset: ouch-{{.Arch}}-{{.OS}}-musl
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.4.1")
-        url: https://gh-proxy.org/https://github.com/ouch-org/ouch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ouch-org/ouch/releases/download/{{.Version}}/ouch-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: ouch-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -98,12 +114,17 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/ouch-org/ouch/releases/download/{{.Version}}/ouch-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ouch-org/ouch/releases/download/{{.Version}}/ouch-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("< 0.8.0")
-        url: https://gh-proxy.org/https://github.com/ouch-org/ouch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ouch-org/ouch/releases/download/{{.Version}}/ouch-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: ouch-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -118,9 +139,12 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ouch-org/ouch/releases/download/{{.Version}}/ouch-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/ouch-org/ouch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ouch-org/ouch/releases/download/{{.Version}}/ouch-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: ouch-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -135,6 +159,8 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ouch-org/ouch/releases/download/{{.Version}}/ouch-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         github_artifact_attestations:
           signer_workflow: ouch-org/ouch/.github/workflows/draft-release-automatic-trigger.yml

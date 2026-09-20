@@ -12,7 +12,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version in ["bws-v0.2.1", "bws-v0.3.0"]
-        url: https://gh-proxy.org/https://github.com/bitwarden/sdk-sm/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bitwarden/sdk-sm/releases/download/{{.Version}}/bws-{{.Arch}}-{{.OS}}-{{.SemVer}}.{{.Format}}
         asset: bws-{{.Arch}}-{{.OS}}-{{.SemVer}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -22,11 +23,14 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/bitwarden/sdk-sm/releases/download/{{.Version}}/bws-sha256-checksums-{{.SemVer}}.txt
           asset: bws-sha256-checksums-{{.SemVer}}.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/bitwarden/sdk-sm/releases/download/{{.Version}}/bws-{{.Arch}}-{{.OS}}-{{.SemVer}}.{{.Format}}
             replacements:
               arm64: aarch64
         supported_envs:
@@ -34,7 +38,8 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/bitwarden/sdk-sm/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bitwarden/sdk-sm/releases/download/{{.Version}}/bws-{{.Arch}}-{{.OS}}-{{.SemVer}}.{{.Format}}
         asset: bws-{{.Arch}}-{{.OS}}-{{.SemVer}}.{{.Format}}
         format: zip
         replacements:
@@ -44,6 +49,7 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/bitwarden/sdk-sm/releases/download/{{.Version}}/bws-sha256-checksums-{{.SemVer}}.txt
           asset: bws-sha256-checksums-{{.SemVer}}.txt
           algorithm: sha256

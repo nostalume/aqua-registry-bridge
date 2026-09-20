@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.0.1"
-        url: https://gh-proxy.org/https://github.com/plumber-cd/terraform-backend-git/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/plumber-cd/terraform-backend-git/releases/download/{{.Version}}/terraform-backend-git-{{.OS}}-{{.Arch}}
         asset: terraform-backend-git-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -17,13 +18,15 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.0.16")
-        url: https://gh-proxy.org/https://github.com/plumber-cd/terraform-backend-git/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/plumber-cd/terraform-backend-git/releases/download/{{.Version}}/terraform-backend-git-{{.OS}}-{{.Arch}}
         asset: terraform-backend-git-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/plumber-cd/terraform-backend-git/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         supported_envs:
@@ -31,11 +34,13 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/plumber-cd/terraform-backend-git/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/plumber-cd/terraform-backend-git/releases/download/{{.Version}}/terraform-backend-git-{{.OS}}-{{.Arch}}
         asset: terraform-backend-git-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/plumber-cd/terraform-backend-git/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256

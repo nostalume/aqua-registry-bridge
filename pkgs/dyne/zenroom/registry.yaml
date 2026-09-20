@@ -13,7 +13,8 @@ packages:
         error_message: |
           Please update to 3.10.1 or newer.
       - version_constraint: semver("<= 4.27.1")
-        url: https://gh-proxy.org/https://github.com/dyne/zenroom/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dyne/zenroom/releases/download/{{.Version}}/zenroom
         asset: zenroom
         format: raw
         files:
@@ -24,9 +25,12 @@ packages:
           - windows
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/dyne/zenroom/releases/download/{{.Version}}/zenroom.command
             asset: zenroom.command
       - version_constraint: semver("<= 5.10.4")
-        url: https://gh-proxy.org/https://github.com/dyne/zenroom/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dyne/zenroom/releases/download/{{.Version}}/zenroom
         asset: zenroom
         format: raw
         files:
@@ -37,9 +41,12 @@ packages:
           - windows
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/dyne/zenroom/releases/download/{{.Version}}/zenroom.command
             asset: zenroom.command
       - version_constraint: semver("<= 5.25.0")
-        url: https://gh-proxy.org/https://github.com/dyne/zenroom/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dyne/zenroom/releases/download/{{.Version}}/zenroom-{{.OS}}.{{.Format}}
         asset: zenroom-{{.OS}}.{{.Format}}
         format: zip
         files:
@@ -56,13 +63,16 @@ packages:
           - windows
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/dyne/zenroom/releases/download/{{.Version}}/zenroom-{{.OS}}.{{.Format}}
             files:
               - name: zenroom
                 src: zenroom-{{.OS}}/zenroom.command
               - name: zencode-exec
                 src: zenroom-{{.OS}}/zencode-exec.command
       - version_constraint: semver("<= 5.25.3")
-        url: https://gh-proxy.org/https://github.com/dyne/zenroom/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dyne/zenroom/releases/download/{{.Version}}/zenroom-{{.OS}}.{{.Format}}
         asset: zenroom-{{.OS}}.{{.Format}}
         format: zip
         files:
@@ -80,19 +90,24 @@ packages:
           - windows
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dyne/zenroom/releases/download/{{.Version}}/zenroom-{{.OS}}.{{.Format}}
             files:
               - name: zenroom
                 src: zenroom-{{.OS}}/zenroom
               - name: zencode-exec
                 src: zenroom-{{.OS}}/zencode-exec
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/dyne/zenroom/releases/download/{{.Version}}/zenroom-{{.OS}}.{{.Format}}
             files:
               - name: zenroom
                 src: zenroom-{{.OS}}/zenroom.command
               - name: zencode-exec
                 src: zenroom-{{.OS}}/zencode-exec.command
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/dyne/zenroom/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dyne/zenroom/releases/download/{{.Version}}/zenroom-{{.OS}}.{{.Format}}
         asset: zenroom-{{.OS}}.{{.Format}}
         format: zip
         files:
@@ -110,12 +125,16 @@ packages:
           - windows
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dyne/zenroom/releases/download/{{.Version}}/zenroom-{{.OS}}.{{.Format}}
             files:
               - name: zenroom
                 src: zenroom-{{.OS}}/zenroom
               - name: zencode-exec
                 src: zenroom-{{.OS}}/zencode-exec
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/dyne/zenroom/releases/download/{{.Version}}/zenroom-{{.OS}}.{{.Format}}
             files:
               - name: zenroom
                 src: zenroom-{{.OS}}/zenroom

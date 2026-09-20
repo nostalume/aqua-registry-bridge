@@ -9,90 +9,113 @@ packages:
       - name: exo
     version_overrides:
       - version_constraint: semver("<= 0.51.2")
-        url: https://gh-proxy.org/https://github.com/exoscale/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_checksums.txt
           asset: exoscale-cli_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
             asset: exoscale-cli_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
             files:
               - name: exo
                 src: exoscale-cli
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 1.0.4")
-        url: https://gh-proxy.org/https://github.com/exoscale/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         complete_windows_ext: false
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/cli_{{trimV .Version}}_checksums.txt
           asset: cli_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 1.8.0")
-        url: https://gh-proxy.org/https://github.com/exoscale/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         complete_windows_ext: false
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_checksums.txt
           asset: exoscale-cli_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 1.11.0")
-        url: https://gh-proxy.org/https://github.com/exoscale/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_checksums.txt
           asset: exoscale-cli_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 1.19.0")
-        url: https://gh-proxy.org/https://github.com/exoscale/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_checksums.txt
           asset: exoscale-cli_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: Version == "v1.20.0-pre1"
-        url: https://gh-proxy.org/https://github.com/exoscale/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exo-{{.OS}}_{{.Arch}}
         asset: exo-{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
@@ -102,85 +125,115 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.24.0")
-        url: https://gh-proxy.org/https://github.com/exoscale/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_checksums.txt
           asset: exoscale-cli_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 1.40.5")
-        url: https://gh-proxy.org/https://github.com/exoscale/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_checksums.txt
           asset: exoscale-cli_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 1.44.0")
-        url: https://gh-proxy.org/https://github.com/exoscale/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_checksums.txt
           asset: exoscale-cli_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 1.72.2")
-        url: https://gh-proxy.org/https://github.com/exoscale/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_checksums.txt
           asset: exoscale-cli_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
             asset: exoscale-cli_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 1.76.2")
-        url: https://gh-proxy.org/https://github.com/exoscale/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         complete_windows_ext: false
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_checksums.txt
           asset: exoscale-cli_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
             asset: exoscale-cli_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/exoscale/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         complete_windows_ext: false
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_checksums.txt
           asset: exoscale-cli_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
             asset: exoscale-cli_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/exoscale/cli/releases/download/{{.Version}}/exoscale-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

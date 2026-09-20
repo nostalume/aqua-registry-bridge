@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/kopia/kopia/releases/download/{{.Version}}/kopia-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
     repo_owner: kopia
     repo_name: kopia
     asset: kopia-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
@@ -11,6 +12,8 @@ packages:
       darwin: macOS
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/kopia/kopia/releases/download/{{.Version}}/kopia-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
     supported_envs:
       - darwin
@@ -20,6 +23,7 @@ packages:
       - name: kopia
         src: kopia-{{trimV .Version}}-{{.OS}}-{{.Arch}}/kopia
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/kopia/kopia/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256

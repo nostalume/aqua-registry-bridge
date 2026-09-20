@@ -7,13 +7,15 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "0.1.0"
-        url: https://gh-proxy.org/https://github.com/visioncortex/vtracer/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/visioncortex/vtracer/releases/download/{{.Version}}/vtracer
         asset: vtracer
         format: raw
         supported_envs:
           - windows/amd64
       - version_constraint: Version == "0.1.1"
-        url: https://gh-proxy.org/https://github.com/visioncortex/vtracer/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/visioncortex/vtracer/releases/download/{{.Version}}/vtracer-{{.OS}}
         asset: vtracer-{{.OS}}
         format: raw
         replacements:
@@ -24,11 +26,14 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "0.2.0"
-        url: https://gh-proxy.org/https://github.com/visioncortex/vtracer/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/visioncortex/vtracer/releases/download/{{.Version}}/vtracer-{{.OS}}
         asset: vtracer-{{.OS}}
         format: raw
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/visioncortex/vtracer/releases/download/{{.Version}}/vtracer
             asset: vtracer
         supported_envs:
           - linux/amd64
@@ -36,50 +41,64 @@ packages:
       - version_constraint: Version == "0.2.1"
         no_asset: true
       - version_constraint: Version == "0.3.0"
-        url: https://gh-proxy.org/https://github.com/visioncortex/vtracer/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/visioncortex/vtracer/releases/download/{{.Version}}/vtracer-{{.OS}}
         asset: vtracer-{{.OS}}
         format: raw
         replacements:
           darwin: mac
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/visioncortex/vtracer/releases/download/{{.Version}}/vtracer
             asset: vtracer
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "0.4.0"
-        url: https://gh-proxy.org/https://github.com/visioncortex/vtracer/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/visioncortex/vtracer/releases/download/{{.Version}}/vtracer-{{.OS}}
         asset: vtracer-{{.OS}}
         format: raw
         replacements:
           darwin: mac
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/visioncortex/vtracer/releases/download/{{.Version}}/vtracer-{{.OS}}-intel
             asset: vtracer-{{.OS}}-intel
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/visioncortex/vtracer/releases/download/{{.Version}}/vtracer
             asset: vtracer
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "0.5.0"
-        url: https://gh-proxy.org/https://github.com/visioncortex/vtracer/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/visioncortex/vtracer/releases/download/{{.Version}}/vtracer-{{.OS}}
         asset: vtracer-{{.OS}}
         format: raw
         replacements:
           darwin: mac
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/visioncortex/vtracer/releases/download/{{.Version}}/vtracer-{{.OS}}-m1
             asset: vtracer-{{.OS}}-m1
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/visioncortex/vtracer/releases/download/{{.Version}}/vtracer
             asset: vtracer
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "0.6.0"
-        url: https://gh-proxy.org/https://github.com/visioncortex/vtracer/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/visioncortex/vtracer/releases/download/{{.Version}}/vtracer-{{.OS}}-{{.Arch}}
         asset: vtracer-{{.OS}}-{{.Arch}}
         format: raw
         replacements:
@@ -87,9 +106,13 @@ packages:
           windows: win
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/visioncortex/vtracer/releases/download/{{.Version}}/vtracer-{{.OS}}-{{.Arch}}
             replacements:
               amd64: x64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/visioncortex/vtracer/releases/download/{{.Version}}/vtracer-{{.OS}}-32
             asset: vtracer-{{.OS}}-32
         supported_envs:
           - darwin
@@ -97,7 +120,8 @@ packages:
       - version_constraint: Version == "0.6.1"
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/visioncortex/vtracer/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/visioncortex/vtracer/releases/download/{{.Version}}/vtracer-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: vtracer-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -109,4 +133,6 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/visioncortex/vtracer/releases/download/{{.Version}}/vtracer-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip

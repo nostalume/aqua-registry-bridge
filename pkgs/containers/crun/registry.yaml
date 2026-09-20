@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/containers/crun/releases/download/{{.Version}}/crun-{{.Version}}-{{.OS}}-{{.Arch}}
     repo_owner: containers
     repo_name: crun
     asset: crun-{{.Version}}-{{.OS}}-{{.Arch}}

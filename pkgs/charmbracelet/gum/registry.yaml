@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.8.0")
-        url: https://gh-proxy.org/https://github.com/charmbracelet/gum/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/charmbracelet/gum/releases/download/{{.Version}}/gum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -16,24 +17,28 @@ packages:
           darwin: Darwin
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/charmbracelet/gum/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate-identity
-              - https://github.com/charmbracelet/meta/.github/workflows/goreleaser.yml@refs/heads/main
+              - https://gh-proxy.org/github.com/charmbracelet/meta/.github/workflows/goreleaser.yml@refs/heads/main
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --certificate
-              - https://github.com/charmbracelet/gum/releases/download/{{.Version}}/checksums.txt.pem
+              - https://gh-proxy.org/github.com/charmbracelet/gum/releases/download/{{.Version}}/checksums.txt.pem
               - --signature
-              - https://github.com/charmbracelet/gum/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/charmbracelet/gum/releases/download/{{.Version}}/checksums.txt.sig
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/charmbracelet/gum/releases/download/{{.Version}}/gum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.13.0")
-        url: https://gh-proxy.org/https://github.com/charmbracelet/gum/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/charmbracelet/gum/releases/download/{{.Version}}/gum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -43,24 +48,28 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/charmbracelet/gum/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate-identity
-              - https://github.com/charmbracelet/meta/.github/workflows/goreleaser.yml@refs/heads/main
+              - https://gh-proxy.org/github.com/charmbracelet/meta/.github/workflows/goreleaser.yml@refs/heads/main
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --certificate
-              - https://github.com/charmbracelet/gum/releases/download/{{.Version}}/checksums.txt.pem
+              - https://gh-proxy.org/github.com/charmbracelet/gum/releases/download/{{.Version}}/checksums.txt.pem
               - --signature
-              - https://github.com/charmbracelet/gum/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/charmbracelet/gum/releases/download/{{.Version}}/checksums.txt.sig
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/charmbracelet/gum/releases/download/{{.Version}}/gum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("< 2.0.0")
-        url: https://gh-proxy.org/https://github.com/charmbracelet/gum/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/charmbracelet/gum/releases/download/{{.Version}}/gum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -73,24 +82,28 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/charmbracelet/gum/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate-identity
-              - https://github.com/charmbracelet/meta/.github/workflows/goreleaser.yml@refs/heads/main
+              - https://gh-proxy.org/github.com/charmbracelet/meta/.github/workflows/goreleaser.yml@refs/heads/main
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --certificate
-              - https://github.com/charmbracelet/gum/releases/download/{{.Version}}/checksums.txt.pem
+              - https://gh-proxy.org/github.com/charmbracelet/gum/releases/download/{{.Version}}/checksums.txt.pem
               - --signature
-              - https://github.com/charmbracelet/gum/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/charmbracelet/gum/releases/download/{{.Version}}/checksums.txt.sig
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/charmbracelet/gum/releases/download/{{.Version}}/gum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/charmbracelet/gum/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/charmbracelet/gum/releases/download/{{.Version}}/gum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -103,18 +116,22 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/charmbracelet/gum/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/charmbracelet/gum/releases/download/{{.Version}}/checksums.txt.sigstore.json
               asset: checksums.txt.sigstore.json
             opts:
               - --certificate-identity
-              - https://github.com/charmbracelet/meta/.github/workflows/goreleaser.yml@refs/heads/main
+              - https://gh-proxy.org/github.com/charmbracelet/meta/.github/workflows/goreleaser.yml@refs/heads/main
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/charmbracelet/gum/releases/download/{{.Version}}/gum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

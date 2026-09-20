@@ -7,62 +7,80 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.0.1"
-        url: https://gh-proxy.org/https://github.com/stacklok/frizbee/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stacklok/frizbee/releases/download/{{.Version}}/frizbee_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: frizbee_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/stacklok/frizbee/releases/download/{{.Version}}/frizbee_{{trimV .Version}}_checksums.txt
           asset: frizbee_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/stacklok/frizbee/releases/download/{{.Version}}/frizbee_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: Version == "v0.1.5"
-        url: https://gh-proxy.org/https://github.com/stacklok/frizbee/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stacklok/frizbee/releases/download/{{.Version}}/frizbee_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: frizbee_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/stacklok/frizbee/releases/download/{{.Version}}/frizbee_{{trimV .Version}}_checksums.txt
           asset: frizbee_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/stacklok/frizbee/releases/download/{{.Version}}/frizbee_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: Version == "v0.1.6"
-        url: https://gh-proxy.org/https://github.com/stacklok/frizbee/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stacklok/frizbee/releases/download/{{.Version}}/frizbee_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: frizbee_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/stacklok/frizbee/releases/download/{{.Version}}/frizbee_{{trimV .Version}}_checksums.txt
           asset: frizbee_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/stacklok/frizbee/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
         cosign:
           opts:
             - --certificate
-            - https://github.com/stacklok/frizbee/releases/download/{{.Version}}/{{.AssetWithoutExt}}.pem
+            - https://gh-proxy.org/github.com/stacklok/frizbee/releases/download/{{.Version}}/{{.AssetWithoutExt}}.pem
             - --certificate-identity
-            - https://github.com/stacklok/frizbee/.github/workflows/releaser.yml@refs/tags/{{.Version}}
+            - https://gh-proxy.org/github.com/stacklok/frizbee/.github/workflows/releaser.yml@refs/tags/{{.Version}}
             - --certificate-oidc-issuer
             - https://token.actions.githubusercontent.com
             - --signature
-            - https://github.com/stacklok/frizbee/releases/download/{{.Version}}/{{.Asset}}.sig
+            - https://gh-proxy.org/github.com/stacklok/frizbee/releases/download/{{.Version}}/{{.Asset}}.sig
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/stacklok/frizbee/releases/download/{{.Version}}/frizbee_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/stacklok/frizbee/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stacklok/frizbee/releases/download/{{.Version}}/frizbee_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: frizbee_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/stacklok/frizbee/releases/download/{{.Version}}/frizbee_{{trimV .Version}}_checksums.txt
           asset: frizbee_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/stacklok/frizbee/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/stacklok/frizbee/releases/download/{{.Version}}/frizbee_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

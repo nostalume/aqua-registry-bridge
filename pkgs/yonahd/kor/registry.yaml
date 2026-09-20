@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/yonahd/kor/releases/download/{{.Version}}/kor_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: yonahd
     repo_name: kor
     description: A Golang Tool to discover unused Kubernetes Resources
@@ -8,6 +9,8 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/yonahd/kor/releases/download/{{.Version}}/kor_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     replacements:
       amd64: x86_64
@@ -18,12 +21,15 @@ packages:
       - darwin
       - amd64
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/yonahd/kor/releases/download/{{.Version}}/kor_{{trimV .Version}}_checksums.txt
       asset: kor_{{trimV .Version}}_checksums.txt
       algorithm: sha256
     version_constraint: semver(">= 0.2.0")
     version_overrides:
       - version_constraint: semver("< 0.2.0")
+        type: http
+        url: https://gh-proxy.org/github.com/yonahd/kor/releases/download/{{.Version}}/kor_{{.OS}}_{{.Arch}}.{{.Format}}
         rosetta2: true
         files:
           - name: kor

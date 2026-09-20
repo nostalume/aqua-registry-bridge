@@ -9,35 +9,41 @@ packages:
       - version_constraint: Version == "v0.8.14"
         no_asset: true
       - version_constraint: Version == "v0.9.23"
-        url: https://gh-proxy.org/https://github.com/traefik/yaegi/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/traefik/yaegi/releases/download/{{.Version}}/yaegi_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: yaegi_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/traefik/yaegi/releases/download/{{.Version}}/yaegi_{{trimV .Version}}_checksums.txt
           asset: yaegi_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 0.9.13")
-        url: https://gh-proxy.org/https://github.com/traefik/yaegi/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/traefik/yaegi/releases/download/{{.Version}}/yaegi_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: yaegi_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/traefik/yaegi/releases/download/{{.Version}}/yaegi_{{trimV .Version}}_checksums.txt
           asset: yaegi_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/traefik/yaegi/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/traefik/yaegi/releases/download/{{.Version}}/yaegi_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: yaegi_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/traefik/yaegi/releases/download/{{.Version}}/yaegi_{{trimV .Version}}_checksums.txt
           asset: yaegi_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:

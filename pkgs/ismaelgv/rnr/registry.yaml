@@ -10,11 +10,14 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.3.0")
-        url: https://gh-proxy.org/https://github.com/ismaelgv/rnr/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ismaelgv/rnr/releases/download/{{.Version}}/rnr-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: rnr-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ismaelgv/rnr/releases/download/{{.Version}}/rnr-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: rnr
@@ -28,20 +31,27 @@ packages:
           - amd64
         rosetta2: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/ismaelgv/rnr/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ismaelgv/rnr/releases/download/{{.Version}}/rnr-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: rnr-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/ismaelgv/rnr/releases/download/{{.Version}}/rnr-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/ismaelgv/rnr/releases/download/{{.Version}}/rnr-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               arm64: aarch64
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ismaelgv/rnr/releases/download/{{.Version}}/rnr-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64

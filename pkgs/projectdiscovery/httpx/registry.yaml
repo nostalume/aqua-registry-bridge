@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/projectdiscovery/httpx/releases/download/{{.Version}}/httpx_{{trimV .Version}}_{{.OS}}_{{.Arch}}.zip
     repo_owner: projectdiscovery
     repo_name: httpx
     description: httpx is a fast and multi-purpose HTTP toolkit allows to run multiple probers using retryablehttp library, it is designed to maintain the result reliability with increased threads
@@ -12,6 +13,7 @@ packages:
       - linux
       - amd64
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/projectdiscovery/httpx/releases/download/{{.Version}}/httpx_{{trimV .Version}}_checksums.txt
       asset: httpx_{{trimV .Version}}_checksums.txt
       algorithm: sha256

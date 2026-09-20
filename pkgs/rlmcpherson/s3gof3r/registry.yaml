@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/rlmcpherson/s3gof3r/releases/download/{{.Version}}/gof3r_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: rlmcpherson
     repo_name: s3gof3r
     description: Fast, concurrent, streaming access to Amazon S3, including gof3r, a CLI
@@ -15,7 +16,11 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/rlmcpherson/s3gof3r/releases/download/{{.Version}}/gof3r.exe
         format: raw
         asset: gof3r.exe
       - goos: darwin
+        type: http
+        url: https://gh-proxy.org/github.com/rlmcpherson/s3gof3r/releases/download/{{.Version}}/gof3r_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip

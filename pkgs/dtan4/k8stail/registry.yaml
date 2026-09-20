@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/dtan4/k8stail/releases/download/{{.Version}}/k8stail_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: dtan4
     repo_name: k8stail
     asset: k8stail_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -13,8 +14,11 @@ packages:
       windows: Windows
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/dtan4/k8stail/releases/download/{{.Version}}/k8stail_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/dtan4/k8stail/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256

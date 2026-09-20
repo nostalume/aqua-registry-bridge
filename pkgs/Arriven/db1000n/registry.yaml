@@ -6,115 +6,151 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.5.15"
-        url: https://gh-proxy.org/https://github.com/Arriven/db1000n/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Arriven/db1000n/releases/download/{{.Version}}/db1000n-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: db1000n-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.md5"
           asset: "{{.Asset}}.md5"
           algorithm: md5
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Arriven/db1000n/releases/download/{{.Version}}/db1000n-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: Version == "v0.8.6"
-        url: https://gh-proxy.org/https://github.com/Arriven/db1000n/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Arriven/db1000n/releases/download/{{.Version}}/db1000n_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: db1000n_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Arriven/db1000n/releases/download/{{.Version}}/db1000n_{{trimV .Version}}_checksums.txt
           asset: db1000n_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Arriven/db1000n/releases/download/{{.Version}}/db1000n_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.7.0")
-        url: https://gh-proxy.org/https://github.com/Arriven/db1000n/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Arriven/db1000n/releases/download/{{.Version}}/db1000n-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: db1000n-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.md5"
           asset: "{{.Asset}}.md5"
           algorithm: md5
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Arriven/db1000n/releases/download/{{.Version}}/db1000n-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.7.2")
-        url: https://gh-proxy.org/https://github.com/Arriven/db1000n/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Arriven/db1000n/releases/download/{{.Version}}/db1000n-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: db1000n-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.md5"
           asset: "{{.Asset}}.md5"
           algorithm: md5
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 0.8.3")
-        url: https://gh-proxy.org/https://github.com/Arriven/db1000n/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Arriven/db1000n/releases/download/{{.Version}}/db1000n-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: db1000n-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.md5"
           asset: "{{.Asset}}.md5"
           algorithm: md5
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Arriven/db1000n/releases/download/{{.Version}}/db1000n-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.8.5")
-        url: https://gh-proxy.org/https://github.com/Arriven/db1000n/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Arriven/db1000n/releases/download/{{.Version}}/db1000n_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: db1000n_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Arriven/db1000n/releases/download/{{.Version}}/db1000n_{{trimV .Version}}_checksums.txt
           asset: db1000n_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.8.12")
-        url: https://gh-proxy.org/https://github.com/Arriven/db1000n/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Arriven/db1000n/releases/download/{{.Version}}/db1000n_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: db1000n_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Arriven/db1000n/releases/download/{{.Version}}/db1000n_{{trimV .Version}}_checksums.txt
           asset: db1000n_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Arriven/db1000n/releases/download/{{.Version}}/db1000n_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.8.19")
-        url: https://gh-proxy.org/https://github.com/Arriven/db1000n/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Arriven/db1000n/releases/download/{{.Version}}/db1000n_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: db1000n_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Arriven/db1000n/releases/download/{{.Version}}/db1000n_{{trimV .Version}}_checksums.txt
           asset: db1000n_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Arriven/db1000n/releases/download/{{.Version}}/db1000n_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.9.23")
-        url: https://gh-proxy.org/https://github.com/Arriven/db1000n/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Arriven/db1000n/releases/download/{{.Version}}/db1000n_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: db1000n_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Arriven/db1000n/releases/download/{{.Version}}/db1000n_{{trimV .Version}}_checksums.txt
           asset: db1000n_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Arriven/db1000n/releases/download/{{.Version}}/db1000n_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Arriven/db1000n/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Arriven/db1000n/releases/download/{{.Version}}/db1000n-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: db1000n-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.md5"
           asset: "{{.Asset}}.md5"
           algorithm: md5
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Arriven/db1000n/releases/download/{{.Version}}/db1000n-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip

@@ -8,18 +8,22 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.6.2"
-        url: https://gh-proxy.org/https://github.com/containers/gvisor-tap-vsock/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/containers/gvisor-tap-vsock/releases/download/{{.Version}}/gvproxy-{{.OS}}
         asset: gvproxy-{{.OS}}
         format: raw
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/containers/gvisor-tap-vsock/releases/download/{{.Version}}/gvproxy-{{.OS}}-{{.Arch}}
             asset: gvproxy-{{.OS}}-{{.Arch}}
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "v0.7.0"
-        url: https://gh-proxy.org/https://github.com/containers/gvisor-tap-vsock/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/containers/gvisor-tap-vsock/releases/download/{{.Version}}/gvproxy-{{.OS}}
         asset: gvproxy-{{.OS}}
         format: raw
         supported_envs:
@@ -27,7 +31,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.3.0")
-        url: https://gh-proxy.org/https://github.com/containers/gvisor-tap-vsock/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/containers/gvisor-tap-vsock/releases/download/{{.Version}}/gvproxy-{{.OS}}
         asset: gvproxy-{{.OS}}
         format: raw
         supported_envs:
@@ -35,18 +40,22 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.5.0")
-        url: https://gh-proxy.org/https://github.com/containers/gvisor-tap-vsock/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/containers/gvisor-tap-vsock/releases/download/{{.Version}}/gvproxy-{{.OS}}
         asset: gvproxy-{{.OS}}
         format: raw
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/containers/gvisor-tap-vsock/releases/download/{{.Version}}/gvproxy-{{.OS}}-{{.Arch}}
             asset: gvproxy-{{.OS}}-{{.Arch}}
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.6.1")
-        url: https://gh-proxy.org/https://github.com/containers/gvisor-tap-vsock/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/containers/gvisor-tap-vsock/releases/download/{{.Version}}/gvproxy-{{.OS}}
         asset: gvproxy-{{.OS}}
         format: raw
         supported_envs:
@@ -54,23 +63,32 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.7.3")
-        url: https://gh-proxy.org/https://github.com/containers/gvisor-tap-vsock/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/containers/gvisor-tap-vsock/releases/download/{{.Version}}/gvproxy-{{.OS}}
         asset: gvproxy-{{.OS}}
         format: raw
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/containers/gvisor-tap-vsock/releases/download/{{.Version}}/gvproxy-{{.OS}}-{{.Arch}}
             asset: gvproxy-{{.OS}}-{{.Arch}}
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/containers/gvisor-tap-vsock/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/containers/gvisor-tap-vsock/releases/download/{{.Version}}/gvproxy-{{.OS}}
         asset: gvproxy-{{.OS}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/containers/gvisor-tap-vsock/releases/download/{{.Version}}/sha256sums
           asset: sha256sums
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/containers/gvisor-tap-vsock/releases/download/{{.Version}}/gvproxy-{{.OS}}-{{.Arch}}
             asset: gvproxy-{{.OS}}-{{.Arch}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/containers/gvisor-tap-vsock/releases/download/{{.Version}}/gvproxy-{{.Arch}}
             goarch: arm64
             asset: gvproxy-{{.Arch}}

@@ -32,35 +32,45 @@ packages:
                 link: assumego
       # Version 0.39.0 did not publish prebuilt Darwin artifacts.
       - version_constraint: Version == "v0.39.0"
-        url: https://gh-proxy.org/https://github.com/fwdcloudsec/granted/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/fwdcloudsec/granted/releases/download/{{.Version}}/granted_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: granted_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/fwdcloudsec/granted/releases/download/{{.Version}}/granted_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/fwdcloudsec/granted/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - windows
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/fwdcloudsec/granted/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/fwdcloudsec/granted/releases/download/{{.Version}}/granted_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: granted_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/fwdcloudsec/granted/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/fwdcloudsec/granted/releases/download/{{.Version}}/granted_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/fwdcloudsec/granted/releases/download/{{.Version}}/granted_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             files:
               - name: granted
               - name: assume

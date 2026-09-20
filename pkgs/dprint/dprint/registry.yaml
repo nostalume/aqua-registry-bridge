@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("< 0.14.0")
-        url: https://gh-proxy.org/https://github.com/dprint/dprint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dprint/dprint/releases/download/{{.Version}}/dprint-{{.Arch}}-{{.OS}}.zip
         asset: dprint-{{.Arch}}-{{.OS}}.zip
         replacements:
           amd64: x86_64
@@ -17,7 +18,8 @@ packages:
         supported_envs:
           - amd64
       - version_constraint: semver("< 0.34.0")
-        url: https://gh-proxy.org/https://github.com/dprint/dprint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dprint/dprint/releases/download/{{.Version}}/dprint-{{.Arch}}-{{.OS}}.zip
         asset: dprint-{{.Arch}}-{{.OS}}.zip
         replacements:
           amd64: x86_64
@@ -29,11 +31,13 @@ packages:
           - darwin
           - amd64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/dprint/dprint/releases/download/{{.Version}}/SHASUMS256.txt
           asset: SHASUMS256.txt
           algorithm: sha256
       - version_constraint: semver("< 0.52.0")
-        url: https://gh-proxy.org/https://github.com/dprint/dprint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dprint/dprint/releases/download/{{.Version}}/dprint-{{.Arch}}-{{.OS}}.zip
         asset: dprint-{{.Arch}}-{{.OS}}.zip
         windows_arm_emulation: true
         replacements:
@@ -43,11 +47,13 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/dprint/dprint/releases/download/{{.Version}}/SHASUMS256.txt
           asset: SHASUMS256.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.57.0")
-        url: https://gh-proxy.org/https://github.com/dprint/dprint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dprint/dprint/releases/download/{{.Version}}/dprint-{{.Arch}}-{{.OS}}.zip
         asset: dprint-{{.Arch}}-{{.OS}}.zip
         windows_arm_emulation: true
         replacements:
@@ -57,11 +63,13 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/dprint/dprint/releases/download/{{.Version}}/SHASUMS256.txt
           asset: SHASUMS256.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/dprint/dprint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dprint/dprint/releases/download/{{.Version}}/dprint-{{.Arch}}-{{.OS}}.zip
         asset: dprint-{{.Arch}}-{{.OS}}.zip
         windows_arm_emulation: true
         replacements:
@@ -71,7 +79,8 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/dprint/dprint/releases/download/{{.Version}}/SHASUMS256.txt
           asset: SHASUMS256.txt
           algorithm: sha256
         github_artifact_attestations:

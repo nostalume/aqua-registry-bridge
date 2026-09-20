@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/sahilm/yamldiff/releases/download/{{.Version}}/yamldiff-v{{.Version}}-{{.OS}}-amd64
     repo_owner: sahilm
     repo_name: yamldiff
     description: A CLI tool to diff two YAML files

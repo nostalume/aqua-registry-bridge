@@ -8,7 +8,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/yokecd/yoke/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/yokecd/yoke/releases/download/{{.Version}}/yoke_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: yoke_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: gz
         windows_arm_emulation: true
@@ -17,4 +18,6 @@ packages:
             src: "{{.AssetWithoutExt}}"
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/yokecd/yoke/releases/download/{{.Version}}/yoke_{{.Version}}_{{.OS}}_{{.Arch}}.exe.{{.Format}}
             asset: yoke_{{.Version}}_{{.OS}}_{{.Arch}}.exe.{{.Format}}

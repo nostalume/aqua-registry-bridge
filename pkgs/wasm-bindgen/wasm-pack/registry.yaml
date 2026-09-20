@@ -15,7 +15,8 @@ packages:
       - version_constraint: semver("<= 0.2.0")
         no_asset: true
       - version_constraint: semver("<= 0.4.2")
-        url: https://gh-proxy.org/https://github.com/wasm-bindgen/wasm-pack/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/wasm-bindgen/wasm-pack/releases/download/{{.Version}}/wasm-pack-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: wasm-pack-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -27,7 +28,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.10.1")
-        url: https://gh-proxy.org/https://github.com/wasm-bindgen/wasm-pack/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/wasm-bindgen/wasm-pack/releases/download/{{.Version}}/wasm-pack-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: wasm-pack-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -42,7 +44,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.13.1")
-        url: https://gh-proxy.org/https://github.com/wasm-bindgen/wasm-pack/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/wasm-bindgen/wasm-pack/releases/download/{{.Version}}/wasm-pack-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: wasm-pack-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -54,10 +57,13 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/wasm-bindgen/wasm-pack/releases/download/{{.Version}}/wasm-pack-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/wasm-bindgen/wasm-pack/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/wasm-bindgen/wasm-pack/releases/download/{{.Version}}/wasm-pack-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: wasm-pack-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true

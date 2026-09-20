@@ -19,7 +19,8 @@ packages:
     ##
     version_overrides:
       - version_constraint: Version == "v0.3.0"
-        url: https://gh-proxy.org/https://github.com/vectordotdev/vector/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vectordotdev/vector/releases/download/{{.Version}}/vector-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: vector-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -34,7 +35,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.5.0")
-        url: https://gh-proxy.org/https://github.com/vectordotdev/vector/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vectordotdev/vector/releases/download/{{.Version}}/vector-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: vector-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -49,7 +51,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.10.0")
-        url: https://gh-proxy.org/https://github.com/vectordotdev/vector/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vectordotdev/vector/releases/download/{{.Version}}/vector-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: vector-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -64,15 +67,20 @@ packages:
             src: vector-{{.Arch}}-{{.OS}}/bin/vector
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/vectordotdev/vector/releases/download/{{.Version}}/vector-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vectordotdev/vector/releases/download/{{.Version}}/vector-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: vector
                 src: bin/vector
       - version_constraint: semver("<= 0.33.0")
-        url: https://gh-proxy.org/https://github.com/vectordotdev/vector/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vectordotdev/vector/releases/download/{{.Version}}/vector-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: vector-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -87,15 +95,20 @@ packages:
             src: vector-{{.Arch}}-{{.OS}}/bin/vector
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/vectordotdev/vector/releases/download/{{.Version}}/vector-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vectordotdev/vector/releases/download/{{.Version}}/vector-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: vector
                 src: bin/vector
       - version_constraint: semver("<= 0.42.0")
-        url: https://gh-proxy.org/https://github.com/vectordotdev/vector/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vectordotdev/vector/releases/download/{{.Version}}/vector-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: vector-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -109,20 +122,26 @@ packages:
           - name: vector
             src: vector-{{.Arch}}-{{.OS}}/bin/vector
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vectordotdev/vector/releases/download/{{.Version}}/vector-{{trimV .Version}}-SHA256SUMS
           asset: vector-{{trimV .Version}}-SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/vectordotdev/vector/releases/download/{{.Version}}/vector-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vectordotdev/vector/releases/download/{{.Version}}/vector-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: vector
                 src: bin/vector
       - version_constraint: semver("<= 0.43.1")
-        url: https://gh-proxy.org/https://github.com/vectordotdev/vector/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vectordotdev/vector/releases/download/{{.Version}}/vector-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: vector-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -134,11 +153,14 @@ packages:
           - name: vector
             src: bin/vector
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vectordotdev/vector/releases/download/{{.Version}}/vector-{{trimV .Version}}-SHA256SUMS
           asset: vector-{{trimV .Version}}-SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/vectordotdev/vector/releases/download/{{.Version}}/vector-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: tar.gz
             replacements:
               arm64: aarch64
@@ -149,7 +171,8 @@ packages:
           - linux
           - windows/amd64
       - version_constraint: semver("<= 0.50.0")
-        url: https://gh-proxy.org/https://github.com/vectordotdev/vector/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vectordotdev/vector/releases/download/{{.Version}}/vector-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: vector-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -162,20 +185,26 @@ packages:
           - name: vector
             src: vector-{{.Arch}}-{{.OS}}/bin/vector
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vectordotdev/vector/releases/download/{{.Version}}/vector-{{trimV .Version}}-SHA256SUMS
           asset: vector-{{trimV .Version}}-SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/vectordotdev/vector/releases/download/{{.Version}}/vector-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vectordotdev/vector/releases/download/{{.Version}}/vector-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: vector
                 src: bin/vector
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/vectordotdev/vector/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vectordotdev/vector/releases/download/{{.Version}}/vector-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: vector-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -188,14 +217,19 @@ packages:
           - name: vector
             src: vector-{{.Arch}}-{{.OS}}/bin/vector
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vectordotdev/vector/releases/download/{{.Version}}/vector-{{trimV .Version}}-SHA256SUMS
           asset: vector-{{trimV .Version}}-SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/vectordotdev/vector/releases/download/{{.Version}}/vector-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vectordotdev/vector/releases/download/{{.Version}}/vector-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: vector

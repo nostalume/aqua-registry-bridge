@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/mitoma/sver/releases/download/{{.Version}}/sver_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: mitoma
     repo_name: sver
     description: Version generator based on source code
@@ -13,15 +14,20 @@ packages:
       - linux
       - amd64
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/mitoma/sver/releases/download/{{.Version}}/SHASUMS256.txt
       asset: SHASUMS256.txt
       algorithm: sha256
     version_constraint: semver(">= 0.1.14")
     version_overrides:
       - version_constraint: Version == "v0.1.13"
+        type: http
+        url: https://gh-proxy.org/github.com/mitoma/sver/releases/download/{{.Version}}/sver_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         checksum:
           enabled: false
       - version_constraint: semver(">= 0.1.7")
+        type: http
+        url: https://gh-proxy.org/github.com/mitoma/sver/releases/download/{{.Version}}/sver_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         rosetta2: true
         supported_envs:
           - darwin
@@ -29,6 +35,8 @@ packages:
         checksum:
           enabled: false
       - version_constraint: semver(">= 0.1.2")
+        type: http
+        url: https://gh-proxy.org/github.com/mitoma/sver/releases/download/{{.Version}}/sver_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         replacements: {}
         checksum:
           enabled: false
@@ -36,7 +44,8 @@ packages:
           - linux/amd64
           - windows/amd64
       - version_constraint: semver("< 0.1.2")
-        url: https://gh-proxy.org/https://github.com/mitoma/sver/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mitoma/sver/releases/download/{{.Version}}/sver_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: sver_{{.OS}}_{{.Arch}}.{{.Format}}
         replacements: {}
         checksum:

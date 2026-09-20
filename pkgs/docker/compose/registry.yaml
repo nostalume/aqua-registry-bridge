@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.5.2")
-        url: https://gh-proxy.org/https://github.com/docker/compose/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/docker/compose/releases/download/{{.Version}}/{{.OS}}
         asset: "{{.OS}}"
         format: raw
         rosetta2: true
@@ -17,7 +18,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 1.0.1")
-        url: https://gh-proxy.org/https://github.com/docker/compose/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/docker/compose/releases/download/{{.Version}}/fig-{{.OS}}-{{.Arch}}
         asset: fig-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -29,7 +31,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 1.4.2")
-        url: https://gh-proxy.org/https://github.com/docker/compose/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/docker/compose/releases/download/{{.Version}}/docker-compose-{{.OS}}-{{.Arch}}
         asset: docker-compose-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -41,7 +44,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 1.17.1")
-        url: https://gh-proxy.org/https://github.com/docker/compose/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/docker/compose/releases/download/{{.Version}}/docker-compose-{{.OS}}-{{.Arch}}
         asset: docker-compose-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -56,7 +60,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.29.2")
-        url: https://gh-proxy.org/https://github.com/docker/compose/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/docker/compose/releases/download/{{.Version}}/docker-compose-{{.OS}}-{{.Arch}}
         asset: docker-compose-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -71,25 +76,30 @@ packages:
           - windows
           - amd64
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
       - version_constraint: Version == "v2.0.0-rc.3"
-        url: https://gh-proxy.org/https://github.com/docker/compose/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/docker/compose/releases/download/{{.Version}}/docker-compose-{{.OS}}-{{.Arch}}
         asset: docker-compose-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
       - version_constraint: Version == "v2.0.0"
-        url: https://gh-proxy.org/https://github.com/docker/compose/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/docker/compose/releases/download/{{.Version}}/docker-compose-{{.OS}}-{{.Arch}}
         asset: docker-compose-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
       - version_constraint: semver("<= 2.9.0")
-        url: https://gh-proxy.org/https://github.com/docker/compose/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/docker/compose/releases/download/{{.Version}}/docker-compose-{{.OS}}-{{.Arch}}
         asset: docker-compose-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -97,45 +107,53 @@ packages:
           amd64: x86_64
           arm64: aarch64
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
       - version_constraint: Version == "v2.10.0"
-        url: https://gh-proxy.org/https://github.com/docker/compose/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/docker/compose/releases/download/{{.Version}}/docker-compose-{{.OS}}-{{.Arch}}
         asset: docker-compose-{{.OS}}-{{.Arch}}
         format: raw
         replacements:
           amd64: x86_64
           arm64: aarch64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/docker/compose/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 5.0.2")
-        url: https://gh-proxy.org/https://github.com/docker/compose/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/docker/compose/releases/download/{{.Version}}/docker-compose-{{.OS}}-{{.Arch}}
         asset: docker-compose-{{.OS}}-{{.Arch}}
         format: raw
         replacements:
           amd64: x86_64
           arm64: aarch64
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/docker/compose/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/docker/compose/releases/download/{{.Version}}/docker-compose-{{.OS}}-{{.Arch}}
         asset: docker-compose-{{.OS}}-{{.Arch}}
         format: raw
         replacements:
           amd64: x86_64
           arm64: aarch64
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         cosign:
           bundle:
-            type: github_release
+            type: http
+            url: https://gh-proxy.org/github.com/docker/compose/releases/download/{{.Version}}/docker-compose-{{.OS}}-{{.Arch}}.sigstore.json
             asset: "docker-compose-{{.OS}}-{{.Arch}}.sigstore.json"
           opts:
             - --certificate-identity-regexp

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/pemistahl/grex/releases/download/{{.Version}}/grex-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
     repo_owner: pemistahl
     repo_name: grex
     asset: grex-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
@@ -13,6 +14,8 @@ packages:
       windows: pc-windows-msvc
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/pemistahl/grex/releases/download/{{.Version}}/grex-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
     supported_envs:
       - darwin

@@ -9,11 +9,13 @@ packages:
       - version_constraint: semver("<= 0.6.0")
         no_asset: true
       - version_constraint: semver("<= 0.7.1")
-        url: https://gh-proxy.org/https://github.com/yassinebenaid/bunster/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/yassinebenaid/bunster/releases/download/{{.Version}}/bunster_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: bunster_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/yassinebenaid/bunster/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
@@ -23,11 +25,13 @@ packages:
           - name: bunster
             src: bunster_{{.OS}}-{{.Arch}}
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/yassinebenaid/bunster/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/yassinebenaid/bunster/releases/download/{{.Version}}/bunster_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: bunster_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/yassinebenaid/bunster/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:

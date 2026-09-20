@@ -7,14 +7,19 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/self-actuated/actuated-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/self-actuated/actuated-cli/releases/download/{{.Version}}/actuated-cli
         asset: actuated-cli
         format: raw
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/self-actuated/actuated-cli/releases/download/{{.Version}}/actuated-cli-{{.OS}}
             goarch: amd64
             asset: actuated-cli-{{.OS}}
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/self-actuated/actuated-cli/releases/download/{{.Version}}/actuated-cli-{{.OS}}-{{.Arch}}
             goarch: arm64
             asset: actuated-cli-{{.OS}}-{{.Arch}}
         supported_envs:

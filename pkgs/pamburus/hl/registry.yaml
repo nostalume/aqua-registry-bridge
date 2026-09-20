@@ -9,70 +9,92 @@ packages:
       - version_constraint: Version == "v0.29.0"
         no_asset: true
       - version_constraint: Version == "v0.6.2"
-        url: https://gh-proxy.org/https://github.com/pamburus/hl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/pamburus/hl/releases/download/{{.Version}}/hl-{{.OS}}.{{.Format}}
         asset: hl-{{.OS}}.{{.Format}}
         format: zip
         replacements:
           darwin: macos
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/pamburus/hl/releases/download/{{.Version}}/hl-{{.OS}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.6.7")
-        url: https://gh-proxy.org/https://github.com/pamburus/hl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/pamburus/hl/releases/download/{{.Version}}/hl-{{.OS}}.{{.Format}}
         asset: hl-{{.OS}}.{{.Format}}
         format: zip
         replacements:
           darwin: macos
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/pamburus/hl/releases/download/{{.Version}}/hl-{{.OS}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.8.14")
-        url: https://gh-proxy.org/https://github.com/pamburus/hl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/pamburus/hl/releases/download/{{.Version}}/hl-{{.OS}}.{{.Format}}
         asset: hl-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/pamburus/hl/releases/download/{{.Version}}/hl-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.10.5")
-        url: https://gh-proxy.org/https://github.com/pamburus/hl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/pamburus/hl/releases/download/{{.Version}}/hl-{{.OS}}.{{.Format}}
         asset: hl-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
           darwin: macos
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/pamburus/hl/releases/download/{{.Version}}/hl-{{.Arch}}-{{.OS}}-gnu.{{.Format}}
             asset: hl-{{.Arch}}-{{.OS}}-gnu.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/pamburus/hl/releases/download/{{.Version}}/hl-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.15.2")
-        url: https://gh-proxy.org/https://github.com/pamburus/hl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/pamburus/hl/releases/download/{{.Version}}/hl-{{.OS}}.{{.Format}}
         asset: hl-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
           darwin: macos
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/pamburus/hl/releases/download/{{.Version}}/hl-{{.Arch}}-{{.OS}}-gnu.{{.Format}}
             asset: hl-{{.Arch}}-{{.OS}}-gnu.{{.Format}}
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/pamburus/hl/releases/download/{{.Version}}/hl-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             asset: hl-{{.Arch}}-{{.OS}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/pamburus/hl/releases/download/{{.Version}}/hl-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/pamburus/hl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/pamburus/hl/releases/download/{{.Version}}/hl-{{.OS}}-{{.Arch}}-gnu.{{.Format}}
         asset: hl-{{.OS}}-{{.Arch}}-gnu.{{.Format}}
         format: tar.gz
         replacements:
@@ -80,7 +102,11 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/pamburus/hl/releases/download/{{.Version}}/hl-{{.OS}}-{{.Arch}}.{{.Format}}
             asset: hl-{{.OS}}-{{.Arch}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/pamburus/hl/releases/download/{{.Version}}/hl-{{.OS}}.{{.Format}}
             format: zip
             asset: hl-{{.OS}}.{{.Format}}

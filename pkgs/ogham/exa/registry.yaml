@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/ogham/exa/releases/download/{{.Version}}/exa-{{.OS}}-{{.Arch}}-musl-{{.Version}}.{{.Format}}
     repo_owner: ogham
     repo_name: exa
     asset: exa-{{.OS}}-{{.Arch}}-musl-{{.Version}}.{{.Format}}
@@ -11,6 +12,8 @@ packages:
       darwin: macos
     overrides:
       - goos: darwin
+        type: http
+        url: https://gh-proxy.org/github.com/ogham/exa/releases/download/{{.Version}}/exa-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         asset: exa-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
     supported_envs:
       - linux/amd64

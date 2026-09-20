@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/minio/mc/releases/download/{{.Version}}/mc.{{.OS}}-{{.Arch}}.{{.Version}}
     repo_owner: minio
     repo_name: mc
     description: Unix like utilities for object store
@@ -8,10 +9,12 @@ packages:
     windows_arm_emulation: true
     format: raw
     checksum:
-      type: github_release
+      type: http
+      url: "{{.AssetURL}}.sha256sum"
       algorithm: sha256
       asset: "{{.Asset}}.sha256sum"
     minisign:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/minio/mc/releases/download/{{.Version}}/{{.Asset}}.minisig
       asset: "{{.Asset}}.minisig"
       public_key: RWTx5Zr1tiHQLwG9keckT0c45M3AGeHD6IvimQHpyRywVWGbP1aVSGav

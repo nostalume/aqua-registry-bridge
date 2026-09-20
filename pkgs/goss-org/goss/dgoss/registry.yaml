@@ -1,7 +1,8 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
   - name: goss-org/goss/dgoss
-    type: github_content
+    type: http
+    url: https://gh-proxy.org/raw.githubusercontent.com/goss-org/goss/{{.Version}}/extras/dgoss/dgoss
     repo_owner: goss-org
     repo_name: goss
     aliases:

@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.3.2")
-        url: https://gh-proxy.org/https://github.com/schollz/croc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: croc_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -16,18 +17,22 @@ packages:
           amd64: 64bit
           darwin: OSX
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_checksums.txt
           asset: croc_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.5.0")
-        url: https://gh-proxy.org/https://github.com/schollz/croc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: croc_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -36,18 +41,22 @@ packages:
           amd64: 64bit
           darwin: OSX
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_checksums.txt
           asset: croc_checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 3.0.1")
-        url: https://gh-proxy.org/https://github.com/schollz/croc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: croc_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -56,11 +65,14 @@ packages:
           amd64: 64bit
           darwin: OSX
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_checksums.txt
           asset: croc_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - darwin
@@ -69,7 +81,8 @@ packages:
       - version_constraint: Version == "v3.0.2"
         no_asset: true
       - version_constraint: semver("<= 3.0.6")
-        url: https://gh-proxy.org/https://github.com/schollz/croc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: croc_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -78,11 +91,14 @@ packages:
           amd64: 64bit
           darwin: OSX
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_checksums.txt
           asset: croc_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - darwin
@@ -91,7 +107,8 @@ packages:
       - version_constraint: Version == "v3.0.7"
         no_asset: true
       - version_constraint: semver("<= 4.0.3")
-        url: https://gh-proxy.org/https://github.com/schollz/croc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: croc_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -100,18 +117,22 @@ packages:
           amd64: 64bit
           darwin: OSX
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_checksums.txt
           asset: croc_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 8.6.7")
-        url: https://gh-proxy.org/https://github.com/schollz/croc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: croc_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -122,17 +143,23 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_checksums.txt
           asset: croc_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: ARM64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 9.3.0")
-        url: https://gh-proxy.org/https://github.com/schollz/croc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: croc_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -143,14 +170,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_checksums.txt
           asset: croc_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 9.5.6")
-        url: https://gh-proxy.org/https://github.com/schollz/croc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: croc_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -160,14 +191,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_checksums.txt
           asset: croc_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: Version == "v9.6.0"
-        url: https://gh-proxy.org/https://github.com/schollz/croc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: croc_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -178,17 +213,23 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_checksums.txt
           asset: croc_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: ARM64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 9.6.6")
-        url: https://gh-proxy.org/https://github.com/schollz/croc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: croc_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -198,14 +239,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_checksums.txt
           asset: croc_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/schollz/croc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{.Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: croc_{{.Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -216,9 +261,12 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{.Version}}_checksums.txt
           asset: croc_{{.Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/schollz/croc/releases/download/{{.Version}}/croc_{{.Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip

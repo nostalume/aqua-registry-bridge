@@ -23,7 +23,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.2.0")
-        url: https://gh-proxy.org/https://github.com/g-plane/pnpm-shell-completion/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/g-plane/pnpm-shell-completion/releases/download/{{.Version}}/pnpm-shell-completion_{{.Arch}}-{{.OS}}.{{.Format}}
         asset: pnpm-shell-completion_{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -32,13 +33,16 @@ packages:
           linux: unknown-linux-musl
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/g-plane/pnpm-shell-completion/releases/download/{{.Version}}/pnpm-shell-completion_{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v0.3.0"
-        url: https://gh-proxy.org/https://github.com/g-plane/pnpm-shell-completion/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/g-plane/pnpm-shell-completion/releases/download/{{.Version}}/pnpm-shell-completion_{{.Arch}}-{{.OS}}.{{.Format}}
         asset: pnpm-shell-completion_{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -49,16 +53,21 @@ packages:
           windows: pc-windows-gnu
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/g-plane/pnpm-shell-completion/releases/download/{{.Version}}/pnpm-shell-completion_{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/g-plane/pnpm-shell-completion/releases/download/{{.Version}}/pnpm-shell-completion_{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/g-plane/pnpm-shell-completion/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/g-plane/pnpm-shell-completion/releases/download/{{.Version}}/pnpm-shell-completion_{{.Arch}}-{{.OS}}.{{.Format}}
         asset: pnpm-shell-completion_{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -69,9 +78,13 @@ packages:
           windows: pc-windows-gnu
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/g-plane/pnpm-shell-completion/releases/download/{{.Version}}/pnpm-shell-completion_{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/g-plane/pnpm-shell-completion/releases/download/{{.Version}}/pnpm-shell-completion_pwsh_{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             asset: pnpm-shell-completion_pwsh_{{.Arch}}-{{.OS}}.{{.Format}}
         supported_envs:

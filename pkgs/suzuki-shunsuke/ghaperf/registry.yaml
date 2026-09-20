@@ -7,11 +7,13 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.1.1")
-        url: https://gh-proxy.org/https://github.com/suzuki-shunsuke/ghaperf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghaperf/releases/download/{{.Version}}/ghaperf_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ghaperf_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghaperf/releases/download/{{.Version}}/ghaperf_checksums.txt
           asset: ghaperf_checksums.txt
           algorithm: sha256
           cosign:
@@ -21,20 +23,24 @@ packages:
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghaperf/releases/download/{{.Version}}/ghaperf_checksums.txt.bundle
               asset: ghaperf_checksums.txt.bundle
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghaperf/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
         supported_envs:
           - linux
           - darwin/arm64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/suzuki-shunsuke/ghaperf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghaperf/releases/download/{{.Version}}/ghaperf_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ghaperf_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghaperf/releases/download/{{.Version}}/ghaperf_checksums.txt
           asset: ghaperf_checksums.txt
           algorithm: sha256
           cosign:
@@ -44,10 +50,12 @@ packages:
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghaperf/releases/download/{{.Version}}/ghaperf_checksums.txt.sigstore.json
               asset: ghaperf_checksums.txt.sigstore.json
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghaperf/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
         supported_envs:
           - linux

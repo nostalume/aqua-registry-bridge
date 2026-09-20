@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("<= 7.0.1")
         no_asset: true
       - version_constraint: semver("<= 7.0.5")
-        url: https://gh-proxy.org/https://github.com/watchexec/cargo-watch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         rosetta2: true
@@ -24,6 +25,8 @@ packages:
           windows: pc-windows-gnu
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: cargo-watch
@@ -32,7 +35,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 7.5.1")
-        url: https://gh-proxy.org/https://github.com/watchexec/cargo-watch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         rosetta2: true
@@ -47,13 +51,16 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 7.7.2")
-        url: https://gh-proxy.org/https://github.com/watchexec/cargo-watch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         rosetta2: true
@@ -67,18 +74,25 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               arm64: aarch64
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 8.0.0")
-        url: https://gh-proxy.org/https://github.com/watchexec/cargo-watch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         rosetta2: true
@@ -91,26 +105,35 @@ packages:
           darwin: apple-darwin
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/SHA512SUMS
           asset: SHA512SUMS
           algorithm: sha512
           minisign:
-            type: github_release
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/SHA512SUMS.auto.minisig
             asset: SHA512SUMS.auto.minisig
             public_key: RWRxgTERVHnagvTTKlALKHIBLnPb5hHU2BcX6fe/MDXLSXvKu70Lft0b
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 8.1.1")
-        url: https://gh-proxy.org/https://github.com/watchexec/cargo-watch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         files:
@@ -122,26 +145,35 @@ packages:
           darwin: apple-darwin
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/SHA512SUMS
           asset: SHA512SUMS
           algorithm: sha512
           minisign:
-            type: github_release
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/SHA512SUMS.auto.minisig
             asset: SHA512SUMS.auto.minisig
             public_key: RWRxgTERVHnagvTTKlALKHIBLnPb5hHU2BcX6fe/MDXLSXvKu70Lft0b
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: Version == "v8.1.2"
-        url: https://gh-proxy.org/https://github.com/watchexec/cargo-watch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -154,26 +186,35 @@ packages:
           darwin: apple-darwin
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/SHA512SUMS
           asset: SHA512SUMS
           algorithm: sha512
           minisign:
-            type: github_release
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/SHA512SUMS.auto.minisig
             asset: SHA512SUMS.auto.minisig
             public_key: RWRxgTERVHnagvTTKlALKHIBLnPb5hHU2BcX6fe/MDXLSXvKu70Lft0b
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/watchexec/cargo-watch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         files:
@@ -185,21 +226,29 @@ packages:
           darwin: apple-darwin
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/SHA512SUMS
           asset: SHA512SUMS
           algorithm: sha512
           minisign:
-            type: github_release
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/SHA512SUMS.auto.minisig
             asset: SHA512SUMS.auto.minisig
             public_key: RWRxgTERVHnagvTTKlALKHIBLnPb5hHU2BcX6fe/MDXLSXvKu70Lft0b
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/watchexec/cargo-watch/releases/download/{{.Version}}/cargo-watch-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip

@@ -9,23 +9,27 @@ packages:
       - version_constraint: Version == "0.2.0"
         no_asset: true
       - version_constraint: semver("<= 0.3.1")
-        url: https://gh-proxy.org/https://github.com/ohkrab/krab/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ohkrab/krab/releases/download/{{.Version}}/krab_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: krab_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/ohkrab/krab/releases/download/{{.Version}}/krab_{{trimV .Version}}_checksums.txt
           asset: krab_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/ohkrab/krab/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ohkrab/krab/releases/download/{{.Version}}/krab_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: krab_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/ohkrab/krab/releases/download/{{.Version}}/krab_{{trimV .Version}}_checksums.txt
           asset: krab_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:

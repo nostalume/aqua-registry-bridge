@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/DelineaXPM/dsv-cli/releases/download/{{.Version}}/dsv-{{.OS}}-{{.Arch}}
     repo_owner: DelineaXPM
     repo_name: dsv-cli
     aliases:
@@ -22,22 +23,31 @@ packages:
       windows: win
     version_constraint: semver(">= 1.39.9")
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/DelineaXPM/dsv-cli/releases/download/{{.Version}}/checksums-sha256.txt
       asset: checksums-sha256.txt
       algorithm: sha256
     version_overrides:
       - version_constraint: semver(">= 1.39.5")
+        type: http
+        url: https://gh-proxy.org/github.com/DelineaXPM/dsv-cli/releases/download/{{.Version}}/dsv-{{.OS}}-{{.Arch}}
         checksum:
           enabled: false
       - version_constraint: semver(">= 1.39.1")
+        type: http
+        url: https://gh-proxy.org/github.com/DelineaXPM/dsv-cli/releases/download/{{.Version}}/dsv-{{.OS}}-{{.Arch}}
         checksum:
           enabled: false
         replacements:
           windows: win
       - version_constraint: semver(">= 1.33.0")
+        type: http
+        url: https://gh-proxy.org/github.com/DelineaXPM/dsv-cli/releases/download/{{.Version}}/dsv-{{.OS}}-{{.Arch}}
         checksum:
           enabled: false
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/DelineaXPM/dsv-cli/releases/download/{{.Version}}/dsv-{{.OS}}-{{.Arch}}
         rosetta2: true
         checksum:
           enabled: false

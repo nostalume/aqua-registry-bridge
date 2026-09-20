@@ -20,11 +20,13 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.3.0")
-        url: https://gh-proxy.org/https://github.com/containerd/stargz-snapshotter/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/containerd/stargz-snapshotter/releases/download/{{.Version}}/stargz-snapshotter-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: stargz-snapshotter-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/containerd/stargz-snapshotter/releases/download/{{.Version}}/stargz-snapshotter-{{.Version}}-{{.OS}}-{{.Arch}}.tar.gz.sha256sum
           asset: stargz-snapshotter-{{.Version}}-{{.OS}}-{{.Arch}}.tar.gz.sha256sum
           algorithm: sha256
         supported_envs:
@@ -33,11 +35,13 @@ packages:
           - name: containerd-stargz-grpc
           - name: ctr-remote
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/containerd/stargz-snapshotter/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/containerd/stargz-snapshotter/releases/download/{{.Version}}/stargz-snapshotter-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: stargz-snapshotter-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/containerd/stargz-snapshotter/releases/download/{{.Version}}/stargz-snapshotter-{{.Version}}-{{.OS}}-{{.Arch}}.tar.gz.sha256sum
           asset: stargz-snapshotter-{{.Version}}-{{.OS}}-{{.Arch}}.tar.gz.sha256sum
           algorithm: sha256
         supported_envs:

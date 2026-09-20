@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/houseabsolute/omegasort/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/houseabsolute/omegasort/releases/download/{{.Version}}/omegasort-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: omegasort-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -18,6 +19,10 @@ packages:
           windows: Windows
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/houseabsolute/omegasort/releases/download/{{.Version}}/omegasort-{{.OS}}-{{.Arch}}-musl.{{.Format}}
             asset: omegasort-{{.OS}}-{{.Arch}}-musl.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/houseabsolute/omegasort/releases/download/{{.Version}}/omegasort-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip

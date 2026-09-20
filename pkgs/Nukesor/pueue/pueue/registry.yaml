@@ -12,7 +12,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.2.0"
-        url: https://gh-proxy.org/https://github.com/Nukesor/pueue/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Nukesor/pueue/releases/download/{{.Version}}/pueue-{{.OS}}-{{.Arch}}
         asset: pueue-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -22,7 +23,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.1.4")
-        url: https://gh-proxy.org/https://github.com/Nukesor/pueue/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Nukesor/pueue/releases/download/{{.Version}}/pueue-{{.OS}}-{{.Arch}}
         asset: pueue-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -32,7 +34,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.7.0")
-        url: https://gh-proxy.org/https://github.com/Nukesor/pueue/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Nukesor/pueue/releases/download/{{.Version}}/pueue-{{.OS}}-{{.Arch}}
         asset: pueue-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -44,7 +47,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.10.2")
-        url: https://gh-proxy.org/https://github.com/Nukesor/pueue/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Nukesor/pueue/releases/download/{{.Version}}/pueue-{{.OS}}-{{.Arch}}
         asset: pueue-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -54,12 +58,15 @@ packages:
           darwin: macos
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Nukesor/pueue/releases/download/{{.Version}}/pueue-{{.OS}}-{{.Arch}}
             replacements:
               arm64: aarch64
       - version_constraint: semver("<= 0.11.1")
         no_asset: true
       - version_constraint: semver("<= 0.12.2")
-        url: https://gh-proxy.org/https://github.com/Nukesor/pueue/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Nukesor/pueue/releases/download/{{.Version}}/pueue-{{.OS}}-{{.Arch}}
         asset: pueue-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -69,12 +76,15 @@ packages:
           darwin: macos
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Nukesor/pueue/releases/download/{{.Version}}/pueue-{{.OS}}-{{.Arch}}
             replacements:
               arm64: aarch64
       - version_constraint: semver("<= 0.29.0")
         no_asset: true
       - version_constraint: semver("<= 2.1.0")
-        url: https://gh-proxy.org/https://github.com/Nukesor/pueue/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Nukesor/pueue/releases/download/{{.Version}}/pueue-{{.OS}}-{{.Arch}}
         asset: pueue-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -84,10 +94,13 @@ packages:
           darwin: macos
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Nukesor/pueue/releases/download/{{.Version}}/pueue-{{.OS}}-{{.Arch}}
             replacements:
               arm64: aarch64
       - version_constraint: semver("<= 3.4.1")
-        url: https://gh-proxy.org/https://github.com/Nukesor/pueue/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Nukesor/pueue/releases/download/{{.Version}}/pueue-{{.OS}}-{{.Arch}}
         asset: pueue-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -96,13 +109,18 @@ packages:
           arm64: aarch64
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/Nukesor/pueue/releases/download/{{.Version}}/pueue-{{.OS}}-{{.Arch}}
             goarch: amd64
             replacements:
               darwin: macos
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Nukesor/pueue/releases/download/{{.Version}}/pueue-{{.OS}}-{{.Arch}}
             replacements: {}
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Nukesor/pueue/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Nukesor/pueue/releases/download/{{.Version}}/pueue-{{.Arch}}-{{.OS}}
         asset: pueue-{{.Arch}}-{{.OS}}
         format: raw
         windows_arm_emulation: true

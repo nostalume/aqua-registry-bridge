@@ -7,47 +7,59 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "0.1.0"
-        url: https://gh-proxy.org/https://github.com/yannh/kubeconform/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/yannh/kubeconform/releases/download/{{.Version}}/kubeconform-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: kubeconform-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/yannh/kubeconform/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/yannh/kubeconform/releases/download/{{.Version}}/kubeconform-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.4.8")
-        url: https://gh-proxy.org/https://github.com/yannh/kubeconform/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/yannh/kubeconform/releases/download/{{.Version}}/kubeconform-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: kubeconform-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/yannh/kubeconform/releases/download/{{.Version}}/CHECKSUMS
           asset: CHECKSUMS
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/yannh/kubeconform/releases/download/{{.Version}}/kubeconform-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/yannh/kubeconform/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/yannh/kubeconform/releases/download/{{.Version}}/kubeconform-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: kubeconform-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/yannh/kubeconform/releases/download/{{.Version}}/CHECKSUMS
           asset: CHECKSUMS
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/yannh/kubeconform/releases/download/{{.Version}}/kubeconform-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip

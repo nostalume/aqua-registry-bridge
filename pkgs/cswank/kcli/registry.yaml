@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version in ["1.4.0", "1.8.1", "1.8.2"]
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/cswank/kcli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cswank/kcli/releases/download/{{.Version}}/kcli_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kcli_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -20,7 +21,8 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/cswank/kcli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:

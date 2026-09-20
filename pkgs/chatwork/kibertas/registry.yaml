@@ -9,11 +9,13 @@ packages:
       - version_constraint: Version == "v0.0.4"
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/chatwork/kibertas/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/chatwork/kibertas/releases/download/{{.Version}}/kibertas_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kibertas_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/chatwork/kibertas/releases/download/{{.Version}}/kibertas_{{trimV .Version}}_checksums.txt
           asset: kibertas_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:

@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("<= 0.1.0")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/yassinebridi/serpl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/yassinebridi/serpl/releases/download/{{.Version}}/serpl-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: serpl-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -17,6 +18,7 @@ packages:
           amd64: x86_64
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/yassinebridi/serpl/releases/download/{{.Version}}/serpl-{{.Version}}-{{.OS}}-{{.Arch}}.sha256
           asset: serpl-{{.Version}}-{{.OS}}-{{.Arch}}.sha256
           algorithm: sha256

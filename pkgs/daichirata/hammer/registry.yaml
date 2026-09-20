@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.4.0")
-        url: https://gh-proxy.org/https://github.com/daichirata/hammer/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/daichirata/hammer/releases/download/{{.Version}}/hammer_{{trimV .Version}}_{{.Arch}}_{{.OS}}
         asset: hammer_{{trimV .Version}}_{{.Arch}}_{{.OS}}
         format: raw
         rosetta2: true
@@ -15,7 +16,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.5.4")
-        url: https://gh-proxy.org/https://github.com/daichirata/hammer/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/daichirata/hammer/releases/download/{{.Version}}/hammer-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: hammer-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         files:
           - name: hammer
@@ -24,14 +26,18 @@ packages:
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/daichirata/hammer/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/daichirata/hammer/releases/download/{{.Version}}/hammer-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.5.9")
-        url: https://gh-proxy.org/https://github.com/daichirata/hammer/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/daichirata/hammer/releases/download/{{.Version}}/hammer-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: hammer-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         files:
           - name: hammer
@@ -39,23 +45,30 @@ packages:
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/daichirata/hammer/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/daichirata/hammer/releases/download/{{.Version}}/hammer-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/daichirata/hammer/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/daichirata/hammer/releases/download/{{.Version}}/hammer-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: hammer-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         files:
           - name: hammer
             src: hammer-{{trimV .Version}}-{{.OS}}-{{.Arch}}/hammer
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/daichirata/hammer/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/daichirata/hammer/releases/download/{{.Version}}/hammer-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip

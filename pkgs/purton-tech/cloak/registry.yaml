@@ -7,13 +7,15 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.5.0")
-        url: https://gh-proxy.org/https://github.com/purton-tech/cloak/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/purton-tech/cloak/releases/download/{{.Version}}/cli
         asset: cli
         format: raw
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 1.17.7")
-        url: https://gh-proxy.org/https://github.com/purton-tech/cloak/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/purton-tech/cloak/releases/download/{{.Version}}/cloak-{{.OS}}
         asset: cloak-{{.OS}}
         format: raw
         rosetta2: true
@@ -23,7 +25,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 1.17.11")
-        url: https://gh-proxy.org/https://github.com/purton-tech/cloak/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/purton-tech/cloak/releases/download/{{.Version}}/cloak-{{.OS}}
         asset: cloak-{{.OS}}
         format: raw
         rosetta2: true
@@ -34,7 +37,8 @@ packages:
       - version_constraint: Version == "v1.17.12"
         no_asset: true
       - version_constraint: semver("<= 1.17.14")
-        url: https://gh-proxy.org/https://github.com/purton-tech/cloak/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/purton-tech/cloak/releases/download/{{.Version}}/cloak-{{.OS}}
         asset: cloak-{{.OS}}
         format: raw
         rosetta2: true
@@ -43,7 +47,8 @@ packages:
         supported_envs:
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/purton-tech/cloak/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/purton-tech/cloak/releases/download/{{.Version}}/cloak-{{.OS}}
         asset: cloak-{{.OS}}
         format: raw
         rosetta2: true

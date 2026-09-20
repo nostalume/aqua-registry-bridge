@@ -9,13 +9,15 @@ packages:
       - version_constraint: Version == "v0.11.0"
         no_asset: true
       - version_constraint: semver("<= 0.10.0")
-        url: https://gh-proxy.org/https://github.com/IBM-Cloud/redli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/IBM-Cloud/redli/releases/download/{{.Version}}/redli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: redli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/IBM-Cloud/redli/releases/download/{{.Version}}/redli_{{trimV .Version}}_checksums.txt
           asset: redli_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
@@ -23,22 +25,28 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/IBM-Cloud/redli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/IBM-Cloud/redli/releases/download/{{.Version}}/redli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: redli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: redli
             src: redli_{{.OS}}_{{.Arch}}
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/IBM-Cloud/redli/releases/download/{{.Version}}/redli_{{trimV .Version}}_checksums.txt
           asset: redli_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/IBM-Cloud/redli/releases/download/{{.Version}}/redli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             goarch: amd64
             files:
               - name: redli
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/IBM-Cloud/redli/releases/download/{{.Version}}/redli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             goarch: arm64
             files:
               - name: redli

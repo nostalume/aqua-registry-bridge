@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.2.0")
-        url: https://gh-proxy.org/https://github.com/typst/typst/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/typst/typst/releases/download/{{.Version}}/typst-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: typst-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -22,13 +23,16 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/typst/typst/releases/download/{{.Version}}/typst-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.5.0")
-        url: https://gh-proxy.org/https://github.com/typst/typst/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/typst/typst/releases/download/{{.Version}}/typst-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: typst-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         files:
@@ -42,9 +46,12 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/typst/typst/releases/download/{{.Version}}/typst-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.11.1")
-        url: https://gh-proxy.org/https://github.com/typst/typst/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/typst/typst/releases/download/{{.Version}}/typst-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: typst-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -59,9 +66,12 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/typst/typst/releases/download/{{.Version}}/typst-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/typst/typst/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/typst/typst/releases/download/{{.Version}}/typst-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: typst-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         files:
@@ -75,4 +85,6 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/typst/typst/releases/download/{{.Version}}/typst-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip

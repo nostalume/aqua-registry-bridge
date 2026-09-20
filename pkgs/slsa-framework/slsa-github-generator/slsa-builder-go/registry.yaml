@@ -15,6 +15,7 @@ packages:
     overrides:
       - goos: linux
         goarch: amd64
-        type: github_release
+        type: http
+        url: https://gh-proxy.org/github.com/slsa-framework/slsa-github-generator/releases/download/{{.Version}}/slsa-builder-go-{{.OS}}-{{.Arch}}
         asset: slsa-builder-go-{{.OS}}-{{.Arch}}
         format: raw

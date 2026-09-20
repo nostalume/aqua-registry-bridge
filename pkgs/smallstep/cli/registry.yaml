@@ -13,7 +13,8 @@ packages:
       - version_constraint: Version in ["v0.15.1", "v0.27.0", "v0.28.1", "v0.28.4", "v0.30.3-rc1"]
         no_asset: true
       - version_constraint: Version == "v0.0.1"
-        url: https://gh-proxy.org/https://github.com/smallstep/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/smallstep/cli/releases/download/{{.Version}}/step_{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: step_{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -24,7 +25,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v0.14.0"
-        url: https://gh-proxy.org/https://github.com/smallstep/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/smallstep/cli/releases/download/{{.Version}}/step_{{.OS}}_{{trimV .Version}}_{{.Arch}}.{{.Format}}
         asset: step_{{.OS}}_{{trimV .Version}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -33,7 +35,8 @@ packages:
         rosetta2: true
         windows_arm_emulation: true
       - version_constraint: Version == "v0.14.1"
-        url: https://gh-proxy.org/https://github.com/smallstep/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/smallstep/cli/releases/download/{{.Version}}/step_{{.OS}}_{{trimV .Version}}-dev_{{.Arch}}.{{.Format}}
         asset: step_{{.OS}}_{{trimV .Version}}-dev_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -42,7 +45,8 @@ packages:
         rosetta2: true
         windows_arm_emulation: true
       - version_constraint: semver("<= 0.13.3")
-        url: https://gh-proxy.org/https://github.com/smallstep/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/smallstep/cli/releases/download/{{.Version}}/step_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: step_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -53,7 +57,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.15.3")
-        url: https://gh-proxy.org/https://github.com/smallstep/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/smallstep/cli/releases/download/{{.Version}}/step_{{.OS}}_{{trimV .Version}}_{{.Arch}}.{{.Format}}
         asset: step_{{.OS}}_{{trimV .Version}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -62,7 +67,8 @@ packages:
         rosetta2: true
         windows_arm_emulation: true
       - version_constraint: semver("<= 0.17.6")
-        url: https://gh-proxy.org/https://github.com/smallstep/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/smallstep/cli/releases/download/{{.Version}}/step_{{.OS}}_{{trimV .Version}}_{{.Arch}}.{{.Format}}
         asset: step_{{.OS}}_{{trimV .Version}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -70,88 +76,108 @@ packages:
             src: step_{{trimV .Version}}/bin/step
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/smallstep/cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/smallstep/cli/releases/download/{{.Version}}/step_{{.OS}}_{{trimV .Version}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.22.0")
-        url: https://gh-proxy.org/https://github.com/smallstep/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/smallstep/cli/releases/download/{{.Version}}/step_{{.OS}}_{{trimV .Version}}_{{.Arch}}.{{.Format}}
         asset: step_{{.OS}}_{{trimV .Version}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: step
             src: step_{{trimV .Version}}/bin/step
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/smallstep/cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/smallstep/cli/releases/download/{{.Version}}/step_{{.OS}}_{{trimV .Version}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.24.4")
-        url: https://gh-proxy.org/https://github.com/smallstep/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/smallstep/cli/releases/download/{{.Version}}/step_{{.OS}}_{{trimV .Version}}_{{.Arch}}.{{.Format}}
         asset: step_{{.OS}}_{{trimV .Version}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: step
             src: step_{{trimV .Version}}/bin/step
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/smallstep/cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/smallstep/cli/releases/download/{{.Version}}/checksums.txt.pem
+              - https://gh-proxy.org/github.com/smallstep/cli/releases/download/{{.Version}}/checksums.txt.pem
               - --certificate-identity
-              - https://github.com/smallstep/cli/.github/workflows/release.yml@refs/tags/{{.Version}}
+              - https://gh-proxy.org/github.com/smallstep/cli/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/smallstep/cli/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/smallstep/cli/releases/download/{{.Version}}/checksums.txt.sig
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/smallstep/cli/releases/download/{{.Version}}/step_{{.OS}}_{{trimV .Version}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.29.0")
-        url: https://gh-proxy.org/https://github.com/smallstep/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/smallstep/cli/releases/download/{{.Version}}/step_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: step_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/smallstep/cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/smallstep/cli/releases/download/{{.Version}}/checksums.txt.pem
+              - https://gh-proxy.org/github.com/smallstep/cli/releases/download/{{.Version}}/checksums.txt.pem
               - --certificate-identity
-              - https://github.com/smallstep/workflows/.github/workflows/goreleaser.yml@refs/heads/main
+              - https://gh-proxy.org/github.com/smallstep/workflows/.github/workflows/goreleaser.yml@refs/heads/main
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/smallstep/cli/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/smallstep/cli/releases/download/{{.Version}}/checksums.txt.sig
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/smallstep/cli/releases/download/{{.Version}}/step_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/smallstep/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/smallstep/cli/releases/download/{{.Version}}/step_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: step_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/smallstep/cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/smallstep/cli/releases/download/{{.Version}}/checksums.txt.sigstore.json
               asset: checksums.txt.sigstore.json
             opts:
               - --certificate-identity
-              - https://github.com/smallstep/workflows/.github/workflows/goreleaser.yml@refs/heads/main
+              - https://gh-proxy.org/github.com/smallstep/workflows/.github/workflows/goreleaser.yml@refs/heads/main
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/smallstep/cli/releases/download/{{.Version}}/step_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

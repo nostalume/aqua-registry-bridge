@@ -10,7 +10,8 @@ packages:
       - version_constraint: semver("<= 0.3.0")
         no_asset: true
       - version_constraint: semver("<= 0.6.0")
-        url: https://gh-proxy.org/https://github.com/jolars/fatou/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jolars/fatou/releases/download/{{.Version}}/fatou-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: fatou-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -21,9 +22,12 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jolars/fatou/releases/download/{{.Version}}/fatou-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/jolars/fatou/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jolars/fatou/releases/download/{{.Version}}/fatou-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: fatou-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -33,11 +37,14 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jolars/fatou/releases/download/{{.Version}}/fatou-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         github_artifact_attestations:
           signer_workflow: jolars/fatou/.github/workflows/packages.yml

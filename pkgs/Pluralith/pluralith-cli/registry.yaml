@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/Pluralith/pluralith-cli/releases/download/{{.Version}}/pluralith_cli_tap_{{.OS}}_{{.Arch}}_{{.Version}}.{{.Format}}
     repo_owner: Pluralith
     repo_name: pluralith-cli
     asset: pluralith_cli_tap_{{.OS}}_{{.Arch}}_{{.Version}}.{{.Format}}
@@ -8,6 +9,8 @@ packages:
     description: A tool for Terraform state visualisation and automated generation of infrastructure documentation
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/Pluralith/pluralith-cli/releases/download/{{.Version}}/pluralith_cli_tap_{{.OS}}_{{.Arch}}_{{.Version}}.{{.Format}}
         format: zip
     supported_envs:
       - darwin
@@ -17,6 +20,7 @@ packages:
       - name: pluralith
         src: "{{.OS}}/pluralith"
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/Pluralith/pluralith-cli/releases/download/{{.Version}}/pluralith_checksums_{{.Version}}.txt
       asset: pluralith_checksums_{{.Version}}.txt
       algorithm: sha256

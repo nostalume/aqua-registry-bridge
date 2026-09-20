@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.4.2")
-        url: https://gh-proxy.org/https://github.com/dahlia/hongdown/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dahlia/hongdown/releases/download/{{.Version}}/hongdown-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: hongdown-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.bz2
         files:
@@ -21,9 +22,12 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dahlia/hongdown/releases/download/{{.Version}}/hongdown-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/dahlia/hongdown/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dahlia/hongdown/releases/download/{{.Version}}/hongdown-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: hongdown-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.bz2
         files:
@@ -36,4 +40,6 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/dahlia/hongdown/releases/download/{{.Version}}/hongdown-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip

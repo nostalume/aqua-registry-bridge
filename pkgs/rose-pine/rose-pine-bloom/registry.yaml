@@ -11,6 +11,7 @@ packages:
       - version_constraint: Version == "v3.0.0"
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/rose-pine/rose-pine-bloom/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rose-pine/rose-pine-bloom/releases/download/{{.Version}}/rose-pine-bloom-{{.OS}}-{{.Arch}}
         asset: rose-pine-bloom-{{.OS}}-{{.Arch}}
         format: raw

@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.5.4")
-        url: https://gh-proxy.org/https://github.com/dimo414/bkt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dimo414/bkt/releases/download/{{.Version}}/bkt.v{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         asset: bkt.v{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -22,7 +23,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.8.0")
-        url: https://gh-proxy.org/https://github.com/dimo414/bkt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dimo414/bkt/releases/download/{{.Version}}/bkt.v{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         asset: bkt.v{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -33,16 +35,21 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dimo414/bkt/releases/download/{{.Version}}/bkt.v{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dimo414/bkt/releases/download/{{.Version}}/bkt.v{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               arm64: aarch64
               linux: unknown-linux-gnu
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/dimo414/bkt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dimo414/bkt/releases/download/{{.Version}}/bkt.v{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         asset: bkt.v{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -53,10 +60,14 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dimo414/bkt/releases/download/{{.Version}}/bkt.v{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dimo414/bkt/releases/download/{{.Version}}/bkt.v{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu

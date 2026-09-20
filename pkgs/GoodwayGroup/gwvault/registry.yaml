@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/GoodwayGroup/gwvault/releases/download/{{.Version}}/gwvault_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: GoodwayGroup
     repo_name: gwvault
     description: ansible-vault CLI reimplemented in go
@@ -15,8 +16,11 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/GoodwayGroup/gwvault/releases/download/{{.Version}}/gwvault_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/GoodwayGroup/gwvault/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256

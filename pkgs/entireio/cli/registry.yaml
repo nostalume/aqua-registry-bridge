@@ -9,35 +9,43 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.3.9")
-        url: https://gh-proxy.org/https://github.com/entireio/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/entireio/cli/releases/download/{{.Version}}/cli_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: cli_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/entireio/cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 0.5.1")
-        url: https://gh-proxy.org/https://github.com/entireio/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/entireio/cli/releases/download/{{.Version}}/entire_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: entire_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/entireio/cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/entireio/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/entireio/cli/releases/download/{{.Version}}/entire_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: entire_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/entireio/cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/entireio/cli/releases/download/{{.Version}}/entire_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

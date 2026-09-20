@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version == "v0.2.5"
         no_asset: true
       - version_constraint: semver("<= 1.0.8")
-        url: https://gh-proxy.org/https://github.com/version-fox/vfox/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/version-fox/vfox/releases/download/{{.Version}}/vfox_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: vfox_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -20,24 +21,28 @@ packages:
           arm64: aarch64
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/version-fox/vfox/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/version-fox/vfox/releases/download/{{.Version}}/checksums.txt.pem
+              - https://gh-proxy.org/github.com/version-fox/vfox/releases/download/{{.Version}}/checksums.txt.pem
               - --certificate-identity-regexp
               - "^https://github\\.com/version-fox/vfox/\\.github/workflows/.+\\.ya?ml@refs/tags/\\Q{{.Version}}\\E$"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/version-fox/vfox/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/version-fox/vfox/releases/download/{{.Version}}/checksums.txt.sig
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/version-fox/vfox/releases/download/{{.Version}}/vfox_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/version-fox/vfox/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/version-fox/vfox/releases/download/{{.Version}}/vfox_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: vfox_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -48,7 +53,8 @@ packages:
           arm64: aarch64
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/version-fox/vfox/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
@@ -58,8 +64,11 @@ packages:
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/version-fox/vfox/releases/download/{{.Version}}/checksums.txt.sigstore.json
               asset: checksums.txt.sigstore.json
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/version-fox/vfox/releases/download/{{.Version}}/vfox_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

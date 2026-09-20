@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/mattermost/mmctl/releases/download/{{.Version}}/{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: mattermost
     repo_name: mmctl
     asset: "{{.OS}}_{{.Arch}}.{{.Format}}"
@@ -8,12 +9,15 @@ packages:
     description: A remote CLI tool for Mattermost
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/mattermost/mmctl/releases/download/{{.Version}}/{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     supported_envs:
       - darwin
       - linux
       - amd64
     checksum:
-      type: github_release
+      type: http
+      url: "{{.AssetURL}}.md5.txt"
       asset: "{{.Asset}}.md5.txt"
       algorithm: md5

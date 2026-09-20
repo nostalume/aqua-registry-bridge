@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/PaddiM8/kalker/releases/download/{{.Version}}/kalker-{{.OS}}.{{.Format}}
     repo_owner: PaddiM8
     repo_name: kalker
     description: Kalker is a calculator program that supports user-defined variables, functions, differentiation, and integration
@@ -8,6 +9,8 @@ packages:
     format: zip
     overrides:
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/PaddiM8/kalker/releases/download/{{.Version}}/kalker-{{.OS}}
         format: raw
         asset: kalker-{{.OS}}
     replacements:
@@ -22,21 +25,27 @@ packages:
     version_constraint: semver(">= 1.0.0")
     version_overrides:
       - version_constraint: semver(">= 0.3.4")
-        url: https://gh-proxy.org/https://github.com/PaddiM8/kalker/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/PaddiM8/kalker/releases/download/{{.Version}}/kalk-{{.OS}}.{{.Format}}
         asset: kalk-{{.OS}}.{{.Format}}
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/PaddiM8/kalker/releases/download/{{.Version}}/kalk-{{.OS}}
             format: raw
             asset: kalk-{{.OS}}
         files:
           - name: kalker
             src: target/release/kalk
       - version_constraint: semver(">= 0.3.3")
-        url: https://gh-proxy.org/https://github.com/PaddiM8/kalker/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/PaddiM8/kalker/releases/download/{{.Version}}/kalk-{{.OS}}
         asset: kalk-{{.OS}}
         format: raw
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/PaddiM8/kalker/releases/download/{{.Version}}/kalk
             asset: kalk
         replacements:
           darwin: macOS
@@ -48,7 +57,8 @@ packages:
           - name: kalker
             src: target/release/kalk
       - version_constraint: semver(">= 0.2.0")
-        url: https://gh-proxy.org/https://github.com/PaddiM8/kalker/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/PaddiM8/kalker/releases/download/{{.Version}}/kalk_cli_{{.OS}}64
         asset: kalk_cli_{{.OS}}64
         format: raw
         overrides: []
@@ -59,7 +69,8 @@ packages:
           - windows/amd64
         rosetta2: false
       - version_constraint: semver("< 0.2.0")
-        url: https://gh-proxy.org/https://github.com/PaddiM8/kalker/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/PaddiM8/kalker/releases/download/{{.Version}}/kalk_cli
         asset: kalk_cli
         format: raw
         overrides: []

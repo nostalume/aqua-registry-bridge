@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/argoproj/argo-workflows/releases/download/{{.Version}}/argo-{{.OS}}-{{.Arch}}.gz
     repo_owner: argoproj
     repo_name: argo-workflows
     rosetta2: true
@@ -12,13 +13,16 @@ packages:
       - amd64
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/argoproj/argo-workflows/releases/download/{{.Version}}/argo-{{.OS}}-{{.Arch}}.exe.gz
         asset: argo-{{.OS}}-{{.Arch}}.exe.gz
     files:
       - name: argo
         src: argo-{{.OS}}-{{.Arch}}
     version_constraint: semver(">= 3.4.4")
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/argoproj/argo-workflows/releases/download/{{.Version}}/argo-workflows-cli-checksums.txt
       asset: argo-workflows-cli-checksums.txt
       algorithm: sha256
       # TODO enable cosign https://github.com/argoproj/argo-workflows/discussions/12828
@@ -34,7 +38,10 @@ packages:
       #     - https://github.com/argoproj/argo-workflows/releases/download/{{.Version}}/argo-workflows-cosign.pub
     version_overrides:
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/argoproj/argo-workflows/releases/download/{{.Version}}/argo-{{.OS}}-{{.Arch}}.gz
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256

@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version == "1.5.0-beta.1"
         no_asset: true
       - version_constraint: Version == "0.9.0"
-        url: https://gh-proxy.org/https://github.com/cpisciotta/xcbeautify/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cpisciotta/xcbeautify/releases/download/{{.Version}}/xcbeautify-{{.Version}}-universal-{{.OS}}-macosx.{{.Format}}
         asset: xcbeautify-{{.Version}}-universal-{{.OS}}-macosx.{{.Format}}
         format: zip
         replacements:
@@ -17,7 +18,8 @@ packages:
         supported_envs:
           - darwin
       - version_constraint: Version == "0.9.1"
-        url: https://gh-proxy.org/https://github.com/cpisciotta/xcbeautify/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cpisciotta/xcbeautify/releases/download/{{.Version}}/xcbeautify-{{.Version}}-{{.Arch}}-{{.OS}}-macosx.{{.Format}}
         asset: xcbeautify-{{.Version}}-{{.Arch}}-{{.OS}}-macosx.{{.Format}}
         format: zip
         replacements:
@@ -26,6 +28,8 @@ packages:
           linux: unknown-linux-gnu
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/cpisciotta/xcbeautify/releases/download/{{.Version}}/xcbeautify-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: tar.xz
             asset: xcbeautify-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
@@ -34,7 +38,8 @@ packages:
           - linux
           - darwin
       - version_constraint: semver("<= 0.3.8")
-        url: https://gh-proxy.org/https://github.com/cpisciotta/xcbeautify/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cpisciotta/xcbeautify/releases/download/{{.Version}}/xcbeautify-{{.Version}}-{{.Arch}}-{{.OS}}-macosx10.10.{{.Format}}
         asset: xcbeautify-{{.Version}}-{{.Arch}}-{{.OS}}-macosx10.10.{{.Format}}
         format: zip
         rosetta2: true
@@ -44,7 +49,8 @@ packages:
         supported_envs:
           - darwin
       - version_constraint: semver("<= 0.4.1")
-        url: https://gh-proxy.org/https://github.com/cpisciotta/xcbeautify/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cpisciotta/xcbeautify/releases/download/{{.Version}}/xcbeautify-{{.Version}}-{{.Arch}}-{{.OS}}-macosx10.14.{{.Format}}
         asset: xcbeautify-{{.Version}}-{{.Arch}}-{{.OS}}-macosx10.14.{{.Format}}
         format: zip
         rosetta2: true
@@ -54,7 +60,8 @@ packages:
         supported_envs:
           - darwin
       - version_constraint: semver("<= 0.8.1")
-        url: https://gh-proxy.org/https://github.com/cpisciotta/xcbeautify/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cpisciotta/xcbeautify/releases/download/{{.Version}}/xcbeautify-{{.Version}}-{{.Arch}}-{{.OS}}-macosx.{{.Format}}
         asset: xcbeautify-{{.Version}}-{{.Arch}}-{{.OS}}-macosx.{{.Format}}
         format: zip
         rosetta2: true
@@ -64,7 +71,8 @@ packages:
         supported_envs:
           - darwin
       - version_constraint: semver("<= 1.7.0")
-        url: https://gh-proxy.org/https://github.com/cpisciotta/xcbeautify/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cpisciotta/xcbeautify/releases/download/{{.Version}}/xcbeautify-{{.Version}}-{{.Arch}}-{{.OS}}-macosx.{{.Format}}
         asset: xcbeautify-{{.Version}}-{{.Arch}}-{{.OS}}-macosx.{{.Format}}
         format: zip
         replacements:
@@ -73,6 +81,8 @@ packages:
           linux: unknown-linux-gnu
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/cpisciotta/xcbeautify/releases/download/{{.Version}}/xcbeautify-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: tar.xz
             asset: xcbeautify-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         supported_envs:
@@ -81,7 +91,8 @@ packages:
       - version_constraint: semver("<= 2.0.0-beta.3")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/cpisciotta/xcbeautify/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cpisciotta/xcbeautify/releases/download/{{.Version}}/xcbeautify-{{.Version}}-{{.Arch}}-{{.OS}}-macosx.{{.Format}}
         asset: xcbeautify-{{.Version}}-{{.Arch}}-{{.OS}}-macosx.{{.Format}}
         format: zip
         replacements:
@@ -90,6 +101,8 @@ packages:
           linux: unknown-linux-gnu
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/cpisciotta/xcbeautify/releases/download/{{.Version}}/xcbeautify-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: tar.xz
             asset: xcbeautify-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         supported_envs:

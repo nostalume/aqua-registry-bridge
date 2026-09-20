@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.11.0"
-        url: https://gh-proxy.org/https://github.com/zk-org/zk/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zk-org/zk/releases/download/{{.Version}}/zk-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: zk-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         replacements:
@@ -16,7 +17,8 @@ packages:
         supported_envs:
           - darwin
       - version_constraint: semver("<= 0.2.1")
-        url: https://gh-proxy.org/https://github.com/zk-org/zk/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zk-org/zk/releases/download/{{.Version}}/zk-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: zk-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -24,6 +26,8 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/zk-org/zk/releases/download/{{.Version}}/zk-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             replacements:
               amd64: x86_64
@@ -31,13 +35,16 @@ packages:
           - linux
           - darwin
       - version_constraint: semver("<= 0.14.1")
-        url: https://gh-proxy.org/https://github.com/zk-org/zk/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zk-org/zk/releases/download/{{.Version}}/zk-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: zk-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/zk-org/zk/releases/download/{{.Version}}/zk-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             replacements:
               amd64: x86_64
@@ -45,7 +52,8 @@ packages:
           - linux
           - darwin
       - version_constraint: semver("<= 0.15.0")
-        url: https://gh-proxy.org/https://github.com/zk-org/zk/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zk-org/zk/releases/download/{{.Version}}/zk-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: zk-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -53,18 +61,25 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/zk-org/zk/releases/download/{{.Version}}/zk-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             goarch: amd64
             replacements:
               amd64: x86_64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/zk-org/zk/releases/download/{{.Version}}/zk-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
             goarch: arm64
             asset: zk-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/zk-org/zk/releases/download/{{.Version}}/zk-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
             asset: zk-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
             replacements:
               amd64: x64_86
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/zk-org/zk/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zk-org/zk/releases/download/{{.Version}}/zk-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: zk-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -72,8 +87,12 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/zk-org/zk/releases/download/{{.Version}}/zk-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               amd64: x86_64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/zk-org/zk/releases/download/{{.Version}}/zk-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               amd64: x86_64

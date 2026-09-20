@@ -7,19 +7,22 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/cert-manager/cmctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cert-manager/cmctl/releases/download/{{.Version}}/cmctl_{{.OS}}_{{.Arch}}
         asset: cmctl_{{.OS}}_{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/cert-manager/cmctl/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/cert-manager/cmctl/releases/download/{{.Version}}/checksums.txt.cosign.bundle
               asset: checksums.txt.cosign.bundle
             opts:
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
               - --certificate-identity
-              - https://github.com/cert-manager/cmctl/.github/workflows/release.yaml@refs/tags/{{.Version}}
+              - https://gh-proxy.org/github.com/cert-manager/cmctl/.github/workflows/release.yaml@refs/tags/{{.Version}}

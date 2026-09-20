@@ -10,7 +10,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 2023.12.9")
-        url: https://gh-proxy.org/https://github.com/jdx/mise/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jdx/mise/releases/download/{{.Version}}/rtx-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: rtx-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -23,11 +24,13 @@ packages:
           - linux
           - darwin
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/jdx/mise/releases/download/{{.Version}}/SHASUMS512.txt
           asset: SHASUMS512.txt
           algorithm: sha512
       - version_constraint: semver("<= 2024.0.0")
-        url: https://gh-proxy.org/https://github.com/jdx/mise/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jdx/mise/releases/download/{{.Version}}/rtx-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: rtx-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -35,6 +38,8 @@ packages:
             src: rtx/bin/rtx
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/jdx/mise/releases/download/{{.Version}}/rtx-{{.Version}}-{{.OS}}-{{.Arch}}-musl.{{.Format}}
             asset: rtx-{{.Version}}-{{.OS}}-{{.Arch}}-musl.{{.Format}}
         replacements:
           amd64: x64
@@ -43,11 +48,13 @@ packages:
           - linux
           - darwin
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/jdx/mise/releases/download/{{.Version}}/SHASUMS512.txt
           asset: SHASUMS512.txt
           algorithm: sha512
       - version_constraint: semver("<= 2024.12.17")
-        url: https://gh-proxy.org/https://github.com/jdx/mise/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jdx/mise/releases/download/{{.Version}}/mise-{{.Version}}-{{.OS}}-{{.Arch}}-musl.{{.Format}}
         asset: mise-{{.Version}}-{{.OS}}-{{.Arch}}-musl.{{.Format}}
         format: tar.gz
         files:
@@ -55,6 +62,8 @@ packages:
             src: mise/bin/mise
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/jdx/mise/releases/download/{{.Version}}/mise-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             asset: mise-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         replacements:
           amd64: x64
@@ -63,13 +72,15 @@ packages:
           - linux
           - darwin
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/jdx/mise/releases/download/{{.Version}}/SHASUMS512.txt
           asset: SHASUMS512.txt
           algorithm: sha512
       - version_constraint: semver(">= 2025.7.13, <= 2025.7.15")
         no_asset: true
       - version_constraint: semver("<= 2025.8.21")
-        url: https://gh-proxy.org/https://github.com/jdx/mise/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jdx/mise/releases/download/{{.Version}}/mise-{{.Version}}-{{.OS}}-{{.Arch}}-musl.{{.Format}}
         asset: mise-{{.Version}}-{{.OS}}-{{.Arch}}-musl.{{.Format}}
         format: tar.gz
         files:
@@ -77,6 +88,8 @@ packages:
             src: mise/bin/mise
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/jdx/mise/releases/download/{{.Version}}/mise-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             asset: mise-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         replacements:
           amd64: x64
@@ -85,16 +98,19 @@ packages:
           - linux
           - darwin
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/jdx/mise/releases/download/{{.Version}}/SHASUMS512.txt
           asset: SHASUMS512.txt
           algorithm: sha512
           minisign:
-            type: github_release
+            type: http
+            url: https://gh-proxy.org/github.com/jdx/mise/releases/download/{{.Version}}/SHASUMS512.txt.minisig
             asset: SHASUMS512.txt.minisig
             # https://github.com/jdx/mise/blob/main/minisign.pub
             public_key: RWTC3g8W3z4RZK3V3qv7fa1QY4JEWyBtqIHW+85QlJpZc5yG+uNYNBSZ
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/jdx/mise/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jdx/mise/releases/download/{{.Version}}/mise-{{.Version}}-{{.OS}}-{{.Arch}}-musl.{{.Format}}
         asset: mise-{{.Version}}-{{.OS}}-{{.Arch}}-musl.{{.Format}}
         format: tar.gz
         files:
@@ -102,6 +118,8 @@ packages:
             src: mise/bin/mise
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/jdx/mise/releases/download/{{.Version}}/mise-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             asset: mise-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         replacements:
           amd64: x64
@@ -110,11 +128,13 @@ packages:
           - linux
           - darwin
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/jdx/mise/releases/download/{{.Version}}/SHASUMS512.txt
           asset: SHASUMS512.txt
           algorithm: sha512
           minisign:
-            type: github_release
+            type: http
+            url: https://gh-proxy.org/github.com/jdx/mise/releases/download/{{.Version}}/SHASUMS512.txt.minisig
             asset: SHASUMS512.txt.minisig
             # https://github.com/jdx/mise/blob/main/minisign.pub
             public_key: RWTC3g8W3z4RZK3V3qv7fa1QY4JEWyBtqIHW+85QlJpZc5yG+uNYNBSZ

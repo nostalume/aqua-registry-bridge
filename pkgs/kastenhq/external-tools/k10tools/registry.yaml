@@ -1,7 +1,8 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
   - name: kastenhq/external-tools/k10tools
-    type: github_release
+    type: http
+    url: https://gh-proxy.org/github.com/kastenhq/external-tools/releases/download/{{.Version}}/k10tools_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: kastenhq
     repo_name: external-tools
     description: Used to distribute external tools
@@ -16,20 +17,25 @@ packages:
       - darwin
     rosetta2: true
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/kastenhq/external-tools/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256
     version_constraint: semver(">= 6.0.3")
     version_overrides:
       - version_constraint: semver(">= 4.5.0")
+        type: http
+        url: https://gh-proxy.org/github.com/kastenhq/external-tools/releases/download/{{.Version}}/k10tools_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         rosetta2: false
       - version_constraint: semver(">= 4.0.3")
-        url: https://gh-proxy.org/https://github.com/kastenhq/external-tools/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kastenhq/external-tools/releases/download/{{.Version}}/k10tools_{{.Version}}_{{.OS}}_{{.Arch}}
         asset: k10tools_{{.Version}}_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: false
       - version_constraint: semver(">= 3.0.7")
-        url: https://gh-proxy.org/https://github.com/kastenhq/external-tools/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kastenhq/external-tools/releases/download/{{.Version}}/k10tools_{{.Version}}_{{.OS}}_{{.Arch}}
         asset: k10tools_{{.Version}}_{{.OS}}_{{.Arch}}
         format: raw
         supported_envs:

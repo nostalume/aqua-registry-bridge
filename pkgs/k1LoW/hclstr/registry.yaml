@@ -7,14 +7,18 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/k1LoW/hclstr/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/k1LoW/hclstr/releases/download/{{.Version}}/hclstr_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: hclstr_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/k1LoW/hclstr/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/k1LoW/hclstr/releases/download/{{.Version}}/hclstr_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

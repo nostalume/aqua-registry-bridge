@@ -9,21 +9,24 @@ packages:
       - version_constraint: Version == "v0.1"
         no_asset: true
       - version_constraint: Version == "v0.8"
-        url: https://gh-proxy.org/https://github.com/devops-works/dw-query-digest/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/devops-works/dw-query-digest/releases/download/{{.Version}}/dw-query-digest-{{.OS}}
         asset: dw-query-digest-{{.OS}}
         format: raw
         complete_windows_ext: false
         replacements:
           windows: win
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/devops-works/dw-query-digest/releases/download/{{.Version}}/SHA512SUMS
           asset: SHA512SUMS
           algorithm: sha512
         supported_envs:
           - darwin
           - windows/amd64
       - version_constraint: semver("<= 0.7.0")
-        url: https://gh-proxy.org/https://github.com/devops-works/dw-query-digest/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/devops-works/dw-query-digest/releases/download/{{.Version}}/dw-query-digest-{{.OS}}
         asset: dw-query-digest-{{.OS}}
         format: raw
         complete_windows_ext: false
@@ -33,13 +36,15 @@ packages:
           - darwin
           - windows/amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/devops-works/dw-query-digest/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/devops-works/dw-query-digest/releases/download/{{.Version}}/dw-query-digest_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: dw-query-digest_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/devops-works/dw-query-digest/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:

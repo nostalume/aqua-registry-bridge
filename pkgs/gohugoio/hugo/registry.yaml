@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version == "v0.139.5"
         no_asset: true
       - version_constraint: Version == "v0.88.0"
-        url: https://gh-proxy.org/https://github.com/gohugoio/hugo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -19,19 +20,25 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_checksums.txt
           asset: hugo_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: ARM64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             replacements:
               arm64: ARM
       - version_constraint: Version == "v0.88.1"
-        url: https://gh-proxy.org/https://github.com/gohugoio/hugo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -41,16 +48,20 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_checksums.txt
           asset: hugo_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             replacements:
               arm64: ARM
       - version_constraint: Version == "v0.89.0"
-        url: https://gh-proxy.org/https://github.com/gohugoio/hugo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -60,16 +71,22 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_checksums.txt
           asset: hugo_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_{{.OS}}-all.{{.Format}}
             asset: hugo_{{trimV .Version}}_{{.OS}}-all.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.80.0")
-        url: https://gh-proxy.org/https://github.com/gohugoio/hugo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -80,17 +97,23 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_checksums.txt
           asset: hugo_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: ARM64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.84.0")
-        url: https://gh-proxy.org/https://github.com/gohugoio/hugo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -101,14 +124,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_checksums.txt
           asset: hugo_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.87.0")
-        url: https://gh-proxy.org/https://github.com/gohugoio/hugo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -118,16 +145,20 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_checksums.txt
           asset: hugo_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             replacements:
               arm64: ARM
       - version_constraint: semver("<= 0.101.0")
-        url: https://gh-proxy.org/https://github.com/gohugoio/hugo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -137,14 +168,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_checksums.txt
           asset: hugo_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.102.3")
-        url: https://gh-proxy.org/https://github.com/gohugoio/hugo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -154,41 +189,58 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_checksums.txt
           asset: hugo_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_{{.OS}}-universal.{{.Format}}
             asset: hugo_{{trimV .Version}}_{{.OS}}-universal.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.152.2")
-        url: https://gh-proxy.org/https://github.com/gohugoio/hugo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_checksums.txt
           asset: hugo_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_{{.OS}}-universal.{{.Format}}
             asset: hugo_{{trimV .Version}}_{{.OS}}-universal.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/gohugoio/hugo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_checksums.txt
           asset: hugo_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_{{.OS}}-universal.{{.Format}}
             format: pkg
             asset: hugo_{{trimV .Version}}_{{.OS}}-universal.{{.Format}}
             files:
               - name: hugo
                 src: Payload/hugo
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/gohugoio/hugo/releases/download/{{.Version}}/hugo_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip

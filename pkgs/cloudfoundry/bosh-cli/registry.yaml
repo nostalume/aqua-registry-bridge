@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/cloudfoundry/bosh-cli/releases/download/{{.Version}}/bosh-cli-{{trimV .Version}}-{{.OS}}-{{.Arch}}
     repo_owner: cloudfoundry
     repo_name: bosh-cli
     description: The bosh CLI is the command line tool used for interacting with all things BOSH, from deployment operations to software release management

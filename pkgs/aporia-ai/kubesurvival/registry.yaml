@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/aporia-ai/kubesurvival/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aporia-ai/kubesurvival/releases/download/{{.Version}}/KubeSurvival_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: KubeSurvival_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -17,9 +18,12 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/aporia-ai/kubesurvival/releases/download/{{.Version}}/kubesurvival_checksums.txt
           asset: kubesurvival_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/aporia-ai/kubesurvival/releases/download/{{.Version}}/KubeSurvival_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

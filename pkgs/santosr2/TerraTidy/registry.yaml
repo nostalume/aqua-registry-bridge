@@ -9,22 +9,28 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.2.0-alpha.3")
-        url: https://gh-proxy.org/https://github.com/santosr2/TerraTidy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/santosr2/TerraTidy/releases/download/{{.Version}}/terratidy-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: terratidy-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/santosr2/TerraTidy/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/santosr2/TerraTidy/releases/download/{{.Version}}/terratidy-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/santosr2/TerraTidy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/santosr2/TerraTidy/releases/download/{{.Version}}/terratidy-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: terratidy-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/santosr2/TerraTidy/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
@@ -34,10 +40,13 @@ packages:
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/santosr2/TerraTidy/releases/download/{{.Version}}/checksums.txt.bundle
               asset: checksums.txt.bundle
           github_artifact_attestations:
             signer_workflow: santosr2/TerraTidy/.github/workflows/release.yml
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/santosr2/TerraTidy/releases/download/{{.Version}}/terratidy-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip

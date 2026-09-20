@@ -10,7 +10,8 @@ packages:
       - name: stateful/runme
     version_overrides:
       - version_constraint: semver("<= 0.1.12")
-        url: https://gh-proxy.org/https://github.com/runmedev/runme/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/runmedev/runme/releases/download/{{.Version}}/rdme_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: rdme_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -18,22 +19,29 @@ packages:
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/runmedev/runme/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/runmedev/runme/releases/download/{{.Version}}/rdme_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/runmedev/runme/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/runmedev/runme/releases/download/{{.Version}}/runme_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: runme_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/runmedev/runme/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/runmedev/runme/releases/download/{{.Version}}/runme_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

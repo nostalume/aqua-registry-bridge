@@ -11,7 +11,8 @@ packages:
       - version_constraint: semver("<= 0.4.0") || Version in ["v0.15.1", "v0.26.0", "v0.26.3", "v0.26.5"]
         no_asset: true
       - version_constraint: semver("<= 0.9.1")
-        url: https://gh-proxy.org/https://github.com/bazelbuild/bazel-watcher/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bazelbuild/bazel-watcher/releases/download/{{.Version}}/ibazel_{{.OS}}_{{.Arch}}
         asset: ibazel_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
@@ -19,7 +20,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.15.10")
-        url: https://gh-proxy.org/https://github.com/bazelbuild/bazel-watcher/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bazelbuild/bazel-watcher/releases/download/{{.Version}}/ibazel_{{.OS}}_{{.Arch}}
         asset: ibazel_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
@@ -29,7 +31,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version in ["v0.16.0", "v0.21.1"]
-        url: https://gh-proxy.org/https://github.com/bazelbuild/bazel-watcher/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bazelbuild/bazel-watcher/releases/download/{{.Version}}/ibazel_{{.OS}}_{{.Arch}}
         asset: ibazel_{{.OS}}_{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -37,7 +40,8 @@ packages:
           - linux/amd64
           - windows
       - version_constraint: semver("<= 0.21.0")
-        url: https://gh-proxy.org/https://github.com/bazelbuild/bazel-watcher/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bazelbuild/bazel-watcher/releases/download/{{.Version}}/ibazel_{{.OS}}_{{.Arch}}
         asset: ibazel_{{.OS}}_{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -46,33 +50,41 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "v0.21.2"
-        url: https://gh-proxy.org/https://github.com/bazelbuild/bazel-watcher/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bazelbuild/bazel-watcher/releases/download/{{.Version}}/ibazel_{{.OS}}_{{.Arch}}
         asset: ibazel_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
       - version_constraint: semver("<= 0.22.0")
-        url: https://gh-proxy.org/https://github.com/bazelbuild/bazel-watcher/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bazelbuild/bazel-watcher/releases/download/{{.Version}}/ibazel_{{.OS}}_{{.Arch}}
         asset: ibazel_{{.OS}}_{{.Arch}}
         format: raw
         windows_arm_emulation: true
       - version_constraint: semver("<= 0.23.1")
-        url: https://gh-proxy.org/https://github.com/bazelbuild/bazel-watcher/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bazelbuild/bazel-watcher/releases/download/{{.Version}}/ibazel_{{.OS}}_{{.Arch}}
         asset: ibazel_{{.OS}}_{{.Arch}}
         format: raw
         supported_envs:
           - darwin
       - version_constraint: semver("<= 0.25.1")
-        url: https://gh-proxy.org/https://github.com/bazelbuild/bazel-watcher/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bazelbuild/bazel-watcher/releases/download/{{.Version}}/ibazel_{{.OS}}_{{.Arch}}
         asset: ibazel_{{.OS}}_{{.Arch}}
         format: raw
         windows_arm_emulation: true
       - version_constraint: Version == "V0.25.1"
+        type: http
+        url: https://gh-proxy.org/github.com/bazelbuild/bazel-watcher/releases/download/{{.Version}}/ibazel_{{.OS}}_{{.Arch}}
         version_prefix: V
         asset: ibazel_{{.OS}}_{{.Arch}}
         format: raw
         windows_arm_emulation: true
       - version_constraint: Version == "V0.26.4"
+        type: http
+        url: https://gh-proxy.org/github.com/bazelbuild/bazel-watcher/releases/download/{{.Version}}/ibazel_{{.OS}}_{{.Arch}}
         version_prefix: V
         asset: ibazel_{{.OS}}_{{.Arch}}
         format: raw
@@ -82,6 +94,8 @@ packages:
           - darwin/arm64
           - windows
       - version_constraint: Version == "V0.26.6"
+        type: http
+        url: https://gh-proxy.org/github.com/bazelbuild/bazel-watcher/releases/download/{{.Version}}/ibazel_{{.OS}}_{{.Arch}}
         version_prefix: V
         asset: ibazel_{{.OS}}_{{.Arch}}
         format: raw
@@ -91,7 +105,8 @@ packages:
           - darwin/arm64
           - windows
       - version_constraint: semver("<= 0.26.7")
-        url: https://gh-proxy.org/https://github.com/bazelbuild/bazel-watcher/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bazelbuild/bazel-watcher/releases/download/{{.Version}}/ibazel_{{.OS}}_{{.Arch}}
         asset: ibazel_{{.OS}}_{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -100,7 +115,8 @@ packages:
           - darwin/arm64
           - windows
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/bazelbuild/bazel-watcher/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bazelbuild/bazel-watcher/releases/download/{{.Version}}/ibazel_{{.OS}}_{{.Arch}}
         asset: ibazel_{{.OS}}_{{.Arch}}
         format: raw
         windows_arm_emulation: true

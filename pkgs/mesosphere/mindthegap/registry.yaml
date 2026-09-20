@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/mesosphere/mindthegap/releases/download/{{.Version}}/mindthegap_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: mesosphere
     repo_name: mindthegap
     description: Easily create and use bundles for air-gapped environments
@@ -8,25 +9,41 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/mesosphere/mindthegap/releases/download/{{.Version}}/mindthegap_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/mesosphere/mindthegap/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256
     version_constraint: semver(">= 0.13.0")
     version_overrides:
       - version_constraint: semver(">= 0.7.3")
+        type: http
+        url: https://gh-proxy.org/github.com/mesosphere/mindthegap/releases/download/{{.Version}}/mindthegap_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/mesosphere/mindthegap/releases/download/{{.Version}}/mindthegap_{{.Version}}_{{.OS}}_all.{{.Format}}
             asset: mindthegap_{{.Version}}_{{.OS}}_all.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/mesosphere/mindthegap/releases/download/{{.Version}}/mindthegap_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver(">= 0.6.6")
+        type: http
+        url: https://gh-proxy.org/github.com/mesosphere/mindthegap/releases/download/{{.Version}}/mindthegap_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
       - version_constraint: semver("< 0.6.6")
-        url: https://gh-proxy.org/https://github.com/mesosphere/mindthegap/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mesosphere/mindthegap/releases/download/{{.Version}}/mindthegap_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: mindthegap_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/mesosphere/mindthegap/releases/download/{{.Version}}/mindthegap_{{.Version}}_{{.OS}}_all.{{.Format}}
             asset: mindthegap_{{.Version}}_{{.OS}}_all.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/mesosphere/mindthegap/releases/download/{{.Version}}/mindthegap_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

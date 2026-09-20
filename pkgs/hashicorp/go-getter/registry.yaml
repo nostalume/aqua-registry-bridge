@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/hashicorp/go-getter/releases/download/{{.Version}}/go-getter_{{trimV .Version}}_{{.OS}}_{{.Arch}}.zip
     repo_owner: hashicorp
     repo_name: go-getter
     description: Package for downloading things from a string URL using a variety of protocols
@@ -10,6 +11,7 @@ packages:
       - amd64
     asset: go-getter_{{trimV .Version}}_{{.OS}}_{{.Arch}}.zip
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/hashicorp/go-getter/releases/download/{{.Version}}/go-getter_{{trimV .Version}}_SHA256SUMS
       asset: go-getter_{{trimV .Version}}_SHA256SUMS
       algorithm: sha256

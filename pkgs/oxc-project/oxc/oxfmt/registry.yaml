@@ -13,7 +13,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.43.0")
-        url: https://gh-proxy.org/https://github.com/oxc-project/oxc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/oxc-project/oxc/releases/download/{{.Version}}/oxfmt-{{.OS}}-{{.Arch}}-gnu.{{.Format}}
         asset: oxfmt-{{.OS}}-{{.Arch}}-gnu.{{.Format}}
         format: tar.gz
         replacements:
@@ -21,14 +22,19 @@ packages:
           windows: win32
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/oxc-project/oxc/releases/download/{{.Version}}/oxfmt-{{.OS}}-{{.Arch}}.{{.Format}}
             asset: oxfmt-{{.OS}}-{{.Arch}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/oxc-project/oxc/releases/download/{{.Version}}/oxfmt-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             asset: oxfmt-{{.OS}}-{{.Arch}}.{{.Format}}
       - version_constraint: semver("= 1.47.0")
         no_asset: true
       - version_constraint: semver("<= 1.51.0")
-        url: https://gh-proxy.org/https://github.com/oxc-project/oxc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/oxc-project/oxc/releases/download/{{.Version}}/oxfmt-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: oxfmt-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -39,11 +45,14 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/oxc-project/oxc/releases/download/{{.Version}}/oxfmt-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 1.53.0")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/oxc-project/oxc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/oxc-project/oxc/releases/download/{{.Version}}/oxfmt-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: oxfmt-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -54,4 +63,6 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/oxc-project/oxc/releases/download/{{.Version}}/oxfmt-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip

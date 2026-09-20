@@ -8,7 +8,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.8.0")
-        url: https://gh-proxy.org/https://github.com/jolars/arity/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jolars/arity/releases/download/{{.Version}}/arity-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: arity-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -19,9 +20,12 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jolars/arity/releases/download/{{.Version}}/arity-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.13.0")
-        url: https://gh-proxy.org/https://github.com/jolars/arity/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jolars/arity/releases/download/{{.Version}}/arity-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: arity-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -31,14 +35,18 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jolars/arity/releases/download/{{.Version}}/arity-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/jolars/arity/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jolars/arity/releases/download/{{.Version}}/arity-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: arity-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -48,11 +56,14 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jolars/arity/releases/download/{{.Version}}/arity-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         github_artifact_attestations:
           signer_workflow: jolars/arity/.github/workflows/packages.yml

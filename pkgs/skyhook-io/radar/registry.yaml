@@ -10,7 +10,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.6.3")
-        url: https://gh-proxy.org/https://github.com/skyhook-io/radar/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/skyhook-io/radar/releases/download/{{.Version}}/explorer_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: explorer_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -20,14 +21,18 @@ packages:
             src: kubectl-explorer
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/skyhook-io/radar/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/skyhook-io/radar/releases/download/{{.Version}}/explorer_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.6.9")
-        url: https://gh-proxy.org/https://github.com/skyhook-io/radar/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/skyhook-io/radar/releases/download/{{.Version}}/radar_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: radar_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -36,14 +41,18 @@ packages:
             src: kubectl-radar
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/skyhook-io/radar/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/skyhook-io/radar/releases/download/{{.Version}}/radar_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/skyhook-io/radar/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/skyhook-io/radar/releases/download/{{.Version}}/radar_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: radar_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -52,9 +61,12 @@ packages:
             src: kubectl-radar
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/skyhook-io/radar/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/skyhook-io/radar/releases/download/{{.Version}}/radar_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

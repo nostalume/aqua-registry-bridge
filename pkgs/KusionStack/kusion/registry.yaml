@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.4.1")
-        url: https://gh-proxy.org/https://github.com/KusionStack/kusion/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/KusionStack/kusion/releases/download/{{.Version}}/kusion-{{.OS}}.{{.Format}}
         asset: kusion-{{.OS}}.{{.Format}}
         format: tgz
         rosetta2: true
@@ -15,80 +16,97 @@ packages:
           - name: kusion
             src: bin/kusion
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/KusionStack/kusion/releases/download/{{.Version}}/kusion-{{.OS}}.tgz.md5.txt
           asset: kusion-{{.OS}}.tgz.md5.txt
           algorithm: md5
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.5.3")
-        url: https://gh-proxy.org/https://github.com/KusionStack/kusion/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/KusionStack/kusion/releases/download/{{.Version}}/kusion-{{.OS}}.{{.Format}}
         asset: kusion-{{.OS}}.{{.Format}}
         format: tgz
         files:
           - name: kusion
             src: bin/kusion
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/KusionStack/kusion/releases/download/{{.Version}}/kusion-{{.OS}}.tgz.md5.txt
           asset: kusion-{{.OS}}.tgz.md5.txt
           algorithm: md5
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/KusionStack/kusion/releases/download/{{.Version}}/kusion-{{.OS}}-{{.Arch}}.{{.Format}}
             goarch: arm64
             asset: kusion-{{.OS}}-{{.Arch}}.{{.Format}}
             checksum:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/KusionStack/kusion/releases/download/{{.Version}}/kusion-{{.OS}}-{{.Arch}}.tgz.md5.txt
               asset: kusion-{{.OS}}-{{.Arch}}.tgz.md5.txt
               algorithm: md5
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.7.2")
-        url: https://gh-proxy.org/https://github.com/KusionStack/kusion/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/KusionStack/kusion/releases/download/{{.Version}}/kusion-{{.OS}}.{{.Format}}
         asset: kusion-{{.OS}}.{{.Format}}
         format: tgz
         files:
           - name: kusion
             src: bin/kusion
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/KusionStack/kusion/releases/download/{{.Version}}/kusion-{{.OS}}.{{.Format}}.md5.txt
           asset: kusion-{{.OS}}.{{.Format}}.md5.txt
           algorithm: md5
         replacements:
           linux: ubuntu
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/KusionStack/kusion/releases/download/{{.Version}}/kusion-{{.OS}}-{{.Arch}}.{{.Format}}
             goarch: arm64
             asset: kusion-{{.OS}}-{{.Arch}}.{{.Format}}
             checksum:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/KusionStack/kusion/releases/download/{{.Version}}/kusion-{{.OS}}-{{.Arch}}.{{.Format}}.md5.txt
               asset: kusion-{{.OS}}-{{.Arch}}.{{.Format}}.md5.txt
               algorithm: md5
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.10.0")
-        url: https://gh-proxy.org/https://github.com/KusionStack/kusion/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/KusionStack/kusion/releases/download/{{.Version}}/kusion_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kusion_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/KusionStack/kusion/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/KusionStack/kusion/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/KusionStack/kusion/releases/download/{{.Version}}/kusion_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kusion_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/KusionStack/kusion/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/KusionStack/kusion/releases/download/{{.Version}}/kusion_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin

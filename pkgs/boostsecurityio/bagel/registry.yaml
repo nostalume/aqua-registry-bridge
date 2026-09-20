@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.1.0"
-        url: https://gh-proxy.org/https://github.com/boostsecurityio/bagel/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/boostsecurityio/bagel/releases/download/{{.Version}}/bagel_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: bagel_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -17,7 +18,8 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/boostsecurityio/bagel/releases/download/{{.Version}}/bagel_{{trimV .Version}}_checksums.txt
           asset: bagel_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
@@ -27,10 +29,12 @@ packages:
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/boostsecurityio/bagel/releases/download/{{.Version}}/bagel_{{trimV .Version}}_checksums.txt.sigstore.json
               asset: bagel_{{trimV .Version}}_checksums.txt.sigstore.json
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/boostsecurityio/bagel/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/boostsecurityio/bagel/releases/download/{{.Version}}/bagel_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: bagel_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -40,7 +44,8 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/boostsecurityio/bagel/releases/download/{{.Version}}/bagel_{{trimV .Version}}_checksums.txt
           asset: bagel_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
@@ -50,8 +55,11 @@ packages:
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/boostsecurityio/bagel/releases/download/{{.Version}}/bagel_{{trimV .Version}}_checksums.txt.sigstore.json
               asset: bagel_{{trimV .Version}}_checksums.txt.sigstore.json
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/boostsecurityio/bagel/releases/download/{{.Version}}/bagel_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

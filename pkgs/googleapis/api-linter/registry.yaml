@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version == "v1.55.1"
         no_asset: true
       - version_constraint: semver("<= 1.35.0")
-        url: https://gh-proxy.org/https://github.com/googleapis/api-linter/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/googleapis/api-linter/releases/download/{{.Version}}/api-linter-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: api-linter-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -19,7 +20,8 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/googleapis/api-linter/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/googleapis/api-linter/releases/download/{{.Version}}/api-linter-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: api-linter-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true

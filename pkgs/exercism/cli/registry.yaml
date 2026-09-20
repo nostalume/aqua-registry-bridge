@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/exercism/cli/releases/download/{{.Version}}/exercism-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
     repo_owner: exercism
     repo_name: cli
     description: A Go based command line tool for exercism.org
@@ -8,24 +9,30 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/exercism/cli/releases/download/{{.Version}}/exercism-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
     files:
       - name: exercism
     replacements:
       amd64: x86_64
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/exercism/cli/releases/download/{{.Version}}/exercism_checksums.txt
       asset: exercism_checksums.txt
       algorithm: sha256
     version_constraint: semver(">= 3.2.0")
     version_overrides:
       - version_constraint: semver(">= 3.0.13")
+        type: http
+        url: https://gh-proxy.org/github.com/exercism/cli/releases/download/{{.Version}}/exercism-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         supported_envs:
           - darwin
           - amd64
         rosetta2: true
       - version_constraint: semver(">= 3.0.0")
-        url: https://gh-proxy.org/https://github.com/exercism/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/exercism/cli/releases/download/{{.Version}}/exercism-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: exercism-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tgz
         replacements:
@@ -38,7 +45,8 @@ packages:
         checksum:
           enabled: false
       - version_constraint: semver(">= 1.7.3")
-        url: https://gh-proxy.org/https://github.com/exercism/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/exercism/cli/releases/download/{{.Version}}/exercism-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: exercism-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tgz
         replacements:
@@ -51,7 +59,8 @@ packages:
         checksum:
           enabled: false
       - version_constraint: semver(">= 1.7.2")
-        url: https://gh-proxy.org/https://github.com/exercism/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/exercism/cli/releases/download/{{.Version}}/exercism-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: exercism-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tgz
         overrides: []
@@ -65,7 +74,8 @@ packages:
         checksum:
           enabled: false
       - version_constraint: semver("< 1.7.2")
-        url: https://gh-proxy.org/https://github.com/exercism/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/exercism/cli/releases/download/{{.Version}}/exercism-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: exercism-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tgz
         overrides: []

@@ -9,28 +9,32 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.0.7")
-        url: https://gh-proxy.org/https://github.com/aws/amazon-ec2-spot-interrupter/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aws/amazon-ec2-spot-interrupter/releases/download/{{.Version}}/ec2-spot-interrupter_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ec2-spot-interrupter_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/aws/amazon-ec2-spot-interrupter/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.0.10")
-        url: https://gh-proxy.org/https://github.com/aws/amazon-ec2-spot-interrupter/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aws/amazon-ec2-spot-interrupter/releases/download/{{.Version}}/ec2-spot-interrupter_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ec2-spot-interrupter_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/aws/amazon-ec2-spot-interrupter/releases/download/{{.Version}}/ec2-spot-interrupter_{{trimV .Version}}_checksums.txt
           asset: ec2-spot-interrupter_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
@@ -39,11 +43,13 @@ packages:
       - version_constraint: Version == "v0.0.11"
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/aws/amazon-ec2-spot-interrupter/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aws/amazon-ec2-spot-interrupter/releases/download/{{.Version}}/ec2-spot-interrupter_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ec2-spot-interrupter_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/aws/amazon-ec2-spot-interrupter/releases/download/{{.Version}}/ec2-spot-interrupter_{{trimV .Version}}_checksums.txt
           asset: ec2-spot-interrupter_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:

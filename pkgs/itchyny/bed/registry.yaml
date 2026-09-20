@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/itchyny/bed/releases/download/{{.Version}}/bed_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: itchyny
     repo_name: bed
     asset: bed_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -8,6 +9,8 @@ packages:
     description: Binary editor written in Go
     overrides:
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/itchyny/bed/releases/download/{{.Version}}/bed_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
     files:
       - name: bed

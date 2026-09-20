@@ -9,33 +9,39 @@ packages:
       - version_constraint: Version == "v0.5.0"
         no_asset: true
       - version_constraint: Version == "v0.24.0"
-        url: https://gh-proxy.org/https://github.com/zaquestion/lab/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zaquestion/lab/releases/download/{{.Version}}/lab_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: lab_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/zaquestion/lab/releases/download/{{.Version}}/lab_{{trimV .Version}}_checksums.txt
           asset: lab_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.11.1")
-        url: https://gh-proxy.org/https://github.com/zaquestion/lab/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zaquestion/lab/releases/download/{{.Version}}/lab_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: lab_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/zaquestion/lab/releases/download/{{.Version}}/lab_{{trimV .Version}}_checksums.txt
           asset: lab_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.17.2")
-        url: https://gh-proxy.org/https://github.com/zaquestion/lab/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zaquestion/lab/releases/download/{{.Version}}/lab_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: lab_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/zaquestion/lab/releases/download/{{.Version}}/lab_{{trimV .Version}}_checksums.txt
           asset: lab_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
@@ -43,23 +49,29 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.23.0")
-        url: https://gh-proxy.org/https://github.com/zaquestion/lab/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zaquestion/lab/releases/download/{{.Version}}/lab_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: lab_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/zaquestion/lab/releases/download/{{.Version}}/lab_{{trimV .Version}}_checksums.txt
           asset: lab_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/zaquestion/lab/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zaquestion/lab/releases/download/{{.Version}}/lab_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: lab_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/zaquestion/lab/releases/download/{{.Version}}/lab_{{trimV .Version}}_checksums.txt
           asset: lab_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/zaquestion/lab/releases/download/{{.Version}}/lab_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

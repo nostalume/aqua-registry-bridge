@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/yudai/gotty/releases/download/{{.Version}}/gotty_{{.OS}}_{{.Arch}}.tar.gz
     repo_owner: yudai
     repo_name: gotty
     asset: gotty_{{.OS}}_{{.Arch}}.tar.gz
@@ -10,6 +11,7 @@ packages:
       - darwin
     rosetta2: true
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/yudai/gotty/releases/download/{{.Version}}/SHA256SUMS
       asset: SHA256SUMS
       algorithm: sha256

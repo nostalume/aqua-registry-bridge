@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/charmbracelet/charm/releases/download/{{.Version}}/charm_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: charmbracelet
     repo_name: charm
     asset: charm_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -13,21 +14,28 @@ packages:
       windows: Windows
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/charmbracelet/charm/releases/download/{{.Version}}/charm_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     supported_envs:
       - darwin
       - linux
       - amd64
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/charmbracelet/charm/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256
     version_constraint: semver(">= 0.12.5")
     # 0.12.5: linux was capitalized. linux => Linux
     version_overrides:
       - version_constraint: semver("< 0.12.5")
+        type: http
+        url: https://gh-proxy.org/github.com/charmbracelet/charm/releases/download/{{.Version}}/charm_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         replacements:
           amd64: x86_64
           darwin: Darwin
           windows: Windows
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/charmbracelet/charm/releases/download/{{.Version}}/charm_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}

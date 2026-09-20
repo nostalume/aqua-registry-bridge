@@ -7,18 +7,22 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/satococoa/wtp/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/satococoa/wtp/releases/download/{{.Version}}/wtp_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: wtp_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/satococoa/wtp/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/satococoa/wtp/releases/download/{{.Version}}/wtp_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             replacements:
               amd64: x86_64
         supported_envs:

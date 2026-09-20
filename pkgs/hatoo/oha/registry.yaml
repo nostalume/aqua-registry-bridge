@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/hatoo/oha/releases/download/{{.Version}}/oha-{{.OS}}-{{.Arch}}
     repo_owner: hatoo
     repo_name: oha
     description: Ohayou(おはよう), HTTP load generator, inspired by rakyll/hey with tui animation
@@ -20,11 +21,17 @@ packages:
     version_constraint: semver(">= 0.5.4")
     version_overrides:
       - version_constraint: semver(">= 0.5.3")
+        type: http
+        url: https://gh-proxy.org/github.com/hatoo/oha/releases/download/{{.Version}}/oha-{{.OS}}-{{.Arch}}
         supported_envs:
           - darwin
           - amd64
       - version_constraint: semver(">= 0.5.3-test")
+        type: http
+        url: https://gh-proxy.org/github.com/hatoo/oha/releases/download/{{.Version}}/oha-{{.OS}}-{{.Arch}}
       - version_constraint: semver("< 0.5.3-test")
+        type: http
+        url: https://gh-proxy.org/github.com/hatoo/oha/releases/download/{{.Version}}/oha-{{.OS}}-{{.Arch}}
         supported_envs:
           - darwin
           - amd64

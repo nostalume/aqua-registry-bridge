@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.1.7"
-        url: https://gh-proxy.org/https://github.com/CrociDB/bulletty/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/CrociDB/bulletty/releases/download/{{.Version}}/bulletty-{{.Version}}-{{.OS}}_x86-64.{{.Format}}
         asset: bulletty-{{.Version}}-{{.OS}}_x86-64.{{.Format}}
         format: zip
         supported_envs:
@@ -15,7 +16,8 @@ packages:
       - version_constraint: Version == "v0.1.8"
         error_message: This version is unavailable because the asset format is invalid.
       - version_constraint: Version == "v0.1.9"
-        url: https://gh-proxy.org/https://github.com/CrociDB/bulletty/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/CrociDB/bulletty/releases/download/{{.Version}}/bulletty-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         asset: bulletty-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -25,10 +27,13 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/CrociDB/bulletty/releases/download/{{.Version}}/bulletty-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
             format: zip
             replacements: {}
       - version_constraint: semver("< 0.2.2")
-        url: https://gh-proxy.org/https://github.com/CrociDB/bulletty/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/CrociDB/bulletty/releases/download/{{.Version}}/bulletty-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: bulletty-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -38,10 +43,13 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/CrociDB/bulletty/releases/download/{{.Version}}/bulletty-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             replacements: {}
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/CrociDB/bulletty/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/CrociDB/bulletty/releases/download/{{.Version}}/bulletty-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: bulletty-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -55,16 +63,21 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/CrociDB/bulletty/releases/download/{{.Version}}/bulletty-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               amd64: x86_64
               linux: unknown-linux-musl
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/CrociDB/bulletty/releases/download/{{.Version}}/bulletty-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: bulletty

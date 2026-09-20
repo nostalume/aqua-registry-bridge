@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/minishift/minishift/releases/download/{{.Version}}/minishift-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
     repo_owner: minishift
     repo_name: minishift
     description: Run OpenShift 3.x locally
@@ -12,11 +13,14 @@ packages:
     format: tgz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/minishift/minishift/releases/download/{{.Version}}/minishift-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
     files:
       - name: minishift
         src: minishift-{{trimV .Version}}-{{.OS}}-{{.Arch}}/minishift
     checksum:
-      type: github_release
+      type: http
+      url: "{{.AssetURL}}.sha256"
       asset: "{{.Asset}}.sha256"
       algorithm: sha256

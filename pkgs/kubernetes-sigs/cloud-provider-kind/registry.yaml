@@ -9,17 +9,20 @@ packages:
       - version_constraint: Version == "v0.0.2"
         no_asset: true
       - version_constraint: Version == "v0.0.1"
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/cloud-provider-kind/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/cloud-provider-kind/releases/download/{{.Version}}/cloud-provider-kind-{{.OS}}-{{.Arch}}
         asset: cloud-provider-kind-{{.OS}}-{{.Arch}}
         format: raw
         supported_envs:
           - linux/amd64
           - darwin/arm64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/cloud-provider-kind/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/cloud-provider-kind/releases/download/{{.Version}}/cloud-provider-kind_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: cloud-provider-kind_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubernetes-sigs/cloud-provider-kind/releases/download/{{.Version}}/cloud-provider-kind_{{trimV .Version}}_checksums.txt
           asset: cloud-provider-kind_{{trimV .Version}}_checksums.txt
           algorithm: sha256

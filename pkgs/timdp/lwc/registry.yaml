@@ -7,13 +7,15 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.1.0"
-        url: https://gh-proxy.org/https://github.com/timdp/lwc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/timdp/lwc/releases/download/{{.Version}}/lwc-golang_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: lwc-golang_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/timdp/lwc/releases/download/{{.Version}}/lwc-golang_{{trimV .Version}}_checksums.txt
           asset: lwc-golang_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
@@ -21,13 +23,15 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.4.4")
-        url: https://gh-proxy.org/https://github.com/timdp/lwc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/timdp/lwc/releases/download/{{.Version}}/lwc-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: lwc-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/timdp/lwc/releases/download/{{.Version}}/lwc-checksums.txt
           asset: lwc-checksums.txt
           algorithm: sha256
         supported_envs:
@@ -35,12 +39,14 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/timdp/lwc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/timdp/lwc/releases/download/{{.Version}}/lwc-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: lwc-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/timdp/lwc/releases/download/{{.Version}}/lwc-checksums.txt
           asset: lwc-checksums.txt
           algorithm: sha256

@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 2.0.0-beta")
-        url: https://gh-proxy.org/https://github.com/teler-sh/teler/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/teler-sh/teler/releases/download/{{.Version}}/teler_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: teler_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -17,30 +18,39 @@ packages:
         replacements:
           darwin: macOS
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/teler-sh/teler/releases/download/{{.Version}}/teler_{{trimV .Version}}_checksums.txt
           asset: teler_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/teler-sh/teler/releases/download/{{.Version}}/teler_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 2.0.0-rc.4")
-        url: https://gh-proxy.org/https://github.com/teler-sh/teler/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/teler-sh/teler/releases/download/{{.Version}}/teler_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: teler_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           darwin: macOS
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/teler-sh/teler/releases/download/{{.Version}}/teler_{{trimV .Version}}_checksums.txt
           asset: teler_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/teler-sh/teler/releases/download/{{.Version}}/teler_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/teler-sh/teler/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/teler-sh/teler/releases/download/{{.Version}}/teler_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: teler_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/teler-sh/teler/releases/download/{{.Version}}/teler_checksums.txt
           asset: teler_checksums.txt
           algorithm: sha256

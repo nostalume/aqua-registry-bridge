@@ -7,22 +7,27 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.2.0")
-        url: https://gh-proxy.org/https://github.com/Darth-Tech/samwise-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Darth-Tech/samwise-cli/releases/download/{{.Version}}/samwise-cli-{{.OS}}-{{.Arch}}
         asset: samwise-cli-{{.OS}}-{{.Arch}}
         format: raw
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Darth-Tech/samwise-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Darth-Tech/samwise-cli/releases/download/{{.Version}}/samwise-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: samwise-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Darth-Tech/samwise-cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/Darth-Tech/samwise-cli/releases/download/{{.Version}}/samwise-cli_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
             asset: samwise-cli_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
         supported_envs:
           - linux

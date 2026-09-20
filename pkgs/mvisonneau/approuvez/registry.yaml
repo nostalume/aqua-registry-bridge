@@ -7,39 +7,51 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "edge"
-        url: https://gh-proxy.org/https://github.com/mvisonneau/approuvez/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mvisonneau/approuvez/releases/download/{{.Version}}/approuvez_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: approuvez_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/mvisonneau/approuvez/releases/download/{{.Version}}/approuvez_{{.Version}}_sha512sums.txt
           asset: approuvez_{{.Version}}_sha512sums.txt
           algorithm: sha512
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/mvisonneau/approuvez/releases/download/{{.Version}}/approuvez_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.1.0")
-        url: https://gh-proxy.org/https://github.com/mvisonneau/approuvez/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mvisonneau/approuvez/releases/download/{{.Version}}/approuvez_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: approuvez_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/mvisonneau/approuvez/releases/download/{{.Version}}/approuvez_{{.Version}}_sha512sums.txt
           asset: approuvez_{{.Version}}_sha512sums.txt
           algorithm: sha512
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/mvisonneau/approuvez/releases/download/{{.Version}}/approuvez_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/mvisonneau/approuvez/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mvisonneau/approuvez/releases/download/{{.Version}}/approuvez_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: approuvez_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/mvisonneau/approuvez/releases/download/{{.Version}}/approuvez_{{.Version}}_sha512sums.txt
           asset: approuvez_{{.Version}}_sha512sums.txt
           algorithm: sha512
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/mvisonneau/approuvez/releases/download/{{.Version}}/approuvez_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

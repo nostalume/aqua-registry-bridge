@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/liquidmetal-dev/flintlock/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/liquidmetal-dev/flintlock/releases/download/{{.Version}}/flintlock-metrics_{{.Arch}}
         asset: flintlock-metrics_{{.Arch}}
         format: raw
         supported_envs:

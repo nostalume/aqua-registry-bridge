@@ -7,21 +7,25 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v1.8.0"
-        url: https://gh-proxy.org/https://github.com/caarlos0/svu/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/svu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: svu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 1.3.2")
-        url: https://gh-proxy.org/https://github.com/caarlos0/svu/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/svu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: svu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/svu_{{trimV .Version}}_checksums.txt
           asset: svu_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
@@ -29,128 +33,160 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.7.0")
-        url: https://gh-proxy.org/https://github.com/caarlos0/svu/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/svu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: svu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/svu_{{trimV .Version}}_checksums.txt
           asset: svu_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 3.1.0")
-        url: https://gh-proxy.org/https://github.com/caarlos0/svu/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/svu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: svu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/caarlos0/svu/releases/download/{{.Version}}/checksums.txt.pem
+              - https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/checksums.txt.pem
               - --certificate-identity
-              - https://github.com/caarlos0/svu/.github/workflows/release.yml@refs/tags/{{.Version}}
+              - https://gh-proxy.org/github.com/caarlos0/svu/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/caarlos0/svu/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/checksums.txt.sig
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/svu_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
             asset: svu_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
       - version_constraint: semver("<= 3.2.1")
-        url: https://gh-proxy.org/https://github.com/caarlos0/svu/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/svu_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: svu_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/caarlos0/svu/releases/download/{{.Version}}/checksums.txt.pem
+              - https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/checksums.txt.pem
               - --certificate-identity
-              - https://github.com/caarlos0/svu/.github/workflows/release.yml@refs/tags/{{.Version}}
+              - https://gh-proxy.org/github.com/caarlos0/svu/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/caarlos0/svu/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/checksums.txt.sig
         github_artifact_attestations:
           signer_workflow: caarlos0/svu/.github/workflows/release.yml
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/svu_{{.OS}}_all.{{.Format}}
             asset: svu_{{.OS}}_all.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/svu_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 3.2.4")
-        url: https://gh-proxy.org/https://github.com/caarlos0/svu/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/svu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: svu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/caarlos0/svu/releases/download/{{.Version}}/checksums.txt.pem
+              - https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/checksums.txt.pem
               - --certificate-identity
-              - https://github.com/caarlos0/svu/.github/workflows/release.yml@refs/tags/{{.Version}}
+              - https://gh-proxy.org/github.com/caarlos0/svu/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/caarlos0/svu/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/checksums.txt.sig
         github_artifact_attestations:
           signer_workflow: caarlos0/svu/.github/workflows/release.yml
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/svu_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
             asset: svu_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/svu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: Version == "v3.4.1"
-        url: https://gh-proxy.org/https://github.com/caarlos0/svu/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/svu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: svu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/checksums.txt.sigstore.json
               asset: checksums.txt.sigstore.json
             opts:
               - --certificate-identity
-              - https://github.com/caarlos0/svu/.github/workflows/release.yml@refs/tags/{{.Version}}
+              - https://gh-proxy.org/github.com/caarlos0/svu/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/svu_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
             asset: svu_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/svu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/caarlos0/svu/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/svu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: svu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/checksums.txt.sigstore.json
               asset: checksums.txt.sigstore.json
             opts:
               - --certificate-identity
-              - https://github.com/caarlos0/svu/.github/workflows/release.yml@refs/tags/{{.Version}}
+              - https://gh-proxy.org/github.com/caarlos0/svu/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
         github_artifact_attestations:
           signer_workflow: caarlos0/svu/.github/workflows/release.yml
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/svu_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
             asset: svu_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/svu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

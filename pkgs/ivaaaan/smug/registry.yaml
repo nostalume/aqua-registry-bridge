@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.3.5"
-        url: https://gh-proxy.org/https://github.com/ivaaaan/smug/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ivaaaan/smug/releases/download/{{.Version}}/smug.{{trimV .Version}}._{{.OS}}_{{.Arch}}.{{.Format}}
         asset: smug.{{trimV .Version}}._{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -17,9 +18,12 @@ packages:
           windows: Windows
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ivaaaan/smug/releases/download/{{.Version}}/smug.{{trimV .Version}}._{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.2.2")
-        url: https://gh-proxy.org/https://github.com/ivaaaan/smug/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ivaaaan/smug/releases/download/{{.Version}}/smug_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: smug_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -30,7 +34,8 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/ivaaaan/smug/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
@@ -38,7 +43,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.2.4")
-        url: https://gh-proxy.org/https://github.com/ivaaaan/smug/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ivaaaan/smug/releases/download/{{.Version}}/smug_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: smug_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -49,11 +55,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/ivaaaan/smug/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.3.4")
-        url: https://gh-proxy.org/https://github.com/ivaaaan/smug/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ivaaaan/smug/releases/download/{{.Version}}/smug_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: smug_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -62,11 +70,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/ivaaaan/smug/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/ivaaaan/smug/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ivaaaan/smug/releases/download/{{.Version}}/smug_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: smug_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -76,8 +86,11 @@ packages:
           windows: Windows
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ivaaaan/smug/releases/download/{{.Version}}/smug_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/ivaaaan/smug/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

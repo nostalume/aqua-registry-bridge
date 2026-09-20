@@ -7,42 +7,51 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.1.0"
-        url: https://gh-proxy.org/https://github.com/pranshuparmar/witr/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/pranshuparmar/witr/releases/download/{{.Version}}/witr-{{.OS}}-{{.Arch}}
         asset: witr-{{.OS}}-{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/pranshuparmar/witr/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         supported_envs:
           - linux
       - version_constraint: Version == "v0.1.3"
-        url: https://gh-proxy.org/https://github.com/pranshuparmar/witr/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/pranshuparmar/witr/releases/download/{{.Version}}/witr-{{.OS}}-{{.Arch}}
         asset: witr-{{.OS}}-{{.Arch}}
         format: raw
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 0.1.8")
-        url: https://gh-proxy.org/https://github.com/pranshuparmar/witr/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/pranshuparmar/witr/releases/download/{{.Version}}/witr-{{.OS}}-{{.Arch}}
         asset: witr-{{.OS}}-{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/pranshuparmar/witr/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/pranshuparmar/witr/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/pranshuparmar/witr/releases/download/{{.Version}}/witr-{{.OS}}-{{.Arch}}
         asset: witr-{{.OS}}-{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/pranshuparmar/witr/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/pranshuparmar/witr/releases/download/{{.Version}}/witr-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             asset: witr-{{.OS}}-{{.Arch}}.{{.Format}}

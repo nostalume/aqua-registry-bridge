@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.1.1")
-        url: https://gh-proxy.org/https://github.com/qnighy/clippy-reviewdog-filter/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/qnighy/clippy-reviewdog-filter/releases/download/{{.Version}}/clippy-reviewdog-filter-{{.Arch}}-{{.OS}}
         asset: clippy-reviewdog-filter-{{.Arch}}-{{.OS}}
         format: raw
         rosetta2: true
@@ -22,7 +23,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.1.4")
-        url: https://gh-proxy.org/https://github.com/qnighy/clippy-reviewdog-filter/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/qnighy/clippy-reviewdog-filter/releases/download/{{.Version}}/clippy-reviewdog-filter-{{.Arch}}-{{.OS}}
         asset: clippy-reviewdog-filter-{{.Arch}}-{{.OS}}
         format: raw
         rosetta2: true
@@ -33,16 +35,21 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/qnighy/clippy-reviewdog-filter/releases/download/{{.Version}}/clippy-reviewdog-filter-{{.Arch}}-{{.OS}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/qnighy/clippy-reviewdog-filter/releases/download/{{.Version}}/clippy-reviewdog-filter-{{.Arch}}-{{.OS}}
             goarch: arm64
             replacements:
               arm64: aarch64
               linux: unknown-linux-gnu
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/qnighy/clippy-reviewdog-filter/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/qnighy/clippy-reviewdog-filter/releases/download/{{.Version}}/clippy-reviewdog-filter-{{.Arch}}-{{.OS}}
         asset: clippy-reviewdog-filter-{{.Arch}}-{{.OS}}
         format: raw
         windows_arm_emulation: true

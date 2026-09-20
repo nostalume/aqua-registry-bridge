@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.1.2")
-        url: https://gh-proxy.org/https://github.com/restechnica/semverbot/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/restechnica/semverbot/releases/download/{{.Version}}/sbot-{{.OS}}-{{.Arch}}
         asset: sbot-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -20,7 +21,8 @@ packages:
         files:
           - name: sbot
       - version_constraint: semver("<= 1.1.0")
-        url: https://gh-proxy.org/https://github.com/restechnica/semverbot/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/restechnica/semverbot/releases/download/{{.Version}}/sbot-{{.OS}}-{{.Arch}}
         asset: sbot-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -32,7 +34,8 @@ packages:
         files:
           - name: sbot
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/restechnica/semverbot/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/restechnica/semverbot/releases/download/{{.Version}}/sbot-{{.OS}}-{{.Arch}}
         asset: sbot-{{.OS}}-{{.Arch}}
         format: raw
         files:

@@ -7,18 +7,21 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.8.0"
-        url: https://gh-proxy.org/https://github.com/mercari/tfnotify/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mercari/tfnotify/releases/download/{{.Version}}/tfnotify_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tfnotify_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/mercari/tfnotify/releases/download/{{.Version}}/tfnotify_{{trimV .Version}}_checksums.txt
           asset: tfnotify_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 0.3.1")
-        url: https://gh-proxy.org/https://github.com/mercari/tfnotify/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mercari/tfnotify/releases/download/{{.Version}}/tfnotify_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tfnotify_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -27,54 +30,66 @@ packages:
             src: tfnotify_{{.Version}}_{{.OS}}_{{.Arch}}/tfnotify
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/mercari/tfnotify/releases/download/{{.Version}}/tfnotify_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.5.0")
-        url: https://gh-proxy.org/https://github.com/mercari/tfnotify/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mercari/tfnotify/releases/download/{{.Version}}/tfnotify_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tfnotify_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/mercari/tfnotify/releases/download/{{.Version}}/tfnotify_{{trimV .Version}}_checksums.txt
           asset: tfnotify_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.7.0")
-        url: https://gh-proxy.org/https://github.com/mercari/tfnotify/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mercari/tfnotify/releases/download/{{.Version}}/tfnotify_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tfnotify_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/mercari/tfnotify/releases/download/{{.Version}}/tfnotify_{{trimV .Version}}_checksums.txt
           asset: tfnotify_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.7.5")
-        url: https://gh-proxy.org/https://github.com/mercari/tfnotify/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mercari/tfnotify/releases/download/{{.Version}}/tfnotify_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tfnotify_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/mercari/tfnotify/releases/download/{{.Version}}/tfnotify_{{trimV .Version}}_checksums.txt
           asset: tfnotify_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/mercari/tfnotify/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mercari/tfnotify/releases/download/{{.Version}}/tfnotify_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tfnotify_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/mercari/tfnotify/releases/download/{{.Version}}/tfnotify_{{trimV .Version}}_checksums.txt
           asset: tfnotify_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/mercari/tfnotify/releases/download/{{.Version}}/tfnotify_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

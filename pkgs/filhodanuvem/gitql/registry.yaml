@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/filhodanuvem/gitql/releases/download/{{.Version}}/gitql_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
     repo_owner: filhodanuvem
     repo_name: gitql
     asset: gitql_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
@@ -15,6 +16,7 @@ packages:
       - linux
       - amd64
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/filhodanuvem/gitql/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256

@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version == "1.0-stable"
         no_asset: true
       - version_constraint: semver("<= 2.0.2-stable")
-        url: https://gh-proxy.org/https://github.com/godotengine/godot/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{replace "-" "_" .Version}}_{{.OS}}.exe.{{.Format}}
         asset: Godot_v{{replace "-" "_" .Version}}_{{.OS}}.exe.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -21,7 +22,8 @@ packages:
         supported_envs:
           - windows
       - version_constraint: Version == "2.0.3-stable"
-        url: https://gh-proxy.org/https://github.com/godotengine/godot/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{replace "-" "_" .Version}}_{{.OS}}.{{.Format}}
         asset: Godot_v{{replace "-" "_" .Version}}_{{.OS}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -33,18 +35,23 @@ packages:
           windows: win64
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{replace "-" "_" .Version}}_{{.OS}}.{{.Format}}
             files:
               - name: godot
                 src: Godot64.app/Contents/MacOS/Godot
             replacements:
               amd64: x64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{replace "-" "_" .Version}}_{{.OS}}.exe.{{.Format}}
             asset: Godot_v{{replace "-" "_" .Version}}_{{.OS}}.exe.{{.Format}}
         supported_envs:
           - darwin
           - windows
       - version_constraint: Version == "2.0.4.1-stable"
-        url: https://gh-proxy.org/https://github.com/godotengine/godot/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{replace "-" "_" .Version}}_{{.OS}}.fat.{{.Format}}
         asset: Godot_v{{replace "-" "_" .Version}}_{{.OS}}.fat.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -56,8 +63,12 @@ packages:
           windows: win64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{replace "-" "_" .Version}}_{{.OS}}.exe.{{.Format}}
             asset: Godot_v{{replace "-" "_" .Version}}_{{.OS}}.exe.{{.Format}}
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{replace "-" "_" .Version}}_{{.OS}}.fat.{{.Format}}
             files:
               - name: godot
                 src: Godot.app/Contents/MacOS/Godot
@@ -65,7 +76,8 @@ packages:
           - darwin
           - windows
       - version_constraint: semver("<= 3.0.6-stable")
-        url: https://gh-proxy.org/https://github.com/godotengine/godot/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{.Version}}_{{.OS}}.fat.{{.Format}}
         asset: Godot_v{{.Version}}_{{.OS}}.fat.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -77,16 +89,21 @@ packages:
           windows: win64
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{.Version}}_{{.OS}}.fat.{{.Format}}
             files:
               - name: godot
                 src: Godot.app/Contents/MacOS/Godot
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{.Version}}_{{.OS}}.exe.{{.Format}}
             asset: Godot_v{{.Version}}_{{.OS}}.exe.{{.Format}}
         supported_envs:
           - darwin
           - windows
       - version_constraint: semver("<= 3.2.3-stable")
-        url: https://gh-proxy.org/https://github.com/godotengine/godot/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{.Version}}_{{.OS}}.64.{{.Format}}
         asset: Godot_v{{.Version}}_{{.OS}}.64.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -97,21 +114,27 @@ packages:
           darwin: osx
           windows: win64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/SHA512-SUMS.txt
           asset: SHA512-SUMS.txt
           algorithm: sha512
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{.Version}}_{{.OS}}.64.{{.Format}}
             files:
               - name: godot
                 src: Godot.app/Contents/MacOS/Godot
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{.Version}}_{{.OS}}.exe.{{.Format}}
             asset: Godot_v{{.Version}}_{{.OS}}.exe.{{.Format}}
         supported_envs:
           - darwin
           - windows
       - version_constraint: semver("<= 3.5.3-stable")
-        url: https://gh-proxy.org/https://github.com/godotengine/godot/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{.Version}}_{{.OS}}.universal.{{.Format}}
         asset: Godot_v{{.Version}}_{{.OS}}.universal.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -122,21 +145,27 @@ packages:
           darwin: osx
           windows: win64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/SHA512-SUMS.txt
           asset: SHA512-SUMS.txt
           algorithm: sha512
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{.Version}}_{{.OS}}.universal.{{.Format}}
             files:
               - name: godot
                 src: Godot.app/Contents/MacOS/Godot
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{.Version}}_{{.OS}}.exe.{{.Format}}
             asset: Godot_v{{.Version}}_{{.OS}}.exe.{{.Format}}
         supported_envs:
           - darwin
           - windows
       - version_constraint: semver("<= 3.6.1-stable")
-        url: https://gh-proxy.org/https://github.com/godotengine/godot/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{.Version}}_{{.OS}}.{{.Arch}}.{{.Format}}
         asset: Godot_v{{.Version}}_{{.OS}}.{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -147,23 +176,29 @@ packages:
           darwin: osx
           windows: win64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/SHA512-SUMS.txt
           asset: SHA512-SUMS.txt
           algorithm: sha512
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{.Version}}_{{.OS}}.universal.{{.Format}}
             asset: Godot_v{{.Version}}_{{.OS}}.universal.{{.Format}}
             files:
               - name: godot
                 src: Godot.app/Contents/MacOS/Godot
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{.Version}}_{{.OS}}.exe.{{.Format}}
             asset: Godot_v{{.Version}}_{{.OS}}.exe.{{.Format}}
         supported_envs:
           - linux/arm64
           - darwin
           - windows
       - version_constraint: semver("<= 4.1.4-stable")
-        url: https://gh-proxy.org/https://github.com/godotengine/godot/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{.Version}}_{{.OS}}.exe.{{.Format}}
         asset: Godot_v{{.Version}}_{{.OS}}.exe.{{.Format}}
         format: zip
         files:
@@ -173,15 +208,20 @@ packages:
           darwin: macos
           windows: win64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/SHA512-SUMS.txt
           asset: SHA512-SUMS.txt
           algorithm: sha512
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{.Version}}_{{.OS}}.{{.Arch}}.{{.Format}}
             asset: Godot_v{{.Version}}_{{.OS}}.{{.Arch}}.{{.Format}}
             replacements:
               amd64: x86_64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{.Version}}_{{.OS}}.universal.{{.Format}}
             asset: Godot_v{{.Version}}_{{.OS}}.universal.{{.Format}}
             files:
               - name: godot
@@ -191,7 +231,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 4.2.2-stable")
-        url: https://gh-proxy.org/https://github.com/godotengine/godot/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{.Version}}_{{.OS}}.{{.Arch}}.{{.Format}}
         asset: Godot_v{{.Version}}_{{.OS}}.{{.Arch}}.{{.Format}}
         windows_arm_emulation: true
         format: zip
@@ -202,22 +243,30 @@ packages:
           darwin: macos
           windows: win64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/SHA512-SUMS.txt
           asset: SHA512-SUMS.txt
           algorithm: sha512
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{.Version}}_{{.OS}}.{{.Arch}}.{{.Format}}
             replacements:
               amd64: x86_64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{.Version}}_{{.OS}}.universal.{{.Format}}
             asset: Godot_v{{.Version}}_{{.OS}}.universal.{{.Format}}
             files:
               - name: godot
                 src: Godot.app/Contents/MacOS/Godot
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{.Version}}_{{.OS}}.exe.{{.Format}}
             asset: Godot_v{{.Version}}_{{.OS}}.exe.{{.Format}}
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/godotengine/godot/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{.Version}}_{{.OS}}.{{.Arch}}.{{.Format}}
         asset: Godot_v{{.Version}}_{{.OS}}.{{.Arch}}.{{.Format}}
         format: zip
         files:
@@ -226,23 +275,32 @@ packages:
         replacements:
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/SHA512-SUMS.txt
           asset: SHA512-SUMS.txt
           algorithm: sha512
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{.Version}}_{{.OS}}.{{.Arch}}.{{.Format}}
             replacements:
               amd64: x86_64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{.Version}}_{{.OS}}.universal.{{.Format}}
             asset: Godot_v{{.Version}}_{{.OS}}.universal.{{.Format}}
             files:
               - name: godot
                 src: Godot.app/Contents/MacOS/Godot
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{.Version}}_{{.OS}}.exe.{{.Format}}
             goarch: amd64
             asset: Godot_v{{.Version}}_{{.OS}}.exe.{{.Format}}
             replacements:
               windows: win64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/godotengine/godot/releases/download/{{.Version}}/Godot_v{{.Version}}_{{.OS}}_{{.Arch}}.exe.{{.Format}}
             goarch: arm64
             asset: Godot_v{{.Version}}_{{.OS}}_{{.Arch}}.exe.{{.Format}}

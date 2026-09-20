@@ -9,15 +9,19 @@ packages:
       - version_constraint: Version == "v0.1.0"
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/k1LoW/concrun/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/k1LoW/concrun/releases/download/{{.Version}}/concrun_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: concrun_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/k1LoW/concrun/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/k1LoW/concrun/releases/download/{{.Version}}/concrun_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux

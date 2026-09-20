@@ -10,7 +10,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/psastras/sarif-rs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/psastras/sarif-rs/releases/download/{{.Version}}/miri-sarif-{{.Arch}}-{{.OS}}
         asset: miri-sarif-{{.Arch}}-{{.OS}}
         format: raw
         replacements:
@@ -18,9 +19,13 @@ packages:
           linux: unknown-linux-gnu
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/psastras/sarif-rs/releases/download/{{.Version}}/miri-sarif-{{.Arch}}-{{.OS}}
             replacements:
               amd64: x86_64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/psastras/sarif-rs/releases/download/{{.Version}}/miri-sarif-{{.Arch}}-{{.OS}}
             replacements:
               arm64: aarch64
         supported_envs:

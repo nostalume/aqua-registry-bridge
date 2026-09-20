@@ -8,68 +8,84 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.1.0"
-        url: https://gh-proxy.org/https://github.com/sigstore/cosign/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sigstore/cosign/releases/download/{{.Version}}/cosign
         asset: cosign
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
           - linux/amd64
       - version_constraint: Version == "v0.2.0"
-        url: https://gh-proxy.org/https://github.com/sigstore/cosign/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sigstore/cosign/releases/download/{{.Version}}/cosign-{{.OS}}-{{.Arch}}
         asset: cosign-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/sigstore/cosign/releases/download/{{.Version}}/cosign.sha256
           asset: cosign.sha256
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v0.6.0"
-        url: https://gh-proxy.org/https://github.com/sigstore/cosign/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sigstore/cosign/releases/download/{{.Version}}/cosign_{{.OS}}_{{.Arch}}_{{trimV .Version}}_linux_amd64
         asset: cosign_{{.OS}}_{{.Arch}}_{{trimV .Version}}_linux_amd64
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/sigstore/cosign/releases/download/{{.Version}}/cosign_checksums.txt
           asset: cosign_checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/sigstore/cosign/releases/download/{{.Version}}/cosign_{{.OS}}_{{.Arch}}_{{trimV .Version}}_darwin_amd64
             goarch: amd64
             asset: cosign_{{.OS}}_{{.Arch}}_{{trimV .Version}}_darwin_amd64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/sigstore/cosign/releases/download/{{.Version}}/cosign_{{.OS}}_{{.Arch}}_{{trimV .Version}}_darwin_arm64
             goarch: arm64
             asset: cosign_{{.OS}}_{{.Arch}}_{{trimV .Version}}_darwin_arm64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/sigstore/cosign/releases/download/{{.Version}}/cosign_{{.OS}}_{{.Arch}}_{{trimV .Version}}_windows_amd64
             asset: cosign_{{.OS}}_{{.Arch}}_{{trimV .Version}}_windows_amd64
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.3.1")
-        url: https://gh-proxy.org/https://github.com/sigstore/cosign/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sigstore/cosign/releases/download/{{.Version}}/cosign-{{.OS}}-{{.Arch}}
         asset: cosign-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.5.0")
-        url: https://gh-proxy.org/https://github.com/sigstore/cosign/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sigstore/cosign/releases/download/{{.Version}}/cosign-{{.OS}}-{{.Arch}}
         asset: cosign-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
@@ -77,12 +93,14 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.2.1")
-        url: https://gh-proxy.org/https://github.com/sigstore/cosign/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sigstore/cosign/releases/download/{{.Version}}/cosign-{{.OS}}-{{.Arch}}
         asset: cosign-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/sigstore/cosign/releases/download/{{.Version}}/cosign_checksums.txt
           asset: cosign_checksums.txt
           algorithm: sha256
         supported_envs:
@@ -90,45 +108,52 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.4.1")
-        url: https://gh-proxy.org/https://github.com/sigstore/cosign/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sigstore/cosign/releases/download/{{.Version}}/cosign-{{.OS}}-{{.Arch}}
         asset: cosign-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/sigstore/cosign/releases/download/{{.Version}}/cosign_checksums.txt
           asset: cosign_checksums.txt
           algorithm: sha256
       - version_constraint: semver("< 3.0.0")
-        url: https://gh-proxy.org/https://github.com/sigstore/cosign/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sigstore/cosign/releases/download/{{.Version}}/cosign-{{.OS}}-{{.Arch}}
         asset: cosign-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/sigstore/cosign/releases/download/{{.Version}}/cosign_checksums.txt
           asset: cosign_checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/sigstore/cosign/releases/download/{{.Version}}/cosign_checksums.txt-keyless.pem
+              - https://gh-proxy.org/github.com/sigstore/cosign/releases/download/{{.Version}}/cosign_checksums.txt-keyless.pem
               - --certificate-identity
               - keyless@projectsigstore.iam.gserviceaccount.com
               - --certificate-oidc-issuer
               - https://accounts.google.com
               - --signature
-              - https://github.com/sigstore/cosign/releases/download/{{.Version}}/cosign_checksums.txt-keyless.sig
+              - https://gh-proxy.org/github.com/sigstore/cosign/releases/download/{{.Version}}/cosign_checksums.txt-keyless.sig
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/sigstore/cosign/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sigstore/cosign/releases/download/{{.Version}}/cosign-{{.OS}}-{{.Arch}}
         asset: cosign-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/sigstore/cosign/releases/download/{{.Version}}/cosign_checksums.txt
           asset: cosign_checksums.txt
           algorithm: sha256
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/sigstore/cosign/releases/download/{{.Version}}/cosign_checksums.txt.sigstore.json
               asset: cosign_checksums.txt.sigstore.json
             opts:
               - --certificate-identity

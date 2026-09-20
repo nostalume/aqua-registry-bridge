@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.9.1")
-        url: https://gh-proxy.org/https://github.com/git-chglog/git-chglog/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/git-chglog/git-chglog/releases/download/{{.Version}}/git-chglog_{{.OS}}_{{.Arch}}
         asset: git-chglog_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
@@ -17,38 +18,50 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.11.2")
-        url: https://gh-proxy.org/https://github.com/git-chglog/git-chglog/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/git-chglog/git-chglog/releases/download/{{.Version}}/git-chglog_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: git-chglog_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/git-chglog/git-chglog/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/git-chglog/git-chglog/releases/download/{{.Version}}/git-chglog_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.15.1")
-        url: https://gh-proxy.org/https://github.com/git-chglog/git-chglog/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/git-chglog/git-chglog/releases/download/{{.Version}}/git-chglog_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: git-chglog_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/git-chglog/git-chglog/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/git-chglog/git-chglog/releases/download/{{.Version}}/git-chglog_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/git-chglog/git-chglog/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/git-chglog/git-chglog/releases/download/{{.Version}}/git-chglog_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: git-chglog_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/git-chglog/git-chglog/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/git-chglog/git-chglog/releases/download/{{.Version}}/git-chglog_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

@@ -9,25 +9,29 @@ packages:
       - version_constraint: Version == "v1.2.19"
         no_asset: true
       - version_constraint: semver("<= 0.0.2")
-        url: https://gh-proxy.org/https://github.com/openshift/rosa/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/openshift/rosa/releases/download/{{.Version}}/moactl-{{.OS}}-{{.Arch}}
         asset: moactl-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.0.16")
-        url: https://gh-proxy.org/https://github.com/openshift/rosa/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/openshift/rosa/releases/download/{{.Version}}/moactl-{{.OS}}-{{.Arch}}
         asset: moactl-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
@@ -36,18 +40,23 @@ packages:
           - amd64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/openshift/rosa/releases/download/{{.Version}}/moactl-{{.OS}}-{{.Arch}}
             checksum:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/openshift/rosa/releases/download/{{.Version}}/{{trimSuffix ".exe" .Asset}}.sha256
               asset: '{{trimSuffix ".exe" .Asset}}.sha256'
               algorithm: sha256
       - version_constraint: semver("<= 1.2.26")
-        url: https://gh-proxy.org/https://github.com/openshift/rosa/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/openshift/rosa/releases/download/{{.Version}}/rosa-{{.OS}}-{{.Arch}}
         asset: rosa-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
@@ -56,27 +65,36 @@ packages:
           - amd64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/openshift/rosa/releases/download/{{.Version}}/rosa-{{.OS}}-{{.Arch}}
             checksum:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/openshift/rosa/releases/download/{{.Version}}/{{trimSuffix ".exe" .Asset}}.sha256
               asset: '{{trimSuffix ".exe" .Asset}}.sha256'
               algorithm: sha256
       - version_constraint: semver("<= 1.2.39")
-        url: https://gh-proxy.org/https://github.com/openshift/rosa/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/openshift/rosa/releases/download/{{.Version}}/rosa-{{.OS}}-{{.Arch}}
         asset: rosa-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/openshift/rosa/releases/download/{{.Version}}/rosa-{{.OS}}-{{.Arch}}
             checksum:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/openshift/rosa/releases/download/{{.Version}}/{{trimSuffix ".exe" .Asset}}.sha256
               asset: '{{trimSuffix ".exe" .Asset}}.sha256'
               algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/openshift/rosa/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/openshift/rosa/releases/download/{{.Version}}/rosa_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: rosa_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -85,9 +103,12 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/openshift/rosa/releases/download/{{.Version}}/rosa_{{trimV .Version}}_checksums.txt
           asset: rosa_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/openshift/rosa/releases/download/{{.Version}}/rosa_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

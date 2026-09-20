@@ -9,17 +9,23 @@ packages:
       - version_constraint: Version == "v1.6.15"
         no_asset: true
       - version_constraint: semver("<= 1.2.1")
-        url: https://gh-proxy.org/https://github.com/axllent/mailpit/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/axllent/mailpit/releases/download/{{.Version}}/mailpit-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: mailpit-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/axllent/mailpit/releases/download/{{.Version}}/mailpit-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/axllent/mailpit/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/axllent/mailpit/releases/download/{{.Version}}/mailpit-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: mailpit-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/axllent/mailpit/releases/download/{{.Version}}/mailpit-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip

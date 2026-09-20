@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.0.2"
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/zeitgeist_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: zeitgeist_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -20,11 +21,13 @@ packages:
           - amd64
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.0.17")
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/zeitgeist_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: zeitgeist_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         supported_envs:
@@ -32,19 +35,22 @@ packages:
           - darwin
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.3.2")
         no_asset: true
       - version_constraint: Version == "v0.3.4"
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/zeitgeist
         asset: zeitgeist
         format: raw
         supported_envs:
           - windows/amd64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
@@ -54,11 +60,12 @@ packages:
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
               - --signature
-              - https://github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
-              - https://github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt.pem
+              - https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt.pem
       - version_constraint: Version == "v0.3.5"
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/zeitgeist_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         asset: zeitgeist_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         format: raw
         supported_envs:
@@ -66,7 +73,8 @@ packages:
           - linux
           - amd64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
@@ -76,13 +84,14 @@ packages:
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
               - --signature
-              - https://github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
-              - https://github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt.pem
+              - https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt.pem
       - version_constraint: Version == "v0.4.0"
         no_asset: true
       - version_constraint: Version == "v0.4.1"
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/zeitgeist_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         asset: zeitgeist_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         format: raw
         supported_envs:
@@ -90,7 +99,8 @@ packages:
           - linux
           - amd64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
@@ -100,11 +110,12 @@ packages:
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
               - --signature
-              - https://github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
-              - https://github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt.pem
+              - https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt.pem
       - version_constraint: semver("< 0.6.2")
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/zeitgeist-{{.Arch}}-{{.OS}}
         asset: zeitgeist-{{.Arch}}-{{.OS}}
         format: raw
         supported_envs:
@@ -112,7 +123,8 @@ packages:
           - linux
           - amd64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
@@ -122,11 +134,12 @@ packages:
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
               - --signature
-              - https://github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
-              - https://github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt.pem
+              - https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt.pem
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/zeitgeist-{{.Arch}}-{{.OS}}
         asset: zeitgeist-{{.Arch}}-{{.OS}}
         format: raw
         supported_envs:
@@ -134,12 +147,14 @@ packages:
           - linux
           - amd64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt.sigstore.json
               asset: checksums.txt.sigstore.json
             opts:
               - --certificate-identity-regexp

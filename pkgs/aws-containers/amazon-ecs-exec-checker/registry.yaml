@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_content
+  - type: http
+    url: https://gh-proxy.org/raw.githubusercontent.com/aws-containers/amazon-ecs-exec-checker/{{.Version}}/check-ecs-exec.sh
     repo_owner: aws-containers
     repo_name: amazon-ecs-exec-checker
     description: Pre-flight checks for ECS Exec

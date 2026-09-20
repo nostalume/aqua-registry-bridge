@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/openclarity/kubeclarity/releases/download/{{.Version}}/kubeclarity-cli-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
     repo_owner: openclarity
     repo_name: kubeclarity
     description: KubeClarity is a tool for detection and management of Software Bill Of Materials (SBOM) and vulnerabilities of container images and filesystems
@@ -12,13 +13,15 @@ packages:
       - linux
       - darwin
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/openclarity/kubeclarity/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256
     version_constraint: semver(">= 2.1.0")
     version_overrides:
       - version_constraint: semver("= 2.0.0")
-        url: https://gh-proxy.org/https://github.com/openclarity/kubeclarity/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/openclarity/kubeclarity/releases/download/{{.Version}}/cli-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: cli-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         files:
           - name: kubeclarity-cli

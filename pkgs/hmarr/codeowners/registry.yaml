@@ -9,35 +9,41 @@ packages:
       - version_constraint: Version == "v0.1.0"
         no_asset: true
       - version_constraint: Version == "v0.3.1"
-        url: https://gh-proxy.org/https://github.com/hmarr/codeowners/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/hmarr/codeowners/releases/download/{{.Version}}/codeowners_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: codeowners_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/hmarr/codeowners/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 0.3.0")
-        url: https://gh-proxy.org/https://github.com/hmarr/codeowners/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/hmarr/codeowners/releases/download/{{.Version}}/codeowners_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: codeowners_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/hmarr/codeowners/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/hmarr/codeowners/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/hmarr/codeowners/releases/download/{{.Version}}/codeowners_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: codeowners_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/hmarr/codeowners/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:

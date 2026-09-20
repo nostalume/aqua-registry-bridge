@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.1.0-rc.1"
-        url: https://gh-proxy.org/https://github.com/spinframework/spin/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/spinframework/spin/releases/download/{{.Version}}/spin-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: spin-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -15,7 +16,8 @@ packages:
           arm64: aarch64
           darwin: macos
       - version_constraint: Version == "v0.1.0-rc.4"
-        url: https://gh-proxy.org/https://github.com/spinframework/spin/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/spinframework/spin/releases/download/{{.Version}}/spin-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: spin-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -23,7 +25,8 @@ packages:
           arm64: aarch64
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/spinframework/spin/releases/download/{{.Version}}/checksums-{{.Version}}.txt
           asset: checksums-{{.Version}}.txt
           algorithm: sha256
         supported_envs:
@@ -31,28 +34,35 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.6.0")
-        url: https://gh-proxy.org/https://github.com/spinframework/spin/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/spinframework/spin/releases/download/{{.Version}}/spin-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: spin-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         replacements:
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/spinframework/spin/releases/download/{{.Version}}/checksums-{{.Version}}.txt
           asset: checksums-{{.Version}}.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/spinframework/spin/releases/download/{{.Version}}/spin-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/spinframework/spin/releases/download/{{.Version}}/spin-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/spinframework/spin/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/spinframework/spin/releases/download/{{.Version}}/spin-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: spin-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -60,10 +70,13 @@ packages:
           arm64: aarch64
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/spinframework/spin/releases/download/{{.Version}}/checksums-{{.Version}}.txt
           asset: checksums-{{.Version}}.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/spinframework/spin/releases/download/{{.Version}}/spin-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             replacements: {}

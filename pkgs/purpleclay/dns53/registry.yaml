@@ -7,25 +7,29 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/purpleclay/dns53/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/purpleclay/dns53/releases/download/{{.Version}}/dns53_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: dns53_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/purpleclay/dns53/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/purpleclay/dns53/releases/download/{{.Version}}/checksums.txt.pem
+              - https://gh-proxy.org/github.com/purpleclay/dns53/releases/download/{{.Version}}/checksums.txt.pem
               - --certificate-identity
-              - https://github.com/purpleclay/dns53/.github/workflows/release.yml@refs/tags/{{.Version}}
+              - https://gh-proxy.org/github.com/purpleclay/dns53/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/purpleclay/dns53/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/purpleclay/dns53/releases/download/{{.Version}}/checksums.txt.sig
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/purpleclay/dns53/releases/download/{{.Version}}/dns53_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip

@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version == "v0.1.1"
         no_asset: true
       - version_constraint: Version == "v0.1.0-beta.2"
-        url: https://gh-proxy.org/https://github.com/orhun/git-cliff/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/orhun/git-cliff/releases/download/{{.Version}}/git-cliff-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: git-cliff-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -21,14 +22,16 @@ packages:
           darwin: apple-darwin
           linux: unknown-linux-musl
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha512"
           asset: "{{.Asset}}.sha512"
           algorithm: sha512
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v0.1.0-beta.3"
-        url: https://gh-proxy.org/https://github.com/orhun/git-cliff/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/orhun/git-cliff/releases/download/{{.Version}}/git-cliff-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: git-cliff-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -42,11 +45,14 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha512"
           asset: "{{.Asset}}.sha512"
           algorithm: sha512
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/orhun/git-cliff/releases/download/{{.Version}}/git-cliff--{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             asset: git-cliff--{{.Arch}}-{{.OS}}.{{.Format}}
             files:
@@ -59,7 +65,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "v0.1.0-rc.2"
-        url: https://gh-proxy.org/https://github.com/orhun/git-cliff/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/orhun/git-cliff/releases/download/{{.Version}}/git-cliff-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: git-cliff-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -69,13 +76,15 @@ packages:
           amd64: x86_64
           linux: unknown-linux-gnu
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha512"
           asset: "{{.Asset}}.sha512"
           algorithm: sha512
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 0.1.0-rc.1")
-        url: https://gh-proxy.org/https://github.com/orhun/git-cliff/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/orhun/git-cliff/releases/download/{{.Version}}/git-cliff-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: git-cliff-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -89,11 +98,14 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha512"
           asset: "{{.Asset}}.sha512"
           algorithm: sha512
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/orhun/git-cliff/releases/download/{{.Version}}/git-cliff-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             checksum:
               enabled: false
@@ -102,7 +114,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.1.0-rc.5")
-        url: https://gh-proxy.org/https://github.com/orhun/git-cliff/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/orhun/git-cliff/releases/download/{{.Version}}/git-cliff-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: git-cliff-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -112,13 +125,15 @@ packages:
           amd64: x86_64
           linux: unknown-linux-musl
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha512"
           asset: "{{.Asset}}.sha512"
           algorithm: sha512
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 1.0.0")
-        url: https://gh-proxy.org/https://github.com/orhun/git-cliff/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/orhun/git-cliff/releases/download/{{.Version}}/git-cliff-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: git-cliff-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -132,11 +147,14 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha512"
           asset: "{{.Asset}}.sha512"
           algorithm: sha512
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/orhun/git-cliff/releases/download/{{.Version}}/git-cliff-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             checksum:
               enabled: false
@@ -145,7 +163,8 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/orhun/git-cliff/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/orhun/git-cliff/releases/download/{{.Version}}/git-cliff-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: git-cliff-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -158,11 +177,14 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha512"
           asset: "{{.Asset}}.sha512"
           algorithm: sha512
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/orhun/git-cliff/releases/download/{{.Version}}/git-cliff-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             checksum:
               enabled: false

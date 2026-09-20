@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/ryodocx/kube-credential-cache/releases/download/{{.Version}}/kube-credential-cache_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: ryodocx
     repo_name: kube-credential-cache
     asset: kube-credential-cache_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -13,11 +14,14 @@ packages:
       windows: Windows
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/ryodocx/kube-credential-cache/releases/download/{{.Version}}/kube-credential-cache_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     files:
       - name: kcc-cache
       - name: kcc-injector
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/ryodocx/kube-credential-cache/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256

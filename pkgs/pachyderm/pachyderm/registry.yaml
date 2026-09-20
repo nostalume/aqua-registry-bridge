@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/pachyderm/pachyderm/releases/download/{{.Version}}/pachctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: pachyderm
     repo_name: pachyderm
     asset: pachctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -8,6 +9,8 @@ packages:
     description: Data-Centric Pipelines and Data Versioning
     overrides:
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/pachyderm/pachyderm/releases/download/{{.Version}}/pachctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
     files:
       - name: pachctl

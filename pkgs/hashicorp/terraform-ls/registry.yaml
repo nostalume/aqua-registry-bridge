@@ -32,14 +32,16 @@ packages:
           - amd64
       - version_constraint: semver("< 0.2.1")
         # 0.1.0 and 0.2.0 were released only at GitHub Releases
-        type: github_release
+        type: http
+        url: https://gh-proxy.org/github.com/hashicorp/terraform-ls/releases/download/{{.Version}}/terraform-ls_{{trimV .Version}}_{{.OS}}_{{.Arch}}.zip
         asset: terraform-ls_{{trimV .Version}}_{{.OS}}_{{.Arch}}.zip
         supported_envs:
           - darwin
           - amd64
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/hashicorp/terraform-ls/releases/download/{{.Version}}/terraform-ls_{{trimV .Version}}_SHA256SUMS
           asset: terraform-ls_{{trimV .Version}}_SHA256SUMS
           algorithm: sha256
       - version_constraint: "true"

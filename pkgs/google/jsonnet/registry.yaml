@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/google/jsonnet/releases/download/{{.Version}}/jsonnet-bin-{{.Version}}-linux.tar.gz
     repo_owner: google
     repo_name: jsonnet
     asset: jsonnet-bin-{{.Version}}-linux.tar.gz

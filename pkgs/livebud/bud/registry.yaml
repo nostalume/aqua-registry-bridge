@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/livebud/bud/releases/download/{{.Version}}/bud_{{.Version}}_{{.OS}}_{{.Arch}}.tar.gz
     repo_owner: livebud
     repo_name: bud
     description: The Full-Stack Web Framework for Go
@@ -12,6 +13,7 @@ packages:
       - name: bud
         src: bud_{{.Version}}_{{.OS}}_{{.Arch}}/bud
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/livebud/bud/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256

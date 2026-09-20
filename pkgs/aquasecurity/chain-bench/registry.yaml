@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.1.7")
-        url: https://gh-proxy.org/https://github.com/aquasecurity/chain-bench/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aquasecurity/chain-bench/releases/download/{{.Version}}/chain-bench_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: chain-bench_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -16,14 +17,16 @@ packages:
           darwin: macOS
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/aquasecurity/chain-bench/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/aquasecurity/chain-bench/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aquasecurity/chain-bench/releases/download/{{.Version}}/chain-bench_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: chain-bench_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -32,7 +35,8 @@ packages:
           darwin: macOS
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/aquasecurity/chain-bench/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:

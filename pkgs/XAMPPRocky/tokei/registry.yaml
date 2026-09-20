@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 9.1.0")
-        url: https://gh-proxy.org/https://github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: tokei-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -18,18 +19,25 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               arm64: aarch64
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 10.0.1")
-        url: https://gh-proxy.org/https://github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: tokei-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -38,10 +46,14 @@ packages:
           darwin: apple-darwin
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               arm64: aarch64
@@ -50,17 +62,22 @@ packages:
           - linux
           - darwin
       - version_constraint: Version == "v10.1.0"
-        url: https://gh-proxy.org/https://github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Version}}-i686-{{.OS}}.{{.Format}}
         asset: tokei-{{.Version}}-i686-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
           arm64: aarch64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Version}}-i686-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             asset: tokei-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
@@ -68,7 +85,8 @@ packages:
         supported_envs:
           - linux
       - version_constraint: Version == "v10.1.1"
-        url: https://gh-proxy.org/https://github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: tokei-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -77,10 +95,14 @@ packages:
           darwin: apple-darwin
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               arm64: aarch64
@@ -89,7 +111,8 @@ packages:
           - linux
           - darwin
       - version_constraint: Version == "v10.1.2"
-        url: https://gh-proxy.org/https://github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: tokei-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -100,18 +123,25 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               arm64: aarch64
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 11.1.1")
-        url: https://gh-proxy.org/https://github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: tokei-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -122,18 +152,25 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               arm64: aarch64
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 12.0.3")
-        url: https://gh-proxy.org/https://github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: tokei-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -144,19 +181,26 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               arm64: aarch64
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Arch}}-{{.OS}}
             format: raw
             asset: tokei-{{.Arch}}-{{.OS}}
       - version_constraint: Version == "v12.0.4a"
-        url: https://gh-proxy.org/https://github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: tokei-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -168,6 +212,8 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Arch}}-{{.OS}}
             format: raw
             asset: tokei-{{.Arch}}-{{.OS}}
         supported_envs:
@@ -175,7 +221,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "v12.0.4"
-        url: https://gh-proxy.org/https://github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: tokei-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -186,19 +233,26 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               arm64: aarch64
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Arch}}-{{.OS}}
             format: raw
             asset: tokei-{{.Arch}}-{{.OS}}
       - version_constraint: Version == "v12.1.0"
-        url: https://gh-proxy.org/https://github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: tokei-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -208,13 +262,16 @@ packages:
           linux: unknown-linux-gnu
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 13.0.0-alpha.0")
-        url: https://gh-proxy.org/https://github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: tokei-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -225,15 +282,21 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               arm64: aarch64
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/XAMPPRocky/tokei/releases/download/{{.Version}}/tokei-{{.Arch}}-{{.OS}}
             format: raw
             asset: tokei-{{.Arch}}-{{.OS}}
       - version_constraint: "true"

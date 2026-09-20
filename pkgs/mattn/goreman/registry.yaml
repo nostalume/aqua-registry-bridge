@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/mattn/goreman/releases/download/{{.Version}}/goreman_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: mattn
     repo_name: goreman
     description: foreman clone written in go language
@@ -15,4 +16,6 @@ packages:
     format: zip
     overrides:
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/mattn/goreman/releases/download/{{.Version}}/goreman_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz

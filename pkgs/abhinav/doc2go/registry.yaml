@@ -7,10 +7,12 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/abhinav/doc2go/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/abhinav/doc2go/releases/download/{{.Version}}/doc2go-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: doc2go-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/abhinav/doc2go/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

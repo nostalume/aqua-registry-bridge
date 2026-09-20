@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/doy/rbw/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/doy/rbw/releases/download/{{.Version}}/rbw_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: rbw_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         supported_envs:

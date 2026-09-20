@@ -7,28 +7,32 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 2.4.0")
-        url: https://gh-proxy.org/https://github.com/mekedron/wolt-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mekedron/wolt-cli/releases/download/{{.Version}}/wolt_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: wolt_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: wolt
           - name: wolt-mcp
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/mekedron/wolt-cli/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/mekedron/wolt-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mekedron/wolt-cli/releases/download/{{.Version}}/wolt_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: wolt_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: wolt
           - name: wolt-mcp
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/mekedron/wolt-cli/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         supported_envs:

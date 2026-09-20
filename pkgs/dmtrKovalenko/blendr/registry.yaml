@@ -7,16 +7,21 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/dmtrKovalenko/blendr/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dmtrKovalenko/blendr/releases/download/{{.Version}}/blendr-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: blendr-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dmtrKovalenko/blendr/releases/download/{{.Version}}/blendr-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dmtrKovalenko/blendr/releases/download/{{.Version}}/blendr-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu

@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Fusion/gogo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Fusion/gogo/releases/download/{{.Version}}/gogo-{{.OS}}-{{.Arch}}
         asset: gogo-{{.OS}}-{{.Arch}}
         format: raw
         supported_envs:

@@ -11,13 +11,15 @@ packages:
       - version_constraint: Version == "v3.12.0-rc.0" || semver("<= 3.7.0-beta.2")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/open-policy-agent/gatekeeper/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/open-policy-agent/gatekeeper/releases/download/{{.Version}}/gator-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: gator-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: gator
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/open-policy-agent/gatekeeper/releases/download/{{.Version}}/sha256sums.txt
           asset: sha256sums.txt
           algorithm: sha256
         supported_envs:

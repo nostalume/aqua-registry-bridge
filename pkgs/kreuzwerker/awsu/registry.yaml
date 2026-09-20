@@ -7,21 +7,24 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v2.3.10"
-        url: https://gh-proxy.org/https://github.com/kreuzwerker/awsu/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kreuzwerker/awsu/releases/download/{{.Version}}/awsu_{{trimV .Version}}_{{.OS}}_arm.{{.Format}}
         asset: awsu_{{trimV .Version}}_{{.OS}}_arm.{{.Format}}
         format: tar.gz
         replacements:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kreuzwerker/awsu/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 2.3.2")
-        url: https://gh-proxy.org/https://github.com/kreuzwerker/awsu/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kreuzwerker/awsu/releases/download/{{.Version}}/awsu-{{.OS}}-{{.Arch}}
         asset: awsu-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -29,7 +32,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 2.3.9")
-        url: https://gh-proxy.org/https://github.com/kreuzwerker/awsu/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kreuzwerker/awsu/releases/download/{{.Version}}/awsu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: awsu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -38,14 +42,16 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kreuzwerker/awsu/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/kreuzwerker/awsu/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kreuzwerker/awsu/releases/download/{{.Version}}/awsu_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: awsu_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -54,7 +60,8 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kreuzwerker/awsu/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/ddev/ddev/releases/download/{{.Version}}/ddev_{{.OS}}-{{.Arch}}.{{.Version}}.{{.Format}}
     repo_owner: ddev
     repo_name: ddev
     aliases:
@@ -12,12 +13,15 @@ packages:
       darwin: macos
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/ddev/ddev/releases/download/{{.Version}}/ddev_{{.OS}}-{{.Arch}}.{{.Version}}.{{.Format}}
         format: zip
     supported_envs:
       - darwin
       - linux
       - amd64
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/ddev/ddev/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256

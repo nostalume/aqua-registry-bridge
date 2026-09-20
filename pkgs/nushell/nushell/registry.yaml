@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/nushell/nushell/releases/download/{{.Version}}/nu-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
     repo_owner: nushell
     repo_name: nushell
     asset: nu-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
@@ -14,10 +15,14 @@ packages:
       windows: pc-windows-msvc
     overrides:
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/nushell/nushell/releases/download/{{.Version}}/nu-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         goarch: arm64
         replacements:
           linux: unknown-linux-gnu
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/nushell/nushell/releases/download/{{.Version}}/nu-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         files:
           - name: nu
@@ -32,5 +37,7 @@ packages:
         src: nu-{{.Version}}-{{.Arch}}-{{.OS}}/nu
     version_overrides:
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/nushell/nushell/releases/download/{{.Version}}/nu-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         files:
           - name: nu

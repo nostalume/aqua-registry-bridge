@@ -9,10 +9,13 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.49.0")
+        type: http
+        url: https://gh-proxy.org/github.com/ktlint/ktlint/releases/download/{{.Version}}/ktlint
         complete_windows_ext: false
         asset: ktlint
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/ktlint/ktlint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ktlint/ktlint/releases/download/{{.Version}}/ktlint-{{.Version}}.{{.Format}}
         asset: "ktlint-{{.Version}}.{{.Format}}"
         format: zip
         files:

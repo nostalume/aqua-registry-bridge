@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version == "v1.0.0"
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/joshmedeski/sesh/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/joshmedeski/sesh/releases/download/{{.Version}}/sesh_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: sesh_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -18,9 +19,12 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/joshmedeski/sesh/releases/download/{{.Version}}/sesh_{{trimV .Version}}_checksums.txt
           asset: sesh_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/joshmedeski/sesh/releases/download/{{.Version}}/sesh_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

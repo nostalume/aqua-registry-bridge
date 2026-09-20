@@ -12,7 +12,8 @@ packages:
       - version_constraint: semver("<= 1.2")
         no_asset: true
       - version_constraint: semver("<= 1.4")
-        url: https://gh-proxy.org/https://github.com/jqlang/jq/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jqlang/jq/releases/download/{{.Version}}/jq-{{.OS}}-{{.Arch}}
         asset: jq-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -22,13 +23,16 @@ packages:
           windows: win64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jqlang/jq/releases/download/{{.Version}}/jq-{{.OS}}
             asset: jq-{{.OS}}
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "jq-1.5rc1"
-        url: https://gh-proxy.org/https://github.com/jqlang/jq/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jqlang/jq/releases/download/{{.Version}}/jq-{{.OS}}-{{.Arch}}-static
         asset: jq-{{.OS}}-{{.Arch}}-static
         format: raw
         replacements:
@@ -36,12 +40,15 @@ packages:
           amd64: x86_64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jqlang/jq/releases/download/{{.Version}}/jq-{{.OS}}
             asset: jq-{{.OS}}
         supported_envs:
           - linux/amd64
           - windows
       - version_constraint: Version == "jq-1.5rc2"
-        url: https://gh-proxy.org/https://github.com/jqlang/jq/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jqlang/jq/releases/download/{{.Version}}/jq-{{.OS}}-{{.Arch}}
         asset: jq-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -51,13 +58,16 @@ packages:
           windows: win64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jqlang/jq/releases/download/{{.Version}}/jq-{{.OS}}
             asset: jq-{{.OS}}
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 1.6")
-        url: https://gh-proxy.org/https://github.com/jqlang/jq/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jqlang/jq/releases/download/{{.Version}}/jq-{{.OS}}
         asset: jq-{{.OS}}
         format: raw
         rosetta2: true
@@ -67,31 +77,37 @@ packages:
           windows: win64
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/jqlang/jq/releases/download/{{.Version}}/jq-{{.OS}}-{{.Arch}}
             asset: jq-{{.OS}}-{{.Arch}}
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("< 1.8.0")
-        url: https://gh-proxy.org/https://github.com/jqlang/jq/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jqlang/jq/releases/download/{{.Version}}/jq-{{.OS}}-{{.Arch}}
         asset: jq-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         replacements:
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/jqlang/jq/releases/download/{{.Version}}/sha256sum.txt
           asset: sha256sum.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/jqlang/jq/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jqlang/jq/releases/download/{{.Version}}/jq-{{.OS}}-{{.Arch}}
         asset: jq-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         replacements:
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/jqlang/jq/releases/download/{{.Version}}/sha256sum.txt
           asset: sha256sum.txt
           algorithm: sha256
         github_artifact_attestations:

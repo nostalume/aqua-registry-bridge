@@ -7,10 +7,12 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/liamg/extrude/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/liamg/extrude/releases/download/{{.Version}}/extrude-{{.OS}}-{{.Arch}}
         asset: extrude-{{.OS}}-{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/liamg/extrude/releases/download/{{.Version}}/extrude_{{trimV .Version}}_checksums.txt
           asset: extrude_{{trimV .Version}}_checksums.txt
           algorithm: sha256

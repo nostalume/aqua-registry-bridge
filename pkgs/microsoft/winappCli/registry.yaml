@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version in ["v0.1.0", "v0.1.1"]
-        url: https://gh-proxy.org/https://github.com/microsoft/winappCli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/microsoft/winappCli/releases/download/{{.Version}}/winappcli-{{.Arch}}.{{.Format}}
         asset: winappcli-{{.Arch}}.{{.Format}}
         format: zip
         replacements:
@@ -17,7 +18,8 @@ packages:
         supported_envs:
           - windows
       - version_constraint: semver("<= 0.1.7")
-        url: https://gh-proxy.org/https://github.com/microsoft/winappCli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/microsoft/winappCli/releases/download/{{.Version}}/winappcli-{{trimV .Version}}-{{.Arch}}.{{.Format}}
         asset: winappcli-{{trimV .Version}}-{{.Arch}}.{{.Format}}
         format: zip
         replacements:
@@ -25,7 +27,8 @@ packages:
         supported_envs:
           - windows
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/microsoft/winappCli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/microsoft/winappCli/releases/download/{{.Version}}/winappcli-{{.Arch}}.{{.Format}}
         asset: winappcli-{{.Arch}}.{{.Format}}
         format: zip
         replacements:

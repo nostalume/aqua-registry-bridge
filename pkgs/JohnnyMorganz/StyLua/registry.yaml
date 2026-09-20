@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.12.5")
-        url: https://gh-proxy.org/https://github.com/JohnnyMorganz/StyLua/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/JohnnyMorganz/StyLua/releases/download/{{.Version}}/stylua-{{trimV .Version}}-{{.OS}}.{{.Format}}
         asset: stylua-{{trimV .Version}}-{{.OS}}.{{.Format}}
         format: zip
         replacements:
@@ -20,7 +21,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.13.1")
-        url: https://gh-proxy.org/https://github.com/JohnnyMorganz/StyLua/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/JohnnyMorganz/StyLua/releases/download/{{.Version}}/stylua-{{.OS}}.{{.Format}}
         asset: stylua-{{.OS}}.{{.Format}}
         format: zip
         replacements:
@@ -31,7 +33,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.14.3")
-        url: https://gh-proxy.org/https://github.com/JohnnyMorganz/StyLua/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/JohnnyMorganz/StyLua/releases/download/{{.Version}}/stylua-{{.OS}}.{{.Format}}
         asset: stylua-{{.OS}}.{{.Format}}
         format: zip
         replacements:
@@ -39,6 +42,8 @@ packages:
           windows: win64
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/JohnnyMorganz/StyLua/releases/download/{{.Version}}/stylua-{{.OS}}-{{.Arch}}.{{.Format}}
             goarch: arm64
             asset: stylua-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
@@ -48,7 +53,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.19.1")
-        url: https://gh-proxy.org/https://github.com/JohnnyMorganz/StyLua/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/JohnnyMorganz/StyLua/releases/download/{{.Version}}/stylua-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: stylua-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -57,7 +63,8 @@ packages:
           arm64: aarch64
           darwin: macos
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/JohnnyMorganz/StyLua/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/JohnnyMorganz/StyLua/releases/download/{{.Version}}/stylua-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: stylua-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -67,5 +74,7 @@ packages:
           darwin: macos
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/JohnnyMorganz/StyLua/releases/download/{{.Version}}/stylua-{{.OS}}-{{.Arch}}-musl.{{.Format}}
             goarch: amd64
             asset: stylua-{{.OS}}-{{.Arch}}-musl.{{.Format}}

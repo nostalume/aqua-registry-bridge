@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/Ladicle/kubectl-rolesum/releases/download/{{.Version}}/kubectl-rolesum_{{.OS}}-{{.Arch}}.tar.gz
     repo_owner: Ladicle
     repo_name: kubectl-rolesum
     description: Summarize Kubernetes RBAC roles for the specified subjects
@@ -14,6 +15,7 @@ packages:
       - name: kubectl-rolesum
         src: kubectl-rolesum_{{.OS}}-{{.Arch}}/kubectl-rolesum
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/Ladicle/kubectl-rolesum/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256

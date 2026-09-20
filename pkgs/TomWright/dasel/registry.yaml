@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/TomWright/dasel/releases/download/{{.Version}}/dasel_{{.OS}}_{{.Arch}}
     repo_owner: TomWright
     repo_name: dasel
     rosetta2: true

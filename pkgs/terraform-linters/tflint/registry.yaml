@@ -7,25 +7,30 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.32.0"
-        url: https://gh-proxy.org/https://github.com/terraform-linters/tflint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/terraform-linters/tflint/releases/download/{{.Version}}/tflint_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tflint_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/terraform-linters/tflint/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: Version == "v0.32.1"
-        url: https://gh-proxy.org/https://github.com/terraform-linters/tflint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/terraform-linters/tflint/releases/download/{{.Version}}/tflint_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tflint_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/terraform-linters/tflint/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.7.6")
-        url: https://gh-proxy.org/https://github.com/terraform-linters/tflint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/terraform-linters/tflint/releases/download/{{.Version}}/tflint_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tflint_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -35,13 +40,15 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.29.0")
-        url: https://gh-proxy.org/https://github.com/terraform-linters/tflint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/terraform-linters/tflint/releases/download/{{.Version}}/tflint_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tflint_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/terraform-linters/tflint/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
@@ -49,51 +56,57 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.35.0")
-        url: https://gh-proxy.org/https://github.com/terraform-linters/tflint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/terraform-linters/tflint/releases/download/{{.Version}}/tflint_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tflint_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/terraform-linters/tflint/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.51.0")
-        url: https://gh-proxy.org/https://github.com/terraform-linters/tflint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/terraform-linters/tflint/releases/download/{{.Version}}/tflint_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tflint_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/terraform-linters/tflint/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate-identity
-              - "https://github.com/terraform-linters/tflint/.github/workflows/release.yml@refs/tags/{{.Version}}"
+              - "https://gh-proxy.org/github.com/terraform-linters/tflint/.github/workflows/release.yml@refs/tags/{{.Version}}"
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
               - --signature
-              - https://github.com/terraform-linters/tflint/releases/download/{{.Version}}/checksums.txt.keyless.sig
+              - https://gh-proxy.org/github.com/terraform-linters/tflint/releases/download/{{.Version}}/checksums.txt.keyless.sig
               - --certificate
-              - https://github.com/terraform-linters/tflint/releases/download/{{.Version}}/checksums.txt.pem
+              - https://gh-proxy.org/github.com/terraform-linters/tflint/releases/download/{{.Version}}/checksums.txt.pem
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/terraform-linters/tflint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/terraform-linters/tflint/releases/download/{{.Version}}/tflint_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tflint_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/terraform-linters/tflint/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate-identity
-              - "https://github.com/terraform-linters/tflint/.github/workflows/release.yml@refs/tags/{{.Version}}"
+              - "https://gh-proxy.org/github.com/terraform-linters/tflint/.github/workflows/release.yml@refs/tags/{{.Version}}"
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
               - --signature
-              - https://github.com/terraform-linters/tflint/releases/download/{{.Version}}/checksums.txt.keyless.sig
+              - https://gh-proxy.org/github.com/terraform-linters/tflint/releases/download/{{.Version}}/checksums.txt.keyless.sig
               - --certificate
-              - https://github.com/terraform-linters/tflint/releases/download/{{.Version}}/checksums.txt.pem
+              - https://gh-proxy.org/github.com/terraform-linters/tflint/releases/download/{{.Version}}/checksums.txt.pem
           github_artifact_attestations:
             signer_workflow: terraform-linters/tflint/.github/workflows/release.yml

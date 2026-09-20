@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/kubernetes-retired/kubefed/releases/download/{{.Version}}/kubefedctl-{{trimV .Version}}-{{.OS}}-{{.Arch}}.tgz
     repo_owner: kubernetes-retired
     repo_name: kubefed
     aliases:

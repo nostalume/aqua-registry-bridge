@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.27.4")
-        url: https://gh-proxy.org/https://github.com/neondatabase/neonctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/neondatabase/neonctl/releases/download/{{.Version}}/neonctl-{{.OS}}
         asset: neonctl-{{.OS}}
         format: raw
         replacements:
@@ -18,7 +19,8 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/neondatabase/neonctl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/neondatabase/neonctl/releases/download/{{.Version}}/neonctl-{{.OS}}-{{.Arch}}
         asset: neonctl-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true

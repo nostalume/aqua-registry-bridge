@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.2.0")
-        url: https://gh-proxy.org/https://github.com/oppiliappan/dijo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/oppiliappan/dijo/releases/download/{{.Version}}/dijo-{{.Arch}}-{{.OS}}
         asset: dijo-{{.Arch}}-{{.OS}}
         format: raw
         rosetta2: true
@@ -20,7 +21,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v0.2.1"
-        url: https://gh-proxy.org/https://github.com/oppiliappan/dijo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/oppiliappan/dijo/releases/download/{{.Version}}/dijo-{{.Arch}}-{{.OS}}
         asset: dijo-{{.Arch}}-{{.OS}}
         format: raw
         replacements:
@@ -28,7 +30,8 @@ packages:
         supported_envs:
           - linux/amd64
       - version_constraint: Version == "v0.2.2-alpha"
-        url: https://gh-proxy.org/https://github.com/oppiliappan/dijo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/oppiliappan/dijo/releases/download/{{.Version}}/dijo-{{.Arch}}-{{.OS}}
         asset: dijo-{{.Arch}}-{{.OS}}
         format: raw
         rosetta2: true
@@ -38,7 +41,8 @@ packages:
         supported_envs:
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/oppiliappan/dijo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/oppiliappan/dijo/releases/download/{{.Version}}/dijo-{{.Arch}}-{{.OS}}
         asset: dijo-{{.Arch}}-{{.OS}}
         format: raw
         rosetta2: true

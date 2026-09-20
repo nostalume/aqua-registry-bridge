@@ -11,7 +11,8 @@ packages:
       - version_constraint: semver("<= 0.0.366-3")
         no_asset: true
       - version_constraint: Version == "v0.0.366-5"
-        url: https://gh-proxy.org/https://github.com/github/copilot-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/github/copilot-cli/releases/download/{{.Version}}/copilot-copilot-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: copilot-copilot-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         files:
@@ -20,7 +21,8 @@ packages:
           amd64: x64
           windows: win32
       - version_constraint: semver("<= 0.0.370-0")
-        url: https://gh-proxy.org/https://github.com/github/copilot-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/github/copilot-cli/releases/download/{{.Version}}/copilot-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: copilot-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -30,9 +32,12 @@ packages:
           windows: win32
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/github/copilot-cli/releases/download/{{.Version}}/copilot-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/github/copilot-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/github/copilot-cli/releases/download/{{.Version}}/copilot-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: copilot-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -42,8 +47,11 @@ packages:
           windows: win32
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/github/copilot-cli/releases/download/{{.Version}}/copilot-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/github/copilot-cli/releases/download/{{.Version}}/SHA256SUMS.txt
           asset: SHA256SUMS.txt
           algorithm: sha256

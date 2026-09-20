@@ -9,15 +9,20 @@ packages:
       - version_constraint: semver("< 3.0.0")
         error_message: "asciinema v3.0.0 or later is required"
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/asciinema/asciinema/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/asciinema/asciinema/releases/download/{{.Version}}/asciinema-{{.Arch}}-{{.OS}}
         asset: asciinema-{{.Arch}}-{{.OS}}
         format: raw
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/asciinema/asciinema/releases/download/{{.Version}}/asciinema-{{.Arch}}-{{.OS}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/asciinema/asciinema/releases/download/{{.Version}}/asciinema-{{.Arch}}-{{.OS}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu

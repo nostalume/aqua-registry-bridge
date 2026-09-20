@@ -10,7 +10,8 @@ packages:
       - version_constraint: Version == "v0.1.0"
         no_asset: true
       - version_constraint: Version == "v0.0.7"
-        url: https://gh-proxy.org/https://github.com/RyuyaIshibashi/aws-s3-siggy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/RyuyaIshibashi/aws-s3-siggy/releases/download/{{.Version}}/aws-s3-siggy_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: aws-s3-siggy_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -21,14 +22,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/RyuyaIshibashi/aws-s3-siggy/releases/download/{{.Version}}/aws-s3-siggy_{{trimV .Version}}_checksums.txt
           asset: aws-s3-siggy_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/RyuyaIshibashi/aws-s3-siggy/releases/download/{{.Version}}/aws-s3-siggy_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: Version == "v0.0.9"
-        url: https://gh-proxy.org/https://github.com/RyuyaIshibashi/aws-s3-siggy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/RyuyaIshibashi/aws-s3-siggy/releases/download/{{.Version}}/siggy_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: siggy_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -37,14 +42,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/RyuyaIshibashi/aws-s3-siggy/releases/download/{{.Version}}/siggy_{{trimV .Version}}_checksums.txt
           asset: siggy_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/RyuyaIshibashi/aws-s3-siggy/releases/download/{{.Version}}/siggy_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: Version == "v0.2.0"
-        url: https://gh-proxy.org/https://github.com/RyuyaIshibashi/aws-s3-siggy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/RyuyaIshibashi/aws-s3-siggy/releases/download/{{.Version}}/siggy_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: siggy_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -54,9 +63,12 @@ packages:
           windows: Windows
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/RyuyaIshibashi/aws-s3-siggy/releases/download/{{.Version}}/siggy_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/RyuyaIshibashi/aws-s3-siggy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/RyuyaIshibashi/aws-s3-siggy/releases/download/{{.Version}}/siggy_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: siggy_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -65,9 +77,12 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/RyuyaIshibashi/aws-s3-siggy/releases/download/{{.Version}}/siggy_{{trimV .Version}}_checksums.txt
           asset: siggy_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/RyuyaIshibashi/aws-s3-siggy/releases/download/{{.Version}}/siggy_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("< 0.14.0")
-        url: https://gh-proxy.org/https://github.com/google/yamlfmt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/google/yamlfmt/releases/download/{{.Version}}/yamlfmt_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: yamlfmt_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -16,11 +17,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/google/yamlfmt/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/google/yamlfmt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/google/yamlfmt/releases/download/{{.Version}}/yamlfmt_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: yamlfmt_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -29,16 +32,17 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/google/yamlfmt/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate-identity
-              - https://github.com/google/yamlfmt/.github/workflows/release.yaml@refs/tags/{{.Version}}
+              - https://gh-proxy.org/github.com/google/yamlfmt/.github/workflows/release.yaml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/google/yamlfmt/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/google/yamlfmt/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
-              - https://github.com/google/yamlfmt/releases/download/{{.Version}}/checksums.txt.pem
+              - https://gh-proxy.org/github.com/google/yamlfmt/releases/download/{{.Version}}/checksums.txt.pem

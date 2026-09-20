@@ -12,23 +12,27 @@ packages:
         type: go_install
         path: github.com/go-delve/delve/cmd/dlv
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/go-delve/delve/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/go-delve/delve/releases/download/{{.Version}}/dlv_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: dlv_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/go-delve/delve/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate-identity
-              - https://github.com/go-delve/delve/.github/workflows/release.yml@refs/tags/{{.Version}}
+              - https://gh-proxy.org/github.com/go-delve/delve/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/go-delve/delve/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/go-delve/delve/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
-              - https://github.com/go-delve/delve/releases/download/{{.Version}}/checksums.txt.cert
+              - https://gh-proxy.org/github.com/go-delve/delve/releases/download/{{.Version}}/checksums.txt.cert
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/go-delve/delve/releases/download/{{.Version}}/dlv_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

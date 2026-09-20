@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version == "v0.9.0"
         no_asset: true
       - version_constraint: Version == "v0.2.1"
-        url: https://gh-proxy.org/https://github.com/daveshanley/vacuum/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/daveshanley/vacuum/releases/download/{{.Version}}/vacuum_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: vacuum_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -18,11 +19,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/daveshanley/vacuum/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.0.13")
-        url: https://gh-proxy.org/https://github.com/daveshanley/vacuum/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/daveshanley/vacuum/releases/download/{{.Version}}/vacuum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: vacuum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -31,35 +34,41 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/daveshanley/vacuum/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.29.9")
-        url: https://gh-proxy.org/https://github.com/daveshanley/vacuum/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/daveshanley/vacuum/releases/download/{{.Version}}/vacuum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: vacuum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/daveshanley/vacuum/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/daveshanley/vacuum/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/daveshanley/vacuum/releases/download/{{.Version}}/vacuum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: vacuum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/daveshanley/vacuum/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/daveshanley/vacuum/releases/download/{{.Version}}/checksums.txt.sigstore.json
               asset: checksums.txt.sigstore.json
             opts:
               - --certificate-identity
-              - https://github.com/daveshanley/vacuum/.github/workflows/publish.yaml@refs/heads/main
+              - https://gh-proxy.org/github.com/daveshanley/vacuum/.github/workflows/publish.yaml@refs/heads/main
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com

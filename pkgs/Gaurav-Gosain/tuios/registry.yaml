@@ -7,15 +7,18 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.0.5"
-        url: https://gh-proxy.org/https://github.com/Gaurav-Gosain/tuios/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Gaurav-Gosain/tuios/releases/download/{{.Version}}/tuios_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tuios_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Gaurav-Gosain/tuios/releases/download/{{.Version}}/tuios_{{trimV .Version}}_checksums.txt
           asset: tuios_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: Version == "v0.0.6"
-        url: https://gh-proxy.org/https://github.com/Gaurav-Gosain/tuios/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Gaurav-Gosain/tuios/releases/download/{{.Version}}/tuios_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tuios_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -25,14 +28,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Gaurav-Gosain/tuios/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Gaurav-Gosain/tuios/releases/download/{{.Version}}/tuios_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Gaurav-Gosain/tuios/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Gaurav-Gosain/tuios/releases/download/{{.Version}}/tuios_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tuios_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -42,6 +49,7 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Gaurav-Gosain/tuios/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

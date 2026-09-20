@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/kanisterio/kanister/releases/download/{{.Version}}/kanister_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
     repo_owner: kanisterio
     repo_name: kanister
     description: An extensible framework for application-level data management on Kubernetes
@@ -8,7 +9,8 @@ packages:
     files:
       - name: kanctl
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/kanisterio/kanister/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256
     version_constraint: semver(">= 0.84.0")
@@ -18,6 +20,8 @@ packages:
       - linux/amd64
     version_overrides:
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/kanisterio/kanister/releases/download/{{.Version}}/kanister_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
         rosetta2: true
         supported_envs:
           - darwin

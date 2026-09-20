@@ -9,10 +9,12 @@ packages:
       - version_constraint: semver("<= 0.1.0")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/noborus/mdviewer/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/noborus/mdviewer/releases/download/{{.Version}}/mdviewer_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: mdviewer_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/noborus/mdviewer/releases/download/{{.Version}}/mdviewer_{{trimV .Version}}_checksums.txt
           asset: mdviewer_{{trimV .Version}}_checksums.txt
           algorithm: sha256

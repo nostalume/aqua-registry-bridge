@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("< 0.20.0")
         error_message: Standalone binaries are available from v0.20.0; please use v0.20.0 or later
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/s0undt3ch/ToolR/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/s0undt3ch/ToolR/releases/download/{{.Version}}/toolr-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: toolr-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -25,9 +26,12 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/s0undt3ch/ToolR/releases/download/{{.Version}}/toolr-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip

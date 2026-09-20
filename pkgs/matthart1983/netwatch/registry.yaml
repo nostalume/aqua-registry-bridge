@@ -12,7 +12,8 @@ packages:
       - version_constraint: Version == "v0.8.0"
         no_asset: true
       - version_constraint: semver("<= 0.11.0")
-        url: https://gh-proxy.org/https://github.com/matthart1983/netwatch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/matthart1983/netwatch/releases/download/{{.Version}}/netwatch-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: netwatch-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -22,11 +23,14 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/matthart1983/netwatch/releases/download/{{.Version}}/netwatch-{{.OS}}-{{.Arch}}.exe.{{.Format}}
             format: zip
             asset: netwatch-{{.OS}}-{{.Arch}}.exe.{{.Format}}
             replacements: {}
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/matthart1983/netwatch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/matthart1983/netwatch/releases/download/{{.Version}}/netwatch-{{.OS}}-{{.Arch}}-static.{{.Format}}
         asset: netwatch-{{.OS}}-{{.Arch}}-static.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -36,8 +40,12 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/matthart1983/netwatch/releases/download/{{.Version}}/netwatch-{{.OS}}-{{.Arch}}.{{.Format}}
             asset: netwatch-{{.OS}}-{{.Arch}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/matthart1983/netwatch/releases/download/{{.Version}}/netwatch-{{.OS}}-{{.Arch}}.exe.{{.Format}}
             format: zip
             asset: netwatch-{{.OS}}-{{.Arch}}.exe.{{.Format}}
             replacements: {}

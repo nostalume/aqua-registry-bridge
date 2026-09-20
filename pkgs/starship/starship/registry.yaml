@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version in ["v0.14.0", "v0.32.0", "v0.35.0", "v0.37.1", "v0.41.2"]
         no_asset: true
       - version_constraint: Version == "v0.31.0"
-        url: https://gh-proxy.org/https://github.com/starship/starship/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/starship/starship/releases/download/{{.Version}}/starship-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: starship-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -21,13 +22,16 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/starship/starship/releases/download/{{.Version}}/starship-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "v0.39.0"
-        url: https://gh-proxy.org/https://github.com/starship/starship/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/starship/starship/releases/download/{{.Version}}/starship-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: starship-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -38,18 +42,22 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/starship/starship/releases/download/{{.Version}}/starship-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "v1.20.0"
-        url: https://gh-proxy.org/https://github.com/starship/starship/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/starship/starship/releases/download/{{.Version}}/starship-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: starship-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         replacements:
@@ -58,17 +66,21 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/starship/starship/releases/download/{{.Version}}/starship-{{.Arch}}-{{.OS}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux
           - windows
       - version_constraint: Version == "v1.22.0"
-        url: https://gh-proxy.org/https://github.com/starship/starship/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/starship/starship/releases/download/{{.Version}}/starship-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: starship-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -77,14 +89,16 @@ packages:
           darwin: apple-darwin
           linux: unknown-linux-musl
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 0.8.0")
-        url: https://gh-proxy.org/https://github.com/starship/starship/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/starship/starship/releases/download/{{.Version}}/starship-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: starship-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -101,7 +115,8 @@ packages:
       - version_constraint: semver("<= 0.8.3")
         no_asset: true
       - version_constraint: semver("<= 0.15.0")
-        url: https://gh-proxy.org/https://github.com/starship/starship/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/starship/starship/releases/download/{{.Version}}/starship-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: starship-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -116,7 +131,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.19.0")
-        url: https://gh-proxy.org/https://github.com/starship/starship/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/starship/starship/releases/download/{{.Version}}/starship-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: starship-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -131,7 +147,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.26.2")
-        url: https://gh-proxy.org/https://github.com/starship/starship/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/starship/starship/releases/download/{{.Version}}/starship-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: starship-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -146,7 +163,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.26.4")
-        url: https://gh-proxy.org/https://github.com/starship/starship/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/starship/starship/releases/download/{{.Version}}/starship-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: starship-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -158,13 +176,16 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/starship/starship/releases/download/{{.Version}}/starship-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.48.0")
-        url: https://gh-proxy.org/https://github.com/starship/starship/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/starship/starship/releases/download/{{.Version}}/starship-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: starship-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -175,18 +196,22 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/starship/starship/releases/download/{{.Version}}/starship-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.50.0")
-        url: https://gh-proxy.org/https://github.com/starship/starship/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/starship/starship/releases/download/{{.Version}}/starship-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: starship-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -197,14 +222,18 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/starship/starship/releases/download/{{.Version}}/starship-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/starship/starship/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/starship/starship/releases/download/{{.Version}}/starship-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: starship-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -214,9 +243,12 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/starship/starship/releases/download/{{.Version}}/starship-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip

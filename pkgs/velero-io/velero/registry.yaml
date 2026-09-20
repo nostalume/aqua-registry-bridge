@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.8.0-rc.1"
-        url: https://gh-proxy.org/https://github.com/velero-io/velero/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/velero-io/velero/releases/download/{{.Version}}/ark-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: ark-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -17,7 +18,8 @@ packages:
         files:
           - name: ark
       - version_constraint: Version == "v0.10.0-beta.1"
-        url: https://gh-proxy.org/https://github.com/velero-io/velero/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/velero-io/velero/releases/download/{{.Version}}/ark-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: ark-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -25,11 +27,13 @@ packages:
         files:
           - name: ark
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/velero-io/velero/releases/download/{{.Version}}/CHECKSUM
           asset: CHECKSUM
           algorithm: sha256
       - version_constraint: Version == "v1.10.0-rc.2"
-        url: https://gh-proxy.org/https://github.com/velero-io/velero/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/velero-io/velero/releases/download/{{.Version}}/velero-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: velero-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -37,13 +41,15 @@ packages:
           - name: velero
             src: "{{.AssetWithoutExt}}/velero"
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/velero-io/velero/releases/download/{{.Version}}/CHECKSUM
           asset: CHECKSUM
           algorithm: sha256
       - version_constraint: semver("<= 0.4.0")
         no_asset: true
       - version_constraint: semver("<= 0.5.1")
-        url: https://gh-proxy.org/https://github.com/velero-io/velero/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/velero-io/velero/releases/download/{{.Version}}/ark-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: ark-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -51,11 +57,13 @@ packages:
         files:
           - name: ark
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/velero-io/velero/releases/download/{{.Version}}/CHECKSUM
           asset: CHECKSUM
           algorithm: sha256
       - version_constraint: semver("<= 0.10.2")
-        url: https://gh-proxy.org/https://github.com/velero-io/velero/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/velero-io/velero/releases/download/{{.Version}}/ark-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: ark-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -63,11 +71,13 @@ packages:
         files:
           - name: ark
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/velero-io/velero/releases/download/{{.Version}}/CHECKSUM
           asset: CHECKSUM
           algorithm: sha256
       - version_constraint: semver("<= 1.10.3")
-        url: https://gh-proxy.org/https://github.com/velero-io/velero/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/velero-io/velero/releases/download/{{.Version}}/velero-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: velero-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -76,11 +86,13 @@ packages:
           - name: velero
             src: "{{.AssetWithoutExt}}/velero"
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/velero-io/velero/releases/download/{{.Version}}/CHECKSUM
           asset: CHECKSUM
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/velero-io/velero/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/velero-io/velero/releases/download/{{.Version}}/velero-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: velero-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -88,6 +100,7 @@ packages:
           - name: velero
             src: "{{.AssetWithoutExt}}/velero"
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/velero-io/velero/releases/download/{{.Version}}/CHECKSUM
           asset: CHECKSUM
           algorithm: sha256

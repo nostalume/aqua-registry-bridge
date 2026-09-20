@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.4.2")
-        url: https://gh-proxy.org/https://github.com/busser/murmur/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/busser/murmur/releases/download/{{.Version}}/whisper_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: whisper_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -16,17 +17,21 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/busser/murmur/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/busser/murmur/releases/download/{{.Version}}/whisper_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         # https://github.com/busser/murmur#changes-from-v04-to-v05
         files:
           - name: whisper
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/busser/murmur/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/busser/murmur/releases/download/{{.Version}}/murmur_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: murmur_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -35,9 +40,12 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/busser/murmur/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/busser/murmur/releases/download/{{.Version}}/murmur_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/sderosiaux/launchdeck/releases/download/{{.Version}}/launchdeck-{{.Arch}}-{{.OS}}.{{.Format}}
     repo_owner: sderosiaux
     repo_name: launchdeck
     description: Unified macOS service console for launchd and Homebrew
@@ -16,6 +17,7 @@ packages:
       - name: launchdeck
         src: launchdeck-{{.Arch}}-{{.OS}}/launchdeck
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/sderosiaux/launchdeck/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256

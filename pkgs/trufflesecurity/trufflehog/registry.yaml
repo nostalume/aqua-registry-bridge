@@ -9,28 +9,32 @@ packages:
       - version_constraint: Version in ["2.0.97", "v3.6.5", "v3.7.1", "v3.41.0", "v3.80.0", "3.80.4", "v3.82.10"]
         no_asset: true
       - version_constraint: semver("<= 3.63.1")
-        url: https://gh-proxy.org/https://github.com/trufflesecurity/trufflehog/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/trufflesecurity/trufflehog/releases/download/{{.Version}}/trufflehog_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: trufflehog_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/trufflesecurity/trufflehog/releases/download/{{.Version}}/trufflehog_{{trimV .Version}}_checksums.txt
           asset: trufflehog_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/trufflesecurity/trufflehog/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/trufflesecurity/trufflehog/releases/download/{{.Version}}/trufflehog_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: trufflehog_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/trufflesecurity/trufflehog/releases/download/{{.Version}}/trufflehog_{{trimV .Version}}_checksums.txt
           asset: trufflehog_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/trufflesecurity/trufflehog/releases/download/{{.Version}}/trufflehog_{{trimV .Version}}_checksums.txt.pem
+              - https://gh-proxy.org/github.com/trufflesecurity/trufflehog/releases/download/{{.Version}}/trufflehog_{{trimV .Version}}_checksums.txt.pem
               - --certificate-identity
-              - https://github.com/trufflesecurity/trufflehog/.github/workflows/release.yml@refs/tags/{{.Version}}
+              - https://gh-proxy.org/github.com/trufflesecurity/trufflehog/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/trufflesecurity/trufflehog/releases/download/{{.Version}}/trufflehog_{{trimV .Version}}_checksums.txt.sig
+              - https://gh-proxy.org/github.com/trufflesecurity/trufflehog/releases/download/{{.Version}}/trufflehog_{{trimV .Version}}_checksums.txt.sig

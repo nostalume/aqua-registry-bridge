@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/dapr/cli/releases/download/{{.Version}}/dapr_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: dapr
     repo_name: cli
     description: Command-line tools for Dapr
@@ -12,10 +13,13 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/dapr/cli/releases/download/{{.Version}}/dapr_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     files:
       - name: dapr
     checksum:
-      type: github_release
+      type: http
+      url: "{{.AssetURL}}.sha256"
       asset: "{{.Asset}}.sha256"
       algorithm: sha256

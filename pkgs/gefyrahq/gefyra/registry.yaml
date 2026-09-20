@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("<= 0.5.0")
         no_asset: true
       - version_constraint: semver("<= 0.6.7")
-        url: https://gh-proxy.org/https://github.com/gefyrahq/gefyra/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gefyrahq/gefyra/releases/download/{{.Version}}/gefyra-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: gefyra-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -19,7 +20,8 @@ packages:
       - version_constraint: Version == "0.6.8"
         no_asset: true
       - version_constraint: Version == "0.6.9"
-        url: https://gh-proxy.org/https://github.com/gefyrahq/gefyra/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gefyrahq/gefyra/releases/download/{{.Version}}/gefyra-0.6.7-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: gefyra-0.6.7-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -27,7 +29,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.8.0")
-        url: https://gh-proxy.org/https://github.com/gefyrahq/gefyra/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gefyrahq/gefyra/releases/download/{{.Version}}/gefyra-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: gefyra-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -35,13 +38,16 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.8.4")
-        url: https://gh-proxy.org/https://github.com/gefyrahq/gefyra/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gefyrahq/gefyra/releases/download/{{.Version}}/gefyra-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: gefyra-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
         windows_arm_emulation: true
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/gefyrahq/gefyra/releases/download/{{.Version}}/gefyra-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               amd64: x86_64
             files:
@@ -52,14 +58,19 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 2.0.3")
-        url: https://gh-proxy.org/https://github.com/gefyrahq/gefyra/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gefyrahq/gefyra/releases/download/{{.Version}}/gefyra-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: gefyra-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/gefyrahq/gefyra/releases/download/{{.Version}}/gefyra-{{.Version}}-{{.OS}}-universal.{{.Format}}
             asset: gefyra-{{.Version}}-{{.OS}}-universal.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/gefyrahq/gefyra/releases/download/{{.Version}}/gefyra-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               amd64: x86_64
             files:
@@ -70,14 +81,19 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/gefyrahq/gefyra/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gefyrahq/gefyra/releases/download/{{.Version}}/gefyra-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: gefyra-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/gefyrahq/gefyra/releases/download/{{.Version}}/gefyra-{{.Version}}-{{.OS}}-universal.{{.Format}}
             asset: gefyra-{{.Version}}-{{.OS}}-universal.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/gefyrahq/gefyra/releases/download/{{.Version}}/gefyra-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               amd64: x86_64
             files:

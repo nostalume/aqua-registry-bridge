@@ -7,21 +7,25 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v3.6.2"
-        url: https://gh-proxy.org/https://github.com/FairwindsOps/nova/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/FairwindsOps/nova/releases/download/{{.Version}}/nova_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: nova_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/FairwindsOps/nova/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 2.0.1")
-        url: https://gh-proxy.org/https://github.com/FairwindsOps/nova/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/FairwindsOps/nova/releases/download/{{.Version}}/Nova_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: Nova_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/FairwindsOps/nova/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
@@ -31,47 +35,56 @@ packages:
           - name: nova
             src: Nova
       - version_constraint: semver("<= 2.3.2")
-        url: https://gh-proxy.org/https://github.com/FairwindsOps/nova/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/FairwindsOps/nova/releases/download/{{.Version}}/nova_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: nova_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/FairwindsOps/nova/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 3.6.4")
-        url: https://gh-proxy.org/https://github.com/FairwindsOps/nova/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/FairwindsOps/nova/releases/download/{{.Version}}/nova_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: nova_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/FairwindsOps/nova/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("< 3.12.0")
-        url: https://gh-proxy.org/https://github.com/FairwindsOps/nova/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/FairwindsOps/nova/releases/download/{{.Version}}/nova_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: nova_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/FairwindsOps/nova/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/FairwindsOps/nova/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/FairwindsOps/nova/releases/download/{{.Version}}/nova_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: nova_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/FairwindsOps/nova/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/FairwindsOps/nova/releases/download/{{.Version}}/checksums.txt.sigstore.json
               asset: checksums.txt.sigstore.json
             opts:
               - --key

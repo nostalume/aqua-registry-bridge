@@ -11,13 +11,16 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.8.3")
-        url: https://gh-proxy.org/https://github.com/moby/buildkit/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/moby/buildkit/releases/download/{{.Version}}/buildkit-{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         asset: buildkit-{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/moby/buildkit/releases/download/{{.Version}}/buildkit-{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
             goarch: amd64
             files:
               - name: buildctl
@@ -39,6 +42,8 @@ packages:
               - name: buildkitd
                 src: bin/{{.FileName}}
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/moby/buildkit/releases/download/{{.Version}}/buildkit-{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
             goarch: arm64
             files:
               - name: buildctl
@@ -60,11 +65,14 @@ packages:
               - name: buildkitd
                 src: bin/{{.FileName}}
       - version_constraint: semver("< 0.27.0")
-        url: https://gh-proxy.org/https://github.com/moby/buildkit/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/moby/buildkit/releases/download/{{.Version}}/buildkit-{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         asset: buildkit-{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/moby/buildkit/releases/download/{{.Version}}/buildkit-{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
             goarch: amd64
             files:
               - name: buildctl
@@ -94,6 +102,8 @@ packages:
               - name: buildkitd
                 src: bin/{{.FileName}}
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/moby/buildkit/releases/download/{{.Version}}/buildkit-{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
             goarch: arm64
             files:
               - name: buildctl
@@ -123,18 +133,22 @@ packages:
               - name: buildkitd
                 src: bin/{{.FileName}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/moby/buildkit/releases/download/{{.Version}}/buildkit-{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
             files:
               - name: buildctl
                 src: bin/{{.FileName}}
               - name: buildkitd
                 src: bin/{{.FileName}}
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/moby/buildkit/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/moby/buildkit/releases/download/{{.Version}}/buildkit-{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         asset: buildkit-{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         cosign:
           bundle:
-            type: github_release
+            type: http
+            url: https://gh-proxy.org/github.com/moby/buildkit/releases/download/{{.Version}}/{{.AssetWithoutExt}}.sigstore.json
             asset: "{{.AssetWithoutExt}}.sigstore.json"
           opts:
             - --certificate-identity-regexp
@@ -143,6 +157,8 @@ packages:
             - https://token.actions.githubusercontent.com
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/moby/buildkit/releases/download/{{.Version}}/buildkit-{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
             goarch: amd64
             files:
               - name: buildctl
@@ -172,6 +188,8 @@ packages:
               - name: buildkitd
                 src: bin/{{.FileName}}
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/moby/buildkit/releases/download/{{.Version}}/buildkit-{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
             goarch: arm64
             files:
               - name: buildctl
@@ -201,6 +219,8 @@ packages:
               - name: buildkitd
                 src: bin/{{.FileName}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/moby/buildkit/releases/download/{{.Version}}/buildkit-{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
             files:
               - name: buildctl
                 src: bin/{{.FileName}}

@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.2.0")
-        url: https://gh-proxy.org/https://github.com/hirosassa/ksnotify/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/hirosassa/ksnotify/releases/download/{{.Version}}/ksnotify-{{.Arch}}-{{.OS}}
         asset: ksnotify-{{.Arch}}-{{.OS}}
         format: raw
         rosetta2: true
@@ -19,7 +20,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 2.0.0")
-        url: https://gh-proxy.org/https://github.com/hirosassa/ksnotify/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/hirosassa/ksnotify/releases/download/{{.Version}}/ksnotify-{{.Arch}}-{{.OS}}
         asset: ksnotify-{{.Arch}}-{{.OS}}
         format: raw
         rosetta2: true
@@ -34,7 +36,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("< 3.2.0")
-        url: https://gh-proxy.org/https://github.com/hirosassa/ksnotify/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/hirosassa/ksnotify/releases/download/{{.Version}}/ksnotify-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: ksnotify-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -43,6 +46,8 @@ packages:
           amd64: x86_64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/hirosassa/ksnotify/releases/download/{{.Version}}/ksnotify-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
@@ -51,7 +56,8 @@ packages:
       - version_constraint: Version == "v3.2.0"
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/hirosassa/ksnotify/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/hirosassa/ksnotify/releases/download/{{.Version}}/ksnotify-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: ksnotify-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true

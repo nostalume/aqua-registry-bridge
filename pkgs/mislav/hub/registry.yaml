@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/mislav/hub/releases/download/{{.Version}}/hub-{{.OS}}-{{.Arch}}-{{trimV .Version}}.{{.Format}}
     repo_owner: mislav
     repo_name: hub
     aliases:
@@ -15,6 +16,8 @@ packages:
     format: tgz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/mislav/hub/releases/download/{{.Version}}/hub-{{.OS}}-{{.Arch}}-{{trimV .Version}}.{{.Format}}
         format: zip
         files:
           - name: hub

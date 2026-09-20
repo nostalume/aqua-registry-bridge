@@ -10,7 +10,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v1.0.0-beta.1"
-        url: https://gh-proxy.org/https://github.com/aubepkg/aube/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aubepkg/aube/releases/download/{{.Version}}/aube-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: aube-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -21,13 +22,16 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/aubepkg/aube/releases/download/{{.Version}}/aube-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - linux/amd64
           - darwin
           - windows
       - version_constraint: semver("<= 1.0.0-beta.11")
-        url: https://gh-proxy.org/https://github.com/aubepkg/aube/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aubepkg/aube/releases/download/{{.Version}}/aube-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: aube-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -38,16 +42,21 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/aubepkg/aube/releases/download/{{.Version}}/aube-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               amd64: amd64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/aubepkg/aube/releases/download/{{.Version}}/aube-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - linux
           - darwin/arm64
           - windows
       - version_constraint: semver("<= 1.1.0")
-        url: https://gh-proxy.org/https://github.com/aubepkg/aube/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aubepkg/aube/releases/download/{{.Version}}/aube-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: aube-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -58,16 +67,21 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/aubepkg/aube/releases/download/{{.Version}}/aube-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               amd64: amd64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/aubepkg/aube/releases/download/{{.Version}}/aube-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - linux
           - darwin/arm64
           - windows
       - version_constraint: semver("<= 2.2.4")
-        url: https://gh-proxy.org/https://github.com/aubepkg/aube/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aubepkg/aube/releases/download/{{.Version}}/aube-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: aube-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -78,26 +92,35 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/aubepkg/aube/releases/download/{{.Version}}/aube-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             variants:
               - key: libc
                 value: glibc
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/aubepkg/aube/releases/download/{{.Version}}/aube-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               linux: unknown-linux-musl
             variants:
               - key: libc
                 value: musl
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/aubepkg/aube/releases/download/{{.Version}}/aube-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               amd64: amd64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/aubepkg/aube/releases/download/{{.Version}}/aube-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - linux
           - darwin/arm64
           - windows
       - version_constraint: semver("<= 2.2.8")
-        url: https://gh-proxy.org/https://github.com/aubepkg/aube/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aubepkg/aube/releases/download/{{.Version}}/aube-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: aube-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -108,6 +131,8 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/aubepkg/aube/releases/download/{{.Version}}/aube-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             variants:
               - key: libc
@@ -115,9 +140,13 @@ packages:
             replacements:
               linux: unknown-linux-gnu
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/aubepkg/aube/releases/download/{{.Version}}/aube-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               amd64: amd64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/aubepkg/aube/releases/download/{{.Version}}/aube-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - linux
@@ -126,7 +155,8 @@ packages:
         github_artifact_attestations:
           signer_workflow: aubepkg/aube/.github/workflows/release.yml
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/aubepkg/aube/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aubepkg/aube/releases/download/{{.Version}}/aube-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: aube-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -137,19 +167,27 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/aubepkg/aube/releases/download/{{.Version}}/aube-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             variants:
               - key: libc
                 value: glibc
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/aubepkg/aube/releases/download/{{.Version}}/aube-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             variants:
               - key: libc
                 value: musl
             replacements:
               linux: unknown-linux-musl
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/aubepkg/aube/releases/download/{{.Version}}/aube-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               amd64: amd64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/aubepkg/aube/releases/download/{{.Version}}/aube-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - linux

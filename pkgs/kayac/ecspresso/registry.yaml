@@ -1,11 +1,13 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/kayac/ecspresso/releases/download/{{.Version}}/ecspresso_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
     repo_owner: kayac
     repo_name: ecspresso
     asset: ecspresso_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
     description: ecspresso is a deployment tool for Amazon ECS
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/kayac/ecspresso/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256

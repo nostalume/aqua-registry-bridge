@@ -9,73 +9,103 @@ packages:
       - version_constraint: Version in ["0.3.2", "0.4.4", "0.5.9", "0.12.9"]
         no_asset: true
       - version_constraint: semver("<= 0.2.1")
-        url: https://gh-proxy.org/https://github.com/alexellis/k3sup/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/alexellis/k3sup/releases/download/{{.Version}}/k3sup
         asset: k3sup
         format: raw
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/alexellis/k3sup/releases/download/{{.Version}}/k3sup-arm64
             goarch: arm64
             asset: k3sup-arm64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/alexellis/k3sup/releases/download/{{.Version}}/k3sup-darwin
             asset: k3sup-darwin
         supported_envs:
           - darwin
           - linux
       - version_constraint: semver("<= 0.5.8")
-        url: https://gh-proxy.org/https://github.com/alexellis/k3sup/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/alexellis/k3sup/releases/download/{{.Version}}/k3sup
         asset: k3sup
         format: raw
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/alexellis/k3sup/releases/download/{{.Version}}/k3sup-arm64
             goarch: arm64
             asset: k3sup-arm64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/alexellis/k3sup/releases/download/{{.Version}}/k3sup-darwin
             asset: k3sup-darwin
       - version_constraint: semver("<= 0.9.7")
-        url: https://gh-proxy.org/https://github.com/alexellis/k3sup/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/alexellis/k3sup/releases/download/{{.Version}}/k3sup
         asset: k3sup
         format: raw
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/alexellis/k3sup/releases/download/{{.Version}}/k3sup-arm64
             goarch: arm64
             asset: k3sup-arm64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/alexellis/k3sup/releases/download/{{.Version}}/k3sup-darwin
             asset: k3sup-darwin
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
       - version_constraint: semver("<= 0.9.10")
         no_asset: true
       - version_constraint: semver("<= 0.12.1")
-        url: https://gh-proxy.org/https://github.com/alexellis/k3sup/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/alexellis/k3sup/releases/download/{{.Version}}/k3sup
         asset: k3sup
         format: raw
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/alexellis/k3sup/releases/download/{{.Version}}/k3sup-arm64
             goarch: arm64
             asset: k3sup-arm64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/alexellis/k3sup/releases/download/{{.Version}}/k3sup-darwin
             asset: k3sup-darwin
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/alexellis/k3sup/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/alexellis/k3sup/releases/download/{{.Version}}/k3sup
         asset: k3sup
         format: raw
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/alexellis/k3sup/releases/download/{{.Version}}/k3sup-arm64
             goarch: arm64
             asset: k3sup-arm64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/alexellis/k3sup/releases/download/{{.Version}}/k3sup-darwin
             goarch: amd64
             asset: k3sup-darwin
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/alexellis/k3sup/releases/download/{{.Version}}/k3sup-darwin-arm64
             goarch: arm64
             asset: k3sup-darwin-arm64
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256

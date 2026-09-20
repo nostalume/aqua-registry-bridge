@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version == "v0.4.1-deps"
         no_asset: true
       - version_constraint: Version == "v0.6.0"
-        url: https://gh-proxy.org/https://github.com/bcicen/ctop/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bcicen/ctop/releases/download/{{.Version}}/ctop-{{trimV .Version}}-{{.OS}}-{{.Arch}}
         asset: ctop-{{trimV .Version}}-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -17,30 +18,35 @@ packages:
           - linux
           - darwin
       - version_constraint: Version == "v0.6.1"
-        url: https://gh-proxy.org/https://github.com/bcicen/ctop/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bcicen/ctop/releases/download/{{.Version}}/ctop-{{trimV .Version}}-{{.OS}}-{{.Arch}}
         asset: ctop-{{trimV .Version}}-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/bcicen/ctop/releases/download/{{.Version}}/sha256sums.txt
           asset: sha256sums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: Version == "0.7.6"
-        url: https://gh-proxy.org/https://github.com/bcicen/ctop/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bcicen/ctop/releases/download/{{.Version}}/ctop-{{.Version}}-{{.OS}}-{{.Arch}}
         asset: ctop-{{.Version}}-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
         complete_windows_ext: false
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/bcicen/ctop/releases/download/{{.Version}}/sha256sums.txt
           asset: sha256sums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.5.1")
-        url: https://gh-proxy.org/https://github.com/bcicen/ctop/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bcicen/ctop/releases/download/{{.Version}}/ctop-{{trimV .Version}}-{{.OS}}-{{.Arch}}
         asset: ctop-{{trimV .Version}}-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -48,13 +54,15 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/bcicen/ctop/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bcicen/ctop/releases/download/{{.Version}}/ctop-{{trimV .Version}}-{{.OS}}-{{.Arch}}
         asset: ctop-{{trimV .Version}}-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
         complete_windows_ext: false
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/bcicen/ctop/releases/download/{{.Version}}/sha256sums.txt
           asset: sha256sums.txt
           algorithm: sha256

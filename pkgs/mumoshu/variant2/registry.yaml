@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/mumoshu/variant2/releases/download/{{.Version}}/variant_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
     repo_owner: mumoshu
     repo_name: variant2
     description: Turn your bash scripts into a modern, single-executable CLI app today
@@ -11,6 +12,7 @@ packages:
     files:
       - name: variant
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/mumoshu/variant2/releases/download/{{.Version}}/variant_{{trimV .Version}}_checksums.txt
       asset: variant_{{trimV .Version}}_checksums.txt
       algorithm: sha256

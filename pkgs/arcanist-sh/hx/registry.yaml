@@ -11,7 +11,8 @@ packages:
       - version_constraint: Version == "v0.2.0"
         no_asset: true
       - version_constraint: Version == "v0.1.0"
-        url: https://gh-proxy.org/https://github.com/arcanist-sh/hx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/arcanist-sh/hx/releases/download/{{.Version}}/hx-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: hx-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -21,22 +22,30 @@ packages:
           darwin: apple-darwin
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/arcanist-sh/hx/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/arcanist-sh/hx/releases/download/{{.Version}}/hx-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/arcanist-sh/hx/releases/download/{{.Version}}/hx-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/arcanist-sh/hx/releases/download/{{.Version}}/hx-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: Version == "v0.3.0"
-        url: https://gh-proxy.org/https://github.com/arcanist-sh/hx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/arcanist-sh/hx/releases/download/{{.Version}}/hx-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: hx-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -46,13 +55,15 @@ packages:
           arm64: aarch64
           darwin: apple-darwin
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
           - darwin/arm64
       - version_constraint: Version == "v0.3.5"
-        url: https://gh-proxy.org/https://github.com/arcanist-sh/hx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/arcanist-sh/hx/releases/download/{{.Version}}/hx-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: hx-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -62,22 +73,30 @@ packages:
           darwin: apple-darwin
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/arcanist-sh/hx/releases/download/{{.Version}}/hx-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/arcanist-sh/hx/releases/download/{{.Version}}/hx-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/arcanist-sh/hx/releases/download/{{.Version}}/hx-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: Version == "v0.4.0"
-        url: https://gh-proxy.org/https://github.com/arcanist-sh/hx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/arcanist-sh/hx/releases/download/{{.Version}}/hx-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: hx-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -87,23 +106,31 @@ packages:
           darwin: apple-darwin
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/arcanist-sh/hx/releases/download/{{.Version}}/hx-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/arcanist-sh/hx/releases/download/{{.Version}}/hx-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               arm64: aarch64
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/arcanist-sh/hx/releases/download/{{.Version}}/hx-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/arcanist-sh/hx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/arcanist-sh/hx/releases/download/{{.Version}}/hx-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: hx-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -113,17 +140,24 @@ packages:
           darwin: apple-darwin
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/arcanist-sh/hx/releases/download/{{.Version}}/hx-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/arcanist-sh/hx/releases/download/{{.Version}}/hx-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/arcanist-sh/hx/releases/download/{{.Version}}/hx-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip

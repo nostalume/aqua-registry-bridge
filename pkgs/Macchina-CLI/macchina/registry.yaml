@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("<= 0.5.9") or Version == "0.6.5"
         no_asset: true
       - version_constraint: semver("<= 0.8.0")
-        url: https://gh-proxy.org/https://github.com/Macchina-CLI/macchina/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Macchina-CLI/macchina/releases/download/{{.Version}}/macchina-{{.OS}}
         asset: macchina-{{.OS}}
         format: raw
         replacements:
@@ -19,7 +20,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 3.0.0")
-        url: https://gh-proxy.org/https://github.com/Macchina-CLI/macchina/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Macchina-CLI/macchina/releases/download/{{.Version}}/macchina-{{.OS}}
         asset: macchina-{{.OS}}
         format: raw
         replacements:
@@ -27,10 +29,13 @@ packages:
           arm64: aarch64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Macchina-CLI/macchina/releases/download/{{.Version}}/macchina-{{.OS}}-{{.Arch}}
             goarch: arm64
             asset: macchina-{{.OS}}-{{.Arch}}
       - version_constraint: semver("<= 6.1.8")
-        url: https://gh-proxy.org/https://github.com/Macchina-CLI/macchina/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Macchina-CLI/macchina/releases/download/{{.Version}}/macchina-{{.OS}}-{{.Arch}}
         asset: macchina-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -40,7 +45,8 @@ packages:
           darwin: macos
           arm64: aarch64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Macchina-CLI/macchina/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Macchina-CLI/macchina/releases/download/{{.Version}}/macchina-{{.Version}}-{{.OS}}-gnu-{{.Arch}}.{{.Format}}
         asset: macchina-{{.Version}}-{{.OS}}-gnu-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -49,7 +55,11 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/Macchina-CLI/macchina/releases/download/{{.Version}}/macchina-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             asset: macchina-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Macchina-CLI/macchina/releases/download/{{.Version}}/macchina-{{.Version}}-{{.OS}}-{{.Arch}}
             format: raw
             asset: macchina-{{.Version}}-{{.OS}}-{{.Arch}}

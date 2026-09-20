@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "0.1.5"
-        url: https://gh-proxy.org/https://github.com/imuxin/kubectl-watch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/imuxin/kubectl-watch/releases/download/{{.Version}}/kubectl-watch_{{.Version}}_{{.Arch}}-{{.OS}}.{{.Format}}
         asset: kubectl-watch_{{.Version}}_{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -18,7 +19,8 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-gnu
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/imuxin/kubectl-watch/releases/download/{{.Version}}/kubectl-watch_{{.Version}}_{{.Arch}}-{{.OS}}.zip.sha256sum
           asset: kubectl-watch_{{.Version}}_{{.Arch}}-{{.OS}}.zip.sha256sum
           algorithm: sha256
         supported_envs:
@@ -28,7 +30,8 @@ packages:
       - version_constraint: semver("<= 0.1.4")
         no_asset: true
       - version_constraint: semver("<= 0.2.3")
-        url: https://gh-proxy.org/https://github.com/imuxin/kubectl-watch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/imuxin/kubectl-watch/releases/download/{{.Version}}/kubectl-watch-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: kubectl-watch-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -40,7 +43,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/imuxin/kubectl-watch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/imuxin/kubectl-watch/releases/download/{{.Version}}/kubectl-watch-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: kubectl-watch-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -50,6 +54,8 @@ packages:
           linux: unknown-linux-gnu
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/imuxin/kubectl-watch/releases/download/{{.Version}}/kubectl-watch-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
         supported_envs:

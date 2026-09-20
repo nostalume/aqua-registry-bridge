@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_content
+  - type: http
+    url: https://gh-proxy.org/raw.githubusercontent.com/fsaintjacques/semver-tool/{{.Version}}/src/semver
     repo_owner: fsaintjacques
     repo_name: semver-tool
     description: semver bash implementation

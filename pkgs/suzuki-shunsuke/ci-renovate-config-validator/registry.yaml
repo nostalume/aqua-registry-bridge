@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_content
+  - type: http
+    url: https://gh-proxy.org/raw.githubusercontent.com/suzuki-shunsuke/ci-renovate-config-validator/{{.Version}}/ci-renovate-config-validator
     repo_owner: suzuki-shunsuke
     repo_name: ci-renovate-config-validator
     path: ci-renovate-config-validator

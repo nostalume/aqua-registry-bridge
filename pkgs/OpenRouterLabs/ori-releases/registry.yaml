@@ -14,37 +14,43 @@ packages:
       # ori-windows-x64.exe exists in this release but not in cli-0.11.0-fe98906,
       # which sorts after it, so it can't be expressed as a range.
       - version_constraint: Version == "cli-0.11.0-alpha-c8f51ad"
-        url: https://gh-proxy.org/https://github.com/OpenRouterLabs/ori-releases/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/OpenRouterLabs/ori-releases/releases/download/{{.Version}}/ori-{{.OS}}-{{.Arch}}
         asset: ori-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         replacements:
           amd64: x64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/OpenRouterLabs/ori-releases/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
       - version_constraint: semver("<= 0.11.0-fe98906")
-        url: https://gh-proxy.org/https://github.com/OpenRouterLabs/ori-releases/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/OpenRouterLabs/ori-releases/releases/download/{{.Version}}/ori-{{.OS}}-{{.Arch}}
         asset: ori-{{.OS}}-{{.Arch}}
         format: raw
         replacements:
           amd64: x64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/OpenRouterLabs/ori-releases/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/OpenRouterLabs/ori-releases/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/OpenRouterLabs/ori-releases/releases/download/{{.Version}}/ori-{{.OS}}-{{.Arch}}
         asset: ori-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         replacements:
           amd64: x64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/OpenRouterLabs/ori-releases/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256

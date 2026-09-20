@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.1.7")
-        url: https://gh-proxy.org/https://github.com/gitui-org/gitui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}.{{.Format}}
         asset: gitui-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -18,7 +19,8 @@ packages:
         supported_envs:
           - darwin
       - version_constraint: Version == "v0.1.8"
-        url: https://gh-proxy.org/https://github.com/gitui-org/gitui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}.{{.Format}}
         asset: gitui-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -28,7 +30,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.1.11")
-        url: https://gh-proxy.org/https://github.com/gitui-org/gitui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}-musl.{{.Format}}
         asset: gitui-{{.OS}}-musl.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -36,12 +39,15 @@ packages:
           darwin: mac
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}.{{.Format}}
             asset: gitui-{{.OS}}.{{.Format}}
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.8.1")
-        url: https://gh-proxy.org/https://github.com/gitui-org/gitui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}.{{.Format}}
         asset: gitui-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -51,13 +57,16 @@ packages:
           windows: win
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}-musl.{{.Format}}
             asset: gitui-{{.OS}}-musl.{{.Format}}
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "v0.9.0"
-        url: https://gh-proxy.org/https://github.com/gitui-org/gitui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}-musl.{{.Format}}
         asset: gitui-{{.OS}}-musl.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -65,12 +74,15 @@ packages:
           darwin: mac
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}.{{.Format}}
             asset: gitui-{{.OS}}.{{.Format}}
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v0.9.1"
-        url: https://gh-proxy.org/https://github.com/gitui-org/gitui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}.{{.Format}}
         asset: gitui-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -80,13 +92,16 @@ packages:
           windows: win
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}-musl.{{.Format}}
             asset: gitui-{{.OS}}-musl.{{.Format}}
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "v0.10.0"
-        url: https://gh-proxy.org/https://github.com/gitui-org/gitui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}.{{.Format}}
         asset: gitui-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -98,7 +113,8 @@ packages:
           - darwin
           - windows/amd64
       - version_constraint: Version == "v0.10.1"
-        url: https://gh-proxy.org/https://github.com/gitui-org/gitui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}.{{.Format}}
         asset: gitui-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -108,13 +124,16 @@ packages:
           windows: win
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}-musl.{{.Format}}
             asset: gitui-{{.OS}}-musl.{{.Format}}
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "v0.11.0-rc1"
-        url: https://gh-proxy.org/https://github.com/gitui-org/gitui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}-musl.{{.Format}}
         asset: gitui-{{.OS}}-musl.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -122,12 +141,15 @@ packages:
           darwin: mac
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}.{{.Format}}
             asset: gitui-{{.OS}}.{{.Format}}
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.11.0")
-        url: https://gh-proxy.org/https://github.com/gitui-org/gitui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}.{{.Format}}
         asset: gitui-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -137,13 +159,16 @@ packages:
           windows: win
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}-musl.{{.Format}}
             asset: gitui-{{.OS}}-musl.{{.Format}}
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "v0.12.0-rc1"
-        url: https://gh-proxy.org/https://github.com/gitui-org/gitui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}-musl.{{.Format}}
         asset: gitui-{{.OS}}-musl.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -151,12 +176,15 @@ packages:
           darwin: mac
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}.{{.Format}}
             asset: gitui-{{.OS}}.{{.Format}}
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.19.0")
-        url: https://gh-proxy.org/https://github.com/gitui-org/gitui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}.{{.Format}}
         asset: gitui-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -166,13 +194,16 @@ packages:
           windows: win
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}-musl.{{.Format}}
             asset: gitui-{{.OS}}-musl.{{.Format}}
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "v0.20.0"
-        url: https://gh-proxy.org/https://github.com/gitui-org/gitui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}-musl.{{.Format}}
         asset: gitui-{{.OS}}-musl.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -180,12 +211,15 @@ packages:
           darwin: mac
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}.{{.Format}}
             asset: gitui-{{.OS}}.{{.Format}}
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.21.0")
-        url: https://gh-proxy.org/https://github.com/gitui-org/gitui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}.{{.Format}}
         asset: gitui-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -195,13 +229,16 @@ packages:
           windows: win
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}-musl.{{.Format}}
             asset: gitui-{{.OS}}-musl.{{.Format}}
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.25.2")
-        url: https://gh-proxy.org/https://github.com/gitui-org/gitui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}.{{.Format}}
         asset: gitui-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -211,15 +248,20 @@ packages:
           windows: win
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}-arm.{{.Format}}
             goarch: amd64
             asset: gitui-{{.OS}}-arm.{{.Format}}
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}-{{.Arch}}.{{.Format}}
             goarch: arm64
             asset: gitui-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: aarch64
       - version_constraint: Version == "v0.26.0"
-        url: https://gh-proxy.org/https://github.com/gitui-org/gitui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: gitui-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -227,16 +269,21 @@ packages:
           darwin: mac
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               amd64: x86_64
               arm64: aarch64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}.{{.Format}}
             asset: gitui-{{.OS}}.{{.Format}}
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/gitui-org/gitui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}.{{.Format}}
         asset: gitui-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -246,6 +293,8 @@ packages:
           windows: win
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/gitui-org/gitui/releases/download/{{.Version}}/gitui-{{.OS}}-{{.Arch}}.{{.Format}}
             asset: gitui-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               amd64: x86_64

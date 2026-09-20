@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.0.5")
-        url: https://gh-proxy.org/https://github.com/j178/prek/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/j178/prek/releases/download/{{.Version}}/pre-commit-rs-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: pre-commit-rs-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -20,14 +21,19 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/j178/prek/releases/download/{{.Version}}/pre-commit-rs-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/j178/prek/releases/download/{{.Version}}/pre-commit-rs-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: prek
@@ -37,7 +43,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.0.22")
-        url: https://gh-proxy.org/https://github.com/j178/prek/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/j178/prek/releases/download/{{.Version}}/prefligit-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: prefligit-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -50,14 +57,19 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/j178/prek/releases/download/{{.Version}}/prefligit-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/j178/prek/releases/download/{{.Version}}/prefligit-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: prek
@@ -67,7 +79,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.0.28")
-        url: https://gh-proxy.org/https://github.com/j178/prek/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/j178/prek/releases/download/{{.Version}}/prek-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: prek-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -80,14 +93,19 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/j178/prek/releases/download/{{.Version}}/prek-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/j178/prek/releases/download/{{.Version}}/prek-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: prek
@@ -96,7 +114,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.1.6")
-        url: https://gh-proxy.org/https://github.com/j178/prek/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/j178/prek/releases/download/{{.Version}}/prek-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: prek-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -109,16 +128,20 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/j178/prek/releases/download/{{.Version}}/prek-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: prek
       - version_constraint: semver("<= 0.3.0")
-        url: https://gh-proxy.org/https://github.com/j178/prek/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/j178/prek/releases/download/{{.Version}}/prek-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: prek-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -131,16 +154,20 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/j178/prek/releases/download/{{.Version}}/prek-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: prek
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/j178/prek/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/j178/prek/releases/download/{{.Version}}/prek-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: prek-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -153,11 +180,14 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/j178/prek/releases/download/{{.Version}}/prek-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: prek

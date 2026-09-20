@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("<= 0.2.2")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/hrmsk66/terraformify/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/hrmsk66/terraformify/releases/download/{{.Version}}/terraformify_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: terraformify_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         supported_envs:
@@ -17,7 +18,8 @@ packages:
           - linux
           - amd64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/hrmsk66/terraformify/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         files:

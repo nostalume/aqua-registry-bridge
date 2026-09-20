@@ -7,12 +7,15 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v2.0.8"
+        type: http
+        url: https://gh-proxy.org/github.com/projectdiscovery/naabu/releases/download/{{.Version}}/naabu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.zip
         rosetta2: true
         asset: naabu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.zip
         replacements:
           darwin: macOS
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/projectdiscovery/naabu/releases/download/{{.Version}}/naabu-{{.OS}}-checksums.txt
           asset: naabu-{{.OS}}-checksums.txt
           algorithm: sha256
           replacements:
@@ -21,12 +24,15 @@ packages:
           - darwin
           - linux/amd64
       - version_constraint: semver("< 2.0.9")
+        type: http
+        url: https://gh-proxy.org/github.com/projectdiscovery/naabu/releases/download/{{.Version}}/naabu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.zip
         rosetta2: true
         asset: naabu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.zip
         replacements:
           darwin: macOS
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/projectdiscovery/naabu/releases/download/{{.Version}}/naabu-{{.OS}}-checksums.txt
           asset: naabu-{{.OS}}-checksums.txt
           algorithm: sha256
           replacements:
@@ -36,12 +42,15 @@ packages:
           - darwin
           - linux/amd64
       - version_constraint: semver("<= 2.3.5")
+        type: http
+        url: https://gh-proxy.org/github.com/projectdiscovery/naabu/releases/download/{{.Version}}/naabu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.zip
         rosetta2: true
         asset: naabu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.zip
         replacements:
           darwin: macOS
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/projectdiscovery/naabu/releases/download/{{.Version}}/naabu-{{.OS}}-checksums.txt
           asset: naabu-{{.OS}}-checksums.txt
           algorithm: sha256
           replacements:
@@ -50,12 +59,15 @@ packages:
           - darwin
           - amd64
       - version_constraint: Version == "v2.3.6"
+        type: http
+        url: https://gh-proxy.org/github.com/projectdiscovery/naabu/releases/download/{{.Version}}/naabu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.zip
         rosetta2: true
         asset: naabu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.zip
         replacements:
           darwin: macOS
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/projectdiscovery/naabu/releases/download/{{.Version}}/naabu-{{.OS}}-checksums.txt
           asset: naabu-{{.OS}}-checksums.txt
           algorithm: sha256
           replacements:
@@ -64,32 +76,41 @@ packages:
           - darwin
           - windows/amd64
       - version_constraint: semver("<= 2.5.0")
+        type: http
+        url: https://gh-proxy.org/github.com/projectdiscovery/naabu/releases/download/{{.Version}}/naabu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.zip
         rosetta2: true
         asset: naabu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.zip
         replacements:
           darwin: macOS
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/projectdiscovery/naabu/releases/download/{{.Version}}/naabu-{{.OS}}-checksums.txt
           asset: naabu-{{.OS}}-checksums.txt
           algorithm: sha256
           replacements:
             darwin: mac
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/projectdiscovery/naabu/releases/download/{{.Version}}/naabu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.zip
             checksum:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/projectdiscovery/naabu/releases/download/{{.Version}}/naabu-{{.OS}}-{{.Arch}}-checksums.txt
               asset: naabu-{{.OS}}-{{.Arch}}-checksums.txt
               algorithm: sha256
         supported_envs:
           - darwin
           - amd64
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/projectdiscovery/naabu/releases/download/{{.Version}}/naabu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.zip
         rosetta2: true
         asset: naabu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.zip
         replacements:
           darwin: macOS
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/projectdiscovery/naabu/releases/download/{{.Version}}/naabu-checksums.txt
           asset: naabu-checksums.txt
           algorithm: sha256
         supported_envs:

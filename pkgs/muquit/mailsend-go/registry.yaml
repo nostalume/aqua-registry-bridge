@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.0.3")
-        url: https://gh-proxy.org/https://github.com/muquit/mailsend-go/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/muquit/mailsend-go/releases/download/{{.Version}}/mailsend-go_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: mailsend-go_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -16,11 +17,14 @@ packages:
           amd64: 64-bit
           darwin: mac
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/muquit/mailsend-go/releases/download/{{.Version}}/mailsend-go_{{trimV .Version}}_checksums.txt
           asset: mailsend-go_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/muquit/mailsend-go/releases/download/{{.Version}}/mailsend-go_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
@@ -30,7 +34,8 @@ packages:
           - name: mailsend-go
             src: mailsend-go-dir/mailsend-go
       - version_constraint: semver("<= 1.0.10")
-        url: https://gh-proxy.org/https://github.com/muquit/mailsend-go/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/muquit/mailsend-go/releases/download/{{.Version}}/mailsend-go_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: mailsend-go_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -39,44 +44,57 @@ packages:
           amd64: 64bit
           darwin: mac
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/muquit/mailsend-go/releases/download/{{.Version}}/mailsend-go_{{trimV .Version}}_checksums.txt
           asset: mailsend-go_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/muquit/mailsend-go/releases/download/{{.Version}}/mailsend-go_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: ARM
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/muquit/mailsend-go/releases/download/{{.Version}}/mailsend-go_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         files:
           - name: mailsend-go
             src: mailsend-go-dir/mailsend-go
       - version_constraint: semver("<= 1.0.11")
-        url: https://gh-proxy.org/https://github.com/muquit/mailsend-go/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/muquit/mailsend-go/releases/download/{{.Version}}/mailsend-go-{{.Version}}-{{.OS}}-{{.Arch}}.d.{{.Format}}
         asset: mailsend-go-{{.Version}}-{{.OS}}-{{.Arch}}.d.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/muquit/mailsend-go/releases/download/{{.Version}}/mailsend-go-{{.Version}}-checksums.txt
           asset: mailsend-go-{{.Version}}-checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/muquit/mailsend-go/releases/download/{{.Version}}/mailsend-go-{{.Version}}-{{.OS}}-{{.Arch}}.d.{{.Format}}
             format: zip
         files:
           - name: mailsend-go
             src: "{{.AssetWithoutExt}}/mailsend-go-{{.Version}}-{{.OS}}-{{.Arch}}"
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/muquit/mailsend-go/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/muquit/mailsend-go/releases/download/{{.Version}}/mailsend-go-{{.Version}}-{{.OS}}-{{.Arch}}.d.{{.Format}}
         asset: mailsend-go-{{.Version}}-{{.OS}}-{{.Arch}}.d.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/muquit/mailsend-go/releases/download/{{.Version}}/mailsend-go-{{.Version}}-checksums.txt
           asset: mailsend-go-{{.Version}}-checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/muquit/mailsend-go/releases/download/{{.Version}}/mailsend-go-{{.Version}}-{{.OS}}-{{.Arch}}.d.{{.Format}}
             format: zip
         files:
           - name: mailsend-go

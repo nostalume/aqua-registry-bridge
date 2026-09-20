@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/Songmu/gitsemvers/releases/download/{{.Version}}/gitsemvers_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: Songmu
     repo_name: gitsemvers
     description: Retrieve semvers from git tags
@@ -8,6 +9,8 @@ packages:
     format: zip
     overrides:
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/Songmu/gitsemvers/releases/download/{{.Version}}/gitsemvers_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
     files:
       - name: git-semvers

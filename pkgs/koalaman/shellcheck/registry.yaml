@@ -10,7 +10,8 @@ packages:
       - version_constraint: semver("<= 0.4.5")
         no_asset: true
       - version_constraint: semver("<= 0.6.0")
-        url: https://gh-proxy.org/https://github.com/koalaman/shellcheck/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/koalaman/shellcheck/releases/download/{{.Version}}/shellcheck-{{.Version}}.{{.OS}}.{{.Arch}}.{{.Format}}
         asset: shellcheck-{{.Version}}.{{.OS}}.{{.Arch}}.{{.Format}}
         format: tar.xz
         files:
@@ -18,6 +19,8 @@ packages:
             src: shellcheck-{{.Version}}/shellcheck
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/koalaman/shellcheck/releases/download/{{.Version}}/shellcheck-{{.Version}}.{{.Format}}
             asset: shellcheck-{{.Version}}.{{.Format}}
             format: zip
             files:
@@ -29,7 +32,8 @@ packages:
           - linux/amd64
           - windows
       - version_constraint: semver("<= 0.9.0")
-        url: https://gh-proxy.org/https://github.com/koalaman/shellcheck/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/koalaman/shellcheck/releases/download/{{.Version}}/shellcheck-{{.Version}}.{{.OS}}.{{.Arch}}.{{.Format}}
         asset: shellcheck-{{.Version}}.{{.OS}}.{{.Arch}}.{{.Format}}
         format: tar.xz
         rosetta2: true
@@ -40,15 +44,20 @@ packages:
           amd64: x86_64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/koalaman/shellcheck/releases/download/{{.Version}}/shellcheck-{{.Version}}.{{.OS}}.{{.Arch}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/koalaman/shellcheck/releases/download/{{.Version}}/shellcheck-{{.Version}}.{{.Format}}
             asset: shellcheck-{{.Version}}.{{.Format}}
             format: zip
             files:
               - name: shellcheck
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/koalaman/shellcheck/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/koalaman/shellcheck/releases/download/{{.Version}}/shellcheck-{{.Version}}.{{.OS}}.{{.Arch}}.{{.Format}}
         asset: shellcheck-{{.Version}}.{{.OS}}.{{.Arch}}.{{.Format}}
         format: tar.xz
         files:
@@ -59,6 +68,8 @@ packages:
           arm64: aarch64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/koalaman/shellcheck/releases/download/{{.Version}}/shellcheck-{{.Version}}.{{.Format}}
             asset: shellcheck-{{.Version}}.{{.Format}}
             format: zip
             files:

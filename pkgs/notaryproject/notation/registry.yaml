@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/notaryproject/notation/releases/download/{{.Version}}/notation_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: notaryproject
     repo_name: notation
     description: A CLI tool to sign and verify artifacts
@@ -8,12 +9,15 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/notaryproject/notation/releases/download/{{.Version}}/notation_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     supported_envs:
       - darwin
       - linux
       - amd64
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/notaryproject/notation/releases/download/{{.Version}}/notation_{{trimV .Version}}_checksums.txt
       asset: notation_{{trimV .Version}}_checksums.txt
       algorithm: sha256

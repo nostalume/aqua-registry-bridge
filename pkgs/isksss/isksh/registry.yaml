@@ -7,18 +7,22 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/isksss/isksh/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/isksss/isksh/releases/download/{{.Version}}/isksh-{{.OS}}-{{.Arch}}
         asset: isksh-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/isksss/isksh/releases/download/{{.Version}}/isksh-{{.OS}}-{{.Arch}}
             replacements:
               arm64: aarch64
         supported_envs:

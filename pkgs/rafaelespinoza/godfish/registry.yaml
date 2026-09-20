@@ -8,7 +8,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/rafaelespinoza/godfish/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rafaelespinoza/godfish/releases/download/{{.Version}}/godfish_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: godfish_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         supported_envs:
@@ -23,7 +24,8 @@ packages:
           - name: godfish-sqlite3
           - name: godfish-sqlserver
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/rafaelespinoza/godfish/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
@@ -33,5 +35,6 @@ packages:
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/rafaelespinoza/godfish/releases/download/{{.Version}}/checksums.txt.sigstore.json
               asset: checksums.txt.sigstore.json

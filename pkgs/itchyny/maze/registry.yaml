@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/itchyny/maze/releases/download/{{.Version}}/maze_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: itchyny
     repo_name: maze
     description: A maze command written in Go
@@ -8,6 +9,8 @@ packages:
     format: zip
     overrides:
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/itchyny/maze/releases/download/{{.Version}}/maze_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
     files:
       - name: maze
@@ -16,12 +19,15 @@ packages:
     version_constraint: semver(">= 0.0.8")
     version_overrides:
       - version_constraint: semver(">= 0.0.4")
+        type: http
+        url: https://gh-proxy.org/github.com/itchyny/maze/releases/download/{{.Version}}/maze_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         supported_envs:
           - darwin
           - amd64
         rosetta2: true
       - version_constraint: semver("< 0.0.4")
-        url: https://gh-proxy.org/https://github.com/itchyny/maze/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/itchyny/maze/releases/download/{{.Version}}/maze_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: maze_{{.OS}}_{{.Arch}}.{{.Format}}
         supported_envs:
           - darwin
@@ -32,8 +38,12 @@ packages:
             src: maze_{{.OS}}_{{.Arch}}/maze
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/itchyny/maze/releases/download/{{.Version}}/maze_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/itchyny/maze/releases/download/{{.Version}}/maze_{{.OS}}_{{.Arch}}.{{.Format}}
             files:
               - name: maze
         complete_windows_ext: true

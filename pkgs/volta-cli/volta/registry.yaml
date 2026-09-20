@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.1.5")
-        url: https://gh-proxy.org/https://github.com/volta-cli/volta/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/volta-cli/volta/releases/download/{{.Version}}/notion-{{trimV .Version}}-{{.OS}}.sh
         asset: notion-{{trimV .Version}}-{{.OS}}.sh
         format: raw
         rosetta2: true
@@ -19,7 +20,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.3.0")
-        url: https://gh-proxy.org/https://github.com/volta-cli/volta/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/volta-cli/volta/releases/download/{{.Version}}/notion-{{trimV .Version}}-{{.OS}}-openssl-1.0.sh
         asset: notion-{{trimV .Version}}-{{.OS}}-openssl-1.0.sh
         format: raw
         rosetta2: true
@@ -29,12 +31,15 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/volta-cli/volta/releases/download/{{.Version}}/notion-{{trimV .Version}}-{{.OS}}.sh
             asset: notion-{{trimV .Version}}-{{.OS}}.sh
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.4.1")
-        url: https://gh-proxy.org/https://github.com/volta-cli/volta/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/volta-cli/volta/releases/download/{{.Version}}/notion-{{trimV .Version}}-{{.OS}}-openssl-1.0.1.{{.Format}}
         asset: notion-{{trimV .Version}}-{{.OS}}-openssl-1.0.1.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -44,12 +49,15 @@ packages:
           - name: notion
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/volta-cli/volta/releases/download/{{.Version}}/notion-{{trimV .Version}}-{{.OS}}.{{.Format}}
             asset: notion-{{trimV .Version}}-{{.OS}}.{{.Format}}
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.7.2")
-        url: https://gh-proxy.org/https://github.com/volta-cli/volta/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/volta-cli/volta/releases/download/{{.Version}}/volta-{{trimV .Version}}-{{.OS}}-openssl-1.0.{{.Format}}
         asset: volta-{{trimV .Version}}-{{.OS}}-openssl-1.0.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -57,12 +65,15 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/volta-cli/volta/releases/download/{{.Version}}/volta-{{trimV .Version}}-{{.OS}}.{{.Format}}
             asset: volta-{{trimV .Version}}-{{.OS}}.{{.Format}}
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 1.0.0")
-        url: https://gh-proxy.org/https://github.com/volta-cli/volta/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/volta-cli/volta/releases/download/{{.Version}}/volta-{{trimV .Version}}-{{.OS}}-openssl-1.0.{{.Format}}
         asset: volta-{{trimV .Version}}-{{.OS}}-openssl-1.0.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -71,8 +82,12 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/volta-cli/volta/releases/download/{{.Version}}/volta-{{trimV .Version}}-{{.OS}}.{{.Format}}
             asset: volta-{{trimV .Version}}-{{.OS}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/volta-cli/volta/releases/download/{{.Version}}/volta-{{trimV .Version}}-{{.OS}}.{{.Format}}
             format: zip
             asset: volta-{{trimV .Version}}-{{.OS}}.{{.Format}}
         supported_envs:
@@ -80,7 +95,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.0.6")
-        url: https://gh-proxy.org/https://github.com/volta-cli/volta/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/volta-cli/volta/releases/download/{{.Version}}/volta-{{trimV .Version}}-{{.OS}}-openssl-1.0.{{.Format}}
         asset: volta-{{trimV .Version}}-{{.OS}}-openssl-1.0.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -88,14 +104,20 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/volta-cli/volta/releases/download/{{.Version}}/volta-{{trimV .Version}}-{{.OS}}.{{.Format}}
             goarch: amd64
             asset: volta-{{trimV .Version}}-{{.OS}}.{{.Format}}
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/volta-cli/volta/releases/download/{{.Version}}/volta-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             goarch: arm64
             asset: volta-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/volta-cli/volta/releases/download/{{.Version}}/volta-{{trimV .Version}}-{{.OS}}.{{.Format}}
             format: zip
             asset: volta-{{trimV .Version}}-{{.OS}}.{{.Format}}
         supported_envs:
@@ -103,7 +125,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.0.8")
-        url: https://gh-proxy.org/https://github.com/volta-cli/volta/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/volta-cli/volta/releases/download/{{.Version}}/volta-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: volta-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -111,15 +134,23 @@ packages:
           darwin: macos
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/volta-cli/volta/releases/download/{{.Version}}/volta-{{trimV .Version}}-{{.OS}}-openssl-1.0.{{.Format}}
             asset: volta-{{trimV .Version}}-{{.OS}}-openssl-1.0.{{.Format}}
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/volta-cli/volta/releases/download/{{.Version}}/volta-{{trimV .Version}}-{{.OS}}.{{.Format}}
             goarch: amd64
             asset: volta-{{trimV .Version}}-{{.OS}}.{{.Format}}
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/volta-cli/volta/releases/download/{{.Version}}/volta-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             goarch: arm64
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/volta-cli/volta/releases/download/{{.Version}}/volta-{{trimV .Version}}-{{.OS}}.{{.Format}}
             format: zip
             asset: volta-{{trimV .Version}}-{{.OS}}.{{.Format}}
         supported_envs:
@@ -127,7 +158,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.1.1")
-        url: https://gh-proxy.org/https://github.com/volta-cli/volta/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/volta-cli/volta/releases/download/{{.Version}}/volta-{{trimV .Version}}-{{.OS}}.{{.Format}}
         asset: volta-{{trimV .Version}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -135,29 +167,40 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/volta-cli/volta/releases/download/{{.Version}}/volta-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             goarch: arm64
             asset: volta-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/volta-cli/volta/releases/download/{{.Version}}/volta-{{trimV .Version}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/volta-cli/volta/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/volta-cli/volta/releases/download/{{.Version}}/volta-{{trimV .Version}}-{{.OS}}.{{.Format}}
         asset: volta-{{trimV .Version}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
           darwin: macos
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/volta-cli/volta/releases/download/{{.Version}}/volta-{{trimV .Version}}-{{.OS}}-arm.{{.Format}}
             goarch: arm64
             asset: volta-{{trimV .Version}}-{{.OS}}-arm.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/volta-cli/volta/releases/download/{{.Version}}/volta-{{trimV .Version}}-{{.OS}}.{{.Format}}
             format: zip
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/volta-cli/volta/releases/download/{{.Version}}/volta-{{trimV .Version}}-{{.OS}}-arm64.{{.Format}}
             goarch: arm64
             asset: volta-{{trimV .Version}}-{{.OS}}-arm64.{{.Format}}
             format: zip

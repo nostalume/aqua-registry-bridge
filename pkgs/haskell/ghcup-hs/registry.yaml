@@ -3,7 +3,7 @@ packages:
   - type: http
     repo_owner: haskell
     repo_name: ghcup-hs
-    url: https://downloads.haskell.org/~ghcup/{{trimV .Version}}/{{.Arch}}-{{.OS}}-ghcup-{{trimV .Version}}
+    url: https://mirrors.ustc.edu.cn/hackage/~ghcup/{{trimV .Version}}/{{.Arch}}-{{.OS}}-ghcup-{{trimV .Version}}
     format: raw
     windows_arm_emulation: true
     link: https://www.haskell.org/ghcup/
@@ -17,5 +17,5 @@ packages:
       - name: ghcup
     checksum:
       type: http
-      url: https://downloads.haskell.org/~ghcup/{{trimV .Version}}/SHA256SUMS
+      url: https://mirrors.ustc.edu.cn/hackage/~ghcup/{{trimV .Version}}/SHA256SUMS
       algorithm: sha256

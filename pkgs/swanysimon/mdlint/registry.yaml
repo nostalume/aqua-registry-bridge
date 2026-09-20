@@ -11,7 +11,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/swanysimon/mdlint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/swanysimon/mdlint/releases/download/{{.Version}}/mdlint-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: mdlint-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -22,13 +23,18 @@ packages:
           arm64: aarch64
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/swanysimon/mdlint/releases/download/{{.Version}}/mdlint-{{.OS}}-{{.Arch}}-musl.{{.Format}}
             goarch: amd64
             asset: mdlint-{{.OS}}-{{.Arch}}-musl.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/swanysimon/mdlint/releases/download/{{.Version}}/mdlint-{{.OS}}-{{.Arch}}.exe.{{.Format}}
             format: zip
             asset: mdlint-{{.OS}}-{{.Arch}}.exe.{{.Format}}

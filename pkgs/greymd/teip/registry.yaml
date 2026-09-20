@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v2.3.1"
-        url: https://gh-proxy.org/https://github.com/greymd/teip/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/greymd/teip/releases/download/{{.Version}}/teip-{{trimV .Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         asset: teip-{{trimV .Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -21,11 +22,14 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/greymd/teip/releases/download/{{.Version}}/teip_installer-{{trimV .Version}}-{{.Arch}}-{{.OS}}
             format: raw
             asset: teip_installer-{{trimV .Version}}-{{.Arch}}-{{.OS}}
         supported_envs:
@@ -33,7 +37,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.2.0")
-        url: https://gh-proxy.org/https://github.com/greymd/teip/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/greymd/teip/releases/download/{{.Version}}/teip-{{trimV .Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         asset: teip-{{trimV .Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -48,7 +53,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 2.1.0")
-        url: https://gh-proxy.org/https://github.com/greymd/teip/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/greymd/teip/releases/download/{{.Version}}/teip-{{trimV .Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         asset: teip-{{trimV .Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -63,6 +69,8 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/greymd/teip/releases/download/{{.Version}}/teip_installer-{{trimV .Version}}-{{.Arch}}-{{.OS}}
             format: raw
             asset: teip_installer-{{trimV .Version}}-{{.Arch}}-{{.OS}}
         supported_envs:
@@ -70,7 +78,8 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/greymd/teip/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/greymd/teip/releases/download/{{.Version}}/teip-{{trimV .Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         asset: teip-{{trimV .Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -84,10 +93,13 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/greymd/teip/releases/download/{{.Version}}/teip_installer-{{trimV .Version}}-{{.Arch}}-{{.OS}}
             format: raw
             asset: teip_installer-{{trimV .Version}}-{{.Arch}}-{{.OS}}

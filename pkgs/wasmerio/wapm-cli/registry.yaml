@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/wasmerio/wapm-cli/releases/download/{{.Version}}/wapm-cli-{{.OS}}-{{.Arch}}.tar.gz
     repo_owner: wasmerio
     repo_name: wapm-cli
     asset: wapm-cli-{{.OS}}-{{.Arch}}.tar.gz
@@ -18,6 +19,8 @@ packages:
         src: bin/wax
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/wasmerio/wapm-cli/releases/download/{{.Version}}/wapm-cli-{{.OS}}-{{.Arch}}.tar.gz
         files:
           - name: wapm
             src: bin/wapm.exe

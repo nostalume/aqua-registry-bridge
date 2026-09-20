@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.1.0"
-        url: https://gh-proxy.org/https://github.com/babarot/changed-objects/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/babarot/changed-objects/releases/download/{{.Version}}/get-changed-objects_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: get-changed-objects_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -18,14 +19,16 @@ packages:
         files:
           - name: get-changed-objects
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/babarot/changed-objects/releases/download/{{.Version}}/get-changed-objects_{{trimV .Version}}_checksums.txt
           asset: get-changed-objects_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v0.1.1"
-        url: https://gh-proxy.org/https://github.com/babarot/changed-objects/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/babarot/changed-objects/releases/download/{{.Version}}/get-changed-objects-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: get-changed-objects-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -34,78 +37,92 @@ packages:
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/babarot/changed-objects/releases/download/{{.Version}}/get-changed-objects_{{trimV .Version}}_checksums.txt
           asset: get-changed-objects_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v0.1.2"
-        url: https://gh-proxy.org/https://github.com/babarot/changed-objects/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/babarot/changed-objects/releases/download/{{.Version}}/get-changed-objects-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: get-changed-objects-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         files:
           - name: get-changed-objects
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/babarot/changed-objects/releases/download/{{.Version}}/get-changed-objects_{{trimV .Version}}_checksums.txt
           asset: get-changed-objects_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v0.1.11"
-        url: https://gh-proxy.org/https://github.com/babarot/changed-objects/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/babarot/changed-objects/releases/download/{{.Version}}/changed-objects-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: changed-objects-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/babarot/changed-objects/releases/download/{{.Version}}/changed-objects_{{trimV .Version}}_checksums.txt
           asset: changed-objects_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 0.1.7")
-        url: https://gh-proxy.org/https://github.com/babarot/changed-objects/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/babarot/changed-objects/releases/download/{{.Version}}/changed-objects-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: changed-objects-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/babarot/changed-objects/releases/download/{{.Version}}/changed-objects_{{trimV .Version}}_checksums.txt
           asset: changed-objects_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.1.16")
-        url: https://gh-proxy.org/https://github.com/babarot/changed-objects/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/babarot/changed-objects/releases/download/{{.Version}}/changed-objects-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: changed-objects-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/babarot/changed-objects/releases/download/{{.Version}}/changed-objects_{{trimV .Version}}_checksums.txt
           asset: changed-objects_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 0.3.7")
-        url: https://gh-proxy.org/https://github.com/babarot/changed-objects/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/babarot/changed-objects/releases/download/{{.Version}}/changed-objects-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: changed-objects-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/babarot/changed-objects/releases/download/{{.Version}}/changed-objects_{{trimV .Version}}_checksums.txt
           asset: changed-objects_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/babarot/changed-objects/releases/download/{{.Version}}/changed-objects-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/babarot/changed-objects/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/babarot/changed-objects/releases/download/{{.Version}}/changed-objects_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: changed-objects_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -114,9 +131,12 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/babarot/changed-objects/releases/download/{{.Version}}/changed-objects_{{trimV .Version}}_checksums.txt
           asset: changed-objects_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/babarot/changed-objects/releases/download/{{.Version}}/changed-objects_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

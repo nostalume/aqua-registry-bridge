@@ -7,11 +7,13 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/liamg/memit/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/liamg/memit/releases/download/{{.Version}}/memit-{{.OS}}-{{.Arch}}
         asset: memit-{{.OS}}-{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/liamg/memit/releases/download/{{.Version}}/memit_{{trimV .Version}}_checksums.txt
           asset: memit_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:

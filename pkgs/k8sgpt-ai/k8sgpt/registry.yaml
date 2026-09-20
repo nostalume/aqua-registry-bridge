@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver(">= v0.3.33, <= v0.3.36") || semver(">= v0.3.42, <= v0.3.44")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/k8sgpt-ai/k8sgpt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/k8sgpt-ai/k8sgpt/releases/download/{{.Version}}/k8sgpt_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: k8sgpt_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -18,9 +19,12 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/k8sgpt-ai/k8sgpt/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/k8sgpt-ai/k8sgpt/releases/download/{{.Version}}/k8sgpt_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

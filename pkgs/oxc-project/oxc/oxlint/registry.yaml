@@ -14,6 +14,8 @@ packages:
       - version_constraint: Version in ["apps_v1.47.0", "oxlint_v0.0.9", "oxlint_v0.1.1"]
         no_asset: true
       - version_constraint: semver("<= 0.0.8")
+        type: http
+        url: https://gh-proxy.org/github.com/oxc-project/oxc/releases/download/{{.Version}}/oxlint-{{.OS}}-{{.Arch}}
         version_prefix: oxlint_v
         asset: oxlint-{{.OS}}-{{.Arch}}
         files:
@@ -23,6 +25,8 @@ packages:
           amd64: x64
           windows: win32
       - version_constraint: semver("<= 0.0.19")
+        type: http
+        url: https://gh-proxy.org/github.com/oxc-project/oxc/releases/download/{{.Version}}/oxlint-{{.OS}}-{{.Arch}}
         version_prefix: oxlint_v
         asset: oxlint-{{.OS}}-{{.Arch}}
         files:
@@ -32,6 +36,8 @@ packages:
           amd64: x64
           windows: win32
       - version_constraint: semver("<= 0.2.2")
+        type: http
+        url: https://gh-proxy.org/github.com/oxc-project/oxc/releases/download/{{.Version}}/oxlint-{{.OS}}-{{.Arch}}.{{.Format}}
         version_prefix: oxlint_v
         asset: oxlint-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
@@ -40,11 +46,15 @@ packages:
             src: oxlint-{{.OS}}-{{.Arch}}
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/oxc-project/oxc/releases/download/{{.Version}}/oxlint-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         replacements:
           amd64: x64
           windows: win32
       - version_constraint: semver("< 1.17.0")
+        type: http
+        url: https://gh-proxy.org/github.com/oxc-project/oxc/releases/download/{{.Version}}/oxlint-{{.OS}}-{{.Arch}}.{{.Format}}
         version_prefix: oxlint_v
         asset: oxlint-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
@@ -53,8 +63,12 @@ packages:
             src: oxlint-{{.OS}}-{{.Arch}}
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/oxc-project/oxc/releases/download/{{.Version}}/oxlint-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/oxc-project/oxc/releases/download/{{.Version}}/oxlint-{{.OS}}-{{.Arch}}-gnu.{{.Format}}
             asset: oxlint-{{.OS}}-{{.Arch}}-gnu.{{.Format}}
             files:
               - name: oxlint
@@ -77,6 +91,8 @@ packages:
           >= 1.17.0, < 1.28.0: These versions are unavailable
           >= 1.28.0: The version prefix is apps_v
       - version_constraint: semver("<= 1.43.0")
+        type: http
+        url: https://gh-proxy.org/github.com/oxc-project/oxc/releases/download/{{.Version}}/oxlint-{{.OS}}-{{.Arch}}-gnu.{{.Format}}
         version_prefix: apps_v
         asset: oxlint-{{.OS}}-{{.Arch}}-gnu.{{.Format}}
         format: tar.gz
@@ -85,11 +101,17 @@ packages:
           windows: win32
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/oxc-project/oxc/releases/download/{{.Version}}/oxlint-{{.OS}}-{{.Arch}}.{{.Format}}
             asset: oxlint-{{.OS}}-{{.Arch}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/oxc-project/oxc/releases/download/{{.Version}}/oxlint-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             asset: oxlint-{{.OS}}-{{.Arch}}.{{.Format}}
       - version_constraint: semver("<= 1.51.0")
+        type: http
+        url: https://gh-proxy.org/github.com/oxc-project/oxc/releases/download/{{.Version}}/oxlint-{{.Arch}}-{{.OS}}.{{.Format}}
         version_prefix: apps_v
         asset: oxlint-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
@@ -101,11 +123,15 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/oxc-project/oxc/releases/download/{{.Version}}/oxlint-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 1.53.0")
         version_prefix: apps_v
         no_asset: true
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/oxc-project/oxc/releases/download/{{.Version}}/oxlint-{{.Arch}}-{{.OS}}.{{.Format}}
         version_prefix: apps_v
         asset: oxlint-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
@@ -117,4 +143,6 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/oxc-project/oxc/releases/download/{{.Version}}/oxlint-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip

@@ -9,13 +9,15 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.3.7-0"
-        url: https://gh-proxy.org/https://github.com/aquaproj/registry-tool/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aquaproj/registry-tool/releases/download/{{.Version}}/registry-tool_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: registry-tool_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: aqua-registry
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/aquaproj/registry-tool/releases/download/{{.Version}}/registry-tool_{{trimV .Version}}_checksums.txt
           asset: registry-tool_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
@@ -25,29 +27,35 @@ packages:
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/aquaproj/registry-tool/releases/download/{{.Version}}/registry-tool_{{trimV .Version}}_checksums.txt.bundle
               asset: registry-tool_{{trimV .Version}}_checksums.txt.bundle
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/aquaproj/registry-tool/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
       - version_constraint: semver("<= 0.1.5")
-        url: https://gh-proxy.org/https://github.com/aquaproj/registry-tool/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aquaproj/registry-tool/releases/download/{{.Version}}/registry-tool_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: registry-tool_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: aqua-registry
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/aquaproj/registry-tool/releases/download/{{.Version}}/registry-tool_{{trimV .Version}}_checksums.txt
           asset: registry-tool_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.3.6")
-        url: https://gh-proxy.org/https://github.com/aquaproj/registry-tool/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aquaproj/registry-tool/releases/download/{{.Version}}/registry-tool_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: registry-tool_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: aqua-registry
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/aquaproj/registry-tool/releases/download/{{.Version}}/registry-tool_{{trimV .Version}}_checksums.txt
           asset: registry-tool_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
@@ -57,18 +65,21 @@ packages:
               - --certificate-identity-regexp
               - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
               - --certificate
-              - https://github.com/aquaproj/registry-tool/releases/download/{{.Version}}/registry-tool_{{trimV .Version}}_checksums.txt.pem
+              - https://gh-proxy.org/github.com/aquaproj/registry-tool/releases/download/{{.Version}}/registry-tool_{{trimV .Version}}_checksums.txt.pem
               - --signature
-              - https://github.com/aquaproj/registry-tool/releases/download/{{.Version}}/registry-tool_{{trimV .Version}}_checksums.txt.sig
+              - https://gh-proxy.org/github.com/aquaproj/registry-tool/releases/download/{{.Version}}/registry-tool_{{trimV .Version}}_checksums.txt.sig
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/aquaproj/registry-tool/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
       - version_constraint: semver("<= 0.5.4")
-        url: https://gh-proxy.org/https://github.com/aquaproj/registry-tool/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aquaproj/registry-tool/releases/download/{{.Version}}/argd_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: argd_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/aquaproj/registry-tool/releases/download/{{.Version}}/argd_checksums.txt
           asset: argd_checksums.txt
           algorithm: sha256
           cosign:
@@ -78,22 +89,27 @@ packages:
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/aquaproj/registry-tool/releases/download/{{.Version}}/argd_checksums.txt.bundle
               asset: argd_checksums.txt.bundle
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/aquaproj/registry-tool/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/aquaproj/registry-tool/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aquaproj/registry-tool/releases/download/{{.Version}}/argd_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: argd_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/aquaproj/registry-tool/releases/download/{{.Version}}/argd_checksums.txt
           asset: argd_checksums.txt
           algorithm: sha256
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/aquaproj/registry-tool/releases/download/{{.Version}}/argd_checksums.txt.sigstore.json
               asset: argd_checksums.txt.sigstore.json
             opts:
               - --certificate-identity-regexp
@@ -101,5 +117,6 @@ packages:
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/aquaproj/registry-tool/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl

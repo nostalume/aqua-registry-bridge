@@ -10,7 +10,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.11.2"
-        url: https://gh-proxy.org/https://github.com/itamae-kitchen/mitamae/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/itamae-kitchen/mitamae/releases/download/{{.Version}}/mitamae-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: mitamae-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -18,13 +19,16 @@ packages:
           amd64: x86_64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/itamae-kitchen/mitamae/releases/download/{{.Version}}/mitamae-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 0.0.4")
-        url: https://gh-proxy.org/https://github.com/itamae-kitchen/mitamae/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/itamae-kitchen/mitamae/releases/download/{{.Version}}/itamae-{{.Arch}}-{{.OS}}
         asset: itamae-{{.Arch}}-{{.OS}}
         format: raw
         rosetta2: true
@@ -34,7 +38,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.0.16")
-        url: https://gh-proxy.org/https://github.com/itamae-kitchen/mitamae/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/itamae-kitchen/mitamae/releases/download/{{.Version}}/itamae-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: itamae-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -47,7 +52,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.3.0")
-        url: https://gh-proxy.org/https://github.com/itamae-kitchen/mitamae/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/itamae-kitchen/mitamae/releases/download/{{.Version}}/itamae-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: itamae-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -58,12 +64,15 @@ packages:
             src: itamae-{{.Arch}}-{{.OS}}
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/itamae-kitchen/mitamae/releases/download/{{.Version}}/itamae-{{.Arch}}-{{.OS}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.4.2")
-        url: https://gh-proxy.org/https://github.com/itamae-kitchen/mitamae/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/itamae-kitchen/mitamae/releases/download/{{.Version}}/mitamae-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: mitamae-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -71,12 +80,15 @@ packages:
           amd64: x86_64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/itamae-kitchen/mitamae/releases/download/{{.Version}}/mitamae-{{.Arch}}-{{.OS}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 1.11.1")
-        url: https://gh-proxy.org/https://github.com/itamae-kitchen/mitamae/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/itamae-kitchen/mitamae/releases/download/{{.Version}}/mitamae-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: mitamae-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -86,7 +98,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 1.11.7")
-        url: https://gh-proxy.org/https://github.com/itamae-kitchen/mitamae/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/itamae-kitchen/mitamae/releases/download/{{.Version}}/mitamae-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: mitamae-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -94,13 +107,16 @@ packages:
           amd64: x86_64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/itamae-kitchen/mitamae/releases/download/{{.Version}}/mitamae-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("< 1.14.4")
-        url: https://gh-proxy.org/https://github.com/itamae-kitchen/mitamae/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/itamae-kitchen/mitamae/releases/download/{{.Version}}/mitamae-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: mitamae-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -110,7 +126,8 @@ packages:
           - linux
           - darwin
       - version_constraint: semver("<= 1.14.4")
-        url: https://gh-proxy.org/https://github.com/itamae-kitchen/mitamae/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/itamae-kitchen/mitamae/releases/download/{{.Version}}/mitamae-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: mitamae-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -122,7 +139,8 @@ packages:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/itamae-kitchen/mitamae/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/itamae-kitchen/mitamae/releases/download/{{.Version}}/mitamae-{{.Arch}}-{{.OS}}
         asset: mitamae-{{.Arch}}-{{.OS}}
         format: raw
         replacements:

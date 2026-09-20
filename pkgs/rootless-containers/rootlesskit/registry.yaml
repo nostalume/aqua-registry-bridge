@@ -13,7 +13,8 @@ packages:
       - version_constraint: semver("<= 0.8.0") || Version == "v2.3.0"
         no_asset: true
       - version_constraint: Version == "v0.9.0-beta.0"
-        url: https://gh-proxy.org/https://github.com/rootless-containers/rootlesskit/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rootless-containers/rootlesskit/releases/download/{{.Version}}/rootlesskit-{{.Arch}}.{{.Format}}
         asset: rootlesskit-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -24,7 +25,8 @@ packages:
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 0.9.5")
-        url: https://gh-proxy.org/https://github.com/rootless-containers/rootlesskit/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rootless-containers/rootlesskit/releases/download/{{.Version}}/rootlesskit-{{.Arch}}.{{.Format}}
         asset: rootlesskit-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -35,11 +37,13 @@ packages:
         supported_envs:
           - linux/amd64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/rootless-containers/rootlesskit/releases/download/{{.Version}}/SHA256SUM
           asset: SHA256SUM
           algorithm: sha256
       - version_constraint: semver("<= 2.2.0")
-        url: https://gh-proxy.org/https://github.com/rootless-containers/rootlesskit/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rootless-containers/rootlesskit/releases/download/{{.Version}}/rootlesskit-{{.Arch}}.{{.Format}}
         asset: rootlesskit-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -52,11 +56,13 @@ packages:
           - name: rootlesskit
           - name: rootlesskit-docker-proxy
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/rootless-containers/rootlesskit/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/rootless-containers/rootlesskit/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rootless-containers/rootlesskit/releases/download/{{.Version}}/rootlesskit-{{.Arch}}.{{.Format}}
         asset: rootlesskit-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -69,7 +75,8 @@ packages:
           - name: rootlesskit
           - name: rootlesskit-docker-proxy
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/rootless-containers/rootlesskit/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         github_artifact_attestations:

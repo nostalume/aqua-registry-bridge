@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/cortesi/modd/releases/download/{{.Version}}/modd-{{.Version|trimV}}-{{.OS}}{{.Arch}}.{{.Format}}
     repo_owner: cortesi
     repo_name: modd
     description: A flexible developer tool that runs processes and responds to filesystem changes
@@ -8,6 +9,8 @@ packages:
     format: tgz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/cortesi/modd/releases/download/{{.Version}}/modd-{{.Version|trimV}}-{{.OS}}{{.Arch}}.{{.Format}}
         format: zip
     replacements:
       darwin: osx

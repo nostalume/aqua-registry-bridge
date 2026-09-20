@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "0.1.0"
-        url: https://gh-proxy.org/https://github.com/jacek-kurlit/pik/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jacek-kurlit/pik/releases/download/{{.Version}}/pik-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: pik-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -22,7 +23,8 @@ packages:
           - name: pik
             src: "{{.AssetWithoutExt}}/pik"
       - version_constraint: Version == "0.14.0"
-        url: https://gh-proxy.org/https://github.com/jacek-kurlit/pik/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jacek-kurlit/pik/releases/download/{{.Version}}/pik-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: pik-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -34,7 +36,8 @@ packages:
           - name: pik
             src: "{{.AssetWithoutExt}}/pik"
       - version_constraint: semver("<= 0.13.0")
-        url: https://gh-proxy.org/https://github.com/jacek-kurlit/pik/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jacek-kurlit/pik/releases/download/{{.Version}}/pik-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: pik-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -43,6 +46,8 @@ packages:
           linux: unknown-linux-gnu
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/jacek-kurlit/pik/releases/download/{{.Version}}/pik-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
         supported_envs:
@@ -52,7 +57,8 @@ packages:
           - name: pik
             src: "{{.AssetWithoutExt}}/pik"
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/jacek-kurlit/pik/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jacek-kurlit/pik/releases/download/{{.Version}}/pik-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: pik-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:

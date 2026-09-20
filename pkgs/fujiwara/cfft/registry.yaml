@@ -9,10 +9,12 @@ packages:
       - version_constraint: semver("<= 0.0.2")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/fujiwara/cfft/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/fujiwara/cfft/releases/download/{{.Version}}/cfft_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: cfft_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/fujiwara/cfft/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

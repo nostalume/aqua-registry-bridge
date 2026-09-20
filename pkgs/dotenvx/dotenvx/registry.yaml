@@ -7,40 +7,47 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.1.7")
-        url: https://gh-proxy.org/https://github.com/dotenvx/dotenvx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dotenvx/dotenvx/releases/download/{{.Version}}/git-dotenv-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: git-dotenv-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         files:
           - name: git-dotenv
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/dotenvx/dotenvx/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.1.18")
-        url: https://gh-proxy.org/https://github.com/dotenvx/dotenvx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dotenvx/dotenvx/releases/download/{{.Version}}/git-dotenv-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: git-dotenv-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         files:
           - name: git-dotenv
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/dotenvx/dotenvx/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.2.7")
-        url: https://gh-proxy.org/https://github.com/dotenvx/dotenvx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dotenvx/dotenvx/releases/download/{{.Version}}/dotenv-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: dotenv-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         files:
           - name: dotenv
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/dotenvx/dotenvx/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: Version == "v0.2.8"
-        url: https://gh-proxy.org/https://github.com/dotenvx/dotenvx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dotenvx/dotenvx/releases/download/{{.Version}}/dotenv-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: dotenv-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -49,22 +56,26 @@ packages:
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/dotenvx/dotenvx/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.2.10")
-        url: https://gh-proxy.org/https://github.com/dotenvx/dotenvx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dotenvx/dotenvx/releases/download/{{.Version}}/dotenv-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: dotenv-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         files:
           - name: dotenv
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/dotenvx/dotenvx/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.2.19")
-        url: https://gh-proxy.org/https://github.com/dotenvx/dotenvx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dotenvx/dotenvx/releases/download/{{.Version}}/dotenv-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: dotenv-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -72,31 +83,41 @@ packages:
           - name: dotenv
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dotenvx/dotenvx/releases/download/{{.Version}}/dotenv-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: aarch64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/dotenvx/dotenvx/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.44.5")
-        url: https://gh-proxy.org/https://github.com/dotenvx/dotenvx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dotenvx/dotenvx/releases/download/{{.Version}}/dotenvx-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: dotenvx-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dotenvx/dotenvx/releases/download/{{.Version}}/dotenvx-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: aarch64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/dotenvx/dotenvx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dotenvx/dotenvx/releases/download/{{.Version}}/dotenvx-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: dotenvx-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/dotenvx/dotenvx/releases/download/{{.Version}}/dotenvx-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: aarch64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/dotenvx/dotenvx/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

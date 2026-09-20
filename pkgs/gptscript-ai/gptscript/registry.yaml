@@ -7,18 +7,24 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/gptscript-ai/gptscript/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gptscript-ai/gptscript/releases/download/{{.Version}}/gptscript-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: gptscript-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         replacements:
           darwin: macOS
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gptscript-ai/gptscript/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/gptscript-ai/gptscript/releases/download/{{.Version}}/gptscript-{{.Version}}-{{.OS}}-universal.{{.Format}}
             asset: gptscript-{{.Version}}-{{.OS}}-universal.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/gptscript-ai/gptscript/releases/download/{{.Version}}/gptscript-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip

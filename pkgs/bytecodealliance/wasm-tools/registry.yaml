@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.0.60")
-        url: https://gh-proxy.org/https://github.com/bytecodealliance/wasm-tools/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bytecodealliance/wasm-tools/releases/download/{{.Version}}/{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: "{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}"
         format: tar.gz
         windows_arm_emulation: true
@@ -21,10 +22,13 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bytecodealliance/wasm-tools/releases/download/{{.Version}}/{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             replacements: {}
       - version_constraint: semver("<= 1.202.0")
-        url: https://gh-proxy.org/https://github.com/bytecodealliance/wasm-tools/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bytecodealliance/wasm-tools/releases/download/{{.Version}}/wasm-tools-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: wasm-tools-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -37,9 +41,12 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bytecodealliance/wasm-tools/releases/download/{{.Version}}/wasm-tools-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 1.239.0")
-        url: https://gh-proxy.org/https://github.com/bytecodealliance/wasm-tools/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bytecodealliance/wasm-tools/releases/download/{{.Version}}/wasm-tools-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: wasm-tools-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -52,10 +59,13 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bytecodealliance/wasm-tools/releases/download/{{.Version}}/wasm-tools-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             replacements: {}
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/bytecodealliance/wasm-tools/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bytecodealliance/wasm-tools/releases/download/{{.Version}}/wasm-tools-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: wasm-tools-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -68,6 +78,8 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bytecodealliance/wasm-tools/releases/download/{{.Version}}/wasm-tools-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             replacements: {}
         github_artifact_attestations:

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/naggie/dstask/releases/download/{{.Version}}/dstask-import-{{.OS}}-{{.Arch}}
     name: naggie/dstask/dstask-import
     repo_owner: naggie
     repo_name: dstask

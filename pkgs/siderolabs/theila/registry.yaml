@@ -7,11 +7,13 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/siderolabs/theila/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/siderolabs/theila/releases/download/{{.Version}}/theila-{{.OS}}-{{.Arch}}
         asset: theila-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/siderolabs/theila/releases/download/{{.Version}}/sha256sum.txt
           asset: sha256sum.txt
           algorithm: sha256

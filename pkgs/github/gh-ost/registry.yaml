@@ -9,55 +9,68 @@ packages:
       - version_constraint: semver("<= 1.0.48")
         error_message: "Versions <= 1.0.48 are not supported. Please use version >= v1.0.49"
       - version_constraint: Version == "v1.0.49"
-        url: https://gh-proxy.org/https://github.com/github/gh-ost/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/github/gh-ost/releases/download/{{.Version}}/gh-ost-binary-{{.OS}}-20200209110835.{{.Format}}
         asset: gh-ost-binary-{{.OS}}-20200209110835.{{.Format}}
         format: tar.gz
         replacements:
           darwin: osx
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/github/gh-ost/releases/download/{{.Version}}/gh-ost-binary-{{.OS}}-20200209114711.{{.Format}}
             asset: gh-ost-binary-{{.OS}}-20200209114711.{{.Format}}
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v1.1.0"
-        url: https://gh-proxy.org/https://github.com/github/gh-ost/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/github/gh-ost/releases/download/{{.Version}}/gh-ost-binary-{{.OS}}-20200828160625.{{.Format}}
         asset: gh-ost-binary-{{.OS}}-20200828160625.{{.Format}}
         format: tar.gz
         replacements:
           darwin: osx
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/github/gh-ost/releases/download/{{.Version}}/gh-ost-binary-{{.OS}}-20200828140552.{{.Format}}
             asset: gh-ost-binary-{{.OS}}-20200828140552.{{.Format}}
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v1.1.1"
-        url: https://gh-proxy.org/https://github.com/github/gh-ost/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/github/gh-ost/releases/download/{{.Version}}/gh-ost-binary-{{.OS}}-20210503150942.{{.Format}}
         asset: gh-ost-binary-{{.OS}}-20210503150942.{{.Format}}
         format: tar.gz
         replacements:
           darwin: osx
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/github/gh-ost/releases/download/{{.Version}}/gh-ost-binary-{{.OS}}-20210503171035.{{.Format}}
             asset: gh-ost-binary-{{.OS}}-20210503171035.{{.Format}}
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v1.1.2"
-        url: https://gh-proxy.org/https://github.com/github/gh-ost/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/github/gh-ost/releases/download/{{.Version}}/gh-ost-binary-{{.OS}}-20210617134741.{{.Format}}
         asset: gh-ost-binary-{{.OS}}-20210617134741.{{.Format}}
         format: tar.gz
         replacements:
           darwin: osx
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/github/gh-ost/releases/download/{{.Version}}/gh-ost-binary-{{.OS}}-20210617155835.{{.Format}}
             asset: gh-ost-binary-{{.OS}}-20210617155835.{{.Format}}
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v1.1.3"
-        url: https://gh-proxy.org/https://github.com/github/gh-ost/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/github/gh-ost/releases/download/{{.Version}}/gh-ost-binary-{{.OS}}-20220225143057.{{.Format}}
         asset: gh-ost-binary-{{.OS}}-20220225143057.{{.Format}}
         format: tar.gz
         replacements:
@@ -66,22 +79,28 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v1.1.4"
-        url: https://gh-proxy.org/https://github.com/github/gh-ost/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/github/gh-ost/releases/download/{{.Version}}/gh-ost-binary-{{.OS}}-{{.Arch}}-20220225143506.{{.Format}}
         asset: gh-ost-binary-{{.OS}}-{{.Arch}}-20220225143506.{{.Format}}
         format: tar.gz
         replacements:
           darwin: osx
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/github/gh-ost/releases/download/{{.Version}}/gh-ost-binary-{{.OS}}-20220225143506.{{.Format}}
             asset: gh-ost-binary-{{.OS}}-20220225143506.{{.Format}}
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/github/gh-ost/releases/download/{{.Version}}/gh-ost-binary-{{.OS}}-{{.Arch}}-20220311164158.{{.Format}}
             goarch: arm64
             asset: gh-ost-binary-{{.OS}}-{{.Arch}}-20220311164158.{{.Format}}
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v1.1.5"
-        url: https://gh-proxy.org/https://github.com/github/gh-ost/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/github/gh-ost/releases/download/{{.Version}}/gh-ost-binary-{{.OS}}-{{.Arch}}-20220707162303.{{.Format}}
         asset: gh-ost-binary-{{.OS}}-{{.Arch}}-20220707162303.{{.Format}}
         format: tar.gz
         replacements:
@@ -90,7 +109,8 @@ packages:
           - linux
           - darwin
       - version_constraint: Version == "v1.1.6"
-        url: https://gh-proxy.org/https://github.com/github/gh-ost/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/github/gh-ost/releases/download/{{.Version}}/gh-ost-binary-{{.OS}}-{{.Arch}}-20231207144046.{{.Format}}
         asset: gh-ost-binary-{{.OS}}-{{.Arch}}-20231207144046.{{.Format}}
         format: tar.gz
         replacements:
@@ -99,7 +119,8 @@ packages:
           - linux
           - darwin
       - version_constraint: Version == "v1.1.7"
-        url: https://gh-proxy.org/https://github.com/github/gh-ost/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/github/gh-ost/releases/download/{{.Version}}/gh-ost-binary-{{.OS}}-{{.Arch}}-20241219160321.{{.Format}}
         asset: gh-ost-binary-{{.OS}}-{{.Arch}}-20241219160321.{{.Format}}
         format: tar.gz
         replacements:
@@ -108,7 +129,8 @@ packages:
           - linux
           - darwin
       - version_constraint: Version == "v1.1.8"
-        url: https://gh-proxy.org/https://github.com/github/gh-ost/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/github/gh-ost/releases/download/{{.Version}}/gh-ost-binary-{{.OS}}-{{.Arch}}-20260310200531.{{.Format}}
         asset: gh-ost-binary-{{.OS}}-{{.Arch}}-20260310200531.{{.Format}}
         format: tar.gz
         replacements:
@@ -117,7 +139,8 @@ packages:
           - linux
           - darwin
       - version_constraint: Version == "v1.1.9"
-        url: https://gh-proxy.org/https://github.com/github/gh-ost/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/github/gh-ost/releases/download/{{.Version}}/gh-ost-binary-{{.OS}}-{{.Arch}}-20260501022029.{{.Format}}
         asset: gh-ost-binary-{{.OS}}-{{.Arch}}-20260501022029.{{.Format}}
         format: tar.gz
         replacements:
@@ -126,7 +149,8 @@ packages:
           - linux
           - darwin
       - version_constraint: Version == "v1.1.10"
-        url: https://gh-proxy.org/https://github.com/github/gh-ost/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/github/gh-ost/releases/download/{{.Version}}/gh-ost-binary-{{.OS}}-{{.Arch}}-20260604164252.{{.Format}}
         asset: gh-ost-binary-{{.OS}}-{{.Arch}}-20260604164252.{{.Format}}
         format: tar.gz
         replacements:
@@ -135,7 +159,8 @@ packages:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/github/gh-ost/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/github/gh-ost/releases/download/{{.Version}}/gh-ost-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: gh-ost-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         supported_envs:

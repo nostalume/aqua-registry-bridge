@@ -7,14 +7,17 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/suzuki-shunsuke/deny-self-approve/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/deny-self-approve/releases/download/{{.Version}}/deny-self-approve_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: deny-self-approve_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/deny-self-approve/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/deny-self-approve/releases/download/{{.Version}}/deny-self-approve_{{trimV .Version}}_checksums.txt
           asset: deny-self-approve_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
@@ -24,9 +27,11 @@ packages:
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
               - --signature
-              - https://github.com/suzuki-shunsuke/deny-self-approve/releases/download/{{.Version}}/deny-self-approve_{{trimV .Version}}_checksums.txt.sig
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/deny-self-approve/releases/download/{{.Version}}/deny-self-approve_{{trimV .Version}}_checksums.txt.sig
               - --certificate
-              - https://github.com/suzuki-shunsuke/deny-self-approve/releases/download/{{.Version}}/deny-self-approve_{{trimV .Version}}_checksums.txt.pem
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/deny-self-approve/releases/download/{{.Version}}/deny-self-approve_{{trimV .Version}}_checksums.txt.pem
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/deny-self-approve/releases/download/{{.Version}}/deny-self-approve_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

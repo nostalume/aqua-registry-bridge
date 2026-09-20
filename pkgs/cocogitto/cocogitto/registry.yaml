@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 5.3.1")
-        url: https://gh-proxy.org/https://github.com/cocogitto/cocogitto/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cocogitto/cocogitto/releases/download/{{.Version}}/cocogitto-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cocogitto-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -21,7 +22,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 5.6.0")
-        url: https://gh-proxy.org/https://github.com/cocogitto/cocogitto/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cocogitto/cocogitto/releases/download/{{.Version}}/cocogitto-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cocogitto-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -35,7 +37,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: Version == "6.0.0"
-        url: https://gh-proxy.org/https://github.com/cocogitto/cocogitto/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cocogitto/cocogitto/releases/download/{{.Version}}/cocogitto-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cocogitto-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -45,15 +48,21 @@ packages:
             src: "{{.Arch}}-{{.OS}}/cog/cog"
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/cocogitto/cocogitto/releases/download/{{.Version}}/cocogitto-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/cocogitto/cocogitto/releases/download/{{.Version}}/cocogitto-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               arm64: aarch64
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/cocogitto/cocogitto/releases/download/{{.Version}}/cocogitto-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             files:
               - name: cog
                 src: "{{.Arch}}-{{.OS}}/cog.exe/cog.exe"
@@ -62,7 +71,8 @@ packages:
           darwin: apple-darwin
           windows: pc-windows-msvc
       - version_constraint: semver("<= 6.3.0")
-        url: https://gh-proxy.org/https://github.com/cocogitto/cocogitto/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cocogitto/cocogitto/releases/download/{{.Version}}/cocogitto-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cocogitto-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -76,20 +86,27 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/cocogitto/cocogitto/releases/download/{{.Version}}/cocogitto-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/cocogitto/cocogitto/releases/download/{{.Version}}/cocogitto-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               arm64: aarch64
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/cocogitto/cocogitto/releases/download/{{.Version}}/cocogitto-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             files:
               - name: cog
                 src: "{{.Arch}}-{{.OS}}/cog.exe"
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/cocogitto/cocogitto/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cocogitto/cocogitto/releases/download/{{.Version}}/cocogitto-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cocogitto-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -102,19 +119,27 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/cocogitto/cocogitto/releases/download/{{.Version}}/cocogitto-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               arm64: aarch64
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/cocogitto/cocogitto/releases/download/{{.Version}}/cocogitto-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/cocogitto/cocogitto/releases/download/{{.Version}}/cocogitto-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               arm64: aarch64
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/cocogitto/cocogitto/releases/download/{{.Version}}/cocogitto-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             files:
               - name: cog
                 src: "{{.Arch}}-{{.OS}}/cog.exe"

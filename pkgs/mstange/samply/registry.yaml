@@ -8,7 +8,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("= 0.12.0")
-        url: https://gh-proxy.org/https://github.com/mstange/samply/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mstange/samply/releases/download/{{.Version}}/samply-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: samply-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         files:
@@ -21,14 +22,19 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/mstange/samply/releases/download/{{.Version}}/samply-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/mstange/samply/releases/download/{{.Version}}/samply-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: samply
@@ -40,7 +46,8 @@ packages:
       - version_constraint: semver("<= 0.11.0")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/mstange/samply/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mstange/samply/releases/download/{{.Version}}/samply-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: samply-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         files:
@@ -53,19 +60,26 @@ packages:
           darwin: apple-darwin
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/mstange/samply/releases/download/{{.Version}}/samply-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/mstange/samply/releases/download/{{.Version}}/samply-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/mstange/samply/releases/download/{{.Version}}/samply-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: samply

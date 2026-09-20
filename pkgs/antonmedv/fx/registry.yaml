@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/antonmedv/fx/releases/download/{{.Version}}/fx_{{.OS}}_{{.Arch}}
     repo_owner: antonmedv
     repo_name: fx
     description: Command-line tool and terminal JSON viewer
@@ -8,7 +9,8 @@ packages:
     asset: fx_{{.OS}}_{{.Arch}}
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/antonmedv/fx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/antonmedv/fx/releases/download/{{.Version}}/fx-{{.OS}}.zip
         asset: fx-{{.OS}}.zip
         replacements:
           darwin: macos

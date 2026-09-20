@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.0.74")
-        url: https://gh-proxy.org/https://github.com/unfrl/dug/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/unfrl/dug/releases/download/{{.Version}}/dug-{{.OS}}-{{.Arch}}
         asset: dug-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -17,13 +18,18 @@ packages:
           darwin: osx
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/unfrl/dug/releases/download/{{.Version}}/dug.{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
             goarch: amd64
             format: tar.gz
             asset: dug.{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/unfrl/dug/releases/download/{{.Version}}/dug
             asset: dug
       - version_constraint: Version == "0.0.75"
-        url: https://gh-proxy.org/https://github.com/unfrl/dug/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/unfrl/dug/releases/download/{{.Version}}/dug.{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         asset: dug.{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -33,16 +39,23 @@ packages:
           darwin: osx
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/unfrl/dug/releases/download/{{.Version}}/dug-{{.OS}}-{{.Arch}}
             goarch: arm64
             format: raw
             asset: dug-{{.OS}}-{{.Arch}}
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/unfrl/dug/releases/download/{{.Version}}/dug.0.0.1.{{.OS}}-{{.Arch}}.{{.Format}}
             asset: dug.0.0.1.{{.OS}}-{{.Arch}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/unfrl/dug/releases/download/{{.Version}}/dug
             format: raw
             asset: dug
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/unfrl/dug/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/unfrl/dug/releases/download/{{.Version}}/dug.{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         asset: dug.{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -52,9 +65,13 @@ packages:
           darwin: osx
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/unfrl/dug/releases/download/{{.Version}}/dug-{{.OS}}-{{.Arch}}
             goarch: arm64
             format: raw
             asset: dug-{{.OS}}-{{.Arch}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/unfrl/dug/releases/download/{{.Version}}/dug
             format: raw
             asset: dug

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/kdash-rs/kdash/releases/download/{{.Version}}/kdash-{{.OS}}.{{.Format}}
     repo_owner: kdash-rs
     repo_name: kdash
     description: A simple and fast dashboard for Kubernetes
@@ -13,12 +14,15 @@ packages:
       - darwin
       - amd64
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/kdash-rs/kdash/releases/download/{{.Version}}/kdash-{{.OS}}.sha256
       asset: kdash-{{.OS}}.sha256
       algorithm: sha256
     version_constraint: semver(">= 0.4.3")
     version_overrides:
       - version_constraint: semver(">= 0.3.3")
+        type: http
+        url: https://gh-proxy.org/github.com/kdash-rs/kdash/releases/download/{{.Version}}/kdash-{{.OS}}.{{.Format}}
         replacements:
           darwin: macos
           linux: linux-musl
@@ -28,21 +32,31 @@ packages:
           - amd64
         overrides: &kdash_rs_overrides_1
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kdash-rs/kdash/releases/download/{{.Version}}/kdash-{{.OS}}.{{.Format}}
             checksum:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/kdash-rs/kdash/releases/download/{{.Version}}/kdash-{{.OS}}.sha256
               asset: kdash-{{.OS}}.sha256
               algorithm: sha256
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/kdash-rs/kdash/releases/download/{{.Version}}/kdash-aarch64-musl.tar.gz
             goarch: arm64
             asset: kdash-aarch64-musl.tar.gz
             checksum:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/kdash-rs/kdash/releases/download/{{.Version}}/kdash-aarch64-musl.sha256
               asset: kdash-aarch64-musl.sha256
               algorithm: sha256
       - version_constraint: semver(">= 0.0.4")
+        type: http
+        url: https://gh-proxy.org/github.com/kdash-rs/kdash/releases/download/{{.Version}}/kdash-{{.OS}}.{{.Format}}
         overrides: *kdash_rs_overrides_1
         replacements:
           darwin: macos
           linux: linux-musl
       - version_constraint: semver("< 0.0.4")
+        type: http
+        url: https://gh-proxy.org/github.com/kdash-rs/kdash/releases/download/{{.Version}}/kdash-{{.OS}}.{{.Format}}
         overrides: *kdash_rs_overrides_1

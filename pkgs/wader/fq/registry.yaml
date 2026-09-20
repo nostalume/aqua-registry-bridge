@@ -7,28 +7,36 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.0.4")
-        url: https://gh-proxy.org/https://github.com/wader/fq/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/wader/fq/releases/download/{{.Version}}/fq_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: fq_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/wader/fq/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/wader/fq/releases/download/{{.Version}}/fq_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/wader/fq/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/wader/fq/releases/download/{{.Version}}/fq_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: fq_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         replacements:
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/wader/fq/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/wader/fq/releases/download/{{.Version}}/fq_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz

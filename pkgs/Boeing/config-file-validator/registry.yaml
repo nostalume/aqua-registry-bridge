@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v1.3.0"
-        url: https://gh-proxy.org/https://github.com/Boeing/config-file-validator/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Boeing/config-file-validator/releases/download/{{.Version}}/validator.{{.OS}}-{{.Arch}}
         asset: validator.{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -17,13 +18,16 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Boeing/config-file-validator/releases/download/{{.Version}}/validator
             asset: validator
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "v1.4.0"
-        url: https://gh-proxy.org/https://github.com/Boeing/config-file-validator/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Boeing/config-file-validator/releases/download/{{.Version}}/validator-{{trimV .Version}}-{{.OS}}-{{.Arch}}
         asset: validator-{{trimV .Version}}-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -31,69 +35,91 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Boeing/config-file-validator/releases/download/{{.Version}}/validator-{{trimV .Version}}
             asset: validator-{{trimV .Version}}
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 1.2.0")
-        url: https://gh-proxy.org/https://github.com/Boeing/config-file-validator/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Boeing/config-file-validator/releases/download/{{.Version}}/validator.{{.OS}}-{{.Arch}}
         asset: validator.{{.OS}}-{{.Arch}}
         format: raw
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Boeing/config-file-validator/releases/download/{{.Version}}/validator
             asset: validator
         supported_envs:
           - linux/amd64
           - windows/amd64
       - version_constraint: semver("<= 2.1.0")
-        url: https://gh-proxy.org/https://github.com/Boeing/config-file-validator/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Boeing/config-file-validator/releases/download/{{.Version}}/validator-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: validator-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.md5"
           asset: "{{.Asset}}.md5"
           algorithm: md5
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Boeing/config-file-validator/releases/download/{{.Version}}/validator-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: Version == "v2.2.0"
-        url: https://gh-proxy.org/https://github.com/Boeing/config-file-validator/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Boeing/config-file-validator/releases/download/{{.Version}}/validator-v2.2-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: validator-v2.2-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.md5"
           asset: "{{.Asset}}.md5"
           algorithm: md5
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Boeing/config-file-validator/releases/download/{{.Version}}/validator-v2.2-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: Version == "v2.2.1"
-        url: https://gh-proxy.org/https://github.com/Boeing/config-file-validator/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Boeing/config-file-validator/releases/download/{{.Version}}/validator-v2.2-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: validator-v2.2-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Boeing/config-file-validator/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Boeing/config-file-validator/releases/download/{{.Version}}/validator-v2.2-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Boeing/config-file-validator/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Boeing/config-file-validator/releases/download/{{.Version}}/validator-v{{(semver .Version).Major}}.{{(semver .Version).Minor}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: validator-v{{(semver .Version).Major}}.{{(semver .Version).Minor}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Boeing/config-file-validator/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Boeing/config-file-validator/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Boeing/config-file-validator/releases/download/{{.Version}}/validator-v{{(semver .Version).Major}}.{{(semver .Version).Minor}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip

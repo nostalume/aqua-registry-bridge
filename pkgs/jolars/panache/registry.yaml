@@ -8,7 +8,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 2.20.0")
-        url: https://gh-proxy.org/https://github.com/jolars/panache/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jolars/panache/releases/download/{{.Version}}/panache-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: panache-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -20,9 +21,12 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jolars/panache/releases/download/{{.Version}}/panache-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 2.60.0")
-        url: https://gh-proxy.org/https://github.com/jolars/panache/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jolars/panache/releases/download/{{.Version}}/panache-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: panache-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -33,9 +37,12 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jolars/panache/releases/download/{{.Version}}/panache-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 2.61.0")
-        url: https://gh-proxy.org/https://github.com/jolars/panache/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jolars/panache/releases/download/{{.Version}}/panache-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: panache-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -46,11 +53,14 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jolars/panache/releases/download/{{.Version}}/panache-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         github_artifact_attestations:
           signer_workflow: jolars/panache/.github/workflows/packages.yml
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/jolars/panache/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jolars/panache/releases/download/{{.Version}}/panache-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: panache-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -60,11 +70,14 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/jolars/panache/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jolars/panache/releases/download/{{.Version}}/panache-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         github_artifact_attestations:
           signer_workflow: jolars/panache/.github/workflows/packages.yml

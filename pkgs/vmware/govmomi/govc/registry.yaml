@@ -8,7 +8,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.1.0"
-        url: https://gh-proxy.org/https://github.com/vmware/govmomi/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vmware/govmomi/releases/download/{{.Version}}/govc_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: govc_{{.OS}}_{{.Arch}}.{{.Format}}
         format: gz
         rosetta2: true
@@ -18,13 +19,16 @@ packages:
             src: govc_{{.OS}}_{{.Arch}}
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vmware/govmomi/releases/download/{{.Version}}/govc_{{.OS}}_{{.Arch}}.exe.{{.Format}}
             asset: govc_{{.OS}}_{{.Arch}}.exe.{{.Format}}
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "v0.18.0"
-        url: https://gh-proxy.org/https://github.com/vmware/govmomi/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vmware/govmomi/releases/download/{{.Version}}/govc_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: govc_{{.OS}}_{{.Arch}}.{{.Format}}
         format: gz
         rosetta2: true
@@ -33,11 +37,14 @@ packages:
           - name: govc
             src: govc_{{.OS}}_{{.Arch}}
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vmware/govmomi/releases/download/{{.Version}}/govc_{{trimV .Version}}_checksums.txt
           asset: govc_{{trimV .Version}}_checksums.txt
           algorithm: sha1
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vmware/govmomi/releases/download/{{.Version}}/govc_{{.OS}}_{{.Arch}}.exe.{{.Format}}
             format: zip
             asset: govc_{{.OS}}_{{.Arch}}.exe.{{.Format}}
             files:
@@ -47,7 +54,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.24.0")
-        url: https://gh-proxy.org/https://github.com/vmware/govmomi/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vmware/govmomi/releases/download/{{.Version}}/govc_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: govc_{{.OS}}_{{.Arch}}.{{.Format}}
         format: gz
         rosetta2: true
@@ -57,6 +65,8 @@ packages:
             src: govc_{{.OS}}_{{.Arch}}
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vmware/govmomi/releases/download/{{.Version}}/govc_{{.OS}}_{{.Arch}}.exe.{{.Format}}
             format: zip
             asset: govc_{{.OS}}_{{.Arch}}.exe.{{.Format}}
         supported_envs:
@@ -64,7 +74,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "v0.25.0"
-        url: https://gh-proxy.org/https://github.com/vmware/govmomi/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vmware/govmomi/releases/download/{{.Version}}/govc_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: govc_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -74,14 +85,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vmware/govmomi/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vmware/govmomi/releases/download/{{.Version}}/govc_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.27.4")
-        url: https://gh-proxy.org/https://github.com/vmware/govmomi/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vmware/govmomi/releases/download/{{.Version}}/govc_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: govc_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -92,14 +107,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vmware/govmomi/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vmware/govmomi/releases/download/{{.Version}}/govc_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/vmware/govmomi/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vmware/govmomi/releases/download/{{.Version}}/govc_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: govc_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -108,9 +127,12 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vmware/govmomi/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vmware/govmomi/releases/download/{{.Version}}/govc_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

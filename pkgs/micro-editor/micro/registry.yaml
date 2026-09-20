@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v2.0.8"
-        url: https://gh-proxy.org/https://github.com/micro-editor/micro/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/micro-editor/micro/releases/download/{{.Version}}/micro-{{trimV .Version}}-{{.OS}}.{{.Format}}
         asset: micro-{{trimV .Version}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -20,15 +21,22 @@ packages:
           windows: win64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/micro-editor/micro/releases/download/{{.Version}}/micro-{{trimV .Version}}-{{.OS}}64-static.{{.Format}}
             goarch: amd64
             asset: micro-{{trimV .Version}}-{{.OS}}64-static.{{.Format}}
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/micro-editor/micro/releases/download/{{.Version}}/micro-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             goarch: arm64
             asset: micro-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/micro-editor/micro/releases/download/{{.Version}}/micro-{{trimV .Version}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 1.0rc1")
-        url: https://gh-proxy.org/https://github.com/micro-editor/micro/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/micro-editor/micro/releases/download/{{.Version}}/micro-{{.Version}}-{{.OS}}.{{.Format}}
         asset: micro-{{.Version}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -39,15 +47,20 @@ packages:
           windows: win64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/micro-editor/micro/releases/download/{{.Version}}/micro-{{.Version}}-{{.OS}}64.{{.Format}}
             asset: micro-{{.Version}}-{{.OS}}64.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/micro-editor/micro/releases/download/{{.Version}}/micro-{{.Version}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 1.4.1")
-        url: https://gh-proxy.org/https://github.com/micro-editor/micro/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/micro-editor/micro/releases/download/{{.Version}}/micro-{{trimV .Version}}-{{.OS}}.{{.Format}}
         asset: micro-{{trimV .Version}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -58,15 +71,20 @@ packages:
           windows: win64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/micro-editor/micro/releases/download/{{.Version}}/micro-{{trimV .Version}}-{{.OS}}64.{{.Format}}
             asset: micro-{{trimV .Version}}-{{.OS}}64.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/micro-editor/micro/releases/download/{{.Version}}/micro-{{trimV .Version}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 2.0.10")
-        url: https://gh-proxy.org/https://github.com/micro-editor/micro/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/micro-editor/micro/releases/download/{{.Version}}/micro-{{trimV .Version}}-{{.OS}}.{{.Format}}
         asset: micro-{{trimV .Version}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -77,15 +95,22 @@ packages:
           windows: win64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/micro-editor/micro/releases/download/{{.Version}}/micro-{{trimV .Version}}-{{.OS}}64-static.{{.Format}}
             goarch: amd64
             asset: micro-{{trimV .Version}}-{{.OS}}64-static.{{.Format}}
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/micro-editor/micro/releases/download/{{.Version}}/micro-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             goarch: arm64
             asset: micro-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/micro-editor/micro/releases/download/{{.Version}}/micro-{{trimV .Version}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/micro-editor/micro/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/micro-editor/micro/releases/download/{{.Version}}/micro-{{trimV .Version}}-{{.OS}}.{{.Format}}
         asset: micro-{{trimV .Version}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -95,19 +120,29 @@ packages:
           windows: win64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/micro-editor/micro/releases/download/{{.Version}}/micro-{{trimV .Version}}-{{.OS}}64-static.{{.Format}}
             goarch: amd64
             asset: micro-{{trimV .Version}}-{{.OS}}64-static.{{.Format}}
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/micro-editor/micro/releases/download/{{.Version}}/micro-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             goarch: arm64
             asset: micro-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/micro-editor/micro/releases/download/{{.Version}}/micro-{{trimV .Version}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               darwin: osx
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/micro-editor/micro/releases/download/{{.Version}}/micro-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             goarch: arm64
             asset: micro-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               darwin: macos
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/micro-editor/micro/releases/download/{{.Version}}/micro-{{trimV .Version}}-{{.OS}}.{{.Format}}
             format: zip

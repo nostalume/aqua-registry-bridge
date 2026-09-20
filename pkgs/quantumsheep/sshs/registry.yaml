@@ -7,20 +7,24 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 3.4.0")
-        url: https://gh-proxy.org/https://github.com/quantumsheep/sshs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/quantumsheep/sshs/releases/download/{{.Version}}/sshs-{{.OS}}-{{.Arch}}
         asset: sshs-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/quantumsheep/sshs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/quantumsheep/sshs/releases/download/{{.Version}}/sshs-{{.OS}}-{{.Arch}}
         asset: sshs-{{.OS}}-{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           file_format: regexp
           asset: "{{.Asset}}.sha256"
           pattern:

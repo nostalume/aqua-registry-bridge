@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/charmbracelet/freeze/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/charmbracelet/freeze/releases/download/{{.Version}}/freeze_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: freeze_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -21,7 +22,8 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/charmbracelet/freeze/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
@@ -31,9 +33,11 @@ packages:
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
               - --signature
-              - https://github.com/charmbracelet/freeze/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/charmbracelet/freeze/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
-              - https://github.com/charmbracelet/freeze/releases/download/{{.Version}}/checksums.txt.pem
+              - https://gh-proxy.org/github.com/charmbracelet/freeze/releases/download/{{.Version}}/checksums.txt.pem
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/charmbracelet/freeze/releases/download/{{.Version}}/freeze_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

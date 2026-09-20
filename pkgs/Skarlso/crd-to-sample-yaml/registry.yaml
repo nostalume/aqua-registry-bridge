@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.0.8")
-        url: https://gh-proxy.org/https://github.com/Skarlso/crd-to-sample-yaml/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Skarlso/crd-to-sample-yaml/releases/download/{{.Version}}/crd-to-yaml_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: crd-to-yaml_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -17,7 +18,8 @@ packages:
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Skarlso/crd-to-sample-yaml/releases/download/{{.Version}}/crd-to-yaml_checksums.txt
           asset: crd-to-yaml_checksums.txt
           algorithm: sha256
         supported_envs:
@@ -25,7 +27,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.1.4")
-        url: https://gh-proxy.org/https://github.com/Skarlso/crd-to-sample-yaml/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Skarlso/crd-to-sample-yaml/releases/download/{{.Version}}/cty_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: cty_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -33,7 +36,8 @@ packages:
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Skarlso/crd-to-sample-yaml/releases/download/{{.Version}}/cty_checksums.txt
           asset: cty_checksums.txt
           algorithm: sha256
         supported_envs:
@@ -41,12 +45,14 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Skarlso/crd-to-sample-yaml/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Skarlso/crd-to-sample-yaml/releases/download/{{.Version}}/cty_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: cty_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: cty
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Skarlso/crd-to-sample-yaml/releases/download/{{.Version}}/cty_checksums.txt
           asset: cty_checksums.txt
           algorithm: sha256

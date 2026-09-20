@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.1.1"
-        url: https://gh-proxy.org/https://github.com/micahkepe/jsongrep/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/micahkepe/jsongrep/releases/download/{{.Version}}/jsongrep-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: jsongrep-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         files:
           - name: jg
@@ -19,14 +20,16 @@ packages:
           darwin: apple-darwin
           linux: unknown-linux-musl
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.6.0")
-        url: https://gh-proxy.org/https://github.com/micahkepe/jsongrep/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/micahkepe/jsongrep/releases/download/{{.Version}}/jsongrep-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: jsongrep-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         files:
           - name: jg
@@ -40,14 +43,18 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/micahkepe/jsongrep/releases/download/{{.Version}}/jsongrep-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             checksum:
-              type: github_release
+              type: http
+              url: "{{.AssetURL}}.sha256"
               asset: "{{.Asset}}.sha256"
               algorithm: sha256
               file_format: regexp
@@ -58,7 +65,8 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/micahkepe/jsongrep/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/micahkepe/jsongrep/releases/download/{{.Version}}/jsongrep-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: jsongrep-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         files:
           - name: jg
@@ -72,14 +80,18 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/micahkepe/jsongrep/releases/download/{{.Version}}/jsongrep-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             checksum:
-              type: github_release
+              type: http
+              url: "{{.AssetURL}}.sha256"
               asset: "{{.Asset}}.sha256"
               algorithm: sha256
               file_format: regexp

@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/krallin/tini/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/krallin/tini/releases/download/{{.Version}}/tini-static-{{.Arch}}
         asset: tini-static-{{.Arch}}
         supported_envs:
           - linux

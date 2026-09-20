@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/flosell/iam-policy-json-to-terraform/releases/download/{{.Version}}/iam-policy-json-to-terraform_{{.OS}}_{{.Arch}}
     repo_owner: flosell
     repo_name: iam-policy-json-to-terraform
     description: Small tool to convert an IAM Policy in JSON format into a Terraform aws_iam_policy_document
@@ -13,22 +14,38 @@ packages:
       arm64: arm
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/flosell/iam-policy-json-to-terraform/releases/download/{{.Version}}/iam-policy-json-to-terraform.exe
         asset: iam-policy-json-to-terraform.exe
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/flosell/iam-policy-json-to-terraform/releases/download/{{.Version}}/iam-policy-json-to-terraform_amd64
         asset: iam-policy-json-to-terraform_amd64
       - goos: darwin
+        type: http
+        url: https://gh-proxy.org/github.com/flosell/iam-policy-json-to-terraform/releases/download/{{.Version}}/iam-policy-json-to-terraform_darwin
         goarch: amd64
         asset: iam-policy-json-to-terraform_darwin
       - goos: darwin
+        type: http
+        url: https://gh-proxy.org/github.com/flosell/iam-policy-json-to-terraform/releases/download/{{.Version}}/iam-policy-json-to-terraform_darwin_arm
         goarch: arm64
         asset: iam-policy-json-to-terraform_darwin_arm
     version_constraint: semver(">= 1.7.0")
     version_overrides:
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/flosell/iam-policy-json-to-terraform/releases/download/{{.Version}}/iam-policy-json-to-terraform_{{.OS}}_{{.Arch}}
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/flosell/iam-policy-json-to-terraform/releases/download/{{.Version}}/iam-policy-json-to-terraform.exe
             asset: iam-policy-json-to-terraform.exe
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/flosell/iam-policy-json-to-terraform/releases/download/{{.Version}}/iam-policy-json-to-terraform_amd64
             asset: iam-policy-json-to-terraform_amd64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/flosell/iam-policy-json-to-terraform/releases/download/{{.Version}}/iam-policy-json-to-terraform_darwin
             asset: iam-policy-json-to-terraform_darwin

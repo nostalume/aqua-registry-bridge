@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version in ["v0.1.84", "v0.1.92", "v0.1.115", "v0.1.124"]
-        url: https://gh-proxy.org/https://github.com/anomalyco/opencode/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/anomalyco/opencode/releases/download/{{.Version}}/opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         replacements:
@@ -18,7 +19,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: Version in ["v0.1.139", "v0.1.142"]
-        url: https://gh-proxy.org/https://github.com/anomalyco/opencode/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/anomalyco/opencode/releases/download/{{.Version}}/opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -29,7 +31,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version in ["v0.1.150", "v0.1.156", "v0.1.159", "v0.1.167", "v0.1.170", "v0.1.180", "v0.2.5"]
-        url: https://gh-proxy.org/https://github.com/anomalyco/opencode/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/anomalyco/opencode/releases/download/{{.Version}}/opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -40,7 +43,8 @@ packages:
           - darwin/arm64
           - windows/amd64
       - version_constraint: Version in ["v0.3.11", "v0.3.25"]
-        url: https://gh-proxy.org/https://github.com/anomalyco/opencode/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/anomalyco/opencode/releases/download/{{.Version}}/opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         replacements:
@@ -49,7 +53,8 @@ packages:
           - linux
           - darwin
       - version_constraint: Version == "v1.0.92"
-        url: https://gh-proxy.org/https://github.com/anomalyco/opencode/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/anomalyco/opencode/releases/download/{{.Version}}/opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -59,7 +64,8 @@ packages:
           - darwin
           - windows/amd64
       - version_constraint: Version == "v1.0.93"
-        url: https://gh-proxy.org/https://github.com/anomalyco/opencode/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/anomalyco/opencode/releases/download/{{.Version}}/opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -68,30 +74,36 @@ packages:
           amd64: x64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/anomalyco/opencode/releases/download/{{.Version}}/opencode-{{.OS}}-{{.Arch}}.{{.Format}}
             format: tar.gz
       - version_constraint: semver("<= 0.0.52")
-        url: https://gh-proxy.org/https://github.com/anomalyco/opencode/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/anomalyco/opencode/releases/download/{{.Version}}/opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
           darwin: mac
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/anomalyco/opencode/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 0.1.61")
-        url: https://gh-proxy.org/https://github.com/anomalyco/opencode/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/anomalyco/opencode/releases/download/{{.Version}}/opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         replacements:
           amd64: x64
       - version_constraint: semver("<= 0.1.129")
-        url: https://gh-proxy.org/https://github.com/anomalyco/opencode/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/anomalyco/opencode/releases/download/{{.Version}}/opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         replacements:
@@ -100,14 +112,16 @@ packages:
           - linux
           - darwin
       - version_constraint: semver("<= 0.3.18")
-        url: https://gh-proxy.org/https://github.com/anomalyco/opencode/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/anomalyco/opencode/releases/download/{{.Version}}/opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         replacements:
           amd64: x64
       - version_constraint: semver("<= 0.3.20")
-        url: https://gh-proxy.org/https://github.com/anomalyco/opencode/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/anomalyco/opencode/releases/download/{{.Version}}/opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         replacements:
@@ -116,14 +130,16 @@ packages:
           - linux
           - darwin
       - version_constraint: semver("<= 0.3.31")
-        url: https://gh-proxy.org/https://github.com/anomalyco/opencode/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/anomalyco/opencode/releases/download/{{.Version}}/opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         replacements:
           amd64: x64
       - version_constraint: semver("<= 0.3.34")
-        url: https://gh-proxy.org/https://github.com/anomalyco/opencode/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/anomalyco/opencode/releases/download/{{.Version}}/opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         replacements:
@@ -132,14 +148,16 @@ packages:
           - linux
           - darwin
       - version_constraint: semver("<= 1.0.91")
-        url: https://gh-proxy.org/https://github.com/anomalyco/opencode/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/anomalyco/opencode/releases/download/{{.Version}}/opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         replacements:
           amd64: x64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/anomalyco/opencode/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/anomalyco/opencode/releases/download/{{.Version}}/opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -147,4 +165,6 @@ packages:
           amd64: x64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/anomalyco/opencode/releases/download/{{.Version}}/opencode-{{.OS}}-{{.Arch}}.{{.Format}}
             format: tar.gz

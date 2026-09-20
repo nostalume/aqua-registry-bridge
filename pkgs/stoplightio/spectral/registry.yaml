@@ -7,31 +7,37 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v4.0.0-beta.7"
-        url: https://gh-proxy.org/https://github.com/stoplightio/spectral/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stoplightio/spectral/releases/download/{{.Version}}/spectral-cli
         asset: spectral-cli
         format: raw
         supported_envs:
           - windows/amd64
       - version_constraint: Version == "v4.2.0-beta5"
-        url: https://gh-proxy.org/https://github.com/stoplightio/spectral/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stoplightio/spectral/releases/download/{{.Version}}/spectral-cli
         asset: spectral-cli
         format: raw
         supported_envs:
           - windows/amd64
       - version_constraint: Version == "v4.2.0"
-        url: https://gh-proxy.org/https://github.com/stoplightio/spectral/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stoplightio/spectral/releases/download/{{.Version}}/spectral-{{.OS}}
         asset: spectral-{{.OS}}
         format: raw
         replacements:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/stoplightio/spectral/releases/download/{{.Version}}/spectral-cli
             asset: spectral-cli
         supported_envs:
           - darwin
           - windows/amd64
       - version_constraint: Version == "v5.4.0-beta1"
-        url: https://gh-proxy.org/https://github.com/stoplightio/spectral/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stoplightio/spectral/releases/download/{{.Version}}/spectral-{{.OS}}
         asset: spectral-{{.OS}}
         format: raw
         replacements:
@@ -40,7 +46,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v6.7.0"
-        url: https://gh-proxy.org/https://github.com/stoplightio/spectral/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stoplightio/spectral/releases/download/{{.Version}}/spectral-{{.OS}}-{{.Arch}}
         asset: spectral-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -49,6 +56,8 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/stoplightio/spectral/releases/download/{{.Version}}/spectral
             asset: spectral
         supported_envs:
           - darwin
@@ -57,7 +66,8 @@ packages:
       - version_constraint: semver("<= 3.1.0")
         no_asset: true
       - version_constraint: semver("<= 4.0.0-beta.6")
-        url: https://gh-proxy.org/https://github.com/stoplightio/spectral/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stoplightio/spectral/releases/download/{{.Version}}/spectral-{{.OS}}
         asset: spectral-{{.OS}}
         format: raw
         replacements:
@@ -66,58 +76,70 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 4.1.0-beta2")
-        url: https://gh-proxy.org/https://github.com/stoplightio/spectral/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stoplightio/spectral/releases/download/{{.Version}}/spectral-{{.OS}}
         asset: spectral-{{.OS}}
         format: raw
         replacements:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/stoplightio/spectral/releases/download/{{.Version}}/spectral-cli
             asset: spectral-cli
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 4.1.0")
-        url: https://gh-proxy.org/https://github.com/stoplightio/spectral/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stoplightio/spectral/releases/download/{{.Version}}/spectral-cli
         asset: spectral-cli
         format: raw
         supported_envs:
           - windows/amd64
       - version_constraint: semver("<= 4.2.0-beta4")
-        url: https://gh-proxy.org/https://github.com/stoplightio/spectral/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stoplightio/spectral/releases/download/{{.Version}}/spectral-{{.OS}}
         asset: spectral-{{.OS}}
         format: raw
         replacements:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/stoplightio/spectral/releases/download/{{.Version}}/spectral-cli
             asset: spectral-cli
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 5.0.0-beta3")
-        url: https://gh-proxy.org/https://github.com/stoplightio/spectral/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stoplightio/spectral/releases/download/{{.Version}}/spectral-cli
         asset: spectral-cli
         format: raw
         supported_envs:
           - windows/amd64
       - version_constraint: semver("<= 5.5.0-beta3")
-        url: https://gh-proxy.org/https://github.com/stoplightio/spectral/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stoplightio/spectral/releases/download/{{.Version}}/spectral-{{.OS}}
         asset: spectral-{{.OS}}
         format: raw
         replacements:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/stoplightio/spectral/releases/download/{{.Version}}/spectral-cli
             asset: spectral-cli
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 5.5.0-beta5")
-        url: https://gh-proxy.org/https://github.com/stoplightio/spectral/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stoplightio/spectral/releases/download/{{.Version}}/spectral-{{.OS}}
         asset: spectral-{{.OS}}
         format: raw
         replacements:
@@ -126,33 +148,40 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 6.2.1")
-        url: https://gh-proxy.org/https://github.com/stoplightio/spectral/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stoplightio/spectral/releases/download/{{.Version}}/spectral-{{.OS}}
         asset: spectral-{{.OS}}
         format: raw
         replacements:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/stoplightio/spectral/releases/download/{{.Version}}/spectral-cli
             asset: spectral-cli
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 6.6.0")
-        url: https://gh-proxy.org/https://github.com/stoplightio/spectral/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stoplightio/spectral/releases/download/{{.Version}}/spectral-{{.OS}}
         asset: spectral-{{.OS}}
         format: raw
         replacements:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/stoplightio/spectral/releases/download/{{.Version}}/spectral
             asset: spectral
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/stoplightio/spectral/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stoplightio/spectral/releases/download/{{.Version}}/spectral-{{.OS}}-{{.Arch}}
         asset: spectral-{{.OS}}-{{.Arch}}
         format: raw
         replacements:
@@ -160,4 +189,6 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/stoplightio/spectral/releases/download/{{.Version}}/spectral
             asset: spectral

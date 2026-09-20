@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/ko-build/ko/releases/download/{{.Version}}/ko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
     repo_owner: ko-build
     repo_name: ko
     aliases:
@@ -14,14 +15,18 @@ packages:
       386: i386
       amd64: x86_64
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/ko-build/ko/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256
     slsa_provenance:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/ko-build/ko/releases/download/{{.Version}}/multiple.intoto.jsonl
       asset: multiple.intoto.jsonl
     version_constraint: semver("> 0.12.0")
     version_overrides:
       - version_constraint: 'semver("<=0.12.0")'
+        type: http
+        url: https://gh-proxy.org/github.com/ko-build/ko/releases/download/{{.Version}}/ko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
         slsa_provenance:
           enabled: false

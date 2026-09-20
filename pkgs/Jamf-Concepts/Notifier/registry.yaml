@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 2.3.0")
-        url: https://gh-proxy.org/https://github.com/Jamf-Concepts/Notifier/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Jamf-Concepts/Notifier/releases/download/{{.Version}}/dataJAR-Notifier-{{.Version}}.{{.Format}}
         asset: dataJAR-Notifier-{{.Version}}.{{.Format}}
         format: pkg
         files:
@@ -18,7 +19,8 @@ packages:
         supported_envs:
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Jamf-Concepts/Notifier/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Jamf-Concepts/Notifier/releases/download/{{.Version}}/Notifier-{{.Version}}.{{.Format}}
         asset: Notifier-{{.Version}}.{{.Format}}
         format: pkg
         files:

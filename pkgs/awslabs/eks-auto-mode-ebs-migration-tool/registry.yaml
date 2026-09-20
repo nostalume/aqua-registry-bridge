@@ -6,7 +6,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/awslabs/eks-auto-mode-ebs-migration-tool/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/awslabs/eks-auto-mode-ebs-migration-tool/releases/download/{{.Version}}/eks-auto-mode-ebs-migration-tool_{{.OS}}_{{.Arch}}
         asset: eks-auto-mode-ebs-migration-tool_{{.OS}}_{{.Arch}}
         format: raw
         replacements:
@@ -14,11 +15,14 @@ packages:
           linux: Linux
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/awslabs/eks-auto-mode-ebs-migration-tool/releases/download/{{.Version}}/eks-auto-mode-ebs-migration-tool_{{trimV .Version}}_sha256_checksums.txt
           asset: eks-auto-mode-ebs-migration-tool_{{trimV .Version}}_sha256_checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/awslabs/eks-auto-mode-ebs-migration-tool/releases/download/{{.Version}}/eks-auto-mode-ebs-migration-tool_{{.OS}}_all
             asset: eks-auto-mode-ebs-migration-tool_{{.OS}}_all
         supported_envs:
           - linux

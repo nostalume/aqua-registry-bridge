@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.5.0")
-        url: https://gh-proxy.org/https://github.com/dyne/slangroom-exec/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dyne/slangroom-exec/releases/download/{{.Version}}/slangroom-exec-{{.OS}}-{{.Arch}}
         asset: slangroom-exec-{{.OS}}-{{.Arch}}
         format: raw
         replacements:
@@ -18,7 +19,8 @@ packages:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/dyne/slangroom-exec/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dyne/slangroom-exec/releases/download/{{.Version}}/slangroom-exec-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: slangroom-exec-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/EdenEast/repo/releases/download/{{.Version}}/repo-{{.Arch}}-{{.OS}}.{{.Format}}
     repo_owner: EdenEast
     repo_name: repo
     asset: repo-{{.Arch}}-{{.OS}}.{{.Format}}
@@ -13,12 +14,15 @@ packages:
       windows: pc-windows-msvc
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/EdenEast/repo/releases/download/{{.Version}}/repo-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
     supported_envs:
       - darwin
       - amd64
     rosetta2: true
     checksum:
-      type: github_release
+      type: http
+      url: "{{.AssetURL}}.sha256"
       asset: "{{.Asset}}.sha256"
       algorithm: sha256

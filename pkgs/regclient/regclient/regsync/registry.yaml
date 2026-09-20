@@ -1,7 +1,8 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
   - name: regclient/regclient/regsync
-    type: github_release
+    type: http
+    url: https://gh-proxy.org/github.com/regclient/regclient/releases/download/{{.Version}}/regsync-{{.OS}}-{{.Arch}}
     repo_owner: regclient
     repo_name: regclient
     asset: regsync-{{.OS}}-{{.Arch}}
@@ -16,5 +17,9 @@ packages:
     version_constraint: semver(">= 0.3.9")
     version_overrides:
       - version_constraint: semver("< 0.3.9")
+        type: http
+        url: https://gh-proxy.org/github.com/regclient/regclient/releases/download/{{.Version}}/regsync-{{.OS}}-{{.Arch}}
         rosetta2: true
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/regclient/regclient/releases/download/{{.Version}}/regsync-{{.OS}}-{{.Arch}}

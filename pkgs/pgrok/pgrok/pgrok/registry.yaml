@@ -13,14 +13,25 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("< 1.5.0")
+        type: http
+        url: https://gh-proxy.org/github.com/pgrok/pgrok/releases/download/{{.Version}}/pgrok_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/pgrok/pgrok/releases/download/{{.Version}}/checksums.pgrok.txt
           asset: checksums.pgrok.txt
           algorithm: sha256
       - version_constraint: semver("< 1.6.0-rc.1")
+        type: http
+        url: https://gh-proxy.org/github.com/pgrok/pgrok/releases/download/{{.Version}}/pgrok_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/pgrok/pgrok/releases/download/{{.Version}}/pgrok_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/pgrok/pgrok/releases/download/{{.Version}}/pgrok_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/pgrok/pgrok/releases/download/{{.Version}}/pgrok_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

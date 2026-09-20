@@ -8,33 +8,41 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.2.1")
-        url: https://gh-proxy.org/https://github.com/Gentleman-Programming/gentle-ai/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Gentleman-Programming/gentle-ai/releases/download/{{.Version}}/gentle-ai_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gentle-ai_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Gentleman-Programming/gentle-ai/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 2.1.11")
-        url: https://gh-proxy.org/https://github.com/Gentleman-Programming/gentle-ai/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Gentleman-Programming/gentle-ai/releases/download/{{.Version}}/gentle-ai_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gentle-ai_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Gentleman-Programming/gentle-ai/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Gentleman-Programming/gentle-ai/releases/download/{{.Version}}/gentle-ai_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Gentleman-Programming/gentle-ai/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Gentleman-Programming/gentle-ai/releases/download/{{.Version}}/gentle-ai_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gentle-ai_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Gentleman-Programming/gentle-ai/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:

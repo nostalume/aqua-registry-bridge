@@ -7,51 +7,67 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.4.0")
-        url: https://gh-proxy.org/https://github.com/rhysd/actionlint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rhysd/actionlint/releases/download/{{.Version}}/actionlint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: actionlint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/rhysd/actionlint/releases/download/{{.Version}}/actionlint_{{trimV .Version}}_checksums.txt
           asset: actionlint_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/rhysd/actionlint/releases/download/{{.Version}}/actionlint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 1.6.1")
-        url: https://gh-proxy.org/https://github.com/rhysd/actionlint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rhysd/actionlint/releases/download/{{.Version}}/actionlint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: actionlint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/rhysd/actionlint/releases/download/{{.Version}}/actionlint_{{trimV .Version}}_checksums.txt
           asset: actionlint_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/rhysd/actionlint/releases/download/{{.Version}}/actionlint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 1.7.10")
-        url: https://gh-proxy.org/https://github.com/rhysd/actionlint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rhysd/actionlint/releases/download/{{.Version}}/actionlint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: actionlint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/rhysd/actionlint/releases/download/{{.Version}}/actionlint_{{trimV .Version}}_checksums.txt
           asset: actionlint_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/rhysd/actionlint/releases/download/{{.Version}}/actionlint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/rhysd/actionlint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rhysd/actionlint/releases/download/{{.Version}}/actionlint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: actionlint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/rhysd/actionlint/releases/download/{{.Version}}/actionlint_{{trimV .Version}}_checksums.txt
           asset: actionlint_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/rhysd/actionlint/releases/download/{{.Version}}/actionlint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         github_artifact_attestations:
           signer_workflow: rhysd/actionlint/.github/workflows/release.yaml

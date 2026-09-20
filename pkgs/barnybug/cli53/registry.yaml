@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version == "0.6.0"
         no_asset: true
       - version_constraint: semver("<= 0.7.2")
-        url: https://gh-proxy.org/https://github.com/barnybug/cli53/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/barnybug/cli53/releases/download/{{.Version}}/cli53-{{.OS}}-{{.Arch}}
         asset: cli53-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -21,7 +22,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.8.10")
-        url: https://gh-proxy.org/https://github.com/barnybug/cli53/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/barnybug/cli53/releases/download/{{.Version}}/cli53-{{.OS}}-{{.Arch}}
         asset: cli53-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -29,7 +31,8 @@ packages:
         replacements:
           darwin: mac
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/barnybug/cli53/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         supported_envs:
@@ -37,7 +40,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.8.19")
-        url: https://gh-proxy.org/https://github.com/barnybug/cli53/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/barnybug/cli53/releases/download/{{.Version}}/cli53-{{.OS}}-{{.Arch}}
         asset: cli53-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -45,26 +49,31 @@ packages:
         replacements:
           darwin: mac
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/barnybug/cli53/releases/download/{{.Version}}/cli53_{{.Version}}_checksums.txt
           asset: cli53_{{.Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.8.23")
-        url: https://gh-proxy.org/https://github.com/barnybug/cli53/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/barnybug/cli53/releases/download/{{.Version}}/cli53-{{.OS}}-{{.Arch}}
         asset: cli53-{{.OS}}-{{.Arch}}
         format: raw
         replacements:
           darwin: mac
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/barnybug/cli53/releases/download/{{.Version}}/cli53_{{.Version}}_checksums.txt
           asset: cli53_{{.Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/barnybug/cli53/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/barnybug/cli53/releases/download/{{.Version}}/cli53-{{.OS}}-{{.Arch}}
         asset: cli53-{{.OS}}-{{.Arch}}
         format: raw
         replacements:
           darwin: mac
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/barnybug/cli53/releases/download/{{.Version}}/cli53_{{trimV .Version}}_checksums.txt
           asset: cli53_{{trimV .Version}}_checksums.txt
           algorithm: sha256

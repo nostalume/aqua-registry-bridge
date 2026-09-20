@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/ogham/dog/releases/download/{{.Version}}/dog-{{.Version}}-{{.Arch}}-{{.OS}}.zip
     repo_owner: ogham
     repo_name: dog
     description: A command-line DNS client
@@ -18,6 +19,7 @@ packages:
       - name: dog
         src: bin/dog
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/ogham/dog/releases/download/{{.Version}}/SHA256SUMS
       asset: SHA256SUMS
       algorithm: sha256

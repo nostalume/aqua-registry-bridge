@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/im2nguyen/rover/releases/download/{{.Version}}/rover_{{trimV .Version}}_{{.OS}}_{{.Arch}}.zip
     repo_owner: im2nguyen
     repo_name: rover
     asset: rover_{{trimV .Version}}_{{.OS}}_{{.Arch}}.zip
@@ -9,6 +10,7 @@ packages:
       - name: rover
         src: rover_{{.Version}}
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/im2nguyen/rover/releases/download/{{.Version}}/rover_{{trimV .Version}}_SHA256SUMS
       asset: rover_{{trimV .Version}}_SHA256SUMS
       algorithm: sha256

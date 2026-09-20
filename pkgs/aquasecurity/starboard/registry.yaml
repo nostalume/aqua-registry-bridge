@@ -11,7 +11,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.14.1")
-        url: https://gh-proxy.org/https://github.com/aquasecurity/starboard/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aquasecurity/starboard/releases/download/{{.Version}}/starboard_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: starboard_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -19,43 +20,54 @@ packages:
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/aquasecurity/starboard/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/aquasecurity/starboard/releases/download/{{.Version}}/starboard_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.15.19")
-        url: https://gh-proxy.org/https://github.com/aquasecurity/starboard/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aquasecurity/starboard/releases/download/{{.Version}}/starboard_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: starboard_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
           arm64: ARM64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/aquasecurity/starboard/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/aquasecurity/starboard/releases/download/{{.Version}}/starboard_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/aquasecurity/starboard/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aquasecurity/starboard/releases/download/{{.Version}}/starboard_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: starboard_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
           arm64: ARM64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/aquasecurity/starboard/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/aquasecurity/starboard/releases/download/{{.Version}}/starboard_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
             replacements:
               arm64: ARM

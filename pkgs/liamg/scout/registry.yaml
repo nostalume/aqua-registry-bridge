@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/liamg/scout/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/liamg/scout/releases/download/{{.Version}}/scout-{{.OS}}-{{.Arch}}
         asset: scout-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true

@@ -1,17 +1,21 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/kcl-lang/cli/releases/download/{{.Version}}/kcl-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
     repo_owner: kcl-lang
     repo_name: cli
     description: The KCL Command Line Interface (CLI)
     asset: kcl-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
     format: tar.gz
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/kcl-lang/cli/releases/download/{{.Version}}/cli_{{trimV .Version}}_checksums.txt
       asset: cli_{{trimV .Version}}_checksums.txt
       algorithm: sha256
     files:
       - name: kcl
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/kcl-lang/cli/releases/download/{{.Version}}/kcl-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip

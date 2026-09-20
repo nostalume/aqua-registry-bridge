@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_content
+  - type: http
+    url: https://gh-proxy.org/raw.githubusercontent.com/suzuki-shunsuke/checkout-merged-branch-with-ci-info/{{.Version}}/checkout-merged-branch
     repo_owner: suzuki-shunsuke
     repo_name: checkout-merged-branch-with-ci-info
     path: checkout-merged-branch

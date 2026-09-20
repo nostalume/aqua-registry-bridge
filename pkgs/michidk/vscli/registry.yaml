@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/michidk/vscli/releases/download/{{.Version}}/vscli-{{.Arch}}-{{.OS}}.{{.Format}}
     repo_owner: michidk
     repo_name: vscli
     description: A CLI tool to launch vscode projects, which supports devcontainers
@@ -11,6 +12,8 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/michidk/vscli/releases/download/{{.Version}}/vscli-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
     replacements:
       amd64: x86_64
@@ -24,11 +27,17 @@ packages:
     version_constraint: semver(">= 0.1.7")
     version_overrides:
       - version_constraint: Version == "v0.1.6"
+        type: http
+        url: https://gh-proxy.org/github.com/michidk/vscli/releases/download/{{.Version}}/vscli-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/michidk/vscli/releases/download/{{.Version}}/vscli-{{.Arch}}-{{.OS}}.{{.Format}}
             format: tar.gz
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/michidk/vscli/releases/download/{{.Version}}/vscli-{{.Arch}}-{{.OS}}.{{.Format}}
             checksum:
               enabled: false
         replacements:
@@ -40,10 +49,13 @@ packages:
           - windows/amd64
         rosetta2: false
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
       - version_constraint: Version == "v0.1.5"
+        type: http
+        url: https://gh-proxy.org/github.com/michidk/vscli/releases/download/{{.Version}}/vscli-{{.Arch}}-{{.OS}}.{{.Format}}
         replacements:
           amd64: x86_64
           linux: unknown-linux-musl
@@ -54,19 +66,28 @@ packages:
         rosetta2: false
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/michidk/vscli/releases/download/{{.Version}}/vscli-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             checksum:
               enabled: false
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
       - version_constraint: semver("< 0.1.5")
+        type: http
+        url: https://gh-proxy.org/github.com/michidk/vscli/releases/download/{{.Version}}/vscli-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/michidk/vscli/releases/download/{{.Version}}/vscli-{{.Arch}}-{{.OS}}.{{.Format}}
             format: tar.gz
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/michidk/vscli/releases/download/{{.Version}}/vscli-{{.Arch}}-{{.OS}}.{{.Format}}
             checksum:
               enabled: false
         replacements:
@@ -78,6 +99,7 @@ packages:
           - windows/amd64
         rosetta2: false
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256

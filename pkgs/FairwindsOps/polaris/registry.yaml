@@ -7,15 +7,18 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("< 10.2.0")
-        url: https://gh-proxy.org/https://github.com/FairwindsOps/polaris/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/FairwindsOps/polaris/releases/download/{{.Version}}/polaris_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: polaris_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/FairwindsOps/polaris/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/FairwindsOps/polaris/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/FairwindsOps/polaris/releases/download/{{.Version}}/polaris_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: polaris_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         supported_envs:
@@ -23,12 +26,14 @@ packages:
           - linux
           - windows/amd64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/FairwindsOps/polaris/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/FairwindsOps/polaris/releases/download/{{.Version}}/checksums.txt.sigstore.json
               asset: checksums.txt.sigstore.json
             opts:
               - --key

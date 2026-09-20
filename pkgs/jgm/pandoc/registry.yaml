@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("< 3.0.0")
         error_message: This version is too old. Please upgrade to 3.0.0 or a newer version.
       - version_constraint: semver("<= 3.1.1")
-        url: https://gh-proxy.org/https://github.com/jgm/pandoc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jgm/pandoc/releases/download/{{.Version}}/pandoc-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: pandoc-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -24,9 +25,13 @@ packages:
             src: "pandoc-{{.Version}}/bin/pandoc-server"
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/jgm/pandoc/releases/download/{{.Version}}/pandoc-{{.Version}}-{{.OS}}.{{.Format}}
             format: zip
             asset: pandoc-{{.Version}}-{{.OS}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jgm/pandoc/releases/download/{{.Version}}/pandoc-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             files:
               - name: pandoc
@@ -34,7 +39,8 @@ packages:
             replacements:
               amd64: x86_64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/jgm/pandoc/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jgm/pandoc/releases/download/{{.Version}}/pandoc-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: pandoc-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -43,6 +49,8 @@ packages:
           darwin: macOS
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/jgm/pandoc/releases/download/{{.Version}}/pandoc-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: tar.gz
             files:
               - name: pandoc
@@ -54,6 +62,8 @@ packages:
             replacements:
               amd64: amd64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/jgm/pandoc/releases/download/{{.Version}}/pandoc-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             asset: pandoc-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             files:
               - name: pandoc
@@ -63,6 +73,8 @@ packages:
               - name: pandoc-server
                 src: "pandoc-{{.Version}}-{{.Arch}}/bin/pandoc-server"
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jgm/pandoc/releases/download/{{.Version}}/pandoc-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             files:
               - name: pandoc
                 src: "pandoc-{{.Version}}/pandoc"

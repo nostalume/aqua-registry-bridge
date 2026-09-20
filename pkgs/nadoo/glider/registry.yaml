@@ -9,40 +9,49 @@ packages:
       - version_constraint: Version == "v0.5.3"
         no_asset: true
       - version_constraint: Version == "v0.7.0"
-        url: https://gh-proxy.org/https://github.com/nadoo/glider/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/nadoo/glider/releases/download/{{.Version}}/glider-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: glider-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/nadoo/glider/releases/download/{{.Version}}/glider-{{.Version}}-checksums.txt
           asset: glider-{{.Version}}-checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/nadoo/glider/releases/download/{{.Version}}/glider-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         files:
           - name: glider
             src: glider-{{.Version}}-{{.OS}}-{{.Arch}}/glider
       - version_constraint: Version == "v0.15.0"
-        url: https://gh-proxy.org/https://github.com/nadoo/glider/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/nadoo/glider/releases/download/{{.Version}}/glider_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: glider_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         replacements:
           darwin: mac
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/nadoo/glider/releases/download/{{.Version}}/glider_{{trimV .Version}}_checksums.txt
           asset: glider_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/nadoo/glider/releases/download/{{.Version}}/glider_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         files:
           - name: glider
             src: glider_{{trimV .Version}}_{{.OS}}_{{.Arch}}/glider
       - version_constraint: semver("<= 0.3.2")
-        url: https://gh-proxy.org/https://github.com/nadoo/glider/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/nadoo/glider/releases/download/{{.Version}}/glider-{{.Version}}-{{.OS}}.{{.Format}}
         asset: glider-{{.Version}}-{{.OS}}.{{.Format}}
         format: zip
         replacements:
@@ -55,7 +64,8 @@ packages:
         files:
           - name: glider
       - version_constraint: semver("<= 0.6.11")
-        url: https://gh-proxy.org/https://github.com/nadoo/glider/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/nadoo/glider/releases/download/{{.Version}}/glider-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: glider-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -69,78 +79,98 @@ packages:
         files:
           - name: glider
       - version_constraint: semver("<= 0.13.0")
-        url: https://gh-proxy.org/https://github.com/nadoo/glider/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/nadoo/glider/releases/download/{{.Version}}/glider_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: glider_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/nadoo/glider/releases/download/{{.Version}}/glider_{{trimV .Version}}_checksums.txt
           asset: glider_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/nadoo/glider/releases/download/{{.Version}}/glider_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         files:
           - name: glider
             src: "{{.AssetWithoutExt}}/glider"
       - version_constraint: semver("<= 0.14.0")
-        url: https://gh-proxy.org/https://github.com/nadoo/glider/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/nadoo/glider/releases/download/{{.Version}}/glider_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: glider_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/nadoo/glider/releases/download/{{.Version}}/glider_{{trimV .Version}}_checksums.txt
           asset: glider_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/nadoo/glider/releases/download/{{.Version}}/glider_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         files:
           - name: glider
             src: "{{.AssetWithoutExt}}/glider"
       - version_constraint: semver("<= 0.15.2")
-        url: https://gh-proxy.org/https://github.com/nadoo/glider/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/nadoo/glider/releases/download/{{.Version}}/glider_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: glider_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           darwin: mac
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/nadoo/glider/releases/download/{{.Version}}/glider_{{trimV .Version}}_checksums.txt
           asset: glider_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/nadoo/glider/releases/download/{{.Version}}/glider_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         files:
           - name: glider
             src: "{{.AssetWithoutExt}}/glider"
       - version_constraint: semver("<= 0.16.3")
-        url: https://gh-proxy.org/https://github.com/nadoo/glider/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/nadoo/glider/releases/download/{{.Version}}/glider_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: glider_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/nadoo/glider/releases/download/{{.Version}}/glider_{{trimV .Version}}_checksums.txt
           asset: glider_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/nadoo/glider/releases/download/{{.Version}}/glider_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         files:
           - name: glider
             src: "{{.AssetWithoutExt}}/glider"
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/nadoo/glider/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/nadoo/glider/releases/download/{{.Version}}/glider_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: glider_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/nadoo/glider/releases/download/{{.Version}}/glider_{{trimV .Version}}_checksums.txt
           asset: glider_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/nadoo/glider/releases/download/{{.Version}}/glider_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         files:
           - name: glider

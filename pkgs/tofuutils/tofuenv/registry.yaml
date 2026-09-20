@@ -1,6 +1,8 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_archive
+  - type: http
+    url: https://gh-proxy.org/github.com/tofuutils/tofuenv/archive/{{.Version}}.tar.gz
+    format: tar.gz
     repo_owner: tofuutils
     repo_name: tofuenv
     description: OpenTofu version manager

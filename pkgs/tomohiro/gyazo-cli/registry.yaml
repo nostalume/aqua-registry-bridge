@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/tomohiro/gyazo-cli/releases/download/{{.Version}}/gyazo-cli_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: tomohiro
     repo_name: gyazo-cli
     description: Gyazo command-line uploader
@@ -14,13 +15,15 @@ packages:
       - amd64
     rosetta2: true
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/tomohiro/gyazo-cli/releases/download/{{.Version}}/{{.Version}}_SHA256SUMS
       asset: "{{.Version}}_SHA256SUMS"
       algorithm: sha256
     version_constraint: semver(">= 1.0.0")
     version_overrides:
       - version_constraint: semver("< 1.0.0")
-        url: https://gh-proxy.org/https://github.com/tomohiro/gyazo-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tomohiro/gyazo-cli/releases/download/{{.Version}}/gyazo_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gyazo_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         files:
           - name: gyazo

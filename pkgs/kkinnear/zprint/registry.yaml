@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("<= 0.4.7")
         no_asset: true
       - version_constraint: semver("<= 0.4.10")
-        url: https://gh-proxy.org/https://github.com/kkinnear/zprint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kkinnear/zprint/releases/download/{{.Version}}/zprint{{.OS}}-{{.Version}}
         asset: zprint{{.OS}}-{{.Version}}
         format: raw
         replacements:
@@ -17,7 +18,8 @@ packages:
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 1.2.7")
-        url: https://gh-proxy.org/https://github.com/kkinnear/zprint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kkinnear/zprint/releases/download/{{.Version}}/zprint{{.OS}}-{{.Version}}
         asset: zprint{{.OS}}-{{.Version}}
         format: raw
         replacements:
@@ -27,7 +29,8 @@ packages:
           - darwin/amd64
           - linux/amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/kkinnear/zprint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kkinnear/zprint/releases/download/{{.Version}}/zprint{{.OS}}-{{.Version}}
         asset: zprint{{.OS}}-{{.Version}}
         format: raw
         replacements:
@@ -38,5 +41,7 @@ packages:
           - linux/amd64
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/kkinnear/zprint/releases/download/{{.Version}}/zprint{{.OS}}a-{{.Version}}
             goarch: arm64
             asset: zprint{{.OS}}a-{{.Version}}

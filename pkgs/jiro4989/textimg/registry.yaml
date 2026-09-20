@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/jiro4989/textimg/releases/download/{{.Version}}/textimg-{{.OS}}-{{.Arch}}.{{.Format}}
     repo_owner: jiro4989
     repo_name: textimg
     asset: textimg-{{.OS}}-{{.Arch}}.{{.Format}}
@@ -8,6 +9,8 @@ packages:
     description: Command to convert from color text (ANSI or 256) to image
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/jiro4989/textimg/releases/download/{{.Version}}/textimg-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
     supported_envs:
       - darwin

@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.4.5"
-        url: https://gh-proxy.org/https://github.com/robgonnella/releasaurus/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/robgonnella/releasaurus/releases/download/{{.Version}}/releasaurus-{{.Arch}}-{{.OS}}-{{.Version}}
         asset: releasaurus-{{.Arch}}-{{.OS}}-{{.Version}}
         format: raw
         replacements:
@@ -16,13 +17,16 @@ packages:
           linux: unknown-linux-musl
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/robgonnella/releasaurus/releases/download/{{.Version}}/releasaurus-{{.Arch}}-{{.OS}}-{{.Version}}
             replacements:
               amd64: x86_64
         supported_envs:
           - linux
           - darwin/arm64
       - version_constraint: Version == "v0.4.6"
-        url: https://gh-proxy.org/https://github.com/robgonnella/releasaurus/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/robgonnella/releasaurus/releases/download/{{.Version}}/releasaurus-{{.Arch}}-{{.OS}}-{{.Version}}
         asset: releasaurus-{{.Arch}}-{{.OS}}-{{.Version}}
         format: raw
         windows_arm_emulation: true
@@ -35,9 +39,13 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/robgonnella/releasaurus/releases/download/{{.Version}}/releasaurus-{{.Arch}}-{{.OS}}-{{.Version}}
             replacements:
               amd64: amd64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/robgonnella/releasaurus/releases/download/{{.Version}}/releasaurus.exe-{{.Arch}}-{{.OS}}-{{.Version}}
             asset: releasaurus.exe-{{.Arch}}-{{.OS}}-{{.Version}}
         supported_envs:
           - linux
@@ -46,7 +54,8 @@ packages:
       - version_constraint: semver("<= 0.4.10")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/robgonnella/releasaurus/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/robgonnella/releasaurus/releases/download/{{.Version}}/releasaurus-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: releasaurus-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tgz
         windows_arm_emulation: true
@@ -58,6 +67,8 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/robgonnella/releasaurus/releases/download/{{.Version}}/releasaurus-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               amd64: amd64
         supported_envs:

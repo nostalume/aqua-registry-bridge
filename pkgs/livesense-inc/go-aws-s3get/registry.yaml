@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/livesense-inc/go-aws-s3get/releases/download/{{.Version}}/s3get-{{.OS}}-{{.Arch}}
     repo_owner: livesense-inc
     repo_name: go-aws-s3get
     asset: s3get-{{.OS}}-{{.Arch}}
@@ -14,6 +15,7 @@ packages:
     files:
       - name: s3get
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/livesense-inc/go-aws-s3get/releases/download/{{.Version}}/s3get_{{trimV .Version}}_checksums.txt
       asset: s3get_{{trimV .Version}}_checksums.txt
       algorithm: sha256

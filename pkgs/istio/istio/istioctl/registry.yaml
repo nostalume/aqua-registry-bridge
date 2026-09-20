@@ -1,7 +1,8 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
   - name: istio/istio/istioctl
-    type: github_release
+    type: http
+    url: https://gh-proxy.org/github.com/istio/istio/releases/download/{{.Version}}/istioctl-{{.Version}}-{{.OS}}-{{.Arch}}.tar.gz
     repo_owner: istio
     repo_name: istio
     description: The istioctl tool is a configuration command line utility that allows service operators to debug and diagnose their Istio service mesh deployments
@@ -17,11 +18,16 @@ packages:
       - name: istioctl
     overrides:
       - goos: darwin
+        type: http
+        url: https://gh-proxy.org/github.com/istio/istio/releases/download/{{.Version}}/istioctl-{{.Version}}-osx.tar.gz
         goarch: amd64
         asset: istioctl-{{.Version}}-osx.tar.gz
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/istio/istio/releases/download/{{.Version}}/istioctl-{{.Version}}-win.zip
         asset: istioctl-{{.Version}}-win.zip
     checksum:
-      type: github_release
+      type: http
+      url: "{{.AssetURL}}.sha256"
       asset: "{{.Asset}}.sha256"
       algorithm: sha256

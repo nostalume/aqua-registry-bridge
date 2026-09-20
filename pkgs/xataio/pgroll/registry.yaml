@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.2.1")
-        url: https://gh-proxy.org/https://github.com/xataio/pgroll/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/xataio/pgroll/releases/download/{{.Version}}/pgroll.{{.OS}}.{{.Arch}}
         asset: pgroll.{{.OS}}.{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -16,7 +17,8 @@ packages:
           darwin: macos
           windows: win
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/xataio/pgroll/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/xataio/pgroll/releases/download/{{.Version}}/pgroll.{{.OS}}.{{.Arch}}
         asset: pgroll.{{.OS}}.{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -24,6 +26,7 @@ packages:
           darwin: macos
           windows: win
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/xataio/pgroll/releases/download/{{.Version}}/pgroll_{{trimV .Version}}_checksums.txt
           asset: pgroll_{{trimV .Version}}_checksums.txt
           algorithm: sha256

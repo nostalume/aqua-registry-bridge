@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/thought-machine/please/releases/download/{{.Version}}/please_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
     repo_owner: thought-machine
     repo_name: please
     description: High-performance extensible build system for reproducible multi-language builds
@@ -12,6 +13,7 @@ packages:
       - name: please
         src: please/please
     checksum:
-      type: github_release
+      type: http
+      url: "{{.AssetURL}}.sha256"
       asset: "{{.Asset}}.sha256"
       algorithm: sha256

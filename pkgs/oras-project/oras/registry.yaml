@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/oras-project/oras/releases/download/{{.Version}}/oras_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: oras-project
     repo_name: oras
     asset: oras_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -8,12 +9,15 @@ packages:
     description: ORAS CLI
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/oras-project/oras/releases/download/{{.Version}}/oras_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     supported_envs:
       - darwin
       - linux
       - amd64
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/oras-project/oras/releases/download/{{.Version}}/oras_{{trimV .Version}}_checksums.txt
       asset: oras_{{trimV .Version}}_checksums.txt
       algorithm: sha256

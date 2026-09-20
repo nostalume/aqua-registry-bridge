@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "2024.03.28"
-        url: https://gh-proxy.org/https://github.com/ytdl-org/ytdl-nightly/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ytdl-org/ytdl-nightly/releases/download/{{.Version}}/youtube-dl-{{.Version}}.{{.Format}}
         asset: youtube-dl-{{.Version}}.{{.Format}}
         format: tar.gz
         files:
@@ -19,7 +20,8 @@ packages:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/ytdl-org/ytdl-nightly/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ytdl-org/ytdl-nightly/releases/download/{{.Version}}/youtube-dl-{{.Version}}.{{.Format}}
         asset: youtube-dl-{{.Version}}.{{.Format}}
         format: tar.gz
         files:
@@ -27,5 +29,7 @@ packages:
             src: youtube-dl/youtube-dl
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ytdl-org/ytdl-nightly/releases/download/{{.Version}}/youtube-dl
             asset: youtube-dl
             format: raw

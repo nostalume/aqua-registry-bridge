@@ -7,14 +7,16 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.2.0")
-        url: https://gh-proxy.org/https://github.com/yuuki/tcpulse/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/yuuki/tcpulse/releases/download/{{.Version}}/connperf_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: connperf_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/yuuki/tcpulse/releases/download/{{.Version}}/connperf_{{trimV .Version}}_checksums.txt
           asset: connperf_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
@@ -23,13 +25,15 @@ packages:
         files:
           - name: connperf
       - version_constraint: semver("<= 0.7.2")
-        url: https://gh-proxy.org/https://github.com/yuuki/tcpulse/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/yuuki/tcpulse/releases/download/{{.Version}}/connperf_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: connperf_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/yuuki/tcpulse/releases/download/{{.Version}}/connperf_{{trimV .Version}}_checksums.txt
           asset: connperf_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
@@ -38,24 +42,28 @@ packages:
         files:
           - name: connperf
       - version_constraint: semver("<= 0.8.1")
-        url: https://gh-proxy.org/https://github.com/yuuki/tcpulse/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/yuuki/tcpulse/releases/download/{{.Version}}/tcpulse_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tcpulse_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/yuuki/tcpulse/releases/download/{{.Version}}/tcpulse_{{trimV .Version}}_checksums.txt
           asset: tcpulse_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/yuuki/tcpulse/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/yuuki/tcpulse/releases/download/{{.Version}}/tcpulse_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tcpulse_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/yuuki/tcpulse/releases/download/{{.Version}}/tcpulse_{{trimV .Version}}_checksums.txt
           asset: tcpulse_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:

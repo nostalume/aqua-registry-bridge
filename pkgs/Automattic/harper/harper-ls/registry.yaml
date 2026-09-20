@@ -10,7 +10,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.11.0")
-        url: https://gh-proxy.org/https://github.com/Automattic/harper/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Automattic/harper/releases/download/{{.Version}}/harper-ls-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: harper-ls-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -22,9 +23,12 @@ packages:
           windows: pc-windows-gnu
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Automattic/harper/releases/download/{{.Version}}/harper-ls-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Automattic/harper/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Automattic/harper/releases/download/{{.Version}}/harper-ls-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: harper-ls-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -36,4 +40,6 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Automattic/harper/releases/download/{{.Version}}/harper-ls-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip

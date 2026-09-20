@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/bep/s3deploy/releases/download/{{.Version}}/s3deploy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
     repo_owner: bep
     repo_name: s3deploy
     description: A simple tool to deploy static websites to Amazon S3 and CloudFront with Gzip and custom headers support (e.g. "Cache-Control")
@@ -8,8 +9,12 @@ packages:
     format: zip
     overrides:
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/bep/s3deploy/releases/download/{{.Version}}/s3deploy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
       - goos: darwin
+        type: http
+        url: https://gh-proxy.org/github.com/bep/s3deploy/releases/download/{{.Version}}/s3deploy_{{trimV .Version}}_{{.OS}}-universal.{{.Format}}
         format: pkg
         asset: s3deploy_{{trimV .Version}}_{{.OS}}-universal.{{.Format}}
         files:
@@ -20,27 +25,40 @@ packages:
       - amd64
     rosetta2: true
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/bep/s3deploy/releases/download/{{.Version}}/s3deploy_{{trimV .Version}}_checksums.txt
       asset: s3deploy_{{trimV .Version}}_checksums.txt
       algorithm: sha256
     version_constraint: semver(">= 2.11.0")
     version_overrides:
       - version_constraint: semver(">= 2.10.1")
+        type: http
+        url: https://gh-proxy.org/github.com/bep/s3deploy/releases/download/{{.Version}}/s3deploy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/bep/s3deploy/releases/download/{{.Version}}/s3deploy_{{trimV .Version}}_{{.OS}}-universal.{{.Format}}
             format: pkg
             asset: s3deploy_{{trimV .Version}}_{{.OS}}-universal.{{.Format}}
             files:
               - name: s3deploy
                 src: Payload/s3deploy
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bep/s3deploy/releases/download/{{.Version}}/s3deploy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver(">= 2.9.0")
+        type: http
+        url: https://gh-proxy.org/github.com/bep/s3deploy/releases/download/{{.Version}}/s3deploy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
       - version_constraint: semver(">= 2.5.0")
+        type: http
+        url: https://gh-proxy.org/github.com/bep/s3deploy/releases/download/{{.Version}}/s3deploy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bep/s3deploy/releases/download/{{.Version}}/s3deploy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         replacements:
           amd64: 64bit
@@ -50,9 +68,13 @@ packages:
           windows: Windows
         rosetta2: false
       - version_constraint: semver(">= 2.4.0")
+        type: http
+        url: https://gh-proxy.org/github.com/bep/s3deploy/releases/download/{{.Version}}/s3deploy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bep/s3deploy/releases/download/{{.Version}}/s3deploy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             replacements:
               arm64: arm64
@@ -68,12 +90,18 @@ packages:
           - amd64
         rosetta2: false
       - version_constraint: semver(">= 1.1.1")
+        type: http
+        url: https://gh-proxy.org/github.com/bep/s3deploy/releases/download/{{.Version}}/s3deploy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/bep/s3deploy/releases/download/{{.Version}}/s3deploy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: ARM64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bep/s3deploy/releases/download/{{.Version}}/s3deploy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         replacements:
           amd64: 64bit
@@ -85,12 +113,18 @@ packages:
           - linux
           - amd64
       - version_constraint: semver(">= 1.0.2")
+        type: http
+        url: https://gh-proxy.org/github.com/bep/s3deploy/releases/download/{{.Version}}/s3deploy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/bep/s3deploy/releases/download/{{.Version}}/s3deploy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: ARM64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bep/s3deploy/releases/download/{{.Version}}/s3deploy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         replacements:
           amd64: 64bit
@@ -102,18 +136,24 @@ packages:
           - linux
           - amd64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/bep/s3deploy/releases/download/{{.Version}}/s3deploy_checksums.txt
           asset: s3deploy_checksums.txt
           algorithm: sha256
       - version_constraint: semver("< 1.0.2")
-        url: https://gh-proxy.org/https://github.com/bep/s3deploy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bep/s3deploy/releases/download/{{.Version}}/s3deploy_{{.Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: s3deploy_{{.Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/bep/s3deploy/releases/download/{{.Version}}/s3deploy_{{.Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: ARM64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bep/s3deploy/releases/download/{{.Version}}/s3deploy_{{.Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         replacements:
           amd64: 64bit
@@ -125,6 +165,7 @@ packages:
           - linux
           - amd64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/bep/s3deploy/releases/download/{{.Version}}/s3deploy_checksums.txt
           asset: s3deploy_checksums.txt
           algorithm: sha256

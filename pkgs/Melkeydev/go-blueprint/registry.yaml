@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.2.4"
-        url: https://gh-proxy.org/https://github.com/Melkeydev/go-blueprint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Melkeydev/go-blueprint/releases/download/{{.Version}}/go-blueprint-{{.Arch}}
         asset: go-blueprint-{{.Arch}}
         replacements:
           amd64: x86
@@ -15,11 +16,14 @@ packages:
         supported_envs:
           - linux
       - version_constraint: semver("<= 0.2.11")
-        url: https://gh-proxy.org/https://github.com/Melkeydev/go-blueprint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Melkeydev/go-blueprint/releases/download/{{.Version}}/go-blueprint-{{.OS}}_{{.Arch}}
         asset: go-blueprint-{{.OS}}_{{.Arch}}
         format: raw
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Melkeydev/go-blueprint/releases/download/{{.Version}}/go-blueprint-{{.OS}}_{{.Arch}}
             replacements:
               amd64: x86_64
         replacements:
@@ -31,25 +35,34 @@ packages:
           - linux
           - amd64
       - version_constraint: semver("<= 0.2.13")
-        url: https://gh-proxy.org/https://github.com/Melkeydev/go-blueprint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Melkeydev/go-blueprint/releases/download/{{.Version}}/go-blueprint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: go-blueprint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/Melkeydev/go-blueprint/releases/download/{{.Version}}/go-blueprint_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
             asset: go-blueprint_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Melkeydev/go-blueprint/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: Version == "v0.3.0"
-        url: https://gh-proxy.org/https://github.com/Melkeydev/go-blueprint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Melkeydev/go-blueprint/releases/download/{{.Version}}/go-blueprint_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: go-blueprint_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/Melkeydev/go-blueprint/releases/download/{{.Version}}/go-blueprint_{{.OS}}_all.{{.Format}}
             asset: go-blueprint_{{.OS}}_all.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Melkeydev/go-blueprint/releases/download/{{.Version}}/go-blueprint_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64
@@ -58,17 +71,23 @@ packages:
           windows: Windows
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Melkeydev/go-blueprint/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Melkeydev/go-blueprint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Melkeydev/go-blueprint/releases/download/{{.Version}}/go-blueprint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: go-blueprint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/Melkeydev/go-blueprint/releases/download/{{.Version}}/go-blueprint_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
             asset: go-blueprint_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Melkeydev/go-blueprint/releases/download/{{.Version}}/go-blueprint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64
@@ -77,6 +96,7 @@ packages:
           windows: Windows
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Melkeydev/go-blueprint/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

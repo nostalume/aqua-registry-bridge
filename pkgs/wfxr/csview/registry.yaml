@@ -29,11 +29,15 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver(">= 1.3.4")
+        type: http
+        url: https://gh-proxy.org/github.com/wfxr/csview/releases/download/{{.Version}}/csview-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         supported_envs:
           - darwin/arm64
           - linux
           - windows/amd64
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/wfxr/csview/releases/download/{{.Version}}/csview-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         supported_envs:
           - darwin
           - linux

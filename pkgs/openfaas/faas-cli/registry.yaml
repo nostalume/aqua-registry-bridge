@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/openfaas/faas-cli/releases/download/{{.Version}}/faas-cli-{{.Arch}}
     repo_owner: openfaas
     repo_name: faas-cli
     format: raw
@@ -8,14 +9,19 @@ packages:
     asset: faas-cli-{{.Arch}}
     overrides:
       - goos: darwin
+        type: http
+        url: https://gh-proxy.org/github.com/openfaas/faas-cli/releases/download/{{.Version}}/faas-cli-darwin
         asset: faas-cli-darwin
       - goarch: amd64
+        type: http
+        url: https://gh-proxy.org/github.com/openfaas/faas-cli/releases/download/{{.Version}}/faas-cli
         asset: faas-cli
     supported_envs:
       - darwin
       - linux
       - amd64
     checksum:
-      type: github_release
+      type: http
+      url: "{{.AssetURL}}.sha256"
       asset: "{{.Asset}}.sha256"
       algorithm: sha256

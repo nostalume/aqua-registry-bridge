@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/robinovitch61/kl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/robinovitch61/kl/releases/download/{{.Version}}/kl_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
         asset: kl_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
         format: tar.gz
         replacements:
@@ -16,12 +17,17 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/robinovitch61/kl/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/robinovitch61/kl/releases/download/{{.Version}}/kl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             asset: kl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/robinovitch61/kl/releases/download/{{.Version}}/kl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
             asset: kl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}

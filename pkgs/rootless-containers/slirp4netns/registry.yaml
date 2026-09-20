@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.3.2")
-        url: https://gh-proxy.org/https://github.com/rootless-containers/slirp4netns/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rootless-containers/slirp4netns/releases/download/{{.Version}}/slirp4netns-{{.Arch}}
         asset: slirp4netns-{{.Arch}}
         format: raw
         replacements:
@@ -15,13 +16,15 @@ packages:
           arm: armv7l
           arm64: aarch64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/rootless-containers/slirp4netns/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         supported_envs:
           - linux
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/rootless-containers/slirp4netns/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rootless-containers/slirp4netns/releases/download/{{.Version}}/slirp4netns-{{.Arch}}
         asset: slirp4netns-{{.Arch}}
         format: raw
         replacements:
@@ -29,7 +32,8 @@ packages:
           arm: armv7l
           arm64: aarch64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/rootless-containers/slirp4netns/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         supported_envs:

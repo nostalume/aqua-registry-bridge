@@ -7,49 +7,63 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.6.1")
-        url: https://gh-proxy.org/https://github.com/containrrr/shoutrrr/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/containrrr/shoutrrr/releases/download/{{.Version}}/shoutrrr_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: shoutrrr_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/containrrr/shoutrrr/releases/download/{{.Version}}/shoutrrr_{{trimV .Version}}_checksums.txt
           asset: shoutrrr_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/containrrr/shoutrrr/releases/download/{{.Version}}/shoutrrr_{{.OS}}_{{.Arch}}v8.{{.Format}}
             goarch: arm64
             asset: shoutrrr_{{.OS}}_{{.Arch}}v8.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/containrrr/shoutrrr/releases/download/{{.Version}}/shoutrrr_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - linux
           - windows/amd64
       - version_constraint: semver("<= 0.7.1")
-        url: https://gh-proxy.org/https://github.com/containrrr/shoutrrr/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/containrrr/shoutrrr/releases/download/{{.Version}}/shoutrrr_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: shoutrrr_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/containrrr/shoutrrr/releases/download/{{.Version}}/shoutrrr_{{trimV .Version}}_checksums.txt
           asset: shoutrrr_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         replacements:
           arm64: arm64v8
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/containrrr/shoutrrr/releases/download/{{.Version}}/shoutrrr_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - linux
           - windows
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/containrrr/shoutrrr/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/containrrr/shoutrrr/releases/download/{{.Version}}/shoutrrr_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: shoutrrr_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/containrrr/shoutrrr/releases/download/{{.Version}}/shoutrrr_{{trimV .Version}}_checksums.txt
           asset: shoutrrr_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/containrrr/shoutrrr/releases/download/{{.Version}}/shoutrrr_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux

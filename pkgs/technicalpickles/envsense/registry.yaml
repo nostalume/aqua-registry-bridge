@@ -6,7 +6,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.2.0"
-        url: https://gh-proxy.org/https://github.com/technicalpickles/envsense/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/technicalpickles/envsense/releases/download/{{.Version}}/envsense-{{.Version}}-{{.Arch}}-{{.OS}}
         asset: envsense-{{.Version}}-{{.Arch}}-{{.OS}}
         format: raw
         replacements:
@@ -15,17 +16,21 @@ packages:
           linux: unknown-linux-gnu
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/technicalpickles/envsense/releases/download/{{.Version}}/envsense-{{.Version}}-universal-{{.OS}}
             asset: envsense-{{.Version}}-universal-{{.OS}}
         supported_envs:
           - linux
           - darwin
       - version_constraint: Version == "v0.2.1"
-        url: https://gh-proxy.org/https://github.com/technicalpickles/envsense/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/technicalpickles/envsense/releases/download/{{.Version}}/envsense-{{.Version}}-{{.Arch}}-{{.OS}}
         asset: envsense-{{.Version}}-{{.Arch}}-{{.OS}}
         format: raw
         replacements:
@@ -33,29 +38,35 @@ packages:
           linux: unknown-linux-gnu
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/technicalpickles/envsense/releases/download/{{.Version}}/envsense-{{.Version}}-universal-{{.OS}}
             asset: envsense-{{.Version}}-universal-{{.OS}}
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.2.2")
-        url: https://gh-proxy.org/https://github.com/technicalpickles/envsense/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/technicalpickles/envsense/releases/download/{{.Version}}/envsense-v0.1.0-universal-{{.OS}}
         asset: envsense-v0.1.0-universal-{{.OS}}
         format: raw
         replacements:
           darwin: apple-darwin
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
           - darwin
       - version_constraint: semver("<= 0.3.1")
-        url: https://gh-proxy.org/https://github.com/technicalpickles/envsense/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/technicalpickles/envsense/releases/download/{{.Version}}/envsense-{{.Version}}-{{.Arch}}-{{.OS}}
         asset: envsense-{{.Version}}-{{.Arch}}-{{.OS}}
         format: raw
         replacements:
@@ -63,17 +74,21 @@ packages:
           linux: unknown-linux-gnu
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/technicalpickles/envsense/releases/download/{{.Version}}/envsense-{{.Version}}-universal-{{.OS}}
             asset: envsense-{{.Version}}-universal-{{.OS}}
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.3.4")
-        url: https://gh-proxy.org/https://github.com/technicalpickles/envsense/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/technicalpickles/envsense/releases/download/{{.Version}}/envsense-{{.Version}}-{{.Arch}}-{{.OS}}
         asset: envsense-{{.Version}}-{{.Arch}}-{{.OS}}
         format: raw
         replacements:
@@ -81,12 +96,14 @@ packages:
           linux: unknown-linux-gnu
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         cosign:
           bundle:
-            type: github_release
+            type: http
+            url: https://gh-proxy.org/github.com/technicalpickles/envsense/releases/download/{{.Version}}/{{.Asset}}.bundle
             asset: "{{.Asset}}.bundle"
           opts:
             - --certificate-identity-regexp
@@ -95,12 +112,15 @@ packages:
             - https://token.actions.githubusercontent.com
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/technicalpickles/envsense/releases/download/{{.Version}}/envsense-{{.Version}}-universal-{{.OS}}
             asset: envsense-{{.Version}}-universal-{{.OS}}
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/technicalpickles/envsense/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/technicalpickles/envsense/releases/download/{{.Version}}/envsense-{{.Version}}-{{.Arch}}-{{.OS}}
         asset: envsense-{{.Version}}-{{.Arch}}-{{.OS}}
         format: raw
         replacements:
@@ -109,12 +129,14 @@ packages:
           linux: unknown-linux-gnu
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         cosign:
           bundle:
-            type: github_release
+            type: http
+            url: https://gh-proxy.org/github.com/technicalpickles/envsense/releases/download/{{.Version}}/{{.Asset}}.bundle
             asset: "{{.Asset}}.bundle"
           opts:
             - --certificate-identity-regexp
@@ -123,6 +145,8 @@ packages:
             - https://token.actions.githubusercontent.com
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/technicalpickles/envsense/releases/download/{{.Version}}/envsense-{{.Version}}-universal-{{.OS}}
             asset: envsense-{{.Version}}-universal-{{.OS}}
         supported_envs:
           - linux

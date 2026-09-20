@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/kurama/dealve-tui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kurama/dealve-tui/releases/download/{{.Version}}/dealve-{{.OS}}-{{.Arch}}
         asset: dealve-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -19,4 +20,6 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kurama/dealve-tui/releases/download/{{.Version}}/dealve-{{.OS}}-{{.Arch}}
             replacements: {}

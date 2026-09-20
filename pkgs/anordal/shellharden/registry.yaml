@@ -14,7 +14,8 @@ packages:
         type: cargo
         crate: shellharden
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/anordal/shellharden/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/anordal/shellharden/releases/download/{{.Version}}/shellharden-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: shellharden-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -25,9 +26,12 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/anordal/shellharden/releases/download/{{.Version}}/shellharden-{{.Arch}}-{{.OS}}.sha512
           asset: shellharden-{{.Arch}}-{{.OS}}.sha512
           algorithm: sha512
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/anordal/shellharden/releases/download/{{.Version}}/shellharden-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip

@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 4.9.0")
-        url: https://gh-proxy.org/https://github.com/firecow/gitlab-ci-local/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/firecow/gitlab-ci-local/releases/download/{{.Version}}/{{.OS}}.{{.Format}}
         asset: "{{.OS}}.{{.Format}}"
         format: gz
         rosetta2: true
@@ -23,7 +24,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 4.9.7")
-        url: https://gh-proxy.org/https://github.com/firecow/gitlab-ci-local/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/firecow/gitlab-ci-local/releases/download/{{.Version}}/{{.OS}}.{{.Format}}
         asset: "{{.OS}}.{{.Format}}"
         format: gz
         rosetta2: true
@@ -36,7 +38,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<=4.65.1")
-        url: https://gh-proxy.org/https://github.com/firecow/gitlab-ci-local/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/firecow/gitlab-ci-local/releases/download/{{.Version}}/{{.OS}}.{{.Format}}
         asset: "{{.OS}}.{{.Format}}"
         format: gz
         rosetta2: true
@@ -52,10 +55,13 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/firecow/gitlab-ci-local/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/firecow/gitlab-ci-local/releases/download/{{.Version}}/gitlab-ci-local-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: gitlab-ci-local-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/firecow/gitlab-ci-local/releases/download/{{.Version}}/gitlab-ci-local-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip

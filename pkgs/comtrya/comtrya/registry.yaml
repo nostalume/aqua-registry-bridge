@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/comtrya/comtrya/releases/download/{{.Version}}/comtrya-{{.Arch}}-{{.OS}}
     repo_owner: comtrya
     repo_name: comtrya
     format: raw
@@ -13,6 +14,8 @@ packages:
       windows: pc-windows-msvc
     overrides:
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/comtrya/comtrya/releases/download/{{.Version}}/comtrya-{{.Arch}}-{{.OS}}
         goarch: arm64
         replacements:
           linux: unknown-linux-gnu
@@ -24,7 +27,8 @@ packages:
     asset: comtrya-{{.Arch}}-{{.OS}}
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/comtrya/comtrya/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/comtrya/comtrya/releases/download/{{.Version}}/comtrya
         asset: comtrya
         supported_envs:
           - linux/amd64

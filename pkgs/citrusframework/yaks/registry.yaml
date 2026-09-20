@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/citrusframework/yaks/releases/download/{{.Version}}/yaks-{{trimV .Version}}-{{.OS}}-{{.Arch}}.tar.gz
     repo_owner: citrusframework
     repo_name: yaks
     asset: yaks-{{trimV .Version}}-{{.OS}}-{{.Arch}}.tar.gz

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/planetscale/cli/releases/download/{{.Version}}/pscale_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: planetscale
     repo_name: cli
     asset: pscale_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -10,10 +11,13 @@ packages:
       darwin: macOS
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/planetscale/cli/releases/download/{{.Version}}/pscale_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     files:
       - name: pscale
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/planetscale/cli/releases/download/{{.Version}}/pscale_{{trimV .Version}}_checksums.txt
       asset: pscale_{{trimV .Version}}_checksums.txt
       algorithm: sha256

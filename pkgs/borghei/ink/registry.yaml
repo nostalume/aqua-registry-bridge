@@ -7,20 +7,23 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.2.2")
-        url: https://gh-proxy.org/https://github.com/borghei/ink/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/borghei/ink/releases/download/{{.Version}}/ink-{{.OS}}-{{.Arch}}
         asset: ink-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         replacements:
           darwin: macos
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/borghei/ink/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/borghei/ink/releases/download/{{.Version}}/ink-{{.OS}}-{{.Arch}}
         asset: ink-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         replacements:
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/borghei/ink/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256

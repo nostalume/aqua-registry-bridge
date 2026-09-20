@@ -7,23 +7,27 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.0.0")
-        url: https://gh-proxy.org/https://github.com/igor-petruk/scriptisto/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/igor-petruk/scriptisto/releases/download/{{.Version}}/scriptisto.{{.Format}}
         asset: scriptisto.{{.Format}}
         format: bz2
         supported_envs:
           - linux/amd64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/igor-petruk/scriptisto/releases/download/{{.Version}}/sha256sum.txt
           asset: sha256sum.txt
           algorithm: sha256
       - version_constraint: Version == "v2.0.0"
-        url: https://gh-proxy.org/https://github.com/igor-petruk/scriptisto/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/igor-petruk/scriptisto/releases/download/{{.Version}}/scriptisto.{{.Format}}
         asset: scriptisto.{{.Format}}
         format: bz2
         supported_envs:
           - linux/amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/igor-petruk/scriptisto/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/igor-petruk/scriptisto/releases/download/{{.Version}}/scriptisto-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: scriptisto-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.bz2
         rosetta2: true

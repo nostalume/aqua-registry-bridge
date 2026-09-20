@@ -10,7 +10,8 @@ packages:
       - version_constraint: semver("< 2.0.0") || Version == "v2.16.1"
         no_asset: true
       - version_constraint: semver("<= 2.10.1")
-        url: https://gh-proxy.org/https://github.com/grpc-ecosystem/grpc-gateway/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/grpc-ecosystem/grpc-gateway/releases/download/{{.Version}}/protoc-gen-openapiv2-{{.Version}}-{{.OS}}-{{.Arch}}
         asset: protoc-gen-openapiv2-{{.Version}}-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -18,7 +19,8 @@ packages:
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/grpc-ecosystem/grpc-gateway/releases/download/{{.Version}}/grpc-gateway_{{trimV .Version}}_checksums.txt
           asset: grpc-gateway_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
@@ -26,38 +28,46 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 2.13.0")
-        url: https://gh-proxy.org/https://github.com/grpc-ecosystem/grpc-gateway/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/grpc-ecosystem/grpc-gateway/releases/download/{{.Version}}/protoc-gen-openapiv2-{{.Version}}-{{.OS}}-{{.Arch}}
         asset: protoc-gen-openapiv2-{{.Version}}-{{.OS}}-{{.Arch}}
         format: raw
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/grpc-ecosystem/grpc-gateway/releases/download/{{.Version}}/grpc-gateway_{{trimV .Version}}_checksums.txt
           asset: grpc-gateway_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 2.16.0")
-        url: https://gh-proxy.org/https://github.com/grpc-ecosystem/grpc-gateway/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/grpc-ecosystem/grpc-gateway/releases/download/{{.Version}}/protoc-gen-openapiv2-{{.Version}}-{{.OS}}-{{.Arch}}
         asset: protoc-gen-openapiv2-{{.Version}}-{{.OS}}-{{.Arch}}
         format: raw
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/grpc-ecosystem/grpc-gateway/releases/download/{{.Version}}/grpc-gateway_{{trimV .Version}}_checksums.txt
           asset: grpc-gateway_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/grpc-ecosystem/grpc-gateway/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/grpc-ecosystem/grpc-gateway/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/grpc-ecosystem/grpc-gateway/releases/download/{{.Version}}/protoc-gen-openapiv2-{{.Version}}-{{.OS}}-{{.Arch}}
         asset: protoc-gen-openapiv2-{{.Version}}-{{.OS}}-{{.Arch}}
         format: raw
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/grpc-ecosystem/grpc-gateway/releases/download/{{.Version}}/grpc-gateway_{{trimV .Version}}_checksums.txt
           asset: grpc-gateway_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/grpc-ecosystem/grpc-gateway/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl

@@ -6,7 +6,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/protonpass/pass-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/protonpass/pass-cli/releases/download/{{.Version}}/pass-cli-{{.OS}}-{{.Arch}}
         asset: pass-cli-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -15,11 +16,14 @@ packages:
           arm64: aarch64
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/protonpass/pass-cli/releases/download/{{.Version}}/pass-cli-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             asset: pass-cli-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements: {}

@@ -10,7 +10,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "8.6.0-1"
-        url: https://gh-proxy.org/https://github.com/stunnel/static-curl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stunnel/static-curl/releases/download/{{.Version}}/curl-{{.OS}}-{{.Arch}}-8.6.0.{{.Format}}
         asset: curl-{{.OS}}-{{.Arch}}-8.6.0.{{.Format}}
         format: tar.xz
         files:
@@ -21,10 +22,13 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/stunnel/static-curl/releases/download/{{.Version}}/curl-{{.OS}}-{{.Arch}}-8.6.0.{{.Format}}
             replacements:
               arm64: arm64
       - version_constraint: Version == "8.6.0"
-        url: https://gh-proxy.org/https://github.com/stunnel/static-curl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stunnel/static-curl/releases/download/{{.Version}}/curl-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         asset: curl-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         format: tar.xz
         files:
@@ -35,7 +39,8 @@ packages:
           - linux
           - darwin
       - version_constraint: semver("<= 8.2.0")
-        url: https://gh-proxy.org/https://github.com/stunnel/static-curl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stunnel/static-curl/releases/download/{{.Version}}/curl-static-{{.Arch}}-{{.Version}}.{{.Format}}
         asset: curl-static-{{.Arch}}-{{.Version}}.{{.Format}}
         format: tar.xz
         files:
@@ -43,7 +48,8 @@ packages:
         supported_envs:
           - linux
       - version_constraint: semver("<= 8.5.0")
-        url: https://gh-proxy.org/https://github.com/stunnel/static-curl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stunnel/static-curl/releases/download/{{.Version}}/curl-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         asset: curl-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         format: tar.xz
         files:
@@ -55,7 +61,8 @@ packages:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/stunnel/static-curl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stunnel/static-curl/releases/download/{{.Version}}/curl-{{.OS}}-{{.Arch}}-dev-{{.Version}}.{{.Format}}
         asset: curl-{{.OS}}-{{.Arch}}-dev-{{.Version}}.{{.Format}}
         format: tar.xz
         files:
@@ -69,5 +76,7 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/stunnel/static-curl/releases/download/{{.Version}}/curl-{{.OS}}-{{.Arch}}-dev-{{.Version}}.{{.Format}}
             replacements:
               arm64: arm64

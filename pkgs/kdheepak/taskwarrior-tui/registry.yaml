@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.1.0")
-        url: https://gh-proxy.org/https://github.com/kdheepak/taskwarrior-tui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kdheepak/taskwarrior-tui/releases/download/{{.Version}}/taskwarrior-tui-{{.Arch}}-{{.OS}}
         asset: taskwarrior-tui-{{.Arch}}-{{.OS}}
         format: raw
         rosetta2: true
@@ -19,7 +20,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v0.2.0"
-        url: https://gh-proxy.org/https://github.com/kdheepak/taskwarrior-tui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kdheepak/taskwarrior-tui/releases/download/{{.Version}}/taskwarrior-tui-{{.Arch}}-{{.OS}}
         asset: taskwarrior-tui-{{.Arch}}-{{.OS}}
         format: raw
         rosetta2: true
@@ -34,7 +36,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version in ["v0.13.3", "v0.25.2"]
-        url: https://gh-proxy.org/https://github.com/kdheepak/taskwarrior-tui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kdheepak/taskwarrior-tui/releases/download/{{.Version}}/taskwarrior-tui-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: taskwarrior-tui-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -43,7 +46,8 @@ packages:
           darwin: apple-darwin
           linux: unknown-linux-musl
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kdheepak/taskwarrior-tui/releases/download/{{.Version}}/taskwarrior-tui-{{.Arch}}-{{.OS}}.sha256
           asset: taskwarrior-tui-{{.Arch}}-{{.OS}}.sha256
           algorithm: sha256
         supported_envs:
@@ -52,7 +56,8 @@ packages:
       - version_constraint: Version in ["v0.26.1", "v0.26.2"]
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/kdheepak/taskwarrior-tui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kdheepak/taskwarrior-tui/releases/download/{{.Version}}/taskwarrior-tui-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: taskwarrior-tui-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -63,7 +68,8 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kdheepak/taskwarrior-tui/releases/download/{{.Version}}/taskwarrior-tui-{{.Arch}}-{{.OS}}.sha256
           asset: taskwarrior-tui-{{.Arch}}-{{.OS}}.sha256
           algorithm: sha256
         supported_envs:

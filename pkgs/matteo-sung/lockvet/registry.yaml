@@ -7,11 +7,13 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.4.4")
-        url: https://gh-proxy.org/https://github.com/matteo-sung/lockvet/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/matteo-sung/lockvet/releases/download/{{.Version}}/lockvet_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: lockvet_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/matteo-sung/lockvet/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         files:
@@ -19,13 +21,17 @@ packages:
             src: lockvet_{{.Version}}_{{.OS}}_{{.Arch}}/lockvet
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/matteo-sung/lockvet/releases/download/{{.Version}}/lockvet_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/matteo-sung/lockvet/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/matteo-sung/lockvet/releases/download/{{.Version}}/lockvet_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: lockvet_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/matteo-sung/lockvet/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         files:
@@ -33,6 +39,8 @@ packages:
             src: lockvet_{{.Version}}_{{.OS}}_{{.Arch}}/lockvet
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/matteo-sung/lockvet/releases/download/{{.Version}}/lockvet_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         github_artifact_attestations:
           signer_workflow: matteo-sung/lockvet/.github/workflows/release.yml

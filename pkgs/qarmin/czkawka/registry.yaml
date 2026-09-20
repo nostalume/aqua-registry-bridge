@@ -8,7 +8,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "1.0.1"
-        url: https://gh-proxy.org/https://github.com/qarmin/czkawka/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/qarmin/czkawka/releases/download/{{.Version}}/{{.OS}}_czkawka_cli
         asset: "{{.OS}}_czkawka_cli"
         format: raw
         replacements:
@@ -17,34 +18,43 @@ packages:
           windows: WINDOWS
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/qarmin/czkawka/releases/download/{{.Version}}/{{.OS}}_OS_ACHTUNG_czkawka_cli
             asset: "{{.OS}}_OS_ACHTUNG_czkawka_cli"
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/qarmin/czkawka/releases/download/{{.Version}}/{{.OS}}_ACHTUNG_czkawka_cli
             asset: "{{.OS}}_ACHTUNG_czkawka_cli"
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "1.3.0"
-        url: https://gh-proxy.org/https://github.com/qarmin/czkawka/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/qarmin/czkawka/releases/download/{{.Version}}/{{.OS}}_czkawka_cli
         asset: "{{.OS}}_czkawka_cli"
         format: raw
         replacements:
           darwin: mac
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/qarmin/czkawka/releases/download/{{.Version}}/{{.OS}}czkawka_cli
             asset: "{{.OS}}czkawka_cli"
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 1.0.0")
-        url: https://gh-proxy.org/https://github.com/qarmin/czkawka/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/qarmin/czkawka/releases/download/{{.Version}}/czkawka_cli
         asset: czkawka_cli
         format: raw
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 2.3.0")
-        url: https://gh-proxy.org/https://github.com/qarmin/czkawka/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/qarmin/czkawka/releases/download/{{.Version}}/{{.OS}}_czkawka_cli
         asset: "{{.OS}}_czkawka_cli"
         format: raw
         replacements:
@@ -56,7 +66,8 @@ packages:
       - version_constraint: semver("<= 2.3.2")
         no_asset: true
       - version_constraint: semver("<= 9.0.0")
-        url: https://gh-proxy.org/https://github.com/qarmin/czkawka/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/qarmin/czkawka/releases/download/{{.Version}}/{{.OS}}_czkawka_cli
         asset: "{{.OS}}_czkawka_cli"
         format: raw
         replacements:
@@ -66,12 +77,17 @@ packages:
               - darwin/arm64
               - linux/arm64
             asset: "{{.OS}}_czkawka_cli_arm"
+            type: http
+            url: https://gh-proxy.org/github.com/qarmin/czkawka/releases/download/{{.Version}}/{{.OS}}_czkawka_cli_arm
       - version_constraint: semver("<= 11.0.1")
-        url: https://gh-proxy.org/https://github.com/qarmin/czkawka/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/qarmin/czkawka/releases/download/{{.Version}}/{{.OS}}_czkawka_cli_{{.Arch}}
         asset: "{{.OS}}_czkawka_cli_{{.Arch}}"
         format: raw
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/qarmin/czkawka/releases/download/{{.Version}}/{{.OS}}_czkawka_cli
             asset: "{{.OS}}_czkawka_cli"
         replacements:
           amd64: x86_64
@@ -79,11 +95,14 @@ packages:
       # https://github.com/qarmin/czkawka/blob/12.0.0/.github/workflows/mac.yml stopped
       # building on the macos-15-intel runner, so macOS Intel binaries aren't released.
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/qarmin/czkawka/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/qarmin/czkawka/releases/download/{{.Version}}/{{.OS}}_czkawka_cli_{{.Arch}}
         asset: "{{.OS}}_czkawka_cli_{{.Arch}}"
         format: raw
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/qarmin/czkawka/releases/download/{{.Version}}/{{.OS}}_czkawka_cli
             asset: "{{.OS}}_czkawka_cli"
         replacements:
           amd64: x86_64

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/pulumi/tf2pulumi/releases/download/{{.Version}}/tf2pulumi-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
     repo_owner: pulumi
     repo_name: tf2pulumi
     asset: tf2pulumi-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
@@ -10,12 +11,15 @@ packages:
       amd64: x64
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/pulumi/tf2pulumi/releases/download/{{.Version}}/tf2pulumi-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
     supported_envs:
       - darwin
       - linux
       - amd64
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/pulumi/tf2pulumi/releases/download/{{.Version}}/tf2pulumi_{{trimV .Version}}_checksums.txt
       asset: tf2pulumi_{{trimV .Version}}_checksums.txt
       algorithm: sha256

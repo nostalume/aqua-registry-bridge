@@ -9,96 +9,119 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.3.11"
-        url: https://gh-proxy.org/https://github.com/goss-org/goss/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/goss-org/goss/releases/download/{{.Version}}/goss-{{.OS}}-{{.Arch}}
         asset: goss-{{.OS}}-{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 0.3.10")
-        url: https://gh-proxy.org/https://github.com/goss-org/goss/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/goss-org/goss/releases/download/{{.Version}}/goss-{{.OS}}-{{.Arch}}
         asset: goss-{{.OS}}-{{.Arch}}
         format: raw
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 0.3.16")
-        url: https://gh-proxy.org/https://github.com/goss-org/goss/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/goss-org/goss/releases/download/{{.Version}}/goss-alpha-{{.OS}}-{{.Arch}}
         asset: goss-alpha-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/goss-org/goss/releases/download/{{.Version}}/goss-{{.OS}}-{{.Arch}}
             asset: goss-{{.OS}}-{{.Arch}}
         supported_envs:
           - linux/amd64
           - darwin
           - windows
       - version_constraint: semver("<= 0.3.23")
-        url: https://gh-proxy.org/https://github.com/goss-org/goss/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/goss-org/goss/releases/download/{{.Version}}/goss-alpha-{{.OS}}-{{.Arch}}
         asset: goss-alpha-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/goss-org/goss/releases/download/{{.Version}}/goss-{{.OS}}-{{.Arch}}
             asset: goss-{{.OS}}-{{.Arch}}
       - version_constraint: semver("<= 0.4.0-rc.2")
-        url: https://gh-proxy.org/https://github.com/goss-org/goss/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/goss-org/goss/releases/download/{{.Version}}/goss-alpha-{{.OS}}-{{.Arch}}
         asset: goss-alpha-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/goss-org/goss/releases/download/{{.Version}}/goss-{{.OS}}-{{.Arch}}
             asset: goss-{{.OS}}-{{.Arch}}
         supported_envs:
           - linux
           - windows/amd64
       - version_constraint: semver("<= 0.4.0")
-        url: https://gh-proxy.org/https://github.com/goss-org/goss/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/goss-org/goss/releases/download/{{.Version}}/goss-{{.OS}}-{{.Arch}}
         asset: goss-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
       - version_constraint: semver("<= 0.4.9")
-        url: https://gh-proxy.org/https://github.com/goss-org/goss/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/goss-org/goss/releases/download/{{.Version}}/goss-{{.OS}}-{{.Arch}}
         asset: goss-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/goss-org/goss/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/goss-org/goss/releases/download/{{.Version}}/goss_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: goss_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/goss-org/goss/releases/download/{{.Version}}/goss_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

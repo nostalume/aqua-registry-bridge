@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/goark/gimei-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/goark/gimei-cli/releases/download/{{.Version}}/gimei-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gimei-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -17,9 +18,12 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/goark/gimei-cli/releases/download/{{.Version}}/gimei-cli_{{trimV .Version}}_checksums.txt
           asset: gimei-cli_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/goark/gimei-cli/releases/download/{{.Version}}/gimei-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

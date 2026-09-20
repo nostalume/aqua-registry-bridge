@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/golang-migrate/migrate/releases/download/{{.Version}}/migrate.{{.OS}}-{{.Arch}}.{{.Format}}
     repo_owner: golang-migrate
     repo_name: migrate
     description: Database migrations. CLI and Golang library
@@ -8,10 +9,14 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/golang-migrate/migrate/releases/download/{{.Version}}/migrate.{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
     version_constraint: semver(">= 4.15.0")
     version_overrides:
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/golang-migrate/migrate/releases/download/{{.Version}}/migrate.{{.OS}}-{{.Arch}}.{{.Format}}
         rosetta2: true
         supported_envs:
           - darwin
@@ -22,12 +27,15 @@ packages:
             src: migrate.{{.OS}}-{{.Arch}}
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/golang-migrate/migrate/releases/download/{{.Version}}/migrate.windows-amd64.exe.tar.gz
             format: tar.gz
             asset: migrate.windows-amd64.exe.tar.gz
             files:
               - name: migrate
                 src: migrate.{{.OS}}-{{.Arch}}.exe
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/golang-migrate/migrate/releases/download/{{.Version}}/sha256sum.txt
       asset: sha256sum.txt
       algorithm: sha256

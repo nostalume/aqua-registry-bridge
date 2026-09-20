@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.2.1")
-        url: https://gh-proxy.org/https://github.com/LGUG2Z/whkd/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/LGUG2Z/whkd/releases/download/{{.Version}}/whkd-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: whkd-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -15,13 +16,15 @@ packages:
           amd64: x86_64
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/LGUG2Z/whkd/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - windows/amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/LGUG2Z/whkd/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/LGUG2Z/whkd/releases/download/{{.Version}}/whkd-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: whkd-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         replacements:
@@ -29,7 +32,8 @@ packages:
           arm64: aarch64
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/LGUG2Z/whkd/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:

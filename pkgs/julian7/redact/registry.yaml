@@ -11,7 +11,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.3.0"
-        url: https://gh-proxy.org/https://github.com/julian7/redact/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/julian7/redact/releases/download/{{.Version}}/redact-{{.OS}}-{{.Arch}}-{{.Version}}
         asset: redact-{{.OS}}-{{.Arch}}-{{.Version}}
         format: raw
         rosetta2: true
@@ -21,7 +22,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.2.0")
-        url: https://gh-proxy.org/https://github.com/julian7/redact/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/julian7/redact/releases/download/{{.Version}}/redact-{{.OS}}-{{.Arch}}-{{.Version}}
         asset: redact-{{.OS}}-{{.Arch}}-{{.Version}}
         format: raw
         rosetta2: true
@@ -34,7 +36,8 @@ packages:
       - version_constraint: semver("<= 0.4.1")
         no_asset: true
       - version_constraint: semver("<= 0.6.0")
-        url: https://gh-proxy.org/https://github.com/julian7/redact/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/julian7/redact/releases/download/{{.Version}}/redact-{{.OS}}-{{.Arch}}-{{trimV .Version}}
         asset: redact-{{.OS}}-{{.Arch}}-{{trimV .Version}}
         format: raw
         rosetta2: true
@@ -42,7 +45,8 @@ packages:
         replacements:
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/julian7/redact/releases/download/{{.Version}}/SHA256SUMS.redact-{{trimV .Version}}
           asset: SHA256SUMS.redact-{{trimV .Version}}
           algorithm: sha256
         supported_envs:
@@ -50,52 +54,66 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.7.1")
-        url: https://gh-proxy.org/https://github.com/julian7/redact/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/julian7/redact/releases/download/{{.Version}}/redact-{{.OS}}-{{.Arch}}-{{trimV .Version}}
         asset: redact-{{.OS}}-{{.Arch}}-{{trimV .Version}}
         format: raw
         windows_arm_emulation: true
         replacements:
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/julian7/redact/releases/download/{{.Version}}/SHA256SUMS.redact-{{trimV .Version}}
           asset: SHA256SUMS.redact-{{trimV .Version}}
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/julian7/redact/releases/download/{{.Version}}/redact-{{.OS}}-all-{{trimV .Version}}
             asset: redact-{{.OS}}-all-{{trimV .Version}}
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.9.0")
-        url: https://gh-proxy.org/https://github.com/julian7/redact/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/julian7/redact/releases/download/{{.Version}}/redact-{{.OS}}-{{.Arch}}-{{trimV .Version}}
         asset: redact-{{.OS}}-{{.Arch}}-{{trimV .Version}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/julian7/redact/releases/download/{{.Version}}/SHA256SUMS.redact-{{trimV .Version}}
           asset: SHA256SUMS.redact-{{trimV .Version}}
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/julian7/redact/releases/download/{{.Version}}/redact-{{.OS}}-all-{{trimV .Version}}
             asset: redact-{{.OS}}-all-{{trimV .Version}}
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/julian7/redact/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/julian7/redact/releases/download/{{.Version}}/redact-{{.OS}}-{{.Arch}}-{{trimV .Version}}.{{.Format}}
         asset: redact-{{.OS}}-{{.Arch}}-{{trimV .Version}}.{{.Format}}
         format: tgz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/julian7/redact/releases/download/{{.Version}}/SHA256SUMS.redact-{{trimV .Version}}
           asset: SHA256SUMS.redact-{{trimV .Version}}
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/julian7/redact/releases/download/{{.Version}}/redact-{{.OS}}-all-{{trimV .Version}}.{{.Format}}
             asset: redact-{{.OS}}-all-{{trimV .Version}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/julian7/redact/releases/download/{{.Version}}/redact-{{.OS}}-{{.Arch}}-{{trimV .Version}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin

@@ -7,31 +7,37 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.2.0")
-        url: https://gh-proxy.org/https://github.com/jirutka/tty-copy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jirutka/tty-copy/releases/download/{{.Version}}/tty-copy.{{.Arch}}-{{.OS}}
         asset: tty-copy.{{.Arch}}-{{.OS}}
         format: raw
         replacements:
           amd64: x86_64
           arm64: aarch64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/jirutka/tty-copy/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/jirutka/tty-copy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jirutka/tty-copy/releases/download/{{.Version}}/tty-copy.{{.Arch}}-{{.OS}}
         asset: tty-copy.{{.Arch}}-{{.OS}}
         format: raw
         rosetta2: true
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/jirutka/tty-copy/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/jirutka/tty-copy/releases/download/{{.Version}}/tty-copy.{{.Arch}}-{{.OS}}
             replacements:
               arm64: aarch64
         supported_envs:

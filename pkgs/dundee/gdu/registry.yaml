@@ -1,12 +1,15 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/dundee/gdu/releases/download/{{.Version}}/gdu_{{.OS}}_{{.Arch}}.tgz
     repo_owner: dundee
     repo_name: gdu
     description: Fast disk usage analyzer with console interface written in Go
     asset: gdu_{{.OS}}_{{.Arch}}.tgz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/dundee/gdu/releases/download/{{.Version}}/gdu_windows_amd64.exe.zip
         asset: gdu_windows_amd64.exe.zip
     supported_envs:
       - darwin
@@ -16,6 +19,7 @@ packages:
       - name: gdu
         src: gdu_{{.OS}}_{{.Arch}}
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/dundee/gdu/releases/download/{{.Version}}/sha256sums.txt
       asset: sha256sums.txt
       algorithm: sha256

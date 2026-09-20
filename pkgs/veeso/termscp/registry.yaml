@@ -20,7 +20,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("< 0.6.1")
-        url: https://gh-proxy.org/https://github.com/veeso/termscp/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/veeso/termscp/releases/download/{{.Version}}/termscp-{{.OS}}.{{.Format}}
         asset: termscp-{{.OS}}.{{.Format}}
         rosetta2: true
         replacements:
@@ -28,18 +29,28 @@ packages:
           windows: msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/veeso/termscp/releases/download/{{.Version}}/termscp-{{trimV .Version}}.{{.Format}}
             format: txz
             asset: termscp-{{trimV .Version}}.{{.Format}}
             files:
               - name: termscp
                 src: usr/local/bin/termscp
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/veeso/termscp/releases/download/{{.Version}}/termscp-{{trimV .Version}}-{{.OS}}.{{.Format}}
             format: zip
             asset: termscp-{{trimV .Version}}-{{.OS}}.{{.Format}}
       - version_constraint: semver("< 0.8.1")
+        type: http
+        url: https://gh-proxy.org/github.com/veeso/termscp/releases/download/{{.Version}}/termscp-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         rosetta2: true
       - version_constraint: semver("< 1.0.0")
+        type: http
+        url: https://gh-proxy.org/github.com/veeso/termscp/releases/download/{{.Version}}/termscp-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/veeso/termscp/releases/download/{{.Version}}/termscp-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         replacements:
           amd64: x86_64
           arm64: aarch64

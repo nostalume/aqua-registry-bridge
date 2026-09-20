@@ -11,7 +11,8 @@ packages:
       - version_constraint: semver("< 2.0.0")
         error_message: The version is too old. Please upgrade to v2.0.0 or later.
       - version_constraint: Version == "v2.0.0"
-        url: https://gh-proxy.org/https://github.com/russellbanks/Komac/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/russellbanks/Komac/releases/download/{{.Version}}/KomacPortable-{{.OS}}-nightly-{{.Arch}}.{{.Format}}
         asset: KomacPortable-{{.OS}}-nightly-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -22,10 +23,13 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/russellbanks/Komac/releases/download/{{.Version}}/KomacPortable-nightly-{{.Arch}}
             format: raw
             asset: KomacPortable-nightly-{{.Arch}}
       - version_constraint: Version == "v2.0.3"
-        url: https://gh-proxy.org/https://github.com/russellbanks/Komac/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/russellbanks/Komac/releases/download/{{.Version}}/KomacPortable-{{.OS}}-{{trimV .Version}}-{{.Arch}}.{{.Format}}
         asset: KomacPortable-{{.OS}}-{{trimV .Version}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -36,10 +40,13 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/russellbanks/Komac/releases/download/{{.Version}}/KomacPortable-{{trimV .Version}}-{{.Arch}}
             format: raw
             asset: KomacPortable-{{trimV .Version}}-{{.Arch}}
       - version_constraint: Version == "v2.2.1"
-        url: https://gh-proxy.org/https://github.com/russellbanks/Komac/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/russellbanks/Komac/releases/download/{{.Version}}/KomacPortable-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: KomacPortable-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -49,11 +56,14 @@ packages:
           amd64: x64
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/russellbanks/Komac/releases/download/{{.Version}}/KomacPortable-{{.Arch}}
             format: raw
             asset: KomacPortable-{{.Arch}}
         supported_envs:
@@ -61,7 +71,8 @@ packages:
           - darwin
           - windows
       - version_constraint: Version == "v2.13.0"
-        url: https://gh-proxy.org/https://github.com/russellbanks/Komac/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/russellbanks/Komac/releases/download/{{.Version}}/komac-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: komac-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -72,10 +83,13 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/russellbanks/Komac/releases/download/{{.Version}}/komac-{{trimV .Version}}-{{.Arch}}-{{.OS}}
             format: raw
             asset: komac-{{trimV .Version}}-{{.Arch}}-{{.OS}}
       - version_constraint: semver("<= 2.0.2")
-        url: https://gh-proxy.org/https://github.com/russellbanks/Komac/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/russellbanks/Komac/releases/download/{{.Version}}/KomacPortable-{{.OS}}-{{.Version}}-{{.Arch}}.{{.Format}}
         asset: KomacPortable-{{.OS}}-{{.Version}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -86,10 +100,13 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/russellbanks/Komac/releases/download/{{.Version}}/KomacPortable-{{.Version}}-{{.Arch}}
             format: raw
             asset: KomacPortable-{{.Version}}-{{.Arch}}
       - version_constraint: semver("<= 2.2.0")
-        url: https://gh-proxy.org/https://github.com/russellbanks/Komac/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/russellbanks/Komac/releases/download/{{.Version}}/KomacPortable-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: KomacPortable-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -99,15 +116,19 @@ packages:
           amd64: x64
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/russellbanks/Komac/releases/download/{{.Version}}/KomacPortable-{{.Arch}}
             format: raw
             asset: KomacPortable-{{.Arch}}
       - version_constraint: semver("<= 2.12.1")
-        url: https://gh-proxy.org/https://github.com/russellbanks/Komac/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/russellbanks/Komac/releases/download/{{.Version}}/komac-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: komac-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -117,15 +138,19 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/russellbanks/Komac/releases/download/{{.Version}}/komac-{{trimV .Version}}-{{.Arch}}-{{.OS}}
             format: raw
             asset: komac-{{trimV .Version}}-{{.Arch}}-{{.OS}}
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/russellbanks/Komac/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/russellbanks/Komac/releases/download/{{.Version}}/komac-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: komac-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -135,10 +160,13 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/russellbanks/Komac/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/russellbanks/Komac/releases/download/{{.Version}}/komac-{{trimV .Version}}-{{.Arch}}-{{.OS}}
             format: raw
             asset: komac-{{trimV .Version}}-{{.Arch}}-{{.OS}}

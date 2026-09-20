@@ -7,21 +7,25 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.1.4")
-        url: https://gh-proxy.org/https://github.com/hirosassa/tfcmt-gitlab/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/hirosassa/tfcmt-gitlab/releases/download/{{.Version}}/tfcmt-gitlab_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tfcmt-gitlab_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/hirosassa/tfcmt-gitlab/releases/download/{{.Version}}/tfcmt-gitlab_{{trimV .Version}}_checksums.txt
           asset: tfcmt-gitlab_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/hirosassa/tfcmt-gitlab/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/hirosassa/tfcmt-gitlab/releases/download/{{.Version}}/tfcmt-gitlab_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tfcmt-gitlab_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/hirosassa/tfcmt-gitlab/releases/download/{{.Version}}/tfcmt-gitlab_{{trimV .Version}}_checksums.txt
           asset: tfcmt-gitlab_{{trimV .Version}}_checksums.txt
           algorithm: sha256

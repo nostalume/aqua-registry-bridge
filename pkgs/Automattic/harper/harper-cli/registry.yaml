@@ -11,7 +11,8 @@ packages:
       - version_constraint: semver("< 0.13.0")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Automattic/harper/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Automattic/harper/releases/download/{{.Version}}/harper-cli-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: harper-cli-{{.Arch}}-{{.OS}}.{{.Format}}
         # harper-cli-aarch64-apple-darwin.tar.gz
         # harper-cli-aarch64-unknown-linux-gnu.tar.gz
@@ -22,6 +23,8 @@ packages:
         windows_arm_emulation: true
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Automattic/harper/releases/download/{{.Version}}/harper-cli-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64

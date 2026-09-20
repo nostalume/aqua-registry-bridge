@@ -10,7 +10,8 @@ packages:
       - version_constraint: semver("<= 0.24.0")
         no_asset: true
       - version_constraint: Version == "v0.25.0"
-        url: https://gh-proxy.org/https://github.com/vmware/govmomi/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vmware/govmomi/releases/download/{{.Version}}/vcsim_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: vcsim_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -20,14 +21,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vmware/govmomi/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vmware/govmomi/releases/download/{{.Version}}/vcsim_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.27.4")
-        url: https://gh-proxy.org/https://github.com/vmware/govmomi/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vmware/govmomi/releases/download/{{.Version}}/vcsim_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: vcsim_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -38,14 +43,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vmware/govmomi/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vmware/govmomi/releases/download/{{.Version}}/vcsim_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/vmware/govmomi/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vmware/govmomi/releases/download/{{.Version}}/vcsim_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: vcsim_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -54,9 +63,12 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vmware/govmomi/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/vmware/govmomi/releases/download/{{.Version}}/vcsim_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

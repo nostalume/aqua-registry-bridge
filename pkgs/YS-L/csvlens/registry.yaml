@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("< 0.10.0")
-        url: https://gh-proxy.org/https://github.com/YS-L/csvlens/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/YS-L/csvlens/releases/download/{{.Version}}/csvlens-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: csvlens-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -20,14 +21,19 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/YS-L/csvlens/releases/download/{{.Version}}/csvlens-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/YS-L/csvlens/releases/download/{{.Version}}/csvlens-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: csvlens
@@ -36,7 +42,8 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/YS-L/csvlens/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/YS-L/csvlens/releases/download/{{.Version}}/csvlens-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: csvlens-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -49,14 +56,19 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/YS-L/csvlens/releases/download/{{.Version}}/csvlens-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/YS-L/csvlens/releases/download/{{.Version}}/csvlens-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: csvlens

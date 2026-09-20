@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v1.0.0-rc.9"
-        url: https://gh-proxy.org/https://github.com/awslabs/ssosync/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/awslabs/ssosync/releases/download/{{.Version}}/ssosync_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ssosync_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -17,14 +18,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/awslabs/ssosync/releases/download/{{.Version}}/ssosync_checksums.txt
           asset: ssosync_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/awslabs/ssosync/releases/download/{{.Version}}/ssosync_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 1.0.0-rc.8")
-        url: https://gh-proxy.org/https://github.com/awslabs/ssosync/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/awslabs/ssosync/releases/download/{{.Version}}/ssosync_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ssosync_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -35,14 +40,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/awslabs/ssosync/releases/download/{{.Version}}/ssosync_checksums.txt
           asset: ssosync_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/awslabs/ssosync/releases/download/{{.Version}}/ssosync_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/awslabs/ssosync/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/awslabs/ssosync/releases/download/{{.Version}}/ssosync_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ssosync_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -51,9 +60,12 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/awslabs/ssosync/releases/download/{{.Version}}/ssosync_checksums.txt
           asset: ssosync_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/awslabs/ssosync/releases/download/{{.Version}}/ssosync_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

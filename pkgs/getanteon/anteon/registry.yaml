@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.4.1")
-        url: https://gh-proxy.org/https://github.com/getanteon/anteon/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/getanteon/anteon/releases/download/{{.Version}}/ddosify_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ddosify_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -15,14 +16,18 @@ packages:
         replacements:
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/getanteon/anteon/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/getanteon/anteon/releases/download/{{.Version}}/ddosify_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 1.0.3")
-        url: https://gh-proxy.org/https://github.com/getanteon/anteon/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/getanteon/anteon/releases/download/{{.Version}}/ddosify_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ddosify_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -31,27 +36,38 @@ packages:
         replacements:
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/getanteon/anteon/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/getanteon/anteon/releases/download/{{.Version}}/ddosify_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
             asset: ddosify_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/getanteon/anteon/releases/download/{{.Version}}/ddosify_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/getanteon/anteon/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/getanteon/anteon/releases/download/{{.Version}}/ddosify_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ddosify_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         files:
           - name: ddosify
         format: tar.gz
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/getanteon/anteon/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/getanteon/anteon/releases/download/{{.Version}}/ddosify_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
             asset: ddosify_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/getanteon/anteon/releases/download/{{.Version}}/ddosify_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

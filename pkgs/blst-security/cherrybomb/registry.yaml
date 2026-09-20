@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.4.2")
-        url: https://gh-proxy.org/https://github.com/blst-security/cherrybomb/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/blst-security/cherrybomb/releases/download/{{.Version}}/cherrybomb_{{.OS}}
         asset: cherrybomb_{{.OS}}
         format: raw
         rosetta2: true
@@ -17,12 +18,15 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.6.0")
-        url: https://gh-proxy.org/https://github.com/blst-security/cherrybomb/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/blst-security/cherrybomb/releases/download/{{.Version}}/cherrybomb_{{.OS}}_gnu
         asset: cherrybomb_{{.OS}}_gnu
         format: raw
         rosetta2: true
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/blst-security/cherrybomb/releases/download/{{.Version}}/cherrybomb_{{.OS}}_{{.Arch}}
             asset: cherrybomb_{{.OS}}_{{.Arch}}
         replacements:
           amd64: x86_64
@@ -33,12 +37,15 @@ packages:
       - version_constraint: semver("<= 0.7.0")
         no_asset: true
       - version_constraint: semver("<= 1.0.0")
-        url: https://gh-proxy.org/https://github.com/blst-security/cherrybomb/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/blst-security/cherrybomb/releases/download/{{.Version}}/cherrybomb_{{.OS}}_gnu
         asset: cherrybomb_{{.OS}}_gnu
         format: raw
         rosetta2: true
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/blst-security/cherrybomb/releases/download/{{.Version}}/cherrybomb_{{.OS}}_{{.Arch}}
             asset: cherrybomb_{{.OS}}_{{.Arch}}
         replacements:
           amd64: x86_64
@@ -47,18 +54,22 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v1.0.1"
-        url: https://gh-proxy.org/https://github.com/blst-security/cherrybomb/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/blst-security/cherrybomb/releases/download/{{.Version}}/cherrybomb
         asset: cherrybomb
         format: raw
         supported_envs:
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/blst-security/cherrybomb/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/blst-security/cherrybomb/releases/download/{{.Version}}/cherrybomb_{{.OS}}_gnu
         asset: cherrybomb_{{.OS}}_gnu
         format: raw
         rosetta2: true
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/blst-security/cherrybomb/releases/download/{{.Version}}/cherrybomb_{{.OS}}_{{.Arch}}
             asset: cherrybomb_{{.OS}}_{{.Arch}}
         replacements:
           amd64: x86_64

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/restic/restic/releases/download/{{.Version}}/restic_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: restic
     repo_name: restic
     description: Fast, secure, efficient backup program
@@ -15,11 +16,14 @@ packages:
     format: bz2
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/restic/restic/releases/download/{{.Version}}/restic_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         files:
           - name: restic
             src: restic_{{trimV .Version}}_windows_{{.Arch}}.exe
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/restic/restic/releases/download/{{.Version}}/SHA256SUMS
       asset: SHA256SUMS
       algorithm: sha256

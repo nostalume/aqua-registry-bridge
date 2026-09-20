@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/dineshba/tf-summarize/releases/download/{{.Version}}/tf-summarize_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: dineshba
     repo_name: tf-summarize
     description: A command-line utility to print the summary of the terraform plan
@@ -8,24 +9,32 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/dineshba/tf-summarize/releases/download/{{.Version}}/tf-summarize_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/dineshba/tf-summarize/releases/download/{{.Version}}/tf-summarize_SHA256SUMS
       asset: tf-summarize_SHA256SUMS
       algorithm: sha256
     version_constraint: semver(">= 0.3.6")
     version_overrides:
       - version_constraint: semver(">= 0.2.5")
+        type: http
+        url: https://gh-proxy.org/github.com/dineshba/tf-summarize/releases/download/{{.Version}}/tf-summarize_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         overrides: []
       - version_constraint: semver(">= 0.2.0")
+        type: http
+        url: https://gh-proxy.org/github.com/dineshba/tf-summarize/releases/download/{{.Version}}/tf-summarize_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         overrides: []
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver(">= 0.0.2")
-        url: https://gh-proxy.org/https://github.com/dineshba/tf-summarize/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dineshba/tf-summarize/releases/download/{{.Version}}/terraform-plan-summary_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: terraform-plan-summary_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         overrides: []
@@ -35,11 +44,13 @@ packages:
           - linux
           - darwin
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/dineshba/tf-summarize/releases/download/{{.Version}}/terraform-plan-summary_SHA256SUMS
           asset: terraform-plan-summary_SHA256SUMS
           algorithm: sha256
       - version_constraint: Version == "v0.0.1"
-        url: https://gh-proxy.org/https://github.com/dineshba/tf-summarize/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dineshba/tf-summarize/releases/download/{{.Version}}/terraform-plan-summary_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: terraform-plan-summary_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         overrides: []
@@ -50,6 +61,7 @@ packages:
           - linux
           - darwin
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/dineshba/tf-summarize/releases/download/{{.Version}}/terraform-plan-summary_SHA256SUMS
           asset: terraform-plan-summary_SHA256SUMS
           algorithm: sha256

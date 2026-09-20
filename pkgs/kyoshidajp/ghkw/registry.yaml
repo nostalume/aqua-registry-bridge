@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/kyoshidajp/ghkw/releases/download/{{.Version}}/ghkw_{{.OS}}_{{.Arch}}.tar.gz
     repo_owner: kyoshidajp
     repo_name: ghkw
     asset: ghkw_{{.OS}}_{{.Arch}}.tar.gz
@@ -12,6 +13,7 @@ packages:
       - darwin
     rosetta2: true
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/kyoshidajp/ghkw/releases/download/{{.Version}}/ghkw_{{trimV .Version}}_checksums.txt
       asset: ghkw_{{trimV .Version}}_checksums.txt
       algorithm: sha256

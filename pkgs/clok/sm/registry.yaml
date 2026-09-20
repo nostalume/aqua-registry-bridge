@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/clok/sm/releases/download/{{.Version}}/sm_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: clok
     repo_name: sm
     asset: sm_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -8,6 +9,8 @@ packages:
     description: AWS Secrets Manager CLI Tool
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/clok/sm/releases/download/{{.Version}}/sm_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     supported_envs:
       - darwin
@@ -17,6 +20,7 @@ packages:
       - name: sm
         src: sm_{{trimV .Version}}_{{.OS}}_{{.Arch}}/sm
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/clok/sm/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256

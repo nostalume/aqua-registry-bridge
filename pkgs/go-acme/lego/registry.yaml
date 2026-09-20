@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.1.0"
-        url: https://gh-proxy.org/https://github.com/go-acme/lego/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/go-acme/lego/releases/download/{{.Version}}/lego_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: lego_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -16,31 +17,44 @@ packages:
           arm64: arm
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/go-acme/lego/releases/download/{{.Version}}/lego_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
       - version_constraint: Version == "v4.4.0"
-        url: https://gh-proxy.org/https://github.com/go-acme/lego/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/go-acme/lego/releases/download/{{.Version}}/lego_{{.Version}}_{{.OS}}_{{.Arch}}v5.{{.Format}}
         asset: lego_{{.Version}}_{{.OS}}_{{.Arch}}v5.{{.Format}}
         format: zip
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/go-acme/lego/releases/download/{{.Version}}/lego_{{trimV .Version}}_checksums.txt
           asset: lego_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/go-acme/lego/releases/download/{{.Version}}/lego_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
             asset: lego_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/go-acme/lego/releases/download/{{.Version}}/lego_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
             asset: lego_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/go-acme/lego/releases/download/{{.Version}}/lego_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             goarch: amd64
             asset: lego_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/go-acme/lego/releases/download/{{.Version}}/lego_{{.Version}}_{{.OS}}_{{.Arch}}v5.{{.Format}}
             goarch: arm64
             replacements:
               arm64: arm
       - version_constraint: semver("<= 0.3.1")
-        url: https://gh-proxy.org/https://github.com/go-acme/lego/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/go-acme/lego/releases/download/{{.Version}}/lego_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: lego_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         files:
@@ -52,9 +66,12 @@ packages:
           arm64: arm
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/go-acme/lego/releases/download/{{.Version}}/lego_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.xz
       - version_constraint: semver("<= 0.4.1")
-        url: https://gh-proxy.org/https://github.com/go-acme/lego/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/go-acme/lego/releases/download/{{.Version}}/lego_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: lego_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         files:
@@ -64,53 +81,71 @@ packages:
         windows_arm_emulation: true
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/go-acme/lego/releases/download/{{.Version}}/lego_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.xz
       - version_constraint: semver("<= 4.2.0")
-        url: https://gh-proxy.org/https://github.com/go-acme/lego/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/go-acme/lego/releases/download/{{.Version}}/lego_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: lego_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/go-acme/lego/releases/download/{{.Version}}/lego_{{trimV .Version}}_checksums.txt
           asset: lego_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/go-acme/lego/releases/download/{{.Version}}/lego_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 4.3.1")
-        url: https://gh-proxy.org/https://github.com/go-acme/lego/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/go-acme/lego/releases/download/{{.Version}}/lego_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: lego_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/go-acme/lego/releases/download/{{.Version}}/lego_{{trimV .Version}}_checksums.txt
           asset: lego_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/go-acme/lego/releases/download/{{.Version}}/lego_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("< 4.30.1")
-        url: https://gh-proxy.org/https://github.com/go-acme/lego/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/go-acme/lego/releases/download/{{.Version}}/lego_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: lego_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/go-acme/lego/releases/download/{{.Version}}/lego_{{trimV .Version}}_checksums.txt
           asset: lego_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/go-acme/lego/releases/download/{{.Version}}/lego_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/go-acme/lego/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/go-acme/lego/releases/download/{{.Version}}/lego_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: lego_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/go-acme/lego/releases/download/{{.Version}}/lego_{{trimV .Version}}_checksums.txt
           asset: lego_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/go-acme/lego/releases/download/{{.Version}}/lego_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         github_artifact_attestations:
           signer_workflow: go-acme/lego/.github/workflows/release.yml

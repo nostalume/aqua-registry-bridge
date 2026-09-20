@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/FalconForceTeam/FalconHound/releases/download/{{.Version}}/FalconHound_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: FalconForceTeam
     repo_name: FalconHound
     description: FalconHound is a blue team multi-tool. It allows you to utilize and enhance the power of BloodHound in a more automated fashion. It is designed to be used in conjunction with a SIEM or other log aggregation tool

@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/chime/mani-diffy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/chime/mani-diffy/releases/download/{{.Version}}/mani-diffy
         asset: mani-diffy
         format: raw
         supported_envs:
@@ -15,5 +16,7 @@ packages:
           - darwin/arm64
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/chime/mani-diffy/releases/download/{{.Version}}/mani-diffy-{{.OS}}-{{.Arch}}
             goarch: arm64
             asset: mani-diffy-{{.OS}}-{{.Arch}}

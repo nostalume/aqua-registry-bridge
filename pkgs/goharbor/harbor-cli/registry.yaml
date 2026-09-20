@@ -11,31 +11,40 @@ packages:
       - version_constraint: Version in ["v0.0.3", "v0.0.5", "v0.0.13"]
         no_asset: true
       - version_constraint: Version == "v0.0.4"
-        url: https://gh-proxy.org/https://github.com/goharbor/harbor-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/goharbor/harbor-cli/releases/download/{{.Version}}/harbor_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: harbor_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/goharbor/harbor-cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/goharbor/harbor-cli/releases/download/{{.Version}}/harbor_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.0.7")
-        url: https://gh-proxy.org/https://github.com/goharbor/harbor-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/goharbor/harbor-cli/releases/download/{{.Version}}/harbor_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: harbor_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/goharbor/harbor-cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/goharbor/harbor-cli/releases/download/{{.Version}}/harbor_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/goharbor/harbor-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/goharbor/harbor-cli/releases/download/{{.Version}}/harbor-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: harbor-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -43,9 +52,12 @@ packages:
           - name: harbor
             src: harbor-cli
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/goharbor/harbor-cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/goharbor/harbor-cli/releases/download/{{.Version}}/harbor-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

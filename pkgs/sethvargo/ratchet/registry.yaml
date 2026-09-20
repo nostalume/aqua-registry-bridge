@@ -7,26 +7,34 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("< 0.10.0")
-        url: https://gh-proxy.org/https://github.com/sethvargo/ratchet/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sethvargo/ratchet/releases/download/{{.Version}}/ratchet_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ratchet_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/sethvargo/ratchet/releases/download/{{.Version}}/ratchet_{{trimV .Version}}_SHA512SUMS
           asset: ratchet_{{trimV .Version}}_SHA512SUMS
           algorithm: sha512
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/sethvargo/ratchet/releases/download/{{.Version}}/ratchet_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/sethvargo/ratchet/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sethvargo/ratchet/releases/download/{{.Version}}/ratchet_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ratchet_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/sethvargo/ratchet/releases/download/{{.Version}}/ratchet_{{trimV .Version}}_SHA512SUMS
           asset: ratchet_{{trimV .Version}}_SHA512SUMS
           algorithm: sha512
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/sethvargo/ratchet/releases/download/{{.Version}}/ratchet_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         github_artifact_attestations:
           signer_workflow: sethvargo/ratchet/.github/workflows/release.yml

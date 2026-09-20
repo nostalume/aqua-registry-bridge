@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.1.0")
-        url: https://gh-proxy.org/https://github.com/CrunchyData/postgres-operator-client/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/CrunchyData/postgres-operator-client/releases/download/{{.Version}}/kubectl-pgo-{{.OS}}-{{.Arch}}
         asset: kubectl-pgo-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -17,7 +18,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/CrunchyData/postgres-operator-client/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/CrunchyData/postgres-operator-client/releases/download/{{.Version}}/kubectl-pgo-{{.OS}}-{{.Arch}}
         asset: kubectl-pgo-{{.OS}}-{{.Arch}}
         format: raw
         supported_envs:

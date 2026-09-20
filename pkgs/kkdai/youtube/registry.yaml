@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/kkdai/youtube/releases/download/{{.Version}}/youtubedr_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
     repo_owner: kkdai
     repo_name: youtube
     asset: youtubedr_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
@@ -8,6 +9,7 @@ packages:
     files:
       - name: youtubedr
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/kkdai/youtube/releases/download/{{.Version}}/youtubedr_{{trimV .Version}}_checksums.txt
       asset: youtubedr_{{trimV .Version}}_checksums.txt
       algorithm: sha256

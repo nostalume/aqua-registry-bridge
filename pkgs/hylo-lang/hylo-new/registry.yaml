@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/hylo-lang/hylo-new/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/hylo-lang/hylo-new/releases/download/{{.Version}}/hylo-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: hylo-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.zst
         replacements:

@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "1.2.1"
-        url: https://gh-proxy.org/https://github.com/Shopify/shadowenv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Shopify/shadowenv/releases/download/{{.Version}}/shadowenv-{{.OS}}-10.14
         asset: shadowenv-{{.OS}}-10.14
         format: raw
         replacements:
@@ -15,7 +16,8 @@ packages:
         supported_envs:
           - darwin
       - version_constraint: Version == "2.1.0"
-        url: https://gh-proxy.org/https://github.com/Shopify/shadowenv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Shopify/shadowenv/releases/download/{{.Version}}/shadowenv-{{.Arch}}-{{.OS}}
         asset: shadowenv-{{.Arch}}-{{.OS}}
         format: raw
         replacements:
@@ -25,7 +27,8 @@ packages:
         supported_envs:
           - darwin
       - version_constraint: Version == "2.1.1"
-        url: https://gh-proxy.org/https://github.com/Shopify/shadowenv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Shopify/shadowenv/releases/download/{{.Version}}/shadowenv-{{.Arch}}-{{.OS}}
         asset: shadowenv-{{.Arch}}-{{.OS}}
         format: raw
         replacements:
@@ -34,13 +37,16 @@ packages:
           linux: unknown-linux-gnu
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/Shopify/shadowenv/releases/download/{{.Version}}/shadowenv-{{.Arch}}-{{.OS}}
             replacements:
               arm64: aarch64
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 2.0.0")
-        url: https://gh-proxy.org/https://github.com/Shopify/shadowenv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Shopify/shadowenv/releases/download/{{.Version}}/shadowenv-{{.Arch}}-{{.OS}}
         asset: shadowenv-{{.Arch}}-{{.OS}}
         format: raw
         rosetta2: true
@@ -50,7 +56,8 @@ packages:
         supported_envs:
           - darwin
       - version_constraint: semver("<= 2.0.5")
-        url: https://gh-proxy.org/https://github.com/Shopify/shadowenv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Shopify/shadowenv/releases/download/{{.Version}}/shadowenv-{{.OS}}-latest
         asset: shadowenv-{{.OS}}-latest
         format: raw
         replacements:
@@ -58,7 +65,8 @@ packages:
         supported_envs:
           - darwin
       - version_constraint: semver("<= 2.0.7")
-        url: https://gh-proxy.org/https://github.com/Shopify/shadowenv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Shopify/shadowenv/releases/download/{{.Version}}/shadowenv-{{.Arch}}-{{.OS}}
         asset: shadowenv-{{.Arch}}-{{.OS}}
         format: raw
         replacements:
@@ -67,13 +75,16 @@ packages:
           linux: unknown-linux-gnu
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/Shopify/shadowenv/releases/download/{{.Version}}/shadowenv-{{.Arch}}-{{.OS}}
             replacements:
               arm64: aarch64
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Shopify/shadowenv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Shopify/shadowenv/releases/download/{{.Version}}/shadowenv-{{.Arch}}-{{.OS}}
         asset: shadowenv-{{.Arch}}-{{.OS}}
         format: raw
         replacements:

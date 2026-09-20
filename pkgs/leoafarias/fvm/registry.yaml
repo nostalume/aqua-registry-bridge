@@ -10,7 +10,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.1.13")
-        url: https://gh-proxy.org/https://github.com/leoafarias/fvm/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/leoafarias/fvm/releases/download/{{.Version}}/fvm_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: fvm_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -19,14 +20,16 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/leoafarias/fvm/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.2.8")
-        url: https://gh-proxy.org/https://github.com/leoafarias/fvm/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/leoafarias/fvm/releases/download/{{.Version}}/fvm_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: fvm_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -35,19 +38,22 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/leoafarias/fvm/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 0.3.0")
-        url: https://gh-proxy.org/https://github.com/leoafarias/fvm/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/leoafarias/fvm/releases/download/{{.Version}}/fvm_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: fvm_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/leoafarias/fvm/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
@@ -56,14 +62,16 @@ packages:
       - version_constraint: semver("<= 0.8.3")
         no_asset: true
       - version_constraint: Version == "App-1.0.0-alpha"
-        url: https://gh-proxy.org/https://github.com/leoafarias/fvm/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/leoafarias/fvm/releases/download/{{.Version}}/fvm-app-{{.OS}}.{{.Format}}
         asset: fvm-app-{{.OS}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         supported_envs:
           - windows/amd64
       - version_constraint: Version == "App-1.0.0-alpha.1"
-        url: https://gh-proxy.org/https://github.com/leoafarias/fvm/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/leoafarias/fvm/releases/download/{{.Version}}/fvm_{{.OS}}.{{.Format}}
         asset: fvm_{{.OS}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -72,7 +80,8 @@ packages:
       - version_constraint: semver("<= 1.2.3")
         no_asset: true
       - version_constraint: semver("<= 1.3.4")
-        url: https://gh-proxy.org/https://github.com/leoafarias/fvm/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/leoafarias/fvm/releases/download/{{.Version}}/fvm-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: fvm-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -85,6 +94,8 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/leoafarias/fvm/releases/download/{{.Version}}/fvm-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             files:
               - name: fvm
@@ -96,7 +107,8 @@ packages:
       - version_constraint: semver("<= 1.3.8")
         no_asset: true
       - version_constraint: semver("<= 2.2.4")
-        url: https://gh-proxy.org/https://github.com/leoafarias/fvm/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/leoafarias/fvm/releases/download/{{.Version}}/fvm-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: fvm-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -109,6 +121,8 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/leoafarias/fvm/releases/download/{{.Version}}/fvm-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             files:
               - name: fvm
@@ -118,7 +132,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "2.2.5-dev"
-        url: https://gh-proxy.org/https://github.com/leoafarias/fvm/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/leoafarias/fvm/releases/download/{{.Version}}/fvm-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: fvm-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -132,7 +147,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: Version == "2.2.5-dev.1"
-        url: https://gh-proxy.org/https://github.com/leoafarias/fvm/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/leoafarias/fvm/releases/download/{{.Version}}/fvm-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: fvm-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -144,7 +160,8 @@ packages:
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 2.3.1")
-        url: https://gh-proxy.org/https://github.com/leoafarias/fvm/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/leoafarias/fvm/releases/download/{{.Version}}/fvm-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: fvm-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -157,6 +174,8 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/leoafarias/fvm/releases/download/{{.Version}}/fvm-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             files:
               - name: fvm
@@ -166,7 +185,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 2.4.1")
-        url: https://gh-proxy.org/https://github.com/leoafarias/fvm/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/leoafarias/fvm/releases/download/{{.Version}}/fvm-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: fvm-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -178,6 +198,8 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/leoafarias/fvm/releases/download/{{.Version}}/fvm-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             files:
               - name: fvm
@@ -185,7 +207,8 @@ packages:
       - version_constraint: semver("<= 3.0.0-alpha.2")
         no_asset: true
       - version_constraint: semver("<= 4.0.0")
-        url: https://gh-proxy.org/https://github.com/leoafarias/fvm/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/leoafarias/fvm/releases/download/{{.Version}}/fvm-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: fvm-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -197,12 +220,15 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/leoafarias/fvm/releases/download/{{.Version}}/fvm-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             files:
               - name: fvm
                 src: fvm/fvm.bat
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/leoafarias/fvm/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/leoafarias/fvm/releases/download/{{.Version}}/fvm-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: fvm-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -214,6 +240,8 @@ packages:
           darwin: macos
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/leoafarias/fvm/releases/download/{{.Version}}/fvm-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             files:
               - name: fvm

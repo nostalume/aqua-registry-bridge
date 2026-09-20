@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/rancher/cli/releases/download/{{.Version}}/rancher-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
     repo_owner: rancher
     repo_name: cli
     description: Rancher CLI
@@ -12,11 +13,14 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/rancher/cli/releases/download/{{.Version}}/rancher-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         format: zip
     files:
       - name: rancher
         src: rancher-{{.Version}}/rancher
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/rancher/cli/releases/download/{{.Version}}/sha256sum.txt
       asset: sha256sum.txt
       algorithm: sha256

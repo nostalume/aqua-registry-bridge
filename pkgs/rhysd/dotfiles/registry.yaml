@@ -7,23 +7,29 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.2.2")
-        url: https://gh-proxy.org/https://github.com/rhysd/dotfiles/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rhysd/dotfiles/releases/download/{{.Version}}/dotfiles_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: dotfiles_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
         windows_arm_emulation: true
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/rhysd/dotfiles/releases/download/{{.Version}}/dotfiles_{{.OS}}_{{.Arch}}.exe.{{.Format}}
             asset: dotfiles_{{.OS}}_{{.Arch}}.exe.{{.Format}}
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/rhysd/dotfiles/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rhysd/dotfiles/releases/download/{{.Version}}/dotfiles_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: dotfiles_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/rhysd/dotfiles/releases/download/{{.Version}}/dotfiles_{{.OS}}_{{.Arch}}.exe.{{.Format}}
             asset: dotfiles_{{.OS}}_{{.Arch}}.exe.{{.Format}}

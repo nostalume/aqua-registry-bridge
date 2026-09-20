@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/civo/cli/releases/download/{{.Version}}/civo-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
     repo_owner: civo
     repo_name: cli
     description: Our Command Line Interface (CLI) for interacting with your Civo resources
@@ -12,10 +13,13 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/civo/cli/releases/download/{{.Version}}/civo-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
     files:
       - name: civo
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/civo/cli/releases/download/{{.Version}}/civo-{{trimV .Version}}-checksums.sha256
       asset: civo-{{trimV .Version}}-checksums.sha256
       algorithm: sha256

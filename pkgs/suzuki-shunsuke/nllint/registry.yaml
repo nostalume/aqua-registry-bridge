@@ -7,17 +7,22 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.1.2")
-        url: https://gh-proxy.org/https://github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: nllint_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{trimV .Version}}_checksums.txt
           asset: nllint_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
@@ -27,26 +32,32 @@ packages:
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
               - --signature
-              - https://github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{trimV .Version}}_checksums.txt.sig
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{trimV .Version}}_checksums.txt.sig
               - --certificate
-              - https://github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{trimV .Version}}_checksums.txt.pem
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{trimV .Version}}_checksums.txt.pem
       - version_constraint: semver("<= 1.1.0")
-        url: https://gh-proxy.org/https://github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: nllint_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{trimV .Version}}_checksums.txt
           asset: nllint_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{trimV .Version}}_checksums.txt.bundle
               asset: nllint_{{trimV .Version}}_checksums.txt.bundle
             opts:
               - --certificate-identity-regexp
@@ -54,22 +65,28 @@ packages:
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: nllint_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{trimV .Version}}_checksums.txt
           asset: nllint_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{trimV .Version}}_checksums.txt.sigstore.json
               asset: nllint_{{trimV .Version}}_checksums.txt.sigstore.json
             opts:
               - --certificate-identity-regexp

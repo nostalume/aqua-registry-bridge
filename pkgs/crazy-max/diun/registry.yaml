@@ -7,19 +7,24 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v4.23.0"
-        url: https://gh-proxy.org/https://github.com/crazy-max/diun/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.{{.Format}}
         asset: diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.{{.Format}}
         format: tgz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
             asset: diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
       - version_constraint: semver("<= 4.9.0")
-        url: https://gh-proxy.org/https://github.com/crazy-max/diun/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -27,14 +32,18 @@ packages:
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 4.14.0")
-        url: https://gh-proxy.org/https://github.com/crazy-max/diun/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -43,9 +52,12 @@ packages:
           amd64: x86_64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 4.16.1")
-        url: https://gh-proxy.org/https://github.com/crazy-max/diun/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -53,30 +65,42 @@ packages:
           amd64: x86_64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 4.19.0")
-        url: https://gh-proxy.org/https://github.com/crazy-max/diun/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 4.22.0")
-        url: https://gh-proxy.org/https://github.com/crazy-max/diun/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/crazy-max/diun/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

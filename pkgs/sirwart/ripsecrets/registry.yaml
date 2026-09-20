@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.1.2"
-        url: https://gh-proxy.org/https://github.com/sirwart/ripsecrets/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sirwart/ripsecrets/releases/download/{{.Version}}/secrets-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: secrets-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -16,6 +17,8 @@ packages:
           linux: unknown-linux-gnu
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/sirwart/ripsecrets/releases/download/{{.Version}}/secrets-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
         supported_envs:
@@ -25,7 +28,8 @@ packages:
           - name: ripsecrets
             src: secrets-{{trimV .Version}}-{{.Arch}}-{{.OS}}/secrets
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/sirwart/ripsecrets/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sirwart/ripsecrets/releases/download/{{.Version}}/ripsecrets-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: ripsecrets-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -34,6 +38,8 @@ packages:
           linux: unknown-linux-gnu
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/sirwart/ripsecrets/releases/download/{{.Version}}/ripsecrets-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
         supported_envs:

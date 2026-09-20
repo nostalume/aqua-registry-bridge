@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/mathew-fleisch/bashbot/releases/download/{{.Version}}/bashbot-{{.OS}}-{{.Arch}}
     repo_owner: mathew-fleisch
     repo_name: bashbot
     description: A slack-bot written in golang for infrastructure/devops teams
@@ -13,4 +14,6 @@ packages:
     version_constraint: semver(">= 2.0.0")
     version_overrides:
       - version_constraint: semver("< 2.0.0")
+        type: http
+        url: https://gh-proxy.org/github.com/mathew-fleisch/bashbot/releases/download/{{.Version}}/bashbot-{{.OS}}-{{.Arch}}
         version_prefix: ""

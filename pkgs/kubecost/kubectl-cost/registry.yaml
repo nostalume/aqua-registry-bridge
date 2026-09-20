@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/kubecost/kubectl-cost/releases/download/{{.Version}}/kubectl-cost-{{.OS}}-{{.Arch}}.tar.gz
     repo_owner: kubecost
     repo_name: kubectl-cost
     description: CLI for determining the cost of Kubernetes workloads

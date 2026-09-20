@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.1.2")
-        url: https://gh-proxy.org/https://github.com/syntax-sh/lexicon-releases/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/syntax-sh/lexicon-releases/releases/download/{{.Version}}/lexicon-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: lexicon-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         windows_arm_emulation: true
@@ -22,14 +23,19 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/syntax-sh/lexicon-releases/releases/download/{{.Version}}/lexicon-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/syntax-sh/lexicon-releases/releases/download/{{.Version}}/lexicon-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: lexicon
@@ -38,7 +44,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.3.0")
-        url: https://gh-proxy.org/https://github.com/syntax-sh/lexicon-releases/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/syntax-sh/lexicon-releases/releases/download/{{.Version}}/lexicon-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: lexicon-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -51,11 +58,14 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/syntax-sh/lexicon-releases/releases/download/{{.Version}}/lexicon-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
         supported_envs:
@@ -63,7 +73,8 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/syntax-sh/lexicon-releases/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/syntax-sh/lexicon-releases/releases/download/{{.Version}}/lexicon-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: lexicon-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -76,13 +87,16 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         github_artifact_attestations:
           signer_workflow: syntax-sh/lexicon-releases/.github/workflows/attest.yml
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/syntax-sh/lexicon-releases/releases/download/{{.Version}}/lexicon-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
         supported_envs:

@@ -14,7 +14,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.22.0")
-        type: github_release
+        type: http
+        url: https://gh-proxy.org/github.com/profclems/glab/releases/download/{{.Version}}/glab_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         repo_owner: profclems
         repo_name: glab
         rosetta2: true
@@ -23,6 +24,8 @@ packages:
         format: tar.gz
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/profclems/glab/releases/download/{{.Version}}/glab_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         replacements:
           darwin: macOS
@@ -34,7 +37,8 @@ packages:
           - name: glab
             src: bin/glab
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/profclems/glab/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 1.46.1")

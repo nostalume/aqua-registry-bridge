@@ -10,7 +10,8 @@ packages:
       - version_constraint: semver("<= 0.1.1-alpha.10")
         no_asset: true
       - version_constraint: semver("<= 0.1.2-alpha.1")
-        url: https://gh-proxy.org/https://github.com/IvanIsCoding/celq/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/IvanIsCoding/celq/releases/download/{{.Version}}/celq-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: celq-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -22,16 +23,21 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/IvanIsCoding/celq/releases/download/{{.Version}}/celq-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               amd64: amd64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/IvanIsCoding/celq/releases/download/{{.Version}}/celq-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - linux
           - darwin/arm64
           - windows/amd64
       - version_constraint: semver("<= 0.2.0-alpha.1")
-        url: https://gh-proxy.org/https://github.com/IvanIsCoding/celq/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/IvanIsCoding/celq/releases/download/{{.Version}}/celq-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: celq-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -43,9 +49,12 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/IvanIsCoding/celq/releases/download/{{.Version}}/celq-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.2.0-beta.1")
-        url: https://gh-proxy.org/https://github.com/IvanIsCoding/celq/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/IvanIsCoding/celq/releases/download/{{.Version}}/celq-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: celq-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -56,14 +65,18 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/IvanIsCoding/celq/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/IvanIsCoding/celq/releases/download/{{.Version}}/celq-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/IvanIsCoding/celq/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/IvanIsCoding/celq/releases/download/{{.Version}}/celq-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: celq-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -72,13 +85,18 @@ packages:
           arm64: aarch64
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/IvanIsCoding/celq/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/IvanIsCoding/celq/releases/download/{{.Version}}/celq-{{.OS}}-{{.Arch}}-gnu.{{.Format}}
             asset: celq-{{.OS}}-{{.Arch}}-gnu.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/IvanIsCoding/celq/releases/download/{{.Version}}/celq-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         github_artifact_attestations:
           signer_workflow: IvanIsCoding/celq/.github/workflows/release_github.yml

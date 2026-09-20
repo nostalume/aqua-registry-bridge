@@ -7,75 +7,101 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.25.1")
-        url: https://gh-proxy.org/https://github.com/junegunn/fzf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/junegunn/fzf/releases/download/{{.Version}}/fzf-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
         asset: fzf-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/junegunn/fzf/releases/download/{{.Version}}/fzf_{{.Version}}_checksums.txt
           asset: fzf_{{.Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/junegunn/fzf/releases/download/{{.Version}}/fzf-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: Version == "0.26.0"
-        url: https://gh-proxy.org/https://github.com/junegunn/fzf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/junegunn/fzf/releases/download/{{.Version}}/fzf-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
         asset: fzf-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/junegunn/fzf/releases/download/{{.Version}}/fzf_{{.Version}}_checksums.txt
           asset: fzf_{{.Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/junegunn/fzf/releases/download/{{.Version}}/fzf-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.27.3")
-        url: https://gh-proxy.org/https://github.com/junegunn/fzf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/junegunn/fzf/releases/download/{{.Version}}/fzf-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
         asset: fzf-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/junegunn/fzf/releases/download/{{.Version}}/fzf_{{.Version}}_checksums.txt
           asset: fzf_{{.Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/junegunn/fzf/releases/download/{{.Version}}/fzf-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/junegunn/fzf/releases/download/{{.Version}}/fzf-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
             checksum:
               enabled: false
       - version_constraint: semver("<= 0.53.0")
-        url: https://gh-proxy.org/https://github.com/junegunn/fzf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/junegunn/fzf/releases/download/{{.Version}}/fzf-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
         asset: fzf-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/junegunn/fzf/releases/download/{{.Version}}/fzf_{{.Version}}_checksums.txt
           asset: fzf_{{.Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/junegunn/fzf/releases/download/{{.Version}}/fzf-{{.Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
       - version_constraint: semver("<= 0.54.1")
-        url: https://gh-proxy.org/https://github.com/junegunn/fzf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/junegunn/fzf/releases/download/{{.Version}}/fzf-{{trimV .Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
         asset: fzf-{{trimV .Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/junegunn/fzf/releases/download/{{.Version}}/fzf_{{trimV .Version}}_checksums.txt
           asset: fzf_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/junegunn/fzf/releases/download/{{.Version}}/fzf-{{trimV .Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/junegunn/fzf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/junegunn/fzf/releases/download/{{.Version}}/fzf-{{trimV .Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
         asset: fzf-{{trimV .Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/junegunn/fzf/releases/download/{{.Version}}/fzf-{{trimV .Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/junegunn/fzf/releases/download/{{.Version}}/fzf_{{trimV .Version}}_checksums.txt
           asset: fzf_{{trimV .Version}}_checksums.txt
           algorithm: sha256

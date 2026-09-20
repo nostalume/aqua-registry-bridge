@@ -11,7 +11,8 @@ packages:
       - version_constraint: semver("<= 0.2.0")
         no_asset: true
       - version_constraint: semver("<= 0.4.0")
-        url: https://gh-proxy.org/https://github.com/ricoberger/grafana-kubernetes-plugin/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ricoberger/grafana-kubernetes-plugin/releases/download/{{.Version}}/kubectl-grafana.tar.gz
         asset: kubectl-grafana.tar.gz
         format: tar.gz
         windows_arm_emulation: true
@@ -19,12 +20,14 @@ packages:
           - name: kubectl-grafana
             src: kubectl-grafana-{{.OS}}-{{.Arch}}
       - version_constraint: semver("< 0.6.0")
-        url: https://gh-proxy.org/https://github.com/ricoberger/grafana-kubernetes-plugin/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ricoberger/grafana-kubernetes-plugin/releases/download/{{.Version}}/kubectl-grafana-{{.OS}}-{{.Arch}}.tar.gz
         asset: kubectl-grafana-{{.OS}}-{{.Arch}}.tar.gz
         format: tar.gz
         windows_arm_emulation: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/ricoberger/grafana-kubernetes-plugin/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ricoberger/grafana-kubernetes-plugin/releases/download/{{.Version}}/kubectl-grafana-{{.OS}}-{{.Arch}}.tar.gz
         asset: kubectl-grafana-{{.OS}}-{{.Arch}}.tar.gz
         format: tar.gz
         windows_arm_emulation: true

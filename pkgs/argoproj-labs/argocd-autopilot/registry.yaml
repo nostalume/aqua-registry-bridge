@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.1.6")
-        url: https://gh-proxy.org/https://github.com/argoproj-labs/argocd-autopilot/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/argoproj-labs/argocd-autopilot/releases/download/{{.Version}}/argocd-autopilot-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: argocd-autopilot-{{.OS}}-{{.Arch}}.{{.Format}}
         format: gz
         rosetta2: true
@@ -16,11 +17,13 @@ packages:
           - name: argocd-autopilot
             src: argocd-autopilot-{{.OS}}-{{.Arch}}
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/argoproj-labs/argocd-autopilot/releases/download/{{.Version}}/argocd-autopilot-{{.OS}}-{{.Arch}}.sha256
           asset: argocd-autopilot-{{.OS}}-{{.Arch}}.sha256
           algorithm: sha256
       - version_constraint: semver("<= 0.3.7")
-        url: https://gh-proxy.org/https://github.com/argoproj-labs/argocd-autopilot/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/argoproj-labs/argocd-autopilot/releases/download/{{.Version}}/argocd-autopilot-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: argocd-autopilot-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -29,11 +32,13 @@ packages:
           - name: argocd-autopilot
             src: argocd-autopilot-{{.OS}}-{{.Arch}}
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/argoproj-labs/argocd-autopilot/releases/download/{{.Version}}/argocd-autopilot-{{.OS}}-{{.Arch}}.sha256
           asset: argocd-autopilot-{{.OS}}-{{.Arch}}.sha256
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/argoproj-labs/argocd-autopilot/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/argoproj-labs/argocd-autopilot/releases/download/{{.Version}}/argocd-autopilot-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: argocd-autopilot-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -41,6 +46,7 @@ packages:
           - name: argocd-autopilot
             src: argocd-autopilot-{{.OS}}-{{.Arch}}
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/argoproj-labs/argocd-autopilot/releases/download/{{.Version}}/argocd-autopilot-{{.OS}}-{{.Arch}}.sha256
           asset: argocd-autopilot-{{.OS}}-{{.Arch}}.sha256
           algorithm: sha256

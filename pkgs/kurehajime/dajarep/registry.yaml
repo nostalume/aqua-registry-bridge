@@ -1,17 +1,21 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/kurehajime/dajarep/releases/download/{{.Version}}/dajarep_{{trimV .Version}}_{{.OS}}_{{.Arch}}.zip
     repo_owner: kurehajime
     repo_name: dajarep
     description: ダジャレを検索するコマンド
     version_constraint: semver(">= 1.9.8")
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/kurehajime/dajarep/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256
     asset: dajarep_{{trimV .Version}}_{{.OS}}_{{.Arch}}.zip
     version_overrides:
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/kurehajime/dajarep/releases/download/{{.Version}}/dajarep_{{.OS}}_{{.Arch}}.{{.Format}}
         rosetta2: true
         asset: dajarep_{{.OS}}_{{.Arch}}.{{.Format}}
         replacements:
@@ -20,12 +24,15 @@ packages:
         format: tar.gz
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kurehajime/dajarep/releases/download/{{.Version}}/dajarep_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - linux
           - amd64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kurehajime/dajarep/releases/download/{{.Version}}/dajarep_{{trimV .Version}}_checksums.txt
           asset: dajarep_{{trimV .Version}}_checksums.txt
           algorithm: sha256

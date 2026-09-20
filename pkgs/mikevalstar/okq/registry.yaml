@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/mikevalstar/okq/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mikevalstar/okq/releases/download/{{.Version}}/okq-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: okq-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -18,9 +19,12 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/mikevalstar/okq/releases/download/{{.Version}}/okq-{{.Arch}}-{{.OS}}.sha256
           asset: okq-{{.Arch}}-{{.OS}}.sha256
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/mikevalstar/okq/releases/download/{{.Version}}/okq-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip

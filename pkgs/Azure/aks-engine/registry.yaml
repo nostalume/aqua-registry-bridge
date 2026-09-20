@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/Azure/aks-engine/releases/download/{{.Version}}/aks-engine-{{.Version}}-{{.OS}}-{{.Arch}}.tar.gz
     repo_owner: Azure
     repo_name: aks-engine
     description: AKS Engine deploys and manages Kubernetes clusters in Azure

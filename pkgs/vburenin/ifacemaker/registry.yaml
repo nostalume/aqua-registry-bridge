@@ -7,7 +7,8 @@ packages:
     version_constraint: semver(">= 1.2.0")
     version_overrides:
       - version_constraint: "true"
-        type: github_release
+        type: http
+        url: https://gh-proxy.org/github.com/vburenin/ifacemaker/releases/download/{{.Version}}/ifacemaker_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
         rosetta2: true
         asset: ifacemaker_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
         replacements:
@@ -16,7 +17,8 @@ packages:
           windows: Windows
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vburenin/ifacemaker/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:

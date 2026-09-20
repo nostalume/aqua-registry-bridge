@@ -7,30 +7,38 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.14.2")
-        url: https://gh-proxy.org/https://github.com/k1LoW/ndiag/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/k1LoW/ndiag/releases/download/{{.Version}}/ndiag_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ndiag_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/k1LoW/ndiag/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/k1LoW/ndiag/releases/download/{{.Version}}/ndiag_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/k1LoW/ndiag/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/k1LoW/ndiag/releases/download/{{.Version}}/ndiag_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ndiag_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/k1LoW/ndiag/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/k1LoW/ndiag/releases/download/{{.Version}}/ndiag_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux/amd64

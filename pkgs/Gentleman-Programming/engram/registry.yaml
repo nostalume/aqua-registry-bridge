@@ -9,37 +9,49 @@ packages:
       - version_constraint: Version in ["pi-v0.1.6", "pi-v0.1.7", "pi-v0.1.8"]
         no_asset: true
       - version_constraint: Version in ["v0.1.7", "v0.1.8", "v0.1.9"]
-        url: https://gh-proxy.org/https://github.com/Gentleman-Programming/engram/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Gentleman-Programming/engram/releases/download/{{.Version}}/engram_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: engram_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Gentleman-Programming/engram/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Gentleman-Programming/engram/releases/download/{{.Version}}/engram_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.1.6")
-        url: https://gh-proxy.org/https://github.com/Gentleman-Programming/engram/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Gentleman-Programming/engram/releases/download/{{.Version}}/engram_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: engram_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Gentleman-Programming/engram/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Gentleman-Programming/engram/releases/download/{{.Version}}/engram_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.1.10")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Gentleman-Programming/engram/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Gentleman-Programming/engram/releases/download/{{.Version}}/engram_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: engram_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Gentleman-Programming/engram/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Gentleman-Programming/engram/releases/download/{{.Version}}/engram_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

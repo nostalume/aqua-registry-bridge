@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Canop/rhit/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Canop/rhit/releases/download/{{.Version}}/rhit_{{trimV .Version}}.{{.Format}}
         asset: rhit_{{trimV .Version}}.{{.Format}}
         format: zip
         files:

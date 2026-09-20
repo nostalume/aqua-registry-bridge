@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("<= 0.10.16")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/1xyz/pryrite/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/1xyz/pryrite/releases/download/{{.Version}}/pryrite-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         asset: pryrite-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         format: zip
         supported_envs:

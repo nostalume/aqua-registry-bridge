@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/getsentry/sentry-cli/releases/download/{{.Version}}/sentry-cli-{{.OS}}-{{.Arch}}
     repo_owner: getsentry
     repo_name: sentry-cli
     description: A command line utility to work with Sentry
@@ -16,5 +17,7 @@ packages:
       amd64: x86_64
     overrides:
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/getsentry/sentry-cli/releases/download/{{.Version}}/sentry-cli-{{.OS}}-{{.Arch}}
         replacements:
           arm64: aarch64

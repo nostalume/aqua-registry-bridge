@@ -7,25 +7,29 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.0.2")
-        url: https://gh-proxy.org/https://github.com/knqyf263/utern/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/knqyf263/utern/releases/download/{{.Version}}/utern_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: utern_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/knqyf263/utern/releases/download/{{.Version}}/utern_{{trimV .Version}}_checksums.txt
           asset: utern_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.1.3")
-        url: https://gh-proxy.org/https://github.com/knqyf263/utern/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/knqyf263/utern/releases/download/{{.Version}}/utern_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: utern_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/knqyf263/utern/releases/download/{{.Version}}/utern_{{trimV .Version}}_checksums.txt
           asset: utern_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
@@ -33,19 +37,23 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.1.5")
-        url: https://gh-proxy.org/https://github.com/knqyf263/utern/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/knqyf263/utern/releases/download/{{.Version}}/utern_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: utern_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/knqyf263/utern/releases/download/{{.Version}}/utern_{{trimV .Version}}_checksums.txt
           asset: utern_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/knqyf263/utern/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/knqyf263/utern/releases/download/{{.Version}}/utern_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: utern_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/knqyf263/utern/releases/download/{{.Version}}/utern_{{trimV .Version}}_checksums.txt
           asset: utern_{{trimV .Version}}_checksums.txt
           algorithm: sha256

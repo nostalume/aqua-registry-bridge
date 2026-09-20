@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/TheZoraiz/ascii-image-converter/releases/download/{{.Version}}/ascii-image-converter_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: TheZoraiz
     repo_name: ascii-image-converter
     asset: ascii-image-converter_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -11,6 +12,8 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/TheZoraiz/ascii-image-converter/releases/download/{{.Version}}/ascii-image-converter_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     replacements:
       linux: Linux
@@ -21,6 +24,7 @@ packages:
       386: i386_32bit
       arm: armv6_32bit
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/TheZoraiz/ascii-image-converter/releases/download/{{.Version}}/sha256_checksums.txt
       asset: sha256_checksums.txt
       algorithm: sha256

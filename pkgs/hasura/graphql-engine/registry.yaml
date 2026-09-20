@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/hasura/graphql-engine/releases/download/{{.Version}}/cli-hasura-{{.OS}}-{{.Arch}}
     repo_owner: hasura
     repo_name: graphql-engine
     description: Hasura GraphQL Engine CLI

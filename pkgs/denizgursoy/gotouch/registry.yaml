@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("<= 1.1.0")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/denizgursoy/gotouch/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/denizgursoy/gotouch/releases/download/{{.Version}}/gotouch_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gotouch_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -19,6 +20,7 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/denizgursoy/gotouch/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

@@ -13,7 +13,8 @@ packages:
       - version_constraint: semver("< 1.0.4")
         error_message: The version is old. Please upgrade to 1.0.4 or later.
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/google-antigravity/antigravity-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/google-antigravity/antigravity-cli/releases/download/{{.Version}}/agy_cli_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: agy_cli_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -24,4 +25,6 @@ packages:
           darwin: mac
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/google-antigravity/antigravity-cli/releases/download/{{.Version}}/agy_cli_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

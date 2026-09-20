@@ -8,6 +8,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.8.2")
+        type: http
+        url: https://gh-proxy.org/github.com/kcp-dev/kcp/releases/download/{{.Version}}/kubectl-kcp-plugin_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         asset: kubectl-kcp-plugin_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         files:
@@ -18,6 +20,8 @@ packages:
           - name: kubectl-workspaces
             src: bin/kubectl-workspaces
       - version_constraint: semver("<= 0.24.0")
+        type: http
+        url: https://gh-proxy.org/github.com/kcp-dev/kcp/releases/download/{{.Version}}/kubectl-kcp-plugin_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         asset: kubectl-kcp-plugin_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         files:
@@ -30,6 +34,8 @@ packages:
           - name: kubectl-workspaces
             src: bin/kubectl-workspace
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/kcp-dev/kcp/releases/download/{{.Version}}/kubectl-kcp-plugin_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         asset: kubectl-kcp-plugin_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         files:

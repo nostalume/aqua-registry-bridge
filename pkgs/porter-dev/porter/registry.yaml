@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/porter-dev/porter/releases/download/{{.Version}}/porter_{{.Version}}_{{title .OS}}_x86_64.zip
     repo_owner: porter-dev
     repo_name: porter
     asset: porter_{{.Version}}_{{title .OS}}_x86_64.zip

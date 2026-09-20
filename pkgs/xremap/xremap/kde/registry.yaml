@@ -3,7 +3,8 @@ packages:
   - name: xremap/xremap/kde
     aliases:
       - name: k0kubun/xremap/kde
-    type: github_release
+    type: http
+    url: https://gh-proxy.org/github.com/xremap/xremap/releases/download/{{.Version}}/xremap-{{.OS}}-{{.Arch}}-kde.{{.Format}}
     repo_owner: xremap
     repo_name: xremap
     description: Key remapper for X11 and Wayland (for KDE-Plasma Wayland)

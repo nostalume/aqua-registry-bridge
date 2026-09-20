@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.5.1")
-        url: https://gh-proxy.org/https://github.com/rest-sh/restish/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rest-sh/restish/releases/download/{{.Version}}/restish-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: restish-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -18,18 +19,22 @@ packages:
           amd64: x86_64
           darwin: mac
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/rest-sh/restish/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/rest-sh/restish/releases/download/{{.Version}}/restish-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.9.1")
-        url: https://gh-proxy.org/https://github.com/rest-sh/restish/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rest-sh/restish/releases/download/{{.Version}}/restish-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: restish-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -38,37 +43,48 @@ packages:
           amd64: x86_64
           darwin: mac
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/rest-sh/restish/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/rest-sh/restish/releases/download/{{.Version}}/restish-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.17.0")
-        url: https://gh-proxy.org/https://github.com/rest-sh/restish/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rest-sh/restish/releases/download/{{.Version}}/restish-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: restish-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
           darwin: mac
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/rest-sh/restish/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/rest-sh/restish/releases/download/{{.Version}}/restish-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: Version == "v0.21.0"
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/rest-sh/restish/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rest-sh/restish/releases/download/{{.Version}}/restish-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: restish-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/rest-sh/restish/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/rest-sh/restish/releases/download/{{.Version}}/restish-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip

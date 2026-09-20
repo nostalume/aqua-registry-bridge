@@ -30,20 +30,32 @@ packages:
     version_overrides:
       # https://github.com/wasmerio/wasmer/pull/6506 dropped the x86_64-darwin target.
       - version_constraint: semver(">= 7.2.0-alpha.2")
+        type: http
+        url: https://gh-proxy.org/github.com/wasmerio/wasmer/releases/download/{{.Version}}/wasmer-{{.OS}}-{{.Arch}}.{{.Format}}
         supported_envs:
           - darwin/arm64
           - linux
           - windows/amd64
       - version_constraint: semver(">= 3.0.0-beta")
+        type: http
+        url: https://gh-proxy.org/github.com/wasmerio/wasmer/releases/download/{{.Version}}/wasmer-{{.OS}}-{{.Arch}}.{{.Format}}
       - version_constraint: semver(">= 3.0.0-alpha")
+        type: http
+        url: https://gh-proxy.org/github.com/wasmerio/wasmer/releases/download/{{.Version}}/wasmer-{{.OS}}-{{.Arch}}.{{.Format}}
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/wasmerio/wasmer/releases/download/{{.Version}}/wasmer-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/wasmerio/wasmer/releases/download/{{.Version}}/wasmer-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         replacements: {}
       - version_constraint: semver(">= 2.2.1")
+        type: http
+        url: https://gh-proxy.org/github.com/wasmerio/wasmer/releases/download/{{.Version}}/wasmer-{{.OS}}-{{.Arch}}.{{.Format}}
         files:
           - name: wapm
             src: bin/wapm
@@ -53,14 +65,20 @@ packages:
             src: bin/wax
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/wasmerio/wasmer/releases/download/{{.Version}}/wasmer-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: arm64
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/wasmerio/wasmer/releases/download/{{.Version}}/wasmer-{{.OS}}-{{.Arch}}.{{.Format}}
             goarch: arm64
             files:
               - name: wasmer
                 src: bin/wasmer
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/wasmerio/wasmer/releases/download/{{.Version}}/wasmer-{{.OS}}-{{.Arch}}.{{.Format}}
             files:
               - name: wapm
                 src: bin/wapm
@@ -69,33 +87,49 @@ packages:
               - name: wasmer
                 src: bin/wasmer
       - version_constraint: semver(">= 2.0.0-rc1")
+        type: http
+        url: https://gh-proxy.org/github.com/wasmerio/wasmer/releases/download/{{.Version}}/wasmer-{{.OS}}-{{.Arch}}.{{.Format}}
         replacements: {}
         supported_envs:
           - darwin
           - amd64
       - version_constraint: semver(">= 1.0.0-beta1")
+        type: http
+        url: https://gh-proxy.org/github.com/wasmerio/wasmer/releases/download/{{.Version}}/wasmer-{{.OS}}-{{.Arch}}.{{.Format}}
         files:
           - name: wasmer
             src: bin/wasmer
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/wasmerio/wasmer/releases/download/{{.Version}}/wasmer-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/wasmerio/wasmer/releases/download/{{.Version}}/wasmer-{{.OS}}
             format: raw
             asset: wasmer-{{.OS}}
         replacements: {}
       - version_constraint: semver(">= 1.0.0-alpha3")
+        type: http
+        url: https://gh-proxy.org/github.com/wasmerio/wasmer/releases/download/{{.Version}}/wasmer-{{.OS}}-{{.Arch}}.{{.Format}}
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/wasmerio/wasmer/releases/download/{{.Version}}/wasmer-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/wasmerio/wasmer/releases/download/{{.Version}}/wasmer-{{.OS}}
             format: raw
             asset: wasmer-{{.OS}}
         replacements: {}
         rosetta2: true
       - version_constraint: semver(">= 0.16.0")
+        type: http
+        url: https://gh-proxy.org/github.com/wasmerio/wasmer/releases/download/{{.Version}}/wasmer-{{.OS}}-{{.Arch}}.{{.Format}}
         files:
           - name: wapm
             src: bin/wapm
@@ -107,6 +141,8 @@ packages:
           - darwin
           - linux/amd64
       - version_constraint: semver(">= 0.14.0")
+        type: http
+        url: https://gh-proxy.org/github.com/wasmerio/wasmer/releases/download/{{.Version}}/wasmer-{{.OS}}-{{.Arch}}.{{.Format}}
         files:
           - name: wapm
             src: bin/wapm
@@ -114,6 +150,8 @@ packages:
             src: bin/wasmer
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/wasmerio/wasmer/releases/download/{{.Version}}/wasmer-c-api-{{.OS}}.{{.Format}}
             asset: wasmer-c-api-{{.OS}}.{{.Format}}
         replacements: {}
         supported_envs:
@@ -121,6 +159,8 @@ packages:
           - linux/amd64
         rosetta2: true
       - version_constraint: semver(">= 0.10.2")
+        type: http
+        url: https://gh-proxy.org/github.com/wasmerio/wasmer/releases/download/{{.Version}}/wasmer-{{.OS}}-{{.Arch}}.{{.Format}}
         files:
           - name: wapm
             src: bin/wapm
@@ -128,11 +168,15 @@ packages:
             src: bin/wasmer
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/wasmerio/wasmer/releases/download/{{.Version}}/wasmer-{{.OS}}
             format: raw
             asset: wasmer-{{.OS}}
         replacements: {}
         rosetta2: true
       - version_constraint: semver(">= 0.10.0")
+        type: http
+        url: https://gh-proxy.org/github.com/wasmerio/wasmer/releases/download/{{.Version}}/wasmer-{{.OS}}-{{.Arch}}.{{.Format}}
         files:
           - name: wapm
             src: bin/wapm
@@ -140,6 +184,8 @@ packages:
             src: bin/wasmer
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/wasmerio/wasmer/releases/download/{{.Version}}/wasmer-{{.OS}}
             format: raw
             asset: wasmer-{{.OS}}
         replacements: {}
@@ -148,6 +194,8 @@ packages:
           - amd64
         rosetta2: true
       - version_constraint: semver(">= 0.3.0")
+        type: http
+        url: https://gh-proxy.org/github.com/wasmerio/wasmer/releases/download/{{.Version}}/wasmer-{{.OS}}-{{.Arch}}.{{.Format}}
         files:
           - name: wasmer
             src: bin/wasmer
@@ -157,7 +205,8 @@ packages:
           - darwin
         rosetta2: true
       - version_constraint: semver("< 0.3.0")
-        url: https://gh-proxy.org/https://github.com/wasmerio/wasmer/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/wasmerio/wasmer/releases/download/{{.Version}}/wasmer-{{.OS}}-{{.Arch}}
         asset: wasmer-{{.OS}}-{{.Arch}}
         format: raw
         replacements: {}

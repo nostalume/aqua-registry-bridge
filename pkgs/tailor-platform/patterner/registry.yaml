@@ -7,14 +7,18 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/tailor-platform/patterner/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tailor-platform/patterner/releases/download/{{.Version}}/patterner_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: patterner_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/tailor-platform/patterner/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/tailor-platform/patterner/releases/download/{{.Version}}/patterner_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

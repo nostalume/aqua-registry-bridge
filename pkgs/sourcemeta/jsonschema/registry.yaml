@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version == "continuous"
         error_message: "The version 'continuous' is not supported. Please use a specific version."
       - version_constraint: semver("<= 0.4.1")
-        url: https://gh-proxy.org/https://github.com/sourcemeta/jsonschema/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sourcemeta/jsonschema/releases/download/{{.Version}}/jsonschema-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: jsonschema-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -23,7 +24,8 @@ packages:
           - darwin/arm64
           - windows
       - version_constraint: semver("<= 7.2.2")
-        url: https://gh-proxy.org/https://github.com/sourcemeta/jsonschema/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sourcemeta/jsonschema/releases/download/{{.Version}}/jsonschema-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: jsonschema-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -37,7 +39,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 7.3.0")
-        url: https://gh-proxy.org/https://github.com/sourcemeta/jsonschema/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sourcemeta/jsonschema/releases/download/{{.Version}}/jsonschema-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: jsonschema-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -48,10 +51,13 @@ packages:
           amd64: x86_64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/sourcemeta/jsonschema/releases/download/{{.Version}}/jsonschema-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: aarch64
       - version_constraint: semver("<= 15.6.2")
-        url: https://gh-proxy.org/https://github.com/sourcemeta/jsonschema/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sourcemeta/jsonschema/releases/download/{{.Version}}/jsonschema-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: jsonschema-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -61,7 +67,8 @@ packages:
         replacements:
           amd64: x86_64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/sourcemeta/jsonschema/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sourcemeta/jsonschema/releases/download/{{.Version}}/jsonschema-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: jsonschema-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -72,10 +79,14 @@ packages:
           amd64: x86_64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/sourcemeta/jsonschema/releases/download/{{.Version}}/jsonschema-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             variants:
               - key: libc
                 value: glibc
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/sourcemeta/jsonschema/releases/download/{{.Version}}/jsonschema-{{trimV .Version}}-{{.OS}}-{{.Arch}}-musl.{{.Format}}
             asset: jsonschema-{{trimV .Version}}-{{.OS}}-{{.Arch}}-musl.{{.Format}}
             variants:
               - key: libc

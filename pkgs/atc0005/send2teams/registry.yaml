@@ -14,7 +14,8 @@ packages:
           To avoid maintaining a registry with numerous overrides, we have decided not to support versions up to and including 0.10.3.
           Please use a version later than 0.10.3.
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/atc0005/send2teams/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/atc0005/send2teams/releases/download/{{.Version}}/send2teams-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: send2teams-{{.OS}}-{{.Arch}}.{{.Format}}
         format: xz
         files:
@@ -22,11 +23,14 @@ packages:
             src: send2teams-{{.OS}}-{{.Arch}}
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/atc0005/send2teams/releases/download/{{.Version}}/send2teams-{{.OS}}-{{.Arch}}.exe.{{.Format}}
             asset: send2teams-{{.OS}}-{{.Arch}}.exe.{{.Format}}
         supported_envs:
           - linux/amd64

@@ -7,15 +7,19 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.12.0")
-        url: https://gh-proxy.org/https://github.com/gittuf/gittuf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gittuf/gittuf/releases/download/{{.Version}}/gittuf_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         asset: gittuf_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gittuf/gittuf/releases/download/{{.Version}}/gittuf_{{trimV .Version}}_checksums.txt
           asset: gittuf_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/gittuf/gittuf/releases/download/{{.Version}}/gittuf_{{trimV .Version}}_{{.OS}}_{{.Arch}}
             cosign:
               opts:
                 - --certificate-identity-regexp
@@ -23,9 +27,9 @@ packages:
                 - --certificate-oidc-issuer
                 - "https://token.actions.githubusercontent.com"
                 - --signature
-                - https://github.com/gittuf/gittuf/releases/download/{{.Version}}/gittuf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.exe.sig
+                - https://gh-proxy.org/github.com/gittuf/gittuf/releases/download/{{.Version}}/gittuf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.exe.sig
                 - --certificate
-                - https://github.com/gittuf/gittuf/releases/download/{{.Version}}/gittuf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.exe.pem
+                - https://gh-proxy.org/github.com/gittuf/gittuf/releases/download/{{.Version}}/gittuf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.exe.pem
         cosign:
           opts:
             - --certificate-identity-regexp
@@ -33,27 +37,30 @@ packages:
             - --certificate-oidc-issuer
             - "https://token.actions.githubusercontent.com"
             - --signature
-            - https://github.com/gittuf/gittuf/releases/download/{{.Version}}/gittuf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.sig
+            - https://gh-proxy.org/github.com/gittuf/gittuf/releases/download/{{.Version}}/gittuf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.sig
             - --certificate
-            - https://github.com/gittuf/gittuf/releases/download/{{.Version}}/gittuf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.pem
+            - https://gh-proxy.org/github.com/gittuf/gittuf/releases/download/{{.Version}}/gittuf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.pem
       - version_constraint: Version == "v0.13.0"
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/gittuf/gittuf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/gittuf/gittuf/releases/download/{{.Version}}/gittuf_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         asset: gittuf_{{trimV .Version}}_{{.OS}}_{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/gittuf/gittuf/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/gittuf/gittuf/releases/download/{{.Version}}/checksums.txt.sigstore.json
               asset: checksums.txt.sigstore.json
             opts:
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --certificate-identity
-              - "https://github.com/gittuf/gittuf/.github/workflows/release.yml@refs/tags/{{.Version}}"
+              - "https://gh-proxy.org/github.com/gittuf/gittuf/.github/workflows/release.yml@refs/tags/{{.Version}}"
         github_artifact_attestations:
           signer_workflow: gittuf/gittuf/.github/workflows/release.yml

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/LuaLS/lua-language-server/releases/download/{{.Version}}/lua-language-server-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
     repo_owner: LuaLS
     repo_name: lua-language-server
     aliases:
@@ -17,6 +18,8 @@ packages:
       amd64: x64
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/LuaLS/lua-language-server/releases/download/{{.Version}}/lua-language-server-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
     files:
       - name: lua-language-server

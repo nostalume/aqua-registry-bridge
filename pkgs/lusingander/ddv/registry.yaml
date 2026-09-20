@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/lusingander/ddv/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/lusingander/ddv/releases/download/{{.Version}}/ddv-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: ddv-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -16,7 +17,8 @@ packages:
           darwin: apple-darwin
           linux: unknown-linux-musl
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/lusingander/ddv/releases/download/{{.Version}}/checksum.txt
           asset: checksum.txt
           algorithm: sha256
         supported_envs:

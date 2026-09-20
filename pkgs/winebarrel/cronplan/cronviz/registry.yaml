@@ -1,7 +1,8 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
   - name: winebarrel/cronplan/cronviz
-    type: github_release
+    type: http
+    url: https://gh-proxy.org/github.com/winebarrel/cronplan/releases/download/{{.Version}}/cronviz_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: winebarrel
     repo_name: cronplan
     description: Cron expression parser for Amazon EventBridge
@@ -9,14 +10,18 @@ packages:
     format: tar.gz
     version_constraint: semver(">= 1.8.1")
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/winebarrel/cronplan/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256
     files:
       - name: cronviz
     version_overrides:
       - version_constraint: semver(">= 1.5.0")
+        type: http
+        url: https://gh-proxy.org/github.com/winebarrel/cronplan/releases/download/{{.Version}}/cronviz_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/winebarrel/cronplan/releases/download/{{.Version}}/cronviz-checksums.txt
           asset: cronviz-checksums.txt
           algorithm: sha256

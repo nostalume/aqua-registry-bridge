@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version == "v1.0"
         no_asset: true
       - version_constraint: Version == "v2.7.0"
-        url: https://gh-proxy.org/https://github.com/hadolint/hadolint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/hadolint/hadolint/releases/download/{{.Version}}/hadolint-{{.OS}}-{{.Arch}}
         asset: hadolint-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -21,7 +22,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v2.10.0"
-        url: https://gh-proxy.org/https://github.com/hadolint/hadolint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/hadolint/hadolint/releases/download/{{.Version}}/hadolint-{{.OS}}-{{.Arch}}
         asset: hadolint-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -32,7 +34,8 @@ packages:
           linux: Linux
           windows: Windows
       - version_constraint: semver("<= 1.2.2")
-        url: https://gh-proxy.org/https://github.com/hadolint/hadolint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/hadolint/hadolint/releases/download/{{.Version}}/hadolint_{{.OS}}_{{.Arch}}
         asset: hadolint_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
@@ -42,7 +45,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 2.9.3")
-        url: https://gh-proxy.org/https://github.com/hadolint/hadolint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/hadolint/hadolint/releases/download/{{.Version}}/hadolint-{{.OS}}-{{.Arch}}
         asset: hadolint-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -57,7 +61,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 2.12.1-beta")
-        url: https://gh-proxy.org/https://github.com/hadolint/hadolint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/hadolint/hadolint/releases/download/{{.Version}}/hadolint-{{.OS}}-{{.Arch}}
         asset: hadolint-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -68,11 +73,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
       - version_constraint: semver("<= 2.14.0")
-        url: https://gh-proxy.org/https://github.com/hadolint/hadolint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/hadolint/hadolint/releases/download/{{.Version}}/hadolint-{{.OS}}-{{.Arch}}
         asset: hadolint-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -80,11 +87,13 @@ packages:
           amd64: x86_64
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/hadolint/hadolint/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/hadolint/hadolint/releases/download/{{.Version}}/hadolint-{{.OS}}-{{.Arch}}
         asset: hadolint-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
@@ -92,7 +101,8 @@ packages:
           amd64: x86_64
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/hadolint/hadolint/releases/download/{{.Version}}/checksums.sha256
           asset: checksums.sha256
           algorithm: sha256
         github_artifact_attestations:

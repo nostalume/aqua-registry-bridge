@@ -10,7 +10,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.6.6")
-        url: https://gh-proxy.org/https://github.com/tummychow/git-absorb/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tummychow/git-absorb/releases/download/{{.Version}}/git-absorb-{{.OS}}-{{.Arch}}
         asset: git-absorb-{{.OS}}-{{.Arch}}
         format: raw
         replacements:
@@ -18,7 +19,8 @@ packages:
         supported_envs:
           - linux/amd64
       - version_constraint: Version == "0.6.7"
-        url: https://gh-proxy.org/https://github.com/tummychow/git-absorb/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tummychow/git-absorb/releases/download/{{.Version}}/git-absorb-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: git-absorb-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -30,13 +32,16 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/tummychow/git-absorb/releases/download/{{.Version}}/git-absorb-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 0.6.10")
-        url: https://gh-proxy.org/https://github.com/tummychow/git-absorb/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tummychow/git-absorb/releases/download/{{.Version}}/git-absorb-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: git-absorb-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -51,7 +56,8 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/tummychow/git-absorb/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tummychow/git-absorb/releases/download/{{.Version}}/git-absorb-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: git-absorb-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -63,6 +69,8 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/tummychow/git-absorb/releases/download/{{.Version}}/git-absorb-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin

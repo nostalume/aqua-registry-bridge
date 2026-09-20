@@ -11,11 +11,13 @@ packages:
           suve versions before v1.6.1 are not supported by the aqua registry.
           The project changed significantly in earlier releases; please use v1.6.1 or later.
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/mpyw/suve/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mpyw/suve/releases/download/{{.Version}}/suve_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: suve_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/mpyw/suve/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
@@ -23,6 +25,10 @@ packages:
           # run on headless machines. Install the dependency-free CLI-only static
           # build on Linux instead (the archive still exposes a `suve` binary).
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/mpyw/suve/releases/download/{{.Version}}/suve-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
             asset: suve-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/mpyw/suve/releases/download/{{.Version}}/suve_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

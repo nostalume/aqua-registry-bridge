@@ -10,7 +10,8 @@ packages:
       - version_constraint: semver("<= 1.6.0")
         no_asset: true
       - version_constraint: semver("<= 1.7.0")
-        url: https://gh-proxy.org/https://github.com/yvgude/lean-ctx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/yvgude/lean-ctx/releases/download/{{.Version}}/lean-ctx-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: lean-ctx-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -19,14 +20,16 @@ packages:
           darwin: apple-darwin
           linux: unknown-linux-gnu
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/yvgude/lean-ctx/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 2.4.0")
-        url: https://gh-proxy.org/https://github.com/yvgude/lean-ctx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/yvgude/lean-ctx/releases/download/{{.Version}}/lean-ctx-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: lean-ctx-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -37,14 +40,18 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/yvgude/lean-ctx/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/yvgude/lean-ctx/releases/download/{{.Version}}/lean-ctx-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 3.1.5")
-        url: https://gh-proxy.org/https://github.com/yvgude/lean-ctx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/yvgude/lean-ctx/releases/download/{{.Version}}/lean-ctx-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: lean-ctx-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -54,22 +61,30 @@ packages:
           darwin: apple-darwin
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/yvgude/lean-ctx/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/yvgude/lean-ctx/releases/download/{{.Version}}/lean-ctx-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/yvgude/lean-ctx/releases/download/{{.Version}}/lean-ctx-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/yvgude/lean-ctx/releases/download/{{.Version}}/lean-ctx-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/yvgude/lean-ctx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/yvgude/lean-ctx/releases/download/{{.Version}}/lean-ctx-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: lean-ctx-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -80,9 +95,12 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/yvgude/lean-ctx/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/yvgude/lean-ctx/releases/download/{{.Version}}/lean-ctx-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip

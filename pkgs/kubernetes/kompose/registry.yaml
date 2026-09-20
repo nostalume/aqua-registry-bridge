@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/kubernetes/kompose/releases/download/{{.Version}}/kompose-{{.OS}}-{{.Arch}}
     repo_owner: kubernetes
     repo_name: kompose
     description: Go from Docker Compose to Kubernetes
@@ -13,8 +14,11 @@ packages:
     asset: kompose-{{.OS}}-{{.Arch}}
     version_overrides:
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/kubernetes/kompose/releases/download/{{.Version}}/kompose-{{.OS}}-{{.Arch}}
         rosetta2: true
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/kubernetes/kompose/releases/download/{{.Version}}/SHA256_SUM
       asset: SHA256_SUM
       algorithm: sha256

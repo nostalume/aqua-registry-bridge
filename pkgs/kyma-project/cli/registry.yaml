@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/kyma-project/cli/releases/download/{{.Version}}/kyma_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: kyma-project
     repo_name: cli
     description: Simple set of commands to manage a Kyma installation
@@ -8,6 +9,8 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/kyma-project/cli/releases/download/{{.Version}}/kyma_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     files:
       - name: kyma
@@ -17,18 +20,22 @@ packages:
       linux: Linux
       windows: Windows
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/kyma-project/cli/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256
     version_constraint: semver(">= 2.7.0")
     version_overrides:
       - version_constraint: semver(">= 1.2.0")
+        type: http
+        url: https://gh-proxy.org/github.com/kyma-project/cli/releases/download/{{.Version}}/kyma_{{.OS}}_{{.Arch}}.{{.Format}}
         supported_envs:
           - darwin
           - amd64
         rosetta2: true
       - version_constraint: semver(">= 1.2.0-rc1")
-        url: https://gh-proxy.org/https://github.com/kyma-project/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kyma-project/cli/releases/download/{{.Version}}/kyma_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kyma_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides: []
         replacements:
@@ -40,11 +47,14 @@ packages:
           - darwin
         rosetta2: true
       - version_constraint: semver(">= 0.2.0")
-        url: https://gh-proxy.org/https://github.com/kyma-project/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kyma-project/cli/releases/download/{{.Version}}/kyma-{{.OS}}
         asset: kyma-{{.OS}}
         format: raw
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kyma-project/cli/releases/download/{{.Version}}/kyma
             asset: kyma
         replacements: {}
         supported_envs:
@@ -54,11 +64,14 @@ packages:
         checksum:
           enabled: false
       - version_constraint: Version == "v0.1.0"
-        url: https://gh-proxy.org/https://github.com/kyma-project/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kyma-project/cli/releases/download/{{.Version}}/kymactl-{{.OS}}
         asset: kymactl-{{.OS}}
         format: raw
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kyma-project/cli/releases/download/{{.Version}}/kymactl.exe
             asset: kymactl.exe
         supported_envs:
           - linux/amd64

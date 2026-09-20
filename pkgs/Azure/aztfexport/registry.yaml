@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/Azure/aztfexport/releases/download/{{.Version}}/aztfexport_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: Azure
     repo_name: aztfexport
     aliases:
@@ -13,31 +14,37 @@ packages:
       - linux
       - amd64
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/Azure/aztfexport/releases/download/{{.Version}}/aztfexport_SHA256SUMS
       asset: aztfexport_SHA256SUMS
       algorithm: sha256
     version_constraint: semver(">= 0.11.0")
     version_overrides:
       - version_constraint: semver(">= 0.7.0")
-        url: https://gh-proxy.org/https://github.com/Azure/aztfexport/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Azure/aztfexport/releases/download/{{.Version}}/aztfy_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: aztfy_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         files:
           - name: aztfy
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Azure/aztfexport/releases/download/{{.Version}}/aztfy_SHA256SUMS
           asset: aztfy_SHA256SUMS
           algorithm: sha256
       - version_constraint: semver(">= 0.0.6")
-        url: https://gh-proxy.org/https://github.com/Azure/aztfexport/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Azure/aztfexport/releases/download/{{.Version}}/aztfy_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: aztfy_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         files:
           - name: aztfy
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Azure/aztfexport/releases/download/{{.Version}}/aztfy_{{.Version}}_SHA256SUMS
           asset: aztfy_{{.Version}}_SHA256SUMS
           algorithm: sha256
       - version_constraint: semver("< 0.0.6")
-        url: https://gh-proxy.org/https://github.com/Azure/aztfexport/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Azure/aztfexport/releases/download/{{.Version}}/aztfy_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: aztfy_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -48,6 +55,7 @@ packages:
         files:
           - name: aztfy
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Azure/aztfexport/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

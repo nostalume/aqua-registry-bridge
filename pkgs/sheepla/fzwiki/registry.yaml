@@ -9,26 +9,31 @@ packages:
       - version_constraint: Version == "v0.0.1"
         no_asset: true
       - version_constraint: semver("<= 0.0.2")
-        url: https://gh-proxy.org/https://github.com/sheepla/fzwiki/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sheepla/fzwiki/releases/download/{{.Version}}/fzwiki_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: fzwiki_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/sheepla/fzwiki/releases/download/{{.Version}}/fzwiki_{{trimV .Version}}_checksums.txt
           asset: fzwiki_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 0.0.9")
-        url: https://gh-proxy.org/https://github.com/sheepla/fzwiki/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sheepla/fzwiki/releases/download/{{.Version}}/fzwiki_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: fzwiki_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/sheepla/fzwiki/releases/download/{{.Version}}/fzwiki_{{trimV .Version}}_checksums.txt
           asset: fzwiki_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/sheepla/fzwiki/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sheepla/fzwiki/releases/download/{{.Version}}/fzwiki_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: fzwiki_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -37,9 +42,12 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/sheepla/fzwiki/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/sheepla/fzwiki/releases/download/{{.Version}}/fzwiki_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

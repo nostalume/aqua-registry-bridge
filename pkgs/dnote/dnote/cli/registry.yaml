@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/dnote/dnote/releases/download/{{.Version}}/dnote_{{trimPrefix "cli-v" .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     name: dnote/dnote/cli
     repo_owner: dnote
     repo_name: dnote
@@ -14,7 +15,8 @@ packages:
       - linux
       - amd64
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/dnote/dnote/releases/download/{{.Version}}/dnote_{{trimPrefix "cli-v" .Version}}_checksums.txt
       asset: dnote_{{trimPrefix "cli-v" .Version}}_checksums.txt
       algorithm: sha256
     rosetta2: true # pre built binary for darwin/arm64 doesn't work at the moment. https://github.com/dnote/dnote/issues/572#issuecomment-1465315535
@@ -22,13 +24,16 @@ packages:
     version_constraint: semverWithVersion(">= 0.11.1", trimPrefix(Version, "cli-"))
     version_overrides:
       - version_constraint: semverWithVersion(">= 0.6.3", trimPrefix(Version, "cli-"))
+        type: http
+        url: https://gh-proxy.org/github.com/dnote/dnote/releases/download/{{.Version}}/dnote_{{trimPrefix "cli-v" .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         supported_envs:
           - darwin
           - amd64
         checksum:
           enabled: false
       - version_constraint: semver(">= 0.4.8")
-        url: https://gh-proxy.org/https://github.com/dnote/dnote/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dnote/dnote/releases/download/{{.Version}}/dnote_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: dnote_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         supported_envs:
           - darwin
@@ -36,7 +41,8 @@ packages:
         checksum:
           enabled: false
       - version_constraint: semver("= 0.4.7")
-        url: https://gh-proxy.org/https://github.com/dnote/dnote/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dnote/dnote/releases/download/{{.Version}}/dnote_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: dnote_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         supported_envs:
           - darwin
@@ -44,7 +50,8 @@ packages:
         checksum:
           enabled: false
       - version_constraint: semver("< 0.4.7")
-        url: https://gh-proxy.org/https://github.com/dnote/dnote/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dnote/dnote/releases/download/{{.Version}}/dnote_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: dnote_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         supported_envs:
           - darwin

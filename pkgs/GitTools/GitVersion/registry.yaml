@@ -11,7 +11,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 6.0.3")
-        url: https://gh-proxy.org/https://github.com/GitTools/GitVersion/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/GitTools/GitVersion/releases/download/{{.Version}}/gitversion-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         asset: gitversion-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         format: tar.gz
         supported_envs:
@@ -24,11 +25,14 @@ packages:
           windows: win
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/GitTools/GitVersion/releases/download/{{.Version}}/gitversion-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
             format: zip
         checksum:
           enabled: false
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/GitTools/GitVersion/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/GitTools/GitVersion/releases/download/{{.Version}}/gitversion-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         asset: gitversion-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         format: tar.gz
         supported_envs:
@@ -41,6 +45,8 @@ packages:
           windows: win
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/GitTools/GitVersion/releases/download/{{.Version}}/gitversion-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
             format: zip
         checksum:
           enabled: false

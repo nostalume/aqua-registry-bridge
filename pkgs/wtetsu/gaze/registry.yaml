@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/wtetsu/gaze/releases/download/{{.Version}}/gaze_{{.OS}}_{{.Version}}.{{.Format}}
     repo_owner: wtetsu
     repo_name: gaze
     asset: gaze_{{.OS}}_{{.Version}}.{{.Format}}
@@ -12,6 +13,8 @@ packages:
       amd64: amd
     overrides:
       - goos: darwin
+        type: http
+        url: https://gh-proxy.org/github.com/wtetsu/gaze/releases/download/{{.Version}}/gaze_{{.OS}}_{{.Arch}}_{{.Version}}.{{.Format}}
         asset: gaze_{{.OS}}_{{.Arch}}_{{.Version}}.{{.Format}}
         files:
           - name: gaze

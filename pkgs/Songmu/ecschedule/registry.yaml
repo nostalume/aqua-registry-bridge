@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.5.1"
-        url: https://gh-proxy.org/https://github.com/Songmu/ecschedule/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Songmu/ecschedule/releases/download/{{.Version}}/ecschedule_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ecschedule_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         files:
@@ -15,12 +16,15 @@ packages:
             src: "{{.AssetWithoutExt}}/ecschedule"
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Songmu/ecschedule/releases/download/{{.Version}}/ecschedule_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux
           - darwin/arm64
       - version_constraint: semver("<= 0.1.2")
-        url: https://gh-proxy.org/https://github.com/Songmu/ecschedule/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Songmu/ecschedule/releases/download/{{.Version}}/ecsched_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ecsched_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -29,12 +33,15 @@ packages:
             src: "{{.AssetWithoutExt}}/ecsched"
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Songmu/ecschedule/releases/download/{{.Version}}/ecsched_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.3.1")
-        url: https://gh-proxy.org/https://github.com/Songmu/ecschedule/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Songmu/ecschedule/releases/download/{{.Version}}/ecschedule_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ecschedule_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -43,12 +50,15 @@ packages:
             src: "{{.AssetWithoutExt}}/ecschedule"
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Songmu/ecschedule/releases/download/{{.Version}}/ecschedule_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.6.3")
-        url: https://gh-proxy.org/https://github.com/Songmu/ecschedule/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Songmu/ecschedule/releases/download/{{.Version}}/ecschedule_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ecschedule_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         files:
@@ -56,38 +66,48 @@ packages:
             src: "{{.AssetWithoutExt}}/ecschedule"
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Songmu/ecschedule/releases/download/{{.Version}}/ecschedule_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 0.11.4")
-        url: https://gh-proxy.org/https://github.com/Songmu/ecschedule/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Songmu/ecschedule/releases/download/{{.Version}}/ecschedule_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ecschedule_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         files:
           - name: ecschedule
             src: "{{.AssetWithoutExt}}/ecschedule"
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Songmu/ecschedule/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Songmu/ecschedule/releases/download/{{.Version}}/ecschedule_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Songmu/ecschedule/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Songmu/ecschedule/releases/download/{{.Version}}/ecschedule_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ecschedule_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         files:
           - name: ecschedule
             src: "{{.AssetWithoutExt}}/ecschedule"
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Songmu/ecschedule/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Songmu/ecschedule/releases/download/{{.Version}}/ecschedule_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz

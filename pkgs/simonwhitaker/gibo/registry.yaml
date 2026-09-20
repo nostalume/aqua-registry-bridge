@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/simonwhitaker/gibo/releases/download/{{.Version}}/gibo_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: simonwhitaker
     repo_name: gibo
     description: Easy access to gitignore boilerplates
@@ -12,13 +13,17 @@ packages:
       linux: Linux
       windows: Windows
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/simonwhitaker/gibo/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/simonwhitaker/gibo/releases/download/{{.Version}}/gibo_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/simonwhitaker/gibo/releases/download/{{.Version}}/checksums.windows.txt
           asset: checksums.windows.txt
           algorithm: sha256

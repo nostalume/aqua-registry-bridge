@@ -10,7 +10,8 @@ packages:
         type: cargo
         crate: zizmor
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/zizmorcore/zizmor/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zizmorcore/zizmor/releases/download/{{.Version}}/zizmor-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: zizmor-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -22,6 +23,8 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/zizmorcore/zizmor/releases/download/{{.Version}}/zizmor-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         github_artifact_attestations:
           signer_workflow: zizmorcore/zizmor/.github/workflows/release-binaries.yml

@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/assetnote/surf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/assetnote/surf/releases/download/{{.Version}}/surf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: surf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -15,11 +16,14 @@ packages:
         replacements:
           darwin: macOS
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/assetnote/surf/releases/download/{{.Version}}/surf_{{trimV .Version}}_checksums.txt
           asset: surf_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/assetnote/surf/releases/download/{{.Version}}/surf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin

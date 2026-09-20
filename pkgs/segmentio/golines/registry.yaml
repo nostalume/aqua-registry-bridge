@@ -9,18 +9,22 @@ packages:
       - version_constraint: semver("<= 0.11.0")
         type: go_install
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/segmentio/golines/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/segmentio/golines/releases/download/{{.Version}}/golines_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: golines_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: golines
             src: "{{.AssetWithoutExt}}/golines"
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/segmentio/golines/releases/download/{{.Version}}/golines_{{trimV .Version}}_checksums.txt
           asset: golines_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/segmentio/golines/releases/download/{{.Version}}/golines_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
             asset: golines_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
           - goos: windows
             type: go_install

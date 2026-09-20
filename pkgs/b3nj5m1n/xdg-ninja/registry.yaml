@@ -1,6 +1,8 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_archive
+  - type: http
+    url: https://gh-proxy.org/github.com/b3nj5m1n/xdg-ninja/archive/{{.Version}}.tar.gz
+    format: tar.gz
     repo_owner: b3nj5m1n
     repo_name: xdg-ninja
     description: A shell script which checks your $HOME for unwanted files and directories

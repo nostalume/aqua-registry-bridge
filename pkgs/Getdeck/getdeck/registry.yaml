@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("<= 0.2.1")
         no_asset: true
       - version_constraint: semver("<= 0.6.0")
-        url: https://gh-proxy.org/https://github.com/Getdeck/getdeck/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Getdeck/getdeck/releases/download/{{.Version}}/deck-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: deck-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         supported_envs:
@@ -17,11 +18,14 @@ packages:
         files:
           - name: deck
       - version_constraint: semver("<= 0.7.1")
-        url: https://gh-proxy.org/https://github.com/Getdeck/getdeck/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Getdeck/getdeck/releases/download/{{.Version}}/deck-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: deck-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/Getdeck/getdeck/releases/download/{{.Version}}/deck-{{.Version}}-{{.OS}}-universal.{{.Format}}
             asset: deck-{{.Version}}-{{.OS}}-universal.{{.Format}}
         supported_envs:
           - linux/amd64
@@ -29,14 +33,19 @@ packages:
         files:
           - name: deck
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Getdeck/getdeck/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Getdeck/getdeck/releases/download/{{.Version}}/deck-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: deck-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/Getdeck/getdeck/releases/download/{{.Version}}/deck-{{.Version}}-{{.OS}}-universal.{{.Format}}
             asset: deck-{{.Version}}-{{.OS}}-universal.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Getdeck/getdeck/releases/download/{{.Version}}/deck-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               amd64: x86_64
             files:

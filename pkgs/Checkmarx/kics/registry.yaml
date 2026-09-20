@@ -7,24 +7,29 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.1.2")
-        url: https://gh-proxy.org/https://github.com/Checkmarx/kics/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Checkmarx/kics/releases/download/{{.Version}}/kics_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kics_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         replacements:
           amd64: x64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Checkmarx/kics/releases/download/{{.Version}}/kics_{{trimV .Version}}_checksums.txt
           asset: kics_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Checkmarx/kics/releases/download/{{.Version}}/kics_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux/amd64
           - windows/amd64
       - version_constraint: semver("<= 1.2.3")
-        url: https://gh-proxy.org/https://github.com/Checkmarx/kics/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Checkmarx/kics/releases/download/{{.Version}}/kics_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kics_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -32,42 +37,53 @@ packages:
         replacements:
           amd64: x64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Checkmarx/kics/releases/download/{{.Version}}/kics_{{trimV .Version}}_checksums.txt
           asset: kics_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Checkmarx/kics/releases/download/{{.Version}}/kics_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 1.4.4")
-        url: https://gh-proxy.org/https://github.com/Checkmarx/kics/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Checkmarx/kics/releases/download/{{.Version}}/kics_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kics_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         replacements:
           amd64: x64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Checkmarx/kics/releases/download/{{.Version}}/kics_{{trimV .Version}}_checksums.txt
           asset: kics_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Checkmarx/kics/releases/download/{{.Version}}/kics_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 1.5.1")
-        url: https://gh-proxy.org/https://github.com/Checkmarx/kics/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Checkmarx/kics/releases/download/{{.Version}}/kics_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kics_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Checkmarx/kics/releases/download/{{.Version}}/kics_{{trimV .Version}}_checksums.txt
           asset: kics_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Checkmarx/kics/releases/download/{{.Version}}/kics_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
         type: go_build

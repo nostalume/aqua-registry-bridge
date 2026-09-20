@@ -16,40 +16,50 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 5.34.1.0")
-        url: https://gh-proxy.org/https://github.com/skaji/relocatable-perl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/skaji/relocatable-perl/releases/download/{{.Version}}/perl-{{.OS}}-2level.{{.Format}}
         asset: perl-{{.OS}}-2level.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/skaji/relocatable-perl/releases/download/{{.Version}}/perl-{{.Arch}}-{{.OS}}.{{.Format}}
             asset: perl-{{.Arch}}-{{.OS}}.{{.Format}}
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 5.36.0.0")
-        url: https://gh-proxy.org/https://github.com/skaji/relocatable-perl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/skaji/relocatable-perl/releases/download/{{.Version}}/perl-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: perl-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/skaji/relocatable-perl/releases/download/{{.Version}}/perl-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               amd64: x86_64
               arm64: aarch64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/skaji/relocatable-perl/releases/download/{{.Version}}/perl-{{.OS}}-2level.{{.Format}}
             asset: perl-{{.OS}}-2level.{{.Format}}
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 5.42.2.0")
-        url: https://gh-proxy.org/https://github.com/skaji/relocatable-perl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/skaji/relocatable-perl/releases/download/{{.Version}}/perl-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: perl-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/skaji/relocatable-perl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/skaji/relocatable-perl/releases/download/{{.Version}}/perl-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: perl-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         supported_envs:

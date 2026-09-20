@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("<= 0.1.0")
         no_asset: true
       - version_constraint: semver("<= 0.1.9")
-        url: https://gh-proxy.org/https://github.com/printfn/fend/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/printfn/fend/releases/download/{{.Version}}/fend-{{trimV .Version}}-{{.OS}}.{{.Format}}
         asset: fend-{{trimV .Version}}-{{.OS}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -21,7 +22,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.1.26")
-        url: https://gh-proxy.org/https://github.com/printfn/fend/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/printfn/fend/releases/download/{{.Version}}/fend-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: fend-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         rosetta2: true
@@ -34,7 +36,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.1.28")
-        url: https://gh-proxy.org/https://github.com/printfn/fend/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/printfn/fend/releases/download/{{.Version}}/fend-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: fend-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -43,6 +46,8 @@ packages:
           darwin: macos
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/printfn/fend/releases/download/{{.Version}}/fend-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: aarch64
         supported_envs:
@@ -50,7 +55,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "v0.1.29"
-        url: https://gh-proxy.org/https://github.com/printfn/fend/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/printfn/fend/releases/download/{{.Version}}/fend-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: fend-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -59,7 +65,8 @@ packages:
           arm64: aarch64
           darwin: macos
       - version_constraint: semver("<= 1.0.3")
-        url: https://gh-proxy.org/https://github.com/printfn/fend/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/printfn/fend/releases/download/{{.Version}}/fend-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: fend-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -69,10 +76,13 @@ packages:
           darwin: macos
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/printfn/fend/releases/download/{{.Version}}/fend-{{trimV .Version}}-{{.OS}}-{{.Arch}}-gnu.{{.Format}}
             goarch: arm64
             asset: fend-{{trimV .Version}}-{{.OS}}-{{.Arch}}-gnu.{{.Format}}
       - version_constraint: semver("<= 1.5.1")
-        url: https://gh-proxy.org/https://github.com/printfn/fend/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/printfn/fend/releases/download/{{.Version}}/fend-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: fend-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -82,12 +92,17 @@ packages:
           darwin: macos
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/printfn/fend/releases/download/{{.Version}}/fend-{{trimV .Version}}-{{.OS}}-{{.Arch}}-gnu.{{.Format}}
             goarch: arm64
             asset: fend-{{trimV .Version}}-{{.OS}}-{{.Arch}}-gnu.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/printfn/fend/releases/download/{{.Version}}/fend-{{trimV .Version}}-{{.OS}}-{{.Arch}}-exe.{{.Format}}
             asset: fend-{{trimV .Version}}-{{.OS}}-{{.Arch}}-exe.{{.Format}}
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/printfn/fend/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/printfn/fend/releases/download/{{.Version}}/fend-{{trimV .Version}}-{{.OS}}-{{.Arch}}-gnu.{{.Format}}
         asset: fend-{{trimV .Version}}-{{.OS}}-{{.Arch}}-gnu.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -96,11 +111,17 @@ packages:
           darwin: macos
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/printfn/fend/releases/download/{{.Version}}/fend-{{trimV .Version}}-{{.OS}}-{{.Arch}}-gnu.{{.Format}}
             replacements:
               amd64: x86_64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/printfn/fend/releases/download/{{.Version}}/fend-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             asset: fend-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/printfn/fend/releases/download/{{.Version}}/fend-{{trimV .Version}}-{{.OS}}-{{.Arch}}-exe.{{.Format}}
             asset: fend-{{trimV .Version}}-{{.OS}}-{{.Arch}}-exe.{{.Format}}
             replacements:
               amd64: x64

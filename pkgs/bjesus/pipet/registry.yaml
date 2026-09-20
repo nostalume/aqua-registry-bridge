@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/bjesus/pipet/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/bjesus/pipet/releases/download/{{.Version}}/pipet-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: pipet-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -15,4 +16,6 @@ packages:
             src: pipet-{{.OS}}-{{.Arch}}
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bjesus/pipet/releases/download/{{.Version}}/pipet-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip

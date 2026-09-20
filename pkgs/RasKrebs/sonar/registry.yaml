@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/RasKrebs/sonar/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/RasKrebs/sonar/releases/download/{{.Version}}/sonar_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: sonar_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         supported_envs:

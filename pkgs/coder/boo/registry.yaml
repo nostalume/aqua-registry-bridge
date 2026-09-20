@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.0.4")
-        url: https://gh-proxy.org/https://github.com/coder/boo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/coder/boo/releases/download/{{.Version}}/ghostscreen-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: ghostscreen-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -17,14 +18,16 @@ packages:
           arm64: aarch64
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/coder/boo/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/coder/boo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/coder/boo/releases/download/{{.Version}}/boo-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: boo-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -32,7 +35,8 @@ packages:
           arm64: aarch64
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/coder/boo/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         supported_envs:

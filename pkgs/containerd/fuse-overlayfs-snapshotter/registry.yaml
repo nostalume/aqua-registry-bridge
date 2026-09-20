@@ -11,11 +11,13 @@ packages:
       - version_constraint: Version == "v1.0.0"
         no_asset: true
       - version_constraint: semver("<= 2.1.2")
-        url: https://gh-proxy.org/https://github.com/containerd/fuse-overlayfs-snapshotter/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/containerd/fuse-overlayfs-snapshotter/releases/download/{{.Version}}/containerd-fuse-overlayfs-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: containerd-fuse-overlayfs-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/containerd/fuse-overlayfs-snapshotter/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         supported_envs:
@@ -23,11 +25,13 @@ packages:
       - version_constraint: semver("<= 2.1.4")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/containerd/fuse-overlayfs-snapshotter/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/containerd/fuse-overlayfs-snapshotter/releases/download/{{.Version}}/containerd-fuse-overlayfs-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: containerd-fuse-overlayfs-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/containerd/fuse-overlayfs-snapshotter/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         github_artifact_attestations:

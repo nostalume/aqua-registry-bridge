@@ -13,7 +13,8 @@ packages:
       - version_constraint: Version in ["v1.7.0", "v1.7.1"]
         no_asset: true
       - version_constraint: Version == "v0.3.4"
-        url: https://gh-proxy.org/https://github.com/kubevela/kubevela/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubevela/kubevela/releases/download/{{.Version}}/vela-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: vela-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
@@ -22,14 +23,16 @@ packages:
         supported_envs:
           - linux/amd64
       - version_constraint: Version in ["v1.3.3"]
-        url: https://gh-proxy.org/https://github.com/kubevela/kubevela/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubevela/kubevela/releases/download/{{.Version}}/vela-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: vela-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
       - version_constraint: semver("<= 0.0.1.1")
         no_asset: true
       - version_constraint: semver("<= 0.0.3")
-        url: https://gh-proxy.org/https://github.com/kubevela/kubevela/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubevela/kubevela/releases/download/{{.Version}}/vela-{{.Version}}-{{.OS}}-{{.Arch}}
         asset: vela-{{.Version}}-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -39,7 +42,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.3.0")
-        url: https://gh-proxy.org/https://github.com/kubevela/kubevela/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubevela/kubevela/releases/download/{{.Version}}/vela-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: vela-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -53,7 +57,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.3.3")
-        url: https://gh-proxy.org/https://github.com/kubevela/kubevela/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubevela/kubevela/releases/download/{{.Version}}/vela-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: vela-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -63,7 +68,8 @@ packages:
           - name: vela
             src: "{{.OS}}-{{.Arch}}/vela"
       - version_constraint: semver("<= 1.1.13")
-        url: https://gh-proxy.org/https://github.com/kubevela/kubevela/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubevela/kubevela/releases/download/{{.Version}}/vela-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: vela-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -77,7 +83,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.6.7")
-        url: https://gh-proxy.org/https://github.com/kubevela/kubevela/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubevela/kubevela/releases/download/{{.Version}}/vela-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: vela-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -86,37 +93,42 @@ packages:
           - name: vela
             src: "{{.OS}}-{{.Arch}}/vela"
       - version_constraint: semver("<= 1.10.2")
-        url: https://gh-proxy.org/https://github.com/kubevela/kubevela/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubevela/kubevela/releases/download/{{.Version}}/vela-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: vela-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: vela
             src: "{{.OS}}-{{.Arch}}/vela"
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubevela/kubevela/releases/download/{{.Version}}/sha256sums.txt
           asset: sha256sums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/kubevela/kubevela/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kubevela/kubevela/releases/download/{{.Version}}/vela-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: vela-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         files:
           - name: vela
             src: "{{.OS}}-{{.Arch}}/vela"
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubevela/kubevela/releases/download/{{.Version}}/sha256sums.txt
           asset: sha256sums.txt
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/kubevela/kubevela/releases/download/{{.Version}}/sha256sums.txt-keyless.pem
+              - https://gh-proxy.org/github.com/kubevela/kubevela/releases/download/{{.Version}}/sha256sums.txt-keyless.pem
               - --certificate-identity
-              - https://github.com/kubevela/kubevela/.github/workflows/release.yml@refs/tags/{{.Version}}
+              - https://gh-proxy.org/github.com/kubevela/kubevela/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/kubevela/kubevela/releases/download/{{.Version}}/sha256sums.txt-keyless.sig
+              - https://gh-proxy.org/github.com/kubevela/kubevela/releases/download/{{.Version}}/sha256sums.txt-keyless.sig
         slsa_provenance:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kubevela/kubevela/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl

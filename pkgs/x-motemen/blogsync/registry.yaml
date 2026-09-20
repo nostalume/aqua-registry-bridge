@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/x-motemen/blogsync/releases/download/{{.Version}}/blogsync_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: x-motemen
     repo_name: blogsync
     asset: blogsync_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -8,6 +9,8 @@ packages:
     description: Push and pull blog entries from/to local filesystem
     overrides:
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/x-motemen/blogsync/releases/download/{{.Version}}/blogsync_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
     files:
       - name: blogsync
@@ -15,10 +18,14 @@ packages:
     version_constraint: semver(">= 0.12.3")
     version_overrides:
       - version_constraint: semver("= 0.12.2")
+        type: http
+        url: https://gh-proxy.org/github.com/x-motemen/blogsync/releases/download/{{.Version}}/blogsync_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         supported_envs:
           - darwin
           - linux
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/x-motemen/blogsync/releases/download/{{.Version}}/blogsync_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         rosetta2: true
         supported_envs:
           - darwin

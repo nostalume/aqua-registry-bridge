@@ -7,14 +7,18 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/mvisonneau/gpcd/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/mvisonneau/gpcd/releases/download/{{.Version}}/gpcd_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gpcd_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/mvisonneau/gpcd/releases/download/{{.Version}}/gpcd_{{.Version}}_sha512sums.txt
           asset: gpcd_{{.Version}}_sha512sums.txt
           algorithm: sha512
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/mvisonneau/gpcd/releases/download/{{.Version}}/gpcd_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

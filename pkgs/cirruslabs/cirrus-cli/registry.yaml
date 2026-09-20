@@ -13,10 +13,12 @@ packages:
       - version_constraint: Version in ["v0.140.1", "v0.140.2"]
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/cirruslabs/cirrus-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cirruslabs/cirrus-cli/releases/download/{{.Version}}/cirrus-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: cirrus-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/cirruslabs/cirrus-cli/releases/download/{{.Version}}/cirrus_{{trimV .Version}}_checksums.txt
           asset: cirrus_{{trimV .Version}}_checksums.txt
           algorithm: sha256

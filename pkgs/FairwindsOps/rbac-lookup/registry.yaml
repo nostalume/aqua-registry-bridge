@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.3.2")
-        url: https://gh-proxy.org/https://github.com/FairwindsOps/rbac-lookup/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/FairwindsOps/rbac-lookup/releases/download/{{.Version}}/rbac-lookup_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: rbac-lookup_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -16,7 +17,8 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/FairwindsOps/rbac-lookup/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
@@ -25,7 +27,8 @@ packages:
       - version_constraint: semver("<= 0.4.1")
         no_asset: true
       - version_constraint: semver("<= 0.6.2")
-        url: https://gh-proxy.org/https://github.com/FairwindsOps/rbac-lookup/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/FairwindsOps/rbac-lookup/releases/download/{{.Version}}/rbac-lookup_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: rbac-lookup_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -34,14 +37,16 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/FairwindsOps/rbac-lookup/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.6.5")
-        url: https://gh-proxy.org/https://github.com/FairwindsOps/rbac-lookup/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/FairwindsOps/rbac-lookup/releases/download/{{.Version}}/rbac-lookup_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: rbac-lookup_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -52,11 +57,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/FairwindsOps/rbac-lookup/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.7.1")
-        url: https://gh-proxy.org/https://github.com/FairwindsOps/rbac-lookup/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/FairwindsOps/rbac-lookup/releases/download/{{.Version}}/rbac-lookup_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: rbac-lookup_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -66,11 +73,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/FairwindsOps/rbac-lookup/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("< 0.8.3")
-        url: https://gh-proxy.org/https://github.com/FairwindsOps/rbac-lookup/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/FairwindsOps/rbac-lookup/releases/download/{{.Version}}/rbac-lookup_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: rbac-lookup_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -79,11 +88,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/FairwindsOps/rbac-lookup/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/FairwindsOps/rbac-lookup/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/FairwindsOps/rbac-lookup/releases/download/{{.Version}}/rbac-lookup_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: rbac-lookup_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -92,7 +103,8 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/FairwindsOps/rbac-lookup/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
@@ -100,5 +112,5 @@ packages:
               - --key
               - https://artifacts.fairwinds.com/cosign.pub
               - --signature
-              - https://github.com/FairwindsOps/rbac-lookup/releases/download/{{.Version}}/checksums.txt.sig
+              - https://gh-proxy.org/github.com/FairwindsOps/rbac-lookup/releases/download/{{.Version}}/checksums.txt.sig
               - --insecure-ignore-tlog

@@ -11,7 +11,8 @@ packages:
       - version_constraint: semver("<= 0.2.3")
         no_asset: true
       - version_constraint: Version in ["v0.3.2", "v0.4.0"]
-        url: https://gh-proxy.org/https://github.com/Kotlin/kotlin-interactive-shell/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Kotlin/kotlin-interactive-shell/releases/download/{{.Version}}/ki-archive.{{.Format}}
         asset: ki-archive.{{.Format}}
         format: zip
         files:
@@ -19,38 +20,48 @@ packages:
             src: ki/bin/ki.sh
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Kotlin/kotlin-interactive-shell/releases/download/{{.Version}}/ki-archive.{{.Format}}
             files:
               - name: ki
                 src: ki/bin/ki.bat
       - version_constraint: Version == "v0.3.3"
-        url: https://gh-proxy.org/https://github.com/Kotlin/kotlin-interactive-shell/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Kotlin/kotlin-interactive-shell/releases/download/{{.Version}}/ki-archive.{{.Format}}
         asset: ki-archive.{{.Format}}
         format: zip
         files:
           - name: ki
             src: ki/bin/ki.sh
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Kotlin/kotlin-interactive-shell/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Kotlin/kotlin-interactive-shell/releases/download/{{.Version}}/ki-archive.{{.Format}}
             files:
               - name: ki
                 src: ki/bin/ki.bat
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Kotlin/kotlin-interactive-shell/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Kotlin/kotlin-interactive-shell/releases/download/{{.Version}}/ki-archive.{{.Format}}
         asset: ki-archive.{{.Format}}
         format: zip
         files:
           - name: ki
             src: ki/bin/ki.sh
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Kotlin/kotlin-interactive-shell/releases/download/{{.Version}}/checksums_sha256.txt
           asset: checksums_sha256.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Kotlin/kotlin-interactive-shell/releases/download/{{.Version}}/ki-archive.{{.Format}}
             files:
               - name: ki
                 src: ki/bin/ki.bat

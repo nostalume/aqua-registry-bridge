@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/ysugimoto/vintage/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/ysugimoto/vintage/releases/download/{{.Version}}/vintage-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: vintage-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         supported_envs:

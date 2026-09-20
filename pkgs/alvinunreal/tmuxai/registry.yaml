@@ -10,7 +10,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 2.0.0")
-        url: https://gh-proxy.org/https://github.com/alvinunreal/tmuxai/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/alvinunreal/tmuxai/releases/download/{{.Version}}/tmuxai_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tmuxai_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -18,21 +19,26 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/alvinunreal/tmuxai/releases/download/{{.Version}}/checksums.sha256
           asset: checksums.sha256
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/alvinunreal/tmuxai/releases/download/{{.Version}}/tmuxai_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/alvinunreal/tmuxai/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/alvinunreal/tmuxai/releases/download/{{.Version}}/tmuxai_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tmuxai_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/alvinunreal/tmuxai/releases/download/{{.Version}}/checksums.sha256
           asset: checksums.sha256
           algorithm: sha256
         supported_envs:

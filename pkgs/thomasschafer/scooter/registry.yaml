@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version == "v0.1.1"
         no_asset: true
       - version_constraint: semver("<= 0.2.2")
-        url: https://gh-proxy.org/https://github.com/thomasschafer/scooter/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/thomasschafer/scooter/releases/download/{{.Version}}/scooter-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: scooter-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -23,14 +24,18 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha512"
           asset: "{{.Asset}}.sha512"
           algorithm: sha512
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/thomasschafer/scooter/releases/download/{{.Version}}/scooter-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/thomasschafer/scooter/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/thomasschafer/scooter/releases/download/{{.Version}}/scooter-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: scooter-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -41,9 +46,12 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha512"
           asset: "{{.Asset}}.sha512"
           algorithm: sha512
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/thomasschafer/scooter/releases/download/{{.Version}}/scooter-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip

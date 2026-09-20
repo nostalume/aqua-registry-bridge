@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.1.1")
-        url: https://gh-proxy.org/https://github.com/acheronfail/repgrep/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/acheronfail/repgrep/releases/download/{{.Version}}/repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -19,7 +20,8 @@ packages:
         supported_envs:
           - linux/amd64
       - version_constraint: Version == "v0.2.0"
-        url: https://gh-proxy.org/https://github.com/acheronfail/repgrep/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/acheronfail/repgrep/releases/download/{{.Version}}/repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -31,7 +33,8 @@ packages:
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 0.4.0")
-        url: https://gh-proxy.org/https://github.com/acheronfail/repgrep/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/acheronfail/repgrep/releases/download/{{.Version}}/repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -43,7 +46,8 @@ packages:
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 0.4.3")
-        url: https://gh-proxy.org/https://github.com/acheronfail/repgrep/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/acheronfail/repgrep/releases/download/{{.Version}}/repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -58,7 +62,8 @@ packages:
           - darwin
         rosetta2: true
       - version_constraint: semver("<= 0.4.5")
-        url: https://gh-proxy.org/https://github.com/acheronfail/repgrep/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/acheronfail/repgrep/releases/download/{{.Version}}/repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -66,6 +71,8 @@ packages:
             src: repgrep-{{.Version}}-{{.Arch}}-{{.OS}}/rgr
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/acheronfail/repgrep/releases/download/{{.Version}}/repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64
@@ -79,7 +86,8 @@ packages:
       - version_constraint: semver("<= 0.4.7")
         no_asset: true
       - version_constraint: Version == "v0.4.8"
-        url: https://gh-proxy.org/https://github.com/acheronfail/repgrep/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/acheronfail/repgrep/releases/download/{{.Version}}/repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -94,7 +102,8 @@ packages:
           - darwin
         rosetta2: true
       - version_constraint: semver("<= 0.7.0")
-        url: https://gh-proxy.org/https://github.com/acheronfail/repgrep/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/acheronfail/repgrep/releases/download/{{.Version}}/repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -102,6 +111,8 @@ packages:
             src: repgrep-{{.Version}}-{{.Arch}}-{{.OS}}/rgr
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/acheronfail/repgrep/releases/download/{{.Version}}/repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64
@@ -115,7 +126,8 @@ packages:
       - version_constraint: Version == "v0.7.1"
         no_asset: true
       - version_constraint: semver("<= 0.9.0")
-        url: https://gh-proxy.org/https://github.com/acheronfail/repgrep/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/acheronfail/repgrep/releases/download/{{.Version}}/repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -123,6 +135,8 @@ packages:
             src: repgrep-{{.Version}}-{{.Arch}}-{{.OS}}/rgr
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/acheronfail/repgrep/releases/download/{{.Version}}/repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64
@@ -134,7 +148,8 @@ packages:
           - amd64
         rosetta2: true
       - version_constraint: Version == "0.10.2"
-        url: https://gh-proxy.org/https://github.com/acheronfail/repgrep/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/acheronfail/repgrep/releases/download/{{.Version}}/repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -151,7 +166,8 @@ packages:
       - version_constraint: Version == "0.10.3"
         no_asset: true
       - version_constraint: Version == "0.10.4"
-        url: https://gh-proxy.org/https://github.com/acheronfail/repgrep/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/acheronfail/repgrep/releases/download/{{.Version}}/repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -166,7 +182,8 @@ packages:
           - darwin
         rosetta2: true
       - version_constraint: Version == "0.10.5"
-        url: https://gh-proxy.org/https://github.com/acheronfail/repgrep/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/acheronfail/repgrep/releases/download/{{.Version}}/repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -178,7 +195,8 @@ packages:
         supported_envs:
           - linux/amd64
       - version_constraint: Version == "0.10.6"
-        url: https://gh-proxy.org/https://github.com/acheronfail/repgrep/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/acheronfail/repgrep/releases/download/{{.Version}}/repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -193,7 +211,8 @@ packages:
           - darwin
         rosetta2: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/acheronfail/repgrep/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/acheronfail/repgrep/releases/download/{{.Version}}/repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -201,6 +220,8 @@ packages:
             src: repgrep-{{.Version}}-{{.Arch}}-{{.OS}}/rgr
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/acheronfail/repgrep/releases/download/{{.Version}}/repgrep-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64

@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version == "v0.6.0"
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/sachaos/toggl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sachaos/toggl/releases/download/{{.Version}}/toggl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: toggl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -20,7 +21,8 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/sachaos/toggl/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:

@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.8.2")
-        url: https://gh-proxy.org/https://github.com/moonrepo/proto/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/moonrepo/proto/releases/download/{{.Version}}/proto_cli-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: proto_cli-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         files:
@@ -21,9 +22,13 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/moonrepo/proto/releases/download/{{.Version}}/proto_cli-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/moonrepo/proto/releases/download/{{.Version}}/proto_cli-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: proto
@@ -32,7 +37,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.14.1")
-        url: https://gh-proxy.org/https://github.com/moonrepo/proto/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/moonrepo/proto/releases/download/{{.Version}}/proto_cli-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: proto_cli-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         files:
@@ -46,9 +52,13 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/moonrepo/proto/releases/download/{{.Version}}/proto_cli-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/moonrepo/proto/releases/download/{{.Version}}/proto_cli-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: proto
@@ -57,7 +67,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.20.4")
-        url: https://gh-proxy.org/https://github.com/moonrepo/proto/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/moonrepo/proto/releases/download/{{.Version}}/proto_cli-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: proto_cli-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         files:
@@ -70,14 +81,19 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/moonrepo/proto/releases/download/{{.Version}}/proto_cli-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/moonrepo/proto/releases/download/{{.Version}}/proto_cli-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: proto
@@ -86,7 +102,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.24.2")
-        url: https://gh-proxy.org/https://github.com/moonrepo/proto/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/moonrepo/proto/releases/download/{{.Version}}/proto_cli-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: proto_cli-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         files:
@@ -99,14 +116,19 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/moonrepo/proto/releases/download/{{.Version}}/proto_cli-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/moonrepo/proto/releases/download/{{.Version}}/proto_cli-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: proto
@@ -115,7 +137,8 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/moonrepo/proto/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/moonrepo/proto/releases/download/{{.Version}}/proto_cli-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: proto_cli-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.xz
         files:
@@ -129,11 +152,14 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/moonrepo/proto/releases/download/{{.Version}}/proto_cli-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
             files:
               - name: proto

@@ -8,24 +8,29 @@ packages:
       - version_constraint: Version in ["v0.4.14", "v0.4.32", "v0.4.42"]
         no_asset: true
       - version_constraint: Version == "v0.4.23"
-        url: https://gh-proxy.org/https://github.com/kastenhq/kubestr/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kastenhq/kubestr/releases/download/{{.Version}}/kubestr-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: kubestr-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.md5"
           asset: "{{.Asset}}.md5"
           algorithm: md5
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kastenhq/kubestr/releases/download/{{.Version}}/kubestr-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "v0.4.29"
-        url: https://gh-proxy.org/https://github.com/kastenhq/kubestr/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kastenhq/kubestr/releases/download/{{.Version}}/kubestr_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kubestr_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -34,23 +39,28 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kastenhq/kubestr/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.3.0")
         no_asset: true
       - version_constraint: semver("<= 0.4.18")
-        url: https://gh-proxy.org/https://github.com/kastenhq/kubestr/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kastenhq/kubestr/releases/download/{{.Version}}/kubestr-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: kubestr-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.md5"
           asset: "{{.Asset}}.md5"
           algorithm: md5
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kastenhq/kubestr/releases/download/{{.Version}}/kubestr-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
@@ -59,7 +69,8 @@ packages:
       - version_constraint: semver("<= 0.4.22")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/kastenhq/kubestr/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kastenhq/kubestr/releases/download/{{.Version}}/kubestr_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: kubestr_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -67,6 +78,7 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kastenhq/kubestr/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

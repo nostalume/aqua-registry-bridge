@@ -9,11 +9,13 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/expert-lsp/expert/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/expert-lsp/expert/releases/download/{{.Version}}/expert_{{.OS}}_{{.Arch}}
         asset: expert_{{.OS}}_{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/expert-lsp/expert/releases/download/{{.Version}}/expert_checksums.txt
           asset: expert_checksums.txt
           algorithm: sha256

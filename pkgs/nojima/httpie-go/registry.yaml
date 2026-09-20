@@ -9,12 +9,15 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.6.0"
-        url: https://gh-proxy.org/https://github.com/nojima/httpie-go/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/nojima/httpie-go/releases/download/{{.Version}}/httpie-go_{{.OS}}_{{.Arch}}
         asset: httpie-go_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/nojima/httpie-go/releases/download/{{.Version}}/httpie-go_{{.OS}}
             asset: httpie-go_{{.OS}}
         supported_envs:
           - darwin
@@ -23,7 +26,8 @@ packages:
       - version_constraint: semver("<= 0.3.0")
         no_asset: true
       - version_constraint: semver("<= 0.5.0")
-        url: https://gh-proxy.org/https://github.com/nojima/httpie-go/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/nojima/httpie-go/releases/download/{{.Version}}/httpie-go_{{.OS}}_{{.Arch}}
         asset: httpie-go_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
@@ -31,7 +35,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/nojima/httpie-go/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/nojima/httpie-go/releases/download/{{.Version}}/httpie-go_{{.OS}}_{{.Arch}}
         asset: httpie-go_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/mmalcek/bafi/releases/download/{{.Version}}/bafi_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: mmalcek
     repo_name: bafi
     asset: bafi_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -8,12 +9,15 @@ packages:
     description: Universal JSON, BSON, YAML, CSV, XML converter with templates
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/mmalcek/bafi/releases/download/{{.Version}}/bafi_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     supported_envs:
       - darwin
       - amd64
     rosetta2: true
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/mmalcek/bafi/releases/download/{{.Version}}/bafi_{{.Version}}_{{.OS}}_{{.Arch}}_checksum.txt
       asset: bafi_{{.Version}}_{{.OS}}_{{.Arch}}_checksum.txt
       algorithm: md5

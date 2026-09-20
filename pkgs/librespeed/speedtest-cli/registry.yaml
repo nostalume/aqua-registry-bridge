@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/librespeed/speedtest-cli/releases/download/{{.Version}}/librespeed-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: librespeed
     repo_name: speedtest-cli
     asset: librespeed-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -11,8 +12,11 @@ packages:
     description: Command line client for LibreSpeed
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/librespeed/speedtest-cli/releases/download/{{.Version}}/librespeed-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/librespeed/speedtest-cli/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256

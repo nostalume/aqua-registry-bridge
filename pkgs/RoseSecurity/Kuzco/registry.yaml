@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/RoseSecurity/Kuzco/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/RoseSecurity/Kuzco/releases/download/{{.Version}}/Kuzco_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: Kuzco_{{.OS}}_{{.Arch}}.{{.Format}}
         files:
           - name: kuzco
@@ -21,9 +22,12 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/RoseSecurity/Kuzco/releases/download/{{.Version}}/Kuzco_{{trimV .Version}}_checksums.txt
           asset: Kuzco_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/RoseSecurity/Kuzco/releases/download/{{.Version}}/Kuzco_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

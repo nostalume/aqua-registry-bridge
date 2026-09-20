@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/miller-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
     repo_owner: johnkerl
     repo_name: miller
     description: Miller is like awk, sed, cut, join, and sort for name-indexed data such as CSV, TSV, and tabular JSON
@@ -8,6 +9,8 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/miller-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
     files:
       - name: mlr
@@ -17,13 +20,15 @@ packages:
       - linux
       - amd64
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/miller-{{trimV .Version}}-checksums.txt
       asset: miller-{{trimV .Version}}-checksums.txt
       algorithm: sha256
     version_constraint: semver(">= 6.9.0")
     version_overrides:
       - version_constraint: Version == "v5.1.0w"
-        url: https://gh-proxy.org/https://github.com/johnkerl/miller/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr
         asset: mlr
         format: raw
         overrides: []
@@ -32,7 +37,8 @@ packages:
         checksum:
           enabled: false
       - version_constraint: Version == "v6.0.0-beta"
-        url: https://gh-proxy.org/https://github.com/johnkerl/miller/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr-{{.OS}}-latest.{{.Format}}
         asset: mlr-{{.OS}}-latest.{{.Format}}
         format: zip
         files:
@@ -47,7 +53,8 @@ packages:
         checksum:
           enabled: false
       - version_constraint: Version == "v6.0.0.rc1"
-        url: https://gh-proxy.org/https://github.com/johnkerl/miller/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr-{{.OS}}-{{trimV .Version}}.{{.Format}}
         asset: mlr-{{.OS}}-{{trimV .Version}}.{{.Format}}
         format: zip
         overrides: []
@@ -62,27 +69,36 @@ packages:
         checksum:
           enabled: false
       - version_constraint: semver(">= 6.1.0")
+        type: http
+        url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/miller-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         replacements:
           darwin: macos
       - version_constraint: semver(">= 6.0.0")
-        url: https://gh-proxy.org/https://github.com/johnkerl/miller/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/miller_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: miller_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         overrides: []
         files:
           - name: mlr
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/miller_{{trimV .Version}}_checksums.txt
           asset: miller_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver(">= 5.10.3")
-        url: https://gh-proxy.org/https://github.com/johnkerl/miller/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.{{.OS}}_{{.Arch}}
         asset: mlr.{{.OS}}_{{.Arch}}
         format: raw
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.{{.OS}}_{{.Arch}}
             replacements:
               amd64: x86_64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.mac{{.OS}}
             asset: mlr.mac{{.OS}}
         replacements:
           darwin: osx
@@ -93,14 +109,19 @@ packages:
         checksum:
           enabled: false
       - version_constraint: semver(">= 5.10.1")
-        url: https://gh-proxy.org/https://github.com/johnkerl/miller/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.{{.OS}}.{{.Arch}}
         asset: mlr.{{.OS}}.{{.Arch}}
         format: raw
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.{{.OS}}.{{.Arch}}
             replacements:
               amd64: x86_64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.mac{{.OS}}
             asset: mlr.mac{{.OS}}
         replacements:
           darwin: osx
@@ -111,16 +132,23 @@ packages:
         checksum:
           enabled: false
       - version_constraint: semver(">= 5.9.0")
-        url: https://gh-proxy.org/https://github.com/johnkerl/miller/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.{{.OS}}.{{.Arch}}
         asset: mlr.{{.OS}}.{{.Arch}}
         format: raw
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.{{.OS}}.{{.Arch}}
             replacements:
               amd64: x86_64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.mac{{.OS}}
             asset: mlr.mac{{.OS}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr
             asset: mlr
         replacements:
           darwin: osx
@@ -131,14 +159,19 @@ packages:
         checksum:
           enabled: false
       - version_constraint: semver(">= 5.8.0")
-        url: https://gh-proxy.org/https://github.com/johnkerl/miller/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.{{.OS}}.{{.Arch}}
         asset: mlr.{{.OS}}.{{.Arch}}
         format: raw
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.{{.OS}}.{{.Arch}}
             replacements:
               amd64: x86_64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.mac{{.OS}}
             asset: mlr.mac{{.OS}}
         replacements:
           darwin: osx
@@ -149,16 +182,23 @@ packages:
         checksum:
           enabled: false
       - version_constraint: semver(">= 5.7.0")
-        url: https://gh-proxy.org/https://github.com/johnkerl/miller/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.{{.OS}}.{{.Arch}}
         asset: mlr.{{.OS}}.{{.Arch}}
         format: raw
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.{{.OS}}.{{.Arch}}
             replacements:
               amd64: x86_64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.mac{{.OS}}
             asset: mlr.mac{{.OS}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr
             asset: mlr
         replacements:
           darwin: osx
@@ -169,16 +209,23 @@ packages:
         checksum:
           enabled: false
       - version_constraint: semver(">= 5.6.2")
-        url: https://gh-proxy.org/https://github.com/johnkerl/miller/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.{{.OS}}_{{.Arch}}
         asset: mlr.{{.OS}}_{{.Arch}}
         format: raw
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.{{.OS}}_{{.Arch}}
             replacements:
               amd64: x86_64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.mac{{.OS}}
             asset: mlr.mac{{.OS}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr
             asset: mlr
         replacements:
           darwin: osx
@@ -189,16 +236,23 @@ packages:
         checksum:
           enabled: false
       - version_constraint: semver(">= 5.6.0")
-        url: https://gh-proxy.org/https://github.com/johnkerl/miller/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.{{.OS}}.{{.Arch}}
         asset: mlr.{{.OS}}.{{.Arch}}
         format: raw
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.{{.OS}}.{{.Arch}}
             replacements:
               amd64: x86_64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.mac{{.OS}}
             asset: mlr.mac{{.OS}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr
             asset: mlr
         replacements:
           darwin: osx
@@ -209,16 +263,23 @@ packages:
         checksum:
           enabled: false
       - version_constraint: semver(">= 5.5.0")
-        url: https://gh-proxy.org/https://github.com/johnkerl/miller/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.{{.OS}}_{{.Arch}}
         asset: mlr.{{.OS}}_{{.Arch}}
         format: raw
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.{{.OS}}_{{.Arch}}
             replacements:
               amd64: x86_64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.mac{{.OS}}
             asset: mlr.mac{{.OS}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr
             asset: mlr
         replacements:
           darwin: osx
@@ -229,14 +290,19 @@ packages:
         checksum:
           enabled: false
       - version_constraint: semver(">= 5.4.0")
-        url: https://gh-proxy.org/https://github.com/johnkerl/miller/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.{{.OS}}.{{.Arch}}
         asset: mlr.{{.OS}}.{{.Arch}}
         format: raw
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.{{.OS}}.{{.Arch}}
             replacements:
               amd64: x86_64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr
             asset: mlr
         supported_envs:
           - linux/amd64
@@ -244,14 +310,19 @@ packages:
         checksum:
           enabled: false
       - version_constraint: semver(">= 5.3.0")
-        url: https://gh-proxy.org/https://github.com/johnkerl/miller/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.{{.OS}}.{{.Arch}}
         asset: mlr.{{.OS}}.{{.Arch}}
         format: raw
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.{{.OS}}.{{.Arch}}
             replacements:
               amd64: x86_64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.mac{{.OS}}
             asset: mlr.mac{{.OS}}
         replacements:
           darwin: osx
@@ -262,7 +333,8 @@ packages:
         checksum:
           enabled: false
       - version_constraint: semver(">= 5.2.2")
-        url: https://gh-proxy.org/https://github.com/johnkerl/miller/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.{{.OS}}.{{.Arch}}
         asset: mlr.{{.OS}}.{{.Arch}}
         format: raw
         overrides: []
@@ -273,16 +345,23 @@ packages:
         checksum:
           enabled: false
       - version_constraint: semver(">= 5.2.0")
-        url: https://gh-proxy.org/https://github.com/johnkerl/miller/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.{{.OS}}.{{.Arch}}
         asset: mlr.{{.OS}}.{{.Arch}}
         format: raw
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.{{.OS}}.{{.Arch}}
             replacements:
               amd64: x86_64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.mac{{.OS}}
             asset: mlr.mac{{.OS}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr
             asset: mlr
         replacements:
           darwin: osx
@@ -293,7 +372,8 @@ packages:
         checksum:
           enabled: false
       - version_constraint: semver(">= 5.1.0")
-        url: https://gh-proxy.org/https://github.com/johnkerl/miller/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.{{.OS}}.{{.Arch}}
         asset: mlr.{{.OS}}.{{.Arch}}
         format: raw
         overrides: []
@@ -304,7 +384,8 @@ packages:
         checksum:
           enabled: false
       - version_constraint: semver(">= 2.1.3")
-        url: https://gh-proxy.org/https://github.com/johnkerl/miller/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/johnkerl/miller/releases/download/{{.Version}}/mlr.{{.OS}}.{{.Arch}}
         asset: mlr.{{.OS}}.{{.Arch}}
         format: raw
         overrides: []

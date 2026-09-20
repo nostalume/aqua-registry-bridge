@@ -1,12 +1,15 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/Songmu/gh2changelog/releases/download/{{.Version}}/gh2changelog_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: Songmu
     repo_name: gh2changelog
     asset: gh2changelog_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     format: zip
     overrides:
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/Songmu/gh2changelog/releases/download/{{.Version}}/gh2changelog_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
     supported_envs:
       - linux
@@ -15,6 +18,7 @@ packages:
       - name: gh2changelog
         src: gh2changelog_{{.Version}}_{{.OS}}_{{.Arch}}/gh2changelog
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/Songmu/gh2changelog/releases/download/{{.Version}}/SHA256SUMS
       asset: SHA256SUMS
       algorithm: sha256

@@ -9,14 +9,19 @@ packages:
       - version_constraint: semver("<= 0.1.0")
         no_asset: true
       - version_constraint: semver("<= 0.2.1")
-        url: https://gh-proxy.org/https://github.com/awslabs/eks-node-viewer/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/awslabs/eks-node-viewer/releases/download/{{.Version}}/eks-node-viewer_{{.OS}}_{{.Arch}}
         asset: eks-node-viewer_{{.OS}}_{{.Arch}}
         format: raw
         windows_arm_emulation: true
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/awslabs/eks-node-viewer/releases/download/{{.Version}}/eks-node-viewer_{{.OS}}_all
             asset: eks-node-viewer_{{.OS}}_all
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/awslabs/eks-node-viewer/releases/download/{{.Version}}/eks-node-viewer_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
             asset: eks-node-viewer_{{.OS}}_{{.Arch}}.{{.Format}}
         replacements:
@@ -29,16 +34,20 @@ packages:
           - windows
           - amd64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/awslabs/eks-node-viewer/releases/download/{{.Version}}/eks-node-viewer_{{trimV .Version}}_sha256_checksums.txt
           asset: eks-node-viewer_{{trimV .Version}}_sha256_checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/awslabs/eks-node-viewer/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/awslabs/eks-node-viewer/releases/download/{{.Version}}/eks-node-viewer_{{.OS}}_{{.Arch}}
         asset: eks-node-viewer_{{.OS}}_{{.Arch}}
         format: raw
         windows_arm_emulation: true
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/awslabs/eks-node-viewer/releases/download/{{.Version}}/eks-node-viewer_{{.OS}}_all
             asset: eks-node-viewer_{{.OS}}_all
         replacements:
           amd64: x86_64
@@ -46,6 +55,7 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/awslabs/eks-node-viewer/releases/download/{{.Version}}/eks-node-viewer_{{trimV .Version}}_sha256_checksums.txt
           asset: eks-node-viewer_{{trimV .Version}}_sha256_checksums.txt
           algorithm: sha256

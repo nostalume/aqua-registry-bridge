@@ -7,26 +7,31 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.7.0")
-        type: github_content
+        type: http
+        url: https://gh-proxy.org/raw.githubusercontent.com/dex4er/tf/{{.Version}}/tf.sh
         format: raw
         path: tf.sh
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 2.14.0")
-        url: https://gh-proxy.org/https://github.com/dex4er/tf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dex4er/tf/releases/download/{{.Version}}/tf-{{.OS}}-{{.Arch}}
         asset: tf-{{.OS}}-{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/dex4er/tf/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/dex4er/tf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/dex4er/tf/releases/download/{{.Version}}/tf-{{.OS}}-{{.Arch}}
         asset: tf-{{.OS}}-{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/dex4er/tf/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         github_artifact_attestations:

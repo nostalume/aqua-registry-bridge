@@ -1,34 +1,66 @@
 ---
-name: Test mirror script
+name: Validate registry bridge
 
 on:
   pull_request:
     paths:
-      - scripts/mirror.py
-      - tests/test_mirror.py
+      - .github/workflows/mirror-test.yaml
+      - aqua.yaml
       - mirror.yaml
+      - requirements-dev.txt
+      - scripts/mirror.py
+      - scripts/validate.py
+      - tests/**
   push:
-    branches:
-      - main
+    branches: [main]
     paths:
-      - scripts/mirror.py
-      - tests/test_mirror.py
+      - .github/workflows/mirror-test.yaml
+      - aqua.yaml
       - mirror.yaml
+      - requirements-dev.txt
+      - scripts/mirror.py
+      - scripts/validate.py
+      - tests/**
   workflow_dispatch:
 
-permissions: {}
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-registry-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  test-mirror:
-    name: Run mirror unit tests
+  validate:
+    name: Test and validate generated registry
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
-    permissions: {}
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - name: Run tests
-        run: python3 tests/test_mirror.py -v
-      - name: Dry-run mirror (sanity check against real pkgs/)
-        run: python3 scripts/mirror.py --dry-run
+      - name: Check out aqua schema
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: aquaproj/aqua
+          ref: c76aafc5ccc7eee49a6f1a3a1249df69de45a4da
+          path: .ai/aqua
+          persist-credentials: false
+      - name: Install Python dependencies
+        run: python3 -m pip install --requirement requirements-dev.txt
+      - name: Set up aqua tools
+        uses: aquaproj/aqua-installer@96a9bc20066c5bf5e275b41019cfc165b25f4e2e # v4.0.5
+        with:
+          aqua_version: v2.63.0
+          aqua_opts: -l
+          policy_allow: "true"
+      - name: Run unit tests
+        run: python3 -m unittest discover -s tests -v
+      - name: Lint workflows
+        run: actionlint
+      - name: Validate projection and aggregate
+        run: |
+          python3 scripts/mirror.py --dry-run
+          python3 scripts/validate.py --schema .ai/aqua/json-schema/registry.json
+          argd gr
+          git diff --exit-code -- registry.yaml

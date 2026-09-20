@@ -12,6 +12,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.2.6")
+        type: http
+        url: https://gh-proxy.org/github.com/superradcompany/microsandbox/releases/download/{{.Version}}/microsandbox-{{.SemVer}}-{{.OS}}-{{.Arch}}.{{.Format}}
         version_prefix: microsandbox-v
         asset: microsandbox-{{.SemVer}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
@@ -29,11 +31,14 @@ packages:
           - name: msx
             src: "{{.AssetWithoutExt}}/msx"
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/superradcompany/microsandbox/releases/download/{{.Version}}/microsandbox-{{.SemVer}}-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               amd64: x86_64
               arm64: aarch64
@@ -41,35 +46,43 @@ packages:
           - linux
           - darwin/arm64
       - version_constraint: semver("<= 0.5.10")
-        url: https://gh-proxy.org/https://github.com/superradcompany/microsandbox/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/superradcompany/microsandbox/releases/download/{{.Version}}/microsandbox-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: microsandbox-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           arm64: aarch64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/superradcompany/microsandbox/releases/download/{{.Version}}/checksums.sha256
           asset: checksums.sha256
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/superradcompany/microsandbox/releases/download/{{.Version}}/microsandbox-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               amd64: x86_64
         supported_envs:
           - linux
           - darwin/arm64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/superradcompany/microsandbox/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/superradcompany/microsandbox/releases/download/{{.Version}}/microsandbox-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: microsandbox-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           amd64: x86_64
           arm64: aarch64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/superradcompany/microsandbox/releases/download/{{.Version}}/checksums.sha256
           asset: checksums.sha256
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/superradcompany/microsandbox/releases/download/{{.Version}}/microsandbox-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               amd64: amd64
         supported_envs:

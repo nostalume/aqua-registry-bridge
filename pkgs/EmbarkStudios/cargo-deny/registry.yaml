@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.6.4")
-        url: https://gh-proxy.org/https://github.com/EmbarkStudios/cargo-deny/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/EmbarkStudios/cargo-deny/releases/download/{{.Version}}/cargo-deny-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-deny-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -21,7 +22,8 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
@@ -29,7 +31,8 @@ packages:
           - windows
           - amd64
       - version_constraint: Version == "0.6.5"
-        url: https://gh-proxy.org/https://github.com/EmbarkStudios/cargo-deny/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/EmbarkStudios/cargo-deny/releases/download/{{.Version}}/cargo-deny-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-deny-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -41,14 +44,16 @@ packages:
           darwin: apple-darwin
           linux: unknown-linux-musl
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.9.0")
-        url: https://gh-proxy.org/https://github.com/EmbarkStudios/cargo-deny/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/EmbarkStudios/cargo-deny/releases/download/{{.Version}}/cargo-deny-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-deny-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -62,7 +67,8 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         supported_envs:
@@ -70,7 +76,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 0.14.22")
-        url: https://gh-proxy.org/https://github.com/EmbarkStudios/cargo-deny/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/EmbarkStudios/cargo-deny/releases/download/{{.Version}}/cargo-deny-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-deny-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -83,11 +90,14 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/EmbarkStudios/cargo-deny/releases/download/{{.Version}}/cargo-deny-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               arm64: aarch64
         supported_envs:
@@ -95,7 +105,8 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/EmbarkStudios/cargo-deny/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/EmbarkStudios/cargo-deny/releases/download/{{.Version}}/cargo-deny-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-deny-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -109,6 +120,7 @@ packages:
           linux: unknown-linux-musl
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256

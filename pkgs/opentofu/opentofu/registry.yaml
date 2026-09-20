@@ -7,106 +7,114 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 1.6.0-beta4")
-        url: https://gh-proxy.org/https://github.com/opentofu/opentofu/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/opentofu/opentofu/releases/download/{{.Version}}/tofu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tofu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         files:
           - name: tofu
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/opentofu/opentofu/releases/download/{{.Version}}/tofu_{{trimV .Version}}_SHA256SUMS
           asset: tofu_{{trimV .Version}}_SHA256SUMS
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/opentofu/opentofu/releases/download/{{.Version}}/tofu_{{trimV .Version}}_SHA256SUMS.pem
+              - https://gh-proxy.org/github.com/opentofu/opentofu/releases/download/{{.Version}}/tofu_{{trimV .Version}}_SHA256SUMS.pem
               - --certificate-identity
-              - https://github.com/opentofu/opentofu/.github/workflows/release.yml@refs/tags/{{.Version}}
+              - https://gh-proxy.org/github.com/opentofu/opentofu/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/opentofu/opentofu/releases/download/{{.Version}}/tofu_{{trimV .Version}}_SHA256SUMS.sig
+              - https://gh-proxy.org/github.com/opentofu/opentofu/releases/download/{{.Version}}/tofu_{{trimV .Version}}_SHA256SUMS.sig
       - version_constraint: semver("<= 1.6.0-rc1")
-        url: https://gh-proxy.org/https://github.com/opentofu/opentofu/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/opentofu/opentofu/releases/download/{{.Version}}/tofu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tofu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         files:
           - name: tofu
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/opentofu/opentofu/releases/download/{{.Version}}/tofu_{{trimV .Version}}_SHA256SUMS
           asset: tofu_{{trimV .Version}}_SHA256SUMS
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/opentofu/opentofu/releases/download/{{.Version}}/tofu_{{trimV .Version}}_SHA256SUMS.pem
+              - https://gh-proxy.org/github.com/opentofu/opentofu/releases/download/{{.Version}}/tofu_{{trimV .Version}}_SHA256SUMS.pem
               - --certificate-identity-regexp
               - "^https://github\\.com/opentofu/opentofu/\\.github/workflows/release\\.yml@refs/heads/(main|v\\d+\\..+)$"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/opentofu/opentofu/releases/download/{{.Version}}/tofu_{{trimV .Version}}_SHA256SUMS.sig
+              - https://gh-proxy.org/github.com/opentofu/opentofu/releases/download/{{.Version}}/tofu_{{trimV .Version}}_SHA256SUMS.sig
       - version_constraint: semver("<= 1.6.2")
-        url: https://gh-proxy.org/https://github.com/opentofu/opentofu/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/opentofu/opentofu/releases/download/{{.Version}}/tofu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tofu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         files:
           - name: tofu
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/opentofu/opentofu/releases/download/{{.Version}}/tofu_{{trimV .Version}}_SHA256SUMS
           asset: tofu_{{trimV .Version}}_SHA256SUMS
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/opentofu/opentofu/releases/download/{{.Version}}/tofu_{{trimV .Version}}_SHA256SUMS.pem
+              - https://gh-proxy.org/github.com/opentofu/opentofu/releases/download/{{.Version}}/tofu_{{trimV .Version}}_SHA256SUMS.pem
               - --certificate-identity-regexp
               - "^https://github\\.com/opentofu/opentofu/\\.github/workflows/release\\.yml@refs/heads/(main|v\\d+\\..+)$"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/opentofu/opentofu/releases/download/{{.Version}}/tofu_{{trimV .Version}}_SHA256SUMS.sig
+              - https://gh-proxy.org/github.com/opentofu/opentofu/releases/download/{{.Version}}/tofu_{{trimV .Version}}_SHA256SUMS.sig
         cosign:
           opts:
             - --certificate
-            - https://github.com/opentofu/opentofu/releases/download/{{.Version}}/{{.Asset}}.pem
+            - https://gh-proxy.org/github.com/opentofu/opentofu/releases/download/{{.Version}}/{{.Asset}}.pem
             - --certificate-identity-regexp
             - "^https://github\\.com/opentofu/opentofu/\\.github/workflows/release\\.yml@refs/heads/(main|v\\d+\\..+)$"
             - --certificate-oidc-issuer
             - https://token.actions.githubusercontent.com
             - --signature
-            - https://github.com/opentofu/opentofu/releases/download/{{.Version}}/{{.Asset}}.sig
+            - https://gh-proxy.org/github.com/opentofu/opentofu/releases/download/{{.Version}}/{{.Asset}}.sig
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/opentofu/opentofu/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/opentofu/opentofu/releases/download/{{.Version}}/tofu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tofu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         files:
           - name: tofu
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/opentofu/opentofu/releases/download/{{.Version}}/tofu_{{trimV .Version}}_SHA256SUMS
           asset: tofu_{{trimV .Version}}_SHA256SUMS
           algorithm: sha256
           cosign:
             opts:
               - --certificate
-              - https://github.com/opentofu/opentofu/releases/download/{{.Version}}/tofu_{{trimV .Version}}_SHA256SUMS.pem
+              - https://gh-proxy.org/github.com/opentofu/opentofu/releases/download/{{.Version}}/tofu_{{trimV .Version}}_SHA256SUMS.pem
               - --certificate-identity-regexp
               - "^https://github\\.com/opentofu/opentofu/\\.github/workflows/release\\.yml@refs/heads/(main|v\\d+\\..+)$"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --signature
-              - https://github.com/opentofu/opentofu/releases/download/{{.Version}}/tofu_{{trimV .Version}}_SHA256SUMS.sig
+              - https://gh-proxy.org/github.com/opentofu/opentofu/releases/download/{{.Version}}/tofu_{{trimV .Version}}_SHA256SUMS.sig
         cosign:
           opts:
             - --certificate
-            - https://github.com/opentofu/opentofu/releases/download/{{.Version}}/{{.Asset}}.pem
+            - https://gh-proxy.org/github.com/opentofu/opentofu/releases/download/{{.Version}}/{{.Asset}}.pem
             - --certificate-identity-regexp
             - "^https://github\\.com/opentofu/opentofu/\\.github/workflows/release\\.yml@refs/heads/(main|v\\d+\\..+)$"
             - --certificate-oidc-issuer
             - https://token.actions.githubusercontent.com
             - --signature
-            - https://github.com/opentofu/opentofu/releases/download/{{.Version}}/{{.Asset}}.sig
+            - https://gh-proxy.org/github.com/opentofu/opentofu/releases/download/{{.Version}}/{{.Asset}}.sig

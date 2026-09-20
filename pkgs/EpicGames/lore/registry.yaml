@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/EpicGames/lore/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/EpicGames/lore/releases/download/{{.Version}}/lore-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: lore-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -19,12 +20,18 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/EpicGames/lore/releases/download/{{.Version}}/lore-{{.Version}}-{{.Arch}}-{{.OS}}-neoverse-512tvb.{{.Format}}
             goarch: arm64
             asset: lore-{{.Version}}-{{.Arch}}-{{.OS}}-neoverse-512tvb.{{.Format}}
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/EpicGames/lore/releases/download/{{.Version}}/lore-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             replacements:
               amd64: amd64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/EpicGames/lore/releases/download/{{.Version}}/lore-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - linux

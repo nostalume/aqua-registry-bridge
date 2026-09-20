@@ -9,7 +9,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v1.5.10"
-        url: https://gh-proxy.org/https://github.com/stripe/stripe-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: stripe_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -18,23 +19,30 @@ packages:
           amd64: x86_64
           darwin: mac-os
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe-{{.OS}}-checksums.txt
           asset: stripe-{{.OS}}-checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             checksum:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe-checksums.txt
               asset: stripe-checksums.txt
               algorithm: sha256
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "v1.7.2"
-        url: https://gh-proxy.org/https://github.com/stripe/stripe-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: stripe_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -43,37 +51,47 @@ packages:
           amd64: x86_64
           darwin: mac
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe-{{.OS}}-checksums.txt
           asset: stripe-{{.OS}}-checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe_{{trimV .Version}}_{{.OS}}-os_{{.Arch}}.{{.Format}}
             asset: stripe_{{trimV .Version}}_{{.OS}}-os_{{.Arch}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "v1.7.5"
-        url: https://gh-proxy.org/https://github.com/stripe/stripe-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: stripe_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe-{{.OS}}-checksums.txt
           asset: stripe-{{.OS}}-checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux/amd64
           - windows
       - version_constraint: Version == "v1.7.6"
-        url: https://gh-proxy.org/https://github.com/stripe/stripe-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: stripe_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -81,37 +99,47 @@ packages:
           amd64: x86_64
           darwin: mac
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe-{{.OS}}-checksums.txt
           asset: stripe-{{.OS}}-checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe_{{trimV .Version}}_{{.OS}}-os_{{.Arch}}.{{.Format}}
             asset: stripe_{{trimV .Version}}_{{.OS}}-os_{{.Arch}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "v1.7.7"
-        url: https://gh-proxy.org/https://github.com/stripe/stripe-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: stripe_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe-{{.OS}}-checksums.txt
           asset: stripe-{{.OS}}-checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux/amd64
           - windows
       - version_constraint: Version == "v1.13.2"
-        url: https://gh-proxy.org/https://github.com/stripe/stripe-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: stripe_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -119,18 +147,22 @@ packages:
           amd64: x86_64
           darwin: mac
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe-{{.OS}}-checksums.txt
           asset: stripe-{{.OS}}-checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe_{{trimV .Version}}_{{.OS}}-os_{{.Arch}}.{{.Format}}
             format: tar.gz
             asset: stripe_{{trimV .Version}}_{{.OS}}-os_{{.Arch}}.{{.Format}}
         supported_envs:
           - darwin
           - windows
       - version_constraint: semver("<= 0.8.2")
-        url: https://gh-proxy.org/https://github.com/stripe/stripe-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: stripe_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -139,7 +171,8 @@ packages:
           amd64: x86_64
           darwin: mac-os
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe-checksums.txt
           asset: stripe-checksums.txt
           algorithm: sha256
         supported_envs:
@@ -147,7 +180,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 1.5.9")
-        url: https://gh-proxy.org/https://github.com/stripe/stripe-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: stripe_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -156,18 +190,22 @@ packages:
           amd64: x86_64
           darwin: mac-os
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe-checksums.txt
           asset: stripe-checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: semver("<= 1.12.3")
-        url: https://gh-proxy.org/https://github.com/stripe/stripe-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: stripe_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -175,20 +213,26 @@ packages:
           amd64: x86_64
           darwin: mac
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe-{{.OS}}-checksums.txt
           asset: stripe-{{.OS}}-checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe_{{trimV .Version}}_{{.OS}}-os_{{.Arch}}.{{.Format}}
             asset: stripe_{{trimV .Version}}_{{.OS}}-os_{{.Arch}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/stripe/stripe-cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: stripe_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -196,11 +240,16 @@ packages:
           amd64: x86_64
           darwin: mac
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe-{{.OS}}-checksums.txt
           asset: stripe-{{.OS}}-checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe_{{trimV .Version}}_{{.OS}}-os_{{.Arch}}.{{.Format}}
             asset: stripe_{{trimV .Version}}_{{.OS}}-os_{{.Arch}}.{{.Format}}
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/stripe/stripe-cli/releases/download/{{.Version}}/stripe_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

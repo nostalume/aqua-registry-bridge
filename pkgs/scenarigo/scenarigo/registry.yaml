@@ -11,7 +11,8 @@ packages:
       - version_constraint: Version in ["v0.14.0-rc3", "v0.15.0-rc1"]
         no_asset: true
       - version_constraint: semver("<= 0.5.1")
-        url: https://gh-proxy.org/https://github.com/scenarigo/scenarigo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/scenarigo/scenarigo/releases/download/{{.Version}}/scenarigo_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: scenarigo_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -20,14 +21,16 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/scenarigo/scenarigo/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.6.1")
-        url: https://gh-proxy.org/https://github.com/scenarigo/scenarigo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/scenarigo/scenarigo/releases/download/{{.Version}}/scenarigo_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: scenarigo_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -36,14 +39,16 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/scenarigo/scenarigo/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 0.7.0")
-        url: https://gh-proxy.org/https://github.com/scenarigo/scenarigo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/scenarigo/scenarigo/releases/download/{{.Version}}/scenarigo_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: scenarigo_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -51,14 +56,16 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/scenarigo/scenarigo/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/scenarigo/scenarigo/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/scenarigo/scenarigo/releases/download/{{.Version}}/scenarigo_{{.Version}}_go{{.Vars.go_version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: scenarigo_{{.Version}}_go{{.Vars.go_version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         vars:
           - name: go_version
@@ -69,7 +76,8 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/scenarigo/scenarigo/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         supported_envs:

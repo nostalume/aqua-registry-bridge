@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/rhysd/hgrep/releases/download/{{.Version}}/hgrep-{{.Version}}-{{.Arch}}-{{.OS}}.zip
     repo_owner: rhysd
     repo_name: hgrep
     description: Grep with human-friendly search results
@@ -20,12 +21,16 @@ packages:
         src: hgrep-{{.Version}}-{{.Arch}}-{{.OS}}/hgrep
     overrides:
       - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/rhysd/hgrep/releases/download/{{.Version}}/hgrep-{{.Version}}-{{.Arch}}-{{.OS}}.zip
         goarch: arm64
         replacements:
           linux: unknown-linux-gnu
     version_constraint: semver(">= 0.2.5")
     version_overrides:
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/rhysd/hgrep/releases/download/{{.Version}}/hgrep-{{.Version}}-{{.Arch}}-{{.OS}}.zip
         supported_envs:
           - darwin
           - amd64

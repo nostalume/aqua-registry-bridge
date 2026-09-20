@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version in ["v0.4.0", "v0.6.0", "v0.8.0", "v0.13.0"]
         no_asset: true
       - version_constraint: Version == "v0.12.0"
-        url: https://gh-proxy.org/https://github.com/rtk-ai/rtk/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rtk-ai/rtk/releases/download/{{.Version}}/rtk-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: rtk-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -20,14 +21,18 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/rtk-ai/rtk/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/rtk-ai/rtk/releases/download/{{.Version}}/rtk-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.9.4")
-        url: https://gh-proxy.org/https://github.com/rtk-ai/rtk/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rtk-ai/rtk/releases/download/{{.Version}}/rtk-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: rtk-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -38,16 +43,20 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/rtk-ai/rtk/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/rtk-ai/rtk/releases/download/{{.Version}}/rtk-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.11.0")
         no_asset: true
       - version_constraint: semver("<= 0.22.2")
-        url: https://gh-proxy.org/https://github.com/rtk-ai/rtk/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rtk-ai/rtk/releases/download/{{.Version}}/rtk-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: rtk-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -58,14 +67,18 @@ packages:
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/rtk-ai/rtk/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/rtk-ai/rtk/releases/download/{{.Version}}/rtk-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/rtk-ai/rtk/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/rtk-ai/rtk/releases/download/{{.Version}}/rtk-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: rtk-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -75,17 +88,24 @@ packages:
           darwin: apple-darwin
           windows: pc-windows-msvc
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/rtk-ai/rtk/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/rtk-ai/rtk/releases/download/{{.Version}}/rtk-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/rtk-ai/rtk/releases/download/{{.Version}}/rtk-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/rtk-ai/rtk/releases/download/{{.Version}}/rtk-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip

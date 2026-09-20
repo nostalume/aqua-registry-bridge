@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/protocolbuffers/protobuf/releases/download/{{.Version}}/protoc-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
     name: protocolbuffers/protobuf/protoc
     repo_owner: protocolbuffers
     repo_name: protobuf
@@ -21,4 +22,6 @@ packages:
       - amd64
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/protocolbuffers/protobuf/releases/download/{{.Version}}/protoc-{{trimV .Version}}-{{.OS}}.{{.Format}}
         asset: protoc-{{trimV .Version}}-{{.OS}}.{{.Format}}

@@ -10,13 +10,16 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.4.0")
-        url: https://gh-proxy.org/https://github.com/cli/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cli/cli/releases/download/{{.Version}}/gh_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gh_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/cli/cli/releases/download/{{.Version}}/gh_{{trimV .Version}}_{{.OS}}_{{.Arch}}
             format: raw
             asset: gh_{{trimV .Version}}_{{.OS}}_{{.Arch}}
             checksum:
@@ -28,11 +31,13 @@ packages:
           - windows
           - amd64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/cli/cli/releases/download/{{.Version}}/gh_{{trimV .Version}}_checksums.txt
           asset: gh_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.5.2")
-        url: https://gh-proxy.org/https://github.com/cli/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cli/cli/releases/download/{{.Version}}/gh_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gh_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -42,17 +47,21 @@ packages:
           - linux/amd64
           - darwin
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/cli/cli/releases/download/{{.Version}}/gh_{{trimV .Version}}_checksums.txt
           asset: gh_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.5.5")
-        url: https://gh-proxy.org/https://github.com/cli/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cli/cli/releases/download/{{.Version}}/gh_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gh_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/cli/cli/releases/download/{{.Version}}/gh_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
             files:
               - name: gh
@@ -64,17 +73,21 @@ packages:
           - windows
           - amd64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/cli/cli/releases/download/{{.Version}}/gh_{{trimV .Version}}_checksums.txt
           asset: gh_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 2.20.0")
-        url: https://gh-proxy.org/https://github.com/cli/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cli/cli/releases/download/{{.Version}}/gh_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gh_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/cli/cli/releases/download/{{.Version}}/gh_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
             files:
               - name: gh
@@ -82,16 +95,20 @@ packages:
         replacements:
           darwin: macOS
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/cli/cli/releases/download/{{.Version}}/gh_{{trimV .Version}}_checksums.txt
           asset: gh_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 2.23.0")
-        url: https://gh-proxy.org/https://github.com/cli/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cli/cli/releases/download/{{.Version}}/gh_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gh_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/cli/cli/releases/download/{{.Version}}/gh_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
             files:
               - name: gh
@@ -99,15 +116,19 @@ packages:
         replacements:
           darwin: macOS
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/cli/cli/releases/download/{{.Version}}/gh_{{trimV .Version}}_checksums.txt
           asset: gh_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 2.27.0")
-        url: https://gh-proxy.org/https://github.com/cli/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cli/cli/releases/download/{{.Version}}/gh_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gh_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/cli/cli/releases/download/{{.Version}}/gh_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
             files:
               - name: gh
@@ -115,41 +136,54 @@ packages:
         replacements:
           darwin: macOS
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/cli/cli/releases/download/{{.Version}}/gh_{{trimV .Version}}_checksums.txt
           asset: gh_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("< 2.50.0")
-        url: https://gh-proxy.org/https://github.com/cli/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cli/cli/releases/download/{{.Version}}/gh_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gh_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/cli/cli/releases/download/{{.Version}}/gh_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/cli/cli/releases/download/{{.Version}}/gh_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             files:
               - name: gh
                 src: bin/gh.exe
         replacements:
           darwin: macOS
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/cli/cli/releases/download/{{.Version}}/gh_{{trimV .Version}}_checksums.txt
           asset: gh_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/cli/cli/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/cli/cli/releases/download/{{.Version}}/gh_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: gh_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/cli/cli/releases/download/{{.Version}}/gh_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/cli/cli/releases/download/{{.Version}}/gh_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             files:
               - name: gh
                 src: bin/gh.exe
         replacements:
           darwin: macOS
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/cli/cli/releases/download/{{.Version}}/gh_{{trimV .Version}}_checksums.txt
           asset: gh_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         github_artifact_attestations:

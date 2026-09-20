@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/harelba/q/releases/download/{{.Version}}/{{.OS}}-q
     repo_owner: harelba
     repo_name: q
     description: q - Run SQL directly on CSV or TSV files
@@ -15,7 +16,8 @@ packages:
       darwin: macos
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/harelba/q/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/harelba/q/releases/download/{{.Version}}/q-{{.Arch}}-{{.OS}}
         asset: q-{{.Arch}}-{{.OS}}
         replacements:
           darwin: Darwin
@@ -23,4 +25,6 @@ packages:
           amd64: x86_64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/harelba/q/releases/download/{{.Version}}/q-AMD64-Windows.exe
             asset: q-AMD64-Windows.exe

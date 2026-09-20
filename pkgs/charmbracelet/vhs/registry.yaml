@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.6.0")
-        url: https://gh-proxy.org/https://github.com/charmbracelet/vhs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/charmbracelet/vhs/releases/download/{{.Version}}/vhs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: vhs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -18,16 +19,20 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/charmbracelet/vhs/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/charmbracelet/vhs/releases/download/{{.Version}}/vhs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: Version == "v0.7.0"
         no_asset: true
       - version_constraint: Version == "v0.7.1"
-        url: https://gh-proxy.org/https://github.com/charmbracelet/vhs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/charmbracelet/vhs/releases/download/{{.Version}}/vhs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: vhs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -38,14 +43,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/charmbracelet/vhs/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/charmbracelet/vhs/releases/download/{{.Version}}/vhs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.10.0")
-        url: https://gh-proxy.org/https://github.com/charmbracelet/vhs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/charmbracelet/vhs/releases/download/{{.Version}}/vhs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: vhs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -59,14 +68,18 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/charmbracelet/vhs/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/charmbracelet/vhs/releases/download/{{.Version}}/vhs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/charmbracelet/vhs/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/charmbracelet/vhs/releases/download/{{.Version}}/vhs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: vhs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -80,18 +93,22 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/charmbracelet/vhs/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/charmbracelet/vhs/releases/download/{{.Version}}/checksums.txt.sigstore.json
               asset: checksums.txt.sigstore.json
             opts:
               - --certificate-identity
-              - https://github.com/charmbracelet/meta/.github/workflows/goreleaser.yml@refs/heads/main
+              - https://gh-proxy.org/github.com/charmbracelet/meta/.github/workflows/goreleaser.yml@refs/heads/main
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/charmbracelet/vhs/releases/download/{{.Version}}/vhs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

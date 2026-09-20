@@ -7,12 +7,15 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/kettle11/devserver/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/kettle11/devserver/releases/download/{{.Version}}/devserver-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: devserver-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kettle11/devserver/releases/download/{{.Version}}/devserver-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64
@@ -25,6 +28,7 @@ packages:
           - windows
           - amd64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/kettle11/devserver/releases/download/{{.Version}}/devserver-{{.Arch}}-{{.OS}}.sha512
           asset: devserver-{{.Arch}}-{{.OS}}.sha512
           algorithm: sha512

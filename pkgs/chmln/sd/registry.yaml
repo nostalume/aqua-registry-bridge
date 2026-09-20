@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.6.5")
-        url: https://gh-proxy.org/https://github.com/chmln/sd/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/chmln/sd/releases/download/{{.Version}}/sd-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: sd-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         files:
@@ -24,7 +25,8 @@ packages:
         rosetta2: true
         windows_arm_emulation: true
       - version_constraint: Version == "v0.7.2"
-        url: https://gh-proxy.org/https://github.com/chmln/sd/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/chmln/sd/releases/download/{{.Version}}/sd-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: sd-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         windows_arm_emulation: true
@@ -41,7 +43,8 @@ packages:
           - amd64
         rosetta2: true
       - version_constraint: semver("<= 0.7.4")
-        url: https://gh-proxy.org/https://github.com/chmln/sd/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/chmln/sd/releases/download/{{.Version}}/sd-{{trimV .Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         asset: sd-{{trimV .Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
         windows_arm_emulation: true
         format: zip
@@ -58,7 +61,8 @@ packages:
           - amd64
         rosetta2: true
       - version_constraint: Version == "v0.7.5"
-        url: https://gh-proxy.org/https://github.com/chmln/sd/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/chmln/sd/releases/download/{{.Version}}/sd.{{trimV .Version}}-.{{.Arch}}-{{.OS}}.{{.Format}}
         asset: sd.{{trimV .Version}}-.{{.Arch}}-{{.OS}}.{{.Format}}
         windows_arm_emulation: true
         format: zip
@@ -75,7 +79,8 @@ packages:
           - amd64
         rosetta2: true
       - version_constraint: Version == "v0.7.6"
-        url: https://gh-proxy.org/https://github.com/chmln/sd/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/chmln/sd/releases/download/{{.Version}}/sd-{{.Version}}-{{.Arch}}-{{.OS}}
         asset: sd-{{.Version}}-{{.Arch}}-{{.OS}}
         format: raw
         replacements:
@@ -87,7 +92,8 @@ packages:
           - darwin
         rosetta2: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/chmln/sd/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/chmln/sd/releases/download/{{.Version}}/sd-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: sd-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -96,6 +102,8 @@ packages:
             src: sd-{{.Version}}-{{.Arch}}-{{.OS}}/sd
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/chmln/sd/releases/download/{{.Version}}/sd-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64

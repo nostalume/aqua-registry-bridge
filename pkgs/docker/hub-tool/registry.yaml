@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/docker/hub-tool/releases/download/{{.Version}}/hub-tool-{{.OS}}-{{.Arch}}.{{.Format}}
     repo_owner: docker
     repo_name: hub-tool
     asset: hub-tool-{{.OS}}-{{.Arch}}.{{.Format}}
@@ -11,6 +12,8 @@ packages:
         src: hub-tool/hub-tool
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/docker/hub-tool/releases/download/{{.Version}}/hub-tool-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         files:
           - name: hub-tool
@@ -23,11 +26,14 @@ packages:
     # darwin/arm64 was supported
     version_overrides:
       - version_constraint: semver(">= 0.1.1")
+        type: http
+        url: https://gh-proxy.org/github.com/docker/hub-tool/releases/download/{{.Version}}/hub-tool-{{.OS}}-{{.Arch}}.{{.Format}}
         # linux/arm64 was supported
         # asset name and format were changed
         rosetta2: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/docker/hub-tool/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/docker/hub-tool/releases/download/{{.Version}}/hub-tool_{{.OS}}_{{.Arch}}
         asset: hub-tool_{{.OS}}_{{.Arch}}
         overrides: []
         format: raw

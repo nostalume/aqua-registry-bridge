@@ -7,27 +7,32 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.2.1")
-        url: https://gh-proxy.org/https://github.com/opencontainers/umoci/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/opencontainers/umoci/releases/download/{{.Version}}/umoci.amd64
         asset: umoci.amd64
         format: raw
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 0.4.7")
-        url: https://gh-proxy.org/https://github.com/opencontainers/umoci/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/opencontainers/umoci/releases/download/{{.Version}}/umoci.amd64
         asset: umoci.amd64
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/opencontainers/umoci/releases/download/{{.Version}}/umoci.sha256sum
           asset: umoci.sha256sum
           algorithm: sha256
         supported_envs:
           - linux/amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/opencontainers/umoci/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/opencontainers/umoci/releases/download/{{.Version}}/umoci.{{.OS}}.{{.Arch}}
         asset: umoci.{{.OS}}.{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/opencontainers/umoci/releases/download/{{.Version}}/umoci.sha256sum
           asset: umoci.sha256sum
           algorithm: sha256
         supported_envs:

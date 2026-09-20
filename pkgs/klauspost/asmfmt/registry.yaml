@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version == "v1.3.1"
         no_asset: true
       - version_constraint: Version == "v1.3.0"
-        url: https://gh-proxy.org/https://github.com/klauspost/asmfmt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/klauspost/asmfmt/releases/download/{{.Version}}/asmfmt-{{.OS}}_{{.Arch}}_{{trimV .Version}}.{{.Format}}
         asset: asmfmt-{{.OS}}_{{.Arch}}_{{trimV .Version}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -19,16 +20,20 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/klauspost/asmfmt/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/klauspost/asmfmt/releases/download/{{.Version}}/asmfmt-{{.OS}}_{{.Arch}}_{{trimV .Version}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 1.2.3")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/klauspost/asmfmt/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/klauspost/asmfmt/releases/download/{{.Version}}/asmfmt-{{.OS}}_{{.Arch}}_{{trimV .Version}}.{{.Format}}
         asset: asmfmt-{{.OS}}_{{.Arch}}_{{trimV .Version}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -37,9 +42,12 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/klauspost/asmfmt/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/klauspost/asmfmt/releases/download/{{.Version}}/asmfmt-{{.OS}}_{{.Arch}}_{{trimV .Version}}.{{.Format}}
             format: zip

@@ -9,7 +9,8 @@ packages:
       - version_constraint: semver("<= 0.2.0")
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/jubako/arx/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jubako/arx/releases/download/{{.Version}}/arx-{{.Version}}-{{.OS}}.{{.Format}}
         asset: arx-{{.Version}}-{{.OS}}.{{.Format}}
         format: tar.gz
         files:
@@ -20,14 +21,18 @@ packages:
         replacements:
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jubako/arx/releases/download/{{.Version}}/arx-{{.Version}}-{{.OS}}.{{.Format}}
             format: zip
             checksum:
-              type: github_release
+              type: http
+              url: "{{.AssetURL}}.sha256"
               file_format: regexp
               asset: "{{.Asset}}.sha256"
               algorithm: sha256

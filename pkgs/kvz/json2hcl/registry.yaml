@@ -1,19 +1,25 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/kvz/json2hcl/releases/download/{{.Version}}/json2hcl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
     repo_owner: kvz
     repo_name: json2hcl
     asset: json2hcl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
     description: Convert JSON to HCL, and vice versa. We don't use json2hcl anymore ourselves, so we can't invest time into it. However, we're still welcoming PRs
     version_constraint: semver(">= 0.1.1")
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/kvz/json2hcl/releases/download/{{.Version}}/json2hcl_{{trimV .Version}}_checksums.txt
       asset: json2hcl_{{trimV .Version}}_checksums.txt
       algorithm: sha256
     version_overrides:
       - version_constraint: semver("= 0.0.7")
+        type: http
+        url: https://gh-proxy.org/github.com/kvz/json2hcl/releases/download/{{.Version}}/json2hcl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
         supported_envs: []
       - version_constraint: semver("= 0.0.6")
+        type: http
+        url: https://gh-proxy.org/github.com/kvz/json2hcl/releases/download/{{.Version}}/json2hcl_{{.Version}}_{{.OS}}_{{.Arch}}
         checksum:
           enabled: false
         rosetta2: true
@@ -23,6 +29,8 @@ packages:
         asset: json2hcl_{{.Version}}_{{.OS}}_{{.Arch}}
         format: raw
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/kvz/json2hcl/releases/download/{{.Version}}/json2hcl_{{.OS}}_{{.Arch}}.{{.Format}}
         checksum:
           enabled: false
         rosetta2: true
@@ -33,8 +41,12 @@ packages:
         format: zip
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/kvz/json2hcl/releases/download/{{.Version}}/json2hcl_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kvz/json2hcl/releases/download/{{.Version}}/json2hcl_{{.OS}}_{{.Arch}}.{{.Format}}
             files:
               - name: json2hcl
         files:

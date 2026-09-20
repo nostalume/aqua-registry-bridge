@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/knqyf263/go-plugin/releases/download/{{.Version}}/go-plugin_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
     repo_owner: knqyf263
     repo_name: go-plugin
     description: Go Plugin System over WebAssembly
@@ -12,6 +13,7 @@ packages:
       - linux
       - darwin
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/knqyf263/go-plugin/releases/download/{{.Version}}/go-plugin_{{trimV .Version}}_checksums.txt
       asset: go-plugin_{{trimV .Version}}_checksums.txt
       algorithm: sha256

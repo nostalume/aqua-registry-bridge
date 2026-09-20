@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/ms-jpq/sad/releases/download/{{.Version}}/{{.Arch}}-{{.OS}}.zip
     repo_owner: ms-jpq
     repo_name: sad
     description: CLI search and replace | Space Age seD
@@ -14,6 +15,8 @@ packages:
     version_constraint: semver(">= 0.4.17")
     version_overrides:
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/ms-jpq/sad/releases/download/{{.Version}}/{{.Arch}}-{{.OS}}.zip
         rosetta2: true
         supported_envs:
           - linux

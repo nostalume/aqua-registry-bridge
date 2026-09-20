@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/fatedier/frp/releases/download/{{.Version}}/frp_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: fatedier
     repo_name: frp
     description: A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet
@@ -8,6 +9,8 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/fatedier/frp/releases/download/{{.Version}}/frp_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     supported_envs:
       - darwin
@@ -19,6 +22,7 @@ packages:
       - name: frps
         src: frp_{{trimV .Version}}_{{.OS}}_{{.Arch}}/frps
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/fatedier/frp/releases/download/{{.Version}}/frp_sha256_checksums.txt
       asset: frp_sha256_checksums.txt
       algorithm: sha256

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/d2lang/d2/releases/download/{{.Version}}/d2-{{.Version}}-{{.OS}}-{{.Arch}}.tar.gz
     repo_owner: d2lang
     repo_name: d2
     aliases:

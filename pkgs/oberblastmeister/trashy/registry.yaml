@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/oberblastmeister/trashy/releases/download/{{.Version}}/trash-{{.Arch}}-{{.OS}}.{{.Format}}
     repo_owner: oberblastmeister
     repo_name: trashy
     description: A cli system trash manager, alternative to rm and trash-cli
@@ -10,6 +11,8 @@ packages:
       - name: trash
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/oberblastmeister/trashy/releases/download/{{.Version}}/trash-{{.Arch}}-{{.OS}}
         format: raw
         asset: trash-{{.Arch}}-{{.OS}}
     replacements:

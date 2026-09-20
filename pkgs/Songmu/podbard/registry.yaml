@@ -6,15 +6,19 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.0.2")
-        url: https://gh-proxy.org/https://github.com/Songmu/podbard/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Songmu/podbard/releases/download/{{.Version}}/primcast_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: primcast_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Songmu/podbard/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Songmu/podbard/releases/download/{{.Version}}/primcast_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux
@@ -23,15 +27,19 @@ packages:
           - name: primcast
             src: primcast_{{.Version}}_{{.OS}}_{{.Arch}}/primcast
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/Songmu/podbard/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Songmu/podbard/releases/download/{{.Version}}/podbard_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: podbard_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/Songmu/podbard/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Songmu/podbard/releases/download/{{.Version}}/podbard_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/infracost/infracost/releases/download/{{.Version}}/infracost-{{.OS}}-{{.Arch}}.{{.Format}}
     repo_owner: infracost
     repo_name: infracost
     description: Cloud cost estimates for Terraform in pull requests. Love your cloud bill
@@ -11,11 +12,15 @@ packages:
     format: tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/infracost/infracost/releases/download/{{.Version}}/infracost-{{.OS}}-{{.Arch}}.{{.Format}}
         goarch: amd64
         files:
           - name: infracost
             src: infracost.exe
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/infracost/infracost/releases/download/{{.Version}}/infracost-{{.OS}}-{{.Arch}}.{{.Format}}
         goarch: arm64
         files:
           - name: infracost
@@ -23,15 +28,20 @@ packages:
     version_constraint: semver(">= 0.9.18")
     version_overrides:
       - version_constraint: semver(">= 0.9.17")
+        type: http
+        url: https://gh-proxy.org/github.com/infracost/infracost/releases/download/{{.Version}}/infracost-{{.OS}}-{{.Arch}}.{{.Format}}
         checksum:
           enabled: false
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/infracost/infracost/releases/download/{{.Version}}/infracost-{{.OS}}-{{.Arch}}.{{.Format}}
         checksum:
           enabled: false
         supported_envs:
           - darwin
           - amd64
     checksum:
-      type: github_release
+      type: http
+      url: "{{.AssetURL}}.sha256"
       asset: "{{.Asset}}.sha256"
       algorithm: sha256

@@ -7,11 +7,13 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/liamg/comet/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/liamg/comet/releases/download/{{.Version}}/comet-{{.OS}}-{{.Arch}}
         asset: comet-{{.OS}}-{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/liamg/comet/releases/download/{{.Version}}/comet_{{trimV .Version}}_checksums.txt
           asset: comet_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         supported_envs:

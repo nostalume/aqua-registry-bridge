@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/fastly/terrctl/releases/download/{{.Version}}/terrctl-{{.OS}}_{{.Arch}}-{{.Version}}.{{.Format}}
     repo_owner: fastly
     repo_name: terrctl
     description: A command-line client for Fastly Terrarium. https://wasm.fastlylabs.com
@@ -15,12 +16,16 @@ packages:
         src: "{{.OS}}-{{.Arch}}/terrctl"
     overrides:
       - goos: darwin
+        type: http
+        url: https://gh-proxy.org/github.com/fastly/terrctl/releases/download/{{.Version}}/terrctl-{{.OS}}-{{.Version}}.{{.Format}}
         goarch: amd64
         asset: terrctl-{{.OS}}-{{.Version}}.{{.Format}}
         files:
           - name: terrctl
             src: "{{.OS}}/terrctl"
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/fastly/terrctl/releases/download/{{.Version}}/terrctl-{{.OS}}-{{.Version}}.{{.Format}}
         format: zip
         asset: terrctl-{{.OS}}-{{.Version}}.{{.Format}}
         files:

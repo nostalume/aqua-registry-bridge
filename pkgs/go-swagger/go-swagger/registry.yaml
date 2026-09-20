@@ -11,7 +11,8 @@ packages:
       - version_constraint: semver("<= 0.2.3")
         no_asset: true
       - version_constraint: semver("<= 0.5.0")
-        url: https://gh-proxy.org/https://github.com/go-swagger/go-swagger/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/go-swagger/go-swagger/releases/download/{{.Version}}/swagger_{{.OS}}_{{.Arch}}
         asset: swagger_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
@@ -19,38 +20,46 @@ packages:
         replacements:
           arm64: arm
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/go-swagger/go-swagger/releases/download/{{.Version}}/sha1sum.txt
           asset: sha1sum.txt
           algorithm: sha1
       - version_constraint: semver("<= 0.28.0")
-        url: https://gh-proxy.org/https://github.com/go-swagger/go-swagger/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/go-swagger/go-swagger/releases/download/{{.Version}}/swagger_{{.OS}}_{{.Arch}}
         asset: swagger_{{.OS}}_{{.Arch}}
         format: raw
         rosetta2: true
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/go-swagger/go-swagger/releases/download/{{.Version}}/sha1sum.txt
           asset: sha1sum.txt
           algorithm: sha1
       - version_constraint: semver("<= 0.30.0")
-        url: https://gh-proxy.org/https://github.com/go-swagger/go-swagger/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/go-swagger/go-swagger/releases/download/{{.Version}}/swagger_{{.OS}}_{{.Arch}}
         asset: swagger_{{.OS}}_{{.Arch}}
         format: raw
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/go-swagger/go-swagger/releases/download/{{.Version}}/sha1sum.txt
           asset: sha1sum.txt
           algorithm: sha1
       - version_constraint: semver("<= 0.33.1")
-        url: https://gh-proxy.org/https://github.com/go-swagger/go-swagger/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/go-swagger/go-swagger/releases/download/{{.Version}}/swagger_{{.OS}}_{{.Arch}}
         asset: swagger_{{.OS}}_{{.Arch}}
         format: raw
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/go-swagger/go-swagger/releases/download/{{.Version}}/sha1sum.txt
           asset: sha1sum.txt
           algorithm: sha1
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/go-swagger/go-swagger/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/go-swagger/go-swagger/releases/download/{{.Version}}/swagger_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: swagger_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -60,9 +69,12 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/go-swagger/go-swagger/releases/download/{{.Version}}/go-swagger-checksums.txt
           asset: go-swagger-checksums.txt
           algorithm: sha256
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/go-swagger/go-swagger/releases/download/{{.Version}}/swagger_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

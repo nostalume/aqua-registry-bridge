@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v0.20.0"
-        url: https://gh-proxy.org/https://github.com/aquasecurity/trivy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aquasecurity/trivy/releases/download/{{.Version}}/trivy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: trivy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -16,18 +17,22 @@ packages:
           darwin: macOS
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/aquasecurity/trivy/releases/download/{{.Version}}/trivy_{{trimV .Version}}_checksums.txt
           asset: trivy_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/aquasecurity/trivy/releases/download/{{.Version}}/trivy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: ARM64
         supported_envs:
           - linux
           - darwin
       - version_constraint: semver("<= 0.1.6")
-        url: https://gh-proxy.org/https://github.com/aquasecurity/trivy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aquasecurity/trivy/releases/download/{{.Version}}/trivy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: trivy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -38,17 +43,23 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/aquasecurity/trivy/releases/download/{{.Version}}/trivy_{{trimV .Version}}_checksums.txt
           asset: trivy_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/aquasecurity/trivy/releases/download/{{.Version}}/trivy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: ARM64
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/aquasecurity/trivy/releases/download/{{.Version}}/trivy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
       - version_constraint: semver("<= 0.16.0")
-        url: https://gh-proxy.org/https://github.com/aquasecurity/trivy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aquasecurity/trivy/releases/download/{{.Version}}/trivy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: trivy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -57,18 +68,22 @@ packages:
           darwin: macOS
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/aquasecurity/trivy/releases/download/{{.Version}}/trivy_{{trimV .Version}}_checksums.txt
           asset: trivy_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/aquasecurity/trivy/releases/download/{{.Version}}/trivy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               arm64: ARM64
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/aquasecurity/trivy/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/aquasecurity/trivy/releases/download/{{.Version}}/trivy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: trivy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -78,19 +93,23 @@ packages:
           darwin: macOS
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/aquasecurity/trivy/releases/download/{{.Version}}/trivy_{{trimV .Version}}_checksums.txt
           asset: trivy_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
             bundle:
-              type: github_release
+              type: http
+              url: https://gh-proxy.org/github.com/aquasecurity/trivy/releases/download/{{.Version}}/trivy_{{trimV .Version}}_checksums.txt.sigstore.json
               asset: trivy_{{trimV .Version}}_checksums.txt.sigstore.json
             opts:
               - --certificate-identity
-              - https://github.com/aquasecurity/trivy/.github/workflows/reusable-release.yaml@refs/tags/{{.Version}}
+              - https://gh-proxy.org/github.com/aquasecurity/trivy/.github/workflows/reusable-release.yaml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/aquasecurity/trivy/releases/download/{{.Version}}/trivy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             replacements: {}

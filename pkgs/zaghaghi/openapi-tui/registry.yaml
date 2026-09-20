@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.5.0")
-        url: https://gh-proxy.org/https://github.com/zaghaghi/openapi-tui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zaghaghi/openapi-tui/releases/download/{{.Version}}/openapi-tui-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: openapi-tui-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -15,11 +16,13 @@ packages:
           amd64: x86_64
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/zaghaghi/openapi-tui/releases/download/{{.Version}}/openapi-tui-{{.Version}}-{{.OS}}-{{.Arch}}.sha256
           asset: openapi-tui-{{.Version}}-{{.OS}}-{{.Arch}}.sha256
           algorithm: sha256
       - version_constraint: Version == "0.6.0"
-        url: https://gh-proxy.org/https://github.com/zaghaghi/openapi-tui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zaghaghi/openapi-tui/releases/download/{{.Version}}/openapi-tui-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: openapi-tui-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -27,14 +30,16 @@ packages:
           amd64: x86_64
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/zaghaghi/openapi-tui/releases/download/{{.Version}}/openapi-tui-{{.Version}}-{{.OS}}-{{.Arch}}.sha256
           asset: openapi-tui-{{.Version}}-{{.OS}}-{{.Arch}}.sha256
           algorithm: sha256
         supported_envs:
           - darwin
           - windows
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/zaghaghi/openapi-tui/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/zaghaghi/openapi-tui/releases/download/{{.Version}}/openapi-tui-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: openapi-tui-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -42,6 +47,7 @@ packages:
           amd64: x86_64
           darwin: macos
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/zaghaghi/openapi-tui/releases/download/{{.Version}}/openapi-tui-{{.Version}}-{{.OS}}-{{.Arch}}.sha256
           asset: openapi-tui-{{.Version}}-{{.OS}}-{{.Arch}}.sha256
           algorithm: sha256

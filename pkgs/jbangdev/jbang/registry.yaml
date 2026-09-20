@@ -12,17 +12,21 @@ packages:
       - version_constraint: semver("< 0.48.0")
         error_message: Use version >= 0.48.0. Older versions are not supported.
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/jbangdev/jbang/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jbangdev/jbang/releases/download/{{.Version}}/jbang.zip
         asset: jbang.zip
         files:
           - name: jbang
             src: jbang/bin/jbang
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jbangdev/jbang/releases/download/{{.Version}}/jbang.zip
             files:
               - name: jbang
                 src: jbang/bin/jbang.cmd
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256

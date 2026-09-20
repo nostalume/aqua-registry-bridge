@@ -12,13 +12,15 @@ packages:
           They decided to leave go-tuf as a library only.
           https://github.com/theupdateframework/go-tuf/releases/tag/v2.0.0
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/theupdateframework/go-tuf/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/theupdateframework/go-tuf/releases/download/{{.Version}}/tuf-client_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
         asset: tuf-client_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
         rosetta2: true
         supported_envs:
           - darwin
           - amd64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/theupdateframework/go-tuf/releases/download/{{.Version}}/tuf-client_{{trimV .Version}}_checksums.txt
           asset: tuf-client_{{trimV .Version}}_checksums.txt
           algorithm: sha256

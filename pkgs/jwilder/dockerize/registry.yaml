@@ -7,13 +7,15 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.3.0")
-        url: https://gh-proxy.org/https://github.com/jwilder/dockerize/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jwilder/dockerize/releases/download/{{.Version}}/dockerize-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         asset: dockerize-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         format: tar.gz
         supported_envs:
           - linux/amd64
       - version_constraint: semver("<= 0.6.1")
-        url: https://gh-proxy.org/https://github.com/jwilder/dockerize/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jwilder/dockerize/releases/download/{{.Version}}/dockerize-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         asset: dockerize-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -21,7 +23,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/jwilder/dockerize/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/jwilder/dockerize/releases/download/{{.Version}}/dockerize-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         asset: dockerize-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         format: tar.gz
         supported_envs:

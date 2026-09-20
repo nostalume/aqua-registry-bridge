@@ -9,60 +9,76 @@ packages:
       - version_constraint: Version in ["v0.17.0", "v0.58.0", "v0.112.0"]
         no_asset: true
       - version_constraint: Version == "v0.0.1"
-        url: https://gh-proxy.org/https://github.com/k1LoW/runn/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/k1LoW/runn/releases/download/{{.Version}}/runbk_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: runbk_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         files:
           - name: runbk
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/k1LoW/runn/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/k1LoW/runn/releases/download/{{.Version}}/runbk_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.59.4")
-        url: https://gh-proxy.org/https://github.com/k1LoW/runn/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/k1LoW/runn/releases/download/{{.Version}}/runn_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: runn_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/k1LoW/runn/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/k1LoW/runn/releases/download/{{.Version}}/runn_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: tar.gz
         supported_envs:
           - linux/amd64
           - darwin
       - version_constraint: semver("<= 0.75.3")
-        url: https://gh-proxy.org/https://github.com/k1LoW/runn/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/k1LoW/runn/releases/download/{{.Version}}/runn_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: runn_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/k1LoW/runn/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/k1LoW/runn/releases/download/{{.Version}}/runn_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/k1LoW/runn/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/k1LoW/runn/releases/download/{{.Version}}/runn_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: runn_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/k1LoW/runn/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/k1LoW/runn/releases/download/{{.Version}}/runn_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip

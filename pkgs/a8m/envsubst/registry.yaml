@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v1.0.0"
-        url: https://gh-proxy.org/https://github.com/a8m/envsubst/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/a8m/envsubst/releases/download/{{.Version}}/envsubst-{{.OS}}-{{.Arch}}
         asset: envsubst-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -19,7 +20,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v1.1.0"
-        url: https://gh-proxy.org/https://github.com/a8m/envsubst/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/a8m/envsubst/releases/download/{{.Version}}/envsubst-{{.OS}}-{{.Arch}}
         asset: envsubst-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -30,13 +32,16 @@ packages:
           linux: Linux
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/a8m/envsubst/releases/download/{{.Version}}/envsubst.exe.exec
             asset: envsubst.exe.exec
         supported_envs:
           - darwin
           - windows
           - amd64
       - version_constraint: Version == "v1.2.0"
-        url: https://gh-proxy.org/https://github.com/a8m/envsubst/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/a8m/envsubst/releases/download/{{.Version}}/envsubst-{{.OS}}-{{.Arch}}
         asset: envsubst-{{.OS}}-{{.Arch}}
         format: raw
         replacements:
@@ -45,20 +50,25 @@ packages:
           linux: Linux
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/a8m/envsubst/releases/download/{{.Version}}/envsubst
             asset: envsubst
       - version_constraint: Version == "v1.4.1"
-        url: https://gh-proxy.org/https://github.com/a8m/envsubst/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/a8m/envsubst/releases/download/{{.Version}}/envsubst-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: envsubst-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.md5"
           asset: "{{.Asset}}.md5"
           algorithm: md5
         supported_envs:
           - linux
           - darwin
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/a8m/envsubst/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/a8m/envsubst/releases/download/{{.Version}}/envsubst-{{.OS}}-{{.Arch}}
         asset: envsubst-{{.OS}}-{{.Arch}}
         format: raw
         replacements:
@@ -66,9 +76,12 @@ packages:
           darwin: Darwin
           linux: Linux
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.md5"
           asset: "{{.Asset}}.md5"
           algorithm: md5
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/a8m/envsubst/releases/download/{{.Version}}/envsubst
             asset: envsubst

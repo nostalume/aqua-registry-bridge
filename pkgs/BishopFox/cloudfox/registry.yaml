@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/BishopFox/cloudfox/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/BishopFox/cloudfox/releases/download/{{.Version}}/cloudfox-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: cloudfox-{{.OS}}-{{.Arch}}.{{.Format}}
         format: zip
         windows_arm_emulation: true

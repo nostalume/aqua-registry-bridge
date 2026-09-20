@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.4.0")
-        url: https://gh-proxy.org/https://github.com/plexsystems/sinker/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/plexsystems/sinker/releases/download/{{.Version}}/imagesync-{{.OS}}-{{.Arch}}
         asset: imagesync-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -20,7 +21,8 @@ packages:
           - windows
           - amd64
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/plexsystems/sinker/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/plexsystems/sinker/releases/download/{{.Version}}/sinker-{{.OS}}-{{.Arch}}
         asset: sinker-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true

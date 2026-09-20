@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.0.2")
-        url: https://gh-proxy.org/https://github.com/nametake/golangci-lint-langserver/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/nametake/golangci-lint-langserver/releases/download/{{.Version}}/golangci-lint-langserver_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: golangci-lint-langserver_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -17,11 +18,13 @@ packages:
           - linux/amd64
           - darwin
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/nametake/golangci-lint-langserver/releases/download/{{.Version}}/golangci-lint-langserver_{{trimV .Version}}_checksums.txt
           asset: golangci-lint-langserver_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.0.4")
-        url: https://gh-proxy.org/https://github.com/nametake/golangci-lint-langserver/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/nametake/golangci-lint-langserver/releases/download/{{.Version}}/golangci-lint-langserver_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: golangci-lint-langserver_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -31,11 +34,13 @@ packages:
           - linux/amd64
           - darwin
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/nametake/golangci-lint-langserver/releases/download/{{.Version}}/golangci-lint-langserver_{{trimV .Version}}_checksums.txt
           asset: golangci-lint-langserver_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 0.0.6")
-        url: https://gh-proxy.org/https://github.com/nametake/golangci-lint-langserver/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/nametake/golangci-lint-langserver/releases/download/{{.Version}}/golangci-lint-langserver_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: golangci-lint-langserver_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -45,11 +50,13 @@ packages:
           - linux
           - darwin
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/nametake/golangci-lint-langserver/releases/download/{{.Version}}/golangci-lint-langserver_{{trimV .Version}}_checksums.txt
           asset: golangci-lint-langserver_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: Version == "v0.0.7"
-        url: https://gh-proxy.org/https://github.com/nametake/golangci-lint-langserver/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/nametake/golangci-lint-langserver/releases/download/{{.Version}}/golangci-lint-langserver_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: golangci-lint-langserver_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -58,28 +65,36 @@ packages:
           - linux
           - darwin
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/nametake/golangci-lint-langserver/releases/download/{{.Version}}/golangci-lint-langserver_{{trimV .Version}}_checksums.txt
           asset: golangci-lint-langserver_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: Version == "v0.0.8"
-        url: https://gh-proxy.org/https://github.com/nametake/golangci-lint-langserver/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/nametake/golangci-lint-langserver/releases/download/{{.Version}}/golangci-lint-langserver_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: golangci-lint-langserver_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/nametake/golangci-lint-langserver/releases/download/{{.Version}}/golangci-lint-langserver_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/nametake/golangci-lint-langserver/releases/download/{{.Version}}/golangci-lint-langserver_{{trimV .Version}}_checksums.txt
           asset: golangci-lint-langserver_{{trimV .Version}}_checksums.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/nametake/golangci-lint-langserver/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/nametake/golangci-lint-langserver/releases/download/{{.Version}}/golangci-lint-langserver_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: golangci-lint-langserver_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/nametake/golangci-lint-langserver/releases/download/{{.Version}}/golangci-lint-langserver_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
         replacements:
           amd64: x86_64
@@ -87,6 +102,7 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/nametake/golangci-lint-langserver/releases/download/{{.Version}}/golangci-lint-langserver_{{trimV .Version}}_checksums.txt
           asset: golangci-lint-langserver_{{trimV .Version}}_checksums.txt
           algorithm: sha256

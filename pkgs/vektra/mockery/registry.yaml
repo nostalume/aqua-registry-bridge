@@ -9,7 +9,8 @@ packages:
       - version_constraint: Version in ["v1.0.0", "v2.9.0"]
         no_asset: true
       - version_constraint: Version == "v2.9.6"
-        url: https://gh-proxy.org/https://github.com/vektra/mockery/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vektra/mockery/releases/download/{{.Version}}/mockery_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: mockery_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -18,11 +19,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vektra/mockery/releases/download/{{.Version}}/checksum.txt
           asset: checksum.txt
           algorithm: sha256
       - version_constraint: semver("<= 2.7.4")
-        url: https://gh-proxy.org/https://github.com/vektra/mockery/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vektra/mockery/releases/download/{{.Version}}/mockery_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: mockery_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -33,7 +36,8 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vektra/mockery/releases/download/{{.Version}}/checksum.txt
           asset: checksum.txt
           algorithm: sha256
         supported_envs:
@@ -41,7 +45,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 2.10.1")
-        url: https://gh-proxy.org/https://github.com/vektra/mockery/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vektra/mockery/releases/download/{{.Version}}/mockery_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: mockery_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -51,11 +56,13 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vektra/mockery/releases/download/{{.Version}}/checksum.txt
           asset: checksum.txt
           algorithm: sha256
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/vektra/mockery/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/vektra/mockery/releases/download/{{.Version}}/mockery_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: mockery_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -64,6 +71,7 @@ packages:
           linux: Linux
           windows: Windows
         checksum:
-          type: github_release
+          type: http
+          url: https://gh-proxy.org/github.com/vektra/mockery/releases/download/{{.Version}}/checksum.txt
           asset: checksum.txt
           algorithm: sha256

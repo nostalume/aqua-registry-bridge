@@ -11,7 +11,8 @@ packages:
       - version_constraint: Version in ["tauri-cli-v2.0.0-rc.10", "tauri-cli-v1.6.4", "tauri-cli-v2.0.0-beta.5"]
         no_asset: true
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/tauri-apps/tauri/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/tauri-apps/tauri/releases/download/{{.Version}}/cargo-tauri-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: cargo-tauri-{{.Arch}}-{{.OS}}.{{.Format}}
         format: zip
         replacements:
@@ -22,6 +23,8 @@ packages:
           windows: pc-windows-msvc
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/tauri-apps/tauri/releases/download/{{.Version}}/cargo-tauri-{{.Arch}}-{{.OS}}.{{.Format}}
             format: tgz
             replacements:
               arm64: arm64

@@ -52,16 +52,22 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "v3.1.0"
+        type: http
+        url: https://gh-proxy.org/github.com/Kitware/CMake/releases/download/{{.Version}}/cmake-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
           darwin: Darwin
           linux: Linux
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Kitware/CMake/releases/download/{{.Version}}/cmake-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             asset: cmake-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               amd64: x86_64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/Kitware/CMake/releases/download/{{.Version}}/cmake-{{trimV .Version}}-{{.OS}}-universal.{{.Format}}
             asset: cmake-{{trimV .Version}}-{{.OS}}-universal.{{.Format}}
             files:
               - name: cmake
@@ -78,7 +84,8 @@ packages:
           - linux/amd64
           - darwin
       - version_constraint: Version == "v3.19.2"
-        url: https://gh-proxy.org/https://github.com/Kitware/CMake/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Kitware/CMake/releases/download/{{.Version}}/cmake-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: cmake-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -88,9 +95,13 @@ packages:
           windows: win64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Kitware/CMake/releases/download/{{.Version}}/cmake-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               amd64: x86_64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/Kitware/CMake/releases/download/{{.Version}}/cmake-{{trimV .Version}}-{{.OS}}-universal.{{.Format}}
             asset: cmake-{{trimV .Version}}-{{.OS}}-universal.{{.Format}}
             files:
               - name: cmake
@@ -104,6 +115,8 @@ packages:
               - name: ctest
                 src: "{{.AssetWithoutExt}}/CMake.app/Contents/bin/ctest"
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Kitware/CMake/releases/download/{{.Version}}/cmake-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             replacements:
               amd64: x64
@@ -121,7 +134,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 3.0.2")
-        url: https://gh-proxy.org/https://github.com/Kitware/CMake/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Kitware/CMake/releases/download/{{.Version}}/cmake-{{trimV .Version}}-{{.OS}}-universal.{{.Format}}
         asset: cmake-{{trimV .Version}}-{{.OS}}-universal.{{.Format}}
         format: tar.gz
         replacements:
@@ -140,7 +154,8 @@ packages:
           - name: ctest
             src: "{{.AssetWithoutExt}}/CMake.app/Contents/bin/ctest"
       - version_constraint: semver("<= 3.5.2")
-        url: https://gh-proxy.org/https://github.com/Kitware/CMake/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Kitware/CMake/releases/download/{{.Version}}/cmake-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: cmake-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -153,6 +168,8 @@ packages:
           - darwin
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/Kitware/CMake/releases/download/{{.Version}}/cmake-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             files:
               - name: cmake
                 src: "{{.AssetWithoutExt}}/CMake.app/Contents/bin/cmake"
@@ -165,7 +182,8 @@ packages:
               - name: ctest
                 src: "{{.AssetWithoutExt}}/CMake.app/Contents/bin/ctest"
       - version_constraint: semver("<= 3.19.1")
-        url: https://gh-proxy.org/https://github.com/Kitware/CMake/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Kitware/CMake/releases/download/{{.Version}}/cmake-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: cmake-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -177,6 +195,8 @@ packages:
           windows: win64
         overrides:
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Kitware/CMake/releases/download/{{.Version}}/cmake-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             replacements:
               amd64: x64
@@ -190,6 +210,8 @@ packages:
               - name: ctest
                 src: "{{.AssetWithoutExt}}/bin/ctest"
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/Kitware/CMake/releases/download/{{.Version}}/cmake-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             files:
               - name: cmake
                 src: "{{.AssetWithoutExt}}/CMake.app/Contents/bin/cmake"
@@ -206,7 +228,8 @@ packages:
           - windows
           - amd64
       - version_constraint: semver("<= 3.19.8")
-        url: https://gh-proxy.org/https://github.com/Kitware/CMake/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/Kitware/CMake/releases/download/{{.Version}}/cmake-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: cmake-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -216,10 +239,14 @@ packages:
           windows: win64
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Kitware/CMake/releases/download/{{.Version}}/cmake-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             replacements:
               amd64: x86_64
               arm64: aarch64
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/Kitware/CMake/releases/download/{{.Version}}/cmake-{{trimV .Version}}-{{.OS}}-universal.{{.Format}}
             format: tar.gz
             asset: cmake-{{trimV .Version}}-{{.OS}}-universal.{{.Format}}
             files:
@@ -234,6 +261,8 @@ packages:
               - name: ctest
                 src: "{{.AssetWithoutExt}}/CMake.app/Contents/bin/ctest"
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Kitware/CMake/releases/download/{{.Version}}/cmake-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             replacements:
               amd64: x64
@@ -247,5 +276,9 @@ packages:
               - name: ctest
                 src: "{{.AssetWithoutExt}}/bin/ctest"
       - version_constraint: semver("<= 3.23.5")
+        type: http
+        url: https://gh-proxy.org/github.com/Kitware/CMake/releases/download/{{.Version}}/cmake-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         windows_arm_emulation: true
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/Kitware/CMake/releases/download/{{.Version}}/cmake-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}

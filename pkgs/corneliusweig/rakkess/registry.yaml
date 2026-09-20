@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/corneliusweig/rakkess/releases/download/{{.Version}}/rakkess-{{.Arch}}-{{.OS}}.tar.gz
     repo_owner: corneliusweig
     repo_name: rakkess
     description: Review Access - kubectl plugin to show an access matrix for k8s server resources
@@ -13,8 +14,11 @@ packages:
     asset: rakkess-{{.Arch}}-{{.OS}}.tar.gz
     overrides:
       - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/corneliusweig/rakkess/releases/download/{{.Version}}/rakkess-amd64-windows.zip
         asset: rakkess-amd64-windows.zip
     checksum:
-      type: github_release
+      type: http
+      url: "{{.AssetURL}}.sha256"
       asset: "{{.Asset}}.sha256"
       algorithm: sha256

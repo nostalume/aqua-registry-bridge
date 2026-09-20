@@ -9,17 +9,20 @@ packages:
       - version_constraint: Version == "v0.3.0"
         no_asset: true
       - version_constraint: semver("<= 1.1.0")
-        url: https://gh-proxy.org/https://github.com/adhocteam/ssm/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/adhocteam/ssm/releases/download/{{.Version}}/ssm-{{.OS}}-{{.Arch}}
         asset: ssm-{{.OS}}-{{.Arch}}
         format: raw
         supported_envs:
           - linux/amd64
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha"
           asset: "{{.Asset}}.sha"
           algorithm: sha256
       - version_constraint: semver("<= 1.4.2")
-        url: https://gh-proxy.org/https://github.com/adhocteam/ssm/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/adhocteam/ssm/releases/download/{{.Version}}/ssm-{{.OS}}-{{.Arch}}
         asset: ssm-{{.OS}}-{{.Arch}}
         format: raw
         rosetta2: true
@@ -29,15 +32,19 @@ packages:
         # linux/amd64 doesn't match hash
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/adhocteam/ssm/releases/download/{{.Version}}/ssm-{{.OS}}-{{.Arch}}
             goarch: amd64
             checksum:
               enabled: false
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha"
           asset: "{{.Asset}}.sha"
           algorithm: sha256
       - version_constraint: semver("<= 1.5.1")
-        url: https://gh-proxy.org/https://github.com/adhocteam/ssm/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/adhocteam/ssm/releases/download/{{.Version}}/ssm-{{.OS}}-{{.Arch}}
         asset: ssm-{{.OS}}-{{.Arch}}
         format: raw
         supported_envs:
@@ -47,14 +54,19 @@ packages:
         # https://github.com/adhocteam/ssm/pull/41
         overrides:
           - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/adhocteam/ssm/releases/download/{{.Version}}/ssm-{{.OS}}-{{.Arch}}
             goarch: arm64
             checksum:
               enabled: false
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha"
           asset: "{{.Asset}}.sha"
           algorithm: sha256
       - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/adhocteam/ssm/releases/download/{{.Version}}/ssm-{{.OS}}-{{.Arch}}
         # https://github.com/adhocteam/ssm/pull/41
         asset: ssm-{{.OS}}-{{.Arch}}
         format: raw
@@ -62,6 +74,7 @@ packages:
           - linux/amd64
           - darwin
         checksum:
-          type: github_release
+          type: http
+          url: "{{.AssetURL}}.sha"
           asset: "{{.Asset}}.sha"
           algorithm: sha256

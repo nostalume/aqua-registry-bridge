@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: github_release
+  - type: http
+    url: https://gh-proxy.org/github.com/Percona-Lab/mysql_random_data_load/releases/download/{{.Version}}/mysql_random_data_load_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
     repo_owner: Percona-Lab
     repo_name: mysql_random_data_load
     asset: mysql_random_data_load_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
@@ -14,6 +15,7 @@ packages:
       - darwin
     rosetta2: true
     checksum:
-      type: github_release
+      type: http
+      url: https://gh-proxy.org/github.com/Percona-Lab/mysql_random_data_load/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256

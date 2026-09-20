@@ -7,7 +7,8 @@ packages:
     version_constraint: "false"
     version_overrides:
       - version_constraint: semver("<= 0.8.0")
-        url: https://gh-proxy.org/https://github.com/sharkdp/hexyl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sharkdp/hexyl/releases/download/{{.Version}}/hexyl-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: hexyl-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -22,7 +23,8 @@ packages:
           - name: hexyl
             src: "{{.AssetWithoutExt}}/hexyl"
       - version_constraint: semver("<= 0.15.0")
-        url: https://gh-proxy.org/https://github.com/sharkdp/hexyl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sharkdp/hexyl/releases/download/{{.Version}}/hexyl-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: hexyl-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
@@ -36,18 +38,25 @@ packages:
             src: "{{.AssetWithoutExt}}/hexyl"
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/sharkdp/hexyl/releases/download/{{.Version}}/hexyl-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/sharkdp/hexyl/releases/download/{{.Version}}/hexyl-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               arm64: aarch64
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/sharkdp/hexyl/releases/download/{{.Version}}/hexyl-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
       - version_constraint: "true"
-        url: https://gh-proxy.org/https://github.com/sharkdp/hexyl/releases/download/{{.Version}}/{{.Asset}}
+        type: http
+        url: https://gh-proxy.org/github.com/sharkdp/hexyl/releases/download/{{.Version}}/hexyl-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: hexyl-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -61,12 +70,18 @@ packages:
             src: "{{.AssetWithoutExt}}/hexyl"
         overrides:
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/sharkdp/hexyl/releases/download/{{.Version}}/hexyl-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: amd64
             replacements:
               linux: unknown-linux-musl
           - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/sharkdp/hexyl/releases/download/{{.Version}}/hexyl-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             goarch: arm64
             replacements:
               linux: unknown-linux-gnu
           - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/sharkdp/hexyl/releases/download/{{.Version}}/hexyl-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
