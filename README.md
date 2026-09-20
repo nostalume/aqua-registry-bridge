@@ -26,7 +26,7 @@ registries:
     type: github_content
     repo_owner: nostalume
     repo_name: aqua-registry-bridge
-    ref: mirror-20260703
+    ref: mirror-20260920
     path: registry.yaml
 
 packages:
