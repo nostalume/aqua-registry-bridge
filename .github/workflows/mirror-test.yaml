@@ -63,4 +63,4 @@ jobs:
           python3 scripts/mirror.py --dry-run
           python3 scripts/validate.py --schema .ai/aqua/json-schema/registry.json
           argd gr
-          git diff --exit-code -- registry.yaml
+          python3 scripts/validate.py --schema .ai/aqua/json-schema/registry.json

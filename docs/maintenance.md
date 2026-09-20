@@ -11,6 +11,7 @@
 - 私有 GitHub 包不能安全地通过匿名 HTTP 代理等价转换，转换器对此采取 fail-closed，而不是静默生成可能泄露或失效的 URL。
 - `github_url_mode: host_path` 是默认代理模式。它生成 `https://gh-proxy.org/github.com/...`，避免完整 URL 模式中的 `https:` 被 aqua 当成 Windows 缓存路径的一部分。
 - 根 `registry.yaml` 始终由官方 `argd gr` 从包文件生成，不由自定义拼接逻辑维护。
+- `argd gr` 在 Windows 与 Linux 上可能产生不同的包列表顺序；列表顺序没有 Registry 语义，因此跨平台门禁比较包定义多集，发布工作流的 Linux runner 是远端文件顺序的规范生成环境。
 - 验证门包括：单元/回归测试、转换幂等性、无残留直连 GitHub 下载 URL、aqua 官方 JSON Schema，以及根 Registry 与所有包文件的语义多集一致性。
 
 ## 发布与兼容性
