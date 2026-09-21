@@ -12069,8 +12069,6 @@ packages:
         asset: difft-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
-        files:
-          - name: difft
         replacements:
           amd64: x86_64
           darwin: apple-darwin
@@ -12084,8 +12082,6 @@ packages:
         asset: difft-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
-        files:
-          - name: difft
         replacements:
           amd64: x86_64
           arm64: aarch64
@@ -12114,8 +12110,6 @@ packages:
         asset: difft-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
-        files:
-          - name: difft
         replacements:
           amd64: x86_64
           arm64: aarch64
@@ -12134,8 +12128,6 @@ packages:
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
-        files:
-          - name: difft
         replacements:
           amd64: x86_64
           darwin: apple-darwin
@@ -12157,8 +12149,6 @@ packages:
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
-        files:
-          - name: difft
         replacements:
           amd64: x86_64
           darwin: apple-darwin
@@ -12180,8 +12170,6 @@ packages:
         asset: difft-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         rosetta2: true
-        files:
-          - name: difft
         replacements:
           amd64: x86_64
           darwin: apple-darwin
@@ -12196,8 +12184,6 @@ packages:
         format: tar.gz
         rosetta2: true
         windows_arm_emulation: true
-        files:
-          - name: difft
         replacements:
           amd64: x86_64
           darwin: apple-darwin
@@ -12218,8 +12204,6 @@ packages:
         asset: difft-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
-        files:
-          - name: difft
         replacements:
           amd64: x86_64
           arm64: aarch64
@@ -12231,14 +12215,12 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/Wilfred/difftastic/releases/download/{{.Version}}/difft-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
-      - version_constraint: "true"
+      - version_constraint: semver("<= 0.70.0")
         type: http
         url: https://gh-proxy.org/github.com/Wilfred/difftastic/releases/download/{{.Version}}/difft-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: difft-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
-        files:
-          - name: difft
         replacements:
           amd64: x86_64
           arm64: aarch64
@@ -12260,6 +12242,33 @@ packages:
           - goos: windows
             type: http
             url: https://gh-proxy.org/github.com/Wilfred/difftastic/releases/download/{{.Version}}/difft-{{.Arch}}-{{.OS}}.{{.Format}}
+            format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/Wilfred/difftastic/releases/download/{{.Version}}/difft-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: difft-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          windows: pc-windows-msvc
+        overrides:
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Wilfred/difftastic/releases/download/{{.Version}}/difft-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            goarch: amd64
+            replacements:
+              linux: unknown-linux-musl
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Wilfred/difftastic/releases/download/{{.Version}}/difft-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            goarch: arm64
+            replacements:
+              linux: unknown-linux-gnu
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Wilfred/difftastic/releases/download/{{.Version}}/difft-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
   - type: http
     url: https://gh-proxy.org/raw.githubusercontent.com/WoozyMasta/kube-dump/{{.Version}}/kube-dump
