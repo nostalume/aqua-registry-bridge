@@ -36,6 +36,10 @@ packages:
               - https://gh-proxy.org/github.com/charmbracelet/freeze/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/charmbracelet/freeze/releases/download/{{.Version}}/checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - charmbracelet/freeze
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http

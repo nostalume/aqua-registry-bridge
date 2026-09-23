@@ -22,6 +22,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --certificate-identity-regexp
               - "^https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.+$"
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/langcheck
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
             bundle:
               type: http
               url: https://gh-proxy.org/github.com/suzuki-shunsuke/langcheck/releases/download/{{.Version}}/langcheck_checksums.txt.sigstore.json

@@ -44,6 +44,10 @@ packages:
               - https://gh-proxy.org/github.com/suzuki-shunsuke/circleci-config-merge/releases/download/{{.Version}}/circleci-config-merge_{{trimV .Version}}_checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/suzuki-shunsuke/circleci-config-merge/releases/download/{{.Version}}/circleci-config-merge_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/circleci-config-merge
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
       - version_constraint: semver("<= 1.1.4-4")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/circleci-config-merge/releases/download/{{.Version}}/circleci-config-merge_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -75,6 +79,10 @@ packages:
               - https://gh-proxy.org/github.com/suzuki-shunsuke/circleci-config-merge/releases/download/{{.Version}}/circleci-config-merge_{{trimV .Version}}_checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/suzuki-shunsuke/circleci-config-merge/releases/download/{{.Version}}/circleci-config-merge_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/circleci-config-merge
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
       - version_constraint: semver("<= 1.1.4-10")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/circleci-config-merge/releases/download/{{.Version}}/circleci-config-merge_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -100,6 +108,10 @@ packages:
               - https://gh-proxy.org/github.com/suzuki-shunsuke/circleci-config-merge/releases/download/{{.Version}}/circleci-config-merge_{{trimV .Version}}_checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/suzuki-shunsuke/circleci-config-merge/releases/download/{{.Version}}/circleci-config-merge_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/circleci-config-merge
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
       - version_constraint: semver("<= 1.1.4-12")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/circleci-config-merge/releases/download/{{.Version}}/circleci-config-merge_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -131,6 +143,10 @@ packages:
               - https://gh-proxy.org/github.com/suzuki-shunsuke/circleci-config-merge/releases/download/{{.Version}}/circleci-config-merge_{{trimV .Version}}_checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/suzuki-shunsuke/circleci-config-merge/releases/download/{{.Version}}/circleci-config-merge_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/circleci-config-merge
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
       - version_constraint: Version == "v1.1.4"
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/circleci-config-merge/releases/download/{{.Version}}/circleci-config-merge_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -156,6 +172,10 @@ packages:
               - https://gh-proxy.org/github.com/suzuki-shunsuke/circleci-config-merge/releases/download/{{.Version}}/circleci-config-merge_{{trimV .Version}}_checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/suzuki-shunsuke/circleci-config-merge/releases/download/{{.Version}}/circleci-config-merge_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/circleci-config-merge
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/circleci-config-merge/releases/download/{{.Version}}/circleci-config-merge_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -185,3 +205,7 @@ packages:
               - https://gh-proxy.org/github.com/suzuki-shunsuke/circleci-config-merge/releases/download/{{.Version}}/circleci-config-merge_{{trimV .Version}}_checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/suzuki-shunsuke/circleci-config-merge/releases/download/{{.Version}}/circleci-config-merge_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/circleci-config-merge
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}

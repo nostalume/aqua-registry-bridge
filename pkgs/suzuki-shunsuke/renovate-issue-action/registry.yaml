@@ -41,3 +41,7 @@ packages:
               - https://gh-proxy.org/github.com/suzuki-shunsuke/renovate-issue-action/releases/download/{{.Version}}/renovate-issue-action_{{trimV .Version}}_checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/suzuki-shunsuke/renovate-issue-action/releases/download/{{.Version}}/renovate-issue-action_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/renovate-issue-action
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}

@@ -70,3 +70,7 @@ packages:
               - https://gh-proxy.org/github.com/suzuki-shunsuke/github-comment/releases/download/{{.Version}}/github-comment_{{trimV .Version}}_checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/suzuki-shunsuke/github-comment/releases/download/{{.Version}}/github-comment_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/github-comment
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}

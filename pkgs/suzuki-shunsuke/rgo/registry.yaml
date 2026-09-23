@@ -29,6 +29,10 @@ packages:
               - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/rgo
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
             bundle:
               type: http
               url: https://gh-proxy.org/github.com/suzuki-shunsuke/rgo/releases/download/{{.Version}}/rgo_{{trimV .Version}}_checksums.txt.bundle

@@ -155,6 +155,10 @@ packages:
             - https://gh-proxy.org/github.com/UpCloudLtd/workflows/.github/workflows/build-provenance.yaml@refs/heads/main
             - --certificate-oidc-issuer
             - https://token.actions.githubusercontent.com
+            - --certificate-github-workflow-repository
+            - UpCloudLtd/upcloud-cli
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http

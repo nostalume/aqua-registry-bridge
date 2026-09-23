@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
+packages:
+  - type: github_release
+    repo_owner: aquaproj
+    repo_name: ar2
+    description: CLI for aqua registry g2
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/aquaproj/ar2/releases/download/{{.Version}}/ar2_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: ar2_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/aquaproj/ar2/releases/download/{{.Version}}/ar2_checksums.txt
+          asset: ar2_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - aquaproj/ar2
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/aquaproj/ar2/releases/download/{{.Version}}/ar2_checksums.txt.sigstore.json
+              asset: ar2_checksums.txt.sigstore.json
+        slsa_provenance:
+          type: http
+          url: https://gh-proxy.org/github.com/aquaproj/ar2/releases/download/{{.Version}}/multiple.intoto.jsonl
+          asset: multiple.intoto.jsonl
+        github_artifact_attestations:
+          signer_workflow: suzuki-shunsuke/go-release-workflow/.github/workflows/release.yaml

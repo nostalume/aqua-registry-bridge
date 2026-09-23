@@ -22,6 +22,10 @@ packages:
           - https://gh-proxy.org/github.com/yuyaban/gitlab-comment/releases/download/{{.Version}}/gitlab-comment_{{trimV .Version}}_checksums.txt.sig
           - --certificate
           - https://gh-proxy.org/github.com/yuyaban/gitlab-comment/releases/download/{{.Version}}/gitlab-comment_{{trimV .Version}}_checksums.txt.pem
+          - --certificate-github-workflow-repository
+          - yuyaban/gitlab-comment
+          - --certificate-github-workflow-ref
+          - refs/tags/{{.Version}}
     slsa_provenance:
       type: http
       url: https://gh-proxy.org/github.com/yuyaban/gitlab-comment/releases/download/{{.Version}}/multiple.intoto.jsonl

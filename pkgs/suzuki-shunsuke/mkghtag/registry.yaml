@@ -30,6 +30,10 @@ packages:
               - https://gh-proxy.org/github.com/suzuki-shunsuke/mkghtag/releases/download/{{.Version}}/mkghtag_{{trimV .Version}}_checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/suzuki-shunsuke/mkghtag/releases/download/{{.Version}}/mkghtag_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/mkghtag
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -66,3 +70,7 @@ packages:
               - https://gh-proxy.org/github.com/suzuki-shunsuke/mkghtag/releases/download/{{.Version}}/mkghtag_{{trimV .Version}}_checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/suzuki-shunsuke/mkghtag/releases/download/{{.Version}}/mkghtag_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/mkghtag
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}

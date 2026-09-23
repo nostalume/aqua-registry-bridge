@@ -35,3 +35,7 @@ packages:
               - https://gh-proxy.org/github.com/suzuki-shunsuke/tfprovidercheck/releases/download/{{.Version}}/tfprovidercheck_{{trimV .Version}}_checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/suzuki-shunsuke/tfprovidercheck/releases/download/{{.Version}}/tfprovidercheck_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/tfprovidercheck
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}

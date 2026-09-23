@@ -35,6 +35,10 @@ packages:
               - https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{trimV .Version}}_checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/nllint
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
       - version_constraint: semver("<= 1.1.0")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -64,6 +68,10 @@ packages:
               - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/nllint
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -93,3 +101,7 @@ packages:
               - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/nllint
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}

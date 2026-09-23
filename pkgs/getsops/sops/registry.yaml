@@ -28,6 +28,10 @@ packages:
               - https://gh-proxy.org/github.com/getsops
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - getsops/sops
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         slsa_provenance:
           type: http
           url: https://gh-proxy.org/github.com/getsops/sops/releases/download/{{.Version}}/provenance.intoto.jsonl
@@ -81,6 +85,10 @@ packages:
               - https://gh-proxy.org/github.com/getsops
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - getsops/sops
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         slsa_provenance:
           type: http
           url: https://gh-proxy.org/github.com/getsops/sops/releases/download/{{.Version}}/sops-{{.Version}}.intoto.jsonl
@@ -110,6 +118,10 @@ packages:
               - https://gh-proxy.org/github.com/getsops
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - getsops/sops
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         slsa_provenance:
           type: http
           url: https://gh-proxy.org/github.com/getsops/sops/releases/download/{{.Version}}/sops-{{.Version}}.intoto.jsonl
@@ -139,6 +151,10 @@ packages:
               - https://gh-proxy.org/github.com/getsops
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - getsops/sops
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         slsa_provenance:
           type: http
           url: https://gh-proxy.org/github.com/getsops/sops/releases/download/{{.Version}}/sops-{{.Version}}.intoto.jsonl
