@@ -46,3 +46,7 @@ packages:
               - https://gh-proxy.org/github.com/kubermatic/kubeone/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - kubermatic/kubeone
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}

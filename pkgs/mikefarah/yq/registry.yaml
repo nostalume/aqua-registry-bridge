@@ -54,3 +54,7 @@ packages:
               - https://gh-proxy.org/github.com/mikefarah/yq/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - mikefarah/yq
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}

@@ -76,3 +76,7 @@ packages:
               - https://gh-proxy.org/github.com/carvel-dev/kbld/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/carvel-dev/kbld/releases/download/{{.Version}}/checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - carvel-dev/kbld
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}

@@ -26,6 +26,8 @@ packages:
               - https://gh-proxy.org/github.com/sholdee/crd-schema-publisher/.github/workflows/release.yaml@refs/heads/main
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - sholdee/crd-schema-publisher
             bundle:
               type: http
               url: https://gh-proxy.org/github.com/sholdee/crd-schema-publisher/releases/download/{{.Version}}/checksums-sha256.txt.sigstore.json

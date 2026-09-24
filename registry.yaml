@@ -10897,18 +10897,31 @@ packages:
           url: https://gh-proxy.org/github.com/TimothyYe/skm/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
-  - type: http
-    url: https://gh-proxy.org/github.com/TomWright/dasel/releases/download/{{.Version}}/dasel_{{.OS}}_{{.Arch}}
+  - type: github_release
     repo_owner: TomWright
     repo_name: dasel
-    rosetta2: true
-    asset: dasel_{{.OS}}_{{.Arch}}
-    format: raw
     description: Select, put and delete data from JSON, TOML, YAML, XML and CSV files with a single tool. Supports conversion between formats and can be used as a Go package
-    supported_envs:
-      - darwin
-      - linux
-      - amd64
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: semver("<= 1.26.0")
+        type: http
+        url: https://gh-proxy.org/github.com/TomWright/dasel/releases/download/{{.Version}}/dasel_{{.OS}}_{{.Arch}}
+        asset: dasel_{{.OS}}_{{.Arch}}
+        format: raw
+        rosetta2: true
+        supported_envs:
+          - darwin
+          - linux
+          - amd64
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/TomWright/dasel/releases/download/{{.Version}}/dasel_{{.OS}}_{{.Arch}}
+        asset: dasel_{{.OS}}_{{.Arch}}
+        format: raw
+        supported_envs:
+          - darwin
+          - linux
+          - amd64
   - type: github_release
     repo_owner: Traackr
     repo_name: binnacle
@@ -11269,6 +11282,62 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/UpCloudLtd/upcloud-cli/releases/download/{{.Version}}/upcloud-cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+  - type: github_release
+    repo_owner: UsefulSoftwareCo
+    repo_name: executor
+    description: Connect AI agents to OpenAPI, MCP, and GraphQL services
+    version_filter: Version != "graph-slices"
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: semver("<= 1.1.9")
+        type: http
+        url: https://gh-proxy.org/github.com/UsefulSoftwareCo/executor/releases/download/{{.Version}}/executor-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+        asset: executor-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+        format: tar.gz
+        files:
+          - name: executor
+            src: "{{.AssetWithoutExt}}/executor"
+        replacements:
+          amd64: x64
+          windows: win
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/UsefulSoftwareCo/executor/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/UsefulSoftwareCo/executor/releases/download/{{.Version}}/executor-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+            format: zip
+            files:
+              - name: executor
+                src: "{{.AssetWithoutExt}}/executor.cmd"
+      - version_constraint: semver("<= 1.3.0-beta.5")
+        no_asset: true
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/UsefulSoftwareCo/executor/releases/download/{{.Version}}/executor-{{.OS}}-{{.Arch}}.{{.Format}}
+        asset: executor-{{.OS}}-{{.Arch}}.{{.Format}}
+        format: zip
+        replacements:
+          amd64: x64
+        overrides:
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/UsefulSoftwareCo/executor/releases/download/{{.Version}}/executor-{{.OS}}-{{.Arch}}.{{.Format}}
+            variants:
+              - key: libc
+                value: glibc
+            format: tar.gz
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/UsefulSoftwareCo/executor/releases/download/{{.Version}}/executor-{{.OS}}-{{.Arch}}-musl.{{.Format}}
+            variants:
+              - key: libc
+                value: musl
+            format: tar.gz
+            asset: executor-{{.OS}}-{{.Arch}}-musl.{{.Format}}
   - type: http
     url: https://gh-proxy.org/github.com/Versent/saml2aws/releases/download/{{.Version}}/saml2aws_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: Versent
@@ -13135,6 +13204,10 @@ packages:
               - "^https://github\\.com/abemedia/stagelint/\\.github/workflows/.+\\.ya?ml@refs/tags/\\Q{{.Version}}\\E$"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - abemedia/stagelint
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
             bundle:
               type: http
               url: https://gh-proxy.org/github.com/abemedia/stagelint/releases/download/{{.Version}}/checksums.txt.sigstore.json
@@ -13208,6 +13281,10 @@ packages:
               - https://gh-proxy.org/github.com/abhimanyu003/sttr/releases/download/{{.Version}}/sttr_{{trimV .Version}}_checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/abhimanyu003/sttr/releases/download/{{.Version}}/sttr_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - abhimanyu003/sttr
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: darwin
             type: http
@@ -13242,6 +13319,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/abhimanyu003/sttr/releases/download/{{.Version}}/sttr_{{trimV .Version}}_checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - abhimanyu003/sttr
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: darwin
             type: http
@@ -13276,6 +13357,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --certificate-identity-regexp
               - "^https://github\\.com/abhimanyu003/sttr/\\.github/workflows/.+\\.ya?ml@refs/tags/\\Q{{.Version}}\\E$"
+              - --certificate-github-workflow-repository
+              - abhimanyu003/sttr
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: darwin
             type: http
@@ -13424,6 +13509,8 @@ packages:
               - https://gh-proxy.org/github.com/abhinav/git-spice/.github/workflows/publish-release.yml@refs/heads/main
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - abhinav/git-spice
         overrides:
           - goos: linux
             type: http
@@ -16152,6 +16239,8 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/anchore/grype/releases/download/{{.Version}}/grype_{{trimV .Version}}_checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - anchore/grype
         overrides:
           - goos: windows
             type: http
@@ -16438,6 +16527,8 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/anchore/syft/releases/download/{{.Version}}/syft_{{trimV .Version}}_checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - anchore/syft
         overrides:
           - goos: windows
             type: http
@@ -17947,6 +18038,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/aquaproj/example-go-slsa-provenance/releases/download/{{.Version}}/example-go-slsa-provenance_{{trimV .Version}}_checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - aquaproj/example-go-slsa-provenance
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         slsa_provenance:
           type: http
           url: https://gh-proxy.org/github.com/aquaproj/example-go-slsa-provenance/releases/download/{{.Version}}/multiple.intoto.jsonl
@@ -18587,6 +18682,10 @@ packages:
               - https://gh-proxy.org/github.com/aquasecurity/trivy/.github/workflows/reusable-release.yaml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - aquasecurity/trivy
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -18783,6 +18882,8 @@ packages:
               - https://gh-proxy.org/github.com/arch-go/arch-go/releases/download/{{.Version}}/arch-go_{{.Version}}_checksums.txt-keyless.sig
               - --certificate
               - https://gh-proxy.org/github.com/arch-go/arch-go/releases/download/{{.Version}}/arch-go_{{.Version}}_checksums.txt-keyless.pem
+              - --certificate-github-workflow-repository
+              - arch-go/arch-go
         overrides:
           - goos: windows
             type: http
@@ -18798,6 +18899,8 @@ packages:
             - https://gh-proxy.org/github.com/arch-go/arch-go/releases/download/{{.Version}}/{{.Asset}}-keyless.sig
             - --certificate
             - https://gh-proxy.org/github.com/arch-go/arch-go/releases/download/{{.Version}}/{{.Asset}}-keyless.pem
+            - --certificate-github-workflow-repository
+            - arch-go/arch-go
   - type: github_release
     repo_owner: arduino
     repo_name: arduino-cli
@@ -24839,6 +24942,10 @@ packages:
               - https://gh-proxy.org/github.com/betterleaks/betterleaks/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - betterleaks/betterleaks
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -26072,6 +26179,10 @@ packages:
               - https://gh-proxy.org/github.com/bomctl/bomctl/releases/download/{{.Version}}/bomctl_{{trimV .Version}}_checksums.txt-keyless.sig
               - --certificate
               - https://gh-proxy.org/github.com/bomctl/bomctl/releases/download/{{.Version}}/bomctl_{{trimV .Version}}_checksums.txt-keyless.pem
+              - --certificate-github-workflow-repository
+              - bomctl/bomctl
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -26097,6 +26208,10 @@ packages:
               - https://gh-proxy.org/github.com/bomctl/bomctl/releases/download/{{.Version}}/bomctl_{{trimV .Version}}_checksums.txt-keyless.sig
               - --certificate
               - https://gh-proxy.org/github.com/bomctl/bomctl/releases/download/{{.Version}}/bomctl_{{trimV .Version}}_checksums.txt-keyless.pem
+              - --certificate-github-workflow-repository
+              - bomctl/bomctl
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         github_artifact_attestations:
           signer_workflow: bomctl/bomctl/.github/workflows/goreleaser.yml
         overrides:
@@ -26150,6 +26265,10 @@ packages:
               - "^https://github\\.com/boostsecurityio/bagel/\\.github/workflows/.+\\.ya?ml@refs/tags/\\Q{{.Version}}\\E$"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - boostsecurityio/bagel
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
             bundle:
               type: http
               url: https://gh-proxy.org/github.com/boostsecurityio/bagel/releases/download/{{.Version}}/bagel_{{trimV .Version}}_checksums.txt.sigstore.json
@@ -26176,6 +26295,10 @@ packages:
               - "^https://github\\.com/boostsecurityio/bagel/\\.github/workflows/.+\\.ya?ml@refs/tags/\\Q{{.Version}}\\E$"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - boostsecurityio/bagel
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
             bundle:
               type: http
               url: https://gh-proxy.org/github.com/boostsecurityio/bagel/releases/download/{{.Version}}/bagel_{{trimV .Version}}_checksums.txt.sigstore.json
@@ -28537,6 +28660,10 @@ packages:
               - "https://token.actions.githubusercontent.com"
               - --certificate-identity-regexp
               - "https://github\\.com/caarlos0/fork-cleaner/\\.github/workflows/build\\.yml@.*"
+              - --certificate-github-workflow-repository
+              - caarlos0/fork-cleaner
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: darwin
             type: http
@@ -28633,6 +28760,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - caarlos0/svu
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: darwin
             type: http
@@ -28658,6 +28789,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - caarlos0/svu
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         github_artifact_attestations:
           signer_workflow: caarlos0/svu/.github/workflows/release.yml
         overrides:
@@ -28689,6 +28824,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/caarlos0/svu/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - caarlos0/svu
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         github_artifact_attestations:
           signer_workflow: caarlos0/svu/.github/workflows/release.yml
         overrides:
@@ -28720,6 +28859,10 @@ packages:
               - https://gh-proxy.org/github.com/caarlos0/svu/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - caarlos0/svu
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: darwin
             type: http
@@ -28749,6 +28892,10 @@ packages:
               - https://gh-proxy.org/github.com/caarlos0/svu/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - caarlos0/svu
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         github_artifact_attestations:
           signer_workflow: caarlos0/svu/.github/workflows/release.yml
         overrides:
@@ -28878,6 +29025,10 @@ packages:
               - https://gh-proxy.org/github.com/caddyserver/caddy/releases/download/v{{trimV .Version}}/caddy_{{trimV .Version}}_checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/caddyserver/caddy/releases/download/v{{trimV .Version}}/caddy_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - caddyserver/caddy
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
   - type: github_release
     repo_owner: callumalpass
     repo_name: mdbase-lsp
@@ -29672,6 +29823,10 @@ packages:
               - https://gh-proxy.org/github.com/carvel-dev/imgpkg/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/carvel-dev/imgpkg/releases/download/{{.Version}}/checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - carvel-dev/imgpkg
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
   - type: github_release
     repo_owner: carvel-dev
     repo_name: kapp
@@ -29736,6 +29891,10 @@ packages:
               - https://gh-proxy.org/github.com/carvel-dev/kapp/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/carvel-dev/kapp/releases/download/{{.Version}}/checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - carvel-dev/kapp
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
   - type: github_release
     repo_owner: carvel-dev
     repo_name: kbld
@@ -29812,6 +29971,10 @@ packages:
               - https://gh-proxy.org/github.com/carvel-dev/kbld/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/carvel-dev/kbld/releases/download/{{.Version}}/checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - carvel-dev/kbld
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
   - type: github_release
     repo_owner: carvel-dev
     repo_name: kwt
@@ -29900,6 +30063,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/carvel-dev/vendir/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - carvel-dev/vendir
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
   - type: github_release
     repo_owner: carvel-dev
     repo_name: ytt
@@ -29978,6 +30145,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/carvel-dev/ytt/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - carvel-dev/ytt
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
   - type: github_release
     repo_owner: casey
     repo_name: just
@@ -30413,6 +30584,10 @@ packages:
               - "https://token.actions.githubusercontent.com"
               - --certificate-identity
               - https://gh-proxy.org/github.com/cert-manager/cmctl/.github/workflows/release.yaml@refs/tags/{{.Version}}
+              - --certificate-github-workflow-repository
+              - cert-manager/cmctl
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
   - type: github_release
     repo_owner: chaaz
     repo_name: versio
@@ -30536,6 +30711,10 @@ packages:
             - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.sig
             - --certificate
             - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.crt
+            - --certificate-github-workflow-repository
+            - chainguard-dev/apko
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
         checksum:
           type: http
           url: https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt
@@ -30551,6 +30730,10 @@ packages:
               - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.crt
+              - --certificate-github-workflow-repository
+              - chainguard-dev/apko
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
       - version_constraint: semver("<= 0.6.1")
         type: http
         url: https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -30571,6 +30754,10 @@ packages:
             - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.sig
             - --certificate
             - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.crt
+            - --certificate-github-workflow-repository
+            - chainguard-dev/apko
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
         checksum:
           type: http
           url: https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt
@@ -30586,6 +30773,10 @@ packages:
               - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.crt
+              - --certificate-github-workflow-repository
+              - chainguard-dev/apko
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
       - version_constraint: semver("<= 0.11.0")
         type: http
         url: https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -30607,6 +30798,10 @@ packages:
             - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.sig
             - --certificate
             - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.crt
+            - --certificate-github-workflow-repository
+            - chainguard-dev/apko
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
         checksum:
           type: http
           url: https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt
@@ -30622,6 +30817,10 @@ packages:
               - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.crt
+              - --certificate-github-workflow-repository
+              - chainguard-dev/apko
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -30643,6 +30842,8 @@ packages:
             - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.sig
             - --certificate
             - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.crt
+            - --certificate-github-workflow-repository
+            - chainguard-dev/apko
         checksum:
           type: http
           url: https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt
@@ -30658,6 +30859,8 @@ packages:
               - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.crt
+              - --certificate-github-workflow-repository
+              - chainguard-dev/apko
   - type: github_release
     repo_owner: chainguard-dev
     repo_name: melange
@@ -30684,6 +30887,10 @@ packages:
             - https://gh-proxy.org/github.com/chainguard-dev/melange/releases/download/{{.Version}}/melange_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.sig
             - --certificate
             - https://gh-proxy.org/github.com/chainguard-dev/melange/releases/download/{{.Version}}/melange_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.crt
+            - --certificate-github-workflow-repository
+            - chainguard-dev/melange
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
         checksum:
           type: http
           url: https://gh-proxy.org/github.com/chainguard-dev/melange/releases/download/{{.Version}}/checksums.txt
@@ -30699,6 +30906,10 @@ packages:
               - https://gh-proxy.org/github.com/chainguard-dev/melange/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/chainguard-dev/melange/releases/download/{{.Version}}/checksums.txt.crt
+              - --certificate-github-workflow-repository
+              - chainguard-dev/melange
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/chainguard-dev/melange/releases/download/{{.Version}}/melange_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -30720,6 +30931,8 @@ packages:
             - https://gh-proxy.org/github.com/chainguard-dev/melange/releases/download/{{.Version}}/melange_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.sig
             - --certificate
             - https://gh-proxy.org/github.com/chainguard-dev/melange/releases/download/{{.Version}}/melange_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.crt
+            - --certificate-github-workflow-repository
+            - chainguard-dev/melange
         checksum:
           type: http
           url: https://gh-proxy.org/github.com/chainguard-dev/melange/releases/download/{{.Version}}/checksums.txt
@@ -30735,6 +30948,8 @@ packages:
               - https://gh-proxy.org/github.com/chainguard-dev/melange/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/chainguard-dev/melange/releases/download/{{.Version}}/checksums.txt.crt
+              - --certificate-github-workflow-repository
+              - chainguard-dev/melange
   - type: github_release
     repo_owner: chainloop-dev
     repo_name: chainloop
@@ -40241,6 +40456,8 @@ packages:
               - https://gh-proxy.org/github.com/daveshanley/vacuum/.github/workflows/publish.yaml@refs/heads/main
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - daveshanley/vacuum
   - type: http
     url: https://gh-proxy.org/github.com/ddddddO/gtree/releases/download/{{.Version}}/gtree_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: ddddddO
@@ -45386,6 +45603,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/ekristen/aws-nuke/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - ekristen/aws-nuke
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -45408,6 +45629,10 @@ packages:
               - "https://gh-proxy.org/github.com/ekristen/aws-nuke/.github/workflows/goreleaser.yml@refs/tags/{{.Version}}"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - ekristen/aws-nuke
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
             bundle:
               type: http
               url: https://gh-proxy.org/github.com/ekristen/aws-nuke/releases/download/{{.Version}}/checksums.txt.sigstore.json
@@ -48700,6 +48925,10 @@ packages:
             - https://token.actions.githubusercontent.com
             - --signature
             - https://gh-proxy.org/github.com/fission/fission/releases/download/{{.Version}}/{{.Asset}}.sig
+            - --certificate-github-workflow-repository
+            - fission/fission
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/fission/fission/releases/download/{{.Version}}/fission-{{.Version}}-{{.OS}}-{{.Arch}}
@@ -48721,6 +48950,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --certificate-identity
               - https://gh-proxy.org/github.com/fission/fission/.github/workflows/release.yaml@refs/tags/{{.Version}}
+              - --certificate-github-workflow-repository
+              - fission/fission
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         cosign:
           bundle:
             type: http
@@ -48731,6 +48964,10 @@ packages:
             - https://token.actions.githubusercontent.com
             - --certificate-identity
             - https://gh-proxy.org/github.com/fission/fission/.github/workflows/release.yaml@refs/tags/{{.Version}}
+            - --certificate-github-workflow-repository
+            - fission/fission
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
         github_artifact_attestations:
           signer_workflow: fission/fission/.github/workflows/release.yaml
   - type: github_release
@@ -49036,6 +49273,10 @@ packages:
               - https://gh-proxy.org/github.com/fluxcd/flux2/releases/download/{{.Version}}/flux_{{trimV .Version}}_checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/fluxcd/flux2/releases/download/{{.Version}}/flux_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - fluxcd/flux2
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/fluxcd/flux2/releases/download/{{.Version}}/flux_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -49063,6 +49304,10 @@ packages:
               - https://gh-proxy.org/github.com/fluxcd/flux2/releases/download/{{.Version}}/flux_{{trimV .Version}}_checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/fluxcd/flux2/releases/download/{{.Version}}/flux_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - fluxcd/flux2
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         slsa_provenance:
           type: http
           url: https://gh-proxy.org/github.com/fluxcd/flux2/releases/download/{{.Version}}/provenance.intoto.jsonl
@@ -49468,6 +49713,10 @@ packages:
             - "https://gh-proxy.org/github.com/foundry-rs/foundry/.github/workflows/release.yml@refs/tags/{{.Version}}"
             - --certificate-oidc-issuer
             - https://token.actions.githubusercontent.com
+            - --certificate-github-workflow-repository
+            - foundry-rs/foundry
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
   - type: github_release
     repo_owner: freshautomations
     repo_name: stoml
@@ -52940,6 +53189,10 @@ packages:
                 - https://gh-proxy.org/github.com/gittuf/gittuf/releases/download/{{.Version}}/gittuf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.exe.sig
                 - --certificate
                 - https://gh-proxy.org/github.com/gittuf/gittuf/releases/download/{{.Version}}/gittuf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.exe.pem
+                - --certificate-github-workflow-repository
+                - gittuf/gittuf
+                - --certificate-github-workflow-ref
+                - refs/tags/{{.Version}}
         cosign:
           opts:
             - --certificate-identity-regexp
@@ -52950,6 +53203,10 @@ packages:
             - https://gh-proxy.org/github.com/gittuf/gittuf/releases/download/{{.Version}}/gittuf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.sig
             - --certificate
             - https://gh-proxy.org/github.com/gittuf/gittuf/releases/download/{{.Version}}/gittuf_{{trimV .Version}}_{{.OS}}_{{.Arch}}.pem
+            - --certificate-github-workflow-repository
+            - gittuf/gittuf
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
       - version_constraint: Version == "v0.13.0"
         no_asset: true
       - version_constraint: "true"
@@ -52972,6 +53229,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --certificate-identity
               - "https://gh-proxy.org/github.com/gittuf/gittuf/.github/workflows/release.yml@refs/tags/{{.Version}}"
+              - --certificate-github-workflow-repository
+              - gittuf/gittuf
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         github_artifact_attestations:
           signer_workflow: gittuf/gittuf/.github/workflows/release.yml
   - type: github_release
@@ -53492,6 +53753,10 @@ packages:
             - https://gh-proxy.org/github.com/gleam-lang/gleam/.github/workflows/release.yaml@refs/tags/{{.Version}}
             - --certificate-oidc-issuer
             - https://token.actions.githubusercontent.com
+            - --certificate-github-workflow-repository
+            - gleam-lang/gleam
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
         github_artifact_attestations:
           predicate_type: https://spdx.dev/Document/v2.3
           signer_workflow: gleam-lang/gleam/.github/workflows/release.yaml
@@ -53526,6 +53791,10 @@ packages:
             - https://gh-proxy.org/github.com/gleam-lang/gleam/.github/workflows/release.yaml@refs/tags/{{.Version}}
             - --certificate-oidc-issuer
             - https://token.actions.githubusercontent.com
+            - --certificate-github-workflow-repository
+            - gleam-lang/gleam
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
         github_artifact_attestations:
           predicate_type: https://spdx.dev/Document/v2.3
           signer_workflow: gleam-lang/gleam/.github/workflows/release.yaml
@@ -53738,6 +54007,10 @@ packages:
               - https://gh-proxy.org/github.com/go-delve/delve/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/go-delve/delve/releases/download/{{.Version}}/checksums.txt.cert
+              - --certificate-github-workflow-repository
+              - go-delve/delve
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -56996,6 +57269,10 @@ packages:
               - https://gh-proxy.org/github.com/google/yamlfmt/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/google/yamlfmt/releases/download/{{.Version}}/checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - google/yamlfmt
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
   - type: github_release
     repo_owner: googleapis
     repo_name: api-linter
@@ -57064,6 +57341,10 @@ packages:
               - https://gh-proxy.org/github.com/gopasspw/gopass/.github/workflows/autorelease.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - gopasspw/gopass
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -57492,6 +57773,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/goreleaser/nfpm/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - goreleaser/nfpm
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -57522,6 +57807,10 @@ packages:
               - https://gh-proxy.org/github.com/goreleaser/nfpm/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - goreleaser/nfpm
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -60535,6 +60824,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/helm/chart-releaser/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - helm/chart-releaser
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -60654,6 +60947,8 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/helm/chart-testing/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - helm/chart-testing
         overrides:
           - goos: windows
             type: http
@@ -63597,6 +63892,10 @@ packages:
             - https://gh-proxy.org/github.com/interlynk-io/sbomqs/releases/download/{{.Version}}/{{.Asset}}.pem
             - --signature
             - https://gh-proxy.org/github.com/interlynk-io/sbomqs/releases/download/{{.Version}}/{{.Asset}}.sig
+            - --certificate-github-workflow-repository
+            - interlynk-io/sbomqs
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/interlynk-io/sbomqs/releases/download/{{.Version}}/sbomqs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -63622,6 +63921,10 @@ packages:
             - https://gh-proxy.org/github.com/interlynk-io/sbomqs/.github/workflows/release.yml@refs/tags/{{.Version}}
             - --certificate-oidc-issuer
             - https://token.actions.githubusercontent.com
+            - --certificate-github-workflow-repository
+            - interlynk-io/sbomqs
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
   - type: github_release
     repo_owner: iovisor
     repo_name: kubectl-trace
@@ -65991,6 +66294,8 @@ packages:
               - https://gh-proxy.org/github.com/jenkins-x/jx/releases/download/{{.Version}}/jx-checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/jenkins-x/jx/releases/download/{{.Version}}/jx-checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - jenkins-x/jx
         overrides:
           - goos: windows
             type: http
@@ -66019,6 +66324,8 @@ packages:
               - https://gh-proxy.org/github.com/jenkins-x/jx/.github/workflows/jenkins-x-release.yaml@refs/heads/main
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - jenkins-x/jx
         overrides:
           - goos: windows
             type: http
@@ -73467,6 +73774,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/kubepug/kubepug/releases/download/{{.Version}}/kubepug_{{trimV .Version}}_checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - kubepug/kubepug
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -73518,6 +73829,10 @@ packages:
               - https://gh-proxy.org/github.com/kubermatic/kubeone/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - kubermatic/kubeone
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
   - type: http
     url: https://gh-proxy.org/github.com/kubernetes-retired/kubefed/releases/download/{{.Version}}/kubefedctl-{{trimV .Version}}-{{.OS}}-{{.Arch}}.tgz
     repo_owner: kubernetes-retired
@@ -74246,6 +74561,10 @@ packages:
               - https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - kubernetes-sigs/zeitgeist
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
       - version_constraint: Version == "v0.3.5"
         type: http
         url: https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/zeitgeist_{{trimV .Version}}_{{.OS}}_{{.Arch}}
@@ -74270,6 +74589,10 @@ packages:
               - https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - kubernetes-sigs/zeitgeist
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
       - version_constraint: Version == "v0.4.0"
         no_asset: true
       - version_constraint: Version == "v0.4.1"
@@ -74296,6 +74619,10 @@ packages:
               - https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - kubernetes-sigs/zeitgeist
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
       - version_constraint: semver("< 0.6.2")
         type: http
         url: https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/zeitgeist-{{.Arch}}-{{.OS}}
@@ -74320,6 +74647,10 @@ packages:
               - https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - kubernetes-sigs/zeitgeist
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/kubernetes-sigs/zeitgeist/releases/download/{{.Version}}/zeitgeist-{{.Arch}}-{{.OS}}
@@ -74344,6 +74675,10 @@ packages:
               - "https://github\\.com/kubernetes-sigs/zeitgeist/\\.github/workflows/release\\.yml@.*"
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
+              - --certificate-github-workflow-repository
+              - kubernetes-sigs/zeitgeist
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
   - name: kubernetes/cloud-provider-gcp/gke-gcloud-auth-plugin
     type: go_build
     repo_owner: kubernetes
@@ -76649,6 +76984,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/kyverno/chainsaw/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - kyverno/chainsaw
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
       - version_constraint: Version == "v0.1.3-alpha.1"
         type: http
         url: https://gh-proxy.org/github.com/kyverno/chainsaw/releases/download/{{.Version}}/chainsaw_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -76669,6 +77008,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/kyverno/chainsaw/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - kyverno/chainsaw
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
       - version_constraint: semver("<= 0.2.13")
         type: http
         url: https://gh-proxy.org/github.com/kyverno/chainsaw/releases/download/{{.Version}}/chainsaw_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -76689,6 +77032,10 @@ packages:
               - https://gh-proxy.org/github.com/kyverno/chainsaw/releases/download/{{.Version}}/checksums.txt.pem
               - --signature
               - https://gh-proxy.org/github.com/kyverno/chainsaw/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - kyverno/chainsaw
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         cosign:
           opts:
             - --certificate-oidc-issuer
@@ -76699,6 +77046,10 @@ packages:
             - https://gh-proxy.org/github.com/kyverno/chainsaw/releases/download/{{.Version}}/{{.Asset}}.pem
             - --signature
             - https://gh-proxy.org/github.com/kyverno/chainsaw/releases/download/{{.Version}}/{{.Asset}}.sig
+            - --certificate-github-workflow-repository
+            - kyverno/chainsaw
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
         slsa_provenance:
           type: http
           url: https://gh-proxy.org/github.com/kyverno/chainsaw/releases/download/{{.Version}}/multiple.intoto.jsonl
@@ -76723,6 +77074,10 @@ packages:
               - "https://gh-proxy.org/github.com/kyverno/chainsaw/.github/workflows/release.yaml@refs/tags/{{.Version}}"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - kyverno/chainsaw
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         cosign:
           bundle:
             type: http
@@ -76733,6 +77088,10 @@ packages:
             - "https://gh-proxy.org/github.com/kyverno/chainsaw/.github/workflows/release.yaml@refs/tags/{{.Version}}"
             - --certificate-oidc-issuer
             - https://token.actions.githubusercontent.com
+            - --certificate-github-workflow-repository
+            - kyverno/chainsaw
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
         slsa_provenance:
           type: http
           url: https://gh-proxy.org/github.com/kyverno/chainsaw/releases/download/{{.Version}}/multiple.intoto.jsonl
@@ -76811,6 +77170,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/kyverno/kyverno/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - kyverno/kyverno
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -76838,6 +77201,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/kyverno/kyverno/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - kyverno/kyverno
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -76865,6 +77232,10 @@ packages:
               - https://gh-proxy.org/github.com/kyverno/kyverno/.github/workflows/release.yaml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - kyverno/kyverno
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -78538,6 +78909,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/loft-sh/vcluster/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - loft-sh/vcluster
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
   - type: github_release
     repo_owner: logdyhq
     repo_name: logdy-core
@@ -79989,6 +80364,10 @@ packages:
               - https://gh-proxy.org/github.com/masasuzu/clrnd/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - masasuzu/clrnd
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -82513,6 +82892,10 @@ packages:
               - https://gh-proxy.org/github.com/mikefarah/yq/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - mikefarah/yq
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
   - type: github_release
     repo_owner: mikevalstar
     repo_name: okq
@@ -86530,6 +86913,10 @@ packages:
               - "^https://github\\.com/nao1215/atago/\\.github/workflows/.+\\.ya?ml@refs/tags/\\Q{{.Version}}\\E$"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - nao1215/atago
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
             bundle:
               type: http
               url: https://gh-proxy.org/github.com/nao1215/atago/releases/download/{{.Version}}/checksums.txt.sigstore.json
@@ -86619,6 +87006,10 @@ packages:
               - https://gh-proxy.org/github.com/nao1215/gup/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - nao1215/gup
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         github_artifact_attestations:
           signer_workflow: nao1215/gup/.github/workflows/release.yml
         overrides:
@@ -86646,6 +87037,10 @@ packages:
               - https://gh-proxy.org/github.com/nao1215/gup/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - nao1215/gup
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         github_artifact_attestations:
           signer_workflow: nao1215/gup/.github/workflows/release.yml
         overrides:
@@ -86762,6 +87157,10 @@ packages:
               - https://gh-proxy.org/github.com/nao1215/sqly/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - nao1215/sqly
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -89876,6 +90275,26 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/open-policy-agent/conftest/releases/download/{{.Version}}/conftest_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+      - version_constraint: semver("<= 0.70.0")
+        type: http
+        url: https://gh-proxy.org/github.com/open-policy-agent/conftest/releases/download/{{.Version}}/conftest_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: conftest_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+          darwin: Darwin
+          linux: Linux
+          windows: Windows
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/open-policy-agent/conftest/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/open-policy-agent/conftest/releases/download/{{.Version}}/conftest_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/open-policy-agent/conftest/releases/download/{{.Version}}/conftest_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -89896,6 +90315,8 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/open-policy-agent/conftest/releases/download/{{.Version}}/conftest_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+        github_artifact_attestations:
+          signer_workflow: open-policy-agent/conftest/.github/workflows/release.yaml
   - type: github_release
     repo_owner: open-policy-agent
     repo_name: gatekeeper
@@ -90260,6 +90681,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/openbao/openbao/releases/download/{{.Version}}/checksums-{{.OS}}.txt.sig
+              - --certificate-github-workflow-repository
+              - openbao/openbao
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -90306,6 +90731,10 @@ packages:
               - '^https://github\.com/openbao/openbao/\.github/workflows/release\.yml@refs/tags/.*$'
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - openbao/openbao
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
             bundle:
               type: http
               url: https://gh-proxy.org/github.com/openbao/openbao/releases/download/{{.Version}}/checksums-{{.OS}}.txt.sigstore.json
@@ -90331,6 +90760,8 @@ packages:
               - '^https://github\.com/openbao/openbao/\.github/workflows/release\.yml@refs/(tags/.*|heads/release/.*)$'
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - openbao/openbao
             bundle:
               type: http
               url: https://gh-proxy.org/github.com/openbao/openbao/releases/download/{{.Version}}/checksums.txt.sigstore.json
@@ -90579,6 +91010,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/openfga/cli/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - openfga/cli
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
       - version_constraint: semver("<= 0.4.0")
         type: http
         url: https://gh-proxy.org/github.com/openfga/cli/releases/download/{{.Version}}/fga_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -90599,6 +91034,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/openfga/cli/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - openfga/cli
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/openfga/cli/releases/download/{{.Version}}/fga_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -90619,6 +91058,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/openfga/cli/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - openfga/cli
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         slsa_provenance:
           type: http
           url: https://gh-proxy.org/github.com/openfga/cli/releases/download/{{.Version}}/fga.intoto.jsonl
@@ -91199,6 +91642,10 @@ packages:
               - https://gh-proxy.org/github.com/openvex/vexctl/releases/download/{{.Version}}/vex_checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/openvex/vexctl/releases/download/{{.Version}}/vex_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - openvex/vexctl
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         cosign:
           opts:
             - --certificate-identity-regexp
@@ -91209,6 +91656,10 @@ packages:
             - https://gh-proxy.org/github.com/openvex/vexctl/releases/download/{{.Version}}/{{.Asset}}.sig
             - --certificate
             - https://gh-proxy.org/github.com/openvex/vexctl/releases/download/{{.Version}}/{{.Asset}}.pem
+            - --certificate-github-workflow-repository
+            - openvex/vexctl
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
       - version_constraint: semver("<= 0.4.1")
         type: http
         url: https://gh-proxy.org/github.com/openvex/vexctl/releases/download/{{.Version}}/vexctl-{{.OS}}-{{.Arch}}
@@ -91230,6 +91681,10 @@ packages:
               - https://gh-proxy.org/github.com/openvex/vexctl/releases/download/{{.Version}}/vexctl_checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/openvex/vexctl/releases/download/{{.Version}}/vexctl_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - openvex/vexctl
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         cosign:
           opts:
             - --certificate-identity-regexp
@@ -91240,6 +91695,10 @@ packages:
             - https://gh-proxy.org/github.com/openvex/vexctl/releases/download/{{.Version}}/{{.Asset}}.sig
             - --certificate
             - https://gh-proxy.org/github.com/openvex/vexctl/releases/download/{{.Version}}/{{.Asset}}.pem
+            - --certificate-github-workflow-repository
+            - openvex/vexctl
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/openvex/vexctl/releases/download/{{.Version}}/vexctl-{{.OS}}-{{.Arch}}
@@ -91257,6 +91716,10 @@ packages:
               - "https://github\\.com/openvex/vexctl/\\.github/workflows/release\\.yaml@.*"
               - --certificate-oidc-issuer
               - "https://token.actions.githubusercontent.com"
+              - --certificate-github-workflow-repository
+              - openvex/vexctl
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
             bundle:
               type: http
               url: https://gh-proxy.org/github.com/openvex/vexctl/releases/download/{{.Version}}/vexctl_checksums.txt.sigstore.json
@@ -91267,6 +91730,10 @@ packages:
             - "https://github\\.com/openvex/vexctl/\\.github/workflows/release\\.yaml@.*"
             - --certificate-oidc-issuer
             - "https://token.actions.githubusercontent.com"
+            - --certificate-github-workflow-repository
+            - openvex/vexctl
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
           bundle:
             type: http
             url: https://gh-proxy.org/github.com/openvex/vexctl/releases/download/{{.Version}}/{{.Asset}}.sigstore.json
@@ -92070,6 +92537,10 @@ packages:
               - https://gh-proxy.org/github.com/orlangure/gocovsh/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/orlangure/gocovsh/releases/download/{{.Version}}/checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - orlangure/gocovsh
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
   - type: http
     url: https://gh-proxy.org/github.com/ory/hydra/releases/download/{{.Version}}/hydra_{{trimV .Version}}-{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: ory
@@ -97490,6 +97961,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/purpleclay/dns53/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - purpleclay/dns53
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -98473,6 +98948,10 @@ packages:
               - "^https://github\\.com/rafaelespinoza/godfish/\\.github/workflows/.+\\.ya?ml@refs/tags/\\Q{{.Version}}\\E$"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - rafaelespinoza/godfish
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
             bundle:
               type: http
               url: https://gh-proxy.org/github.com/rafaelespinoza/godfish/releases/download/{{.Version}}/checksums.txt.sigstore.json
@@ -101010,6 +101489,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/rs/curlie/releases/download/{{.Version}}/curlie_{{trimV .Version}}_checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - rs/curlie
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -103138,6 +103621,10 @@ packages:
               - "^https://github\\.com/santosr2/TerraTidy/\\.github/workflows/.+\\.ya?ml@refs/tags/\\Q{{.Version}}\\E$"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - santosr2/TerraTidy
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
             bundle:
               type: http
               url: https://gh-proxy.org/github.com/santosr2/TerraTidy/releases/download/{{.Version}}/checksums.txt.bundle
@@ -105939,6 +106426,8 @@ packages:
               - https://gh-proxy.org/github.com/sholdee/crd-schema-publisher/.github/workflows/release.yaml@refs/heads/main
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - sholdee/crd-schema-publisher
             bundle:
               type: http
               url: https://gh-proxy.org/github.com/sholdee/crd-schema-publisher/releases/download/{{.Version}}/checksums-sha256.txt.sigstore.json
@@ -106193,6 +106682,10 @@ packages:
               - https://gh-proxy.org/github.com/siderolabs/talos/.github/workflows/ci.yaml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - siderolabs/talos
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
             bundle:
               type: http
               url: https://gh-proxy.org/github.com/siderolabs/talos/releases/download/{{.Version}}/sha256sum.txt.bundle
@@ -106441,6 +106934,10 @@ packages:
             - https://token.actions.githubusercontent.com
             - --signature
             - https://gh-proxy.org/github.com/sigstore/gitsign/releases/download/{{.Version}}/{{.Asset}}.sig
+            - --certificate-github-workflow-repository
+            - sigstore/gitsign
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
       - version_constraint: Version == "v0.15.0"
         no_asset: true
       - version_constraint: "true"
@@ -106463,6 +106960,10 @@ packages:
             - https://gh-proxy.org/github.com/sigstore/gitsign/.github/workflows/release.yml@refs/tags/{{.Version}}
             - --certificate-oidc-issuer
             - https://token.actions.githubusercontent.com
+            - --certificate-github-workflow-repository
+            - sigstore/gitsign
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
   - type: github_release
     repo_owner: sigstore
     repo_name: rekor
@@ -110198,6 +110699,10 @@ packages:
             - https://token.actions.githubusercontent.com
             - --signature
             - https://gh-proxy.org/github.com/stacklok/frizbee/releases/download/{{.Version}}/{{.Asset}}.sig
+            - --certificate-github-workflow-repository
+            - stacklok/frizbee
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -116347,6 +116852,8 @@ packages:
             - https://gh-proxy.org/github.com/takumin/zizmor-bin/.github/workflows/wc-sign.yml@refs/heads/main
             - --certificate-oidc-issuer
             - https://token.actions.githubusercontent.com
+            - --certificate-github-workflow-repository
+            - takumin/zizmor-bin
         checksum:
           type: http
           url: https://gh-proxy.org/github.com/takumin/zizmor-bin/releases/download/{{.Version}}/SHA256SUMS
@@ -116362,6 +116869,8 @@ packages:
               - https://gh-proxy.org/github.com/takumin/zizmor-bin/.github/workflows/wc-sign.yml@refs/heads/main
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - takumin/zizmor-bin
         github_artifact_attestations:
           signer_workflow: takumin/zizmor-bin/.github/workflows/wc-sign.yml
   - type: http
@@ -116916,6 +117425,8 @@ packages:
             - '^https://github\.com/technicalpickles/envsense/'
             - --certificate-oidc-issuer
             - https://token.actions.githubusercontent.com
+            - --certificate-github-workflow-repository
+            - technicalpickles/envsense
         overrides:
           - goos: darwin
             type: http
@@ -116949,6 +117460,8 @@ packages:
             - '^https://github\.com/technicalpickles/envsense/'
             - --certificate-oidc-issuer
             - https://token.actions.githubusercontent.com
+            - --certificate-github-workflow-repository
+            - technicalpickles/envsense
         overrides:
           - goos: darwin
             type: http
@@ -118090,6 +118603,10 @@ packages:
               - https://gh-proxy.org/github.com/terraform-linters/tflint/releases/download/{{.Version}}/checksums.txt.keyless.sig
               - --certificate
               - https://gh-proxy.org/github.com/terraform-linters/tflint/releases/download/{{.Version}}/checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - terraform-linters/tflint
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/terraform-linters/tflint/releases/download/{{.Version}}/tflint_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -118111,6 +118628,10 @@ packages:
               - https://gh-proxy.org/github.com/terraform-linters/tflint/releases/download/{{.Version}}/checksums.txt.keyless.sig
               - --certificate
               - https://gh-proxy.org/github.com/terraform-linters/tflint/releases/download/{{.Version}}/checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - terraform-linters/tflint
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
           github_artifact_attestations:
             signer_workflow: terraform-linters/tflint/.github/workflows/release.yml
   - type: github_release
@@ -118303,6 +118824,10 @@ packages:
               - "^https://github\\.com/terraprovider/statebridge/\\.github/workflows/.+\\.ya?ml@refs/tags/\\Q{{.Version}}\\E$"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - terraprovider/statebridge
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
             bundle:
               type: http
               url: https://gh-proxy.org/github.com/terraprovider/statebridge/releases/download/{{.Version}}/checksums.txt.sigstore.json
@@ -118378,35 +118903,41 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/textfuel/lazyjira/releases/download/{{.Version}}/lazyjira_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
-  - type: http
-    url: https://gh-proxy.org/github.com/tfmigrator/cli/releases/download/{{.Version}}/tfmigrator_{{.OS}}_amd64.tar.gz
+  - type: github_release
     repo_owner: tfmigrator
     repo_name: cli
     description: CLI to migrate Terraform Configuration and State
     asset: tfmigrator_{{.OS}}_amd64.tar.gz
     files:
       - name: tfmigrator
-    version_constraint: semver(">= 0.2.2")
-    slsa_provenance:
-      type: http
-      url: https://gh-proxy.org/github.com/tfmigrator/cli/releases/download/{{.Version}}/multiple.intoto.jsonl
-      asset: multiple.intoto.jsonl
-    checksum:
-      type: http
-      url: https://gh-proxy.org/github.com/tfmigrator/cli/releases/download/{{.Version}}/tfmigrator_{{trimV .Version}}_checksums.txt
-      asset: tfmigrator_{{trimV .Version}}_checksums.txt
-      algorithm: sha256
-      cosign:
-        opts:
-          - --certificate-identity-regexp
-          - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
-          - --certificate-oidc-issuer
-          - "https://token.actions.githubusercontent.com"
-          - --signature
-          - https://gh-proxy.org/github.com/tfmigrator/cli/releases/download/{{.Version}}/tfmigrator_{{trimV .Version}}_checksums.txt.sig
-          - --certificate
-          - https://gh-proxy.org/github.com/tfmigrator/cli/releases/download/{{.Version}}/tfmigrator_{{trimV .Version}}_checksums.txt.pem
+    version_constraint: "false"
     version_overrides:
+      - version_constraint: semver(">= 0.2.2")
+        type: http
+        url: https://gh-proxy.org/github.com/tfmigrator/cli/releases/download/{{.Version}}/tfmigrator_{{.OS}}_amd64.tar.gz
+        slsa_provenance:
+          type: http
+          url: https://gh-proxy.org/github.com/tfmigrator/cli/releases/download/{{.Version}}/multiple.intoto.jsonl
+          asset: multiple.intoto.jsonl
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/tfmigrator/cli/releases/download/{{.Version}}/tfmigrator_{{trimV .Version}}_checksums.txt
+          asset: tfmigrator_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - "https://token.actions.githubusercontent.com"
+              - --signature
+              - https://gh-proxy.org/github.com/tfmigrator/cli/releases/download/{{.Version}}/tfmigrator_{{trimV .Version}}_checksums.txt.sig
+              - --certificate
+              - https://gh-proxy.org/github.com/tfmigrator/cli/releases/download/{{.Version}}/tfmigrator_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - tfmigrator/cli
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/tfmigrator/cli/releases/download/{{.Version}}/tfmigrator_{{.OS}}_amd64.tar.gz
@@ -119805,6 +120336,10 @@ packages:
               - https://gh-proxy.org/github.com/tofuutils/tenv/releases/download/{{.Version}}/tenv_{{.Version}}_checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/tofuutils/tenv/releases/download/{{.Version}}/tenv_{{.Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - tofuutils/tenv
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
   - type: http
     url: https://gh-proxy.org/github.com/tofuutils/tofuenv/archive/{{.Version}}.tar.gz
     format: tar.gz
@@ -120994,6 +121529,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/trufflesecurity/trufflehog/releases/download/{{.Version}}/trufflehog_{{trimV .Version}}_checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - trufflesecurity/trufflehog
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
   - name: trunk-io/launcher
     type: http
     # https://github.com/aquaproj/aqua-registry/issues/13989#issuecomment-1802981855
@@ -122365,6 +122904,10 @@ packages:
               - https://gh-proxy.org/github.com/txn2/kubefwd/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - txn2/kubefwd
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -122577,6 +123120,10 @@ packages:
             - https://gh-proxy.org/github.com/ubugeeei-prod/vize/.github/workflows/release.yml@refs/tags/{{.Version}}
             - --certificate-oidc-issuer
             - https://token.actions.githubusercontent.com
+            - --certificate-github-workflow-repository
+            - ubugeeei-prod/vize
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
   - type: github_release
     repo_owner: umlx5h
     repo_name: gtrash
@@ -122877,6 +123424,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/updatecli/updatecli/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - updatecli/updatecli
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -122907,6 +123458,10 @@ packages:
               - "https://gh-proxy.org/github.com/updatecli/updatecli/.github/workflows/release.yaml@refs/tags/{{.Version}}"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - updatecli/updatecli
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -122937,6 +123492,10 @@ packages:
               - "https://gh-proxy.org/github.com/updatecli/updatecli/.github/workflows/release.yaml@refs/tags/{{.Version}}"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - updatecli/updatecli
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -124690,6 +125249,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/version-fox/vfox/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - version-fox/vfox
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -124718,6 +125281,10 @@ packages:
               - "^https://github\\.com/version-fox/vfox/\\.github/workflows/.+\\.ya?ml@refs/tags/\\Q{{.Version}}\\E$"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - version-fox/vfox
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
             bundle:
               type: http
               url: https://gh-proxy.org/github.com/version-fox/vfox/releases/download/{{.Version}}/checksums.txt.sigstore.json

@@ -52,3 +52,7 @@ packages:
             - https://gh-proxy.org/github.com/ubugeeei-prod/vize/.github/workflows/release.yml@refs/tags/{{.Version}}
             - --certificate-oidc-issuer
             - https://token.actions.githubusercontent.com
+            - --certificate-github-workflow-repository
+            - ubugeeei-prod/vize
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}

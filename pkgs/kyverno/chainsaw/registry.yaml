@@ -26,6 +26,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/kyverno/chainsaw/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - kyverno/chainsaw
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
       - version_constraint: Version == "v0.1.3-alpha.1"
         type: http
         url: https://gh-proxy.org/github.com/kyverno/chainsaw/releases/download/{{.Version}}/chainsaw_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -46,6 +50,10 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/kyverno/chainsaw/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - kyverno/chainsaw
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
       - version_constraint: semver("<= 0.2.13")
         type: http
         url: https://gh-proxy.org/github.com/kyverno/chainsaw/releases/download/{{.Version}}/chainsaw_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -66,6 +74,10 @@ packages:
               - https://gh-proxy.org/github.com/kyverno/chainsaw/releases/download/{{.Version}}/checksums.txt.pem
               - --signature
               - https://gh-proxy.org/github.com/kyverno/chainsaw/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - kyverno/chainsaw
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         cosign:
           opts:
             - --certificate-oidc-issuer
@@ -76,6 +88,10 @@ packages:
             - https://gh-proxy.org/github.com/kyverno/chainsaw/releases/download/{{.Version}}/{{.Asset}}.pem
             - --signature
             - https://gh-proxy.org/github.com/kyverno/chainsaw/releases/download/{{.Version}}/{{.Asset}}.sig
+            - --certificate-github-workflow-repository
+            - kyverno/chainsaw
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
         slsa_provenance:
           type: http
           url: https://gh-proxy.org/github.com/kyverno/chainsaw/releases/download/{{.Version}}/multiple.intoto.jsonl
@@ -100,6 +116,10 @@ packages:
               - "https://gh-proxy.org/github.com/kyverno/chainsaw/.github/workflows/release.yaml@refs/tags/{{.Version}}"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - kyverno/chainsaw
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         cosign:
           bundle:
             type: http
@@ -110,6 +130,10 @@ packages:
             - "https://gh-proxy.org/github.com/kyverno/chainsaw/.github/workflows/release.yaml@refs/tags/{{.Version}}"
             - --certificate-oidc-issuer
             - https://token.actions.githubusercontent.com
+            - --certificate-github-workflow-repository
+            - kyverno/chainsaw
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
         slsa_provenance:
           type: http
           url: https://gh-proxy.org/github.com/kyverno/chainsaw/releases/download/{{.Version}}/multiple.intoto.jsonl

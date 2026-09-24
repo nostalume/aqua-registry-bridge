@@ -26,6 +26,10 @@ packages:
             - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.sig
             - --certificate
             - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.crt
+            - --certificate-github-workflow-repository
+            - chainguard-dev/apko
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
         checksum:
           type: http
           url: https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt
@@ -41,6 +45,10 @@ packages:
               - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.crt
+              - --certificate-github-workflow-repository
+              - chainguard-dev/apko
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
       - version_constraint: semver("<= 0.6.1")
         type: http
         url: https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -61,6 +69,10 @@ packages:
             - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.sig
             - --certificate
             - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.crt
+            - --certificate-github-workflow-repository
+            - chainguard-dev/apko
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
         checksum:
           type: http
           url: https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt
@@ -76,6 +88,10 @@ packages:
               - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.crt
+              - --certificate-github-workflow-repository
+              - chainguard-dev/apko
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
       - version_constraint: semver("<= 0.11.0")
         type: http
         url: https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -97,6 +113,10 @@ packages:
             - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.sig
             - --certificate
             - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.crt
+            - --certificate-github-workflow-repository
+            - chainguard-dev/apko
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
         checksum:
           type: http
           url: https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt
@@ -112,6 +132,10 @@ packages:
               - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.crt
+              - --certificate-github-workflow-repository
+              - chainguard-dev/apko
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -133,6 +157,8 @@ packages:
             - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.sig
             - --certificate
             - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/apko_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}.crt
+            - --certificate-github-workflow-repository
+            - chainguard-dev/apko
         checksum:
           type: http
           url: https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt
@@ -148,3 +174,5 @@ packages:
               - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.sig
               - --certificate
               - https://gh-proxy.org/github.com/chainguard-dev/apko/releases/download/{{.Version}}/checksums.txt.crt
+              - --certificate-github-workflow-repository
+              - chainguard-dev/apko

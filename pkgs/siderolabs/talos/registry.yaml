@@ -106,6 +106,10 @@ packages:
               - https://gh-proxy.org/github.com/siderolabs/talos/.github/workflows/ci.yaml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - siderolabs/talos
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
             bundle:
               type: http
               url: https://gh-proxy.org/github.com/siderolabs/talos/releases/download/{{.Version}}/sha256sum.txt.bundle

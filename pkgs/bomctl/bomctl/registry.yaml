@@ -26,6 +26,10 @@ packages:
               - https://gh-proxy.org/github.com/bomctl/bomctl/releases/download/{{.Version}}/bomctl_{{trimV .Version}}_checksums.txt-keyless.sig
               - --certificate
               - https://gh-proxy.org/github.com/bomctl/bomctl/releases/download/{{.Version}}/bomctl_{{trimV .Version}}_checksums.txt-keyless.pem
+              - --certificate-github-workflow-repository
+              - bomctl/bomctl
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -51,6 +55,10 @@ packages:
               - https://gh-proxy.org/github.com/bomctl/bomctl/releases/download/{{.Version}}/bomctl_{{trimV .Version}}_checksums.txt-keyless.sig
               - --certificate
               - https://gh-proxy.org/github.com/bomctl/bomctl/releases/download/{{.Version}}/bomctl_{{trimV .Version}}_checksums.txt-keyless.pem
+              - --certificate-github-workflow-repository
+              - bomctl/bomctl
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         github_artifact_attestations:
           signer_workflow: bomctl/bomctl/.github/workflows/goreleaser.yml
         overrides:
