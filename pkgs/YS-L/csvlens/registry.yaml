@@ -41,7 +41,7 @@ packages:
           - darwin
           - windows
           - amd64
-      - version_constraint: "true"
+      - version_constraint: semver("<= 0.12.0")
         type: http
         url: https://gh-proxy.org/github.com/YS-L/csvlens/releases/download/{{.Version}}/csvlens-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: csvlens-{{.Arch}}-{{.OS}}.{{.Format}}
@@ -76,3 +76,36 @@ packages:
           - darwin
           - windows
           - amd64
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/YS-L/csvlens/releases/download/{{.Version}}/csvlens-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: csvlens-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.xz
+        windows_arm_emulation: true
+        files:
+          - name: csvlens
+            src: csvlens-{{.Arch}}-{{.OS}}/csvlens
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          linux: unknown-linux-musl
+          windows: pc-windows-msvc
+        checksum:
+          type: http
+          url: "{{.AssetURL}}.sha256"
+          asset: "{{.Asset}}.sha256"
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/YS-L/csvlens/releases/download/{{.Version}}/csvlens-{{.Arch}}-{{.OS}}.{{.Format}}
+            format: zip
+            files:
+              - name: csvlens
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/YS-L/csvlens/releases/download/{{.Version}}/csvlens-{{.Arch}}-{{.OS}}.{{.Format}}
+            goarch: arm64
+            replacements:
+              linux: unknown-linux-gnu

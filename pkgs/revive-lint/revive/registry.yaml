@@ -1,8 +1,10 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
   - type: github_release
-    repo_owner: mgechev
+    repo_owner: revive-lint
     repo_name: revive
+    aliases:
+      - name: mgechev/revive
     description: ~6x faster, stricter, configurable, extensible, and beautiful drop-in replacement for golint
     version_constraint: "false"
     version_overrides:
@@ -10,7 +12,7 @@ packages:
         no_asset: true
       - version_constraint: semver("<= 1.2.2")
         type: http
-        url: https://gh-proxy.org/github.com/mgechev/revive/releases/download/{{.Version}}/revive_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        url: https://gh-proxy.org/github.com/revive-lint/revive/releases/download/{{.Version}}/revive_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: revive_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
@@ -21,12 +23,12 @@ packages:
           windows: Windows
         checksum:
           type: http
-          url: https://gh-proxy.org/github.com/mgechev/revive/releases/download/{{.Version}}/checksums.txt
+          url: https://gh-proxy.org/github.com/revive-lint/revive/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: semver("<= 1.3.2")
         type: http
-        url: https://gh-proxy.org/github.com/mgechev/revive/releases/download/{{.Version}}/revive_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        url: https://gh-proxy.org/github.com/revive-lint/revive/releases/download/{{.Version}}/revive_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: revive_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         replacements:
@@ -36,16 +38,16 @@ packages:
           windows: Windows
         checksum:
           type: http
-          url: https://gh-proxy.org/github.com/mgechev/revive/releases/download/{{.Version}}/checksums.txt
+          url: https://gh-proxy.org/github.com/revive-lint/revive/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
       - version_constraint: "true"
         type: http
-        url: https://gh-proxy.org/github.com/mgechev/revive/releases/download/{{.Version}}/revive_{{.OS}}_{{.Arch}}.{{.Format}}
+        url: https://gh-proxy.org/github.com/revive-lint/revive/releases/download/{{.Version}}/revive_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: revive_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
         checksum:
           type: http
-          url: https://gh-proxy.org/github.com/mgechev/revive/releases/download/{{.Version}}/checksums.txt
+          url: https://gh-proxy.org/github.com/revive-lint/revive/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256

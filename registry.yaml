@@ -12703,7 +12703,7 @@ packages:
           - darwin
           - windows
           - amd64
-      - version_constraint: "true"
+      - version_constraint: semver("<= 0.12.0")
         type: http
         url: https://gh-proxy.org/github.com/YS-L/csvlens/releases/download/{{.Version}}/csvlens-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: csvlens-{{.Arch}}-{{.OS}}.{{.Format}}
@@ -12738,6 +12738,39 @@ packages:
           - darwin
           - windows
           - amd64
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/YS-L/csvlens/releases/download/{{.Version}}/csvlens-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: csvlens-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.xz
+        windows_arm_emulation: true
+        files:
+          - name: csvlens
+            src: csvlens-{{.Arch}}-{{.OS}}/csvlens
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          linux: unknown-linux-musl
+          windows: pc-windows-msvc
+        checksum:
+          type: http
+          url: "{{.AssetURL}}.sha256"
+          asset: "{{.Asset}}.sha256"
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/YS-L/csvlens/releases/download/{{.Version}}/csvlens-{{.Arch}}-{{.OS}}.{{.Format}}
+            format: zip
+            files:
+              - name: csvlens
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/YS-L/csvlens/releases/download/{{.Version}}/csvlens-{{.Arch}}-{{.OS}}.{{.Format}}
+            goarch: arm64
+            replacements:
+              linux: unknown-linux-gnu
   - type: github_release
     repo_owner: Zxilly
     repo_name: go-size-analyzer
@@ -81816,55 +81849,6 @@ packages:
           - windows
           - amd64
   - type: github_release
-    repo_owner: mgechev
-    repo_name: revive
-    description: ~6x faster, stricter, configurable, extensible, and beautiful drop-in replacement for golint
-    version_constraint: "false"
-    version_overrides:
-      - version_constraint: semver("<= 1.0.3")
-        no_asset: true
-      - version_constraint: semver("<= 1.2.2")
-        type: http
-        url: https://gh-proxy.org/github.com/mgechev/revive/releases/download/{{.Version}}/revive_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
-        asset: revive_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
-        format: tar.gz
-        windows_arm_emulation: true
-        replacements:
-          amd64: x86_64
-          darwin: Darwin
-          linux: Linux
-          windows: Windows
-        checksum:
-          type: http
-          url: https://gh-proxy.org/github.com/mgechev/revive/releases/download/{{.Version}}/checksums.txt
-          asset: checksums.txt
-          algorithm: sha256
-      - version_constraint: semver("<= 1.3.2")
-        type: http
-        url: https://gh-proxy.org/github.com/mgechev/revive/releases/download/{{.Version}}/revive_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
-        asset: revive_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
-        format: tar.gz
-        replacements:
-          amd64: x86_64
-          darwin: Darwin
-          linux: Linux
-          windows: Windows
-        checksum:
-          type: http
-          url: https://gh-proxy.org/github.com/mgechev/revive/releases/download/{{.Version}}/checksums.txt
-          asset: checksums.txt
-          algorithm: sha256
-      - version_constraint: "true"
-        type: http
-        url: https://gh-proxy.org/github.com/mgechev/revive/releases/download/{{.Version}}/revive_{{.OS}}_{{.Arch}}.{{.Format}}
-        asset: revive_{{.OS}}_{{.Arch}}.{{.Format}}
-        format: tar.gz
-        checksum:
-          type: http
-          url: https://gh-proxy.org/github.com/mgechev/revive/releases/download/{{.Version}}/checksums.txt
-          asset: checksums.txt
-          algorithm: sha256
-  - type: github_release
     repo_owner: mgunyho
     repo_name: tere
     description: Terminal file explorer
@@ -100570,6 +100554,57 @@ packages:
         checksum:
           type: http
           url: https://gh-proxy.org/github.com/reviewdog/reviewdog/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+  - type: github_release
+    repo_owner: revive-lint
+    repo_name: revive
+    aliases:
+      - name: mgechev/revive
+    description: ~6x faster, stricter, configurable, extensible, and beautiful drop-in replacement for golint
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: semver("<= 1.0.3")
+        no_asset: true
+      - version_constraint: semver("<= 1.2.2")
+        type: http
+        url: https://gh-proxy.org/github.com/revive-lint/revive/releases/download/{{.Version}}/revive_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: revive_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+          darwin: Darwin
+          linux: Linux
+          windows: Windows
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/revive-lint/revive/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+      - version_constraint: semver("<= 1.3.2")
+        type: http
+        url: https://gh-proxy.org/github.com/revive-lint/revive/releases/download/{{.Version}}/revive_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: revive_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+          darwin: Darwin
+          linux: Linux
+          windows: Windows
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/revive-lint/revive/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/revive-lint/revive/releases/download/{{.Version}}/revive_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: revive_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/revive-lint/revive/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
   - type: github_release
@@ -123703,6 +123738,24 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/utkuozdemir/pv-migrate/releases/download/{{.Version}}/pv-migrate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+      - version_constraint: semver("<= 3.6.1")
+        type: http
+        url: https://gh-proxy.org/github.com/utkuozdemir/pv-migrate/releases/download/{{.Version}}/pv-migrate_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: pv-migrate_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/utkuozdemir/pv-migrate/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/utkuozdemir/pv-migrate/releases/download/{{.Version}}/pv-migrate_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/utkuozdemir/pv-migrate/releases/download/{{.Version}}/pv-migrate_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -123716,6 +123769,16 @@ packages:
           url: https://gh-proxy.org/github.com/utkuozdemir/pv-migrate/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
+          cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/utkuozdemir/pv-migrate/releases/download/{{.Version}}/checksums.txt.sigstore.json
+              asset: checksums.txt.sigstore.json
+            opts:
+              - --certificate-identity
+              - https://gh-proxy.org/github.com/utkuozdemir/pv-migrate/.github/workflows/release.yml@refs/tags/{{.Version}}
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
         overrides:
           - goos: windows
             type: http
