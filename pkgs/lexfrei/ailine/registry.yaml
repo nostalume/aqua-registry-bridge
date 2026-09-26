@@ -1,0 +1,56 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
+packages:
+  - type: github_release
+    repo_owner: lexfrei
+    repo_name: ailine
+    aliases:
+      - name: lexfrei/claudeline
+    description: Claude Code statusline with real usage limits from Anthropic API
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: semver("<= 1.9.0")
+        type: http
+        url: https://gh-proxy.org/github.com/lexfrei/ailine/releases/download/{{.Version}}/claudeline_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: claudeline_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        files:
+          - name: claudeline
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/lexfrei/ailine/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        supported_envs:
+          - darwin
+      - version_constraint: semver("<= 1.10.1")
+        type: http
+        url: https://gh-proxy.org/github.com/lexfrei/ailine/releases/download/{{.Version}}/claudeline_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: claudeline_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        files:
+          - name: claudeline
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/lexfrei/ailine/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        supported_envs:
+          - linux
+          - darwin
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/lexfrei/ailine/releases/download/{{.Version}}/ailine_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: ailine_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        files:
+          - name: ailine
+          - name: claudeline
+            src: ailine
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/lexfrei/ailine/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        supported_envs:
+          - linux
+          - darwin
