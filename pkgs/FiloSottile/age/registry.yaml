@@ -50,7 +50,7 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/FiloSottile/age/releases/download/{{.Version}}/age-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
-      - version_constraint: Version == "v1.3.1"
+      - version_constraint: Version in ["v1.3.0", "v1.3.1"]
         type: http
         url: https://gh-proxy.org/github.com/FiloSottile/age/releases/download/{{.Version}}/age-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         # https://github.com/FiloSottile/age/pull/676
