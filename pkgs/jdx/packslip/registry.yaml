@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
+packages:
+  - type: github_release
+    repo_owner: jdx
+    repo_name: packslip
+    description: A signed release manifest for vendor binaries
+    files:
+      - name: packslip
+        src: "{{.AssetWithoutExt}}/packslip"
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: semver("<= 0.2.0")
+        type: http
+        url: https://gh-proxy.org/github.com/jdx/packslip/releases/download/{{.Version}}/packslip-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+        asset: packslip-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+        format: tar.xz
+        windows_arm_emulation: true
+        replacements:
+          amd64: x64
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jdx/packslip/releases/download/{{.Version}}/packslip-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+            format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/jdx/packslip/releases/download/{{.Version}}/packslip-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+        asset: packslip-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+        format: tar.xz
+        replacements:
+          amd64: x64
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jdx/packslip/releases/download/{{.Version}}/packslip-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+            format: zip
+        supported_envs:
+          - linux
+          - darwin/arm64
+          - windows
