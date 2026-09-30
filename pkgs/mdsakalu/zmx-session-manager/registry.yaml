@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
+packages:
+  - type: github_release
+    repo_owner: mdsakalu
+    repo_name: zmx-session-manager
+    description: TUI session manager for zmx
+    files:
+      - name: zsm
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/mdsakalu/zmx-session-manager/releases/download/{{.Version}}/zmx-session-manager_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: zmx-session-manager_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/mdsakalu/zmx-session-manager/releases/download/{{.Version}}/zmx-session-manager_{{trimV .Version}}_checksums.txt
+          asset: zmx-session-manager_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+        supported_envs:
+          - linux
+          - darwin

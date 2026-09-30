@@ -77061,6 +77061,49 @@ packages:
       algorithm: sha256
   - type: github_release
     repo_owner: kunchenguid
+    repo_name: no-mistakes
+    description: git push no-mistakes
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: Version == "v1.8.1"
+        no_asset: true
+      - version_constraint: Version == "channels"
+        no_asset: true
+      - version_constraint: Version == "v1.0.0"
+        type: http
+        url: https://gh-proxy.org/github.com/kunchenguid/no-mistakes/releases/download/{{.Version}}/no-mistakes-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+        asset: no-mistakes-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+        format: tar.gz
+        supported_envs:
+          - linux
+          - darwin
+      - version_constraint: Version == "v1.1.0"
+        type: http
+        url: https://gh-proxy.org/github.com/kunchenguid/no-mistakes/releases/download/{{.Version}}/no-mistakes-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+        asset: no-mistakes-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+        format: tar.gz
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kunchenguid/no-mistakes/releases/download/{{.Version}}/no-mistakes-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+            format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/kunchenguid/no-mistakes/releases/download/{{.Version}}/no-mistakes-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+        asset: no-mistakes-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/kunchenguid/no-mistakes/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/kunchenguid/no-mistakes/releases/download/{{.Version}}/no-mistakes-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+            format: zip
+  - type: github_release
+    repo_owner: kunchenguid
     repo_name: treehouse
     description: Manage worktrees without managing worktrees
     version_constraint: "false"
@@ -81889,6 +81932,27 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/mazrean/kessoku/releases/download/{{.Version}}/kessoku_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+  - type: github_release
+    repo_owner: mdsakalu
+    repo_name: zmx-session-manager
+    description: TUI session manager for zmx
+    files:
+      - name: zsm
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/mdsakalu/zmx-session-manager/releases/download/{{.Version}}/zmx-session-manager_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: zmx-session-manager_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/mdsakalu/zmx-session-manager/releases/download/{{.Version}}/zmx-session-manager_{{trimV .Version}}_checksums.txt
+          asset: zmx-session-manager_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+        supported_envs:
+          - linux
+          - darwin
   - type: http
     url: https://gh-proxy.org/github.com/megaease/easeprobe/releases/download/{{.Version}}/easeprobe-{{.Version}}-{{.OS}}-{{.Arch}}.tar.gz
     repo_owner: megaease
@@ -121925,6 +121989,21 @@ packages:
           darwin: macos
         github_artifact_attestations:
           signer_workflow: tree-sitter/tree-sitter/.github/workflows/release.yml
+  - name: trinodb/trino/trino-cli
+    type: http
+    url: https://gh-proxy.org/github.com/trinodb/trino/releases/download/{{.Version}}/trino-cli-{{.Version}}
+    repo_owner: trinodb
+    repo_name: trino
+    description: Trino, the distributed SQL query engine for big data - Command Line Interface
+    link: https://trino.io/docs/current/client/cli.html
+    asset: trino-cli-{{.Version}}
+    format: raw
+    # Upstream docs instruct renaming the downloaded JAR to `trino`
+    files:
+      - name: trino
+    supported_envs:
+      - darwin
+      - linux
   - name: truffleruby/truffleruby/community-native
     aliases:
       - name: oracle/truffleruby/community-native
