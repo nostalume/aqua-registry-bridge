@@ -6,7 +6,7 @@ packages:
     description: Renovate alternative specific to aqua-registry. Overcome Renovate's scalability issue
     version_constraint: "false"
     version_overrides:
-      - version_constraint: "true"
+      - version_constraint: semver("<= 0.1.8")
         type: http
         url: https://gh-proxy.org/github.com/aquaproj/aqua-registry-updater/releases/download/{{.Version}}/aqua-registry-updater_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: aqua-registry-updater_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -34,5 +34,31 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/aquaproj/aqua-registry-updater/releases/download/{{.Version}}/aqua-registry-updater_{{.OS}}_{{.Arch}}.tar.gz.intoto.jsonl
           asset: aqua-registry-updater_{{.OS}}_{{.Arch}}.tar.gz.intoto.jsonl
+        supported_envs:
+          - linux/amd64
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/aquaproj/aqua-registry-updater/releases/download/{{.Version}}/aqua-registry-updater_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: aqua-registry-updater_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/aquaproj/aqua-registry-updater/releases/download/{{.Version}}/aqua-registry-updater_{{trimV .Version}}_checksums.txt
+          asset: aqua-registry-updater_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - "https://token.actions.githubusercontent.com"
+              - --signature
+              - https://gh-proxy.org/github.com/aquaproj/aqua-registry-updater/releases/download/{{.Version}}/aqua-registry-updater_{{trimV .Version}}_checksums.txt.sig
+              - --certificate
+              - https://gh-proxy.org/github.com/aquaproj/aqua-registry-updater/releases/download/{{.Version}}/aqua-registry-updater_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - aquaproj/aqua-registry-updater
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         supported_envs:
           - linux/amd64

@@ -6,7 +6,7 @@ packages:
     description: Tool to fork a repository, commit files, create a pull request and upload assets using GitHub API
     version_constraint: "false"
     version_overrides:
-      - version_constraint: "true"
+      - version_constraint: semver("<= 1.16.0")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghcp/releases/download/{{.Version}}/ghcp_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ghcp_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -20,6 +20,35 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghcp/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghcp/releases/download/{{.Version}}/ghcp_{{trimV .Version}}_checksums.txt
+          asset: ghcp_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - "https://token.actions.githubusercontent.com"
+              - --signature
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/ghcp/releases/download/{{.Version}}/ghcp_{{trimV .Version}}_checksums.txt.sig
+              - --certificate
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/ghcp/releases/download/{{.Version}}/ghcp_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/ghcp
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghcp/releases/download/{{.Version}}/ghcp_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: ghcp_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghcp/releases/download/{{.Version}}/ghcp_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
         checksum:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghcp/releases/download/{{.Version}}/ghcp_{{trimV .Version}}_checksums.txt

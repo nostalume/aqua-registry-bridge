@@ -14867,6 +14867,93 @@ packages:
           url: https://gh-proxy.org/github.com/afnanenayet/diffsitter/releases/download/{{.Version}}/diffsitter-{{.Arch}}-{{.OS}}.sha256
           asset: diffsitter-{{.Arch}}-{{.OS}}.sha256
           algorithm: sha256
+  - name: agentgateway/agentgateway/agctl
+    type: github_release
+    repo_owner: agentgateway
+    repo_name: agentgateway
+    description: Next Generation Agentic Proxy for AI Agents and MCP servers
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: semver("<= 1.3.0-alpha.1")
+        no_asset: true
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/agentgateway/agentgateway/releases/download/{{.Version}}/agctl-{{.OS}}-{{.Arch}}
+        asset: agctl-{{.OS}}-{{.Arch}}
+        format: raw
+        windows_arm_emulation: true
+        checksum:
+          type: http
+          url: "{{.AssetURL}}.sha256"
+          asset: "{{.Asset}}.sha256"
+          algorithm: sha256
+        supported_envs:
+          - linux
+          - darwin/arm64
+          - windows/amd64
+  - name: agentgateway/agentgateway/agentgateway
+    type: github_release
+    repo_owner: agentgateway
+    repo_name: agentgateway
+    description: Next Generation Agentic Proxy for AI Agents and MCP servers
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: semver("<= 0.4.15")
+        no_asset: true
+      - version_constraint: semver("<= 0.7.6")
+        type: http
+        url: https://gh-proxy.org/github.com/agentgateway/agentgateway/releases/download/{{.Version}}/agentgateway-{{.OS}}-{{.Arch}}
+        asset: agentgateway-{{.OS}}-{{.Arch}}
+        format: raw
+        checksum:
+          type: http
+          url: "{{.AssetURL}}.sha256"
+          asset: "{{.Asset}}.sha256"
+          algorithm: sha256
+        supported_envs:
+          - linux
+          - darwin/arm64
+      - version_constraint: semver("<= 0.9.0")
+        type: http
+        url: https://gh-proxy.org/github.com/agentgateway/agentgateway/releases/download/{{.Version}}/agentgateway-{{.OS}}-{{.Arch}}
+        asset: agentgateway-{{.OS}}-{{.Arch}}
+        format: raw
+        windows_arm_emulation: true
+        checksum:
+          type: http
+          url: "{{.AssetURL}}.sha256"
+          asset: "{{.Asset}}.sha256"
+          algorithm: sha256
+        supported_envs:
+          - linux
+          - darwin/arm64
+          - windows/amd64
+      - version_constraint: semver("<= 0.12.0")
+        type: http
+        url: https://gh-proxy.org/github.com/agentgateway/agentgateway/releases/download/{{.Version}}/agentgateway-{{.OS}}-{{.Arch}}
+        asset: agentgateway-{{.OS}}-{{.Arch}}
+        format: raw
+        windows_arm_emulation: true
+        checksum:
+          type: http
+          url: "{{.AssetURL}}.sha256"
+          asset: "{{.Asset}}.sha256"
+          algorithm: sha256
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/agentgateway/agentgateway/releases/download/{{.Version}}/agentgateway-{{.OS}}-{{.Arch}}
+        asset: agentgateway-{{.OS}}-{{.Arch}}
+        format: raw
+        windows_arm_emulation: true
+        checksum:
+          type: http
+          url: "{{.AssetURL}}.sha256"
+          asset: "{{.Asset}}.sha256"
+          algorithm: sha256
+        supported_envs:
+          - linux
+          - darwin/arm64
+          - windows/amd64
   - type: github_release
     repo_owner: ahkohd
     repo_name: oyo
@@ -18236,7 +18323,7 @@ packages:
     description: Renovate alternative specific to aqua-registry. Overcome Renovate's scalability issue
     version_constraint: "false"
     version_overrides:
-      - version_constraint: "true"
+      - version_constraint: semver("<= 0.1.8")
         type: http
         url: https://gh-proxy.org/github.com/aquaproj/aqua-registry-updater/releases/download/{{.Version}}/aqua-registry-updater_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: aqua-registry-updater_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -18266,13 +18353,39 @@ packages:
           asset: aqua-registry-updater_{{.OS}}_{{.Arch}}.tar.gz.intoto.jsonl
         supported_envs:
           - linux/amd64
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/aquaproj/aqua-registry-updater/releases/download/{{.Version}}/aqua-registry-updater_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: aqua-registry-updater_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/aquaproj/aqua-registry-updater/releases/download/{{.Version}}/aqua-registry-updater_{{trimV .Version}}_checksums.txt
+          asset: aqua-registry-updater_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - "https://token.actions.githubusercontent.com"
+              - --signature
+              - https://gh-proxy.org/github.com/aquaproj/aqua-registry-updater/releases/download/{{.Version}}/aqua-registry-updater_{{trimV .Version}}_checksums.txt.sig
+              - --certificate
+              - https://gh-proxy.org/github.com/aquaproj/aqua-registry-updater/releases/download/{{.Version}}/aqua-registry-updater_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - aquaproj/aqua-registry-updater
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+        supported_envs:
+          - linux/amd64
   - type: github_release
     repo_owner: aquaproj
     repo_name: ar2
     description: CLI for aqua registry g2
     version_constraint: "false"
     version_overrides:
-      - version_constraint: "true"
+      - version_constraint: semver("<= 0.5.1")
         type: http
         url: https://gh-proxy.org/github.com/aquaproj/ar2/releases/download/{{.Version}}/ar2_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ar2_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -18300,6 +18413,32 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/aquaproj/ar2/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
+        github_artifact_attestations:
+          signer_workflow: suzuki-shunsuke/go-release-workflow/.github/workflows/release.yaml
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/aquaproj/ar2/releases/download/{{.Version}}/ar2_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: ar2_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/aquaproj/ar2/releases/download/{{.Version}}/ar2_checksums.txt
+          asset: ar2_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - aquaproj/ar2
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/aquaproj/ar2/releases/download/{{.Version}}/ar2_checksums.txt.sigstore.json
+              asset: ar2_checksums.txt.sigstore.json
         github_artifact_attestations:
           signer_workflow: suzuki-shunsuke/go-release-workflow/.github/workflows/release.yaml
   - type: github_release
@@ -18458,7 +18597,7 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/aquaproj/registry-tool/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
-      - version_constraint: "true"
+      - version_constraint: semver("<= 0.5.9")
         type: http
         url: https://gh-proxy.org/github.com/aquaproj/registry-tool/releases/download/{{.Version}}/argd_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: argd_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -18486,6 +18625,30 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/aquaproj/registry-tool/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/aquaproj/registry-tool/releases/download/{{.Version}}/argd_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: argd_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/aquaproj/registry-tool/releases/download/{{.Version}}/argd_checksums.txt
+          asset: argd_checksums.txt
+          algorithm: sha256
+          cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/aquaproj/registry-tool/releases/download/{{.Version}}/argd_checksums.txt.sigstore.json
+              asset: argd_checksums.txt.sigstore.json
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - "https://token.actions.githubusercontent.com"
+              - --certificate-github-workflow-repository
+              - aquaproj/registry-tool
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
   - type: github_release
     repo_owner: aquasecurity
     repo_name: chain-bench
@@ -79190,7 +79353,7 @@ packages:
               - refs/tags/{{.Version}}
         github_artifact_attestations:
           signer_workflow: suzuki-shunsuke/go-release-workflow/.github/workflows/release.yaml
-      - version_constraint: "true"
+      - version_constraint: semver("<= 1.0.0")
         type: http
         url: https://gh-proxy.org/github.com/lintnet/lintnet/releases/download/{{.Version}}/lintnet_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: lintnet_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -79204,6 +79367,37 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/lintnet/lintnet/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/lintnet/lintnet/releases/download/{{.Version}}/lintnet_{{trimV .Version}}_checksums.txt
+          asset: lintnet_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/lintnet/lintnet/releases/download/{{.Version}}/lintnet_{{trimV .Version}}_checksums.txt.bundle
+              asset: lintnet_{{trimV .Version}}_checksums.txt.bundle
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - "https://token.actions.githubusercontent.com"
+              - --certificate-github-workflow-repository
+              - lintnet/lintnet
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+        github_artifact_attestations:
+          signer_workflow: suzuki-shunsuke/go-release-workflow/.github/workflows/release.yaml
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/lintnet/lintnet/releases/download/{{.Version}}/lintnet_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: lintnet_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/lintnet/lintnet/releases/download/{{.Version}}/lintnet_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
         checksum:
           type: http
           url: https://gh-proxy.org/github.com/lintnet/lintnet/releases/download/{{.Version}}/lintnet_{{trimV .Version}}_checksums.txt
@@ -114019,7 +114213,7 @@ packages:
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/asciinema-trim/releases/download/{{.Version}}/asciinema-trim_{{trimV .Version}}_checksums.txt
           asset: asciinema-trim_{{trimV .Version}}_checksums.txt
           algorithm: sha256
-      - version_constraint: "true"
+      - version_constraint: semver("<= 0.1.5")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/asciinema-trim/releases/download/{{.Version}}/asciinema-trim_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: asciinema-trim_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -114033,6 +114227,16 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/asciinema-trim/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/asciinema-trim/releases/download/{{.Version}}/asciinema-trim_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: asciinema-trim_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/asciinema-trim/releases/download/{{.Version}}/asciinema-trim_{{trimV .Version}}_checksums.txt
+          asset: asciinema-trim_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
   - type: http
     url: https://gh-proxy.org/raw.githubusercontent.com/suzuki-shunsuke/checkout-merged-branch-with-ci-info/{{.Version}}/checkout-merged-branch
     repo_owner: suzuki-shunsuke
@@ -114101,7 +114305,7 @@ packages:
               - suzuki-shunsuke/ci-info
               - --certificate-github-workflow-ref
               - refs/tags/{{.Version}}
-      - version_constraint: "true"
+      - version_constraint: semver("<= 2.4.3")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/ci-info/releases/download/{{.Version}}/ci-info_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ci-info_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -114110,6 +114314,30 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/ci-info/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/ci-info/releases/download/{{.Version}}/ci-info_{{trimV .Version}}_checksums.txt
+          asset: ci-info_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/suzuki-shunsuke/ci-info/releases/download/{{.Version}}/ci-info_{{trimV .Version}}_checksums.txt.bundle
+              asset: ci-info_{{trimV .Version}}_checksums.txt.bundle
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - "https://token.actions.githubusercontent.com"
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/ci-info
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/ci-info/releases/download/{{.Version}}/ci-info_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: ci-info_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
         checksum:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/ci-info/releases/download/{{.Version}}/ci-info_{{trimV .Version}}_checksums.txt
@@ -114311,7 +114539,7 @@ packages:
               - suzuki-shunsuke/circleci-config-merge
               - --certificate-github-workflow-ref
               - refs/tags/{{.Version}}
-      - version_constraint: "true"
+      - version_constraint: semver("<= 1.1.6")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/circleci-config-merge/releases/download/{{.Version}}/circleci-config-merge_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: circleci-config-merge_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -114325,6 +114553,35 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/circleci-config-merge/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/circleci-config-merge/releases/download/{{.Version}}/circleci-config-merge_{{trimV .Version}}_checksums.txt
+          asset: circleci-config-merge_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - "https://token.actions.githubusercontent.com"
+              - --signature
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/circleci-config-merge/releases/download/{{.Version}}/circleci-config-merge_{{trimV .Version}}_checksums.txt.sig
+              - --certificate
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/circleci-config-merge/releases/download/{{.Version}}/circleci-config-merge_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/circleci-config-merge
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/circleci-config-merge/releases/download/{{.Version}}/circleci-config-merge_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: circleci-config-merge_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/circleci-config-merge/releases/download/{{.Version}}/circleci-config-merge_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
         checksum:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/circleci-config-merge/releases/download/{{.Version}}/circleci-config-merge_{{trimV .Version}}_checksums.txt
@@ -114463,7 +114720,7 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/suzuki-shunsuke/cmdx/releases/download/{{.Version}}/cmdx_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
-      - version_constraint: "true"
+      - version_constraint: semver("<= 2.0.2")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/cmdx/releases/download/{{.Version}}/cmdx_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: cmdx_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -114491,6 +114748,35 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/cmdx/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/cmdx/releases/download/{{.Version}}/cmdx_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/cmdx/releases/download/{{.Version}}/cmdx_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: cmdx_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/cmdx/releases/download/{{.Version}}/cmdx_{{trimV .Version}}_checksums.txt
+          asset: cmdx_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - "https://token.actions.githubusercontent.com"
+              - --signature
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/cmdx/releases/download/{{.Version}}/cmdx_{{trimV .Version}}_checksums.txt.sig
+              - --certificate
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/cmdx/releases/download/{{.Version}}/cmdx_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/cmdx
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -114524,7 +114810,7 @@ packages:
     description: CLI to deny self-approved GitHub Pull Requests
     version_constraint: "false"
     version_overrides:
-      - version_constraint: "true"
+      - version_constraint: semver("<= 0.4.0-0")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/deny-self-approve/releases/download/{{.Version}}/deny-self-approve_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: deny-self-approve_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -114557,13 +114843,42 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/suzuki-shunsuke/deny-self-approve/releases/download/{{.Version}}/deny-self-approve_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/deny-self-approve/releases/download/{{.Version}}/deny-self-approve_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: deny-self-approve_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/deny-self-approve/releases/download/{{.Version}}/deny-self-approve_{{trimV .Version}}_checksums.txt
+          asset: deny-self-approve_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - "https://token.actions.githubusercontent.com"
+              - --signature
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/deny-self-approve/releases/download/{{.Version}}/deny-self-approve_{{trimV .Version}}_checksums.txt.sig
+              - --certificate
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/deny-self-approve/releases/download/{{.Version}}/deny-self-approve_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/deny-self-approve
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/deny-self-approve/releases/download/{{.Version}}/deny-self-approve_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
   - type: github_release
     repo_owner: suzuki-shunsuke
     repo_name: disable-checkout-persist-credentials
     description: CLI to disable actions/checkout's persist-credentials
     version_constraint: "false"
     version_overrides:
-      - version_constraint: "true"
+      - version_constraint: semver("<= 1.0.0")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/disable-checkout-persist-credentials/releases/download/{{.Version}}/disable-checkout-persist-credentials_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: disable-checkout-persist-credentials_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -114572,6 +114887,35 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/disable-checkout-persist-credentials/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/disable-checkout-persist-credentials/releases/download/{{.Version}}/disable-checkout-persist-credentials_{{trimV .Version}}_checksums.txt
+          asset: disable-checkout-persist-credentials_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - "https://token.actions.githubusercontent.com"
+              - --signature
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/disable-checkout-persist-credentials/releases/download/{{.Version}}/disable-checkout-persist-credentials_{{trimV .Version}}_checksums.txt.sig
+              - --certificate
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/disable-checkout-persist-credentials/releases/download/{{.Version}}/disable-checkout-persist-credentials_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/disable-checkout-persist-credentials
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/disable-checkout-persist-credentials/releases/download/{{.Version}}/disable-checkout-persist-credentials_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/disable-checkout-persist-credentials/releases/download/{{.Version}}/disable-checkout-persist-credentials_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: disable-checkout-persist-credentials_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
         checksum:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/disable-checkout-persist-credentials/releases/download/{{.Version}}/disable-checkout-persist-credentials_{{trimV .Version}}_checksums.txt
@@ -114651,7 +114995,7 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/suzuki-shunsuke/docfresh/releases/download/{{.Version}}/docfresh_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
-      - version_constraint: "true"
+      - version_constraint: semver("<= 0.3.1")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/docfresh/releases/download/{{.Version}}/docfresh_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: docfresh_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -114681,6 +115025,37 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/docfresh/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/docfresh/releases/download/{{.Version}}/docfresh_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/docfresh/releases/download/{{.Version}}/docfresh_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: docfresh_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/docfresh/releases/download/{{.Version}}/docfresh_checksums.txt
+          asset: docfresh_checksums.txt
+          algorithm: sha256
+          cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/suzuki-shunsuke/docfresh/releases/download/{{.Version}}/docfresh_checksums.txt.sigstore.json
+              asset: docfresh_checksums.txt.sigstore.json
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - "https://token.actions.githubusercontent.com"
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/docfresh
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+        github_artifact_attestations:
+          signer_workflow: suzuki-shunsuke/go-release-workflow/.github/workflows/release.yaml
         overrides:
           - goos: windows
             type: http
@@ -114770,7 +115145,7 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghalint/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
-      - version_constraint: "true"
+      - version_constraint: semver("<= 1.5.7-1")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghalint/releases/download/{{.Version}}/ghalint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ghalint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -114798,6 +115173,35 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghalint/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghalint/releases/download/{{.Version}}/ghalint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghalint/releases/download/{{.Version}}/ghalint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: ghalint_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghalint/releases/download/{{.Version}}/ghalint_{{trimV .Version}}_checksums.txt
+          asset: ghalint_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/ghalint/releases/download/{{.Version}}/ghalint_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-identity-regexp
+              - "^https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.+$"
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
+              - --signature
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/ghalint/releases/download/{{.Version}}/ghalint_{{trimV .Version}}_checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/ghalint
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -114840,7 +115244,7 @@ packages:
         supported_envs:
           - linux
           - darwin/arm64
-      - version_constraint: "true"
+      - version_constraint: semver("<= 1.0.1")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghaperf/releases/download/{{.Version}}/ghaperf_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ghaperf_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -114871,6 +115275,33 @@ packages:
         supported_envs:
           - linux
           - darwin/arm64
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghaperf/releases/download/{{.Version}}/ghaperf_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: ghaperf_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghaperf/releases/download/{{.Version}}/ghaperf_checksums.txt
+          asset: ghaperf_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - "https://token.actions.githubusercontent.com"
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/ghaperf
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghaperf/releases/download/{{.Version}}/ghaperf_checksums.txt.sigstore.json
+              asset: ghaperf_checksums.txt.sigstore.json
+        supported_envs:
+          - linux
+          - darwin/arm64
   - type: github_release
     repo_owner: suzuki-shunsuke
     repo_name: ghatm
@@ -114894,7 +115325,7 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghatm/releases/download/{{.Version}}/gha-set-timeout-minutes_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
-      - version_constraint: "true"
+      - version_constraint: semver("<= 1.0.0")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghatm/releases/download/{{.Version}}/ghatm_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ghatm_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -114927,13 +115358,42 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghatm/releases/download/{{.Version}}/ghatm_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghatm/releases/download/{{.Version}}/ghatm_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: ghatm_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghatm/releases/download/{{.Version}}/ghatm_{{trimV .Version}}_checksums.txt
+          asset: ghatm_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - "https://token.actions.githubusercontent.com"
+              - --signature
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/ghatm/releases/download/{{.Version}}/ghatm_{{trimV .Version}}_checksums.txt.sig
+              - --certificate
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/ghatm/releases/download/{{.Version}}/ghatm_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/ghatm
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghatm/releases/download/{{.Version}}/ghatm_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
   - type: github_release
     repo_owner: suzuki-shunsuke
     repo_name: ghcp
     description: Tool to fork a repository, commit files, create a pull request and upload assets using GitHub API
     version_constraint: "false"
     version_overrides:
-      - version_constraint: "true"
+      - version_constraint: semver("<= 1.16.0")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghcp/releases/download/{{.Version}}/ghcp_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ghcp_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -114947,6 +115407,35 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghcp/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghcp/releases/download/{{.Version}}/ghcp_{{trimV .Version}}_checksums.txt
+          asset: ghcp_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - "https://token.actions.githubusercontent.com"
+              - --signature
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/ghcp/releases/download/{{.Version}}/ghcp_{{trimV .Version}}_checksums.txt.sig
+              - --certificate
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/ghcp/releases/download/{{.Version}}/ghcp_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/ghcp
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghcp/releases/download/{{.Version}}/ghcp_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: ghcp_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghcp/releases/download/{{.Version}}/ghcp_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
         checksum:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghcp/releases/download/{{.Version}}/ghcp_{{trimV .Version}}_checksums.txt
@@ -115042,7 +115531,7 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghir/releases/download/{{.Version}}/ghir_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
-      - version_constraint: "true"
+      - version_constraint: semver("<= 1.0.1")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghir/releases/download/{{.Version}}/ghir_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ghir_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -115077,13 +115566,44 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghir/releases/download/{{.Version}}/ghir_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghir/releases/download/{{.Version}}/ghir_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: ghir_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghir/releases/download/{{.Version}}/ghir_checksums.txt
+          asset: ghir_checksums.txt
+          algorithm: sha256
+          cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghir/releases/download/{{.Version}}/ghir_checksums.txt.sigstore.json
+              asset: ghir_checksums.txt.sigstore.json
+            opts:
+              - --certificate-identity-regexp
+              - "^https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.+$"
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/ghir
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+        github_artifact_attestations:
+          signer_workflow: suzuki-shunsuke/go-release-workflow/.github/workflows/release.yaml
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghir/releases/download/{{.Version}}/ghir_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
   - type: github_release
     repo_owner: suzuki-shunsuke
     repo_name: ghomfc
     description: GitHub Organization Members' Followers Counter
     version_constraint: "false"
     version_overrides:
-      - version_constraint: "true"
+      - version_constraint: semver("<= 1.0.0")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghomfc/releases/download/{{.Version}}/ghomfc_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ghomfc_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -115116,13 +115636,42 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghomfc/releases/download/{{.Version}}/ghomfc_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghomfc/releases/download/{{.Version}}/ghomfc_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: ghomfc_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghomfc/releases/download/{{.Version}}/ghomfc_{{trimV .Version}}_checksums.txt
+          asset: ghomfc_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - "https://token.actions.githubusercontent.com"
+              - --signature
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/ghomfc/releases/download/{{.Version}}/ghomfc_{{trimV .Version}}_checksums.txt.sig
+              - --certificate
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/ghomfc/releases/download/{{.Version}}/ghomfc_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/ghomfc
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghomfc/releases/download/{{.Version}}/ghomfc_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
   - type: github_release
     repo_owner: suzuki-shunsuke
     repo_name: ghproj
     description: Add GitHub Issues and Pull Requests to GitHub Projects
     version_constraint: "false"
     version_overrides:
-      - version_constraint: "true"
+      - version_constraint: semver("<= 1.0.0")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghproj/releases/download/{{.Version}}/ghproj_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ghproj_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -115150,6 +115699,35 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghproj/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghproj/releases/download/{{.Version}}/ghproj_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghproj/releases/download/{{.Version}}/ghproj_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: ghproj_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghproj/releases/download/{{.Version}}/ghproj_{{trimV .Version}}_checksums.txt
+          asset: ghproj_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - "https://token.actions.githubusercontent.com"
+              - --signature
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/ghproj/releases/download/{{.Version}}/ghproj_{{trimV .Version}}_checksums.txt.sig
+              - --certificate
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/ghproj/releases/download/{{.Version}}/ghproj_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/ghproj
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -115216,9 +115794,33 @@ packages:
               - suzuki-shunsuke/ghtkn
               - --certificate-github-workflow-ref
               - refs/tags/{{.Version}}
+      - version_constraint: semver("<= 0.4.1")
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghtkn/releases/download/{{.Version}}/ghtkn_{{.OS}}_{{.Arch}}.{{.Format}}
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghtkn/releases/download/{{.Version}}/ghtkn_checksums.txt
+          asset: ghtkn_checksums.txt
+          algorithm: sha256
+          cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghtkn/releases/download/{{.Version}}/ghtkn_checksums.txt.sigstore.json
+              asset: ghtkn_checksums.txt.sigstore.json
+            opts:
+              - --certificate-identity-regexp
+              - "^https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.+$"
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/ghtkn
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghtkn/releases/download/{{.Version}}/ghtkn_{{.OS}}_{{.Arch}}.{{.Format}}
+        slsa_provenance:
+          enabled: false
         checksum:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghtkn/releases/download/{{.Version}}/ghtkn_checksums.txt
@@ -115306,7 +115908,7 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/github-comment/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
-      - version_constraint: "true"
+      - version_constraint: semver("<= 6.4.1")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/github-comment/releases/download/{{.Version}}/github-comment_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: github-comment_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -115334,13 +115936,37 @@ packages:
               - suzuki-shunsuke/github-comment
               - --certificate-github-workflow-ref
               - refs/tags/{{.Version}}
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/github-comment/releases/download/{{.Version}}/github-comment_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: github-comment_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/github-comment/releases/download/{{.Version}}/github-comment_{{trimV .Version}}_checksums.txt
+          asset: github-comment_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - "https://token.actions.githubusercontent.com"
+              - --signature
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/github-comment/releases/download/{{.Version}}/github-comment_{{trimV .Version}}_checksums.txt.sig
+              - --certificate
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/github-comment/releases/download/{{.Version}}/github-comment_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/github-comment
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
   - type: github_release
     repo_owner: suzuki-shunsuke
     repo_name: langcheck
     description: langcheck is a CLI for checking if disallowed characters are included in files and texts. This is useful to prevent coding agents from using disallowed characters in code, commit messages, issues, pull requests, and so on
     version_constraint: "false"
     version_overrides:
-      - version_constraint: "true"
+      - version_constraint: semver("<= 0.0.1")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/langcheck/releases/download/{{.Version}}/langcheck_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: langcheck_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -115368,6 +115994,37 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/langcheck/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
+        github_artifact_attestations:
+          signer_workflow: suzuki-shunsuke/go-release-workflow/.github/workflows/release.yaml
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/langcheck/releases/download/{{.Version}}/langcheck_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/langcheck/releases/download/{{.Version}}/langcheck_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: langcheck_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/langcheck/releases/download/{{.Version}}/langcheck_checksums.txt
+          asset: langcheck_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
+              - --certificate-identity-regexp
+              - "^https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.+$"
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/langcheck
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/suzuki-shunsuke/langcheck/releases/download/{{.Version}}/langcheck_checksums.txt.sigstore.json
+              asset: langcheck_checksums.txt.sigstore.json
         github_artifact_attestations:
           signer_workflow: suzuki-shunsuke/go-release-workflow/.github/workflows/release.yaml
         overrides:
@@ -115403,7 +116060,7 @@ packages:
     description: Migrate github.com/urfave/cli/v2 to v3. This tool doesn't aim to the complete migration. Probably you need to fix code manually after running this tool, but this tool makes the migration easy
     version_constraint: "false"
     version_overrides:
-      - version_constraint: "true"
+      - version_constraint: semver("<= 0.1.4")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/migrate-urfave-cli-v3/releases/download/{{.Version}}/migrate-urfave-cli-v3_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: migrate-urfave-cli-v3_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -115431,6 +116088,35 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/migrate-urfave-cli-v3/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/migrate-urfave-cli-v3/releases/download/{{.Version}}/migrate-urfave-cli-v3_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/migrate-urfave-cli-v3/releases/download/{{.Version}}/migrate-urfave-cli-v3_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: migrate-urfave-cli-v3_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/migrate-urfave-cli-v3/releases/download/{{.Version}}/migrate-urfave-cli-v3_{{trimV .Version}}_checksums.txt
+          asset: migrate-urfave-cli-v3_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/migrate-urfave-cli-v3/releases/download/{{.Version}}/migrate-urfave-cli-v3_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
+              - --signature
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/migrate-urfave-cli-v3/releases/download/{{.Version}}/migrate-urfave-cli-v3_{{trimV .Version}}_checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/migrate-urfave-cli-v3
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -115477,7 +116163,7 @@ packages:
             format: zip
             slsa_provenance:
               enabled: false
-      - version_constraint: "true"
+      - version_constraint: semver("<= 0.1.13")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/mkghtag/releases/download/{{.Version}}/mkghtag_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: mkghtag_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -115491,6 +116177,35 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/mkghtag/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/mkghtag/releases/download/{{.Version}}/mkghtag_{{trimV .Version}}_checksums.txt
+          asset: mkghtag_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - "https://token.actions.githubusercontent.com"
+              - --signature
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/mkghtag/releases/download/{{.Version}}/mkghtag_{{trimV .Version}}_checksums.txt.sig
+              - --certificate
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/mkghtag/releases/download/{{.Version}}/mkghtag_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/mkghtag
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/mkghtag/releases/download/{{.Version}}/mkghtag_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: mkghtag_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/mkghtag/releases/download/{{.Version}}/mkghtag_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
         checksum:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/mkghtag/releases/download/{{.Version}}/mkghtag_{{trimV .Version}}_checksums.txt
@@ -115582,7 +116297,7 @@ packages:
               - suzuki-shunsuke/nllint
               - --certificate-github-workflow-ref
               - refs/tags/{{.Version}}
-      - version_constraint: "true"
+      - version_constraint: semver("<= 1.2.0")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: nllint_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -115596,6 +116311,35 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{trimV .Version}}_checksums.txt
+          asset: nllint_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{trimV .Version}}_checksums.txt.sigstore.json
+              asset: nllint_{{trimV .Version}}_checksums.txt.sigstore.json
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - "https://token.actions.githubusercontent.com"
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/nllint
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: nllint_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
         checksum:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{trimV .Version}}_checksums.txt
@@ -115684,7 +116428,7 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/suzuki-shunsuke/pinact/releases/download/{{.Version}}/pinact_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
-      - version_constraint: "true"
+      - version_constraint: semver("<= 5.0.0")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/pinact/releases/download/{{.Version}}/pinact_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: pinact_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -115719,6 +116463,37 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/suzuki-shunsuke/pinact/releases/download/{{.Version}}/pinact_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/pinact/releases/download/{{.Version}}/pinact_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: pinact_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/pinact/releases/download/{{.Version}}/pinact_{{trimV .Version}}_checksums.txt
+          asset: pinact_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/suzuki-shunsuke/pinact/releases/download/{{.Version}}/pinact_{{trimV .Version}}_checksums.txt.sigstore.json
+              asset: pinact_{{trimV .Version}}_checksums.txt.sigstore.json
+            opts:
+              - --certificate-identity-regexp
+              - "^https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.+$"
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/pinact
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+        github_artifact_attestations:
+          signer_workflow: suzuki-shunsuke/go-release-workflow/.github/workflows/release.yaml
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/pinact/releases/download/{{.Version}}/pinact_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
   - type: github_release
     repo_owner: suzuki-shunsuke
     repo_name: renovate-issue-action
@@ -115737,7 +116512,7 @@ packages:
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/renovate-issue-action/releases/download/{{.Version}}/renovate-issue-action_{{trimV .Version}}_checksums.txt
           asset: renovate-issue-action_{{trimV .Version}}_checksums.txt
           algorithm: sha256
-      - version_constraint: "true"
+      - version_constraint: semver("<= 0.3.2")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/renovate-issue-action/releases/download/{{.Version}}/renovate-issue-action_{{.OS}}_{{.Arch}}.tar.gz
         asset: renovate-issue-action_{{.OS}}_{{.Arch}}.tar.gz
@@ -115745,6 +116520,29 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/renovate-issue-action/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/renovate-issue-action/releases/download/{{.Version}}/renovate-issue-action_{{trimV .Version}}_checksums.txt
+          asset: renovate-issue-action_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - "https://token.actions.githubusercontent.com"
+              - --signature
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/renovate-issue-action/releases/download/{{.Version}}/renovate-issue-action_{{trimV .Version}}_checksums.txt.sig
+              - --certificate
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/renovate-issue-action/releases/download/{{.Version}}/renovate-issue-action_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/renovate-issue-action
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/renovate-issue-action/releases/download/{{.Version}}/renovate-issue-action_{{.OS}}_{{.Arch}}.tar.gz
+        asset: renovate-issue-action_{{.OS}}_{{.Arch}}.tar.gz
         checksum:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/renovate-issue-action/releases/download/{{.Version}}/renovate-issue-action_{{trimV .Version}}_checksums.txt
@@ -115777,7 +116575,7 @@ packages:
         supported_envs:
           - darwin
           - linux
-      - version_constraint: "true"
+      - version_constraint: semver("<= 0.1.0")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/rgo/releases/download/{{.Version}}/rgo_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: rgo_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -115812,6 +116610,37 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/suzuki-shunsuke/rgo/releases/download/{{.Version}}/rgo_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/rgo/releases/download/{{.Version}}/rgo_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: rgo_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/rgo/releases/download/{{.Version}}/rgo_{{trimV .Version}}_checksums.txt
+          asset: rgo_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/rgo
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/suzuki-shunsuke/rgo/releases/download/{{.Version}}/rgo_{{trimV .Version}}_checksums.txt.bundle
+              asset: rgo_{{trimV .Version}}_checksums.txt.bundle
+        github_artifact_attestations:
+          signer_workflow: suzuki-shunsuke/go-release-workflow/.github/workflows/release.yaml
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/rgo/releases/download/{{.Version}}/rgo_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
   - type: http
     url: https://gh-proxy.org/raw.githubusercontent.com/suzuki-shunsuke/rjsa/{{.Version}}/rjsa
     repo_owner: suzuki-shunsuke
@@ -115824,7 +116653,7 @@ packages:
     description: CLI to sort GitHub Issue Templates using a text editor
     version_constraint: "false"
     version_overrides:
-      - version_constraint: "true"
+      - version_constraint: semver("<= 0.1.4")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/sort-issue-template/releases/download/{{.Version}}/sort-issue-template_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: sort-issue-template_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -115852,6 +116681,35 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/sort-issue-template/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/sort-issue-template/releases/download/{{.Version}}/sort-issue-template_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/sort-issue-template/releases/download/{{.Version}}/sort-issue-template_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: sort-issue-template_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/sort-issue-template/releases/download/{{.Version}}/sort-issue-template_{{trimV .Version}}_checksums.txt
+          asset: sort-issue-template_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/sort-issue-template/releases/download/{{.Version}}/sort-issue-template_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-identity-regexp
+              - "^https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.+$"
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
+              - --signature
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/sort-issue-template/releases/download/{{.Version}}/sort-issue-template_{{trimV .Version}}_checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/sort-issue-template
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -115889,7 +116747,7 @@ packages:
               - suzuki-shunsuke/tfaction-go
               - --certificate-github-workflow-ref
               - refs/tags/{{.Version}}
-      - version_constraint: "true"
+      - version_constraint: semver("<= 0.2.3")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/tfaction-go/releases/download/{{.Version}}/tfaction_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tfaction_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -115917,6 +116775,30 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/tfaction-go/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/tfaction-go/releases/download/{{.Version}}/tfaction_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: tfaction_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/tfaction-go/releases/download/{{.Version}}/tfaction_{{trimV .Version}}_checksums.txt
+          asset: tfaction_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/tfaction-go/releases/download/{{.Version}}/tfaction_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-identity-regexp
+              - "^https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.+$"
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
+              - --signature
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/tfaction-go/releases/download/{{.Version}}/tfaction_{{trimV .Version}}_checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/tfaction-go
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
   - type: github_release
     repo_owner: suzuki-shunsuke
     repo_name: tfcmt
@@ -116062,7 +116944,7 @@ packages:
           asset: multiple.intoto.jsonl
         github_artifact_attestations:
           signer_workflow: suzuki-shunsuke/go-release-workflow/.github/workflows/release.yaml
-      - version_constraint: "true"
+      - version_constraint: semver("<= 4.14.19")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/tfcmt/releases/download/{{.Version}}/tfcmt_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tfcmt_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -116092,13 +116974,39 @@ packages:
           asset: multiple.intoto.jsonl
         github_artifact_attestations:
           signer_workflow: suzuki-shunsuke/go-release-workflow/.github/workflows/release.yaml
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/tfcmt/releases/download/{{.Version}}/tfcmt_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: tfcmt_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/tfcmt/releases/download/{{.Version}}/tfcmt_{{trimV .Version}}_checksums.txt
+          asset: tfcmt_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/suzuki-shunsuke/tfcmt/releases/download/{{.Version}}/tfcmt_{{trimV .Version}}_checksums.txt.sigstore.json
+              asset: tfcmt_{{trimV .Version}}_checksums.txt.sigstore.json
+            opts:
+              - --certificate-identity-regexp
+              - "^https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@"
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/tfcmt
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+        github_artifact_attestations:
+          signer_workflow: suzuki-shunsuke/go-release-workflow/.github/workflows/release.yaml
   - type: github_release
     repo_owner: suzuki-shunsuke
     repo_name: tfmv
     description: CLI to rename Terraform resources and modules and generate moved blocks
     version_constraint: "false"
     version_overrides:
-      - version_constraint: "true"
+      - version_constraint: semver("<= 1.0.0")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/tfmv/releases/download/{{.Version}}/tfmv_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tfmv_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -116131,13 +117039,42 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/suzuki-shunsuke/tfmv/releases/download/{{.Version}}/tfmv_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/tfmv/releases/download/{{.Version}}/tfmv_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: tfmv_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/tfmv/releases/download/{{.Version}}/tfmv_{{trimV .Version}}_checksums.txt
+          asset: tfmv_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - "https://token.actions.githubusercontent.com"
+              - --signature
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/tfmv/releases/download/{{.Version}}/tfmv_{{trimV .Version}}_checksums.txt.sig
+              - --certificate
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/tfmv/releases/download/{{.Version}}/tfmv_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/tfmv
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/tfmv/releases/download/{{.Version}}/tfmv_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
   - type: github_release
     repo_owner: suzuki-shunsuke
     repo_name: tfprovidercheck
     description: Censor Terraform Providers
     version_constraint: "false"
     version_overrides:
-      - version_constraint: "true"
+      - version_constraint: semver("<= 1.0.7")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/tfprovidercheck/releases/download/{{.Version}}/tfprovidercheck_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tfprovidercheck_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -116170,13 +117107,42 @@ packages:
               - suzuki-shunsuke/tfprovidercheck
               - --certificate-github-workflow-ref
               - refs/tags/{{.Version}}
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/tfprovidercheck/releases/download/{{.Version}}/tfprovidercheck_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: tfprovidercheck_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/tfprovidercheck/releases/download/{{.Version}}/tfprovidercheck_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/tfprovidercheck/releases/download/{{.Version}}/tfprovidercheck_{{trimV .Version}}_checksums.txt
+          asset: tfprovidercheck_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - "https://token.actions.githubusercontent.com"
+              - --signature
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/tfprovidercheck/releases/download/{{.Version}}/tfprovidercheck_{{trimV .Version}}_checksums.txt.sig
+              - --certificate
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/tfprovidercheck/releases/download/{{.Version}}/tfprovidercheck_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/tfprovidercheck
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
   - type: github_release
     repo_owner: suzuki-shunsuke
     repo_name: tfrstate
     description: Find directories where changed terraform_remote_state data source is used
     version_constraint: "false"
     version_overrides:
-      - version_constraint: "true"
+      - version_constraint: semver("<= 1.0.0")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/tfrstate/releases/download/{{.Version}}/tfrstate_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: tfrstate_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -116204,6 +117170,35 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/tfrstate/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/tfrstate/releases/download/{{.Version}}/tfrstate_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/tfrstate/releases/download/{{.Version}}/tfrstate_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: tfrstate_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/tfrstate/releases/download/{{.Version}}/tfrstate_{{trimV .Version}}_checksums.txt
+          asset: tfrstate_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - "https://token.actions.githubusercontent.com"
+              - --signature
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/tfrstate/releases/download/{{.Version}}/tfrstate_{{trimV .Version}}_checksums.txt.sig
+              - --certificate
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/tfrstate/releases/download/{{.Version}}/tfrstate_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/tfrstate
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http
@@ -116244,7 +117239,7 @@ packages:
     description: Test command results and embed them into document
     version_constraint: "false"
     version_overrides:
-      - version_constraint: "true"
+      - version_constraint: semver("<= 1.0.0")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/yodoc/releases/download/{{.Version}}/yodoc_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: yodoc_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -116272,6 +117267,35 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/yodoc/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/yodoc/releases/download/{{.Version}}/yodoc_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/yodoc/releases/download/{{.Version}}/yodoc_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: yodoc_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/yodoc/releases/download/{{.Version}}/yodoc_{{trimV .Version}}_checksums.txt
+          asset: yodoc_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - "https://token.actions.githubusercontent.com"
+              - --signature
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/yodoc/releases/download/{{.Version}}/yodoc_{{trimV .Version}}_checksums.txt.sig
+              - --certificate
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/yodoc/releases/download/{{.Version}}/yodoc_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/yodoc
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http

@@ -6,7 +6,7 @@ packages:
     description: Add GitHub Issues and Pull Requests to GitHub Projects
     version_constraint: "false"
     version_overrides:
-      - version_constraint: "true"
+      - version_constraint: semver("<= 1.0.0")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghproj/releases/download/{{.Version}}/ghproj_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ghproj_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -34,6 +34,35 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghproj/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghproj/releases/download/{{.Version}}/ghproj_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghproj/releases/download/{{.Version}}/ghproj_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: ghproj_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghproj/releases/download/{{.Version}}/ghproj_{{trimV .Version}}_checksums.txt
+          asset: ghproj_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - "https://token.actions.githubusercontent.com"
+              - --signature
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/ghproj/releases/download/{{.Version}}/ghproj_{{trimV .Version}}_checksums.txt.sig
+              - --certificate
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/ghproj/releases/download/{{.Version}}/ghproj_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/ghproj
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
         overrides:
           - goos: windows
             type: http

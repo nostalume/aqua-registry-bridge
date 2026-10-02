@@ -60,7 +60,7 @@ packages:
               - suzuki-shunsuke/ci-info
               - --certificate-github-workflow-ref
               - refs/tags/{{.Version}}
-      - version_constraint: "true"
+      - version_constraint: semver("<= 2.4.3")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/ci-info/releases/download/{{.Version}}/ci-info_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: ci-info_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -69,6 +69,30 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/ci-info/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/ci-info/releases/download/{{.Version}}/ci-info_{{trimV .Version}}_checksums.txt
+          asset: ci-info_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/suzuki-shunsuke/ci-info/releases/download/{{.Version}}/ci-info_{{trimV .Version}}_checksums.txt.bundle
+              asset: ci-info_{{trimV .Version}}_checksums.txt.bundle
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - "https://token.actions.githubusercontent.com"
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/ci-info
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/ci-info/releases/download/{{.Version}}/ci-info_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: ci-info_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
         checksum:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/ci-info/releases/download/{{.Version}}/ci-info_{{trimV .Version}}_checksums.txt

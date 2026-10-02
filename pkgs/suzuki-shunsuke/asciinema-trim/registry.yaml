@@ -29,7 +29,7 @@ packages:
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/asciinema-trim/releases/download/{{.Version}}/asciinema-trim_{{trimV .Version}}_checksums.txt
           asset: asciinema-trim_{{trimV .Version}}_checksums.txt
           algorithm: sha256
-      - version_constraint: "true"
+      - version_constraint: semver("<= 0.1.5")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/asciinema-trim/releases/download/{{.Version}}/asciinema-trim_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: asciinema-trim_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -43,3 +43,13 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/asciinema-trim/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/asciinema-trim/releases/download/{{.Version}}/asciinema-trim_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: asciinema-trim_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/asciinema-trim/releases/download/{{.Version}}/asciinema-trim_{{trimV .Version}}_checksums.txt
+          asset: asciinema-trim_{{trimV .Version}}_checksums.txt
+          algorithm: sha256

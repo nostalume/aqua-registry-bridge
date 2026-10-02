@@ -72,7 +72,7 @@ packages:
               - suzuki-shunsuke/nllint
               - --certificate-github-workflow-ref
               - refs/tags/{{.Version}}
-      - version_constraint: "true"
+      - version_constraint: semver("<= 1.2.0")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: nllint_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -86,6 +86,35 @@ packages:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/multiple.intoto.jsonl
           asset: multiple.intoto.jsonl
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{trimV .Version}}_checksums.txt
+          asset: nllint_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{trimV .Version}}_checksums.txt.sigstore.json
+              asset: nllint_{{trimV .Version}}_checksums.txt.sigstore.json
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - "https://token.actions.githubusercontent.com"
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/nllint
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: nllint_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
         checksum:
           type: http
           url: https://gh-proxy.org/github.com/suzuki-shunsuke/nllint/releases/download/{{.Version}}/nllint_{{trimV .Version}}_checksums.txt
