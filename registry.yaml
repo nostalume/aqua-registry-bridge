@@ -16897,7 +16897,7 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/anchore/syft/releases/download/{{.Version}}/syft_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
-      - version_constraint: "true"
+      - version_constraint: semver("<1.54.0")
         type: http
         url: https://gh-proxy.org/github.com/anchore/syft/releases/download/{{.Version}}/syft_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: syft_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -16918,6 +16918,34 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/anchore/syft/releases/download/{{.Version}}/syft_{{trimV .Version}}_checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - anchore/syft
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/anchore/syft/releases/download/{{.Version}}/syft_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/anchore/syft/releases/download/{{.Version}}/syft_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: syft_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/anchore/syft/releases/download/{{.Version}}/syft_{{trimV .Version}}_checksums.txt
+          asset: syft_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/anchore/syft/releases/download/{{.Version}}/syft_{{trimV .Version}}_checksums.txt.sigstore.json
+              asset: syft_{{trimV .Version}}_checksums.txt.sigstore.json
+            opts:
+              - --certificate-identity
+              - https://gh-proxy.org/github.com/anchore/syft/.github/workflows/release.yaml@refs/heads/main
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
               - --certificate-github-workflow-repository
               - anchore/syft
         overrides:
@@ -46092,6 +46120,85 @@ packages:
           - goos: windows
             type: http
             url: https://gh-proxy.org/github.com/editorconfig-checker/editorconfig-checker/releases/download/{{.Version}}/editorconfig-checker-{{.OS}}-{{.Arch}}.{{.Format}}
+            format: zip
+  - type: github_release
+    repo_owner: editorconfig
+    repo_name: editorconfig-core-go
+    description: EditorConfig Core written in Go
+    files:
+      - name: editorconfig
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: semver("<= 2.3.2")
+        no_asset: true
+      - version_constraint: semver("<= 2.3.9")
+        type: http
+        url: https://gh-proxy.org/github.com/editorconfig/editorconfig-core-go/releases/download/{{.Version}}/editorconfig-core-go_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: editorconfig-core-go_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        rosetta2: true
+        windows_arm_emulation: true
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/editorconfig/editorconfig-core-go/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/editorconfig/editorconfig-core-go/releases/download/{{.Version}}/editorconfig-core-go_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+        supported_envs:
+          - darwin
+          - windows
+          - linux/amd64
+      - version_constraint: Version == "v2.3.10"
+        type: http
+        url: https://gh-proxy.org/github.com/editorconfig/editorconfig-core-go/releases/download/{{.Version}}/editorconfig-core-go_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: editorconfig-core-go_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        rosetta2: true
+        windows_arm_emulation: true
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/editorconfig/editorconfig-core-go/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/editorconfig/editorconfig-core-go/releases/download/{{.Version}}/editorconfig-core-go_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+      - version_constraint: semver("<= 2.4.2")
+        type: http
+        url: https://gh-proxy.org/github.com/editorconfig/editorconfig-core-go/releases/download/{{.Version}}/editorconfig-core-go_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: editorconfig-core-go_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/editorconfig/editorconfig-core-go/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/editorconfig/editorconfig-core-go/releases/download/{{.Version}}/editorconfig-core-go_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/editorconfig/editorconfig-core-go/releases/download/{{.Version}}/editorconfig-core-go_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: editorconfig-core-go_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/editorconfig/editorconfig-core-go/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/editorconfig/editorconfig-core-go/releases/download/{{.Version}}/editorconfig-core-go_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
   - type: github_release
     repo_owner: edoardottt
@@ -122476,6 +122583,56 @@ packages:
         asset: gyazo_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         files:
           - name: gyazo
+  - type: github_release
+    repo_owner: tontinton
+    repo_name: maki
+    description: An efficient AI coding agent extendable by neovim-like Lua plugins
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: Version == "v0.1.0"
+        type: http
+        url: https://gh-proxy.org/github.com/tontinton/maki/releases/download/{{.Version}}/maki-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: maki-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          linux: unknown-linux-gnu
+          windows: pc-windows-msvc
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/tontinton/maki/releases/download/{{.Version}}/sha256sums.txt
+          asset: sha256sums.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/tontinton/maki/releases/download/{{.Version}}/maki-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/tontinton/maki/releases/download/{{.Version}}/maki-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: maki-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          linux: unknown-linux-musl
+          windows: pc-windows-msvc
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/tontinton/maki/releases/download/{{.Version}}/sha256sums.txt
+          asset: sha256sums.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/tontinton/maki/releases/download/{{.Version}}/maki-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            format: zip
   - type: github_release
     repo_owner: topgrade-rs
     repo_name: topgrade
