@@ -76,6 +76,25 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/eksctl-io/eksctl/releases/download/{{.Version}}/eksctl_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+      - version_constraint: semver("<= 0.230.0")
+        type: http
+        url: https://gh-proxy.org/github.com/eksctl-io/eksctl/releases/download/{{.Version}}/eksctl_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: eksctl_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          darwin: Darwin
+          linux: Linux
+          windows: Windows
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/eksctl-io/eksctl/releases/download/{{.Version}}/eksctl_checksums.txt
+          asset: eksctl_checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/eksctl-io/eksctl/releases/download/{{.Version}}/eksctl_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/eksctl-io/eksctl/releases/download/{{.Version}}/eksctl_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -90,6 +109,16 @@ packages:
           url: https://gh-proxy.org/github.com/eksctl-io/eksctl/releases/download/{{.Version}}/eksctl_checksums.txt
           asset: eksctl_checksums.txt
           algorithm: sha256
+          cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/eksctl-io/eksctl/releases/download/{{.Version}}/eksctl_checksums.txt.sigstore.json
+              asset: eksctl_checksums.txt.sigstore.json
+            opts:
+              - --certificate-identity
+              - https://gh-proxy.org/github.com/eksctl-io/eksctl/.github/workflows/publish-release.yaml@refs/tags/{{trimV .Version}}
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
         overrides:
           - goos: windows
             type: http
