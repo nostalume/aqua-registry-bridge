@@ -32310,6 +32310,20 @@ packages:
           url: https://gh-proxy.org/github.com/charmbracelet/skate/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
+          cosign:
+            opts:
+              - --certificate
+              - https://gh-proxy.org/github.com/charmbracelet/skate/releases/download/{{.Version}}/checksums.txt.pem
+              - --signature
+              - https://gh-proxy.org/github.com/charmbracelet/skate/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - charmbracelet/skate
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+              - --certificate-identity
+              - https://gh-proxy.org/github.com/charmbracelet/meta/.github/workflows/goreleaser.yml@refs/heads/main
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
         overrides:
           - goos: windows
             type: http
@@ -32331,6 +32345,58 @@ packages:
           url: https://gh-proxy.org/github.com/charmbracelet/skate/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
+          cosign:
+            opts:
+              - --certificate
+              - https://gh-proxy.org/github.com/charmbracelet/skate/releases/download/{{.Version}}/checksums.txt.pem
+              - --signature
+              - https://gh-proxy.org/github.com/charmbracelet/skate/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - charmbracelet/skate
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+              - --certificate-identity
+              - https://gh-proxy.org/github.com/charmbracelet/meta/.github/workflows/goreleaser.yml@refs/heads/main
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/charmbracelet/skate/releases/download/{{.Version}}/skate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+      - version_constraint: semver("< 1.1.0")
+        type: http
+        url: https://gh-proxy.org/github.com/charmbracelet/skate/releases/download/{{.Version}}/skate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: skate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        files:
+          - name: skate
+            src: "{{.AssetWithoutExt}}/skate"
+        replacements:
+          amd64: x86_64
+          darwin: Darwin
+          linux: Linux
+          windows: Windows
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/charmbracelet/skate/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate
+              - https://gh-proxy.org/github.com/charmbracelet/skate/releases/download/{{.Version}}/checksums.txt.pem
+              - --signature
+              - https://gh-proxy.org/github.com/charmbracelet/skate/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - charmbracelet/skate
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+              - --certificate-identity
+              - https://gh-proxy.org/github.com/charmbracelet/meta/.github/workflows/goreleaser.yml@refs/heads/main
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
         overrides:
           - goos: windows
             type: http
@@ -32355,6 +32421,20 @@ packages:
           url: https://gh-proxy.org/github.com/charmbracelet/skate/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
+          cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/charmbracelet/skate/releases/download/{{.Version}}/checksums.txt.sigstore.json
+              asset: checksums.txt.sigstore.json
+            opts:
+              - --certificate-github-workflow-repository
+              - charmbracelet/skate
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+              - --certificate-identity
+              - https://gh-proxy.org/github.com/charmbracelet/meta/.github/workflows/goreleaser.yml@refs/heads/main
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
         overrides:
           - goos: windows
             type: http
@@ -99229,7 +99309,7 @@ packages:
           - darwin
           - windows
           - amd64
-      - version_constraint: "true"
+      - version_constraint: semver("<= 0.9.6")
         type: http
         url: https://gh-proxy.org/github.com/pvolok/dekit/releases/download/{{.Version}}/mprocs-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: mprocs-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
@@ -99247,6 +99327,28 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/pvolok/dekit/releases/download/{{.Version}}/mprocs-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/pvolok/dekit/releases/download/{{.Version}}/dekit-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: dekit-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        files:
+          - name: dekit
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          linux: unknown-linux-musl
+          windows: pc-windows-msvc
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/pvolok/dekit/releases/download/{{.Version}}/dekit-{{.Arch}}-{{.OS}}.{{.Format}}
+            format: zip
+        supported_envs:
+          - darwin
+          - linux
+          - windows/amd64
   - type: github_release
     repo_owner: pyama86
     repo_name: pachanger
