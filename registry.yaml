@@ -31774,7 +31774,7 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/charmbracelet/crush/releases/download/{{.Version}}/crush_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
-      - version_constraint: "true"
+      - version_constraint: semver("< 0.98.0")
         type: http
         url: https://gh-proxy.org/github.com/charmbracelet/crush/releases/download/{{.Version}}/crush_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: crush_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -31800,6 +31800,43 @@ packages:
             opts:
               - --certificate-identity
               - https://gh-proxy.org/github.com/charmbracelet/meta/.github/workflows/goreleaser.yml@refs/heads/main
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - charmbracelet/crush
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/charmbracelet/crush/releases/download/{{.Version}}/crush_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/charmbracelet/crush/releases/download/{{.Version}}/crush_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: crush_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        files:
+          - name: crush
+            src: crush_{{trimV .Version}}_{{.OS}}_{{.Arch}}/crush
+        replacements:
+          amd64: x86_64
+          darwin: Darwin
+          linux: Linux
+          windows: Windows
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/charmbracelet/crush/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+          cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/charmbracelet/crush/releases/download/{{.Version}}/checksums.txt.sigstore.json
+              asset: checksums.txt.sigstore.json
+            opts:
+              - --certificate-identity
+              - https://gh-proxy.org/github.com/charmbracelet/crush/.github/workflows/release.yml@refs/tags/{{.Version}}
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --certificate-github-workflow-repository
