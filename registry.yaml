@@ -27024,7 +27024,7 @@ packages:
           - darwin
           - windows
           - amd64
-      - version_constraint: "true"
+      - version_constraint: semver("<= 1.2.4")
         type: http
         url: https://gh-proxy.org/github.com/bootandy/dust/releases/download/{{.Version}}/dust-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: dust-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
@@ -27049,6 +27049,25 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/bootandy/dust/releases/download/{{.Version}}/dust-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/bootandy/dust/releases/download/{{.Version}}/dust-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: dust-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          linux: unknown-linux-musl
+          windows: pc-windows-msvc
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bootandy/dust/releases/download/{{.Version}}/dust-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            format: zip
+        files:
+          - name: dust
+            src: "{{.AssetWithoutExt}}/dust"
   - type: github_release
     repo_owner: borgbackup
     repo_name: borg
@@ -107145,39 +107164,138 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/sharkdp/hexyl/releases/download/{{.Version}}/hexyl-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
-  - type: http
-    url: https://gh-proxy.org/github.com/sharkdp/hyperfine/releases/download/{{.Version}}/hyperfine-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+  - type: github_release
     repo_owner: sharkdp
     repo_name: hyperfine
     description: A command-line benchmarking tool
-    supported_envs:
-      - darwin
-      - linux
-      - amd64
-    asset: hyperfine-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
-    format: tar.gz
-    overrides:
-      - goos: windows
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: semver("<= 0.2.0")
+        error_message: The version is too old.
+      - version_constraint: semver("<= 1.2.0")
         type: http
         url: https://gh-proxy.org/github.com/sharkdp/hyperfine/releases/download/{{.Version}}/hyperfine-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
-        format: zip
-      - goos: linux
-        type: http
-        url: https://gh-proxy.org/github.com/sharkdp/hyperfine/releases/download/{{.Version}}/hyperfine-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
-        goarch: arm64
+        asset: hyperfine-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        rosetta2: true
         replacements:
-          linux: unknown-linux-gnu
-    rosetta2: true
-    replacements:
-      amd64: x86_64
-      arm64: aarch64
-      darwin: apple-darwin
-      linux: unknown-linux-musl
-      windows: pc-windows-msvc
-      386: i686
-    files:
-      - name: hyperfine
-        src: hyperfine-{{.Version}}-{{.Arch}}-{{.OS}}/hyperfine
+          amd64: x86_64
+          darwin: apple-darwin
+          linux: unknown-linux-musl
+        supported_envs:
+          - linux/amd64
+          - darwin
+        files:
+          - name: hyperfine
+            src: "{{.AssetWithoutExt}}/hyperfine"
+      - version_constraint: semver("<= 1.11.0")
+        type: http
+        url: https://gh-proxy.org/github.com/sharkdp/hyperfine/releases/download/{{.Version}}/hyperfine-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: hyperfine-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        rosetta2: true
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+          darwin: apple-darwin
+          linux: unknown-linux-musl
+          windows: pc-windows-msvc
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/sharkdp/hyperfine/releases/download/{{.Version}}/hyperfine-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            format: zip
+            files:
+              - name: hyperfine
+        supported_envs:
+          - darwin
+          - windows
+          - amd64
+        files:
+          - name: hyperfine
+            src: "{{.AssetWithoutExt}}/hyperfine"
+      - version_constraint: semver("<= 1.18.0")
+        type: http
+        url: https://gh-proxy.org/github.com/sharkdp/hyperfine/releases/download/{{.Version}}/hyperfine-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: hyperfine-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        rosetta2: true
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+          darwin: apple-darwin
+          windows: pc-windows-msvc
+        overrides:
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/sharkdp/hyperfine/releases/download/{{.Version}}/hyperfine-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            goarch: amd64
+            replacements:
+              linux: unknown-linux-musl
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/sharkdp/hyperfine/releases/download/{{.Version}}/hyperfine-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            goarch: arm64
+            replacements:
+              arm64: aarch64
+              linux: unknown-linux-gnu
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/sharkdp/hyperfine/releases/download/{{.Version}}/hyperfine-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            format: zip
+        files:
+          - name: hyperfine
+            src: "{{.AssetWithoutExt}}/hyperfine"
+      - version_constraint: semver("<= 1.20.0")
+        type: http
+        url: https://gh-proxy.org/github.com/sharkdp/hyperfine/releases/download/{{.Version}}/hyperfine-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: hyperfine-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          windows: pc-windows-msvc
+        overrides:
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/sharkdp/hyperfine/releases/download/{{.Version}}/hyperfine-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            goarch: amd64
+            replacements:
+              linux: unknown-linux-musl
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/sharkdp/hyperfine/releases/download/{{.Version}}/hyperfine-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            goarch: arm64
+            replacements:
+              linux: unknown-linux-gnu
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/sharkdp/hyperfine/releases/download/{{.Version}}/hyperfine-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            format: zip
+        files:
+          - name: hyperfine
+            src: "{{.AssetWithoutExt}}/hyperfine"
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/sharkdp/hyperfine/releases/download/{{.Version}}/hyperfine-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: hyperfine-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          linux: unknown-linux-musl
+          windows: pc-windows-msvc
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/sharkdp/hyperfine/releases/download/{{.Version}}/hyperfine-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            format: zip
+        files:
+          - name: hyperfine
+            src: "{{.AssetWithoutExt}}/hyperfine"
   - type: github_release
     repo_owner: sharkdp
     repo_name: numbat
