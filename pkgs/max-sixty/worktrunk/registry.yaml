@@ -41,6 +41,36 @@ packages:
           - darwin
           - windows
           - amd64
+      - version_constraint: semver("< 0.80.0")
+        type: http
+        url: https://gh-proxy.org/github.com/max-sixty/worktrunk/releases/download/{{.Version}}/worktrunk-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: worktrunk-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.xz
+        windows_arm_emulation: true
+        files:
+          - name: wt
+            src: "{{.AssetWithoutExt}}/wt"
+          - name: git-wt
+            src: "{{.AssetWithoutExt}}/git-wt"
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          linux: unknown-linux-musl
+          windows: pc-windows-msvc
+        checksum:
+          type: http
+          url: "{{.AssetURL}}.sha256"
+          asset: "{{.Asset}}.sha256"
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/max-sixty/worktrunk/releases/download/{{.Version}}/worktrunk-{{.Arch}}-{{.OS}}.{{.Format}}
+            format: zip
+            files:
+              - name: wt
+              - name: git-wt
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/max-sixty/worktrunk/releases/download/{{.Version}}/worktrunk-{{.Arch}}-{{.OS}}.{{.Format}}
@@ -63,6 +93,16 @@ packages:
           url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
+        cosign:
+          bundle:
+            type: http
+            url: https://gh-proxy.org/github.com/max-sixty/worktrunk/releases/download/{{.Version}}/packslip.sigstore.json
+            asset: packslip.sigstore.json
+          opts:
+            - --certificate-identity
+            - https://gh-proxy.org/github.com/max-sixty/worktrunk/.github/workflows/release.yaml@refs/tags/{{.Version}}
+            - --certificate-oidc-issuer
+            - https://token.actions.githubusercontent.com
         overrides:
           - goos: windows
             type: http
