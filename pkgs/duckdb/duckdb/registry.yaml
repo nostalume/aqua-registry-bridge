@@ -101,7 +101,7 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/duckdb/duckdb/releases/download/{{.Version}}/duckdb_cli-{{.OS}}-universal.{{.Format}}
             asset: duckdb_cli-{{.OS}}-universal.{{.Format}}
-      - version_constraint: "true"
+      - version_constraint: semver("< 2.0.0")
         type: http
         url: https://gh-proxy.org/github.com/duckdb/duckdb/releases/download/{{.Version}}/duckdb_cli-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: duckdb_cli-{{.OS}}-{{.Arch}}.{{.Format}}
@@ -113,3 +113,10 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/duckdb/duckdb/releases/download/{{.Version}}/duckdb_cli-{{.OS}}-universal.{{.Format}}
             asset: duckdb_cli-{{.OS}}-universal.{{.Format}}
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/duckdb/duckdb/releases/download/{{.Version}}/duckdb-cli-{{.OS}}-{{.Arch}}.{{.Format}}
+        asset: duckdb-cli-{{.OS}}-{{.Arch}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          darwin: osx

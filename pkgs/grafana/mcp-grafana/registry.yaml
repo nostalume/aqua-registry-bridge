@@ -1,23 +1,57 @@
 packages:
-  - type: http
-    url: https://gh-proxy.org/github.com/grafana/mcp-grafana/releases/download/{{.Version}}/mcp-grafana_{{.OS}}_{{.Arch}}.{{.Format}}
+  - type: github_release
     repo_owner: grafana
     repo_name: mcp-grafana
     description: MCP server for Grafana
-    asset: mcp-grafana_{{.OS}}_{{.Arch}}.{{.Format}}
-    format: tar.gz
-    replacements:
-      amd64: x86_64
-      darwin: Darwin
-      linux: Linux
-      windows: Windows
-    checksum:
-      type: http
-      url: https://gh-proxy.org/github.com/grafana/mcp-grafana/releases/download/{{.Version}}/mcp-grafana_{{trimV .Version}}_checksums.txt
-      asset: mcp-grafana_{{trimV .Version}}_checksums.txt
-      algorithm: sha256
-    overrides:
-      - goos: windows
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: semver("< 2.1.0")
         type: http
         url: https://gh-proxy.org/github.com/grafana/mcp-grafana/releases/download/{{.Version}}/mcp-grafana_{{.OS}}_{{.Arch}}.{{.Format}}
-        format: zip
+        asset: mcp-grafana_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+          darwin: Darwin
+          linux: Linux
+          windows: Windows
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/grafana/mcp-grafana/releases/download/{{.Version}}/mcp-grafana_{{trimV .Version}}_checksums.txt
+          asset: mcp-grafana_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/grafana/mcp-grafana/releases/download/{{.Version}}/mcp-grafana_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/grafana/mcp-grafana/releases/download/{{.Version}}/mcp-grafana_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: mcp-grafana_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+          darwin: Darwin
+          linux: Linux
+          windows: Windows
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/grafana/mcp-grafana/releases/download/{{.Version}}/mcp-grafana_{{trimV .Version}}_checksums.txt
+          asset: mcp-grafana_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/grafana/mcp-grafana/releases/download/{{.Version}}/mcp-grafana_{{trimV .Version}}_checksums.txt.sigstore.json
+              asset: mcp-grafana_{{trimV .Version}}_checksums.txt.sigstore.json
+            opts:
+              - --certificate-identity
+              - https://gh-proxy.org/github.com/grafana/mcp-grafana/.github/workflows/release.yml@refs/tags/{{.Version}}
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/grafana/mcp-grafana/releases/download/{{.Version}}/mcp-grafana_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip

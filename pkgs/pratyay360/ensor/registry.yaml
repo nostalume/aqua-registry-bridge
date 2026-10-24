@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
+packages:
+  - type: github_release
+    repo_owner: pratyay360
+    repo_name: ensor
+    description: A fast, interactive CLI for finding and redacting secrets in your codebase
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/pratyay360/ensor/releases/download/{{.Version}}/ensor_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: ensor_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+          darwin: Darwin
+          linux: Linux
+          windows: Windows
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/pratyay360/ensor/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/pratyay360/ensor/releases/download/{{.Version}}/ensor_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip

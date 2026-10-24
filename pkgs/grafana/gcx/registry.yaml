@@ -26,6 +26,21 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/grafana/gcx/releases/download/{{.Version}}/gcx_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+      - version_constraint: semver("< 1.7.0")
+        type: http
+        url: https://gh-proxy.org/github.com/grafana/gcx/releases/download/{{.Version}}/gcx_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: gcx_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/grafana/gcx/releases/download/{{.Version}}/gcx_{{trimV .Version}}_checksums.txt
+          asset: gcx_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/grafana/gcx/releases/download/{{.Version}}/gcx_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/grafana/gcx/releases/download/{{.Version}}/gcx_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -36,6 +51,16 @@ packages:
           url: https://gh-proxy.org/github.com/grafana/gcx/releases/download/{{.Version}}/gcx_{{trimV .Version}}_checksums.txt
           asset: gcx_{{trimV .Version}}_checksums.txt
           algorithm: sha256
+          cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/grafana/gcx/releases/download/{{.Version}}/gcx_{{trimV .Version}}_checksums.txt.sigstore.json
+              asset: gcx_{{trimV .Version}}_checksums.txt.sigstore.json
+            opts:
+              - --certificate-identity
+              - https://gh-proxy.org/github.com/grafana/gcx/.github/workflows/release.yaml@refs/tags/{{.Version}}
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
         overrides:
           - goos: windows
             type: http

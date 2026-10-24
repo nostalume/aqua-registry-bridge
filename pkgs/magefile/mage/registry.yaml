@@ -84,6 +84,33 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
+      - version_constraint: semver("<= 1.16.0")
+        type: http
+        url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
+        asset: mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
+        format: tar.gz
+        rosetta2: true
+        windows_arm_emulation: true
+        replacements:
+          amd64: 64bit
+          darwin: macOS
+          linux: Linux
+          windows: Windows
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_checksums.txt
+          asset: mage_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
+            replacements:
+              arm64: ARM64
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
+            format: zip
       - version_constraint: Version == "v1.17.0"
         type: http
         url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}_{{.Arch}}Linux-64bit.{{.Format}}
@@ -127,10 +154,9 @@ packages:
         url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
-        rosetta2: true
-        windows_arm_emulation: true
         replacements:
           amd64: 64bit
+          arm64: ARM64
           darwin: macOS
           linux: Linux
           windows: Windows
@@ -140,11 +166,6 @@ packages:
           asset: mage_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
-          - goos: linux
-            type: http
-            url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
-            replacements:
-              arm64: ARM64
           - goos: windows
             type: http
             url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}

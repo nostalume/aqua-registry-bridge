@@ -4727,6 +4727,62 @@ packages:
           - linux/amd64
           - darwin/arm64
   - type: github_release
+    repo_owner: Future-Element
+    repo_name: pinset
+    description: A predictable, local-first runtime version manager for multilingual projects
+    files:
+      - name: pinset
+      - name: pinset-shim
+    github_artifact_attestations:
+      signer_workflow: Future-Element/pinset/.github/workflows/release.yml
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: semver("<= 2.15.0")
+        no_asset: true
+      - version_constraint: semver("<= 2.16.2")
+        type: http
+        url: https://gh-proxy.org/github.com/Future-Element/pinset/releases/download/{{.Version}}/pinset-{{.OS}}-{{.Arch}}.{{.Format}}
+        asset: pinset-{{.OS}}-{{.Arch}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: false
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: macos
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/Future-Element/pinset/releases/download/{{.Version}}/SHA256SUMS
+          asset: SHA256SUMS
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Future-Element/pinset/releases/download/{{.Version}}/pinset-{{.OS}}-{{.Arch}}.{{.Format}}
+            format: zip
+        supported_envs:
+          - linux
+          - darwin/arm64
+          - windows/amd64
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/Future-Element/pinset/releases/download/{{.Version}}/pinset-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+        asset: pinset-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+        format: zip
+        windows_arm_emulation: false
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: macos
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/Future-Element/pinset/releases/download/{{.Version}}/SHA256SUMS
+          asset: SHA256SUMS
+          algorithm: sha256
+        supported_envs:
+          - linux
+          - darwin/arm64
+          - windows/amd64
+  - type: github_release
     repo_owner: Gaurav-Gosain
     repo_name: tuios
     description: Terminal UI OS (Terminal Multiplexer)
@@ -17217,6 +17273,8 @@ packages:
     aliases:
       - name: sst/opencode
     description: The AI coding agent built for the terminal
+    version_source: github_tag
+    version_filter: Version matches "^v\\d+\\.\\d+\\.\\d+$"
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version in ["v0.1.84", "v0.1.92", "v0.1.115", "v0.1.124"]
@@ -17366,7 +17424,7 @@ packages:
         windows_arm_emulation: true
         replacements:
           amd64: x64
-      - version_constraint: "true"
+      - version_constraint: semver("< 2.0.0")
         type: http
         url: https://gh-proxy.org/github.com/anomalyco/opencode/releases/download/{{.Version}}/opencode-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: opencode-{{.OS}}-{{.Arch}}.{{.Format}}
@@ -17378,6 +17436,15 @@ packages:
           - goos: linux
             type: http
             url: https://gh-proxy.org/github.com/anomalyco/opencode/releases/download/{{.Version}}/opencode-{{.OS}}-{{.Arch}}.{{.Format}}
+            format: tar.gz
+      - version_constraint: "true"
+        type: http
+        url: https://opencode.ai/files/bin/{{trimV .Version}}/opencode-{{.OS}}-{{.Arch}}.{{.Format}}
+        format: zip
+        replacements:
+          amd64: x64
+        overrides:
+          - goos: linux
             format: tar.gz
   - type: github_release
     repo_owner: anordal
@@ -27858,6 +27925,54 @@ packages:
       - darwin
       - linux
       - amd64
+  - type: github_release
+    repo_owner: bronto-community
+    repo_name: bronto-cli
+    description: "A community command-line client for the Bronto observability platform. It wraps Bronto's REST and ingestion APIs in a single scriptable binary: search and tail logs, explore OpenTelemetry traces, send events, and manage resources (datasets, monitors, dashboards, parsers, exports, API keys)"
+    files:
+      - name: bronto
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: semver("<= 0.1.1")
+        type: http
+        url: https://gh-proxy.org/github.com/bronto-community/bronto-cli/releases/download/{{.Version}}/bronto_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: bronto_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/bronto-community/bronto-cli/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bronto-community/bronto-cli/releases/download/{{.Version}}/bronto_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/bronto-community/bronto-cli/releases/download/{{.Version}}/bronto_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: bronto_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/bronto-community/bronto-cli/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate
+              - https://gh-proxy.org/github.com/bronto-community/bronto-cli/releases/download/{{.Version}}/checksums.txt.pem
+              - --certificate-identity-regexp
+              - "^https://github\\.com/bronto-community/bronto-cli/\\.github/workflows/.+\\.ya?ml@refs/tags/\\Q{{.Version}}\\E$"
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
+              - --signature
+              - https://gh-proxy.org/github.com/bronto-community/bronto-cli/releases/download/{{.Version}}/checksums.txt.sig
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bronto-community/bronto-cli/releases/download/{{.Version}}/bronto_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
   - type: github_release
     repo_owner: bronze1man
     repo_name: yaml2json
@@ -45969,7 +46084,7 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/duckdb/duckdb/releases/download/{{.Version}}/duckdb_cli-{{.OS}}-universal.{{.Format}}
             asset: duckdb_cli-{{.OS}}-universal.{{.Format}}
-      - version_constraint: "true"
+      - version_constraint: semver("< 2.0.0")
         type: http
         url: https://gh-proxy.org/github.com/duckdb/duckdb/releases/download/{{.Version}}/duckdb_cli-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: duckdb_cli-{{.OS}}-{{.Arch}}.{{.Format}}
@@ -45981,6 +46096,13 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/duckdb/duckdb/releases/download/{{.Version}}/duckdb_cli-{{.OS}}-universal.{{.Format}}
             asset: duckdb_cli-{{.OS}}-universal.{{.Format}}
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/duckdb/duckdb/releases/download/{{.Version}}/duckdb-cli-{{.OS}}-{{.Arch}}.{{.Format}}
+        asset: duckdb-cli-{{.OS}}-{{.Arch}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          darwin: osx
   - type: http
     url: https://gh-proxy.org/github.com/dundee/gdu/releases/download/{{.Version}}/gdu_{{.OS}}_{{.Arch}}.tgz
     repo_owner: dundee
@@ -48725,6 +48847,40 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/eza-community/eza/releases/download/{{.Version}}/eza.exe_{{.Arch}}-{{.OS}}.{{.Format}}
             asset: eza.exe_{{.Arch}}-{{.OS}}.{{.Format}}
+  - type: github_release
+    repo_owner: faberlang
+    repo_name: releases
+    name: faberlang/releases/faber
+    description: Faber (Faber Romanus), an experimental programming language designed to be written by language models and read by people
+    version_prefix: faber-v
+    asset: faber-v{{.SemVer}}-{{.Arch}}-{{.OS}}.tar.gz
+    format: tar.gz
+    files:
+      - name: faber
+        src: bin/faber
+    replacements:
+      amd64: x86_64
+      arm64: aarch64
+      darwin: apple-darwin
+      linux: unknown-linux-gnu
+    checksum:
+      type: http
+      url: "{{.AssetURL}}.sha256"
+      asset: "{{.Asset}}.sha256"
+      algorithm: sha256
+    supported_envs:
+      - darwin/arm64
+      - linux/amd64
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: SemVer == "1.5.1"
+        type: http
+        url: https://gh-proxy.org/github.com/faberlang/releases/releases/download/{{.Version}}/faber-v{{.SemVer}}-{{.Arch}}-{{.OS}}.tar.gz
+        supported_envs:
+          - darwin/arm64
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/faberlang/releases/releases/download/{{.Version}}/faber-v{{.SemVer}}-{{.Arch}}-{{.OS}}.tar.gz
   - type: github_release
     repo_owner: fabpot
     repo_name: local-php-security-checker
@@ -59575,6 +59731,21 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/grafana/gcx/releases/download/{{.Version}}/gcx_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+      - version_constraint: semver("< 1.7.0")
+        type: http
+        url: https://gh-proxy.org/github.com/grafana/gcx/releases/download/{{.Version}}/gcx_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: gcx_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/grafana/gcx/releases/download/{{.Version}}/gcx_{{trimV .Version}}_checksums.txt
+          asset: gcx_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/grafana/gcx/releases/download/{{.Version}}/gcx_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/grafana/gcx/releases/download/{{.Version}}/gcx_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -59585,6 +59756,16 @@ packages:
           url: https://gh-proxy.org/github.com/grafana/gcx/releases/download/{{.Version}}/gcx_{{trimV .Version}}_checksums.txt
           asset: gcx_{{trimV .Version}}_checksums.txt
           algorithm: sha256
+          cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/grafana/gcx/releases/download/{{.Version}}/gcx_{{trimV .Version}}_checksums.txt.sigstore.json
+              asset: gcx_{{trimV .Version}}_checksums.txt.sigstore.json
+            opts:
+              - --certificate-identity
+              - https://gh-proxy.org/github.com/grafana/gcx/.github/workflows/release.yaml@refs/tags/{{.Version}}
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
         overrides:
           - goos: windows
             type: http
@@ -59705,28 +59886,62 @@ packages:
       url: https://gh-proxy.org/github.com/grafana/loki/releases/download/{{.Version}}/SHA256SUMS
       asset: SHA256SUMS
       algorithm: sha256
-  - type: http
-    url: https://gh-proxy.org/github.com/grafana/mcp-grafana/releases/download/{{.Version}}/mcp-grafana_{{.OS}}_{{.Arch}}.{{.Format}}
+  - type: github_release
     repo_owner: grafana
     repo_name: mcp-grafana
     description: MCP server for Grafana
-    asset: mcp-grafana_{{.OS}}_{{.Arch}}.{{.Format}}
-    format: tar.gz
-    replacements:
-      amd64: x86_64
-      darwin: Darwin
-      linux: Linux
-      windows: Windows
-    checksum:
-      type: http
-      url: https://gh-proxy.org/github.com/grafana/mcp-grafana/releases/download/{{.Version}}/mcp-grafana_{{trimV .Version}}_checksums.txt
-      asset: mcp-grafana_{{trimV .Version}}_checksums.txt
-      algorithm: sha256
-    overrides:
-      - goos: windows
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: semver("< 2.1.0")
         type: http
         url: https://gh-proxy.org/github.com/grafana/mcp-grafana/releases/download/{{.Version}}/mcp-grafana_{{.OS}}_{{.Arch}}.{{.Format}}
-        format: zip
+        asset: mcp-grafana_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+          darwin: Darwin
+          linux: Linux
+          windows: Windows
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/grafana/mcp-grafana/releases/download/{{.Version}}/mcp-grafana_{{trimV .Version}}_checksums.txt
+          asset: mcp-grafana_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/grafana/mcp-grafana/releases/download/{{.Version}}/mcp-grafana_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/grafana/mcp-grafana/releases/download/{{.Version}}/mcp-grafana_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: mcp-grafana_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+          darwin: Darwin
+          linux: Linux
+          windows: Windows
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/grafana/mcp-grafana/releases/download/{{.Version}}/mcp-grafana_{{trimV .Version}}_checksums.txt
+          asset: mcp-grafana_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/grafana/mcp-grafana/releases/download/{{.Version}}/mcp-grafana_{{trimV .Version}}_checksums.txt.sigstore.json
+              asset: mcp-grafana_{{trimV .Version}}_checksums.txt.sigstore.json
+            opts:
+              - --certificate-identity
+              - https://gh-proxy.org/github.com/grafana/mcp-grafana/.github/workflows/release.yml@refs/tags/{{.Version}}
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/grafana/mcp-grafana/releases/download/{{.Version}}/mcp-grafana_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
   - name: grafana/mimir/metaconvert
     type: http
     url: https://gh-proxy.org/github.com/grafana/mimir/releases/download/{{.Version}}/metaconvert-{{.OS}}-{{.Arch}}
@@ -81220,6 +81435,33 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
+      - version_constraint: semver("<= 1.16.0")
+        type: http
+        url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
+        asset: mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
+        format: tar.gz
+        rosetta2: true
+        windows_arm_emulation: true
+        replacements:
+          amd64: 64bit
+          darwin: macOS
+          linux: Linux
+          windows: Windows
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_checksums.txt
+          asset: mage_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
+            replacements:
+              arm64: ARM64
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
+            format: zip
       - version_constraint: Version == "v1.17.0"
         type: http
         url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}_{{.Arch}}Linux-64bit.{{.Format}}
@@ -81263,10 +81505,9 @@ packages:
         url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         asset: mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
         format: tar.gz
-        rosetta2: true
-        windows_arm_emulation: true
         replacements:
           amd64: 64bit
+          arm64: ARM64
           darwin: macOS
           linux: Linux
           windows: Windows
@@ -81276,11 +81517,6 @@ packages:
           asset: mage_{{trimV .Version}}_checksums.txt
           algorithm: sha256
         overrides:
-          - goos: linux
-            type: http
-            url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
-            replacements:
-              arm64: ARM64
           - goos: windows
             type: http
             url: https://gh-proxy.org/github.com/magefile/mage/releases/download/{{.Version}}/mage_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
@@ -87422,6 +87658,28 @@ packages:
       url: https://gh-proxy.org/github.com/mutagen-io/mutagen-compose/releases/download/{{.Version}}/SHA256SUMS
       asset: SHA256SUMS
       algorithm: sha256
+  - type: github_release
+    repo_owner: muvon
+    repo_name: octomind
+    description: "Open-source AI coding agent and agent runtime: one binary, any model, MCP-native. Runs in terminal, CI, or as a daemon"
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/muvon/octomind/releases/download/{{.Version}}/octomind-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: octomind-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          linux: unknown-linux-musl
+          windows: pc-windows-msvc
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/muvon/octomind/releases/download/{{.Version}}/octomind-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            format: zip
   - type: github_release
     repo_owner: mvdan
     repo_name: gofumpt
@@ -97966,6 +98224,32 @@ packages:
             url: https://gh-proxy.org/github.com/pranshuparmar/witr/releases/download/{{.Version}}/witr-{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             asset: witr-{{.OS}}-{{.Arch}}.{{.Format}}
+  - type: github_release
+    repo_owner: pratyay360
+    repo_name: ensor
+    description: A fast, interactive CLI for finding and redacting secrets in your codebase
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/pratyay360/ensor/releases/download/{{.Version}}/ensor_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: ensor_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+          darwin: Darwin
+          linux: Linux
+          windows: Windows
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/pratyay360/ensor/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/pratyay360/ensor/releases/download/{{.Version}}/ensor_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
   - type: github_release
     repo_owner: pre-commit
     repo_name: pre-commit
