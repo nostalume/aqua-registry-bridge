@@ -91,12 +91,14 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/jdx/mise/releases/download/{{.Version}}/mise-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             asset: mise-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jdx/mise/releases/download/{{.Version}}/mise-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+            asset: mise-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+            format: zip
         replacements:
           amd64: x64
           darwin: macos
-        supported_envs:
-          - linux
-          - darwin
         checksum:
           type: http
           url: https://gh-proxy.org/github.com/jdx/mise/releases/download/{{.Version}}/SHASUMS512.txt
@@ -121,12 +123,14 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/jdx/mise/releases/download/{{.Version}}/mise-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
             asset: mise-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/jdx/mise/releases/download/{{.Version}}/mise-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+            asset: mise-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+            format: zip
         replacements:
           amd64: x64
           darwin: macos
-        supported_envs:
-          - linux
-          - darwin
         checksum:
           type: http
           url: https://gh-proxy.org/github.com/jdx/mise/releases/download/{{.Version}}/SHASUMS512.txt
