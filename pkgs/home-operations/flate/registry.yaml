@@ -1,0 +1,102 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
+packages:
+  - type: github_release
+    repo_owner: home-operations
+    repo_name: flate
+    description: Render and diff Flux GitOps repositories offline, without a cluster
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: Version in ["0.1.23", "v0.4.13"]
+        no_asset: true
+      - version_constraint: semver("<= 0.1.2")
+        no_asset: true
+      - version_constraint: semver("<= 0.2.12")
+        type: http
+        url: https://gh-proxy.org/github.com/home-operations/flate/releases/download/{{.Version}}/flate_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: flate_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        checksum:
+          type: http
+          url: "{{.AssetURL}}.sha256"
+          asset: "{{.Asset}}.sha256"
+          algorithm: sha256
+        cosign:
+          bundle:
+            type: http
+            url: https://gh-proxy.org/github.com/home-operations/flate/releases/download/{{.Version}}/{{.Asset}}.sigstore.json
+            asset: "{{.Asset}}.sigstore.json"
+          opts:
+            - --certificate-identity
+            - https://gh-proxy.org/github.com/home-operations/flate/.github/workflows/release.yaml@refs/tags/{{.Version}}
+            - --certificate-oidc-issuer
+            - https://token.actions.githubusercontent.com
+            - --certificate-github-workflow-repository
+            - home-operations/flate
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/home-operations/flate/releases/download/{{.Version}}/flate_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+      - version_constraint: semver("<= 0.4.12")
+        type: http
+        url: https://gh-proxy.org/github.com/home-operations/flate/releases/download/{{.Version}}/flate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: flate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        checksum:
+          type: http
+          url: "{{.AssetURL}}.sha256"
+          asset: "{{.Asset}}.sha256"
+          algorithm: sha256
+        cosign:
+          bundle:
+            type: http
+            url: https://gh-proxy.org/github.com/home-operations/flate/releases/download/{{.Version}}/{{.Asset}}.sigstore.json
+            asset: "{{.Asset}}.sigstore.json"
+          opts:
+            - --certificate-identity
+            - https://gh-proxy.org/github.com/home-operations/flate/.github/workflows/release.yaml@refs/tags/{{.Version}}
+            - --certificate-oidc-issuer
+            - https://token.actions.githubusercontent.com
+            - --certificate-github-workflow-repository
+            - home-operations/flate
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/home-operations/flate/releases/download/{{.Version}}/flate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/home-operations/flate/releases/download/{{.Version}}/flate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: flate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        checksum:
+          type: http
+          url: "{{.AssetURL}}.sha256"
+          asset: "{{.Asset}}.sha256"
+          algorithm: sha256
+        cosign:
+          bundle:
+            type: http
+            url: https://gh-proxy.org/github.com/home-operations/flate/releases/download/{{.Version}}/{{.Asset}}.sigstore.json
+            asset: "{{.Asset}}.sigstore.json"
+          opts:
+            - --certificate-identity
+            - https://gh-proxy.org/github.com/home-operations/flate/.github/workflows/goreleaser.yaml@refs/tags/{{.Version}}
+            - --certificate-oidc-issuer
+            - https://token.actions.githubusercontent.com
+            - --certificate-github-workflow-repository
+            - home-operations/flate
+            - --certificate-github-workflow-ref
+            - refs/tags/{{.Version}}
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/home-operations/flate/releases/download/{{.Version}}/flate_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip

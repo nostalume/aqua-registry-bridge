@@ -381,3 +381,18 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/twpayne/chezmoi/releases/download/{{.Version}}/chezmoi_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/twpayne/chezmoi/releases/download/{{.Version}}/chezmoi_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            goarch: amd64
+            variants:
+              - key: libc
+                value: glibc
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/twpayne/chezmoi/releases/download/{{.Version}}/chezmoi_{{trimV .Version}}_{{.OS}}-musl_{{.Arch}}.{{.Format}}
+            goarch: amd64
+            variants:
+              - key: libc
+                value: musl
+            asset: chezmoi_{{trimV .Version}}_{{.OS}}-musl_{{.Arch}}.{{.Format}}
