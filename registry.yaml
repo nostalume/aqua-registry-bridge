@@ -18474,15 +18474,15 @@ packages:
           asset: aqua-registry-updater_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/aquaproj/aqua-registry-updater/releases/download/{{.Version}}/aqua-registry-updater_{{trimV .Version}}_checksums.txt.sigstore.json
+              asset: aqua-registry-updater_{{trimV .Version}}_checksums.txt.sigstore.json
             opts:
               - --certificate-identity-regexp
-              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - "^https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.+$"
               - --certificate-oidc-issuer
-              - "https://token.actions.githubusercontent.com"
-              - --signature
-              - https://gh-proxy.org/github.com/aquaproj/aqua-registry-updater/releases/download/{{.Version}}/aqua-registry-updater_{{trimV .Version}}_checksums.txt.sig
-              - --certificate
-              - https://gh-proxy.org/github.com/aquaproj/aqua-registry-updater/releases/download/{{.Version}}/aqua-registry-updater_{{trimV .Version}}_checksums.txt.pem
+              - https://token.actions.githubusercontent.com
               - --certificate-github-workflow-repository
               - aquaproj/aqua-registry-updater
               - --certificate-github-workflow-ref
@@ -117115,15 +117115,15 @@ packages:
           asset: ghproj_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghproj/releases/download/{{.Version}}/ghproj_{{trimV .Version}}_checksums.txt.sigstore.json
+              asset: ghproj_{{trimV .Version}}_checksums.txt.sigstore.json
             opts:
               - --certificate-identity-regexp
-              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - "^https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.+$"
               - --certificate-oidc-issuer
-              - "https://token.actions.githubusercontent.com"
-              - --signature
-              - https://gh-proxy.org/github.com/suzuki-shunsuke/ghproj/releases/download/{{.Version}}/ghproj_{{trimV .Version}}_checksums.txt.sig
-              - --certificate
-              - https://gh-proxy.org/github.com/suzuki-shunsuke/ghproj/releases/download/{{.Version}}/ghproj_{{trimV .Version}}_checksums.txt.pem
+              - https://token.actions.githubusercontent.com
               - --certificate-github-workflow-repository
               - suzuki-shunsuke/ghproj
               - --certificate-github-workflow-ref
@@ -117347,15 +117347,15 @@ packages:
           asset: github-comment_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/suzuki-shunsuke/github-comment/releases/download/{{.Version}}/github-comment_{{trimV .Version}}_checksums.txt.sigstore.json
+              asset: github-comment_{{trimV .Version}}_checksums.txt.sigstore.json
             opts:
               - --certificate-identity-regexp
-              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - "^https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.+$"
               - --certificate-oidc-issuer
-              - "https://token.actions.githubusercontent.com"
-              - --signature
-              - https://gh-proxy.org/github.com/suzuki-shunsuke/github-comment/releases/download/{{.Version}}/github-comment_{{trimV .Version}}_checksums.txt.sig
-              - --certificate
-              - https://gh-proxy.org/github.com/suzuki-shunsuke/github-comment/releases/download/{{.Version}}/github-comment_{{trimV .Version}}_checksums.txt.pem
+              - https://token.actions.githubusercontent.com
               - --certificate-github-workflow-repository
               - suzuki-shunsuke/github-comment
               - --certificate-github-workflow-ref
@@ -118023,19 +118023,19 @@ packages:
           asset: rgo_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/suzuki-shunsuke/rgo/releases/download/{{.Version}}/rgo_{{trimV .Version}}_checksums.txt.sigstore.json
+              asset: rgo_{{trimV .Version}}_checksums.txt.sigstore.json
             opts:
               - --certificate-identity-regexp
-              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - "^https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.+$"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
               - --certificate-github-workflow-repository
               - suzuki-shunsuke/rgo
               - --certificate-github-workflow-ref
               - refs/tags/{{.Version}}
-            bundle:
-              type: http
-              url: https://gh-proxy.org/github.com/suzuki-shunsuke/rgo/releases/download/{{.Version}}/rgo_{{trimV .Version}}_checksums.txt.bundle
-              asset: rgo_{{trimV .Version}}_checksums.txt.bundle
         github_artifact_attestations:
           signer_workflow: suzuki-shunsuke/go-release-workflow/.github/workflows/release.yaml
         overrides:
@@ -118099,15 +118099,15 @@ packages:
           asset: sort-issue-template_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/suzuki-shunsuke/sort-issue-template/releases/download/{{.Version}}/sort-issue-template_{{trimV .Version}}_checksums.txt.sigstore.json
+              asset: sort-issue-template_{{trimV .Version}}_checksums.txt.sigstore.json
             opts:
-              - --certificate
-              - https://gh-proxy.org/github.com/suzuki-shunsuke/sort-issue-template/releases/download/{{.Version}}/sort-issue-template_{{trimV .Version}}_checksums.txt.pem
               - --certificate-identity-regexp
               - "^https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.+$"
               - --certificate-oidc-issuer
               - https://token.actions.githubusercontent.com
-              - --signature
-              - https://gh-proxy.org/github.com/suzuki-shunsuke/sort-issue-template/releases/download/{{.Version}}/sort-issue-template_{{trimV .Version}}_checksums.txt.sig
               - --certificate-github-workflow-repository
               - suzuki-shunsuke/sort-issue-template
               - --certificate-github-workflow-ref
@@ -118452,15 +118452,15 @@ packages:
           asset: tfmv_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/suzuki-shunsuke/tfmv/releases/download/{{.Version}}/tfmv_{{trimV .Version}}_checksums.txt.sigstore.json
+              asset: tfmv_{{trimV .Version}}_checksums.txt.sigstore.json
             opts:
               - --certificate-identity-regexp
-              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - "^https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.+$"
               - --certificate-oidc-issuer
-              - "https://token.actions.githubusercontent.com"
-              - --signature
-              - https://gh-proxy.org/github.com/suzuki-shunsuke/tfmv/releases/download/{{.Version}}/tfmv_{{trimV .Version}}_checksums.txt.sig
-              - --certificate
-              - https://gh-proxy.org/github.com/suzuki-shunsuke/tfmv/releases/download/{{.Version}}/tfmv_{{trimV .Version}}_checksums.txt.pem
+              - https://token.actions.githubusercontent.com
               - --certificate-github-workflow-repository
               - suzuki-shunsuke/tfmv
               - --certificate-github-workflow-ref
@@ -118525,15 +118525,15 @@ packages:
           asset: tfprovidercheck_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/suzuki-shunsuke/tfprovidercheck/releases/download/{{.Version}}/tfprovidercheck_{{trimV .Version}}_checksums.txt.sigstore.json
+              asset: tfprovidercheck_{{trimV .Version}}_checksums.txt.sigstore.json
             opts:
               - --certificate-identity-regexp
-              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - "^https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.+$"
               - --certificate-oidc-issuer
-              - "https://token.actions.githubusercontent.com"
-              - --signature
-              - https://gh-proxy.org/github.com/suzuki-shunsuke/tfprovidercheck/releases/download/{{.Version}}/tfprovidercheck_{{trimV .Version}}_checksums.txt.sig
-              - --certificate
-              - https://gh-proxy.org/github.com/suzuki-shunsuke/tfprovidercheck/releases/download/{{.Version}}/tfprovidercheck_{{trimV .Version}}_checksums.txt.pem
+              - https://token.actions.githubusercontent.com
               - --certificate-github-workflow-repository
               - suzuki-shunsuke/tfprovidercheck
               - --certificate-github-workflow-ref
@@ -118588,15 +118588,15 @@ packages:
           asset: tfrstate_{{trimV .Version}}_checksums.txt
           algorithm: sha256
           cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/suzuki-shunsuke/tfrstate/releases/download/{{.Version}}/tfrstate_{{trimV .Version}}_checksums.txt.sigstore.json
+              asset: tfrstate_{{trimV .Version}}_checksums.txt.sigstore.json
             opts:
               - --certificate-identity-regexp
-              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - "^https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.+$"
               - --certificate-oidc-issuer
-              - "https://token.actions.githubusercontent.com"
-              - --signature
-              - https://gh-proxy.org/github.com/suzuki-shunsuke/tfrstate/releases/download/{{.Version}}/tfrstate_{{trimV .Version}}_checksums.txt.sig
-              - --certificate
-              - https://gh-proxy.org/github.com/suzuki-shunsuke/tfrstate/releases/download/{{.Version}}/tfrstate_{{trimV .Version}}_checksums.txt.pem
+              - https://token.actions.githubusercontent.com
               - --certificate-github-workflow-repository
               - suzuki-shunsuke/tfrstate
               - --certificate-github-workflow-ref
