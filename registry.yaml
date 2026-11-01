@@ -91328,6 +91328,16 @@ packages:
           url: https://gh-proxy.org/github.com/odigos-io/odigos/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
+      - version_constraint: semver("< 1.39.0")
+        type: http
+        url: https://gh-proxy.org/github.com/odigos-io/odigos/releases/download/{{.Version}}/cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/odigos-io/odigos/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/odigos-io/odigos/releases/download/{{.Version}}/cli_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -91338,6 +91348,16 @@ packages:
           url: https://gh-proxy.org/github.com/odigos-io/odigos/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
+          cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/odigos-io/odigos/releases/download/{{.Version}}/checksums.txt.sigstore.json
+              asset: checksums.txt.sigstore.json
+            opts:
+              - --certificate-identity
+              - https://gh-proxy.org/github.com/odigos-io/odigos/.github/workflows/release.yml@refs/heads/main
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
   - type: go_install
     repo_owner: ogen-go
     repo_name: ogen
