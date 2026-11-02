@@ -83,10 +83,6 @@ packages:
             files:
               - name: minisign
                 src: minisign-win64/minisign
-        supported_envs:
-          - darwin
-          - windows
-          - amd64
         minisign:
           type: http
           url: https://gh-proxy.org/github.com/jedisct1/minisign/releases/download/{{.Version}}/{{.Asset}}.minisig
@@ -119,7 +115,7 @@ packages:
         supported_envs:
           - darwin/arm64
           - windows
-          - linux/amd64
+          - linux
         minisign:
           type: http
           url: https://gh-proxy.org/github.com/jedisct1/minisign/releases/download/{{.Version}}/{{.Asset}}.minisig
