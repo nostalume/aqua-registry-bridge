@@ -20,7 +20,7 @@ packages:
           linux: unknown-linux-gnu
         supported_envs:
           - linux
-      - version_constraint: "true"
+      - version_constraint: semver("<= 3.6.1")
         type: http
         url: https://gh-proxy.org/github.com/Canop/dysk/releases/download/{{.Version}}/dysk_{{trimV .Version}}.{{.Format}}
         asset: dysk_{{trimV .Version}}.{{.Format}}
@@ -34,3 +34,22 @@ packages:
           linux: unknown-linux-musl
         supported_envs:
           - linux
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/Canop/dysk/releases/download/{{.Version}}/dysk_{{trimV .Version}}.{{.Format}}
+        asset: dysk_{{trimV .Version}}.{{.Format}}
+        format: zip
+        windows_arm_emulation: true
+        files:
+          - name: dysk
+            src: "{{.Arch}}-{{.OS}}/dysk"
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          linux: unknown-linux-musl
+          darwin: apple-darwin
+          windows: pc-windows-gnu
+        supported_envs:
+          - linux
+          - darwin/arm64
+          - windows

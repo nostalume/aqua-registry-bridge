@@ -2429,7 +2429,7 @@ packages:
           linux: unknown-linux-gnu
         supported_envs:
           - linux
-      - version_constraint: "true"
+      - version_constraint: semver("<= 3.6.1")
         type: http
         url: https://gh-proxy.org/github.com/Canop/dysk/releases/download/{{.Version}}/dysk_{{trimV .Version}}.{{.Format}}
         asset: dysk_{{trimV .Version}}.{{.Format}}
@@ -2443,6 +2443,25 @@ packages:
           linux: unknown-linux-musl
         supported_envs:
           - linux
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/Canop/dysk/releases/download/{{.Version}}/dysk_{{trimV .Version}}.{{.Format}}
+        asset: dysk_{{trimV .Version}}.{{.Format}}
+        format: zip
+        windows_arm_emulation: true
+        files:
+          - name: dysk
+            src: "{{.Arch}}-{{.OS}}/dysk"
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          linux: unknown-linux-musl
+          darwin: apple-darwin
+          windows: pc-windows-gnu
+        supported_envs:
+          - linux
+          - darwin/arm64
+          - windows
   - type: github_release
     repo_owner: Canop
     repo_name: rhit
@@ -122628,6 +122647,9 @@ packages:
     description: PostgreSQL binaries for Linux, MacOS and Windows
     files:
       - name: psql
+      - name: pg_dump
+      - name: pg_dumpall
+      - name: pg_restore
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
@@ -122638,6 +122660,12 @@ packages:
         files:
           - name: psql
             src: postgresql-{{.Version}}-{{.Arch}}-{{.OS}}/bin/psql
+          - name: pg_dump
+            src: postgresql-{{.Version}}-{{.Arch}}-{{.OS}}/bin/pg_dump
+          - name: pg_dumpall
+            src: postgresql-{{.Version}}-{{.Arch}}-{{.OS}}/bin/pg_dumpall
+          - name: pg_restore
+            src: postgresql-{{.Version}}-{{.Arch}}-{{.OS}}/bin/pg_restore
         windows_arm_emulation: true
         replacements:
           amd64: x86_64
@@ -122649,9 +122677,6 @@ packages:
           - goos: windows
             type: http
             url: https://gh-proxy.org/github.com/theseus-rs/postgresql-binaries/releases/download/{{.Version}}/postgresql-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
-            files:
-              - name: psql
-                src: postgresql-{{.Version}}-{{.Arch}}-{{.OS}}/bin/psql.exe
             checksum:
               # Skip because the contents of the provided file cannot be handled
               enabled: false
