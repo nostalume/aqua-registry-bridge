@@ -8,6 +8,7 @@ on:
       - aqua.yaml
       - mirror.yaml
       - requirements-dev.txt
+      - ruff.toml
       - scripts/mirror.py
       - scripts/validate.py
       - tests/**
@@ -18,6 +19,7 @@ on:
       - aqua.yaml
       - mirror.yaml
       - requirements-dev.txt
+      - ruff.toml
       - scripts/mirror.py
       - scripts/validate.py
       - tests/**
@@ -61,6 +63,8 @@ jobs:
         run: python3 -m unittest discover -s tests -v
       - name: Lint workflows
         run: actionlint
+      - name: Lint Python
+        run: python3 -m ruff check
       - name: Validate projection and aggregate
         run: |
           python3 scripts/mirror.py --dry-run

@@ -8,6 +8,7 @@
 python3 -m pip install --requirement requirements-dev.txt
 aqua install --only-link
 python3 -m unittest discover -s tests -v
+python3 -m ruff check
 actionlint
 python3 scripts/mirror.py --dry-run
 python3 scripts/validate.py --schema .ai/aqua/json-schema/registry.json
