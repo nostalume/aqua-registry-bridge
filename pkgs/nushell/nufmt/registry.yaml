@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
+packages:
+  - type: github_release
+    repo_owner: nushell
+    repo_name: nufmt
+    description: An AST-based formatter for Nushell scripts, built on Nushell's own parser
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/nushell/nufmt/releases/download/{{.Version}}/nufmt-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: nufmt-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.xz
+        files:
+          - name: nufmt
+            src: "{{.AssetWithoutExt}}/nufmt"
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          windows: pc-windows-msvc
+        checksum:
+          type: http
+          url: "{{.AssetURL}}.sha256"
+          asset: "{{.Asset}}.sha256"
+          algorithm: sha256
+        overrides:
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/nushell/nufmt/releases/download/{{.Version}}/nufmt-{{.Arch}}-{{.OS}}.{{.Format}}
+            goarch: amd64
+            replacements:
+              linux: unknown-linux-musl
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/nushell/nufmt/releases/download/{{.Version}}/nufmt-{{.Arch}}-{{.OS}}.{{.Format}}
+            goarch: arm64
+            replacements:
+              linux: unknown-linux-gnu
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/nushell/nufmt/releases/download/{{.Version}}/nufmt-{{.Arch}}-{{.OS}}.{{.Format}}
+            format: zip
+            files:
+              - name: nufmt

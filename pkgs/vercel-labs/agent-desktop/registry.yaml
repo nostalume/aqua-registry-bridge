@@ -1,0 +1,74 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
+packages:
+  - type: github_release
+    repo_owner: vercel-labs
+    repo_name: agent-desktop
+    description: Computer use CLI for AI agents
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: Version == "agent-desktop-v0.1.2"
+        type: http
+        url: https://gh-proxy.org/github.com/vercel-labs/agent-desktop/releases/download/{{.Version}}/{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: "{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}"
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/vercel-labs/agent-desktop/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        supported_envs:
+          - darwin
+      - version_constraint: semver("<= 0.9.4")
+        type: http
+        url: https://gh-proxy.org/github.com/vercel-labs/agent-desktop/releases/download/{{.Version}}/agent-desktop-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: agent-desktop-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/vercel-labs/agent-desktop/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        supported_envs:
+          - darwin
+      - version_constraint: semver("<= 0.10.1")
+        type: http
+        url: https://gh-proxy.org/github.com/vercel-labs/agent-desktop/releases/download/{{.Version}}/agent-desktop-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: agent-desktop-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          windows: pc-windows-msvc
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/vercel-labs/agent-desktop/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        supported_envs:
+          - darwin
+          - windows
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/vercel-labs/agent-desktop/releases/download/{{.Version}}/agent-desktop-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: agent-desktop-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          linux: unknown-linux-gnu
+          windows: pc-windows-msvc
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/vercel-labs/agent-desktop/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256

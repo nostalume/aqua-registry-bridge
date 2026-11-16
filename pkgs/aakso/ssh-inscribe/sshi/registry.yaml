@@ -43,6 +43,23 @@ packages:
           - darwin
           - windows
           - amd64
+      - version_constraint: semver("<= 0.11.0")
+        type: http
+        url: https://gh-proxy.org/github.com/aakso/ssh-inscribe/releases/download/{{.Version}}/sshi-{{.OS}}-{{.Arch}}
+        asset: sshi-{{.OS}}-{{.Arch}}
+        format: raw
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/aakso/ssh-inscribe/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        supported_envs:
+          - darwin
+          - windows
+          - amd64
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/aakso/ssh-inscribe/releases/download/{{.Version}}/sshi-{{.OS}}-{{.Arch}}
@@ -60,3 +77,5 @@ packages:
           - darwin
           - windows
           - amd64
+        github_artifact_attestations:
+          signer_workflow: aakso/ssh-inscribe/.github/workflows/release.yaml

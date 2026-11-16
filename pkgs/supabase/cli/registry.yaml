@@ -42,6 +42,16 @@ packages:
           url: https://gh-proxy.org/github.com/supabase/cli/releases/download/{{.Version}}/supabase_{{trimV .Version}}_checksums.txt
           asset: supabase_{{trimV .Version}}_checksums.txt
           algorithm: sha256
+      - version_constraint: semver("< 3.1.0-beta.10")
+        type: http
+        url: https://gh-proxy.org/github.com/supabase/cli/releases/download/{{.Version}}/supabase_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: supabase_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/supabase/cli/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/supabase/cli/releases/download/{{.Version}}/supabase_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -52,3 +62,6 @@ packages:
           url: https://gh-proxy.org/github.com/supabase/cli/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
+        github_artifact_attestations:
+          signer_workflow: supabase/cli/.github/workflows/release-shared.yml
+          deny_self_hosted_runners: true

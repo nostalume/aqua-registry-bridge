@@ -190,3 +190,5 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/sharkdp/fd/releases/download/{{.Version}}/fd-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
+        github_artifact_attestations:
+          signer_workflow: sharkdp/fd/.github/workflows/CICD.yml

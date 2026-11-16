@@ -1,0 +1,59 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
+packages:
+  - type: github_release
+    repo_owner: cfgaudit
+    repo_name: cfgaudit
+    description: "Static security auditor for AI-agent configuration: Claude Code, MCP servers, Cursor, Codex, Copilot, Gemini CLI and more. SARIF output, OWASP LLM Top 10 mapping"
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: semver("<= 1.0.0")
+        no_asset: true
+      - version_constraint: semver("<= 1.7.0")
+        type: http
+        url: https://gh-proxy.org/github.com/cfgaudit/cfgaudit/releases/download/{{.Version}}/cfgaudit_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: cfgaudit_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/cfgaudit/cfgaudit/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/cfgaudit/cfgaudit/releases/download/{{.Version}}/cfgaudit_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+      - version_constraint: semver("<= 1.16.0")
+        type: http
+        url: https://gh-proxy.org/github.com/cfgaudit/cfgaudit/releases/download/{{.Version}}/cfgaudit_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: cfgaudit_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/cfgaudit/cfgaudit/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        github_artifact_attestations:
+          signer_workflow: cfgaudit/cfgaudit/.github/workflows/release.yml
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/cfgaudit/cfgaudit/releases/download/{{.Version}}/cfgaudit_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/cfgaudit/cfgaudit/releases/download/{{.Version}}/cfgaudit_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: cfgaudit_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/cfgaudit/cfgaudit/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        github_artifact_attestations:
+          signer_workflow: cfgaudit/cfgaudit/.github/workflows/build-release.yml
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/cfgaudit/cfgaudit/releases/download/{{.Version}}/cfgaudit_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip

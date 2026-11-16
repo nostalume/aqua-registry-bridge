@@ -28,6 +28,27 @@ packages:
             format: zip
             asset: netwatch-{{.OS}}-{{.Arch}}.exe.{{.Format}}
             replacements: {}
+      - version_constraint: semver("< 0.38.0")
+        type: http
+        url: https://gh-proxy.org/github.com/matthart1983/netwatch/releases/download/{{.Version}}/netwatch-{{.OS}}-{{.Arch}}-static.{{.Format}}
+        asset: netwatch-{{.OS}}-{{.Arch}}-static.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: macos
+        overrides:
+          - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/matthart1983/netwatch/releases/download/{{.Version}}/netwatch-{{.OS}}-{{.Arch}}.{{.Format}}
+            asset: netwatch-{{.OS}}-{{.Arch}}.{{.Format}}
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/matthart1983/netwatch/releases/download/{{.Version}}/netwatch-{{.OS}}-{{.Arch}}.exe.{{.Format}}
+            format: zip
+            asset: netwatch-{{.OS}}-{{.Arch}}.exe.{{.Format}}
+            replacements: {}
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/matthart1983/netwatch/releases/download/{{.Version}}/netwatch-{{.OS}}-{{.Arch}}-static.{{.Format}}
@@ -49,3 +70,5 @@ packages:
             format: zip
             asset: netwatch-{{.OS}}-{{.Arch}}.exe.{{.Format}}
             replacements: {}
+        github_artifact_attestations:
+          signer_workflow: matthart1983/netwatch/.github/workflows/release.yml

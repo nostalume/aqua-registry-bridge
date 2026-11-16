@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
+packages:
+  - type: github_release
+    repo_owner: Mattbusel
+    repo_name: polymarket-agent
+    description: Polymarket CLI and MCP server that lets AI agents search markets, read books and place orders
+    files:
+      - name: polymarket-agent
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/Mattbusel/polymarket-agent/releases/download/{{.Version}}/polymarket-agent-{{.Version}}-{{.OS}}.{{.Format}}
+        asset: polymarket-agent-{{.Version}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        files:
+          - name: polymarket-agent
+            src: "{{.AssetWithoutExt}}/polymarket-agent"
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/Mattbusel/polymarket-agent/releases/download/{{.Version}}/SHA256SUMS.txt
+          asset: SHA256SUMS.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Mattbusel/polymarket-agent/releases/download/{{.Version}}/polymarket-agent-{{.Version}}-{{.OS}}.{{.Format}}
+            format: zip
+            files:
+              - name: polymarket-agent
+        supported_envs:
+          - darwin
+          - windows
+          - amd64

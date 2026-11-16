@@ -32,6 +32,20 @@ packages:
         supported_envs:
           - linux
           - darwin
+      - version_constraint: semver("< 0.19.0")
+        type: http
+        url: https://gh-proxy.org/github.com/modem-dev/hunk/releases/download/{{.Version}}/hunkdiff-{{.OS}}-{{.Arch}}.{{.Format}}
+        asset: hunkdiff-{{.OS}}-{{.Arch}}.{{.Format}}
+        format: tar.gz
+        files:
+          - name: hunk
+            src: "{{.AssetWithoutExt}}/hunk"
+        replacements:
+          amd64: x64
+        supported_envs:
+          - linux
+          - darwin
+          - windows/amd64
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/modem-dev/hunk/releases/download/{{.Version}}/hunkdiff-{{.OS}}-{{.Arch}}.{{.Format}}
@@ -46,3 +60,5 @@ packages:
           - linux
           - darwin
           - windows/amd64
+        github_artifact_attestations:
+          signer_workflow: modem-dev/hunk/.github/workflows/release-prebuilt-npm.yml

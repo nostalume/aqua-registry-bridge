@@ -1,0 +1,36 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
+packages:
+  - type: github_release
+    repo_owner: Mattbusel
+    repo_name: reckoner
+    description: Deterministic entity resolution for company and agency names, with a receipt for every merge
+    files:
+      - name: reckoner
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/Mattbusel/reckoner/releases/download/{{.Version}}/reckoner-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+        asset: reckoner-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+        format: tar.gz
+        files:
+          - name: reckoner
+            src: "{{.AssetWithoutExt}}/reckoner"
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+          darwin: macos
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/Mattbusel/reckoner/releases/download/{{.Version}}/SHA256SUMS.txt
+          asset: SHA256SUMS.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Mattbusel/reckoner/releases/download/{{.Version}}/reckoner-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+            format: zip
+        supported_envs:
+          - darwin
+          - windows
+          - amd64

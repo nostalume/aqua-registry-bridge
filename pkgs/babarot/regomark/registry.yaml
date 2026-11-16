@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
+packages:
+  - type: github_release
+    repo_owner: babarot
+    repo_name: regomark
+    description: Check Markdown documents with rego policies
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/babarot/regomark/releases/download/{{.Version}}/regomark_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: regomark_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/babarot/regomark/releases/download/{{.Version}}/regomark_{{trimV .Version}}_checksums.txt
+          asset: regomark_{{trimV .Version}}_checksums.txt
+          algorithm: sha256

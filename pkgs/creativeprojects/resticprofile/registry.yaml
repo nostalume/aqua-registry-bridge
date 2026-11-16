@@ -1,0 +1,76 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
+packages:
+  - type: github_release
+    repo_owner: creativeprojects
+    repo_name: resticprofile
+    description: Configuration profiles manager and scheduler for restic backup
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: Version == "v0.6.0"
+        type: http
+        url: https://gh-proxy.org/github.com/creativeprojects/resticprofile/releases/download/{{.Version}}/resticprofile_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: resticprofile_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        rosetta2: true
+        windows_arm_emulation: true
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/creativeprojects/resticprofile/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/creativeprojects/resticprofile/releases/download/{{.Version}}/resticprofile_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+      - version_constraint: semver("<= 0.5.2")
+        no_asset: true
+      - version_constraint: semver("<= 0.13.1")
+        type: http
+        url: https://gh-proxy.org/github.com/creativeprojects/resticprofile/releases/download/{{.Version}}/resticprofile_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: resticprofile_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        rosetta2: true
+        windows_arm_emulation: true
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/creativeprojects/resticprofile/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+      - version_constraint: semver("<= 0.20.0")
+        type: http
+        url: https://gh-proxy.org/github.com/creativeprojects/resticprofile/releases/download/{{.Version}}/resticprofile_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: resticprofile_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/creativeprojects/resticprofile/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+      - version_constraint: semver("<= 0.29.1")
+        type: http
+        url: https://gh-proxy.org/github.com/creativeprojects/resticprofile/releases/download/{{.Version}}/resticprofile_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: resticprofile_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/creativeprojects/resticprofile/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/creativeprojects/resticprofile/releases/download/{{.Version}}/resticprofile_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            goarch: arm64
+            format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/creativeprojects/resticprofile/releases/download/{{.Version}}/resticprofile_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: resticprofile_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/creativeprojects/resticprofile/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
