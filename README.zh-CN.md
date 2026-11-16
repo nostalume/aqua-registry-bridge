@@ -8,7 +8,7 @@
 
 ## 快速开始
 
-以下步骤会创建项目级 aqua 配置，通过 aqua Policy 放行这个非标准 Registry，安装 ripgrep 并验证结果。示例固定使用不可变 Registry tag `mirror-20260920`，已在本地 aqua v2.59.0 和 CI aqua v2.63.0 上验证。
+以下步骤会创建项目级 aqua 配置，通过 aqua Policy 放行这个非标准 Registry，安装 ripgrep 并验证结果。示例固定使用不可变 Registry tag `mirror-20260920`，已在本地 aqua v2.59.0 上验证；镜像流水线使用 `.github/workflows` 中固定的 aqua 版本（当前 v2.66.1）。
 
 ### 1. 安装 aqua
 

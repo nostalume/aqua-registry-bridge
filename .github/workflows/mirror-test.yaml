@@ -35,6 +35,9 @@ jobs:
     name: Test and validate generated registry
     runs-on: ubuntu-24.04
     timeout-minutes: 15
+    env:
+      # Single pin: the aqua binary and the registry JSON Schema must stay on the same release.
+      AQUA_VERSION: v2.66.1 # renovate: depName=aquaproj/aqua
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -43,15 +46,15 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: aquaproj/aqua
-          ref: c76aafc5ccc7eee49a6f1a3a1249df69de45a4da
+          ref: ${{ env.AQUA_VERSION }}
           path: .ai/aqua
           persist-credentials: false
       - name: Install Python dependencies
         run: python3 -m pip install --requirement requirements-dev.txt
       - name: Set up aqua tools
-        uses: aquaproj/aqua-installer@96a9bc20066c5bf5e275b41019cfc165b25f4e2e # v4.0.5
+        uses: aquaproj/aqua-installer@611554c6f0137ba41c8dd15aca8bee82504ea461 # v4.1.1
         with:
-          aqua_version: v2.63.0
+          aqua_version: ${{ env.AQUA_VERSION }}
           aqua_opts: -l
           policy_allow: "true"
       - name: Run unit tests

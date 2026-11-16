@@ -13,6 +13,7 @@
 - 根 `registry.yaml` 始终由官方 `argd gr` 从包文件生成，不由自定义拼接逻辑维护。
 - `argd gr` 在 Windows 与 Linux 上可能产生不同的包列表顺序；列表顺序没有 Registry 语义，因此跨平台门禁比较包定义多集，发布工作流的 Linux runner 是远端文件顺序的规范生成环境。
 - 验证门包括：单元/回归测试、转换幂等性、无残留直连 GitHub 下载 URL、aqua 官方 JSON Schema，以及根 Registry 与所有包文件的语义多集一致性。
+- 工作流用单一 `AQUA_VERSION` 同时决定 aqua 二进制版本和用于校验的 Schema 来源（`actions/checkout` 以该 tag 拉取 `aquaproj/aqua`），不再单独固定 Schema commit。Schema 早于上游数据会导致门禁误报，二者必须同源同版本。
 
 ## 发布与兼容性
 
@@ -24,7 +25,7 @@
 
 ## 后续维护清单
 
-1. 定期刷新固定的 aqua Schema commit、aqua/argd 版本和 GitHub Actions SHA；通过 Dependabot PR 审阅 action 更新。
+1. 只刷新一个 `AQUA_VERSION`（同步带动 aqua 二进制与 Schema），外加 aqua/argd 包版本和 GitHub Actions SHA；Actions 更新通过 Dependabot PR 审阅。历史教训：Schema commit 单独固定且无人升级，上游新增字段后每日镜像连续失败 13 天。
 2. 监控代理的可用性、速率限制和域名策略；若增加备用代理，先定义明确的选择和故障语义，避免静默切换信任边界。
 3. 为 `github_archive`、`github_content`、checksum、cosign、minisign、SLSA 和 artifact attestation 增加更多真实安装样本，覆盖 Linux、macOS 与 Windows。
 4. 上游出现新的 Registry 字段或包类型时，先以官方 Schema 和 aqua 行为测试确认语义，再扩展投影遍历规则。

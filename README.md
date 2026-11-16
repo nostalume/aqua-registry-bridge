@@ -8,7 +8,7 @@ This repository mirrors **registry metadata, not binaries**. Downloads are serve
 
 ## Quick start
 
-The following walkthrough creates a project-local aqua configuration, allows this non-standard Registry through aqua Policy, installs ripgrep, and verifies the result. The examples use the immutable Registry tag `mirror-20260920` and were verified with aqua v2.59.0 locally and v2.63.0 in CI.
+The following walkthrough creates a project-local aqua configuration, allows this non-standard Registry through aqua Policy, installs ripgrep, and verifies the result. The examples use the immutable Registry tag `mirror-20260920` and were verified locally with aqua v2.59.0; the mirroring pipeline runs on the aqua release pinned in `.github/workflows` (currently v2.66.1).
 
 ### 1. Install aqua
 
