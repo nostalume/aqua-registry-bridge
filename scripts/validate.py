@@ -91,7 +91,15 @@ def validate(repo_root: Path, schema_path: Path) -> tuple[int, int]:
         jsonschema.Draft202012Validator(schema).validate(aggregate)
     except jsonschema.ValidationError as exc:
         location = "/".join(str(part) for part in exc.absolute_path)
-        raise ValidationError(f"{aggregate_path}:{location}: schema validation failed: {exc.message}") from exc
+        hint = ""
+        if exc.validator == "additionalProperties":
+            hint = (
+                f"; the pinned Schema ({schema_path}) follows AQUA_VERSION in .github/workflows, "
+                "so bump it when current aqua accepts this field"
+            )
+        raise ValidationError(
+            f"{aggregate_path}:{location}: schema validation failed: {exc.message}{hint}"
+        ) from exc
 
     expected = package_counter(package_documents)
     actual = package_counter([aggregate])
