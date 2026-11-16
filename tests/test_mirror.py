@@ -176,6 +176,23 @@ class TestCommandBoundary(TemporaryRepository):
         with contextlib.redirect_stderr(io.StringIO()):
             self.assertEqual(main(["--repo-root", str(self.root)]), 1)
 
+    def test_empty_config_writes_nothing(self) -> None:
+        self.config.write_text("mirrors: []\n", encoding="utf-8")
+        output = io.StringIO()
+        with contextlib.redirect_stdout(output):
+            result = main(["--repo-root", str(self.root)])
+
+        self.assertEqual(result, 0)
+        self.assertIn("No active mirror mappings", output.getvalue())
+
+    def test_restore_without_a_git_repository_is_not_a_traceback(self) -> None:
+        errors = io.StringIO()
+        with contextlib.redirect_stderr(errors):
+            result = main(["--repo-root", str(self.root), "--restore"])
+
+        self.assertNotEqual(result, 0)
+        self.assertNotIn("Traceback", errors.getvalue())
+
 
 if __name__ == "__main__":
     unittest.main()

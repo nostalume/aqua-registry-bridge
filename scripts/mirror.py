@@ -39,13 +39,6 @@ class Mirror:
     mirror: str
 
 
-@dataclass(frozen=True)
-class LineDiff:
-    lineno: int
-    before: str
-    after: str
-
-
 @dataclass
 class Config:
     mirrors: list[Mirror] = field(default_factory=list)
@@ -131,9 +124,15 @@ def _mapping_items(node: MappingNode, data: dict[str, Any], key: str) -> list[tu
     values = data.get(key)
     if not entry or not isinstance(entry[1], SequenceNode) or not isinstance(values, list):
         return []
+    # A merge key or a custom constructor can make the node tree and the loaded
+    # data diverge; pairing them by position would edit the wrong entries.
+    try:
+        pairs = list(zip(entry[1].value, values, strict=True))
+    except ValueError as exc:
+        raise ProjectionError(f"{key}: registry nodes and values have different lengths") from exc
     return [
         (child_node, child_data)
-        for child_node, child_data in zip(entry[1].value, values)
+        for child_node, child_data in pairs
         if isinstance(child_node, MappingNode) and isinstance(child_data, dict)
     ]
 
@@ -286,6 +285,11 @@ class Projector:
             addition = (self.newline + indent).join(
                 f"{key}: {_insert_scalar(value)}" for key, value in pending
             )
+            if not entries:
+                # An empty flow mapping has no earlier line to insert before, so
+                # the braces themselves are replaced to keep the item valid YAML.
+                self.add_edit(Edit(node.start_mark.index, node.end_mark.index, addition))
+                return
             addition += self.newline + indent
             index = node.start_mark.index
             self.add_edit(Edit(index, index, addition))
@@ -366,7 +370,8 @@ class Projector:
             identity = f"{effective.get('repo_owner', '?')}/{effective.get('repo_name', '?')}"
             if effective.get("private"):
                 raise ProjectionError(
-                    f"{self.source}: private GitHub package {identity} cannot be projected to an unauthenticated HTTP URL"
+                    f"{self.source}: private GitHub package {identity} cannot be projected "
+                    "to an unauthenticated HTTP URL"
                 )
             url, required_format = _github_url(
                 effective, self.config.github_url_prefix, self.config.github_url_mode
@@ -458,8 +463,11 @@ def find_registry_files(repo_root: Path) -> list[Path]:
 
 
 def cmd_restore(repo_root: Path) -> int:
-    subprocess.run(["git", "-C", str(repo_root), "restore", "--source=HEAD", "--", "pkgs", "registry.yaml"], check=True)
-    return 0
+    # git reports its own reason (no repository, no HEAD, path missing), so the
+    # exit code is enough here and no exception handling is needed.
+    return subprocess.run(
+        ["git", "-C", str(repo_root), "restore", "--source=HEAD", "--", "pkgs", "registry.yaml"]
+    ).returncode
 
 
 def cmd_apply(config_path: Path, repo_root: Path, dry_run: bool) -> int:
@@ -503,39 +511,6 @@ def main(argv: list[str] | None = None) -> int:
     if args.restore:
         return cmd_restore(repo_root)
     return cmd_apply(config_path, repo_root, args.dry_run)
-
-
-# Compatibility helpers retained for external callers of the original script.
-def load_mirrors(config_path: Path) -> list[Mirror]:
-    return load_config(config_path).mirrors if config_path.is_file() else []
-
-
-def load_github_release_prefix(config_path: Path) -> str:
-    return load_config(config_path).github_url_prefix if config_path.is_file() else ""
-
-
-def compute_diffs(lines: list[str], mirrors: list[Mirror]) -> list[LineDiff]:
-    result: list[LineDiff] = []
-    pattern = re.compile(r"^(?P<indent>\s+url:\s+)(?P<q>[\"']?)(?P<url>https?://[^\s\"']*)(?P=q)\s*$")
-    for lineno, line in enumerate(lines, 1):
-        match = pattern.match(line.rstrip("\r\n"))
-        if not match:
-            continue
-        rewritten = _apply_mirrors(match.group("url"), mirrors)
-        if rewritten != match.group("url"):
-            ending = "\r\n" if line.endswith("\r\n") else "\n"
-            quote = match.group("q")
-            result.append(LineDiff(lineno, line, f"{match.group('indent')}{quote}{rewritten}{quote}{ending}"))
-    return result
-
-
-def inject_github_release_urls(content: str, prefix: str, owner: str, repo: str) -> str:
-    del owner, repo
-    return process_content(content, Config(github_url_prefix=prefix))
-
-
-def apply_to_file(path: Path, mirrors: list[Mirror], gh_prefix: str, dry_run: bool, repo_root: Path) -> bool:
-    return apply_result(process_file(path, Config(mirrors, gh_prefix)), dry_run, repo_root)
 
 
 if __name__ == "__main__":

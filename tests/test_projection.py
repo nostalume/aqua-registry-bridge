@@ -8,9 +8,11 @@ import unittest
 from unittest import mock
 from pathlib import Path
 
+import yaml
+
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
-from mirror import Config, Mirror, main, process_content
+from mirror import Config, Mirror, ProjectionError, main, process_content
 
 
 class TestGitHubProjection(unittest.TestCase):
@@ -88,7 +90,10 @@ class TestGitHubProjection(unittest.TestCase):
 
         self.assertEqual(result.count("type: http"), 5)
         self.assertIn("proxy.example/github.com/owner/source/archive/{{.Version}}.tar.gz", result)
-        self.assertIn("proxy.example/raw.githubusercontent.com/owner/content/{{.Version}}/bin/tool-{{.OS}}-{{.Arch}}", result)
+        self.assertIn(
+            "proxy.example/raw.githubusercontent.com/owner/content/{{.Version}}/bin/tool-{{.OS}}-{{.Arch}}",
+            result,
+        )
         self.assertIn("{{.Version}}/checksums.txt", result)
         self.assertIn("{{.Version}}/checksums.txt.sig", result)
 
@@ -111,7 +116,7 @@ class TestGitHubProjection(unittest.TestCase):
 
         self.assertIn('url: "{{.AssetURL}}.sha256"', result)
         self.assertNotIn("tool-{{.Version}}.tar.gz.sha256", result)
-        self.assertIsInstance(__import__("yaml").safe_load(result), dict)
+        self.assertIsInstance(yaml.safe_load(result), dict)
 
     def test_rewrites_existing_http_url_without_reformatting_yaml(self) -> None:
         cfg = Config(
@@ -163,7 +168,7 @@ class TestGitHubProjection(unittest.TestCase):
         result = process_content(source, self.cfg)
 
         self.assertIn("type: http", result)
-        self.assertIsInstance(__import__("yaml").safe_load(result), dict)
+        self.assertIsInstance(yaml.safe_load(result), dict)
 
     def test_yaml_alias_is_projected_once(self) -> None:
         source = textwrap.dedent(
@@ -186,7 +191,7 @@ class TestGitHubProjection(unittest.TestCase):
         result = process_content(source, self.cfg)
 
         self.assertEqual(result.count("type: http"), 1)
-        self.assertIsInstance(__import__("yaml").safe_load(result), dict)
+        self.assertIsInstance(yaml.safe_load(result), dict)
 
     def test_private_github_package_is_rejected(self) -> None:
         with self.assertRaisesRegex(ValueError, "private GitHub package"):
@@ -200,6 +205,111 @@ class TestGitHubProjection(unittest.TestCase):
                     asset: tool.tar.gz
                 """
             )
+
+    def test_package_without_repository_identity_is_rejected(self) -> None:
+        with self.assertRaisesRegex(ProjectionError, "missing repo_owner or repo_name"):
+            self.transform(
+                """\
+                packages:
+                  - type: github_release
+                    repo_name: tool
+                    asset: tool.tar.gz
+                """
+            )
+
+    def test_checksum_in_another_repository_is_rejected(self) -> None:
+        with self.assertRaisesRegex(ProjectionError, "another repository"):
+            self.transform(
+                """\
+                packages:
+                  - type: github_release
+                    repo_owner: owner
+                    repo_name: tool
+                    asset: tool.tar.gz
+                    checksum:
+                      type: github_release
+                      repo_owner: other
+                      asset: "{{.Asset}}.sha256"
+                """
+            )
+
+    def test_asset_reference_outside_the_checksum_prefix_is_rejected(self) -> None:
+        with self.assertRaisesRegex(ProjectionError, "must start with {{.Asset}}"):
+            self.transform(
+                """\
+                packages:
+                  - type: github_release
+                    repo_owner: owner
+                    repo_name: tool
+                    asset: tool.tar.gz
+                    checksum:
+                      type: github_release
+                      asset: "signed-{{.Asset}}.sha256"
+                """
+            )
+
+    def test_checksum_without_asset_is_rejected(self) -> None:
+        with self.assertRaisesRegex(ProjectionError, "missing repository identity or asset"):
+            self.transform(
+                """\
+                packages:
+                  - type: github_release
+                    repo_owner: owner
+                    repo_name: tool
+                    asset: tool.tar.gz
+                    checksum:
+                      type: github_release
+                """
+            )
+
+    def test_non_scalar_url_is_rejected(self) -> None:
+        with self.assertRaisesRegex(ProjectionError, "expected a scalar value"):
+            self.transform(
+                """\
+                packages:
+                  - type: github_release
+                    repo_owner: owner
+                    repo_name: tool
+                    asset: tool.tar.gz
+                    url:
+                      proxy: https://example.invalid
+                """
+            )
+
+    def test_block_override_without_scalar_anchor_gets_projected_fields(self) -> None:
+        result = self.transform(
+            """\
+            packages:
+              - type: github_release
+                repo_owner: owner
+                repo_name: tool
+                asset: tool.tar.gz
+                version_overrides:
+                  - overrides:
+                      - goos: windows
+                        asset: t.exe
+            """
+        )
+
+        self.assertEqual(result.count("type: http"), 3)
+        self.assertIsInstance(yaml.safe_load(result), dict)
+
+    def test_empty_flow_mapping_override_is_replaced_not_prefixed(self) -> None:
+        result = self.transform(
+            """\
+            packages:
+              - type: github_release
+                repo_owner: owner
+                repo_name: tool
+                asset: tool.tar.gz
+                version_overrides:
+                  - {}
+            """
+        )
+
+        self.assertEqual(result.count("type: http"), 2)
+        self.assertNotIn("{}", result)
+        self.assertIsInstance(yaml.safe_load(result), dict)
 
 
 class TestRepositoryBoundary(unittest.TestCase):
