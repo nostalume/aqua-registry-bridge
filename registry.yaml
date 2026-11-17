@@ -7512,6 +7512,49 @@ packages:
           - amd64
   - type: github_release
     repo_owner: Mattbusel
+    repo_name: HelixRouter-adaptive-async-compute-router-
+    description: Adaptive Tokio job router that picks inline, spawn, CPU pool, batch or drop per job from cost and live pressure
+    files:
+      - name: helixrouter
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: semver("<= 1.0.0")
+        no_asset: true
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/Mattbusel/HelixRouter-adaptive-async-compute-router-/releases/download/{{.Version}}/helixrouter-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: helixrouter-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        files:
+          - name: helixrouter
+            src: "{{.AssetWithoutExt}}/helixrouter"
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+          darwin: apple-darwin
+          linux: unknown-linux-gnu
+          windows: pc-windows-msvc
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/Mattbusel/HelixRouter-adaptive-async-compute-router-/releases/download/{{.Version}}/SHA256SUMS.txt
+          asset: SHA256SUMS.txt
+          algorithm: sha256
+        overrides:
+          - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/Mattbusel/HelixRouter-adaptive-async-compute-router-/releases/download/{{.Version}}/helixrouter-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            replacements:
+              arm64: aarch64
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Mattbusel/HelixRouter-adaptive-async-compute-router-/releases/download/{{.Version}}/helixrouter-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            format: zip
+        supported_envs:
+          - darwin
+          - windows
+          - amd64
+  - type: github_release
+    repo_owner: Mattbusel
     repo_name: corescout
     description: Learns how your machine and AI coding agents work together and serves it over MCP
     files:
@@ -7552,6 +7595,47 @@ packages:
           - goos: windows
             type: http
             url: https://gh-proxy.org/github.com/Mattbusel/corescout/releases/download/{{.Version}}/corescout-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            format: zip
+        supported_envs:
+          - darwin
+          - windows
+          - amd64
+  - type: github_release
+    repo_owner: Mattbusel
+    repo_name: crypto-orderbook
+    description: Keep a sequenced Binance order book in memory and serve depth, micro-price and VWAP over REST, WebSocket and Prometheus
+    files:
+      - name: crypto-orderbook
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/Mattbusel/crypto-orderbook/releases/download/{{.Version}}/crypto-orderbook-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: crypto-orderbook-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        files:
+          - name: crypto-orderbook
+            src: "{{.AssetWithoutExt}}/crypto-orderbook"
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+          darwin: apple-darwin
+          linux: unknown-linux-gnu
+          windows: pc-windows-msvc
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/Mattbusel/crypto-orderbook/releases/download/{{.Version}}/SHA256SUMS.txt
+          asset: SHA256SUMS.txt
+          algorithm: sha256
+        overrides:
+          - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/Mattbusel/crypto-orderbook/releases/download/{{.Version}}/crypto-orderbook-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            replacements:
+              arm64: aarch64
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Mattbusel/crypto-orderbook/releases/download/{{.Version}}/crypto-orderbook-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
         supported_envs:
           - darwin
@@ -82944,6 +83028,30 @@ packages:
             url: https://gh-proxy.org/github.com/mackee/go-readability/releases/download/{{.Version}}/go-readability_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
   - type: http
+    name: macstadium.com/orka
+    description: CLI for the Orka 4.x virtualization platform on Apple hardware
+    link: https://docs.macstadium.com/orka/orka-overview/tools-integrations
+    url: https://cli-builds-public.s3.eu-west-1.amazonaws.com/official/{{.Version}}/orka/{{.OS}}/{{.Arch}}/orka.{{.Format}}
+    replacements:
+      darwin: macos
+    overrides:
+      - goos: darwin
+        format: pkg
+        files:
+          - name: orka
+            src: orka.pkg/Payload/orka
+      - goos: linux
+        format: tar.gz
+        files:
+          - name: orka
+      - goos: windows
+        url: https://cli-builds-public.s3.eu-west-1.amazonaws.com/official/{{.Version}}/orka/{{.OS}}/{{.Arch}}/orka.exe
+        format: raw
+    supported_envs:
+      - darwin
+      - linux
+      - windows/amd64
+  - type: http
     name: macstadium.com/orka3
     description: CLI for the Orka virtualization platform on Apple hardware
     link: https://docs.macstadium.com/orka/orka-overview/tools-integrations
@@ -136201,6 +136309,33 @@ packages:
           url: https://gh-proxy.org/github.com/zarf-dev/zarf/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
+  - type: github_release
+    repo_owner: zavoloklom
+    repo_name: docker-compose-linter
+    description: A command-line tool for validating and enforcing best practices in Docker Compose files
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: "true"
+        format: raw
+        files:
+          - name: dclint
+        supported_envs:
+          - linux
+        overrides:
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/zavoloklom/docker-compose-linter/releases/download/{{.Version}}/dclint-alpine-{{.Arch}}
+            asset: dclint-alpine-{{.Arch}}
+            variants:
+              - key: libc
+                value: musl
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/zavoloklom/docker-compose-linter/releases/download/{{.Version}}/dclint-bullseye-{{.Arch}}
+            asset: dclint-bullseye-{{.Arch}}
+            variants:
+              - key: libc
+                value: glibc
   - type: github_release
     repo_owner: zegl
     repo_name: kube-score
