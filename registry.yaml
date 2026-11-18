@@ -5805,7 +5805,7 @@ packages:
               - name: mogrify
               - name: montage
               - name: stream
-      - version_constraint: "true"
+      - version_constraint: semver("<= 7.1.2-35")
         github_artifact_attestations:
           signer_workflow: ImageMagick/ImageMagick/.github/workflows/release.yml
         supported_envs:
@@ -5826,6 +5826,38 @@ packages:
             format: 7z
             replacements:
               amd64: x64
+            files:
+              - name: compare
+              - name: composite
+              - name: conjure
+              - name: identify
+              - name: magick
+              - name: mogrify
+              - name: montage
+              - name: stream
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/ImageMagick/ImageMagick/releases/download/{{.Version}}/ImageMagick-{{.Version}}-portable-Q16-HDRI-{{.OS}}-{{.Arch}}.{{.Format}}
+        github_artifact_attestations:
+          signer_workflow: ImageMagick/ImageMagick/.github/workflows/release.yml
+        asset: ImageMagick-{{.Version}}-portable-Q16-HDRI-{{.OS}}-{{.Arch}}.{{.Format}}
+        format: tar.xz
+        files:
+          - name: magick
+            src: "{{.AssetWithoutExt}}/bin/magick"
+        replacements:
+          amd64: x64
+          darwin: macos
+        supported_envs:
+          - linux
+          - darwin/arm64
+          - windows
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ImageMagick/ImageMagick/releases/download/{{.Version}}/ImageMagick-{{.Version}}-portable-Q16-HDRI-{{.Arch}}.{{.Format}}
+            asset: ImageMagick-{{.Version}}-portable-Q16-HDRI-{{.Arch}}.{{.Format}}
+            format: 7z
             files:
               - name: compare
               - name: composite
@@ -27546,6 +27578,137 @@ packages:
             url: https://gh-proxy.org/github.com/bmf-san/ggc/releases/download/{{.Version}}/ggc_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
   - type: github_release
+    repo_owner: bnjbvr
+    repo_name: cargo-machete
+    description: Remove unused Rust dependencies with this one weird trick
+    files:
+      - name: cargo-machete
+        src: "{{.AssetWithoutExt}}/cargo-machete"
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: Version == "v0.3.1"
+        type: http
+        url: https://gh-proxy.org/github.com/bnjbvr/cargo-machete/releases/download/{{.Version}}/cargo-machete-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: cargo-machete-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+          darwin: apple-darwin
+          linux: unknown-linux-musl
+          windows: pc-windows-msvc
+        checksum:
+          type: http
+          url: "{{.AssetURL}}.sha256"
+          asset: "{{.Asset}}.sha256"
+          algorithm: sha256
+        overrides:
+          - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/bnjbvr/cargo-machete/releases/download/{{.Version}}/cargo-machete-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            replacements:
+              arm64: aarch64
+        supported_envs:
+          - darwin
+          - windows
+          - amd64
+      - version_constraint: Version == "v0.10.0"
+        type: http
+        url: https://gh-proxy.org/github.com/bnjbvr/cargo-machete/releases/download/{{.Version}}/cargo-machete-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: cargo-machete-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+          linux: unknown-linux-musl
+          windows: pc-windows-msvc
+        checksum:
+          type: http
+          url: "{{.AssetURL}}.sha256"
+          asset: "{{.Asset}}.sha256"
+          algorithm: sha256
+        overrides:
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/bnjbvr/cargo-machete/releases/download/{{.Version}}/cargo-machete-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            replacements:
+              arm64: aarch64
+        supported_envs:
+          - linux
+          - windows/amd64
+      - version_constraint: semver("<= 0.8.0")
+        type: http
+        url: https://gh-proxy.org/github.com/bnjbvr/cargo-machete/releases/download/{{.Version}}/cargo-machete-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: cargo-machete-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+          darwin: apple-darwin
+          linux: unknown-linux-musl
+          windows: pc-windows-msvc
+        checksum:
+          type: http
+          url: "{{.AssetURL}}.sha256"
+          asset: "{{.Asset}}.sha256"
+          algorithm: sha256
+        overrides:
+          - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/bnjbvr/cargo-machete/releases/download/{{.Version}}/cargo-machete-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            replacements:
+              arm64: aarch64
+        supported_envs:
+          - darwin
+          - windows
+          - amd64
+      - version_constraint: semver("<= 0.9.2")
+        type: http
+        url: https://gh-proxy.org/github.com/bnjbvr/cargo-machete/releases/download/{{.Version}}/cargo-machete-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: cargo-machete-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          windows: pc-windows-msvc
+        checksum:
+          type: http
+          url: "{{.AssetURL}}.sha256"
+          asset: "{{.Asset}}.sha256"
+          algorithm: sha256
+        overrides:
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/bnjbvr/cargo-machete/releases/download/{{.Version}}/cargo-machete-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            goarch: amd64
+            replacements:
+              linux: unknown-linux-musl
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/bnjbvr/cargo-machete/releases/download/{{.Version}}/cargo-machete-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            goarch: arm64
+            replacements:
+              linux: unknown-linux-gnu
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/bnjbvr/cargo-machete/releases/download/{{.Version}}/cargo-machete-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: cargo-machete-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          linux: unknown-linux-musl
+          windows: pc-windows-msvc
+        checksum:
+          type: http
+          url: "{{.AssetURL}}.sha256"
+          asset: "{{.Asset}}.sha256"
+          algorithm: sha256
+  - type: github_release
     repo_owner: bodaay
     repo_name: HuggingFaceModelDownloader
     description: Simple go utility to download HuggingFace Models and Datasets
@@ -31290,6 +31453,155 @@ packages:
         github_artifact_attestations:
           signer_workflow: cargo-bins/cargo-binstall/.github/workflows/release-cli.yml
   - type: github_release
+    repo_owner: cargo-lambda
+    repo_name: cargo-lambda
+    description: Cargo Lambda is a Cargo subcommand to help you work with AWS Lambda
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: Version in ["v0.10.0", "v0.10.1", "v0.11.0"]
+        type: http
+        url: https://gh-proxy.org/github.com/cargo-lambda/cargo-lambda/releases/download/{{.Version}}/cargo-lambda-{{.Version}}.{{.OS}}.{{.Format}}
+        asset: cargo-lambda-{{.Version}}.{{.OS}}.{{.Format}}
+        format: tar.gz
+        files:
+          - name: cargo-lambda
+            src: cargo-lambda/cargo-lambda
+        replacements:
+          linux: unknown-linux-musl
+        checksum:
+          type: http
+          url: "{{.AssetURL}}.sha256"
+          asset: "{{.Asset}}.sha256"
+          algorithm: sha256
+        overrides:
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/cargo-lambda/cargo-lambda/releases/download/{{.Version}}/cargo-lambda-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
+            asset: cargo-lambda-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
+            replacements:
+              amd64: x86_64
+              arm64: aarch64
+          - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/cargo-lambda/cargo-lambda/releases/download/{{.Version}}/cargo-lambda-{{.Version}}.{{.OS}}.{{.Format}}
+            replacements:
+              darwin: apple-darwin
+        supported_envs:
+          - linux
+          - darwin
+      - version_constraint: semver("<= 0.8.0")
+        type: http
+        url: https://gh-proxy.org/github.com/cargo-lambda/cargo-lambda/releases/download/{{.Version}}/cargo-lambda-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: cargo-lambda-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+          darwin: apple-darwin
+          linux: unknown-linux-musl
+          windows: pc-windows-msvc
+        overrides:
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/cargo-lambda/cargo-lambda/releases/download/{{.Version}}/cargo-lambda-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            replacements:
+              arm64: aarch64
+          - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/cargo-lambda/cargo-lambda/releases/download/{{.Version}}/cargo-lambda-{{.Version}}-{{.OS}}.{{.Format}}
+            asset: cargo-lambda-{{.Version}}-{{.OS}}.{{.Format}}
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/cargo-lambda/cargo-lambda/releases/download/{{.Version}}/cargo-lambda-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            format: zip
+      - version_constraint: semver("<= 0.9.0")
+        type: http
+        url: https://gh-proxy.org/github.com/cargo-lambda/cargo-lambda/releases/download/{{.Version}}/cargo-lambda-{{.Version}}.{{.OS}}.{{.Format}}
+        asset: cargo-lambda-{{.Version}}.{{.OS}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          darwin: apple-darwin
+          linux: unknown-linux-musl
+        checksum:
+          type: http
+          url: "{{.AssetURL}}.sha256"
+          asset: "{{.Asset}}.sha256"
+          algorithm: sha256
+        overrides:
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/cargo-lambda/cargo-lambda/releases/download/{{.Version}}/cargo-lambda-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
+            asset: cargo-lambda-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
+            replacements:
+              amd64: x86_64
+              arm64: aarch64
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/cargo-lambda/cargo-lambda/releases/download/{{.Version}}/cargo-lambda-{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
+            asset: cargo-lambda-{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
+            replacements:
+              amd64: x64
+            checksum:
+              enabled: false
+      - version_constraint: semver("<= 1.0.3")
+        type: http
+        url: https://gh-proxy.org/github.com/cargo-lambda/cargo-lambda/releases/download/{{.Version}}/cargo-lambda-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: cargo-lambda-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          linux: unknown-linux-musl
+        checksum:
+          type: http
+          url: "{{.AssetURL}}.sha256"
+          asset: "{{.Asset}}.sha256"
+          algorithm: sha256
+        overrides:
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/cargo-lambda/cargo-lambda/releases/download/{{.Version}}/cargo-lambda-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
+            replacements:
+              amd64: x86_64
+              arm64: aarch64
+          - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/cargo-lambda/cargo-lambda/releases/download/{{.Version}}/cargo-lambda-{{.Version}}.{{.OS}}.{{.Format}}
+            asset: cargo-lambda-{{.Version}}.{{.OS}}.{{.Format}}
+            replacements:
+              darwin: apple-darwin
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/cargo-lambda/cargo-lambda/releases/download/{{.Version}}/cargo-lambda-{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
+            format: zip
+            asset: cargo-lambda-{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
+            replacements:
+              amd64: x64
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/cargo-lambda/cargo-lambda/releases/download/{{.Version}}/cargo-lambda-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: cargo-lambda-{{.Version}}.{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          linux: unknown-linux-musl
+        checksum:
+          type: http
+          url: "{{.AssetURL}}.sha256"
+          asset: "{{.Asset}}.sha256"
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/cargo-lambda/cargo-lambda/releases/download/{{.Version}}/cargo-lambda-{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
+            format: zip
+            asset: cargo-lambda-{{.Version}}.{{.OS}}-{{.Arch}}.{{.Format}}
+            replacements:
+              amd64: x64
+  - type: github_release
     repo_owner: carthage-software
     repo_name: mago
     description: Mago is a toolchain for PHP that aims to provide a set of tools to help developers write better code
@@ -32144,12 +32456,34 @@ packages:
           linux: unknown-linux-musl
         supported_envs:
           - linux/amd64
+      - version_constraint: semver("<= 1.36.0")
+        type: http
+        url: https://gh-proxy.org/github.com/casey/just/releases/download/{{.Version}}/just-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: just-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          linux: unknown-linux-musl
+          windows: pc-windows-msvc
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/casey/just/releases/download/{{.Version}}/just-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            format: zip
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/casey/just/releases/download/{{.Version}}/just-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         asset: just-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
         format: tar.gz
         windows_arm_emulation: true
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/casey/just/releases/download/{{.Version}}/SHA256SUMS
+          asset: SHA256SUMS
+          algorithm: sha256
         replacements:
           amd64: x86_64
           arm64: aarch64
@@ -50776,6 +51110,21 @@ packages:
             format: zip
             files:
               - name: fastfetch
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/fastfetch-cli/fastfetch/releases/download/{{.Version}}/fastfetch-{{.OS}}-{{.Arch}}.{{.Format}}
+            goarch: amd64
+            variants:
+              - key: libc
+                value: glibc
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/fastfetch-cli/fastfetch/releases/download/{{.Version}}/fastfetch-musl-{{.Arch}}.{{.Format}}
+            goarch: amd64
+            variants:
+              - key: libc
+                value: musl
+            asset: fastfetch-musl-{{.Arch}}.{{.Format}}
         replacements:
           arm64: aarch64
           darwin: macos
@@ -104544,6 +104893,41 @@ packages:
           asset: checksums.txt
           algorithm: sha256
   - type: github_release
+    repo_owner: reylosql
+    repo_name: reylo
+    description: Infer types for SQL queries from the database itself
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: semver("<= 0.6.0")
+        no_asset: true
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/reylosql/reylo/releases/download/{{.Version}}/reylo-{{.OS}}-{{.Arch}}.{{.Format}}
+        asset: reylo-{{.OS}}-{{.Arch}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x64
+          windows: win32
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/reylosql/reylo/releases/download/{{.Version}}/SHA256SUMS
+          asset: SHA256SUMS
+          algorithm: sha256
+        overrides:
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/reylosql/reylo/releases/download/{{.Version}}/reylo-{{.OS}}-{{.Arch}}.{{.Format}}
+            variants:
+              - key: libc
+                value: glibc
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/reylosql/reylo/releases/download/{{.Version}}/reylo-{{.OS}}-{{.Arch}}-musl.{{.Format}}
+            asset: reylo-{{.OS}}-{{.Arch}}-musl.{{.Format}}
+            variants:
+              - key: libc
+                value: musl
+  - type: github_release
     repo_owner: rfjakob
     repo_name: gocryptfs
     description: Encrypted overlay filesystem written in Go
@@ -116551,7 +116935,6 @@ packages:
     description: static builds cURL with HTTP3
     files:
       - name: curl
-      - name: curl-config
     version_constraint: "false"
     version_overrides:
       - version_constraint: Version == "8.6.0-1"
@@ -116559,8 +116942,6 @@ packages:
         url: https://gh-proxy.org/github.com/stunnel/static-curl/releases/download/{{.Version}}/curl-{{.OS}}-{{.Arch}}-8.6.0.{{.Format}}
         asset: curl-{{.OS}}-{{.Arch}}-8.6.0.{{.Format}}
         format: tar.xz
-        files:
-          - name: curl
         replacements:
           amd64: x86_64
           arm64: aarch64
@@ -116576,8 +116957,6 @@ packages:
         url: https://gh-proxy.org/github.com/stunnel/static-curl/releases/download/{{.Version}}/curl-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         asset: curl-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         format: tar.xz
-        files:
-          - name: curl
         replacements:
           darwin: macos
         supported_envs:
@@ -116588,8 +116967,6 @@ packages:
         url: https://gh-proxy.org/github.com/stunnel/static-curl/releases/download/{{.Version}}/curl-static-{{.Arch}}-{{.Version}}.{{.Format}}
         asset: curl-static-{{.Arch}}-{{.Version}}.{{.Format}}
         format: tar.xz
-        files:
-          - name: curl
         supported_envs:
           - linux
       - version_constraint: semver("<= 8.5.0")
@@ -116605,16 +116982,11 @@ packages:
         supported_envs:
           - linux
           - darwin
-      - version_constraint: "true"
+      - version_constraint: semver("< 8.7.1")
         type: http
-        url: https://gh-proxy.org/github.com/stunnel/static-curl/releases/download/{{.Version}}/curl-{{.OS}}-{{.Arch}}-dev-{{.Version}}.{{.Format}}
-        asset: curl-{{.OS}}-{{.Arch}}-dev-{{.Version}}.{{.Format}}
+        url: https://gh-proxy.org/github.com/stunnel/static-curl/releases/download/{{.Version}}/curl-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
+        asset: curl-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
         format: tar.xz
-        files:
-          - name: curl
-            src: curl-{{.Arch}}/bin/curl
-          - name: curl-config
-            src: curl-{{.Arch}}/bin/curl-config
         replacements:
           amd64: x86_64
           arm64: aarch64
@@ -116622,7 +116994,26 @@ packages:
         overrides:
           - goos: darwin
             type: http
-            url: https://gh-proxy.org/github.com/stunnel/static-curl/releases/download/{{.Version}}/curl-{{.OS}}-{{.Arch}}-dev-{{.Version}}.{{.Format}}
+            url: https://gh-proxy.org/github.com/stunnel/static-curl/releases/download/{{.Version}}/curl-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
+            replacements:
+              arm64: arm64
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/stunnel/static-curl/releases/download/{{.Version}}/curl-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
+        asset: curl-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
+        format: tar.xz
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: macos
+        overrides:
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/stunnel/static-curl/releases/download/{{.Version}}/curl-{{.OS}}-{{.Arch}}-musl-{{.Version}}.{{.Format}}
+            asset: curl-{{.OS}}-{{.Arch}}-musl-{{.Version}}.{{.Format}}
+          - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/stunnel/static-curl/releases/download/{{.Version}}/curl-{{.OS}}-{{.Arch}}-{{.Version}}.{{.Format}}
             replacements:
               arm64: arm64
   - type: github_release

@@ -534,6 +534,21 @@ packages:
             format: zip
             files:
               - name: fastfetch
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/fastfetch-cli/fastfetch/releases/download/{{.Version}}/fastfetch-{{.OS}}-{{.Arch}}.{{.Format}}
+            goarch: amd64
+            variants:
+              - key: libc
+                value: glibc
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/fastfetch-cli/fastfetch/releases/download/{{.Version}}/fastfetch-musl-{{.Arch}}.{{.Format}}
+            goarch: amd64
+            variants:
+              - key: libc
+                value: musl
+            asset: fastfetch-musl-{{.Arch}}.{{.Format}}
         replacements:
           arm64: aarch64
           darwin: macos
