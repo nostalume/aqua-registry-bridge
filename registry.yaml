@@ -61037,6 +61037,122 @@ packages:
             url: https://gh-proxy.org/github.com/goreleaser/nfpm/releases/download/{{.Version}}/nfpm_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
   - type: github_release
+    repo_owner: goshs-labs
+    repo_name: goshs
+    description: Feature-rich single-binary file server for red teamers and developers.  HTTP/S · WebDAV · FTP/SFTP · SMB · LDAP/S · NTLM hash capture · DNS/SMTP callbacks ·  TLS · Auth · Share links. A powerful python3 -m http.server replacement
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: semver("<= 0.0.3")
+        no_asset: true
+      - version_constraint: semver("<= 0.0.6")
+        type: http
+        url: https://gh-proxy.org/github.com/goshs-labs/goshs/releases/download/{{.Version}}/goshs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: goshs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        rosetta2: true
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+          darwin: Darwin
+          linux: Linux
+          windows: Windows
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/goshs-labs/goshs/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        supported_envs:
+          - darwin
+          - windows
+          - amd64
+      - version_constraint: semver("<= 0.1.1")
+        type: http
+        url: https://gh-proxy.org/github.com/goshs-labs/goshs/releases/download/{{.Version}}/goshs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: goshs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+          darwin: Darwin
+          linux: Linux
+          windows: Windows
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/goshs-labs/goshs/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+      - version_constraint: semver("<= 0.3.1")
+        type: http
+        url: https://gh-proxy.org/github.com/goshs-labs/goshs/releases/download/{{.Version}}/goshs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: goshs_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+          darwin: Darwin
+          linux: Linux
+          windows: Windows
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/goshs-labs/goshs/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+      - version_constraint: semver("<= 2.0.6")
+        type: http
+        url: https://gh-proxy.org/github.com/goshs-labs/goshs/releases/download/{{.Version}}/goshs_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: goshs_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/goshs-labs/goshs/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+      - version_constraint: semver("<= 2.1.4")
+        type: http
+        url: https://gh-proxy.org/github.com/goshs-labs/goshs/releases/download/{{.Version}}/goshs_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: goshs_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/goshs-labs/goshs/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/goshs-labs/goshs/releases/download/{{.Version}}/goshs_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/goshs-labs/goshs/releases/download/{{.Version}}/goshs_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: goshs_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/goshs-labs/goshs/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity-regexp
+              - "^https://github\\.com/goshs-labs/goshs/\\.github/workflows/.+\\.ya?ml@refs/tags/\\Q{{.Version}}\\E$"
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/goshs-labs/goshs/releases/download/{{.Version}}/checksums.txt.bundle
+              asset: checksums.txt.bundle
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/goshs-labs/goshs/releases/download/{{.Version}}/goshs_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+  - type: github_release
     repo_owner: goss-org
     repo_name: goss
     aliases:
