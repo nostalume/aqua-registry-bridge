@@ -27041,7 +27041,7 @@ packages:
           - darwin
           - windows
           - amd64
-      - version_constraint: "true"
+      - version_constraint: semver("<= 2026.10.1")
         type: http
         url: https://gh-proxy.org/github.com/bitwarden/clients/releases/download/{{.Version}}/bw-{{.OS}}-{{.SemVer}}.{{.Format}}
         asset: bw-{{.OS}}-{{.SemVer}}.{{.Format}}
@@ -27059,6 +27059,24 @@ packages:
             url: https://gh-proxy.org/github.com/bitwarden/clients/releases/download/{{.Version}}/bw-{{.OS}}-{{.Arch}}-{{.SemVer}}.{{.Format}}
             goarch: arm64
             asset: bw-{{.OS}}-{{.Arch}}-{{.SemVer}}.{{.Format}}
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/bitwarden/clients/releases/download/{{.Version}}/bw-bit-{{.OS}}-{{.SemVer}}.{{.Format}}
+        asset: bw-bit-{{.OS}}-{{.SemVer}}.{{.Format}}
+        format: zip
+        replacements:
+          darwin: macos
+        overrides:
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/bitwarden/clients/releases/download/{{.Version}}/bw-bit-{{.OS}}-{{.Arch}}-{{.SemVer}}.{{.Format}}
+            goarch: arm64
+            asset: bw-bit-{{.OS}}-{{.Arch}}-{{.SemVer}}.{{.Format}}
+          - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/bitwarden/clients/releases/download/{{.Version}}/bw-bit-{{.OS}}-{{.Arch}}-{{.SemVer}}.{{.Format}}
+            goarch: arm64
+            asset: bw-bit-{{.OS}}-{{.Arch}}-{{.SemVer}}.{{.Format}}
   - type: github_release
     repo_owner: bitwarden
     repo_name: sdk-sm
@@ -136031,6 +136049,50 @@ packages:
             format: zip
             files:
               - name: jnv
+  - type: github_release
+    repo_owner: ynqa
+    repo_name: vy
+    description: Explore and query JSON and YAML, right in your terminal
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/ynqa/vy/releases/download/{{.Version}}/vy-cli-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: vy-cli-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.xz
+        windows_arm_emulation: true
+        files:
+          - name: vy
+            src: "{{.AssetWithoutExt}}/vy"
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          windows: pc-windows-msvc
+        checksum:
+          type: http
+          url: "{{.AssetURL}}.sha256"
+          asset: "{{.Asset}}.sha256"
+          algorithm: sha256
+        overrides:
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/ynqa/vy/releases/download/{{.Version}}/vy-cli-{{.Arch}}-{{.OS}}.{{.Format}}
+            goarch: amd64
+            replacements:
+              linux: unknown-linux-musl
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/ynqa/vy/releases/download/{{.Version}}/vy-cli-{{.Arch}}-{{.OS}}.{{.Format}}
+            goarch: arm64
+            replacements:
+              linux: unknown-linux-gnu
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ynqa/vy/releases/download/{{.Version}}/vy-cli-{{.Arch}}-{{.OS}}.{{.Format}}
+            format: zip
+            files:
+              - name: vy
   - type: github_release
     repo_owner: yoheimuta
     repo_name: protolint

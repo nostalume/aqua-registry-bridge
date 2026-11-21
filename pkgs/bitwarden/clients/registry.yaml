@@ -69,7 +69,7 @@ packages:
           - darwin
           - windows
           - amd64
-      - version_constraint: "true"
+      - version_constraint: semver("<= 2026.10.1")
         type: http
         url: https://gh-proxy.org/github.com/bitwarden/clients/releases/download/{{.Version}}/bw-{{.OS}}-{{.SemVer}}.{{.Format}}
         asset: bw-{{.OS}}-{{.SemVer}}.{{.Format}}
@@ -87,3 +87,21 @@ packages:
             url: https://gh-proxy.org/github.com/bitwarden/clients/releases/download/{{.Version}}/bw-{{.OS}}-{{.Arch}}-{{.SemVer}}.{{.Format}}
             goarch: arm64
             asset: bw-{{.OS}}-{{.Arch}}-{{.SemVer}}.{{.Format}}
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/bitwarden/clients/releases/download/{{.Version}}/bw-bit-{{.OS}}-{{.SemVer}}.{{.Format}}
+        asset: bw-bit-{{.OS}}-{{.SemVer}}.{{.Format}}
+        format: zip
+        replacements:
+          darwin: macos
+        overrides:
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/bitwarden/clients/releases/download/{{.Version}}/bw-bit-{{.OS}}-{{.Arch}}-{{.SemVer}}.{{.Format}}
+            goarch: arm64
+            asset: bw-bit-{{.OS}}-{{.Arch}}-{{.SemVer}}.{{.Format}}
+          - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/bitwarden/clients/releases/download/{{.Version}}/bw-bit-{{.OS}}-{{.Arch}}-{{.SemVer}}.{{.Format}}
+            goarch: arm64
+            asset: bw-bit-{{.OS}}-{{.Arch}}-{{.SemVer}}.{{.Format}}
