@@ -1,0 +1,68 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
+packages:
+  - type: github_release
+    repo_owner: agavra
+    repo_name: tuicr
+    description: a code review TUI with vim keybindings
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: semver("<= 0.7.2")
+        type: http
+        url: https://gh-proxy.org/github.com/agavra/tuicr/releases/download/{{.Version}}/tuicr-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: tuicr-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          linux: unknown-linux-gnu
+          windows: pc-windows-msvc
+        overrides:
+          - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/agavra/tuicr/releases/download/{{.Version}}/tuicr-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            replacements:
+              amd64: amd64
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/agavra/tuicr/releases/download/{{.Version}}/tuicr-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            format: zip
+        supported_envs:
+          - linux
+          - darwin/arm64
+          - windows/amd64
+      - version_constraint: semver("<= 0.21.0")
+        type: http
+        url: https://gh-proxy.org/github.com/agavra/tuicr/releases/download/{{.Version}}/tuicr-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: tuicr-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          linux: unknown-linux-gnu
+          windows: pc-windows-msvc
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/agavra/tuicr/releases/download/{{.Version}}/tuicr-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/agavra/tuicr/releases/download/{{.Version}}/tuicr-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: tuicr-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          linux: unknown-linux-musl
+          windows: pc-windows-msvc
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/agavra/tuicr/releases/download/{{.Version}}/tuicr-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            format: zip
