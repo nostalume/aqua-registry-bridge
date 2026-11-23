@@ -144,3 +144,5 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/utkuozdemir/pv-migrate/releases/download/{{.Version}}/pv-migrate_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+        github_artifact_attestations:
+          signer_workflow: utkuozdemir/pv-migrate/.github/workflows/release.yml

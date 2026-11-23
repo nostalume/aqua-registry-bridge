@@ -25321,12 +25321,20 @@ packages:
         supported_envs:
           - darwin
           - windows/amd64
+      - version_constraint: semver("< 10.0.0")
+        type: http
+        url: https://gh-proxy.org/github.com/bazel-contrib/buildtools/releases/download/{{.Version}}/buildifier-{{.OS}}-{{.Arch}}
+        asset: buildifier-{{.OS}}-{{.Arch}}
+        format: raw
+        windows_arm_emulation: true
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/bazel-contrib/buildtools/releases/download/{{.Version}}/buildifier-{{.OS}}-{{.Arch}}
         asset: buildifier-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
+        github_artifact_attestations:
+          signer_workflow: bazel-contrib/buildtools/.github/workflows/release.yml
   - name: bazel-contrib/buildtools/buildozer
     aliases:
       - name: bazelbuild/buildtools/buildozer
@@ -39540,6 +39548,19 @@ packages:
     description: The command that searches the current directory or parent directories for a specific file and returns the closest path
     version_constraint: "false"
     version_overrides:
+      - version_constraint: semver("< 2.0.0")
+        type: http
+        url: https://gh-proxy.org/github.com/corrupt952/closest/releases/download/{{.Version}}/closest_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: closest_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/corrupt952/closest/releases/download/{{.Version}}/closest_{{trimV .Version}}_checksums.txt
+          asset: closest_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+        supported_envs:
+          - linux
+          - darwin
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/corrupt952/closest/releases/download/{{.Version}}/closest_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -39553,6 +39574,8 @@ packages:
         supported_envs:
           - linux
           - darwin
+        github_artifact_attestations:
+          signer_workflow: corrupt952/closest/.github/workflows/release.yaml
   - type: http
     url: https://gh-proxy.org/github.com/cortesi/modd/releases/download/{{.Version}}/modd-{{.Version|trimV}}-{{.OS}}{{.Arch}}.{{.Format}}
     repo_owner: cortesi
@@ -41330,19 +41353,34 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/d-kuro/gwq/releases/download/{{.Version}}/gwq_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
-  - type: http
-    url: https://gh-proxy.org/github.com/d2lang/d2/releases/download/{{.Version}}/d2-{{.Version}}-{{.OS}}-{{.Arch}}.tar.gz
+  - type: github_release
     repo_owner: d2lang
     repo_name: d2
     aliases:
       - name: terrastruct/d2
-    asset: d2-{{.Version}}-{{.OS}}-{{.Arch}}.tar.gz
     description: D2 is a modern diagram scripting language that turns text to diagrams
-    replacements:
-      darwin: macos
-    files:
-      - name: d2
-        src: d2-{{.Version}}/bin/d2
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: semver("< 0.8.2")
+        type: http
+        url: https://gh-proxy.org/github.com/d2lang/d2/releases/download/{{.Version}}/d2-{{.Version}}-{{.OS}}-{{.Arch}}.tar.gz
+        asset: d2-{{.Version}}-{{.OS}}-{{.Arch}}.tar.gz
+        replacements:
+          darwin: macos
+        files:
+          - name: d2
+            src: d2-{{.Version}}/bin/d2
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/d2lang/d2/releases/download/{{.Version}}/d2-{{.Version}}-{{.OS}}-{{.Arch}}.tar.gz
+        asset: d2-{{.Version}}-{{.OS}}-{{.Arch}}.tar.gz
+        replacements:
+          darwin: macos
+        files:
+          - name: d2
+            src: d2-{{.Version}}/bin/d2
+        github_artifact_attestations:
+          signer_workflow: d2lang/d2/.github/workflows/release-archives.yml
   - type: github_release
     repo_owner: dadav
     repo_name: helm-schema
@@ -54153,6 +54191,19 @@ packages:
     description: A maintained fork of zmwangx's command output timestamper
     version_constraint: "false"
     version_overrides:
+      - version_constraint: semver("<= 0.3.1")
+        type: http
+        url: https://gh-proxy.org/github.com/gdubicki/ets/releases/download/{{.Version}}/ets_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: ets_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/gdubicki/ets/releases/download/{{.Version}}/ets_{{trimV .Version}}_checksums.txt
+          asset: ets_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+        supported_envs:
+          - linux
+          - darwin
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/gdubicki/ets/releases/download/{{.Version}}/ets_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -54166,6 +54217,8 @@ packages:
         supported_envs:
           - linux
           - darwin
+        github_artifact_attestations:
+          signer_workflow: gdubicki/ets/.github/workflows/release.yml
   - type: github_release
     repo_owner: gefyrahq
     repo_name: gefyra
@@ -73666,6 +73719,22 @@ packages:
     description: deck is a tool for creating deck using Markdown and Google Slides
     version_constraint: "false"
     version_overrides:
+      - version_constraint: semver("<= 1.24.3")
+        type: http
+        url: https://gh-proxy.org/github.com/k1LoW/deck/releases/download/{{.Version}}/deck_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: deck_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/k1LoW/deck/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/k1LoW/deck/releases/download/{{.Version}}/deck_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/k1LoW/deck/releases/download/{{.Version}}/deck_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -73682,6 +73751,8 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/k1LoW/deck/releases/download/{{.Version}}/deck_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+        github_artifact_attestations:
+          signer_workflow: k1LoW/deck/.github/workflows/release-build.yml
   - type: github_release
     repo_owner: k1LoW
     repo_name: gh-do
@@ -84431,6 +84502,8 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/masasuzu/clrnd/releases/download/{{.Version}}/clrnd_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+        github_artifact_attestations:
+          signer_workflow: masasuzu/clrnd/.github/workflows/release.yml
   - type: github_release
     repo_owner: mashiike
     repo_name: acrun
@@ -91754,6 +91827,26 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/nektos/act/releases/download/{{.Version}}/act_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+      - version_constraint: semver("<= 0.2.91")
+        type: http
+        url: https://gh-proxy.org/github.com/nektos/act/releases/download/{{.Version}}/act_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: act_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+          darwin: Darwin
+          linux: Linux
+          windows: Windows
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/nektos/act/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/nektos/act/releases/download/{{.Version}}/act_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/nektos/act/releases/download/{{.Version}}/act_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -91774,6 +91867,8 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/nektos/act/releases/download/{{.Version}}/act_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+        github_artifact_attestations:
+          signer_workflow: nektos/act/.github/workflows/release.yml
   - type: github_release
     repo_owner: nektro
     repo_name: zigmod
@@ -92625,6 +92720,24 @@ packages:
         supported_envs:
           - linux
           - darwin
+      - version_constraint: semver("<= 0.27.2")
+        type: http
+        url: https://gh-proxy.org/github.com/nklmilojevic/sofka/releases/download/{{.Version}}/sofka-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: sofka-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          linux: unknown-linux-gnu
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/nklmilojevic/sofka/releases/download/{{.Version}}/SHA256SUMS
+          asset: SHA256SUMS
+          algorithm: sha256
+        supported_envs:
+          - linux
+          - darwin
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/nklmilojevic/sofka/releases/download/{{.Version}}/sofka-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
@@ -92643,6 +92756,8 @@ packages:
         supported_envs:
           - linux
           - darwin
+        github_artifact_attestations:
+          signer_workflow: nklmilojevic/sofka/.github/workflows/release.yaml
   - type: github_release
     repo_owner: nmstate
     repo_name: nmstate
@@ -94895,7 +95010,7 @@ packages:
     version_overrides:
       - version_constraint: Version == "v0.0.6--context-conduit-saphire"
         no_asset: true
-      - version_constraint: semver("<= 0.0.13")
+      - version_constraint: semver("<= 0.0.12")
         type: http
         url: https://gh-proxy.org/github.com/openai/tunnel-client/releases/download/{{.Version}}/tunnel-client-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: tunnel-client-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
@@ -94925,6 +95040,8 @@ packages:
             - https://gh-proxy.org/github.com/openai/tunnel-client/.github/workflows/release.yml@refs/tags/{{.Version}}
             - --certificate-oidc-issuer
             - https://token.actions.githubusercontent.com
+        github_artifact_attestations:
+          signer_workflow: openai/tunnel-client/.github/workflows/release.yml
   - name: openbao/openbao/bao
     type: github_release
     repo_owner: openbao
@@ -123064,25 +123181,48 @@ packages:
           - linux/amd64
           - darwin
           - windows
-  - type: http
-    url: https://gh-proxy.org/github.com/tcnksm/ghr/releases/download/{{.Version}}/ghr_{{.Version}}_{{.OS}}_amd64.{{.Format}}
+  - type: github_release
     repo_owner: tcnksm
     repo_name: ghr
     description: Upload multiple artifacts to GitHub Release in parallel
-    rosetta2: true
-    supported_envs:
-      - darwin
-      - amd64
-    asset: ghr_{{.Version}}_{{.OS}}_amd64.{{.Format}}
-    files:
-      - name: ghr
-        src: ghr_{{.Version}}_{{.OS}}_amd64/ghr
-    format: zip
-    overrides:
-      - goos: linux
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: semver("< 0.18.5")
         type: http
         url: https://gh-proxy.org/github.com/tcnksm/ghr/releases/download/{{.Version}}/ghr_{{.Version}}_{{.OS}}_amd64.{{.Format}}
-        format: tar.gz
+        rosetta2: true
+        supported_envs:
+          - darwin
+          - amd64
+        asset: ghr_{{.Version}}_{{.OS}}_amd64.{{.Format}}
+        files:
+          - name: ghr
+            src: ghr_{{.Version}}_{{.OS}}_amd64/ghr
+        format: zip
+        overrides:
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/tcnksm/ghr/releases/download/{{.Version}}/ghr_{{.Version}}_{{.OS}}_amd64.{{.Format}}
+            format: tar.gz
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/tcnksm/ghr/releases/download/{{.Version}}/ghr_{{.Version}}_{{.OS}}_amd64.{{.Format}}
+        rosetta2: true
+        supported_envs:
+          - darwin
+          - amd64
+        asset: ghr_{{.Version}}_{{.OS}}_amd64.{{.Format}}
+        files:
+          - name: ghr
+            src: ghr_{{.Version}}_{{.OS}}_amd64/ghr
+        format: zip
+        overrides:
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/tcnksm/ghr/releases/download/{{.Version}}/ghr_{{.Version}}_{{.OS}}_amd64.{{.Format}}
+            format: tar.gz
+        github_artifact_attestations:
+          signer_workflow: tcnksm/ghr/.github/workflows/release-build.yaml
   - type: http
     url: https://gh-proxy.org/github.com/tdewolff/minify/releases/download/{{.Version}}/minify_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: tdewolff
@@ -125669,6 +125809,21 @@ packages:
     version_overrides:
       - version_constraint: semver("< 3.20.0")
         no_asset: true
+      - version_constraint: semver("< 3.22.0")
+        type: http
+        url: https://gh-proxy.org/github.com/tiny-earth-moon/outskirts/releases/download/{{.Version}}/outskirts-{{.Version}}-macos-arm64.tar.gz
+        asset: outskirts-{{.Version}}-macos-arm64.tar.gz
+        format: tar.gz
+        files:
+          - name: outskirts
+            src: outskirts-{{.Version}}-macos-arm64/outskirts
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/tiny-earth-moon/outskirts/releases/download/{{.Version}}/outskirts-{{.Version}}-macos-arm64.tar.gz.sha256
+          asset: outskirts-{{.Version}}-macos-arm64.tar.gz.sha256
+          algorithm: sha256
+        supported_envs:
+          - darwin/arm64
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/tiny-earth-moon/outskirts/releases/download/{{.Version}}/outskirts-{{.Version}}-macos-arm64.tar.gz
@@ -125684,6 +125839,8 @@ packages:
           algorithm: sha256
         supported_envs:
           - darwin/arm64
+        github_artifact_attestations:
+          signer_workflow: tiny-earth-moon/outskirts/.github/workflows/bottle.yml
   - type: github_release
     repo_owner: tinygo-org
     repo_name: tinygo
@@ -128922,6 +129079,41 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/txn2/kubefwd/releases/download/{{.Version}}/kubefwd_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+      - version_constraint: semver("<= 1.25.16")
+        type: http
+        url: https://gh-proxy.org/github.com/txn2/kubefwd/releases/download/{{.Version}}/kubefwd_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: kubefwd_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+          darwin: Darwin
+          linux: Linux
+          windows: Windows
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/txn2/kubefwd/releases/download/{{.Version}}/kubefwd_checksums.txt
+          asset: kubefwd_checksums.txt
+          algorithm: sha256
+          cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/txn2/kubefwd/releases/download/{{.Version}}/kubefwd_checksums.txt.sigstore.json
+              asset: kubefwd_checksums.txt.sigstore.json
+            opts:
+              - --certificate-identity
+              - https://gh-proxy.org/github.com/txn2/kubefwd/.github/workflows/release.yml@refs/tags/{{.Version}}
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - txn2/kubefwd
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/txn2/kubefwd/releases/download/{{.Version}}/kubefwd_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/txn2/kubefwd/releases/download/{{.Version}}/kubefwd_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -128957,6 +129149,8 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/txn2/kubefwd/releases/download/{{.Version}}/kubefwd_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+        github_artifact_attestations:
+          signer_workflow: txn2/kubefwd/.github/workflows/release.yml
   - type: github_release
     repo_owner: typst
     repo_name: typst
@@ -129793,6 +129987,8 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/utkuozdemir/pv-migrate/releases/download/{{.Version}}/pv-migrate_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+        github_artifact_attestations:
+          signer_workflow: utkuozdemir/pv-migrate/.github/workflows/release.yml
   - type: github_release
     repo_owner: uutils
     repo_name: coreutils
@@ -134631,33 +134827,66 @@ packages:
         supported_envs:
           - darwin
           - amd64
-  - type: http
-    url: https://gh-proxy.org/github.com/x-motemen/ghq/releases/download/{{.Version}}/ghq_{{.OS}}_{{.Arch}}.zip
+  - type: github_release
     repo_owner: x-motemen
     repo_name: ghq
-    asset: ghq_{{.OS}}_{{.Arch}}.zip
     description: Remote repository management made easy
-    files:
-      - name: ghq
-        src: ghq_{{.OS}}_{{.Arch}}/ghq
-    version_constraint: semver(">= 1.3.0")
+    version_constraint: "false"
     version_overrides:
-      - version_constraint: "true"
+      - version_constraint: semver("< 1.3.0")
         type: http
         url: https://gh-proxy.org/github.com/x-motemen/ghq/releases/download/{{.Version}}/ghq_{{.OS}}_{{.Arch}}.zip
+        asset: ghq_{{.OS}}_{{.Arch}}.zip
+        files:
+          - name: ghq
+            src: ghq_{{.OS}}_{{.Arch}}/ghq
         supported_envs:
           - amd64
           - darwin
         rosetta2: true
-    checksum:
-      type: http
-      url: https://gh-proxy.org/github.com/x-motemen/ghq/releases/download/{{.Version}}/SHASUMS
-      asset: SHASUMS
-      file_format: regexp
-      algorithm: sha1
-      pattern:
-        checksum: ^(\b[A-Fa-f0-9]{40}\b)
-        file: "^\\b[A-Fa-f0-9]{40}\\b\\s+(\\S+)$"
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/x-motemen/ghq/releases/download/{{.Version}}/SHASUMS
+          asset: SHASUMS
+          file_format: regexp
+          algorithm: sha1
+          pattern:
+            checksum: ^(\b[A-Fa-f0-9]{40}\b)
+            file: "^\\b[A-Fa-f0-9]{40}\\b\\s+(\\S+)$"
+      - version_constraint: semver("< 1.11.1")
+        type: http
+        url: https://gh-proxy.org/github.com/x-motemen/ghq/releases/download/{{.Version}}/ghq_{{.OS}}_{{.Arch}}.zip
+        asset: ghq_{{.OS}}_{{.Arch}}.zip
+        files:
+          - name: ghq
+            src: ghq_{{.OS}}_{{.Arch}}/ghq
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/x-motemen/ghq/releases/download/{{.Version}}/SHASUMS
+          asset: SHASUMS
+          file_format: regexp
+          algorithm: sha1
+          pattern:
+            checksum: ^(\b[A-Fa-f0-9]{40}\b)
+            file: "^\\b[A-Fa-f0-9]{40}\\b\\s+(\\S+)$"
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/x-motemen/ghq/releases/download/{{.Version}}/ghq_{{.OS}}_{{.Arch}}.zip
+        asset: ghq_{{.OS}}_{{.Arch}}.zip
+        files:
+          - name: ghq
+            src: ghq_{{.OS}}_{{.Arch}}/ghq
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/x-motemen/ghq/releases/download/{{.Version}}/SHASUMS
+          asset: SHASUMS
+          file_format: regexp
+          algorithm: sha1
+          pattern:
+            checksum: ^(\b[A-Fa-f0-9]{40}\b)
+            file: "^\\b[A-Fa-f0-9]{40}\\b\\s+(\\S+)$"
+        github_artifact_attestations:
+          signer_workflow: x-motemen/ghq/.github/workflows/release-build.yaml
   - type: http
     url: https://gh-proxy.org/github.com/x-motemen/gobump/releases/download/{{.Version}}/gobump_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     repo_owner: x-motemen
@@ -136845,6 +137074,28 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/yvgude/lean-ctx/releases/download/{{.Version}}/lean-ctx-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
+      - version_constraint: semver("<= 3.11.4")
+        type: http
+        url: https://gh-proxy.org/github.com/yvgude/lean-ctx/releases/download/{{.Version}}/lean-ctx-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: lean-ctx-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          linux: unknown-linux-musl
+          windows: pc-windows-msvc
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/yvgude/lean-ctx/releases/download/{{.Version}}/SHA256SUMS
+          asset: SHA256SUMS
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/yvgude/lean-ctx/releases/download/{{.Version}}/lean-ctx-{{.Arch}}-{{.OS}}.{{.Format}}
+            format: zip
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/yvgude/lean-ctx/releases/download/{{.Version}}/lean-ctx-{{.Arch}}-{{.OS}}.{{.Format}}
@@ -136867,6 +137118,8 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/yvgude/lean-ctx/releases/download/{{.Version}}/lean-ctx-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
+        github_artifact_attestations:
+          signer_workflow: yvgude/lean-ctx/.github/workflows/release.yml
   - type: github_release
     repo_owner: zaghaghi
     repo_name: openapi-tui

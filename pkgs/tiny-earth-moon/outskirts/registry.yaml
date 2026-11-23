@@ -8,6 +8,21 @@ packages:
     version_overrides:
       - version_constraint: semver("< 3.20.0")
         no_asset: true
+      - version_constraint: semver("< 3.22.0")
+        type: http
+        url: https://gh-proxy.org/github.com/tiny-earth-moon/outskirts/releases/download/{{.Version}}/outskirts-{{.Version}}-macos-arm64.tar.gz
+        asset: outskirts-{{.Version}}-macos-arm64.tar.gz
+        format: tar.gz
+        files:
+          - name: outskirts
+            src: outskirts-{{.Version}}-macos-arm64/outskirts
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/tiny-earth-moon/outskirts/releases/download/{{.Version}}/outskirts-{{.Version}}-macos-arm64.tar.gz.sha256
+          asset: outskirts-{{.Version}}-macos-arm64.tar.gz.sha256
+          algorithm: sha256
+        supported_envs:
+          - darwin/arm64
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/tiny-earth-moon/outskirts/releases/download/{{.Version}}/outskirts-{{.Version}}-macos-arm64.tar.gz
@@ -23,3 +38,5 @@ packages:
           algorithm: sha256
         supported_envs:
           - darwin/arm64
+        github_artifact_attestations:
+          signer_workflow: tiny-earth-moon/outskirts/.github/workflows/bottle.yml

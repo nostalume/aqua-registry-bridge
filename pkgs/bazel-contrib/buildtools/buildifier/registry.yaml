@@ -70,9 +70,17 @@ packages:
         supported_envs:
           - darwin
           - windows/amd64
+      - version_constraint: semver("< 10.0.0")
+        type: http
+        url: https://gh-proxy.org/github.com/bazel-contrib/buildtools/releases/download/{{.Version}}/buildifier-{{.OS}}-{{.Arch}}
+        asset: buildifier-{{.OS}}-{{.Arch}}
+        format: raw
+        windows_arm_emulation: true
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/bazel-contrib/buildtools/releases/download/{{.Version}}/buildifier-{{.OS}}-{{.Arch}}
         asset: buildifier-{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
+        github_artifact_attestations:
+          signer_workflow: bazel-contrib/buildtools/.github/workflows/release.yml

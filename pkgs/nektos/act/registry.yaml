@@ -97,6 +97,26 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/nektos/act/releases/download/{{.Version}}/act_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+      - version_constraint: semver("<= 0.2.91")
+        type: http
+        url: https://gh-proxy.org/github.com/nektos/act/releases/download/{{.Version}}/act_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: act_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+          darwin: Darwin
+          linux: Linux
+          windows: Windows
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/nektos/act/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/nektos/act/releases/download/{{.Version}}/act_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/nektos/act/releases/download/{{.Version}}/act_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -117,3 +137,5 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/nektos/act/releases/download/{{.Version}}/act_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+        github_artifact_attestations:
+          signer_workflow: nektos/act/.github/workflows/release.yml

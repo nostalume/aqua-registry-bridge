@@ -82,6 +82,28 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/yvgude/lean-ctx/releases/download/{{.Version}}/lean-ctx-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
+      - version_constraint: semver("<= 3.11.4")
+        type: http
+        url: https://gh-proxy.org/github.com/yvgude/lean-ctx/releases/download/{{.Version}}/lean-ctx-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: lean-ctx-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          linux: unknown-linux-musl
+          windows: pc-windows-msvc
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/yvgude/lean-ctx/releases/download/{{.Version}}/SHA256SUMS
+          asset: SHA256SUMS
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/yvgude/lean-ctx/releases/download/{{.Version}}/lean-ctx-{{.Arch}}-{{.OS}}.{{.Format}}
+            format: zip
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/yvgude/lean-ctx/releases/download/{{.Version}}/lean-ctx-{{.Arch}}-{{.OS}}.{{.Format}}
@@ -104,3 +126,5 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/yvgude/lean-ctx/releases/download/{{.Version}}/lean-ctx-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
+        github_artifact_attestations:
+          signer_workflow: yvgude/lean-ctx/.github/workflows/release.yml

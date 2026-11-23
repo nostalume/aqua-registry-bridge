@@ -8,7 +8,7 @@ packages:
     version_overrides:
       - version_constraint: Version == "v0.0.6--context-conduit-saphire"
         no_asset: true
-      - version_constraint: semver("<= 0.0.13")
+      - version_constraint: semver("<= 0.0.12")
         type: http
         url: https://gh-proxy.org/github.com/openai/tunnel-client/releases/download/{{.Version}}/tunnel-client-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: tunnel-client-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
@@ -38,3 +38,5 @@ packages:
             - https://gh-proxy.org/github.com/openai/tunnel-client/.github/workflows/release.yml@refs/tags/{{.Version}}
             - --certificate-oidc-issuer
             - https://token.actions.githubusercontent.com
+        github_artifact_attestations:
+          signer_workflow: openai/tunnel-client/.github/workflows/release.yml
