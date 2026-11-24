@@ -1,7 +1,6 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: http
-    url: https://gh-proxy.org/github.com/knative/func/releases/download/{{.Version}}/func_{{.OS}}_{{.Arch}}
+  - type: github_release
     repo_owner: knative
     repo_name: func
     description: Knative Functions client API and CLI
@@ -12,13 +11,40 @@ packages:
       url: https://gh-proxy.org/github.com/knative/func/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256
-    version_constraint: semverWithVersion(">= 1.7.0", trimPrefix(Version, "knative-")) or semver(">= 0.26.0")
-    # support linux/arm64
-    supported_envs:
-      - darwin
-      - linux
-      - amd64
+    version_constraint: "false"
     version_overrides:
+      # checksums.txt is signed from knative-v1.8.0, keyless, by Knative's release service account.
+      - version_constraint: semverWithVersion(">= 1.8.0", trimPrefix(Version, "knative-"))
+        type: http
+        url: https://gh-proxy.org/github.com/knative/func/releases/download/{{.Version}}/func_{{.OS}}_{{.Arch}}
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/knative/func/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity
+              - signer@knative-releases.iam.gserviceaccount.com
+              - --certificate-oidc-issuer
+              - https://accounts.google.com
+              - --signature
+              - https://gh-proxy.org/github.com/knative/func/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate
+              - https://gh-proxy.org/github.com/knative/func/releases/download/{{.Version}}/checksums.txt.pem
+        # support linux/arm64
+        supported_envs:
+          - darwin
+          - linux
+          - amd64
+      - version_constraint: semverWithVersion(">= 1.7.0", trimPrefix(Version, "knative-")) or semver(">= 0.26.0")
+        type: http
+        url: https://gh-proxy.org/github.com/knative/func/releases/download/{{.Version}}/func_{{.OS}}_{{.Arch}}
+        # support linux/arm64
+        supported_envs:
+          - darwin
+          - linux
+          - amd64
       - version_constraint: semver(">= 0.23.1")
         type: http
         url: https://gh-proxy.org/github.com/knative/func/releases/download/{{.Version}}/func_{{.OS}}_{{.Arch}}

@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
+packages:
+  - type: github_release
+    repo_owner: plumlang
+    repo_name: plumlang
+    description: Small, fast, memory-safe programming language with a plain-English syntax
+    version_constraint: "false"
+    files:
+      - name: plum
+        src: "{{.AssetWithoutExt}}/plum"
+    version_overrides:
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/plumlang/plumlang/releases/download/{{.Version}}/plum-{{trimV .Version}}-{{.OS}}-universal.{{.Format}}
+        asset: plum-{{trimV .Version}}-{{.OS}}-universal.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+          darwin: macos
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/plumlang/plumlang/releases/download/{{.Version}}/SHA256SUMS
+          asset: SHA256SUMS
+          algorithm: sha256
+        overrides:
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/plumlang/plumlang/releases/download/{{.Version}}/plum-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+            asset: plum-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/plumlang/plumlang/releases/download/{{.Version}}/plum-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+            format: zip
+            asset: plum-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}

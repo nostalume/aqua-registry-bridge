@@ -499,6 +499,36 @@ packages:
     description: Concurrent traceroute built on trippy that publishes routes
     version_constraint: "false"
     version_overrides:
+      - version_constraint: semver("<= 0.2.1")
+        type: http
+        url: https://gh-proxy.org/github.com/Alice39s/xmtr/releases/download/{{.Version}}/xmtr-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: xmtr-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: zip
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          linux: unknown-linux-musl
+          windows: pc-windows-gnu
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/Alice39s/xmtr/releases/download/{{.Version}}/SHA256SUMS
+          asset: SHA256SUMS
+          algorithm: sha256
+        overrides:
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Alice39s/xmtr/releases/download/{{.Version}}/xmtr-{{.Arch}}-{{.OS}}.{{.Format}}
+            format: tar.gz
+          - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/Alice39s/xmtr/releases/download/{{.Version}}/xmtr-{{.Arch}}-{{.OS}}.{{.Format}}
+            format: tar.gz
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Alice39s/xmtr/releases/download/{{.Version}}/xmtr-{{.Arch}}-{{.OS}}llvm.{{.Format}}
+            goarch: arm64
+            asset: xmtr-{{.Arch}}-{{.OS}}llvm.{{.Format}}
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/Alice39s/xmtr/releases/download/{{.Version}}/xmtr-{{.Arch}}-{{.OS}}.{{.Format}}
@@ -529,6 +559,8 @@ packages:
             url: https://gh-proxy.org/github.com/Alice39s/xmtr/releases/download/{{.Version}}/xmtr-{{.Arch}}-{{.OS}}llvm.{{.Format}}
             goarch: arm64
             asset: xmtr-{{.Arch}}-{{.OS}}llvm.{{.Format}}
+        github_artifact_attestations:
+          signer_workflow: Alice39s/xmtr/.github/workflows/release.yml
   - type: http
     url: https://gh-proxy.org/github.com/Aloxaf/silicon/releases/download/{{.Version}}/silicon-{{.Version}}-{{.Arch}}-{{.OS}}.tar.gz
     repo_owner: Aloxaf
@@ -3980,6 +4012,27 @@ packages:
             url: https://gh-proxy.org/github.com/Epistates/treemd/releases/download/{{.Version}}/treemd-{{.Arch}}-{{.OS}}.exe.{{.Format}}
             format: zip
             asset: treemd-{{.Arch}}-{{.OS}}.exe.{{.Format}}
+      - version_constraint: semver("< 0.10.0")
+        type: http
+        url: https://gh-proxy.org/github.com/Epistates/treemd/releases/download/{{.Version}}/treemd-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: treemd-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        files:
+          - name: treemd
+            src: "{{.AssetWithoutExt}}"
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          linux: unknown-linux-musl
+          windows: pc-windows-msvc
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Epistates/treemd/releases/download/{{.Version}}/treemd-{{.Arch}}-{{.OS}}.exe.{{.Format}}
+            format: zip
+            asset: treemd-{{.Arch}}-{{.OS}}.exe.{{.Format}}
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/Epistates/treemd/releases/download/{{.Version}}/treemd-{{.Arch}}-{{.OS}}.{{.Format}}
@@ -4001,6 +4054,8 @@ packages:
             url: https://gh-proxy.org/github.com/Epistates/treemd/releases/download/{{.Version}}/treemd-{{.Arch}}-{{.OS}}.exe.{{.Format}}
             format: zip
             asset: treemd-{{.Arch}}-{{.OS}}.exe.{{.Format}}
+        github_artifact_attestations:
+          signer_workflow: Epistates/treemd/.github/workflows/release.yml
   - type: github_release
     repo_owner: F1bonacc1
     repo_name: process-compose
@@ -7219,6 +7274,41 @@ packages:
     version_overrides:
       - version_constraint: Version == "v0.7.0-alpha.1"
         no_asset: true
+      - version_constraint: semver("<= 0.8.0-alpha.3")
+        type: http
+        url: https://gh-proxy.org/github.com/Latias94/merman/releases/download/{{.Version}}/merman-cli-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: merman-cli-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.xz
+        files:
+          - name: merman-cli
+            src: "{{.AssetWithoutExt}}/merman-cli"
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+          darwin: apple-darwin
+          linux: unknown-linux-gnu
+          windows: pc-windows-msvc
+        checksum:
+          type: http
+          url: "{{.AssetURL}}.sha256"
+          asset: "{{.Asset}}.sha256"
+          algorithm: sha256
+        overrides:
+          - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/Latias94/merman/releases/download/{{.Version}}/merman-cli-{{.Arch}}-{{.OS}}.{{.Format}}
+            replacements:
+              arm64: aarch64
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/Latias94/merman/releases/download/{{.Version}}/merman-cli-{{.Arch}}-{{.OS}}.{{.Format}}
+            format: zip
+            files:
+              - name: merman-cli
+        supported_envs:
+          - darwin
+          - windows
+          - amd64
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/Latias94/merman/releases/download/{{.Version}}/merman-cli-{{.Arch}}-{{.OS}}.{{.Format}}
@@ -7254,6 +7344,8 @@ packages:
           - darwin
           - windows
           - amd64
+        github_artifact_attestations:
+          signer_workflow: Latias94/merman/.github/workflows/release.yml
   - type: github_release
     repo_owner: Lifailon
     repo_name: lazyjournal
@@ -13986,7 +14078,7 @@ packages:
           url: https://gh-proxy.org/github.com/a-h/templ/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
-      - version_constraint: "true"
+      - version_constraint: semver("<= 0.3.1020")
         type: http
         url: https://gh-proxy.org/github.com/a-h/templ/releases/download/{{.Version}}/templ_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: templ_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -14005,6 +14097,29 @@ packages:
             opts:
               - --signature
               - https://gh-proxy.org/github.com/a-h/templ/releases/download/{{.Version}}/checksums.txt.sig
+              - --key
+              - https://gh-proxy.org/raw.githubusercontent.com/a-h/templ/refs/tags/{{.Version}}/cosign.pub
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/a-h/templ/releases/download/{{.Version}}/templ_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: templ_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+          darwin: Darwin
+          linux: Linux
+          windows: Windows
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/a-h/templ/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+          cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/a-h/templ/releases/download/{{.Version}}/checksums.txt.sigstore.json
+              asset: checksums.txt.sigstore.json
+            opts:
               - --key
               - https://gh-proxy.org/raw.githubusercontent.com/a-h/templ/refs/tags/{{.Version}}/cosign.pub
   - type: github_release
@@ -14266,6 +14381,48 @@ packages:
     version_overrides:
       - version_constraint: semver("< 0.1.3")
         error_message: Please update to v0.1.3 or later
+      - version_constraint: semver("< 0.2.0")
+        type: http
+        url: https://gh-proxy.org/github.com/abemedia/stagelint/releases/download/{{.Version}}/stagelint-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: stagelint-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          linux: unknown-linux-musl
+          windows: pc-windows-gnu
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/abemedia/stagelint/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity-regexp
+              - "^https://github\\.com/abemedia/stagelint/\\.github/workflows/.+\\.ya?ml@refs/tags/\\Q{{.Version}}\\E$"
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
+              - --certificate-github-workflow-repository
+              - abemedia/stagelint
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/abemedia/stagelint/releases/download/{{.Version}}/checksums.txt.sigstore.json
+              asset: checksums.txt.sigstore.json
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/abemedia/stagelint/releases/download/{{.Version}}/stagelint-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            goarch: amd64
+            format: zip
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/abemedia/stagelint/releases/download/{{.Version}}/stagelint-{{trimV .Version}}-{{.Arch}}-{{.OS}}llvm.{{.Format}}
+            goarch: arm64
+            format: zip
+            asset: stagelint-{{trimV .Version}}-{{.Arch}}-{{.OS}}llvm.{{.Format}}
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/abemedia/stagelint/releases/download/{{.Version}}/stagelint-{{trimV .Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
@@ -14308,6 +14465,8 @@ packages:
             goarch: arm64
             format: zip
             asset: stagelint-{{trimV .Version}}-{{.Arch}}-{{.OS}}llvm.{{.Format}}
+        github_artifact_attestations:
+          signer_workflow: abemedia/stagelint/.github/workflows/publish.yml
   - type: github_release
     repo_owner: abhimanyu003
     repo_name: sttr
@@ -28382,6 +28541,19 @@ packages:
         windows_arm_emulation: true
         replacements:
           darwin: macos
+      - version_constraint: semver("< 0.9.0")
+        type: http
+        url: https://gh-proxy.org/github.com/borghei/ink/releases/download/{{.Version}}/ink-{{.OS}}-{{.Arch}}
+        asset: ink-{{.OS}}-{{.Arch}}
+        format: raw
+        windows_arm_emulation: true
+        replacements:
+          darwin: macos
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/borghei/ink/releases/download/{{.Version}}/SHA256SUMS
+          asset: SHA256SUMS
+          algorithm: sha256
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/borghei/ink/releases/download/{{.Version}}/ink-{{.OS}}-{{.Arch}}
@@ -28395,6 +28567,8 @@ packages:
           url: https://gh-proxy.org/github.com/borghei/ink/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
+        github_artifact_attestations:
+          signer_workflow: borghei/ink/.github/workflows/release.yml
   - type: github_release
     repo_owner: boyter
     repo_name: cs
@@ -28974,6 +29148,31 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/bronto-community/bronto-cli/releases/download/{{.Version}}/bronto_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+      - version_constraint: semver("< 0.3.0")
+        type: http
+        url: https://gh-proxy.org/github.com/bronto-community/bronto-cli/releases/download/{{.Version}}/bronto_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: bronto_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/bronto-community/bronto-cli/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate
+              - https://gh-proxy.org/github.com/bronto-community/bronto-cli/releases/download/{{.Version}}/checksums.txt.pem
+              - --certificate-identity-regexp
+              - "^https://github\\.com/bronto-community/bronto-cli/\\.github/workflows/.+\\.ya?ml@refs/tags/\\Q{{.Version}}\\E$"
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
+              - --signature
+              - https://gh-proxy.org/github.com/bronto-community/bronto-cli/releases/download/{{.Version}}/checksums.txt.sig
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/bronto-community/bronto-cli/releases/download/{{.Version}}/bronto_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/bronto-community/bronto-cli/releases/download/{{.Version}}/bronto_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -28999,6 +29198,8 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/bronto-community/bronto-cli/releases/download/{{.Version}}/bronto_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+        github_artifact_attestations:
+          signer_workflow: bronto-community/bronto-cli/.github/workflows/release.yml
   - type: github_release
     repo_owner: bronze1man
     repo_name: yaml2json
@@ -41600,6 +41801,16 @@ packages:
         supported_envs:
           - linux
           - darwin
+      - version_constraint: semver("< 2.18.0")
+        type: http
+        url: https://gh-proxy.org/github.com/dagucloud/dagu/releases/download/{{.Version}}/dagu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: dagu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/dagucloud/dagu/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/dagucloud/dagu/releases/download/{{.Version}}/dagu_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -41610,6 +41821,8 @@ packages:
           url: https://gh-proxy.org/github.com/dagucloud/dagu/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
+        github_artifact_attestations:
+          signer_workflow: dagucloud/dagu/.github/workflows/release.yaml
   - type: github_release
     repo_owner: dahlia
     repo_name: gukhanmun
@@ -54547,6 +54760,28 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/getanteon/anteon/releases/download/{{.Version}}/ddosify_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+      - version_constraint: semver("<= 2.1.0")
+        type: http
+        url: https://gh-proxy.org/github.com/getanteon/anteon/releases/download/{{.Version}}/ddosify_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: ddosify_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        files:
+          - name: ddosify
+        format: tar.gz
+        rosetta2: true
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/getanteon/anteon/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/getanteon/anteon/releases/download/{{.Version}}/ddosify_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
+            asset: ddosify_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/getanteon/anteon/releases/download/{{.Version}}/ddosify_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/getanteon/anteon/releases/download/{{.Version}}/ddosify_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -54569,6 +54804,8 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/getanteon/anteon/releases/download/{{.Version}}/ddosify_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+        github_artifact_attestations:
+          signer_workflow: getanteon/anteon/.github/workflows/release.yml
   - type: http
     repo_owner: ryan-pip
     repo_name: dbt-fusion-versions
@@ -63259,6 +63496,43 @@ packages:
             url: https://gh-proxy.org/github.com/guumaster/hostctl/releases/download/{{.Version}}/hostctl_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
   - type: github_release
+    repo_owner: h5i-dev
+    repo_name: h5i
+    description: An Axum-based Rust web framework with Lean 4-verifiable application kernels that run on servers, bare-metal embedded devices, and GPUs, plus integrated security testing
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/h5i-dev/h5i/releases/download/{{.Version}}/h5i-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: h5i-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          linux: unknown-linux-musl
+          windows: pc-windows-msvc
+        checksum:
+          type: http
+          url: "{{.AssetURL}}.sha256"
+          asset: "{{.Asset}}.sha256"
+          algorithm: sha256
+        overrides:
+          - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/h5i-dev/h5i/releases/download/{{.Version}}/h5i-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            replacements:
+              amd64: amd64
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/h5i-dev/h5i/releases/download/{{.Version}}/h5i-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            format: zip
+        supported_envs:
+          - linux
+          - darwin/arm64
+          - windows/amd64
+  - type: github_release
     repo_owner: hadolint
     repo_name: hadolint
     description: Dockerfile linter, validate inline bash, written in Haskell
@@ -63365,8 +63639,7 @@ packages:
           algorithm: sha256
         github_artifact_attestations:
           signer_workflow: hadolint/hadolint/.github/workflows/release.yml
-  - type: http
-    url: https://gh-proxy.org/github.com/hairyhenderson/gomplate/releases/download/{{.Version}}/gomplate_{{.OS}}-{{.Arch}}
+  - type: github_release
     repo_owner: hairyhenderson
     repo_name: gomplate
     description: A flexible commandline tool for template rendering. Supports lots of local and remote datasources
@@ -63380,6 +63653,16 @@ packages:
       url: https://gh-proxy.org/github.com/hairyhenderson/gomplate/releases/download/{{.Version}}/checksums-{{.Version}}_sha512.txt
       asset: checksums-{{.Version}}_sha512.txt
       algorithm: sha512
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: semver("<= 5.3.0")
+        type: http
+        url: https://gh-proxy.org/github.com/hairyhenderson/gomplate/releases/download/{{.Version}}/gomplate_{{.OS}}-{{.Arch}}
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/hairyhenderson/gomplate/releases/download/{{.Version}}/gomplate_{{.OS}}-{{.Arch}}
+        github_artifact_attestations:
+          signer_workflow: hairyhenderson/gomplate/.github/workflows/release-please.yml
   - type: github_release
     repo_owner: handlename
     repo_name: awsc
@@ -76047,8 +76330,7 @@ packages:
           url: https://gh-proxy.org/github.com/knadh/listmonk/releases/download/{{.Version}}/listmonk_{{trimV .Version}}_checksums.txt
           asset: listmonk_{{trimV .Version}}_checksums.txt
           algorithm: sha256
-  - type: http
-    url: https://gh-proxy.org/github.com/knative/client/releases/download/{{.Version}}/kn-{{.OS}}-{{.Arch}}
+  - type: github_release
     repo_owner: knative
     repo_name: client
     format: raw
@@ -76065,8 +76347,31 @@ packages:
       url: https://gh-proxy.org/github.com/knative/client/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256
-  - type: http
-    url: https://gh-proxy.org/github.com/knative/func/releases/download/{{.Version}}/func_{{.OS}}_{{.Arch}}
+    version_constraint: "false"
+    version_overrides:
+      # checksums.txt is signed from knative-v1.8.0, keyless, by Knative's release service account.
+      - version_constraint: semverWithVersion(">= 1.8.0", trimPrefix(Version, "knative-"))
+        type: http
+        url: https://gh-proxy.org/github.com/knative/client/releases/download/{{.Version}}/kn-{{.OS}}-{{.Arch}}
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/knative/client/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity
+              - signer@knative-releases.iam.gserviceaccount.com
+              - --certificate-oidc-issuer
+              - https://accounts.google.com
+              - --signature
+              - https://gh-proxy.org/github.com/knative/client/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate
+              - https://gh-proxy.org/github.com/knative/client/releases/download/{{.Version}}/checksums.txt.pem
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/knative/client/releases/download/{{.Version}}/kn-{{.OS}}-{{.Arch}}
+  - type: github_release
     repo_owner: knative
     repo_name: func
     description: Knative Functions client API and CLI
@@ -76077,13 +76382,40 @@ packages:
       url: https://gh-proxy.org/github.com/knative/func/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256
-    version_constraint: semverWithVersion(">= 1.7.0", trimPrefix(Version, "knative-")) or semver(">= 0.26.0")
-    # support linux/arm64
-    supported_envs:
-      - darwin
-      - linux
-      - amd64
+    version_constraint: "false"
     version_overrides:
+      # checksums.txt is signed from knative-v1.8.0, keyless, by Knative's release service account.
+      - version_constraint: semverWithVersion(">= 1.8.0", trimPrefix(Version, "knative-"))
+        type: http
+        url: https://gh-proxy.org/github.com/knative/func/releases/download/{{.Version}}/func_{{.OS}}_{{.Arch}}
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/knative/func/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity
+              - signer@knative-releases.iam.gserviceaccount.com
+              - --certificate-oidc-issuer
+              - https://accounts.google.com
+              - --signature
+              - https://gh-proxy.org/github.com/knative/func/releases/download/{{.Version}}/checksums.txt.sig
+              - --certificate
+              - https://gh-proxy.org/github.com/knative/func/releases/download/{{.Version}}/checksums.txt.pem
+        # support linux/arm64
+        supported_envs:
+          - darwin
+          - linux
+          - amd64
+      - version_constraint: semverWithVersion(">= 1.7.0", trimPrefix(Version, "knative-")) or semver(">= 0.26.0")
+        type: http
+        url: https://gh-proxy.org/github.com/knative/func/releases/download/{{.Version}}/func_{{.OS}}_{{.Arch}}
+        # support linux/arm64
+        supported_envs:
+          - darwin
+          - linux
+          - amd64
       - version_constraint: semver(">= 0.23.1")
         type: http
         url: https://gh-proxy.org/github.com/knative/func/releases/download/{{.Version}}/func_{{.OS}}_{{.Arch}}
@@ -85995,6 +86327,34 @@ packages:
         supported_envs:
           - linux
           - darwin
+  - type: github_release
+    repo_owner: mgantlett
+    repo_name: nomos
+    description: "Transactional Go runtime between any coding agent and Git: causal INT/SUB spec-vs-code DAGs, isolated git worktrees, 42 polyglot anti-shim AST checks, receipt-gated SQLite memory, and atomic 2PC releases"
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: Version == "v4.10.0"
+        no_asset: true
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/mgantlett/nomos/releases/download/{{.Version}}/nomos_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: nomos_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+          darwin: Darwin
+          linux: Linux
+          windows: Windows
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/mgantlett/nomos/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/mgantlett/nomos/releases/download/{{.Version}}/nomos_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
   - type: github_release
     repo_owner: mgdm
     repo_name: htmlq
@@ -96586,8 +96946,7 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/orangekame3/viff/releases/download/{{.Version}}/viff_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
-  - type: http
-    url: https://gh-proxy.org/github.com/oras-project/oras/releases/download/{{.Version}}/oras_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+  - type: github_release
     repo_owner: oras-project
     repo_name: oras
     asset: oras_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -96595,8 +96954,6 @@ packages:
     description: ORAS CLI
     overrides:
       - goos: windows
-        type: http
-        url: https://gh-proxy.org/github.com/oras-project/oras/releases/download/{{.Version}}/oras_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: zip
     supported_envs:
       - darwin
@@ -96607,6 +96964,16 @@ packages:
       url: https://gh-proxy.org/github.com/oras-project/oras/releases/download/{{.Version}}/oras_{{trimV .Version}}_checksums.txt
       asset: oras_{{trimV .Version}}_checksums.txt
       algorithm: sha256
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: semver("<= 1.3.5")
+        type: http
+        url: https://gh-proxy.org/github.com/oras-project/oras/releases/download/{{.Version}}/oras_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/oras-project/oras/releases/download/{{.Version}}/oras_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        github_artifact_attestations:
+          signer_workflow: oras-project/oras/.github/workflows/release-github.yml
   - type: github_release
     repo_owner: orf
     repo_name: gping
@@ -100420,6 +100787,38 @@ packages:
           url: https://gh-proxy.org/github.com/plumber-cd/terraform-backend-git/releases/download/{{.Version}}/SHA256SUMS
           asset: SHA256SUMS
           algorithm: sha256
+  - type: github_release
+    repo_owner: plumlang
+    repo_name: plumlang
+    description: Small, fast, memory-safe programming language with a plain-English syntax
+    version_constraint: "false"
+    files:
+      - name: plum
+        src: "{{.AssetWithoutExt}}/plum"
+    version_overrides:
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/plumlang/plumlang/releases/download/{{.Version}}/plum-{{trimV .Version}}-{{.OS}}-universal.{{.Format}}
+        asset: plum-{{trimV .Version}}-{{.OS}}-universal.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+          darwin: macos
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/plumlang/plumlang/releases/download/{{.Version}}/SHA256SUMS
+          asset: SHA256SUMS
+          algorithm: sha256
+        overrides:
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/plumlang/plumlang/releases/download/{{.Version}}/plum-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+            asset: plum-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/plumlang/plumlang/releases/download/{{.Version}}/plum-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+            format: zip
+            asset: plum-{{trimV .Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
   - type: github_release
     repo_owner: pluveto
     repo_name: upgit
@@ -119482,6 +119881,39 @@ packages:
     description: Tool to fork a repository, commit files, create a pull request and upload assets using GitHub API
     version_constraint: "false"
     version_overrides:
+      - version_constraint: semver("<= 1.16.0-1")
+        type: http
+        url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghcp/releases/download/{{.Version}}/ghcp_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: ghcp_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghcp/releases/download/{{.Version}}/ghcp_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+        slsa_provenance:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghcp/releases/download/{{.Version}}/multiple.intoto.jsonl
+          asset: multiple.intoto.jsonl
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghcp/releases/download/{{.Version}}/ghcp_{{trimV .Version}}_checksums.txt
+          asset: ghcp_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity-regexp
+              - "https://github\\.com/suzuki-shunsuke/go-release-workflow/\\.github/workflows/release\\.yaml@.*"
+              - --certificate-oidc-issuer
+              - "https://token.actions.githubusercontent.com"
+              - --signature
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/ghcp/releases/download/{{.Version}}/ghcp_{{trimV .Version}}_checksums.txt.sig
+              - --certificate
+              - https://gh-proxy.org/github.com/suzuki-shunsuke/ghcp/releases/download/{{.Version}}/ghcp_{{trimV .Version}}_checksums.txt.pem
+              - --certificate-github-workflow-repository
+              - suzuki-shunsuke/ghcp
+              - --certificate-github-workflow-ref
+              - refs/tags/{{.Version}}
       - version_constraint: semver("<= 1.16.0")
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghcp/releases/download/{{.Version}}/ghcp_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -119515,6 +119947,8 @@ packages:
               - suzuki-shunsuke/ghcp
               - --certificate-github-workflow-ref
               - refs/tags/{{.Version}}
+        github_artifact_attestations:
+          signer_workflow: suzuki-shunsuke/go-release-workflow/.github/workflows/release.yaml
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/suzuki-shunsuke/ghcp/releases/download/{{.Version}}/ghcp_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -119544,6 +119978,8 @@ packages:
               - suzuki-shunsuke/ghcp
               - --certificate-github-workflow-ref
               - refs/tags/{{.Version}}
+        github_artifact_attestations:
+          signer_workflow: suzuki-shunsuke/go-release-workflow/.github/workflows/release.yaml
   - type: github_release
     repo_owner: suzuki-shunsuke
     repo_name: ghd2i
@@ -125167,6 +125603,44 @@ packages:
       - name: pg_restore
     version_constraint: "false"
     version_overrides:
+      - version_constraint: >-
+          semver(">=18.0.0, < 18.7.0") or
+          semver(">=16.0.0, < 16.16.0") or
+          semver(">=17.0.0, < 17.12.0") or
+          semver(">=15.0.0, < 15.20.0") or
+          semver("< 14.25.0")
+        asset: postgresql-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        type: http
+        url: https://gh-proxy.org/github.com/theseus-rs/postgresql-binaries/releases/download/{{.Version}}/postgresql-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        files:
+          - name: psql
+            src: postgresql-{{.Version}}-{{.Arch}}-{{.OS}}/bin/psql
+          - name: pg_dump
+            src: postgresql-{{.Version}}-{{.Arch}}-{{.OS}}/bin/pg_dump
+          - name: pg_dumpall
+            src: postgresql-{{.Version}}-{{.Arch}}-{{.OS}}/bin/pg_dumpall
+          - name: pg_restore
+            src: postgresql-{{.Version}}-{{.Arch}}-{{.OS}}/bin/pg_restore
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          linux: unknown-linux-gnu # https://github.com/aquaproj/aqua-registry/issues/34136
+          windows: pc-windows-msvc
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/theseus-rs/postgresql-binaries/releases/download/{{.Version}}/postgresql-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            checksum:
+              # Skip because the contents of the provided file cannot be handled
+              enabled: false
+        checksum:
+          type: http
+          url: "{{.AssetURL}}.sha256"
+          asset: "{{.Asset}}.sha256"
+          algorithm: sha256
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/theseus-rs/postgresql-binaries/releases/download/{{.Version}}/postgresql-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
@@ -125200,6 +125674,8 @@ packages:
           url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
+        github_artifact_attestations:
+          signer_workflow: theseus-rs/postgresql-binaries/.github/workflows/build.yml
   - type: http
     url: https://gh-proxy.org/github.com/thestormforge/optimize-controller/releases/download/{{.Version}}/stormforge-{{.OS}}-{{.Arch}}.tar.gz
     repo_owner: thestormforge

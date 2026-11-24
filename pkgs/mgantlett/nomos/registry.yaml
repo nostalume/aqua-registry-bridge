@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
+packages:
+  - type: github_release
+    repo_owner: mgantlett
+    repo_name: nomos
+    description: "Transactional Go runtime between any coding agent and Git: causal INT/SUB spec-vs-code DAGs, isolated git worktrees, 42 polyglot anti-shim AST checks, receipt-gated SQLite memory, and atomic 2PC releases"
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: Version == "v4.10.0"
+        no_asset: true
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/mgantlett/nomos/releases/download/{{.Version}}/nomos_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: nomos_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+          darwin: Darwin
+          linux: Linux
+          windows: Windows
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/mgantlett/nomos/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/mgantlett/nomos/releases/download/{{.Version}}/nomos_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
