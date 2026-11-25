@@ -1,7 +1,6 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: http
-    url: https://gh-proxy.org/github.com/Songmu/horenso/releases/download/{{.Version}}/horenso_{{.Version}}_{{.OS}}_amd64.{{.Format}}
+  - type: github_release
     repo_owner: Songmu
     repo_name: horenso
     description: Command wrapper for reporting the result. It is useful for cron jobs
@@ -16,6 +15,14 @@ packages:
     format: zip
     overrides:
       - goos: linux
+        format: tar.gz
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: semver("< 0.11.0")
         type: http
         url: https://gh-proxy.org/github.com/Songmu/horenso/releases/download/{{.Version}}/horenso_{{.Version}}_{{.OS}}_amd64.{{.Format}}
-        format: tar.gz
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/Songmu/horenso/releases/download/{{.Version}}/horenso_{{.Version}}_{{.OS}}_amd64.{{.Format}}
+        github_artifact_attestations:
+          signer_workflow: Songmu/horenso/.github/workflows/release-build.yaml

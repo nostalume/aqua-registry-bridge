@@ -1,7 +1,6 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
 packages:
-  - type: http
-    url: https://gh-proxy.org/github.com/Songmu/godzil/releases/download/{{.Version}}/godzil_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+  - type: github_release
     repo_owner: Songmu
     repo_name: godzil
     asset: godzil_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -9,9 +8,17 @@ packages:
     description: A Go Authoring tool
     overrides:
       - goos: linux
-        type: http
-        url: https://gh-proxy.org/github.com/Songmu/godzil/releases/download/{{.Version}}/godzil_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         format: tar.gz
     files:
       - name: godzil
         src: godzil_{{.Version}}_{{.OS}}_{{.Arch}}/godzil
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: semver("< 0.23.0")
+        type: http
+        url: https://gh-proxy.org/github.com/Songmu/godzil/releases/download/{{.Version}}/godzil_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/Songmu/godzil/releases/download/{{.Version}}/godzil_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        github_artifact_attestations:
+          signer_workflow: Songmu/godzil/.github/workflows/release-build.yaml

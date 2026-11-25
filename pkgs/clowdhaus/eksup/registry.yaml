@@ -60,6 +60,26 @@ packages:
           darwin: apple-darwin
           linux: unknown-linux-gnu
           windows: pc-windows-msvc
+      - version_constraint: semver("< 0.15.1")
+        type: http
+        url: https://gh-proxy.org/github.com/clowdhaus/eksup/releases/download/{{.Version}}/eksup-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: eksup-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        files:
+          - name: eksup
+            src: "{{.AssetWithoutExt}}/eksup"
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          linux: unknown-linux-gnu
+          windows: pc-windows-msvc
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/clowdhaus/eksup/releases/download/{{.Version}}/eksup-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+            format: zip
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/clowdhaus/eksup/releases/download/{{.Version}}/eksup-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
@@ -80,3 +100,5 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/clowdhaus/eksup/releases/download/{{.Version}}/eksup-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
             format: zip
+        github_artifact_attestations:
+          signer_workflow: clowdhaus/eksup/.github/workflows/release.yaml

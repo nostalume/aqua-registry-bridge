@@ -8,6 +8,27 @@ packages:
     version_overrides:
       - version_constraint: semver("<= 0.0.1")
         no_asset: true
+      - version_constraint: semver("<= 0.0.7")
+        type: http
+        url: https://gh-proxy.org/github.com/Songmu/r2sync/releases/download/{{.Version}}/r2sync_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: r2sync_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: zip
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/Songmu/r2sync/releases/download/{{.Version}}/SHA256SUMS
+          asset: SHA256SUMS
+          algorithm: sha256
+        overrides:
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/Songmu/r2sync/releases/download/{{.Version}}/r2sync_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: tar.gz
+        supported_envs:
+          - linux
+          - darwin
+        files:
+          - name: r2sync
+            src: r2sync_{{.Version}}_{{.OS}}_{{.Arch}}/r2sync
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/Songmu/r2sync/releases/download/{{.Version}}/r2sync_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -29,3 +50,5 @@ packages:
         files:
           - name: r2sync
             src: r2sync_{{.Version}}_{{.OS}}_{{.Arch}}/r2sync
+        github_artifact_attestations:
+          signer_workflow: Songmu/r2sync/.github/workflows/release-build.yaml
