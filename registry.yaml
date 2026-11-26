@@ -20391,42 +20391,6 @@ packages:
         supported_envs:
           - linux
           - darwin
-      - version_constraint: semver("< 0.70.0")
-        type: http
-        url: https://gh-proxy.org/github.com/aquasecurity/trivy/releases/download/{{.Version}}/trivy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
-        asset: trivy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
-        format: tar.gz
-        windows_arm_emulation: true
-        replacements:
-          amd64: 64bit
-          arm64: ARM64
-          darwin: macOS
-          linux: Linux
-        checksum:
-          type: http
-          url: https://gh-proxy.org/github.com/aquasecurity/trivy/releases/download/{{.Version}}/trivy_{{trimV .Version}}_checksums.txt
-          asset: trivy_{{trimV .Version}}_checksums.txt
-          algorithm: sha256
-          cosign:
-            bundle:
-              type: http
-              url: https://gh-proxy.org/github.com/aquasecurity/trivy/releases/download/{{.Version}}/trivy_{{trimV .Version}}_checksums.txt.sigstore.json
-              asset: trivy_{{trimV .Version}}_checksums.txt.sigstore.json
-            opts:
-              - --certificate-identity
-              - https://gh-proxy.org/github.com/aquasecurity/trivy/.github/workflows/reusable-release.yaml@refs/tags/{{.Version}}
-              - --certificate-oidc-issuer
-              - https://token.actions.githubusercontent.com
-              - --certificate-github-workflow-repository
-              - aquasecurity/trivy
-              - --certificate-github-workflow-ref
-              - refs/tags/{{.Version}}
-        overrides:
-          - goos: windows
-            type: http
-            url: https://gh-proxy.org/github.com/aquasecurity/trivy/releases/download/{{.Version}}/trivy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
-            format: zip
-            replacements: {}
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/aquasecurity/trivy/releases/download/{{.Version}}/trivy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
@@ -20463,8 +20427,6 @@ packages:
             url: https://gh-proxy.org/github.com/aquasecurity/trivy/releases/download/{{.Version}}/trivy_{{trimV .Version}}_{{.OS}}-{{.Arch}}.{{.Format}}
             format: zip
             replacements: {}
-        github_artifact_attestations:
-          signer_workflow: aquasecurity/trivy/.github/workflows/reusable-release.yaml
   - type: github_release
     repo_owner: arcanist-sh
     repo_name: hx
@@ -71494,6 +71456,48 @@ packages:
         format: raw
         windows_arm_emulation: true
         complete_windows_ext: false
+  - type: github_release
+    repo_owner: jnsahaj
+    repo_name: lumen
+    description: Beautiful git diff viewer, generate commits with AI, get summary of changes, all from the CLI
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: semver("<= 2.4.0")
+        type: http
+        url: https://gh-proxy.org/github.com/jnsahaj/lumen/releases/download/{{.Version}}/lumen.{{.Format}}
+        asset: lumen.{{.Format}}
+        format: tar.gz
+        supported_envs:
+          - darwin/arm64
+      - version_constraint: semver("<= 2.30.0")
+        type: http
+        url: https://gh-proxy.org/github.com/jnsahaj/lumen/releases/download/{{.Version}}/lumen-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: lumen-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+        supported_envs:
+          - darwin
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/jnsahaj/lumen/releases/download/{{.Version}}/lumen-{{.Arch}}-{{.OS}}.{{.Format}}
+        asset: lumen-{{.Arch}}-{{.OS}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+          darwin: apple-darwin
+          linux: unknown-linux-musl
+        checksum:
+          type: http
+          url: "{{.AssetURL}}.sha256"
+          asset: "{{.Asset}}.sha256"
+          algorithm: sha256
+        supported_envs:
+          - linux
+          - darwin
   - type: github_release
     repo_owner: joehillen
     repo_name: sysz
