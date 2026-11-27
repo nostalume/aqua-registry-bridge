@@ -32,9 +32,14 @@ packages:
         asset: direnv.{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
-      - version_constraint: "true"
+      - version_constraint: semver("<= 2.37.1")
         type: http
         url: https://gh-proxy.org/github.com/direnv/direnv/releases/download/{{.Version}}/direnv.{{.OS}}-{{.Arch}}
         asset: direnv.{{.OS}}-{{.Arch}}
         format: raw
         complete_windows_ext: false
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/direnv/direnv/releases/download/{{.Version}}/direnv.{{.OS}}-{{.Arch}}
+        asset: direnv.{{.OS}}-{{.Arch}}
+        format: raw

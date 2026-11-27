@@ -17764,7 +17764,7 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/anchore/grype/releases/download/{{.Version}}/grype_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
-      - version_constraint: "true"
+      - version_constraint: semver("<0.120.0")
         type: http
         url: https://gh-proxy.org/github.com/anchore/grype/releases/download/{{.Version}}/grype_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
         asset: grype_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -17785,6 +17785,34 @@ packages:
               - https://token.actions.githubusercontent.com
               - --signature
               - https://gh-proxy.org/github.com/anchore/grype/releases/download/{{.Version}}/grype_{{trimV .Version}}_checksums.txt.sig
+              - --certificate-github-workflow-repository
+              - anchore/grype
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/anchore/grype/releases/download/{{.Version}}/grype_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/anchore/grype/releases/download/{{.Version}}/grype_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: grype_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/anchore/grype/releases/download/{{.Version}}/grype_{{trimV .Version}}_checksums.txt
+          asset: grype_{{trimV .Version}}_checksums.txt
+          algorithm: sha256
+          cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/anchore/grype/releases/download/{{.Version}}/grype_{{trimV .Version}}_checksums.txt.sigstore.json
+              asset: grype_{{trimV .Version}}_checksums.txt.sigstore.json
+            opts:
+              - --certificate-identity
+              - https://gh-proxy.org/github.com/anchore/grype/.github/workflows/release.yaml@refs/heads/main
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
               - --certificate-github-workflow-repository
               - anchore/grype
         overrides:
@@ -22854,6 +22882,135 @@ packages:
               - name: uvx
         github_artifact_attestations:
           signer_workflow: astral-sh/uv/.github/workflows/release.yml
+  - type: github_release
+    repo_owner: ataraxy-labs
+    repo_name: sem
+    description: Semantic version control => entity-level diffs, blame, and impact analysis on top of git. 28 languages via tree-sitter. Built for coding agents
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: Version == "v0.3.16"
+        no_asset: true
+      - version_constraint: Version == "v0.3.17"
+        type: http
+        url: https://gh-proxy.org/github.com/ataraxy-labs/sem/releases/download/{{.Version}}/sem-{{.OS}}-{{.Arch}}.{{.Format}}
+        asset: sem-{{.OS}}-{{.Arch}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+        overrides:
+          - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/ataraxy-labs/sem/releases/download/{{.Version}}/sem-{{.OS}}-{{.Arch}}.{{.Format}}
+            replacements:
+              amd64: amd64
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ataraxy-labs/sem/releases/download/{{.Version}}/sem-{{.OS}}-{{.Arch}}.{{.Format}}
+            format: zip
+        supported_envs:
+          - linux
+          - darwin/arm64
+          - windows/amd64
+      - version_constraint: semver("<= 0.3.6")
+        no_asset: true
+      - version_constraint: semver("<= 0.3.10")
+        type: http
+        url: https://gh-proxy.org/github.com/ataraxy-labs/sem/releases/download/{{.Version}}/sem-{{.OS}}-{{.Arch}}.{{.Format}}
+        asset: sem-{{.OS}}-{{.Arch}}.{{.Format}}
+        format: tar.gz
+        overrides:
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/ataraxy-labs/sem/releases/download/{{.Version}}/sem-{{.OS}}-{{.Arch}}.{{.Format}}
+            replacements:
+              amd64: x86_64
+        supported_envs:
+          - linux/amd64
+          - darwin/arm64
+      - version_constraint: semver("<= 0.3.15")
+        type: http
+        url: https://gh-proxy.org/github.com/ataraxy-labs/sem/releases/download/{{.Version}}/sem-{{.OS}}-{{.Arch}}.{{.Format}}
+        asset: sem-{{.OS}}-{{.Arch}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+        overrides:
+          - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/ataraxy-labs/sem/releases/download/{{.Version}}/sem-{{.OS}}-{{.Arch}}.{{.Format}}
+            replacements:
+              amd64: amd64
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/ataraxy-labs/sem/releases/download/{{.Version}}/sem-{{.OS}}-{{.Arch}}.{{.Format}}
+            format: zip
+        supported_envs:
+          - linux
+          - darwin/arm64
+          - windows/amd64
+      - version_constraint: semver("<= 0.5.0")
+        type: http
+        url: https://gh-proxy.org/github.com/ataraxy-labs/sem/releases/download/{{.Version}}/sem-{{.OS}}-{{.Arch}}.{{.Format}}
+        asset: sem-{{.OS}}-{{.Arch}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/ataraxy-labs/sem/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/ataraxy-labs/sem/releases/download/{{.Version}}/sem-{{.OS}}-{{.Arch}}.{{.Format}}
+            replacements:
+              amd64: amd64
+        supported_envs:
+          - linux
+          - darwin/arm64
+          - windows/amd64
+      - version_constraint: semver("<= 0.5.2")
+        no_asset: true
+      - version_constraint: semver("<= 0.13.0")
+        type: http
+        url: https://gh-proxy.org/github.com/ataraxy-labs/sem/releases/download/{{.Version}}/sem-{{.OS}}-{{.Arch}}.{{.Format}}
+        asset: sem-{{.OS}}-{{.Arch}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/ataraxy-labs/sem/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: darwin
+            type: http
+            url: https://gh-proxy.org/github.com/ataraxy-labs/sem/releases/download/{{.Version}}/sem-{{.OS}}-{{.Arch}}.{{.Format}}
+            replacements:
+              amd64: amd64
+        supported_envs:
+          - linux
+          - darwin/arm64
+          - windows/amd64
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/ataraxy-labs/sem/releases/download/{{.Version}}/sem-{{.OS}}-{{.Arch}}.{{.Format}}
+        asset: sem-{{.OS}}-{{.Arch}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/ataraxy-labs/sem/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
   - type: github_release
     repo_owner: atc0005
     repo_name: send2teams
@@ -45344,12 +45501,17 @@ packages:
         asset: direnv.{{.OS}}-{{.Arch}}
         format: raw
         windows_arm_emulation: true
-      - version_constraint: "true"
+      - version_constraint: semver("<= 2.37.1")
         type: http
         url: https://gh-proxy.org/github.com/direnv/direnv/releases/download/{{.Version}}/direnv.{{.OS}}-{{.Arch}}
         asset: direnv.{{.OS}}-{{.Arch}}
         format: raw
         complete_windows_ext: false
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/direnv/direnv/releases/download/{{.Version}}/direnv.{{.OS}}-{{.Arch}}
+        asset: direnv.{{.OS}}-{{.Arch}}
+        format: raw
   - type: github_release
     repo_owner: dispatchrun
     repo_name: wzprof
@@ -63469,6 +63631,49 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/guarnz/deadvalues/releases/download/{{.Version}}/deadvalues_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+  - type: github_release
+    repo_owner: gumlet
+    repo_name: cli
+    description: Command line interface for Gumlet
+    files:
+      - name: gumlet
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: semver("<= 1.2.1")
+        type: http
+        url: https://gh-proxy.org/github.com/gumlet/cli/releases/download/{{.Version}}/gumlet_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: gumlet_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/gumlet/cli/releases/download/{{.Version}}/gumlet_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/gumlet/cli/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/gumlet/cli/releases/download/{{.Version}}/gumlet_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: gumlet_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          amd64: x86_64
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/gumlet/cli/releases/download/{{.Version}}/gumlet_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/gumlet/cli/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
   - type: github_release
     repo_owner: guptarohit
     repo_name: asciigraph
@@ -83539,6 +83744,47 @@ packages:
     repo_owner: loov
     repo_name: goda
     description: Go Dependency Analysis toolkit
+  - type: github_release
+    repo_owner: losfair
+    repo_name: zeroserve
+    description: Zero-config, fast `io_uring`-based HTTPS server
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: semver("<= 0.2.12-alpha.12")
+        type: http
+        url: https://gh-proxy.org/github.com/losfair/zeroserve/releases/download/{{.Version}}/zeroserve-{{.Arch}}-{{.OS}}
+        asset: zeroserve-{{.Arch}}-{{.OS}}
+        format: raw
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+        supported_envs:
+          - linux
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/losfair/zeroserve/releases/download/{{.Version}}/zeroserve-{{.Arch}}-{{.OS}}
+        asset: zeroserve-{{.Arch}}-{{.OS}}
+        format: raw
+        replacements:
+          amd64: x86_64
+          arm64: aarch64
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/losfair/zeroserve/releases/download/{{.Version}}/SHA256SUMS
+          asset: SHA256SUMS
+          algorithm: sha256
+          cosign:
+            opts:
+              - --certificate-identity-regexp
+              - "^https://github\\.com/losfair/zeroserve/\\.github/workflows/.+\\.ya?ml@refs/tags/\\Q{{.Version}}\\E$"
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/losfair/zeroserve/releases/download/{{.Version}}/SHA256SUMS.sigstore.json
+              asset: SHA256SUMS.sigstore.json
+        supported_envs:
+          - linux
   - type: github_release
     repo_owner: lotabout
     repo_name: rargs
@@ -126221,7 +126467,7 @@ packages:
     version_overrides:
       - version_constraint: semver("<= 0.2.0")
         no_asset: true
-      - version_constraint: "true"
+      - version_constraint: semver("<= 0.5.12")
         type: http
         url: https://gh-proxy.org/github.com/timmo001/kestrel/releases/download/{{.Version}}/kestrel-nvr-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
         asset: kestrel-nvr-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
@@ -126236,6 +126482,47 @@ packages:
           algorithm: sha256
         github_artifact_attestations:
           signer_workflow: timmo001/kestrel/.github/workflows/desktop.yml
+        files:
+          - name: kestrel
+            src: kestrel-nvr-{{.Version}}-{{.OS}}-{{.Arch}}/bin/kestrel.cmd
+        overrides:
+          - goos: linux
+            type: http
+            url: https://gh-proxy.org/github.com/timmo001/kestrel/releases/download/{{.Version}}/kestrel-nvr-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+            format: tar.gz
+            replacements:
+              arm64: aarch64
+            files:
+              - name: kestrel
+                src: kestrel-nvr-{{.Version}}-{{.OS}}-{{.Arch}}/bin/kestrel
+        supported_envs:
+          - linux
+          - windows/amd64
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/timmo001/kestrel/releases/download/{{.Version}}/kestrel-nvr-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+        asset: kestrel-nvr-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+        format: zip
+        windows_arm_emulation: true
+        replacements:
+          amd64: x86_64
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/timmo001/kestrel/releases/download/{{.Version}}/SHA256SUMS
+          asset: SHA256SUMS
+          algorithm: sha256
+          cosign:
+            bundle:
+              type: http
+              url: https://gh-proxy.org/github.com/timmo001/kestrel/releases/download/{{.Version}}/kestrel-nvr-{{trimV .Version}}.sigstore.json
+              asset: kestrel-nvr-{{trimV .Version}}.sigstore.json
+            opts:
+              - --certificate-identity
+              - https://gh-proxy.org/github.com/timmo001/kestrel/.github/workflows/build.yml@refs/tags/{{.Version}}
+              - --certificate-oidc-issuer
+              - https://token.actions.githubusercontent.com
+        github_artifact_attestations:
+          signer_workflow: timmo001/kestrel/.github/workflows/build.yml
         files:
           - name: kestrel
             src: kestrel-nvr-{{.Version}}-{{.OS}}-{{.Arch}}/bin/kestrel.cmd
