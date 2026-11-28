@@ -89,6 +89,21 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+      - version_constraint: semver("< 4.34.0")
+        type: http
+        url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -99,6 +114,16 @@ packages:
           url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
+        cosign:
+          bundle:
+            type: http
+            url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.sigstore.json
+            asset: diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.sigstore.json
+          opts:
+            - --certificate-identity-regexp
+            - ^https://github\.com/docker/github-builder/\.github/workflows/bake\.yml@
+            - --certificate-oidc-issuer
+            - https://token.actions.githubusercontent.com
         overrides:
           - goos: windows
             type: http

@@ -18,3 +18,13 @@ packages:
           url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
+        cosign:
+          bundle:
+            type: http
+            url: https://gh-proxy.org/github.com/cplieger/grelot/releases/download/{{.Version}}/{{.Asset}}.sigstore.json
+            asset: "{{.Asset}}.sigstore.json"
+          opts:
+            - --certificate-identity-regexp
+            - ^https://github\.com/cplieger/ci/\.github/workflows/docker-release\.yaml@
+            - --certificate-oidc-issuer
+            - https://token.actions.githubusercontent.com

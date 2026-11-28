@@ -6919,6 +6919,152 @@ packages:
               - name: ki
                 src: ki/bin/ki.bat
   - type: http
+    repo_owner: Kotlin
+    repo_name: kotlin-lsp
+    description: Official Kotlin Language Server by JetBrains
+    version_prefix: kotlin-lsp/v
+    version_source: github_tag
+    files:
+      - name: kotlin-lsp
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: semver("< 261.13587.0")
+        no_asset: true
+      - version_constraint: semver("< 262.4739.0")
+        url: https://download.jetbrains.com/kotlin-lsp/{{.SemVer}}/kotlin-lsp-{{.SemVer}}-{{.OS}}-{{.Arch}}.zip
+        format: zip
+        replacements:
+          amd64: x64
+          arm64: aarch64
+          darwin: mac
+          windows: win
+        checksum:
+          type: http
+          url: https://download.jetbrains.com/kotlin-lsp/{{.SemVer}}/kotlin-lsp-{{.SemVer}}-{{.OS}}-{{.Arch}}.zip.sha256
+          algorithm: sha256
+        files:
+          - name: kotlin-lsp
+            src: kotlin-lsp.sh
+        overrides:
+          - goos: windows
+            files:
+              - name: kotlin-lsp
+                src: kotlin-lsp.cmd
+      - version_constraint: semver("< 262.8190.0")
+        url: https://download.jetbrains.com/kotlin-lsp/{{.SemVer}}/kotlin-server-{{.SemVer}}.tar.gz
+        format: tar.gz
+        append_ext: false
+        checksum:
+          type: http
+          url: https://download.jetbrains.com/kotlin-lsp/{{.SemVer}}/kotlin-server-{{.SemVer}}.tar.gz.sha256
+          algorithm: sha256
+        files:
+          - name: kotlin-lsp
+            src: kotlin-server-{{.SemVer}}/bin/intellij-server
+        overrides:
+          - goos: linux
+            goarch: arm64
+            url: https://download.jetbrains.com/kotlin-lsp/{{.SemVer}}/kotlin-server-{{.SemVer}}-aarch64.tar.gz
+            checksum:
+              type: http
+              url: https://download.jetbrains.com/kotlin-lsp/{{.SemVer}}/kotlin-server-{{.SemVer}}-aarch64.tar.gz.sha256
+              algorithm: sha256
+          - goos: darwin
+            goarch: amd64
+            url: https://download.jetbrains.com/kotlin-lsp/{{.SemVer}}/kotlin-server-{{.SemVer}}.sit
+            format: zip
+            checksum:
+              type: http
+              url: https://download.jetbrains.com/kotlin-lsp/{{.SemVer}}/kotlin-server-{{.SemVer}}.sit.sha256
+              algorithm: sha256
+          - goos: darwin
+            goarch: arm64
+            url: https://download.jetbrains.com/kotlin-lsp/{{.SemVer}}/kotlin-server-{{.SemVer}}-aarch64.sit
+            format: zip
+            checksum:
+              type: http
+              url: https://download.jetbrains.com/kotlin-lsp/{{.SemVer}}/kotlin-server-{{.SemVer}}-aarch64.sit.sha256
+              algorithm: sha256
+          - goos: windows
+            goarch: amd64
+            url: https://download.jetbrains.com/kotlin-lsp/{{.SemVer}}/kotlin-server-{{.SemVer}}.win.zip
+            format: zip
+            checksum:
+              type: http
+              url: https://download.jetbrains.com/kotlin-lsp/{{.SemVer}}/kotlin-server-{{.SemVer}}.win.zip.sha256
+              algorithm: sha256
+            files:
+              - name: kotlin-lsp
+                src: bin/intellij-server
+          - goos: windows
+            goarch: arm64
+            url: https://download.jetbrains.com/kotlin-lsp/{{.SemVer}}/kotlin-server-{{.SemVer}}-aarch64.win.zip
+            format: zip
+            checksum:
+              type: http
+              url: https://download.jetbrains.com/kotlin-lsp/{{.SemVer}}/kotlin-server-{{.SemVer}}-aarch64.win.zip.sha256
+              algorithm: sha256
+            files:
+              - name: kotlin-lsp
+                src: bin/intellij-server
+      - version_constraint: "true"
+        url: https://download.jetbrains.com/language-server/kotlin-server/{{.SemVer}}/kotlin-server-{{.SemVer}}.tar.gz
+        format: tar.gz
+        append_ext: false
+        checksum:
+          type: http
+          url: https://download.jetbrains.com/language-server/kotlin-server/{{.SemVer}}/kotlin-server-{{.SemVer}}.tar.gz.sha256
+          algorithm: sha256
+        files:
+          - name: kotlin-lsp
+            src: kotlin-server-{{.SemVer}}/bin/intellij-server
+        overrides:
+          - goos: linux
+            goarch: arm64
+            url: https://download.jetbrains.com/language-server/kotlin-server/{{.SemVer}}/kotlin-server-{{.SemVer}}-aarch64.tar.gz
+            checksum:
+              type: http
+              url: https://download.jetbrains.com/language-server/kotlin-server/{{.SemVer}}/kotlin-server-{{.SemVer}}-aarch64.tar.gz.sha256
+              algorithm: sha256
+          - goos: darwin
+            goarch: amd64
+            url: https://download.jetbrains.com/language-server/kotlin-server/{{.SemVer}}/kotlin-server-{{.SemVer}}.sit
+            format: zip
+            checksum:
+              type: http
+              url: https://download.jetbrains.com/language-server/kotlin-server/{{.SemVer}}/kotlin-server-{{.SemVer}}.sit.sha256
+              algorithm: sha256
+          - goos: darwin
+            goarch: arm64
+            url: https://download.jetbrains.com/language-server/kotlin-server/{{.SemVer}}/kotlin-server-{{.SemVer}}-aarch64.sit
+            format: zip
+            checksum:
+              type: http
+              url: https://download.jetbrains.com/language-server/kotlin-server/{{.SemVer}}/kotlin-server-{{.SemVer}}-aarch64.sit.sha256
+              algorithm: sha256
+          - goos: windows
+            goarch: amd64
+            url: https://download.jetbrains.com/language-server/kotlin-server/{{.SemVer}}/kotlin-server-{{.SemVer}}.win.zip
+            format: zip
+            checksum:
+              type: http
+              url: https://download.jetbrains.com/language-server/kotlin-server/{{.SemVer}}/kotlin-server-{{.SemVer}}.win.zip.sha256
+              algorithm: sha256
+            files:
+              - name: kotlin-lsp
+                src: bin/intellij-server
+          - goos: windows
+            goarch: arm64
+            url: https://download.jetbrains.com/language-server/kotlin-server/{{.SemVer}}/kotlin-server-{{.SemVer}}-aarch64.win.zip
+            format: zip
+            checksum:
+              type: http
+              url: https://download.jetbrains.com/language-server/kotlin-server/{{.SemVer}}/kotlin-server-{{.SemVer}}-aarch64.win.zip.sha256
+              algorithm: sha256
+            files:
+              - name: kotlin-lsp
+                src: bin/intellij-server
+  - type: http
     url: https://gh-proxy.org/github.com/Kotlin/ktfmt/releases/download/{{.Version}}/ktfmt-{{trimV .Version}}-with-dependencies.jar
     repo_owner: Kotlin
     repo_name: ktfmt
@@ -10082,37 +10228,6 @@ packages:
           url: https://gh-proxy.org/github.com/Rigellute/spotify-tui/releases/download/{{.Version}}/spotify-tui-{{.OS}}.sha256
           asset: spotify-tui-{{.OS}}.sha256
           algorithm: sha256
-  - type: github_release
-    repo_owner: RoseSecurity
-    repo_name: Kuzco
-    description: Kuzco reviews your Terraform resources, compares them to the provider schema to detect unused parameters, and uses AI to suggest improvements
-    files:
-      - name: kuzco
-    version_constraint: "false"
-    version_overrides:
-      - version_constraint: "true"
-        type: http
-        url: https://gh-proxy.org/github.com/RoseSecurity/Kuzco/releases/download/{{.Version}}/Kuzco_{{.OS}}_{{.Arch}}.{{.Format}}
-        asset: Kuzco_{{.OS}}_{{.Arch}}.{{.Format}}
-        files:
-          - name: kuzco
-            src: Kuzco
-        format: tar.gz
-        replacements:
-          amd64: x86_64
-          darwin: Darwin
-          linux: Linux
-          windows: Windows
-        checksum:
-          type: http
-          url: https://gh-proxy.org/github.com/RoseSecurity/Kuzco/releases/download/{{.Version}}/Kuzco_{{trimV .Version}}_checksums.txt
-          asset: Kuzco_{{trimV .Version}}_checksums.txt
-          algorithm: sha256
-        overrides:
-          - goos: windows
-            type: http
-            url: https://gh-proxy.org/github.com/RoseSecurity/Kuzco/releases/download/{{.Version}}/Kuzco_{{.OS}}_{{.Arch}}.{{.Format}}
-            format: zip
   - type: github_release
     repo_owner: RyuyaIshibashi
     repo_name: aws-s3-siggy
@@ -15500,6 +15615,242 @@ packages:
           url: "{{.AssetURL}}.sha"
           asset: "{{.Asset}}.sha"
           algorithm: sha256
+  - type: http
+    url: https://gh-proxy.org/github.com/adoptium/temurin21-binaries/releases/download/{{.Version}}/OpenJDK21U-jdk_{{.Arch}}_{{.OS}}_hotspot_{{.SemVer | replace "+" "_"}}.{{.Format}}
+    repo_owner: adoptium
+    repo_name: temurin21-binaries
+    description: Eclipse Temurin JDK 21
+    search_words:
+      - jdk
+      - openjdk
+    version_filter: Version matches "^jdk-21\\.[\\d.]+\\+\\d+$"
+    version_prefix: jdk-
+    asset: OpenJDK21U-jdk_{{.Arch}}_{{.OS}}_hotspot_{{.SemVer | replace "+" "_"}}.{{.Format}}
+    format: tar.gz
+    # Windows ARM64 builds are published days or weeks after each release, so always use the x64 build.
+    windows_arm_emulation: true
+    replacements:
+      amd64: x64
+      arm64: aarch64
+      darwin: mac
+    checksum:
+      type: http
+      url: "{{.AssetURL}}.sha256.txt"
+      asset: "{{.Asset}}.sha256.txt"
+      algorithm: sha256
+    files:
+      - name: jar
+        src: "{{.Version}}/bin/{{.FileName}}"
+      - name: jarsigner
+        src: "{{.Version}}/bin/{{.FileName}}"
+      - name: java
+        src: "{{.Version}}/bin/{{.FileName}}"
+      - name: javac
+        src: "{{.Version}}/bin/{{.FileName}}"
+      - name: javadoc
+        src: "{{.Version}}/bin/{{.FileName}}"
+      - name: javap
+        src: "{{.Version}}/bin/{{.FileName}}"
+      - name: jcmd
+        src: "{{.Version}}/bin/{{.FileName}}"
+      - name: jconsole
+        src: "{{.Version}}/bin/{{.FileName}}"
+      - name: jdb
+        src: "{{.Version}}/bin/{{.FileName}}"
+      - name: jdeprscan
+        src: "{{.Version}}/bin/{{.FileName}}"
+      - name: jdeps
+        src: "{{.Version}}/bin/{{.FileName}}"
+      - name: jfr
+        src: "{{.Version}}/bin/{{.FileName}}"
+      - name: jhsdb
+        src: "{{.Version}}/bin/{{.FileName}}"
+      - name: jimage
+        src: "{{.Version}}/bin/{{.FileName}}"
+      - name: jinfo
+        src: "{{.Version}}/bin/{{.FileName}}"
+      - name: jlink
+        src: "{{.Version}}/bin/{{.FileName}}"
+      - name: jmap
+        src: "{{.Version}}/bin/{{.FileName}}"
+      - name: jmod
+        src: "{{.Version}}/bin/{{.FileName}}"
+      - name: jpackage
+        src: "{{.Version}}/bin/{{.FileName}}"
+      - name: jps
+        src: "{{.Version}}/bin/{{.FileName}}"
+      - name: jrunscript
+        src: "{{.Version}}/bin/{{.FileName}}"
+      - name: jshell
+        src: "{{.Version}}/bin/{{.FileName}}"
+      - name: jstack
+        src: "{{.Version}}/bin/{{.FileName}}"
+      - name: jstat
+        src: "{{.Version}}/bin/{{.FileName}}"
+      - name: jstatd
+        src: "{{.Version}}/bin/{{.FileName}}"
+      - name: jwebserver
+        src: "{{.Version}}/bin/{{.FileName}}"
+      - name: keytool
+        src: "{{.Version}}/bin/{{.FileName}}"
+      - name: rmiregistry
+        src: "{{.Version}}/bin/{{.FileName}}"
+      - name: serialver
+        src: "{{.Version}}/bin/{{.FileName}}"
+    overrides:
+      - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/adoptium/temurin21-binaries/releases/download/{{.Version}}/OpenJDK21U-jdk_{{.Arch}}_{{.OS}}_hotspot_{{.SemVer | replace "+" "_"}}.{{.Format}}
+        variants:
+          - key: libc
+            value: glibc
+      - goos: linux
+        type: http
+        url: https://gh-proxy.org/github.com/adoptium/temurin21-binaries/releases/download/{{.Version}}/OpenJDK21U-jdk_{{.Arch}}_{{.OS}}_hotspot_{{.SemVer | replace "+" "_"}}.{{.Format}}
+        variants:
+          - key: libc
+            value: musl
+        replacements:
+          linux: alpine-linux
+      - goos: darwin
+        type: http
+        url: https://gh-proxy.org/github.com/adoptium/temurin21-binaries/releases/download/{{.Version}}/OpenJDK21U-jdk_{{.Arch}}_{{.OS}}_hotspot_{{.SemVer | replace "+" "_"}}.{{.Format}}
+        files:
+          - name: jar
+            src: "{{.Version}}/Contents/Home/bin/{{.FileName}}"
+          - name: jarsigner
+            src: "{{.Version}}/Contents/Home/bin/{{.FileName}}"
+          - name: java
+            src: "{{.Version}}/Contents/Home/bin/{{.FileName}}"
+          - name: javac
+            src: "{{.Version}}/Contents/Home/bin/{{.FileName}}"
+          - name: javadoc
+            src: "{{.Version}}/Contents/Home/bin/{{.FileName}}"
+          - name: javap
+            src: "{{.Version}}/Contents/Home/bin/{{.FileName}}"
+          - name: jcmd
+            src: "{{.Version}}/Contents/Home/bin/{{.FileName}}"
+          - name: jconsole
+            src: "{{.Version}}/Contents/Home/bin/{{.FileName}}"
+          - name: jdb
+            src: "{{.Version}}/Contents/Home/bin/{{.FileName}}"
+          - name: jdeprscan
+            src: "{{.Version}}/Contents/Home/bin/{{.FileName}}"
+          - name: jdeps
+            src: "{{.Version}}/Contents/Home/bin/{{.FileName}}"
+          - name: jfr
+            src: "{{.Version}}/Contents/Home/bin/{{.FileName}}"
+          - name: jhsdb
+            src: "{{.Version}}/Contents/Home/bin/{{.FileName}}"
+          - name: jimage
+            src: "{{.Version}}/Contents/Home/bin/{{.FileName}}"
+          - name: jinfo
+            src: "{{.Version}}/Contents/Home/bin/{{.FileName}}"
+          - name: jlink
+            src: "{{.Version}}/Contents/Home/bin/{{.FileName}}"
+          - name: jmap
+            src: "{{.Version}}/Contents/Home/bin/{{.FileName}}"
+          - name: jmod
+            src: "{{.Version}}/Contents/Home/bin/{{.FileName}}"
+          - name: jpackage
+            src: "{{.Version}}/Contents/Home/bin/{{.FileName}}"
+          - name: jps
+            src: "{{.Version}}/Contents/Home/bin/{{.FileName}}"
+          - name: jrunscript
+            src: "{{.Version}}/Contents/Home/bin/{{.FileName}}"
+          - name: jshell
+            src: "{{.Version}}/Contents/Home/bin/{{.FileName}}"
+          - name: jstack
+            src: "{{.Version}}/Contents/Home/bin/{{.FileName}}"
+          - name: jstat
+            src: "{{.Version}}/Contents/Home/bin/{{.FileName}}"
+          - name: jstatd
+            src: "{{.Version}}/Contents/Home/bin/{{.FileName}}"
+          - name: jwebserver
+            src: "{{.Version}}/Contents/Home/bin/{{.FileName}}"
+          - name: keytool
+            src: "{{.Version}}/Contents/Home/bin/{{.FileName}}"
+          - name: rmiregistry
+            src: "{{.Version}}/Contents/Home/bin/{{.FileName}}"
+          - name: serialver
+            src: "{{.Version}}/Contents/Home/bin/{{.FileName}}"
+      - goos: windows
+        type: http
+        url: https://gh-proxy.org/github.com/adoptium/temurin21-binaries/releases/download/{{.Version}}/OpenJDK21U-jdk_{{.Arch}}_{{.OS}}_hotspot_{{.SemVer | replace "+" "_"}}.{{.Format}}
+        format: zip
+        files:
+          - name: jabswitch
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: jaccessinspector
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: jaccesswalker
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: jar
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: jarsigner
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: java
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: javac
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: javadoc
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: javap
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: javaw
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: jcmd
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: jconsole
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: jdb
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: jdeprscan
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: jdeps
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: jfr
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: jhsdb
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: jimage
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: jinfo
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: jlink
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: jmap
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: jmod
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: jpackage
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: jps
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: jrunscript
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: jshell
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: jstack
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: jstat
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: jstatd
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: jwebserver
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: keytool
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: kinit
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: klist
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: ktab
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: rmiregistry
+            src: "{{.Version}}/bin/{{.FileName}}"
+          - name: serialver
+            src: "{{.Version}}/bin/{{.FileName}}"
   - type: github_release
     repo_owner: aduros
     repo_name: wasm4
@@ -40250,6 +40601,16 @@ packages:
           url: "{{.AssetURL}}.sha256"
           asset: "{{.Asset}}.sha256"
           algorithm: sha256
+        cosign:
+          bundle:
+            type: http
+            url: https://gh-proxy.org/github.com/cplieger/grelot/releases/download/{{.Version}}/{{.Asset}}.sigstore.json
+            asset: "{{.Asset}}.sigstore.json"
+          opts:
+            - --certificate-identity-regexp
+            - ^https://github\.com/cplieger/ci/\.github/workflows/docker-release\.yaml@
+            - --certificate-oidc-issuer
+            - https://token.actions.githubusercontent.com
   - type: github_release
     repo_owner: crate-ci
     repo_name: committed
@@ -40691,6 +41052,21 @@ packages:
             type: http
             url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
             format: zip
+      - version_constraint: semver("< 4.34.0")
+        type: http
+        url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        asset: diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+        format: tar.gz
+        checksum:
+          type: http
+          url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/checksums.txt
+          asset: checksums.txt
+          algorithm: sha256
+        overrides:
+          - goos: windows
+            type: http
+            url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+            format: zip
       - version_constraint: "true"
         type: http
         url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
@@ -40701,6 +41077,16 @@ packages:
           url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/checksums.txt
           asset: checksums.txt
           algorithm: sha256
+        cosign:
+          bundle:
+            type: http
+            url: https://gh-proxy.org/github.com/crazy-max/diun/releases/download/{{.Version}}/diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.sigstore.json
+            asset: diun_{{trimV .Version}}_{{.OS}}_{{.Arch}}.sigstore.json
+          opts:
+            - --certificate-identity-regexp
+            - ^https://github\.com/docker/github-builder/\.github/workflows/bake\.yml@
+            - --certificate-oidc-issuer
+            - https://token.actions.githubusercontent.com
         overrides:
           - goos: windows
             type: http
@@ -75724,8 +76110,7 @@ packages:
       - darwin
       - linux/amd64
     rosetta2: true
-  - type: http
-    url: https://gh-proxy.org/github.com/kayac/ecspresso/releases/download/{{.Version}}/ecspresso_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
+  - type: github_release
     repo_owner: kayac
     repo_name: ecspresso
     asset: ecspresso_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
@@ -75735,6 +76120,24 @@ packages:
       url: https://gh-proxy.org/github.com/kayac/ecspresso/releases/download/{{.Version}}/checksums.txt
       asset: checksums.txt
       algorithm: sha256
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: semver("< 3.0.0")
+        type: http
+        url: https://gh-proxy.org/github.com/kayac/ecspresso/releases/download/{{.Version}}/ecspresso_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
+      - version_constraint: "true"
+        type: http
+        url: https://gh-proxy.org/github.com/kayac/ecspresso/releases/download/{{.Version}}/ecspresso_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
+        cosign:
+          bundle:
+            type: http
+            url: https://gh-proxy.org/github.com/kayac/ecspresso/releases/download/{{.Version}}/packslip.sigstore.json
+            asset: packslip.sigstore.json
+          opts:
+            - --certificate-identity
+            - https://gh-proxy.org/github.com/kayac/ecspresso/.github/workflows/tagpr-release.yml@refs/heads/v3
+            - --certificate-oidc-issuer
+            - https://token.actions.githubusercontent.com
   - type: http
     url: https://gh-proxy.org/github.com/kayac/go-katsubushi/releases/download/{{.Version}}/go-katsubushi_{{.Version}}_{{.OS}}_{{.Arch}}.tar.gz
     repo_owner: kayac
@@ -93487,24 +93890,6 @@ packages:
     supported_envs:
       - darwin
   - type: github_release
-    repo_owner: nishanths
-    repo_name: license
-    description: Command line license text generator
-    version_constraint: "false"
-    version_overrides:
-      - version_constraint: semver("<= 3.0.0")
-        no_asset: true
-      - version_constraint: "true"
-        type: http
-        url: https://gh-proxy.org/github.com/nishanths/license/releases/download/{{.Version}}/license-{{.Version}}-{{.OS}}-{{.Arch}}
-        asset: license-{{.Version}}-{{.OS}}-{{.Arch}}
-        format: raw
-        checksum:
-          type: http
-          url: https://gh-proxy.org/github.com/nishanths/license/releases/download/{{.Version}}/SHA256SUMS.txt
-          asset: SHA256SUMS.txt
-          algorithm: sha256
-  - type: github_release
     repo_owner: nklmilojevic
     repo_name: sofka
     description: "A Kubernetes TUI, reimagined in Rust - built on kube-rs and ratatui, async-first from the ground up"
@@ -101665,15 +102050,6 @@ packages:
           - linux
           - darwin
   - type: http
-    url: https://gh-proxy.org/github.com/porter-dev/porter/releases/download/{{.Version}}/porter_{{.Version}}_{{title .OS}}_x86_64.zip
-    repo_owner: porter-dev
-    repo_name: porter
-    asset: porter_{{.Version}}_{{title .OS}}_x86_64.zip
-    description: Kubernetes powered PaaS that runs in your own cloud
-    supported_envs:
-      - darwin
-      - linux
-  - type: http
     url: https://gh-proxy.org/raw.githubusercontent.com/postfinance/kubectl-sudo/{{.Version}}/bash/kubectl-sudo
     repo_owner: postfinance
     repo_name: kubectl-sudo
@@ -103376,29 +103752,6 @@ packages:
         files:
           - name: pulumi
             src: pulumi/pulumi
-  - type: http
-    url: https://gh-proxy.org/github.com/pulumi/tf2pulumi/releases/download/{{.Version}}/tf2pulumi-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
-    repo_owner: pulumi
-    repo_name: tf2pulumi
-    asset: tf2pulumi-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
-    format: tar.gz
-    description: A tool to convert Terraform projects to Pulumi TypeScript programs
-    replacements:
-      amd64: x64
-    overrides:
-      - goos: windows
-        type: http
-        url: https://gh-proxy.org/github.com/pulumi/tf2pulumi/releases/download/{{.Version}}/tf2pulumi-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
-        format: zip
-    supported_envs:
-      - darwin
-      - linux
-      - amd64
-    checksum:
-      type: http
-      url: https://gh-proxy.org/github.com/pulumi/tf2pulumi/releases/download/{{.Version}}/tf2pulumi_{{trimV .Version}}_checksums.txt
-      asset: tf2pulumi_{{trimV .Version}}_checksums.txt
-      algorithm: sha256
   - type: github_release
     repo_owner: purpleclay
     repo_name: dns53
@@ -113901,7 +114254,7 @@ packages:
     repo_owner: slok
     repo_name: sloth
     description: Easy and simple Prometheus SLO (service level objectives) generator
-    version_filter: not Version startsWith "sloth-helm-chart-"
+    version_filter: not (Version startsWith "sloth-helm-chart-")
     version_constraint: "false"
     version_overrides:
       - version_constraint: "true"
